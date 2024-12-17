@@ -1,0 +1,29 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node.js qa-runner-main
+
+on:
+  push:
+    branches: [ "qa-branch" ]
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["🚀 Main to ALL","🚀 Main to QA Branch"]
+    types:
+      - completed
+jobs:
+  build:
+
+    runs-on: [qa-backend-main]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+
+    - run: npm ci
+    - run: |
+        touch .env
+        echo "${{secrets.QA_ENV_FILE}}" > .env
+    - run: sudo pm2 restart backend-api-main --update-env
+    
+ 

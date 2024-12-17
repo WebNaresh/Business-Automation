@@ -1,0 +1,1127 @@
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-04T11:03:53.310Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-04T11:04:36.163Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-04T11:10:27.314Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-04T11:11:05.988Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-04T11:13:17.455Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-04T11:17:49.595Z"}
+{"level":"info","message":{"costCenter":"WebDevCostCenter","costCenterDescription":"This is web dev cost center","creator":"6538faf6e300f10b271a5007","departmentDescription":"Web development department","departmentHeadDelegateName":"Raj Sathe","departmentHeadName":"Vishal Solanki","departmentLocation":"Banglore","departmentName":"Web development","organizationId":"65409cf8867cf6873753398a"},"timestamp":"2023-11-04T11:18:51.242Z"}
+info: Server is working on http://localhost:4000 {"timestamp":"2023-11-04T11:21:16.434Z"}
+info: [object Object] {"timestamp":"2023-11-04T11:22:40.065Z"}
+info: [object Object] {"timestamp":"2023-11-04T11:23:27.214Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-04T11:23:50.769Z"}
+{"level":"info","message":{"costCenter":"fasdf","costCenterDescription":"asdfasdfasdfsdf","creator":"6538faf6e300f10b271a5007","departmentDescription":"sdfasdfasdf","departmentHeadDelegateName":"Jay Jadhav","departmentHeadName":"Viraj Raman","departmentLocation":"Jaipur","departmentName":"fsdafsadf","organizationId":"65409cf8867cf6873753398a"},"timestamp":"2023-11-04T11:24:03.933Z"}
+{"level":"info","message":{"costCenter":"fasdf","costCenterDescription":"asdfasdfasdfsdf","creator":"6538faf6e300f10b271a5007","departmentDescription":"sdfasdfasdf","departmentHeadDelegateName":"Jay Jadhav","departmentHeadName":"Viraj Raman","departmentLocation":"Jaipur","departmentName":"fsdafsadf","organizationId":"65409cf8867cf6873753398a"},"timestamp":"2023-11-04T11:24:07.521Z"}
+{"level":"info","message":{"costCenter":"dafadf","costCenterDescription":"sdfdfafasdf","creator":"6538faf6e300f10b271a5007","departmentDescription":"afdasdfasdfasdf","departmentHeadDelegateName":"Vaibhav Pawar","departmentHeadName":"Vishal Solanki","departmentLocation":"Chennai","departmentName":"dfasf","organizationId":"65409cf8867cf6873753398a"},"timestamp":"2023-11-04T11:24:19.035Z"}
+{"level":"info","message":{"costCenter":"dafadf","costCenterDescription":"sdfdfafasdf","creator":"6538faf6e300f10b271a5007","departmentDescription":"afdasdfasdfasdf","departmentHeadDelegateName":"Vaibhav Pawar","departmentHeadName":"Vishal Solanki","departmentLocation":"Chennai","departmentName":"dfasf","organizationId":"65409cf8867cf6873753398a"},"timestamp":"2023-11-04T11:24:29.081Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-04T11:25:37.247Z"}
+{"level":"info","message":{"costCenter":"fasdf","costCenterDescription":"sadfsdfasdf","creator":"6538faf6e300f10b271a5007","departmentDescription":"dfadfsdcf","departmentHeadDelegateName":"Raj Sathe","departmentHeadName":"Viraj Raman","departmentLocation":"Banglore","departmentName":"fsdfa","organizationId":"65409cf8867cf6873753398a"},"timestamp":"2023-11-04T11:25:55.192Z"}
+{"level":"info","message":{"costCenter":"dfaffasdfsdfa","costCenterDescription":"fadfadsf","creator":"6538faf6e300f10b271a5007","departmentDescription":"dsfddfsf","departmentHeadDelegateName":"Vaibhav Pawar","departmentHeadName":"Vishal Solanki","departmentLocation":"Banglore","departmentName":"dfasdfad","organizationId":"65409cf8867cf6873753398a"},"timestamp":"2023-11-04T11:26:39.845Z"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"04-11-2023 20:32:43"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":{"costCenter":"roboCC","costCenterDescription":"It is a robotics cost center","creator":"6538faf6e300f10b271a5007","departmentDescription":"Robotics department","departmentHeadDelegateName":"Raj Sathe","departmentHeadName":"Ram Desai","departmentLocation":"Tokyo","departmentName":"Robotics","organizationId":"65409cf8867cf6873753398a"},"service":"user-service","timestamp":"04-11-2023 20:34:18"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 09:58:08"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":{"costCenter":"fasdf","costCenterDescription":"sdfsa fasdfsf","creator":"6538faf6e300f10b271a5007","departmentDescription":"DSFASDFdsdf","departmentHeadDelegateName":"Jay Jadhav","departmentHeadName":"Ram Desai","departmentLocation":"Chennai","departmentName":"CSBS","organizationId":"65409cf8867cf6873753398a"},"service":"user-service","timestamp":"06-11-2023 10:00:03"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 11:03:13"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 11:05:59"}
+{"_message":"Organization validation failed","errors":{"contact_number":{"kind":"required","message":"Path `contact_number` is required.","name":"ValidatorError","path":"contact_number","properties":{"message":"Path `contact_number` is required.","path":"contact_number","type":"required","value":null},"value":null},"description":{"kind":"required","message":"Path `description` is required.","name":"ValidatorError","path":"description","properties":{"message":"Path `description` is required.","path":"description","type":"required","value":""},"value":""},"email":{"kind":"required","message":"Path `email` is required.","name":"ValidatorError","path":"email","properties":{"message":"Path `email` is required.","path":"email","type":"required","value":""},"value":""},"foundation_date":{"kind":"required","message":"Path `foundation_date` is required.","name":"ValidatorError","path":"foundation_date","properties":{"message":"Path `foundation_date` is required.","path":"foundation_date","type":"required","value":""},"value":""},"industry_type":{"kind":"required","message":"Path `industry_type` is required.","name":"ValidatorError","path":"industry_type","properties":{"message":"Path `industry_type` is required.","path":"industry_type","type":"required","value":""},"value":""},"location":{"kind":"required","message":"Path `location` is required.","name":"ValidatorError","path":"location","properties":{"message":"Path `location` is required.","path":"location","type":"required","value":""},"value":""},"name":{"kind":"required","message":"Path `name` is required.","name":"ValidatorError","path":"name","properties":{"message":"Path `name` is required.","path":"name","type":"required","value":""},"value":""},"web_url":{"kind":"required","message":"Path `web_url` is required.","name":"ValidatorError","path":"web_url","properties":{"message":"Path `web_url` is required.","path":"web_url","type":"required","value":""},"value":""}},"label":"winston log","level":"\u001b[32minfo\u001b[39m","service":"user-service","timestamp":"06-11-2023 11:06:21"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 11:16:44"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 11:19:29"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 11:23:36"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 11:28:08"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 12:17:26"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 12:18:11"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 12:18:28"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 12:55:35"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 12:56:01"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 12:56:23"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 12:56:52"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:03:33"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:04:06"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:05:33"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:07:49"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:08:10"}
+{"label":"winston log","level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:08:18"}
+{"label":"winston log","level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:09:17"}
+{"label":"winston log","level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:09:57"}
+{"label":"winston log","level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:12:51"}
+{"label":"winston log","level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:13:16"}
+{"label":"winston log","level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:16:18"}
+{"label":"winston log","level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:18:17"}
+{"label":"winston log","level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:23:55"}
+{"label":"winston log","level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:24:03"}
+{"_message":"Organization validation failed","errors":{"contact_number":{"kind":"required","message":"Path `contact_number` is required.","name":"ValidatorError","path":"contact_number","properties":{"message":"Path `contact_number` is required.","path":"contact_number","type":"required","value":null},"value":null}},"label":"winston log","level":"\u001b[32m\u001b[32minfo\u001b[32m\u001b[39m","service":"user-service","timestamp":"06-11-2023 13:31:46"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:34:08"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:34:44"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:35:24"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:40:34"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":{"__v":0,"_id":"6548a06bb721083499c9dcb0","contact_number":9767955125,"creator":"6538faf6e300f10b271a5007","departments":[],"description":"sadfdf","email":"sdfsdfsdf","foundation_date":"2023-11-08T18:30:00.000Z","industry_type":"IT","location":"sfsf","name":"dsafsdf","organization_linkedin_url":"sdfsd","organization_tagline":"fdf","role":[],"web_url":"asdfdfsdfdf"},"service":"user-service","timestamp":"06-11-2023 13:44:35"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"Organization validation failed: name: Path `name` is required., foundation_date: Path `foundation_date` is required., web_url: Path `web_url` is required., industry_type: Path `industry_type` is required., email: Path `email` is required., location: Path `location` is required., contact_number: Path `contact_number` is required., description: Path `description` is required.","service":"user-service","timestamp":"06-11-2023 13:49:27"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"Organization validation failed: foundation_date: Path `foundation_date` is required., contact_number: Path `contact_number` is required.","service":"user-service","timestamp":"06-11-2023 13:49:43"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:50:24"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:51:04"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:52:21"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:52:58"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 13:53:14"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-04T11:56:58.998Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-05T06:07:00.981Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-05T06:43:37.740Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-05T06:46:11.436Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-05T06:47:29.555Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-05T06:54:11.961Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-05T12:42:54.639Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-05T12:42:56.453Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-05T12:42:59.432Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-05T12:43:32.121Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-05T12:45:02.783Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-05T12:46:39.739Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-05T12:46:42.715Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-05T12:46:46.183Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-05T12:50:24.189Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-05T12:53:14.937Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-05T12:53:17.930Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-05T12:53:22.591Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-05T12:53:32.385Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-05T12:53:35.273Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-05T12:59:00.444Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-05T13:00:16.994Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T04:05:47.497Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T04:06:04.307Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T04:24:18.404Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T04:24:20.497Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T04:30:06.976Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T04:30:50.248Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T04:31:33.719Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T05:04:48.436Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T05:04:51.476Z"}
+<<<<<<< HEAD
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T06:57:21.013Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T07:34:38.653Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T07:35:14.820Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T07:35:21.529Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T07:35:26.683Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T07:35:45.078Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T07:35:51.532Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T07:36:17.057Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T07:36:26.150Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T07:36:39.538Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T07:37:55.404Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T08:12:07.430Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T08:12:09.486Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T08:12:21.618Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T08:16:39.615Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T08:19:33.859Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T08:20:00.653Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T08:22:11.137Z"}
+=======
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T05:47:30.464Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T05:49:32.643Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T05:51:28.620Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T05:51:34.588Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T05:54:56.649Z"}
+{"level":"info","message":"Server is working on http://localhost:undefined","timestamp":"2023-11-06T05:55:10.358Z"}
+{"level":"info","message":"Server is working on http://localhost:3000","timestamp":"2023-11-06T05:56:07.034Z"}
+{"level":"info","message":"Server is working on http://localhost:3000","timestamp":"2023-11-06T05:56:35.108Z"}
+{"level":"info","message":"Server is working on http://localhost:3000","timestamp":"2023-11-06T05:57:16.265Z"}
+{"level":"info","message":"Server is working on http://localhost:3000","timestamp":"2023-11-06T05:57:49.597Z"}
+{"level":"info","message":"Server is working on http://localhost:3000","timestamp":"2023-11-06T06:00:12.644Z"}
+{"level":"info","message":"Server is working on http://localhost:3000","timestamp":"2023-11-06T06:02:26.619Z"}
+{"level":"info","message":"Server is working on http://localhost:3000","timestamp":"2023-11-06T06:03:17.965Z"}
+{"level":"info","message":"Server is working on http://localhost:3000","timestamp":"2023-11-06T06:03:34.543Z"}
+{"level":"info","message":"Server is working on http://localhost:3000","timestamp":"2023-11-06T06:03:36.714Z"}
+{"level":"info","message":"Server is working on http://localhost:3000","timestamp":"2023-11-06T06:03:43.472Z"}
+{"level":"info","message":"Server is working on http://localhost:3000","timestamp":"2023-11-06T06:03:52.865Z"}
+{"level":"info","message":"Server is working on http://localhost:3000","timestamp":"2023-11-06T06:08:17.715Z"}
+{"level":"info","message":"Server is working on http://localhost:3000","timestamp":"2023-11-06T06:08:28.704Z"}
+{"level":"info","message":"Server is working on http://localhost:3000","timestamp":"2023-11-06T06:14:03.692Z"}
+{"level":"info","message":"Server is working on http://localhost:3000","timestamp":"2023-11-06T06:14:50.475Z"}
+{"level":"info","message":"Server is working on http://localhost:3000","timestamp":"2023-11-06T06:15:55.049Z"}
+{"level":"info","message":"Server is working on http://localhost:3000","timestamp":"2023-11-06T06:16:11.537Z"}
+{"level":"info","message":"Server is working on http://localhost:3000","timestamp":"2023-11-06T06:16:32.492Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T06:18:19.454Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T06:24:19.819Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T06:24:58.715Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T06:25:12.766Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T06:27:03.189Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T06:27:32.243Z"}
+<<<<<<< HEAD
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T09:39:31.030Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T09:55:16.242Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T09:59:27.292Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:00:57.572Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:01:04.061Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:01:09.373Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:05:08.777Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:05:59.514Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:17:15.164Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:45:12.617Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:45:23.187Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:45:25.089Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:45:26.653Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:45:35.904Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:45:39.811Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:45:42.662Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:45:44.301Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:45:47.749Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:45:58.627Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:46:03.596Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:46:49.227Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:46:51.364Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:46:59.568Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:47:02.069Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:47:08.534Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:47:26.223Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T10:47:29.347Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T12:20:39.802Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:18:55.597Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:19:31.118Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:19:35.261Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:20:38.331Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:20:42.103Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:22:15.692Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:22:23.944Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:22:29.888Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:22:33.995Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:22:35.328Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:22:43.683Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:23:43.099Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:24:10.504Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:24:13.668Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:24:34.016Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:24:35.696Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:24:41.022Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:24:56.165Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:25:22.253Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:25:25.167Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:26:32.580Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:29:02.935Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:29:07.918Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:29:12.730Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:29:20.722Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:32:51.006Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:32:55.605Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:42:15.353Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:42:39.515Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:42:48.830Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:42:55.540Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:42:57.231Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:49:56.180Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:50:05.008Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:50:18.563Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:50:29.906Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:50:36.211Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:53:33.854Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:53:36.859Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:53:41.394Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:54:22.664Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:54:26.773Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:54:39.009Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:54:48.097Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:55:02.761Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:55:26.698Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:55:36.859Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:55:41.599Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:55:44.004Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:56:39.905Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:56:46.546Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:56:53.665Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:57:08.101Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:57:11.193Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:58:31.710Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:58:41.037Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:58:49.896Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:59:26.920Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:59:43.804Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:59:45.969Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:59:49.705Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T04:59:54.813Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:00:44.060Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:00:47.971Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:00:51.910Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:00:53.483Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:00:55.636Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:00:56.949Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:01:02.585Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:01:30.790Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:01:44.717Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:01:47.644Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:01:49.260Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:03:50.919Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:04:01.344Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:04:19.102Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:04:24.681Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:04:29.994Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:04:33.254Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:04:51.313Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:05:07.947Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:07:29.797Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:07:35.820Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:07:50.257Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:08:08.146Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:08:11.117Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:08:57.180Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:08:58.685Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:09:02.246Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:09:04.338Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:09:25.366Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:09:28.740Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:10:29.516Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:10:54.605Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:11:00.070Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:11:08.755Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:13:49.845Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:13:57.471Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:14:13.108Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:14:51.825Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:14:54.276Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:14:56.961Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:16:08.938Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:17:02.424Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:17:12.893Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:17:21.348Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:18:39.906Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:18:52.068Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:19:11.546Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:19:23.801Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:19:37.507Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:19:45.354Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:19:49.130Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:19:51.115Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:20:07.042Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:20:28.152Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:20:33.990Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:20:42.584Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:21:02.123Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:21:09.651Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:21:15.573Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:21:43.193Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:21:52.368Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:22:04.127Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:22:15.431Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:22:19.043Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:22:23.675Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:22:29.588Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:24:07.820Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:24:53.513Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:25:10.258Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:25:14.631Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:27:32.450Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:27:49.140Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:27:57.586Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:28:00.751Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:28:12.733Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:28:32.931Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:28:44.167Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:28:46.373Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:28:52.969Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:28:54.427Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:29:05.211Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:29:10.118Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:29:15.348Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:29:18.598Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:30:17.507Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:30:50.491Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:30:54.116Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:30:57.678Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:30:59.224Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:31:03.018Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:31:36.864Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:32:38.088Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:32:54.643Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:33:00.974Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:33:03.632Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:33:06.644Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:33:29.237Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:33:37.201Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:33:40.171Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:33:41.693Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:33:45.074Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:33:46.488Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:33:47.493Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:40:06.491Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:40:09.785Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:40:15.184Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:40:17.653Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:40:19.219Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:40:24.316Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:43:05.257Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:43:18.581Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:43:27.818Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:43:53.838Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:43:55.407Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:44:17.845Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:44:27.406Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:44:45.082Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:44:46.343Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:45:32.661Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:45:42.070Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:45:46.458Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:45:51.561Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:46:09.712Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:46:14.291Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:46:19.534Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:46:51.088Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:47:23.094Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:47:26.634Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:47:39.746Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:48:00.023Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:48:09.468Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:48:36.739Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:49:04.937Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:49:37.769Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:49:42.677Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:49:48.291Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:49:52.792Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:50:25.931Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:50:30.283Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:50:48.279Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:51:05.052Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:51:24.862Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:51:41.307Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:51:55.935Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:52:25.755Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:52:47.380Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:53:08.044Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:53:15.771Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:53:28.290Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:53:30.060Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:53:45.313Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:54:11.445Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:54:21.091Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:54:35.918Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:54:49.316Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:55:00.306Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:55:18.590Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:55:20.670Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:55:33.193Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:55:49.995Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:55:53.322Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:56:03.627Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:56:08.715Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:56:15.015Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:56:18.199Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:56:21.132Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:56:26.228Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:56:28.448Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:56:31.104Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:56:43.793Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:56:58.270Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:57:42.955Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:57:46.101Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:58:02.261Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:58:16.834Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:58:22.869Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:58:53.471Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:59:25.495Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T05:59:55.801Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:02:03.844Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:02:05.252Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:04:09.206Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:04:15.966Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:04:17.829Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:04:20.386Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:04:56.707Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:05:04.509Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:05:06.617Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:05:27.990Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:05:39.528Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:05:46.194Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:05:50.601Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:09:54.798Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:10:07.243Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:10:28.304Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:10:29.733Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:10:32.143Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:10:40.692Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:10:44.494Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:10:50.309Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:11:11.066Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:11:12.849Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:11:22.707Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:11:43.928Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:11:45.667Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:11:48.608Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:12:37.801Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:12:42.752Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:12:55.682Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:13:04.728Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:13:07.397Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:13:14.088Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:13:15.613Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:13:20.728Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:13:24.101Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:13:32.021Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:13:56.865Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:14:02.255Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:14:05.667Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:14:07.866Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:14:10.579Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:14:17.498Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:14:20.210Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:14:31.865Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:14:33.317Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:14:35.052Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:14:38.137Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:14:44.049Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:14:45.906Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:14:51.222Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:14:54.713Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:14:56.781Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:15:04.745Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:15:08.730Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:15:11.030Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:15:26.438Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:15:27.676Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:15:29.326Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:17:29.733Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:18:39.788Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:18:51.134Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:19:44.285Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:19:47.209Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:19:48.690Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:19:50.586Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:19:54.719Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:19:57.596Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:20:00.065Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:20:03.303Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:20:04.620Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:20:08.535Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:20:11.000Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:20:13.387Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:20:16.798Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:20:18.114Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:20:22.666Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:20:27.116Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:20:32.569Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:20:34.239Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:20:41.004Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:20:44.178Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:20:46.972Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:20:49.927Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:20:58.636Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:22:49.155Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:22:51.241Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:22:52.640Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:22:57.714Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:23:06.614Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:23:12.912Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:23:14.170Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:23:17.818Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:23:18.615Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:23:50.225Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:23:51.597Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:26:38.489Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:26:41.062Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:26:53.842Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:27:02.436Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:27:13.314Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:27:15.028Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:27:19.648Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:27:23.071Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:27:24.187Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:27:32.421Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:27:36.526Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:27:42.358Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:27:43.505Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:27:48.530Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:27:49.740Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:27:54.075Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:27:55.123Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:28:09.548Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:28:19.339Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:28:25.363Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:28:33.272Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:28:42.820Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T06:28:43.899Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:25:44.929Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:25:48.423Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:25:51.430Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:26:02.196Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:26:04.939Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:26:09.630Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:26:12.320Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:31:21.821Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:31:23.246Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:31:25.362Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:31:28.090Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:31:53.447Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:31:57.402Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:32:47.797Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:32:49.054Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:33:09.546Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:33:10.300Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:36:32.970Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:36:34.084Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:44:22.869Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:44:35.235Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:44:41.874Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:45:12.231Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:45:18.921Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:45:20.809Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:45:22.065Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:45:36.032Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:45:37.395Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:45:40.273Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:55:07.877Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-07T07:55:11.342Z"}
+=======
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T08:13:50.980Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T08:13:59.623Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T08:14:12.698Z"}
+{"level":"info","message":"Server is working on http://localhost:4000","timestamp":"2023-11-06T08:15:14.445Z"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 17:09:42"}
+<<<<<<< HEAD
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 17:11:12"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 10:04:30"}
+=======
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 17:09:48"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 21:44:57"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"06-11-2023 22:52:38"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 10:32:03"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 10:34:14"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 10:34:34"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 10:35:10"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:08:48"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:09:07"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:10:17"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:10:42"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:13:50"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:15:53"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:16:28"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:17:08"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:21:37"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:43:26"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:45:17"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:45:46"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:46:28"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:47:32"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:48:51"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:49:05"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:49:13"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:49:25"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:49:36"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:49:43"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:49:49"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:49:52"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:50:54"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:52:57"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:53:34"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:53:38"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:58:29"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:03:26"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:07:24"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:11:38"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:12:26"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:12:28"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:12:39"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:13:18"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:13:23"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:13:58"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:14:34"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:14:45"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:15:18"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:15:44"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:16:25"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:16:39"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:16:45"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:17:02"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:17:11"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:17:40"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:17:53"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:18:30"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:18:42"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:19:32"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:19:49"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:20:09"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:20:16"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:20:27"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:20:35"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:20:43"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:20:51"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:21:01"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:21:12"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:21:25"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:21:44"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:24:23"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:25:22"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:25:46"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:25:59"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:27:50"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:30:35"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:36:20"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:36:37"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:36:45"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:37:33"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:40:39"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:40:55"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:42:21"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:42:38"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:46:00"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:47:05"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:47:41"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:47:50"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:48:46"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:48:53"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:49:35"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:49:46"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:50:22"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:52:26"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:53:32"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:53:38"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 13:58:11"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 14:00:46"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 14:00:50"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 14:01:09"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 14:01:53"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 14:02:08"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 14:03:59"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 14:04:39"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:17:32"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:17:41"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:18:50"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:19:12"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:19:21"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:19:45"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:19:55"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:20:22"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","service":"user-service","timestamp":"07-11-2023 15:20:25"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:20:53"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:20:57"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","service":"user-service","timestamp":"07-11-2023 15:20:58"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:21:19"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":{},"service":"user-service","timestamp":"07-11-2023 15:21:24"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:21:51"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":{},"service":"user-service","timestamp":"07-11-2023 15:21:56"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":{},"service":"user-service","timestamp":"07-11-2023 15:22:48"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:23:30"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:24:22"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":{},"service":"user-service","timestamp":"07-11-2023 15:24:38"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:25:14"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:28:54"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:29:40"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:29:52"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:30:06"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:30:08"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Head created successfully with ID: 654a0aaf005df06e3892ec28","service":"user-service","timestamp":"07-11-2023 15:30:15"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Head created successfully with ID: 654a0aaf005df06e3892ec2a","service":"user-service","timestamp":"07-11-2023 15:30:15"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Admin created successfully with ID: 654a0aaf005df06e3892ec2c","service":"user-service","timestamp":"07-11-2023 15:30:15"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Admin created successfully with ID: 654a0aaf005df06e3892ec2e","service":"user-service","timestamp":"07-11-2023 15:30:16"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"HR created successfully with ID: 654a0ab0005df06e3892ec30","service":"user-service","timestamp":"07-11-2023 15:30:16"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate HR created successfully with ID: 654a0ab0005df06e3892ec32","service":"user-service","timestamp":"07-11-2023 15:30:16"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Manager created successfully with ID: 654a0ab0005df06e3892ec34","service":"user-service","timestamp":"07-11-2023 15:30:16"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"07-11-2023 15:30:16"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:30:39"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:30:48"}
+<<<<<<< HEAD
+>>>>>>> 1f26007e518e6dd1fd78a474c1571cd96dd0e547
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:07:56"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:09:01"}
+=======
+<<<<<<< HEAD
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:30:55"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:52:21"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:53:51"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 15:56:15"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:07:25"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:08:00"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:21:48"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:22:03"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:22:17"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:22:33"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:22:52"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:23:08"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:23:26"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:23:54"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:24:12"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:24:26"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:24:29"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:24:35"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:24:39"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Head created successfully with ID: 654a178ec0640ae4fe55c758","service":"user-service","timestamp":"07-11-2023 16:25:10"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Head created successfully with ID: 654a178ec0640ae4fe55c75a","service":"user-service","timestamp":"07-11-2023 16:25:10"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Admin created successfully with ID: 654a178ec0640ae4fe55c75c","service":"user-service","timestamp":"07-11-2023 16:25:10"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"Error creating Delegate Department Admin: E11000 duplicate key error collection: naresh.delegatedepartmentadmins index: organizationId_1 dup key: { organizationId: null }","service":"user-service","timestamp":"07-11-2023 16:25:11"}
+{"code":11000,"index":0,"keyPattern":{"organizationId":1},"keyValue":{"organizationId":null},"label":"winston log","level":"\u001b[31merror\u001b[39m","service":"user-service","timestamp":"07-11-2023 16:25:11"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:27:25"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Head created successfully with ID: 654a181b992a922a2693549a","service":"user-service","timestamp":"07-11-2023 16:27:32"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Head created successfully with ID: 654a181c992a922a2693549c","service":"user-service","timestamp":"07-11-2023 16:27:32"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Admin created successfully with ID: 654a181c992a922a2693549e","service":"user-service","timestamp":"07-11-2023 16:27:32"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Admin created successfully with ID: 654a181c992a922a269354a0","service":"user-service","timestamp":"07-11-2023 16:27:32"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"HR created successfully with ID: 654a181c992a922a269354a2","service":"user-service","timestamp":"07-11-2023 16:27:33"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate HR created successfully with ID: 654a181d992a922a269354a5","service":"user-service","timestamp":"07-11-2023 16:27:33"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Manager created successfully with ID: 654a181d992a922a269354a7","service":"user-service","timestamp":"07-11-2023 16:27:33"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"07-11-2023 16:27:33"}
+{"code":"ERR_HTTP_HEADERS_SENT","label":"winston log","level":"\u001b[31merror\u001b[39m","service":"user-service","timestamp":"07-11-2023 16:27:33"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"Error creating Department Head: E11000 duplicate key error collection: ats-db.departmentheads index: organizationId_1 dup key: { organizationId: null }","service":"user-service","timestamp":"07-11-2023 16:28:21"}
+{"code":11000,"index":0,"keyPattern":{"organizationId":1},"keyValue":{"organizationId":null},"label":"winston log","level":"\u001b[31merror\u001b[39m","service":"user-service","timestamp":"07-11-2023 16:28:21"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:28:31"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"Error creating Department Head: E11000 duplicate key error collection: ats-db.departmentheads index: organizationId_1 dup key: { organizationId: null }","service":"user-service","timestamp":"07-11-2023 16:28:38"}
+{"code":11000,"index":0,"keyPattern":{"organizationId":1},"keyValue":{"organizationId":null},"label":"winston log","level":"\u001b[31merror\u001b[39m","service":"user-service","timestamp":"07-11-2023 16:28:38"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"Error creating Department Head: E11000 duplicate key error collection: ats-db.departmentheads index: organizationId_1 dup key: { organizationId: null }","service":"user-service","timestamp":"07-11-2023 16:29:28"}
+{"code":11000,"index":0,"keyPattern":{"organizationId":1},"keyValue":{"organizationId":null},"label":"winston log","level":"\u001b[31merror\u001b[39m","service":"user-service","timestamp":"07-11-2023 16:29:28"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"07-11-2023 16:29:36"}
+{"code":"ERR_HTTP_HEADERS_SENT","label":"winston log","level":"\u001b[31merror\u001b[39m","service":"user-service","timestamp":"07-11-2023 16:29:36"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"07-11-2023 16:29:43"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:40:47"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:41:27"}
+<<<<<<< HEAD
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:41:33"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Head created successfully with ID: 654a1c21797eebf3bce5a9c5","service":"user-service","timestamp":"07-11-2023 16:44:41"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Head created successfully with ID: 654a1c21797eebf3bce5a9c7","service":"user-service","timestamp":"07-11-2023 16:44:41"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Admin created successfully with ID: 654a1c21797eebf3bce5a9c9","service":"user-service","timestamp":"07-11-2023 16:44:42"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Admin created successfully with ID: 654a1c22797eebf3bce5a9cb","service":"user-service","timestamp":"07-11-2023 16:44:42"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"HR created successfully with ID: 654a1c22797eebf3bce5a9cd","service":"user-service","timestamp":"07-11-2023 16:44:42"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate HR created successfully with ID: 654a1c22797eebf3bce5a9cf","service":"user-service","timestamp":"07-11-2023 16:44:43"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Manager created successfully with ID: 654a1c23797eebf3bce5a9d1","service":"user-service","timestamp":"07-11-2023 16:44:43"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"07-11-2023 16:44:43"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"07-11-2023 16:44:57"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:45:35"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 16:45:40"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"07-11-2023 16:45:47"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"07-11-2023 17:10:48"}
+
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 17:55:00"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Head created successfully with ID: 654a2cb11e5039e495546b4b","service":"user-service","timestamp":"07-11-2023 17:55:22"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Head created successfully with ID: 654a2cb21e5039e495546b4d","service":"user-service","timestamp":"07-11-2023 17:55:22"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Admin created successfully with ID: 654a2cb21e5039e495546b4f","service":"user-service","timestamp":"07-11-2023 17:55:22"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Admin created successfully with ID: 654a2cb21e5039e495546b51","service":"user-service","timestamp":"07-11-2023 17:55:22"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"HR created successfully with ID: 654a2cb21e5039e495546b53","service":"user-service","timestamp":"07-11-2023 17:55:23"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate HR created successfully with ID: 654a2cb31e5039e495546b55","service":"user-service","timestamp":"07-11-2023 17:55:23"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Manager created successfully with ID: 654a2cb31e5039e495546b57","service":"user-service","timestamp":"07-11-2023 17:55:23"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"07-11-2023 17:55:23"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 23:29:10"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"Error creating/updating Department Head: Path \"organisationId\" is not in schema, strict mode is `true`, and upsert is `true`.","service":"user-service","timestamp":"07-11-2023 23:29:30"}
+{"isImmutableError":false,"label":"winston log","level":"\u001b[31merror\u001b[39m","path":"organisationId","service":"user-service","timestamp":"07-11-2023 23:29:30"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 23:31:43"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"Error creating/updating Department Head: Path \"organisationId\" is not in schema, strict mode is `true`, and upsert is `true`.","service":"user-service","timestamp":"07-11-2023 23:31:50"}
+{"isImmutableError":false,"label":"winston log","level":"\u001b[31merror\u001b[39m","path":"organisationId","service":"user-service","timestamp":"07-11-2023 23:31:50"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 23:32:21"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"Error creating/updating Department Head: Path \"organisationId\" is not in schema, strict mode is `true`, and upsert is `true`.","service":"user-service","timestamp":"07-11-2023 23:32:32"}
+{"isImmutableError":false,"label":"winston log","level":"\u001b[31merror\u001b[39m","path":"organisationId","service":"user-service","timestamp":"07-11-2023 23:32:32"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 23:33:09"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"Error creating/updating Department Head: Path \"organisationId\" is not in schema, strict mode is `true`, and upsert is `true`.","service":"user-service","timestamp":"07-11-2023 23:33:16"}
+{"isImmutableError":false,"label":"winston log","level":"\u001b[31merror\u001b[39m","path":"organisationId","service":"user-service","timestamp":"07-11-2023 23:33:16"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"Error creating/updating Department Head: Path \"organisationId\" is not in schema, strict mode is `true`, and upsert is `true`.","service":"user-service","timestamp":"07-11-2023 23:33:17"}
+{"isImmutableError":false,"label":"winston log","level":"\u001b[31merror\u001b[39m","path":"organisationId","service":"user-service","timestamp":"07-11-2023 23:33:17"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 23:33:24"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"Error creating/updating Department Head: Path \"organisationId\" is not in schema, strict mode is `true`, and upsert is `true`.","service":"user-service","timestamp":"07-11-2023 23:33:49"}
+{"isImmutableError":false,"label":"winston log","level":"\u001b[31merror\u001b[39m","path":"organisationId","service":"user-service","timestamp":"07-11-2023 23:33:49"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 23:34:50"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 23:34:58"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 23:35:49"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"Error creating/updating Department Head: Plan executor error during findAndModify :: caused by :: E11000 duplicate key error collection: ats-db.departmentheads index: organizationId_1 dup key: { organizationId: null }","service":"user-service","timestamp":"07-11-2023 23:35:57"}
+{"$clusterTime":{"clusterTime":{"$timestamp":"7298783061074771977"},"signature":{"hash":"4Z5m7l38JFSglqGTqveWe/KRccY=","keyId":{"high":1686476253,"low":2,"unsigned":false}}},"code":11000,"codeName":"DuplicateKey","keyPattern":{"organizationId":1},"keyValue":{"organizationId":null},"label":"winston log","level":"\u001b[31merror\u001b[39m","ok":0,"operationTime":{"$timestamp":"7298783061074771977"},"service":"user-service","timestamp":"07-11-2023 23:35:57"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:10:32"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:15:05"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:15:22"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:15:26"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:15:42"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Head updated successfully with ID: 654a2cb11e5039e495546b4b","service":"user-service","timestamp":"08-11-2023 09:16:07"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Head created successfully with ID: 654a2cb11e5039e495546b4b","service":"user-service","timestamp":"08-11-2023 09:16:07"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Head created successfully with ID: 654b047f2648c665f1a73acd","service":"user-service","timestamp":"08-11-2023 09:16:07"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"Error creating Department Admin: E11000 duplicate key error collection: ats-db.departmentadmins index: organizationId_1 dup key: { organizationId: null }","service":"user-service","timestamp":"08-11-2023 09:16:07"}
+{"code":11000,"index":0,"keyPattern":{"organizationId":1},"keyValue":{"organizationId":null},"label":"winston log","level":"\u001b[31merror\u001b[39m","service":"user-service","timestamp":"08-11-2023 09:16:07"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:20:17"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:23:20"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:25:32"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:25:49"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:27:37"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:28:27"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:28:54"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:28:57"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:29:09"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:29:25"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:29:52"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:30:11"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:30:16"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:30:26"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:30:35"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:31:00"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:31:29"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:31:42"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:31:57"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:32:01"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:32:31"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:32:40"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:33:51"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:33:57"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:34:01"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Head updated successfully with ID: 654b07f81a5ef2e41715097d","service":"user-service","timestamp":"08-11-2023 09:34:51"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Head created successfully with ID: 654b07f81a5ef2e41715097d","service":"user-service","timestamp":"08-11-2023 09:34:51"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Head created successfully with ID: 654b08e3d18b30de015a1c4b","service":"user-service","timestamp":"08-11-2023 09:34:51"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Admin created successfully with ID: 654b08e4d18b30de015a1c4e","service":"user-service","timestamp":"08-11-2023 09:34:52"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Admin created successfully with ID: 654b08e4d18b30de015a1c51","service":"user-service","timestamp":"08-11-2023 09:34:53"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"HR update successfully with ID: 654b05b6184633e8ce2d2988","service":"user-service","timestamp":"08-11-2023 09:34:53"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"Error creating Delegate HR: Cannot read properties of null (reading '_id')","service":"user-service","timestamp":"08-11-2023 09:34:54"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","service":"user-service","timestamp":"08-11-2023 09:34:54"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:35:31"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Head updated successfully with ID: 654b07f81a5ef2e41715097d","service":"user-service","timestamp":"08-11-2023 09:35:38"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Head created successfully with ID: 654b07f81a5ef2e41715097d","service":"user-service","timestamp":"08-11-2023 09:35:38"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Head update successfully with ID: 654b08e3d18b30de015a1c4b","service":"user-service","timestamp":"08-11-2023 09:35:39"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Admin update successfully with ID: 654b08e4d18b30de015a1c4e","service":"user-service","timestamp":"08-11-2023 09:35:39"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Admin update successfully with ID: 654b08e4d18b30de015a1c51","service":"user-service","timestamp":"08-11-2023 09:35:40"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"HR update successfully with ID: 654b05b6184633e8ce2d2988","service":"user-service","timestamp":"08-11-2023 09:35:41"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"delegate Hr update successfully with ID: 654b08e5d18b30de015a1c56","service":"user-service","timestamp":"08-11-2023 09:35:41"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate HR created successfully with ID: 654b08e5d18b30de015a1c56","service":"user-service","timestamp":"08-11-2023 09:35:41"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Manager created successfully with ID: 654b09161a0e0605d98bd50d","service":"user-service","timestamp":"08-11-2023 09:35:42"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"08-11-2023 09:35:42"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Head updated successfully with ID: 654b07f81a5ef2e41715097d","service":"user-service","timestamp":"08-11-2023 09:36:10"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Head update successfully with ID: 654b08e3d18b30de015a1c4b","service":"user-service","timestamp":"08-11-2023 09:36:11"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Admin update successfully with ID: 654b08e4d18b30de015a1c4e","service":"user-service","timestamp":"08-11-2023 09:36:11"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Admin update successfully with ID: 654b08e4d18b30de015a1c51","service":"user-service","timestamp":"08-11-2023 09:36:12"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"HR update successfully with ID: 654b05b6184633e8ce2d2988","service":"user-service","timestamp":"08-11-2023 09:36:12"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"delegate Hr update successfully with ID: 654b08e5d18b30de015a1c56","service":"user-service","timestamp":"08-11-2023 09:36:13"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate HR created successfully with ID: 654b08e5d18b30de015a1c56","service":"user-service","timestamp":"08-11-2023 09:36:13"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"delegate Hr update successfully with ID: 654b09161a0e0605d98bd50d","service":"user-service","timestamp":"08-11-2023 09:36:13"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"08-11-2023 09:36:13"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:37:20"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:37:35"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Head updated successfully with ID: 654b07f81a5ef2e41715097d","service":"user-service","timestamp":"08-11-2023 09:37:42"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Head update successfully with ID: 654b08e3d18b30de015a1c4b","service":"user-service","timestamp":"08-11-2023 09:37:43"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Admin update successfully with ID: 654b08e4d18b30de015a1c4e","service":"user-service","timestamp":"08-11-2023 09:37:43"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Admin update successfully with ID: 654b08e4d18b30de015a1c51","service":"user-service","timestamp":"08-11-2023 09:37:44"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"HR update successfully with ID: 654b05b6184633e8ce2d2988","service":"user-service","timestamp":"08-11-2023 09:37:44"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"delegate Hr update successfully with ID: 654b08e5d18b30de015a1c56","service":"user-service","timestamp":"08-11-2023 09:37:45"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate HR created successfully with ID: 654b08e5d18b30de015a1c56","service":"user-service","timestamp":"08-11-2023 09:37:45"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"delegate Hr update successfully with ID: 654b09161a0e0605d98bd50d","service":"user-service","timestamp":"08-11-2023 09:37:45"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"08-11-2023 09:37:45"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:39:26"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Head updated successfully with ID: 654b07f81a5ef2e41715097d","service":"user-service","timestamp":"08-11-2023 09:39:33"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Head update successfully with ID: 654b08e3d18b30de015a1c4b","service":"user-service","timestamp":"08-11-2023 09:39:33"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Admin update successfully with ID: 654b08e4d18b30de015a1c4e","service":"user-service","timestamp":"08-11-2023 09:39:34"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Admin update successfully with ID: 654b08e4d18b30de015a1c51","service":"user-service","timestamp":"08-11-2023 09:39:34"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"HR update successfully with ID: 654b05b6184633e8ce2d2988","service":"user-service","timestamp":"08-11-2023 09:39:35"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"delegate Hr update successfully with ID: 654b08e5d18b30de015a1c56","service":"user-service","timestamp":"08-11-2023 09:39:36"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate HR created successfully with ID: 654b08e5d18b30de015a1c56","service":"user-service","timestamp":"08-11-2023 09:39:36"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"delegate Hr update successfully with ID: 654b09161a0e0605d98bd50d","service":"user-service","timestamp":"08-11-2023 09:39:36"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"08-11-2023 09:39:36"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:40:23"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Head updated successfully with ID: 654b07f81a5ef2e41715097d","service":"user-service","timestamp":"08-11-2023 09:40:29"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Head update successfully with ID: 654b08e3d18b30de015a1c4b","service":"user-service","timestamp":"08-11-2023 09:40:30"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Admin update successfully with ID: 654b08e4d18b30de015a1c4e","service":"user-service","timestamp":"08-11-2023 09:40:31"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Admin update successfully with ID: 654b08e4d18b30de015a1c51","service":"user-service","timestamp":"08-11-2023 09:40:31"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"HR update successfully with ID: 654b05b6184633e8ce2d2988","service":"user-service","timestamp":"08-11-2023 09:40:32"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"delegate Hr update successfully with ID: 654b08e5d18b30de015a1c56","service":"user-service","timestamp":"08-11-2023 09:40:32"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"delegate Hr update successfully with ID: 654b09161a0e0605d98bd50d","service":"user-service","timestamp":"08-11-2023 09:40:33"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"08-11-2023 09:40:33"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 09:41:15"}
+>>>>>>> 144b6caf0732fedc9032ff54c08f6840a5b627f5
+<<<<<<< HEAD
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:51:58"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 10:52:06"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 10:52:07"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 10:52:11"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 10:52:11"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 10:52:30"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 10:52:30"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 10:53:06"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 10:53:07"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:54:28"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 10:54:46"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 10:54:47"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 10:55:25"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 11:03:54"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:05:07"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:05:08"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:05:15"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:07:17"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:07:19"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 11:19:10"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"connect ETIMEDOUT 64:ff9b::3d0:a81d:27017","reason":{"commonWireVersion":17,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":30,"maxElectionId":"7fffffff0000000000000124","maxSetVersion":7,"servers":{},"setName":"atlas-36cumn-shard-0","stale":false,"type":"ReplicaSetNoPrimary"},"service":"user-service","timestamp":"08-11-2023 11:20:07"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"connect ETIMEDOUT 64:ff9b::3d0:a81d:27017","reason":{"commonWireVersion":17,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":30,"maxElectionId":"7fffffff0000000000000124","maxSetVersion":7,"servers":{},"setName":"atlas-36cumn-shard-0","stale":false,"type":"ReplicaSetNoPrimary"},"service":"user-service","timestamp":"08-11-2023 11:20:14"}
+{"code":"ERR_HTTP_HEADERS_SENT","label":"winston log","level":"\u001b[31merror\u001b[39m","service":"user-service","timestamp":"08-11-2023 11:20:26"}
+{"code":"ERR_HTTP_HEADERS_SENT","label":"winston log","level":"\u001b[31merror\u001b[39m","service":"user-service","timestamp":"08-11-2023 11:20:26"}
+{"code":"ERR_HTTP_HEADERS_SENT","label":"winston log","level":"\u001b[31merror\u001b[39m","service":"user-service","timestamp":"08-11-2023 11:21:02"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:21:22"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:21:23"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:21:46"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:21:47"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:21:53"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:21:53"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:22:18"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:22:19"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 11:23:10"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 11:31:35"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:35:35"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:35:35"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:35:41"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:35:42"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:36:02"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:36:02"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:37:18"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:37:18"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:38:46"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:38:46"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:40:31"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:40:31"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:40:44"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:40:44"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:41:25"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:41:25"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:43:32"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:43:33"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:45:07"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:45:08"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:46:23"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:46:23"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:46:47"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:46:47"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:48:02"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:48:03"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:49:42"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:49:43"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:51:14"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:57:21"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:58:30"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:58:31"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:58:55"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:59:01"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:59:02"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:59:08"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 11:59:09"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:05:41"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:05:55"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:06:04"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:06:47"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:06:47"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:06:48"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:07:01"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:07:09"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:07:09"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:08:46"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:08:55"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:08:55"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:09:49"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:09:54"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:09:54"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:10:30"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:10:34"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:10:34"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:10:55"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:10:59"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:10:59"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:12:39"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:14:18"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:14:25"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:14:26"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:17:56"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:17:57"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 12:23:21"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:23:39"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:23:40"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:27:32"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:27:33"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:28:20"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:28:21"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:28:43"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:28:44"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:28:45"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:28:52"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:28:52"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:29:51"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:29:51"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:30:07"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:30:07"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:30:59"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:30:59"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:31:12"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:31:12"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:32:02"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:32:03"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:32:49"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:32:50"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:32:54"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 12:32:55"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:03:16"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"Error creating/updating Department Head: E11000 duplicate key error collection: ats-db.departmentheads index: organizationId_1 dup key: { organizationId: null }","service":"user-service","timestamp":"08-11-2023 10:03:23"}
+{"code":11000,"index":0,"keyPattern":{"organizationId":1},"keyValue":{"organizationId":null},"label":"winston log","level":"\u001b[31merror\u001b[39m","service":"user-service","timestamp":"08-11-2023 10:03:23"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"08-11-2023 10:03:52"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"Error creating/updating Department Head: E11000 duplicate key error collection: ats-db.departmentheads index: organizationId_1 dup key: { organizationId: null }","service":"user-service","timestamp":"08-11-2023 10:04:05"}
+{"code":11000,"index":0,"keyPattern":{"organizationId":1},"keyValue":{"organizationId":null},"label":"winston log","level":"\u001b[31merror\u001b[39m","service":"user-service","timestamp":"08-11-2023 10:04:05"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:04:28"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"Error creating/updating Department Head: E11000 duplicate key error collection: ats-db.departmentheads index: organizationId_1 dup key: { organizationId: null }","service":"user-service","timestamp":"08-11-2023 10:04:35"}
+{"code":11000,"index":0,"keyPattern":{"organizationId":1},"keyValue":{"organizationId":null},"label":"winston log","level":"\u001b[31merror\u001b[39m","service":"user-service","timestamp":"08-11-2023 10:04:35"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:04:51"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"Error creating/updating Department Head: E11000 duplicate key error collection: ats-db.departmentheads index: organizationId_1 dup key: { organizationId: null }","service":"user-service","timestamp":"08-11-2023 10:04:56"}
+{"code":11000,"index":0,"keyPattern":{"organizationId":1},"keyValue":{"organizationId":null},"label":"winston log","level":"\u001b[31merror\u001b[39m","service":"user-service","timestamp":"08-11-2023 10:04:56"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:05:22"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:05:37"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"Error creating/updating Department Head: E11000 duplicate key error collection: ats-db.departmentheads index: organizationId_1 dup key: { organizationId: null }","service":"user-service","timestamp":"08-11-2023 10:05:44"}
+{"code":11000,"index":0,"keyPattern":{"organizationId":1},"keyValue":{"organizationId":null},"label":"winston log","level":"\u001b[31merror\u001b[39m","service":"user-service","timestamp":"08-11-2023 10:05:44"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:06:00"}
+{"label":"winston log","level":"\u001b[31merror\u001b[39m","message":"Error creating/updating Department Head: E11000 duplicate key error collection: ats-db.departmentheads index: organizationId_1 dup key: { organizationId: null }","service":"user-service","timestamp":"08-11-2023 10:06:07"}
+{"code":11000,"index":0,"keyPattern":{"organizationId":1},"keyValue":{"organizationId":null},"label":"winston log","level":"\u001b[31merror\u001b[39m","service":"user-service","timestamp":"08-11-2023 10:06:07"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:08:23"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:08:25"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:08:35"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:08:43"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:08:50"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:08:54"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:08:58"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:09:07"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:09:13"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:09:36"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:09:42"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Head created successfully with ID: 654b1137472e4024f8d99bdb","service":"user-service","timestamp":"08-11-2023 10:10:23"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Head created successfully with ID: 654b1138472e4024f8d99bde","service":"user-service","timestamp":"08-11-2023 10:10:24"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Admin created successfully with ID: 654b1138472e4024f8d99be1","service":"user-service","timestamp":"08-11-2023 10:10:24"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Admin created successfully with ID: 654b1139472e4024f8d99be4","service":"user-service","timestamp":"08-11-2023 10:10:25"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"HR created successfully with ID: 654b1139472e4024f8d99be7","service":"user-service","timestamp":"08-11-2023 10:10:25"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate HR created successfully with ID: 654b113a472e4024f8d99bea","service":"user-service","timestamp":"08-11-2023 10:10:26"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Manager created successfully with ID: 654b113a472e4024f8d99bed","service":"user-service","timestamp":"08-11-2023 10:10:26"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"08-11-2023 10:10:26"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Head updated successfully with ID: 654b1137472e4024f8d99bdb","service":"user-service","timestamp":"08-11-2023 10:10:33"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Head update successfully with ID: 654b1138472e4024f8d99bde","service":"user-service","timestamp":"08-11-2023 10:10:34"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Admin update successfully with ID: 654b1138472e4024f8d99be1","service":"user-service","timestamp":"08-11-2023 10:10:34"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Admin update successfully with ID: 654b1139472e4024f8d99be4","service":"user-service","timestamp":"08-11-2023 10:10:35"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"HR update successfully with ID: 654b1139472e4024f8d99be7","service":"user-service","timestamp":"08-11-2023 10:10:35"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"delegate Hr update successfully with ID: 654b113a472e4024f8d99bea","service":"user-service","timestamp":"08-11-2023 10:10:36"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Manager update successfully with ID: 654b113a472e4024f8d99bed","service":"user-service","timestamp":"08-11-2023 10:10:36"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"08-11-2023 10:10:36"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:13:09"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:13:58"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:14:03"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Head updated successfully with ID: 654b1137472e4024f8d99bdb","service":"user-service","timestamp":"08-11-2023 10:14:23"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Head update successfully with ID: 654b1138472e4024f8d99bde","service":"user-service","timestamp":"08-11-2023 10:14:24"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Admin update successfully with ID: 654b1138472e4024f8d99be1","service":"user-service","timestamp":"08-11-2023 10:14:24"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Admin update successfully with ID: 654b1139472e4024f8d99be4","service":"user-service","timestamp":"08-11-2023 10:14:25"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"HR update successfully with ID: 654b1139472e4024f8d99be7","service":"user-service","timestamp":"08-11-2023 10:14:25"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"delegate Hr update successfully with ID: 654b113a472e4024f8d99bea","service":"user-service","timestamp":"08-11-2023 10:14:26"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Manager update successfully with ID: 654b113a472e4024f8d99bed","service":"user-service","timestamp":"08-11-2023 10:14:26"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"08-11-2023 10:14:26"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Head updated successfully with ID: 654b1137472e4024f8d99bdb","service":"user-service","timestamp":"08-11-2023 10:14:50"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Head update successfully with ID: 654b1138472e4024f8d99bde","service":"user-service","timestamp":"08-11-2023 10:14:50"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Department Admin update successfully with ID: 654b1138472e4024f8d99be1","service":"user-service","timestamp":"08-11-2023 10:14:51"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Delegate Department Admin update successfully with ID: 654b1139472e4024f8d99be4","service":"user-service","timestamp":"08-11-2023 10:14:51"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"HR update successfully with ID: 654b1139472e4024f8d99be7","service":"user-service","timestamp":"08-11-2023 10:14:52"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"delegate Hr update successfully with ID: 654b113a472e4024f8d99bea","service":"user-service","timestamp":"08-11-2023 10:14:52"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Manager update successfully with ID: 654b113a472e4024f8d99bed","service":"user-service","timestamp":"08-11-2023 10:14:53"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"08-11-2023 10:14:53"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"08-11-2023 10:14:56"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"08-11-2023 10:15:15"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:15:43"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"08-11-2023 10:16:55"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:17:11"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:17:19"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"08-11-2023 10:17:29"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:17:40"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"08-11-2023 10:17:47"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:19:59"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:20:04"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:20:09"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"08-11-2023 10:20:26"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:20:36"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 10:21:36"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles deleted successfully.","service":"user-service","timestamp":"08-11-2023 10:21:44"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles created successfully.","service":"user-service","timestamp":"08-11-2023 10:21:52"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 16:35:22"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 17:32:17"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 17:33:13"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 17:33:13"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 17:42:45"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Roles retrieved successfully.","service":"user-service","timestamp":"08-11-2023 17:42:45"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:31:26"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:33:39"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:33:47"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"07-11-2023 11:33:50"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 14:41:50"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 14:43:41"}
+{"label":"winston log","level":"\u001b[32minfo\u001b[39m","message":"Server is working on http://localhost:4000","service":"user-service","timestamp":"08-11-2023 14:55:37"}
