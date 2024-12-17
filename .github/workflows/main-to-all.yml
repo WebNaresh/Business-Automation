@@ -1,0 +1,43 @@
+name: 🚀 Main to ALL Branches
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        persist-credentials: true
+        fetch-depth: 0
+        
+    - name: Build project
+      run: |
+        # Add your build commands here
+        # For example, if it's a Node.js project:
+        npm install --force
+        npm run build
+      continue-on-error: true  # Continue to the next step even if the build fails
+
+    - name: Push to QA branch
+      if: success()  # Only push if the build was successful
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: qa-branch
+        
+    - name: Push to Prod branch
+      if: success()  # Only push if the build was successful
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: prod-branch
+        
+    - name: Push to Prod-Ready branch
+      if: success()  # Only push if the build was successful
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: prod-ready
