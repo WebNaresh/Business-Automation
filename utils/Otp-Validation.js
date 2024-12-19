@@ -72,10 +72,18 @@ class Otp {
       const isOTPExists = await otpModel.findOne({
         mobileNo: number,
       });
+      console.log(
+        `🚀 ~ file: Otp-Validation.js:75 ~ Otp ~ isOTPExists:`,
+        isOTPExists
+      );
 
       const isLimitExceeded = await NumberOtpModal.findOne({
         mobileNo: number,
       });
+      console.log(
+        `🚀 ~ file: Otp-Validation.js:79 ~ Otp ~ isLimitExceeded:`,
+        isLimitExceeded
+      );
 
       if (isLimitExceeded && isLimitExceeded.tryCount >= 5) {
         return this.res.status(500).json({
@@ -93,6 +101,7 @@ class Otp {
       });
 
       const otp = this.generateOtp();
+      console.log(`🚀 ~ file: Otp-Validation.js:98 ~ Otp ~ otp:`, otp);
 
       // if (isNumberExists) {
       //   return this.res
@@ -149,20 +158,20 @@ class Otp {
       //   process.env.isProduction === "true" ||
       //   process.env.isProduction === true
       // ) {
-      await axios.post(
-        "https://www.fast2sms.com/dev/bulkV2",
-        {
-          route: "otp",
-          numbers: number,
-          variables_values: otp,
-        },
-        {
-          headers: {
-            authorization: process.env.FAST2SMS_API,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      // await axios.post(
+      //   "https://www.fast2sms.com/dev/bulkV2",
+      //   {
+      //     route: "otp",
+      //     numbers: number,
+      //     variables_values: otp,
+      //   },
+      //   {
+      //     headers: {
+      //       authorization: process.env.FAST2SMS_API,
+      //       "Content-Type": "application/json",
+      //     },
+      //   }
+      // );
       // }
 
       await this.addOtp(otp, number);
