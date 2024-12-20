@@ -11,7 +11,7 @@ const subscriptionAuth = async (req, res, next) => {
         .json({ success: false, message: "Invalid authorization header" });
     }
 
-    const decoded = jwt.verify(token, process.env.jWT_SECRETE);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded.user;
 
     const existingUser = await EmployeeModel.findById(req.user?._id);

@@ -9,7 +9,7 @@ const auth = async (req, res, next) => {
         .status(400)
         .json({ success: false, message: "Invalid authorization" });
 
-    jwt.verify(token, process.env.jWT_SECRETE, async (err, user) => {
+    jwt.verify(token, process.env.JWT_SECRET, async (err, user) => {
       if (err) {
         return res.json({ message: "Please login again", success: false });
       }

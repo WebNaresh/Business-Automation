@@ -86,7 +86,7 @@ exports.create = catchAssyncError(async (req, res, next) => {
     await newUser.save();
 
     // Create a verification token
-    const token = jwt.sign(userWithoutPassword, process.env.jWT_SECRETE, {
+    const token = jwt.sign(userWithoutPassword, process.env.JWT_SECRET, {
       expiresIn: "1h",
     });
 
@@ -229,7 +229,7 @@ exports.changeRole = catchAssyncError(async (req, res, next) => {
       return res.status(404).json({ message: "User is not found" });
     }
 
-    const roleToken = jwt.sign({ role: role }, process.env.jWT_SECRETE, {
+    const roleToken = jwt.sign({ role: role }, process.env.JWT_SECRET, {
       expiresIn: "1h",
     });
 
@@ -250,7 +250,7 @@ exports.forgot = catchAssyncError(async (req, res, next) => {
     if (!oldUser) {
       return res.status(400).send({ message: "User does not exists" });
     }
-    const secret = process.env.jWT_SECRETE + oldUser.password;
+    const secret = process.env.JWT_SECRET + oldUser.password;
     const token = jwt.sign({ email: oldUser.email, _id: oldUser._id }, secret, {
       expiresIn: "10m",
     });
@@ -354,7 +354,7 @@ exports.login = catchAssyncError(async (req, res, next) => {
       };
       console.log(email);
 
-      const token = jwt.sign(userWithoutPassword, process.env.JWT_SECRETE, {
+      const token = jwt.sign(userWithoutPassword, process.env.JWT_SECRET, {
         expiresIn: "8m",
       });
       const verificationUrl = `${process.env.BASE_URL}/verify/${token}`;
@@ -431,7 +431,7 @@ exports.login = catchAssyncError(async (req, res, next) => {
 //         email: user.email,
 //       };
 
-//       const token = jwt.sign(userWithoutPassword, process.env.jWT_SECRETE, {
+//       const token = jwt.sign(userWithoutPassword, process.env.JWT_SECRET, {
 //         expiresIn: "5m",
 //       });
 //       const verificationUrl = `${process.env.BASE_URL}/verify/${token}`;
@@ -515,7 +515,7 @@ exports.googleLogin = catchAssyncError(async (req, res, next) => {
     }
 
     // Generate a JWT token
-    const token = jwt.sign({ email: user.email }, process.env.jWT_SECRETE, {
+    const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, {
       expiresIn: "5m",
     });
     sendToken(user, res, 200);
@@ -564,7 +564,7 @@ exports.googleLogin = catchAssyncError(async (req, res, next) => {
 //     }
 
 //     // Generate a JWT token
-//     const token = jwt.sign({ email: user.email }, process.env.jWT_SECRETE, {
+//     const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, {
 //       expiresIn: "5m",
 //     });
 //     sendToken(user, res, 200);
@@ -715,7 +715,7 @@ exports.confirmLogout = async (req, res) => {
 
     try {
       // Decode the old token to extract user details
-      const decodedToken = jwt.verify(token, process.env.jWT_SECRETE);
+      const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
       // Remove the old session
       employee.sessions = employee.sessions.filter(
@@ -736,7 +736,7 @@ exports.confirmLogout = async (req, res) => {
             birthdate: employee.birthdate,
           },
         },
-        process.env.jWT_SECRETE,
+        process.env.JWT_SECRET,
         { expiresIn: process.env.JWT_EXPIRE }
       );
 
@@ -784,7 +784,7 @@ exports.confirmLogout = async (req, res) => {
               birthdate: employee.birthdate,
             },
           },
-          process.env.jWT_SECRETE,
+          process.env.JWT_SECRET,
           { expiresIn: process.env.JWT_EXPIRE }
         );
 
@@ -927,7 +927,7 @@ exports.createDepartmentHead = catchAssyncError(async (req, res, next) => {
         last_name: newUser.last_name,
         email: newUser.email,
       },
-      process.env.jWT_SECRETE,
+      process.env.JWT_SECRET,
       {
         expiresIn: "5m",
       }
@@ -1174,7 +1174,7 @@ exports.addEmployee = catchAssyncError(async (req, res, next) => {
     };
 
     // Create a verification token
-    const token = jwt.sign(userWithoutPassword, process.env.jWT_SECRETE, {
+    const token = jwt.sign(userWithoutPassword, process.env.JWT_SECRET, {
       expiresIn: "10m",
     });
 
@@ -1356,7 +1356,7 @@ exports.addEmployeeExcel = catchAssyncError(async (req, res, next) => {
       };
 
       // Create a verification token
-      const token = jwt.sign(userWithoutPassword, process.env.jWT_SECRETE, {
+      const token = jwt.sign(userWithoutPassword, process.env.JWT_SECRET, {
         expiresIn: "10m",
       });
 
@@ -1548,7 +1548,7 @@ exports.addEmployeeExcel = catchAssyncError(async (req, res, next) => {
 //       };
 
 //       // Create a verification token
-//       const token = jwt.sign(userWithoutPassword, process.env.jWT_SECRETE, {
+//       const token = jwt.sign(userWithoutPassword, process.env.JWT_SECRET, {
 //         expiresIn: "5m",
 //       });
 
@@ -1723,7 +1723,7 @@ exports.addEmployeeExcel = catchAssyncError(async (req, res, next) => {
 //       };
 
 //       // Create a verification token
-//       const token = jwt.sign(userWithoutPassword, process.env.jWT_SECRETE, {
+//       const token = jwt.sign(userWithoutPassword, process.env.JWT_SECRET, {
 //         expiresIn: "5m",
 //       });
 
@@ -2629,7 +2629,7 @@ exports.createDelegate = catchAssyncError(async (req, res, next) => {
       await newUser.save();
 
       // Create a verification token
-      const token = jwt.sign(userWithoutPassword, process.env.jWT_SECRETE, {
+      const token = jwt.sign(userWithoutPassword, process.env.JWT_SECRET, {
         expiresIn: "5m",
       });
 
@@ -2863,7 +2863,7 @@ exports.setOrgIdtoSA = catchAssyncError(async (req, res, next) => {
     };
     console.log(`🚀 ~ plainResult:`, plainResult);
 
-    const token = jwt.sign(plainResult, process.env.jWT_SECRETE);
+    const token = jwt.sign(plainResult, process.env.JWT_SECRET);
 
     return res
       .status(200)

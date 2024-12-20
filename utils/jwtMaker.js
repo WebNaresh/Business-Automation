@@ -5,7 +5,7 @@ module.exports = jwtMaker = (value, res, statusCode) => {
     expires: new Date(Date.now() + process.env.COKKIE_EXPIRE * 24 * 60 * 1000),
     httpOnly: true,
   };
-  value = jwt.sign({ value }, process.env.jWT_SECRETE, {
+  value = jwt.sign({ value }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRE,
   });
   res.status(statusCode).cookie("aegis", value, options).json({

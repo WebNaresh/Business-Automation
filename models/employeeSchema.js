@@ -245,7 +245,7 @@ Employee.methods.getJWTToken = function (role) {
       },
       role: role,
     },
-    process.env.jWT_SECRETE,
+    process.env.JWT_SECRET,
     {
       expiresIn: process.env.JWT_EXPIRE,
     }

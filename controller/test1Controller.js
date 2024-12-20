@@ -52,7 +52,7 @@ exports.test1function = catchAssyncError(async (req, res, next) => {
 //     "msgCondition",
 //   ]);
 
-//   users = await jwt.sign({ users }, process.env.jWT_SECRETE, {
+//   users = await jwt.sign({ users }, process.env.JWT_SECRET, {
 //     expiresIn: process.env.JWT_EXPIRE,
 //   });
 //   res.status(200).json({
