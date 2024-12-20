@@ -1,5 +1,4 @@
 import {
-  AddLocationAltOutlined,
   ManageAccountsOutlined,
   SchoolOutlined,
   SellOutlined,
@@ -64,57 +63,6 @@ const useSetupSideNav = ({ organisationId }) => {
         user?.profile?.some((role) =>
           ["Super-Admin", "Delegate-Super-Admin"].includes(role)
         ),
-    },
-
-    //ADD> Overtime setup
-    // {
-    //   label: "Overtime",
-    //   icon: EventNoteOutlinedIcon,
-    //   href: `/organisation/${organisationId}/setup/overtime-setup`,
-    //   active:
-    //     location.pathname ===
-    //     `/organisation/${organisationId}/setup/overtime-setup`,
-    //   isVisible:
-    //     data?.organisation?.packageInfo !== "Essential Plan" &&
-    //     user?.profile?.some((role) =>
-    //       ["Super-Admin", "Delegate-Super-Admin"].includes(role)
-    //     ),
-    // },
-
-    //LiveData
-    // {
-    //   label: "LiveData",
-    //   icon: SmsSharpIcon,
-    //   href: `/organisation/${organisationId}/setup/liveData`,
-    //   active:
-    //     location.pathname ===
-    //     `/organisation/${organisationId}/setup/liveData`,
-    //   isVisible: user?.profile?.some((role) =>
-    //     ["Super-Admin", "Delegate-Super-Admin"].includes(role)
-    //   ),
-    // },
-
-    // {
-    //   label: "LiveData",
-    //   icon: SmsSharpIcon,
-    //   href: `/organisation/${organisationId}/setup/liveData`,
-    //   active:
-    //     location.pathname === `/organisation/${organisationId}/setup/liveData`,
-    //   isVisible: user?.profile?.some((role) =>
-    //     ["Super-Admin", "Delegate-Super-Admin"].includes(role)
-    //   ),
-    // },
-
-    {
-      label: "Location",
-      icon: AddLocationAltOutlined,
-      href: `/organisation/${organisationId}/setup/add-organization-locations`,
-      active:
-        location.pathname ===
-        `/organisation/${organisationId}/setup/add-organization-locations`,
-      isVisible: user?.profile?.some((role) =>
-        ["Super-Admin", "Delegate-Super-Admin"].includes(role)
-      ),
     },
     {
       label: "Public Holidays",
@@ -250,7 +198,7 @@ const useSetupSideNav = ({ organisationId }) => {
         data?.organisation?.packageInfo !== "Essential Plan" &&
         location.pathname ===
           `/organisation/${organisationId}/setup/shift-allowance`,
-      isVisible: true && data?.organisation?.packageInfo !== "Essential Plan",
+      isVisible: true,
     },
     {
       label: "Extra Day",
@@ -259,7 +207,7 @@ const useSetupSideNav = ({ organisationId }) => {
       active:
         data?.organisation?.packageInfo !== "Essential Plan" &&
         location.pathname === `/organisation/${organisationId}/setup/extra-day`,
-      isVisible: true && data?.organisation?.packageInfo !== "Essential Plan",
+      isVisible: true,
     },
     {
       label: "Comp Of Leave",
@@ -268,7 +216,7 @@ const useSetupSideNav = ({ organisationId }) => {
       active:
         data?.organisation?.packageInfo !== "Essential Plan" &&
         location.pathname === `/organisation/${organisationId}/comp-off`,
-      isVisible: true && data?.organisation?.packageInfo !== "Essential Plan",
+      isVisible: true,
     },
     {
       label: "Overtime Allowance",
@@ -277,7 +225,7 @@ const useSetupSideNav = ({ organisationId }) => {
       active:
         location.pathname ===
         `/organisation/${organisationId}/setup/overtime-setup`,
-      isVisible: true && data?.organisation?.packageInfo !== "Essential Plan",
+      isVisible: true,
     },
     {
       label: "Training",
@@ -285,7 +233,7 @@ const useSetupSideNav = ({ organisationId }) => {
       href: `/organisation/${organisationId}/setup/training`,
       active:
         location.pathname === `/organisation/${organisationId}/setup/training`,
-      isVisible: data?.organisation?.packageInfo === "Intermediate Plan",
+      isVisible: true,
     },
     {
       label: "Performance Management",
@@ -294,9 +242,7 @@ const useSetupSideNav = ({ organisationId }) => {
       active:
         location.pathname ===
         `/organisation/${organisationId}/setup/performance-management`,
-      isVisible:
-        true && data?.organisation?.packageInfo === "Intermediate Plan",
-      // isVisible: data?.organisation?.packageInfo === "Intermediate Plan",
+      isVisible: true,
     },
     {
       label: "PF & ESIC Norms Calculation",
@@ -306,7 +252,6 @@ const useSetupSideNav = ({ organisationId }) => {
         location.pathname ===
         `/organisation/${organisationId}/setup/calculation-setup`,
       isVisible: true,
-      // isVisible: data?.organisation?.packageInfo === "Intermediate Plan",
     },
     {
       label: "Letter Types Setup",
@@ -315,11 +260,7 @@ const useSetupSideNav = ({ organisationId }) => {
       active:
         location.pathname ===
         `/organisation/${organisationId}/setup/letter-types`,
-      isVisible: user?.profile?.some(
-        (role) =>
-          ["Super-Admin", "Delegate-Super-Admin"].includes(role) &&
-          data?.organisation?.packageInfo === "Intermediate Plan"
-      ),
+      isVisible: true,
     },
 
     {
@@ -329,9 +270,7 @@ const useSetupSideNav = ({ organisationId }) => {
       active:
         location.pathname ===
         `/organisation/${organisationId}/setup/food-catering-setuppage`,
-      isVisible: user?.profile?.some((role) =>
-        ["Super-Admin", "Delegate-Super-Admin"].includes(role)
-      ),
+      isVisible: true,
     },
   ];
 

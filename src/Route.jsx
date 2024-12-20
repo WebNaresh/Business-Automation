@@ -44,7 +44,6 @@ import EmployeeCodeGenerator from "./pages/SetUpOrganization/EmployeeCodeGenerat
 import EmpLoanMgt from "./pages/SetUpOrganization/EmployeeLoanManagement/EmpLoanMgt";
 import EmployementTypes from "./pages/SetUpOrganization/EmployementType/EmployementTypes";
 import LeaveTypes from "./pages/SetUpOrganization/LeaveComponents/LeaveTypes";
-import OrganizationLocations from "./pages/SetUpOrganization/OrganizationLocations/OrganizationLocations";
 import PublicHoliday from "./pages/SetUpOrganization/PublicHolidayPage/PublicHoliday";
 import SalaryInput from "./pages/SetUpOrganization/SaleryInput/SalaryInput";
 import Setup from "./pages/SetUpOrganization/Setup";
@@ -1303,14 +1302,6 @@ const App = () => {
             element={
               <RequireAuth permission={["Super-Admin", "Delegate-Super-Admin"]}>
                 <EmpCommunication />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/organisation/:organisationId/setup/add-organization-locations"
-            element={
-              <RequireAuth permission={["Super-Admin", "Delegate-Super-Admin"]}>
-                <OrganizationLocations />
               </RequireAuth>
             }
           />

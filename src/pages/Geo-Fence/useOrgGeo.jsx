@@ -9,7 +9,6 @@ const useOrgGeo = (orgId) => {
 
   const { organisationId: paramsOrgId } = useParams();
   const organisationId = orgId || paramsOrgId;
-  console.log("organisationIdsdsd", organisationId);
 
   // const { handleAlert } = useContext(TestContext);
   const getOrgCircle = async () => {

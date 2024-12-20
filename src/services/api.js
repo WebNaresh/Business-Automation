@@ -1,4 +1,3 @@
-
 import axios from "axios";
 // const headers = {
 //   "Content-Type": file.type,
@@ -18,8 +17,8 @@ export const getSignedUrl = async () => {
   }
 };
 
-
 export const uploadFile = async (url, file) => {
+  console.log(`🚀 ~ file: api.js:23 ~ url:`, url);
   try {
     if (!url) {
       throw new Error("Signed URL is undefined or null");
@@ -27,7 +26,7 @@ export const uploadFile = async (url, file) => {
 
     const response = await axios.put(url, file, {
       headers: {
-        "Content-Type": file.type, 
+        "Content-Type": file.type,
       },
     });
 
@@ -41,8 +40,3 @@ export const uploadFile = async (url, file) => {
     throw error;
   }
 };
-
-
-
-
-
