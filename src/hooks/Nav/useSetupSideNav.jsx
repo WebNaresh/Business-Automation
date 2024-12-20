@@ -5,15 +5,11 @@ import {
 } from "@mui/icons-material";
 import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
-import EventNoteOutlinedIcon from "@mui/icons-material/EventNoteOutlined";
 import FolderOutlinedIcon from "@mui/icons-material/FolderOutlined";
-import FoodBankIcon from "@mui/icons-material/FoodBank";
 import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
 import HolidayVillageOutlinedIcon from "@mui/icons-material/HolidayVillageOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
-import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import PersonPinOutlinedIcon from "@mui/icons-material/PersonPinOutlined";
 import ScheduleOutlinedIcon from "@mui/icons-material/ScheduleOutlined";
 import SmsSharpIcon from "@mui/icons-material/SmsSharp";
 import WeekendOutlinedIcon from "@mui/icons-material/WeekendOutlined";
@@ -145,28 +141,6 @@ const useSetupSideNav = ({ organisationId }) => {
       ),
     },
     {
-      label: "Salary Computation Day",
-      icon: EventNoteOutlinedIcon,
-      href: `/organisation/${organisationId}/setup/salary-computation-day`,
-      active:
-        location.pathname ===
-        `/organisation/${organisationId}/setup/salary-computation-day`,
-      isVisible: user?.profile?.some((role) =>
-        ["Super-Admin", "Delegate-Super-Admin"].includes(role)
-      ),
-    },
-    {
-      label: "Employee Code",
-      icon: PersonPinOutlinedIcon,
-      href: `/organisation/${organisationId}/setup/employee-code`,
-      active:
-        location.pathname ===
-        `/organisation/${organisationId}/setup/employee-code`,
-      isVisible: user?.profile?.some((role) =>
-        ["Super-Admin", "Delegate-Super-Admin"].includes(role)
-      ),
-    },
-    {
       label: "Loan Management",
       icon: CreditCardIcon,
       href: `/organisation/${organisationId}/setup/loan-management`,
@@ -189,43 +163,6 @@ const useSetupSideNav = ({ organisationId }) => {
       isVisible:
         data?.organisation?.packageInfo === "Intermediate Plan" ||
         data?.organisation?.packageInfo === "Enterprise Plan",
-    },
-    {
-      label: "Shift Allowance",
-      icon: PaidOutlinedIcon,
-      href: `/organisation/${organisationId}/setup/shift-allowance`,
-      active:
-        data?.organisation?.packageInfo !== "Essential Plan" &&
-        location.pathname ===
-          `/organisation/${organisationId}/setup/shift-allowance`,
-      isVisible: true,
-    },
-    {
-      label: "Extra Day",
-      icon: PaidOutlinedIcon,
-      href: `/organisation/${organisationId}/setup/extra-day`,
-      active:
-        data?.organisation?.packageInfo !== "Essential Plan" &&
-        location.pathname === `/organisation/${organisationId}/setup/extra-day`,
-      isVisible: true,
-    },
-    {
-      label: "Comp Of Leave",
-      icon: PaidOutlinedIcon,
-      href: `/organisation/${organisationId}/setup/comp-off`,
-      active:
-        data?.organisation?.packageInfo !== "Essential Plan" &&
-        location.pathname === `/organisation/${organisationId}/comp-off`,
-      isVisible: true,
-    },
-    {
-      label: "Overtime Allowance",
-      icon: PaidOutlinedIcon,
-      href: `/organisation/${organisationId}/setup/overtime-setup`,
-      active:
-        location.pathname ===
-        `/organisation/${organisationId}/setup/overtime-setup`,
-      isVisible: true,
     },
     {
       label: "Training",
@@ -260,16 +197,6 @@ const useSetupSideNav = ({ organisationId }) => {
       active:
         location.pathname ===
         `/organisation/${organisationId}/setup/letter-types`,
-      isVisible: true,
-    },
-
-    {
-      label: "Set Up Page For Food And Catering",
-      icon: FoodBankIcon,
-      href: `/organisation/${organisationId}/setup/food-catering-setuppage`,
-      active:
-        location.pathname ===
-        `/organisation/${organisationId}/setup/food-catering-setuppage`,
       isVisible: true,
     },
   ];

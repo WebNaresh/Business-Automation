@@ -34,11 +34,8 @@ const useNotification = () => {
 
   const { data: employeeShiftNotification } = UseEmployeeShiftNotification(); //employee side notification
   const { data: selfLeaveNotification } = useLeaveNotification();
-  const [emp, setEmp] = useState();
   const { data: data3 } = usePunchNotification();
-
   const authToken = useAuthToken();
-
   //states
   const [shiftCount, setShiftCount] = useState(0);
   const [shiftAccCount, setShiftAccCount] = useState(0);
@@ -409,7 +406,6 @@ const useNotification = () => {
       MissPunchCount = 0;
   }
 
-  //////////////////////////////////////////////
   const { Form16Notification } = useForm16NotificationHook();
 
   const { getJobPositionToMgr, getNotificationToEmp } =
@@ -430,19 +426,6 @@ const useNotification = () => {
     }
     return "/";
   }, [role]);
-
-  // for missed punch notification count
-  // let missedPunchNotificationCount;
-  // if (
-  //   role === "HR" ||
-  //   role === "Super-Admin" ||
-  //   role === "Delegate-Super-Admin" ||
-  //   role === "Manager"
-  // ) {
-  //   missedPunchNotificationCount = missPunchData?.length ?? 0;
-  // } else {
-  //   missedPunchNotificationCount = getMissedPunchData?.length ?? 0;
-  // }
 
   // for form 16 notification count
   let form16NotificationCount;
@@ -486,7 +469,7 @@ const useNotification = () => {
   useEffect(() => {
     (async () => {
       if (user?._id) {
-        const resp = await axios.get(
+        await axios.get(
           `${process.env.REACT_APP_API}/route/employee/get/profile/${user?._id}`,
           {
             headers: {
@@ -494,7 +477,6 @@ const useNotification = () => {
             },
           }
         );
-        setEmp(resp?.data?.employee?.organizationId);
       }
     })();
     // eslint-disable-next-line
