@@ -1,15 +1,15 @@
 import { Email, Lock, Visibility, VisibilityOff } from "@mui/icons-material";
 import { CircularProgress } from "@mui/material";
+import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import Cookies from "js-cookie";
 import React, { useContext, useEffect, useState } from "react";
+import GoogleButton from "react-google-button";
 import { useMutation } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
 import { TestContext } from "../../State/Function/Main";
 import UserProfile from "../../hooks/UserData/useUser";
 import useSignup from "../../hooks/useLoginForm";
-import { useGoogleLogin } from "@react-oauth/google";
-import GoogleButton from "react-google-button";
 
 const SignIn = () => {
   // state
@@ -200,10 +200,10 @@ const SignIn = () => {
       return false;
     }
     // Check if email is in lowercase
-  if (email !== email.toLowerCase()) {
-    handleAlert(true, "warning", "Email must be in lowercase");
-    return false;
-  }
+    if (email !== email.toLowerCase()) {
+      handleAlert(true, "warning", "Email must be in lowercase");
+      return false;
+    }
     const data = { email, password };
     handleLogin.mutate(data);
   };
@@ -368,7 +368,7 @@ const SignIn = () => {
               <div className="flex flex-col gap-1  w-full items-center justify-center space-y-1">
                 <img src="/logo.svg" className="h-[45px]" alt="logo" />
                 <h1 className="font-[600] text-center w-full text-3xl">
-                  Log in to AEGIS
+                  Log in to SMarTea
                 </h1>
               </div>
             </div>
@@ -399,7 +399,9 @@ const SignIn = () => {
                   }}
                   onBlur={() => setFocusedInput(null)}
                   value={email}
-                  onChange={(event) => setEmail(event.target.value.toLowerCase())}
+                  onChange={(event) =>
+                    setEmail(event.target.value.toLowerCase())
+                  }
                   type="email"
                   className={` 
                   border-none  bg-white w-full outline-none px-2`}
@@ -477,7 +479,7 @@ const SignIn = () => {
                 className="font-medium hover:font-bold transition-all "
               >
                 Forgot password?
-              </Link> 
+              </Link>
 
               <Link
                 to={
@@ -487,15 +489,20 @@ const SignIn = () => {
                 }
                 className="font-medium text-blue-500 hover:underline transition-all "
               >
-                Sign up for AEGIS
+                Sign up for SMarTea
               </Link>
             </div>
 
-            <GoogleButton 
-            // className="items-center rounded-md h-[30px] w-[400px] px-4 py-3 text-md font-semibold text-white bg-blue-500 hover:bg-blue-500 focus-visible:outline-blue-500"
+            <GoogleButton
+              // className="items-center rounded-md h-[30px] w-[400px] px-4 py-3 text-md font-semibold text-white bg-blue-500 hover:bg-blue-500 focus-visible:outline-blue-500"
               type="dark" // can be light or dark
               onClick={googleLogin}
-              style={{width:'400px',height:"40px",paddingTop:"-10px",paddingBottom:'-10px'}}
+              style={{
+                width: "400px",
+                height: "40px",
+                paddingTop: "-10px",
+                paddingBottom: "-10px",
+              }}
               // style={{ width: '400px', height:"50px",borderRadius:"5px"  }}
             />
           </form>

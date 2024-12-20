@@ -32,7 +32,7 @@ const Home = () => {
               <h1 className="md:text-[2.30rem] w-max xs:text-[1.5rem] font-thin">
                 Welcome to{" "}
                 <span className="md:text-[2.30rem] xl:text-left text-center w-max xs:text-[1.5rem]  gradinet font-semibold text-blue-500 ">
-                  AEGIS
+                  SMarTea
                 </span>{" "}
               </h1>
               <h1 className="md:text-[2.40rem] w-max xs:text-[1.40rem] sm:text-[1.70rem] !leading-10 sm:text-2xl font-bold  mb-4">
@@ -46,7 +46,7 @@ const Home = () => {
               <p className="md:text-xl w-[80%] xs:text-md mb-8 text-gray-600 md:leading-10 xs:leading-5 ">
                 Empower your journey by making us your first choice. Elevate
                 your experience with the{" "}
-                <span className="!text-bold gradinet">AEGIS</span>, Lets start
+                <span className="!text-bold gradinet">SMarTea</span>, Lets start
               </p>
 
               {isLoading ? (

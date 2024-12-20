@@ -13,16 +13,15 @@ const TermsAndConditionsPage = () => {
           </h1>
         </div>
       </div>
-      <p className=" text-xl font-bold mb-4">Welcome to WWW.AEGISHRMS.COM</p>
+      <p className=" text-xl font-bold mb-4">Welcome to WWW.SMarTeaHRMS.COM</p>
       <p className="text-sm mb-2">
         These terms and conditions outline the rules and regulations for the use
-        of Company Argan Technology Services Pvt Ltd, (including its
-        subsidiaries or affiliated companies, henceforth also referred as
-        ‘aegishrms’ )located at www.aegishrms.com here onwards and or named as
-        AEGISHRMS.
+        of Company Goanny Technologies Pvt Ltd, (including its subsidiaries or
+        affiliated companies, henceforth also referred as ‘SMarTeaHRMS’ )located
+        at www.SMarTeaHRMS.com here onwards and or named as SMarTeaHRMS.
       </p>
       <p className="text-sm mb-2">
-        By accessing this www.aegishrms.com website we assume you accept these
+        By accessing this www.SMarTeaHRMS.com website we assume you accept these
         terms and conditions.
       </p>
       <p className="text-sm mb-2">
@@ -35,33 +34,34 @@ const TermsAndConditionsPage = () => {
         Statement and Disclaimer Notice and all Agreements: “Client”, “You” and
         “Your” refers to you, the person log on this website and compliant to
         the Company's terms and conditions. “The Company”, “Ourselves”, “We”,
-        “Our”, “Us” and “aegishrms”, refers to our Company. “Party”, “Parties”,
-        or “Us”, refers to both the Client and ourselves. All terms refer to the
-        offer, acceptance and consideration of payment necessary to undertake
-        the process of our assistance to the Client in the most appropriate
-        manner for the express purpose of meeting the Client's needs in respect
-        of provision of the Company's stated services, in accordance with and
-        subject to, prevailing law of India. Any use of the above terminology or
-        other words in the singular, plural, capitalization and/or he/she or
-        they, are taken as interchangeable and therefore as referring to same.
+        “Our”, “Us” and “SMarTeaHRMS”, refers to our Company. “Party”,
+        “Parties”, or “Us”, refers to both the Client and ourselves. All terms
+        refer to the offer, acceptance and consideration of payment necessary to
+        undertake the process of our assistance to the Client in the most
+        appropriate manner for the express purpose of meeting the Client's needs
+        in respect of provision of the Company's stated services, in accordance
+        with and subject to, prevailing law of India. Any use of the above
+        terminology or other words in the singular, plural, capitalization
+        and/or he/she or they, are taken as interchangeable and therefore as
+        referring to same.
       </p>
       <p className="text-sm mb-2">
-        Services offered by aehishrms are subject to the terms of our
+        Services offered by SMarTeaHRMS are subject to the terms of our
         website/platform, policies (i.e. Terms of Use, Privacy Policy,
         Cancellation and Refund Policy etc.] (“Policies”), available at
-        ‘https://www.aegishrms.com/’ (“Website”). By contacting aegishrms for
-        the services or availing the services or by registering with us or by
-        accepting this Agreement, now or in the future, you being the person or
-        entity placing an order for or accessing the Service (“Subscriber” or
+        ‘https://www.SMarTeaHRMS.com/’ (“Website”). By contacting SMarTeaHRMS
+        for the services or availing the services or by registering with us or
+        by accepting this Agreement, now or in the future, you being the person
+        or entity placing an order for or accessing the Service (“Subscriber” or
         “Customer” “you”, “your”, “yourself” or “user”) signify that you agree
         to these Terms of the Agreement (“Terms”) and the Policies.
       </p>
       <p className=" text-xl font-bold mb-4">1) SERVICE/SERVICES</p>
       <p className="text-sm mb-2">
         The purpose of this Agreement is to establish the terms and conditions
-        under which Subscriber may purchase aegishrms Services and Professional
-        Services as described in a Service Order, Statement of Work or other
-        document signed or agreed to by the Subscriber.
+        under which Subscriber may purchase SMarTeaHRMS Services and
+        Professional Services as described in a Service Order, Statement of Work
+        or other document signed or agreed to by the Subscriber.
       </p>
       <p className="text-sm mb-2">
         In the event of any inconsistency or conflict between the terms of the
@@ -70,43 +70,44 @@ const TermsAndConditionsPage = () => {
         control.
       </p>
       <p className="text-sm mb-2">
-        i. Service. Argan Technology Services Pvt Ltd with Brand Name AEGISHRMS
-        is in the business of software development and implementation of HRMS
-        (Human Resource Management Services) product named ‘AEGISHRMS’.
+        i. Service. Goanny Technologies Pvt Ltd with Brand Name SMarTeaHRMS is
+        in the business of software development and implementation of HRMS
+        (Human Resource Management Services) product named ‘SMarTeaHRMS’.
       </p>
       <p className="text-sm mb-2">
         ii. The following terms and conditions regulate the provision of
         Software Subscription Services for their Customers
       </p>
       <p className="text-sm mb-2">
-        iii. Aegishrms will use commercially reasonable efforts to make the
+        iii. SMarTeaHRMS will use commercially reasonable efforts to make the
         Services available twenty-four (24) hours a day, seven (7) days a week,
-        except during (a) Planned Downtime (of which aegishrms will give advance
-        notice via the Site or to the Account owner); and (b) Force Majeure
-        Events.
+        except during (a) Planned Downtime (of which SMarTeaHRMS will give
+        advance notice via the Site or to the Account owner); and (b) Force
+        Majeure Events.
       </p>
       <p className="text-sm mb-2">
-        iv. Support. aegishrms will, at no additional charge, provide Subscriber
-        standard customer support for the Services as detailed on the applicable
-        Site and Documentation. If purchased by Subscriber, aegishrms will
-        provide upgraded support or support that includes service level
-        agreements.
+        iv. Support. SMarTeaHRMS will, at no additional charge, provide
+        Subscriber standard customer support for the Services as detailed on the
+        applicable Site and Documentation. If purchased by Subscriber,
+        SMarTeaHRMS will provide upgraded support or support that includes
+        service level agreements.
       </p>
       <p className="text-sm mb-2">
-        v. Professional Services. Upon Subscriber’s request, aegishrms may
+        v. Professional Services. Upon Subscriber’s request, SMarTeaHRMS may
         provide Professional Services subject to the terms and conditions.
       </p>
       <p className="text-sm mb-2">
-        vi. Modifications. Subscriber acknowledges that aegishrms may modify the
-        features and functionality of the Services during the Subscription Term.
-        Aegishrms shall provide Subscriber with thirty (30) days’ advance notice
-        of any deprecation of any material feature or functionality. Agishrms
-        will not materially decrease the overall functionality of the Services
-        purchased by Subscriber during the Subscription Term.
+        vi. Modifications. Subscriber acknowledges that SMarTeaHRMS may modify
+        the features and functionality of the Services during the Subscription
+        Term. SMarTeaHRMS shall provide Subscriber with thirty (30) days’
+        advance notice of any deprecation of any material feature or
+        functionality. SMarTeaHRMS will not materially decrease the overall
+        functionality of the Services purchased by Subscriber during the
+        Subscription Term.
       </p>
       <p className="text-sm mb-2">
-        vii. Additional Features. Aegishrms will notify Subscriber of applicable
-        Supplemental Terms or alternate terms and conditions prior to
+        vii. Additional Features. SMarTeaHRMS will notify Subscriber of
+        applicable Supplemental Terms or alternate terms and conditions prior to
         Subscriber’s activation of any Additional Features. Subscriber’s
         activation of any Additional Features in Subscriber’s Account will be
         considered acceptance of the applicable Supplemental Terms or alternate
@@ -124,10 +125,10 @@ const TermsAndConditionsPage = () => {
       <p className="text-sm mb-2">
         ii. If Subscriber fails to pay Subscription Charges or any other charges
         indicated on any Service Order or Statement of Work, or in any
-        Supplemental Terms, within five (5) days of Aegishrms’s notice to
+        Supplemental Terms, within five (5) days of SMarTeaHRMS’s notice to
         Subscriber that payment is delinquent, or if Subscriber does not update
-        payment information upon Aegishrms’s request, in addition to other
-        remedies, Aegishrms may suspend access to and use of the Services by
+        payment information upon SMarTeaHRMS’s request, in addition to other
+        remedies, SMarTeaHRMS may suspend access to and use of the Services by
         Subscriber, Agents and End-Users.
       </p>
       <p className="text-sm mb-2">
@@ -143,44 +144,44 @@ const TermsAndConditionsPage = () => {
         of Agents during any Subscription Term. Subscriber may only downgrade
         its Service Plan or reduce the number of Agents under any Service Plan
         for a subsequent Subscription Term at the end of the then-current
-        Subscription Term by providing Aegishrms with thirty (30) days prior
+        Subscription Term by providing SMarTeaHRMS with thirty (30) days prior
         written notice indicating which instances will be affected and the
         details of the downgrade requested. In the event of a downgrade,
         Subscriber must demote any downgraded Agents prior to the beginning of
         the subsequent Subscription Term. Downgrading the Service Plan may
         generate additional costs (e.g., storage costs) and cause loss of
         content, features, or capacity of the Service as available to Subscriber
-        under an Account, and Aegishrms is not responsible for such loss.
+        under an Account, and SMarTeaHRMS is not responsible for such loss.
       </p>
       <p className="text-sm mb-2">
-        v. Aegishrms reserves the right to unilaterally determine and modify its
-        pricing for the aegishrms pricing. Where an Invoice is in effect, the
-        pricing for the Aegishrms shall remain as agreed for the term specified
-        in such Invoice.
+        v. SMarTeaHRMS reserves the right to unilaterally determine and modify
+        its pricing for the SMarTeaHRMS pricing. Where an Invoice is in effect,
+        the pricing for the SMarTeaHRMS shall remain as agreed for the term
+        specified in such Invoice.
       </p>
       <p className="text-sm mb-2">
-        vi. Payment Portals. If Subscriber mandates Aegishrms to use a vendor
-        payment portal or compliance portal that charges Aegishrms a
+        vi. Payment Portals. If Subscriber mandates SMarTeaHRMS to use a vendor
+        payment portal or compliance portal that charges SMarTeaHRMS a
         subscription fee or a percentage of any uploaded invoice as a required
-        cost of doing business, Subscriber shall be invoiced by Aegishrms for,
+        cost of doing business, Subscriber shall be invoiced by SMarTeaHRMS for,
         and Subscriber is obligated to pay, the cost of this fee.
       </p>
       <p className="text-sm mb-2">
         vii. Promotional Credits. Any promotional credits issued hereunder will
-        be subject to the Aegishrms Promotional Credits Policy available on the
-        Aegishrms Agreements and Terms Website.
+        be subject to the SMarTeaHRMS Promotional Credits Policy available on
+        the SMarTeaHRMS Agreements and Terms Website.
       </p>
       <p className="text-sm mb-2">
         viii. If Subscriber registers for a free trial for any of the Services,
-        Aegishrms will make such Services available to Subscriber pursuant to
+        SMarTeaHRMS will make such Services available to Subscriber pursuant to
         this Agreement as well as the terms and conditions.
       </p>
       <p className=" text-xl font-bold mb-4">3) CANCELLATION & REFUND </p>
       <p className="text-sm mb-2">
         i. All payments are non-cancellable and all amounts paid are
-        non-refundable whether or not the aegishrms is actively being used or
-        not. In the event Subscriber terminates the Agreement Aegishrms is under
-        no obligation to refund the fees paid by the Subscriber
+        non-refundable whether or not the SMarTeaHRMS is actively being used or
+        not. In the event Subscriber terminates the Agreement SMarTeaHRMS is
+        under no obligation to refund the fees paid by the Subscriber
       </p>
       <p className="text-sm mb-2">
         ii. All pricing terms provided for the Subscriber are confidential and
@@ -188,8 +189,8 @@ const TermsAndConditionsPage = () => {
         written authorization.
       </p>
       <p className="text-sm mb-2">
-        iii. In no event will Aegishrms’s termination for cause relieve
-        Subscriber of its obligation to pay any fees payable to Aegishrms for
+        iii. In no event will SMarTeaHRMS’s termination for cause relieve
+        Subscriber of its obligation to pay any fees payable to SMarTeaHRMS for
         the period prior to termination.
       </p>
       <p className="text-sm mb-2">
@@ -200,17 +201,17 @@ const TermsAndConditionsPage = () => {
       <p className=" text-xl font-bold mb-4">4) TAXES </p>
       <p className="text-sm mb-2">
         i. Subscriber shall be responsible for paying the Taxes in addition to
-        the fees applicable for the aegishrms Platform as specified in the
+        the fees applicable for the SMarTeaHRMS Platform as specified in the
         Invoice. If the Subscriber is withholding Taxes, Subscriber shall pay
         the withholding Tax directly to the appropriate government entity and
-        shall furnish a tax certificate to Argan Technology Services Pvt Ltd
+        shall furnish a tax certificate to Goanny Technologies Pvt Ltd
         evidencing such payment within hundred (90) days of making such
         payments.
       </p>
       <p className="text-sm mb-2">
         ii. In the event of a failure to furnish the tax certificate within the
         timer period specified herein, the concerned tax amount shall be
-        fortified by aegishrms.
+        fortified by SMarTeaHRMS.
       </p>
       <p className=" text-xl font-bold mb-4">5) Use of Software </p>
       <p className="text-sm mb-2">
@@ -224,27 +225,28 @@ const TermsAndConditionsPage = () => {
         otherwise commercially exploit or resell the Services to any third
         party, other than authorized Agents and End-Users in furtherance of
         Subscriber’s internal business purposes as expressly permitted by this
-        Agreement, unless expressly agreed to otherwise in writing by Aegishrms.
+        Agreement, unless expressly agreed to otherwise in writing by
+        SMarTeaHRMS.
       </p>
       <p className="text-sm mb-2">
         ii. Without limiting the foregoing, Subscriber’s right to access and use
         the API is also subject to the restrictions and policies implemented by
-        Aegishrms from time to time with respect to the API as set forth in the
-        Documentation or otherwise communicated to Subscriber in accordance with
-        this Agreement.No Competitive Access. Subscriber may not access the
+        SMarTeaHRMS from time to time with respect to the API as set forth in
+        the Documentation or otherwise communicated to Subscriber in accordance
+        with this Agreement.No Competitive Access. Subscriber may not access the
         Services for competitive purposes or if Subscriber is a competitor of
-        the Aegishrms. It may subject to the following legal justifications: a.
-        Section 52(1)(b) of the Copyright Act: This section explicitly permits
-        users to "load, install, run, use, display, modify and adapt" computer
-        programs for their intended purpose. b. Fair Dealing Provisions: The
-        "fair dealing" exceptions outlined in Section 13 of the Copyright Act
-        may also be applicable, depending on the specific circumstances of our
-        Software use. c. IT Act Provisions: The intermediary liability
-        protections under Section 39 of the IT, unless expressly agreed to
-        otherwise in writing by Aegishrms.
+        the SMarTeaHRMS. It may subject to the following legal justifications:
+        a. Section 52(1)(b) of the Copyright Act: This section explicitly
+        permits users to "load, install, run, use, display, modify and adapt"
+        computer programs for their intended purpose. b. Fair Dealing
+        Provisions: The "fair dealing" exceptions outlined in Section 13 of the
+        Copyright Act may also be applicable, depending on the specific
+        circumstances of our Software use. c. IT Act Provisions: The
+        intermediary liability protections under Section 39 of the IT, unless
+        expressly agreed to otherwise in writing by SMarTeaHRMS.
       </p>
       <p className="text-sm mb-2">
-        iii. Subscriber agrees to comply with the Aegishrms User Content and
+        iii. Subscriber agrees to comply with the SMarTeaHRMS User Content and
         Conduct Policy (as defined below) which is hereby incorporated into this
         Agreement. Further, in Subscriber’s use of the Services Subscriber
         agrees not to (a) modify, adapt, or hack the Services or otherwise
@@ -257,17 +259,17 @@ const TermsAndConditionsPage = () => {
         Software making up the Services; or (d) to the extent .
       </p>
       <p className="text-sm mb-2">
-        iv. As between Subscriber and Aegishrms, Subscriber is responsible for
+        iv. As between Subscriber and SMarTeaHRMS, Subscriber is responsible for
         compliance with the provisions of this Agreement by Agents and End-Users
         and for any and all activities that occur under an Account, which
-        Aegishrms may verify from time to time.
+        SMarTeaHRMS may verify from time to time.
       </p>
       <p className="text-sm mb-2">
         v. System Requirements. A high-speed Internet connection is required for
         proper transmission of the Services. Subscriber is responsible for
         procuring and maintaining the network connections that connect
         Subscriber’s network to the Services including, but not limited to,
-        browser software that supports protocols used by Aegishrms.
+        browser software that supports protocols used by SMarTeaHRMS.
       </p>
       <p className="text-sm mb-2">
         vi. Ownership of Service Data. Subscriber shall retain ownership rights,
@@ -275,24 +277,25 @@ const TermsAndConditionsPage = () => {
         processed under the terms of this Agreement.
       </p>
       <p className="text-sm mb-2">
-        vii. Aegishrms also reserves the right to immediately suspend
-        Subscriber’s Account for Subscriber’s violation of the Aegishrms User
+        vii. SMarTeaHRMS also reserves the right to immediately suspend
+        Subscriber’s Account for Subscriber’s violation of the SMarTeaHRMS User
         Content and Conduct Policy. Unless legally prohibited from doing so or
-        where Aegishrms is legally required to take immediate action, Aegishrms
-        will use commercially reasonable efforts to notify Subscriber via email
-        when taking any of the foregoing actions. Aegishrms shall not be liable
-        to Subscriber, Agents, End-Users or any other third party for any
-        modification, suspension or discontinuation of Subscriber’s rights to
-        access and use the Services. Aegishrms may refer any suspected
-        fraudulent, abusive, or illegal activity by Subscriber, Agents or
-        End-Users to law enforcement authorities at Aegishrms’s sole discretion.
+        where SMarTeaHRMS is legally required to take immediate action,
+        SMarTeaHRMS will use commercially reasonable efforts to notify
+        Subscriber via email when taking any of the foregoing actions.
+        SMarTeaHRMS shall not be liable to Subscriber, Agents, End-Users or any
+        other third party for any modification, suspension or discontinuation of
+        Subscriber’s rights to access and use the Services. SMarTeaHRMS may
+        refer any suspected fraudulent, abusive, or illegal activity by
+        Subscriber, Agents or End-Users to law enforcement authorities at
+        SMarTeaHRMS’s sole discretion.
       </p>
       <p className="text-sm mb-2">
         viii. Our team involving in development about the current trend on the
         particular domain and user expectation on the product. Thereafter we
         approve the concept and do the product development so our almost satisfy
         the buyers needs. Even though in any case if you would like to customize
-        you can contact support@aegishrms.com they will get back you with the
+        you can contact support@SMarTeaHRMS.com they will get back you with the
         costing.
       </p>
 
@@ -312,20 +315,21 @@ const TermsAndConditionsPage = () => {
         Associated Services) will renew for a Subscription Term equivalent in
         length to the then-expiring Subscription Term; and (b) the Subscription
         Charges applicable to any subsequent Subscription Term shall be
-        Aegishrms’s Standard Subscription Charges for the applicable Service
+        SMarTeaHRMS’s Standard Subscription Charges for the applicable Service
         Plan and Deployed Associated Services at the time of such renewal.
       </p>
       <p className="text-sm mb-2">
         iii. Either Party may elect to terminate an Account and subscription to
         a Service at the end of the then-current Subscription Term by providing
-        notice to support@aegishrms.com no less than thirty (30) days prior to
+        notice to support@SMarTeaHRMS.com no less than thirty (30) days prior to
         the end of such Subscription Term.
       </p>
       <p className=" text-xl font-bold mb-4">7) Disclaimers.</p>
       <p className="text-sm mb-2">
-        i. Subscriber understand and agree that the use of the services is at
-        your sole risk. The services are provided on an as-is-and-as-available
-        basis. Aegishrms expressly disclaims all warranties of any kind, whether
+        i. Subscriber understand and agree that the use of the services is at i.
+        Subscriber understand and agree that the use of the services is at your
+        sole risk. The services are provided on an as-is-and-as-available basis.
+        Aegishrms expressly disclaims all warranties of any kind, whether
         express or implied, including, but not limited to, the implied
         warranties of merchantability and fitness for a particular purpose.
       </p>

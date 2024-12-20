@@ -14,24 +14,26 @@ const PrivacyPolicy = () => {
             </h1>
           </div>
         </div>
-        <p className=" text-xl font-bold mb-4">Welcome to WWW.AEGISHRMS.COM</p>
-        <p className="text-sm mb-2">
-          These terms and conditions outline the rules and regulations for the
-          use of Company Argan Technology Services Pvt Ltd, (including its
-          subsidiaries or affiliated companies, henceforth also referred as
-          ‘aegishrms’ )located at www.aegishrms.com here onwards and or named as
-          AEGISHRMS.
+        <p className=" text-xl font-bold mb-4">
+          Welcome to WWW.SMarTeaHRMS.COM
         </p>
         <p className="text-sm mb-2">
-          By accessing this www.aegishrms.com website we assume you accept these
-          terms and conditions
+          These terms and conditions outline the rules and regulations for the
+          use of Company Goanny Technologies Pvt Ltd, (including its
+          subsidiaries or affiliated companies, henceforth also referred as
+          ‘SMarTeaHRMS’ )located at www.SMarTeaHRMS.com here onwards and or
+          named as SMarTeaHRMS.
+        </p>
+        <p className="text-sm mb-2">
+          By accessing this www.SMarTeaHRMS.com website we assume you accept
+          these terms and conditions
         </p>
         <p className="text-sm mb-2">
           The following terminology applies to these Terms and Conditions,
           Privacy Statement and Disclaimer Notice and all Agreements: “Client”,
           “You” and “Your” refers to you, the person log on this website and
           compliant to the Company's terms and conditions. “The Company”,
-          “Ourselves”, “We”, “Our” , “Us” and “aegishrms”, refers to our
+          “Ourselves”, “We”, “Our” , “Us” and “SMarTeaHRMS”, refers to our
           Company. “Party”, “Parties”, or “Us”, refers to both the Client and
           ourselves. All terms refer to the offer, acceptance and consideration
           of payment necessary to undertake the process of our assistance to the
@@ -44,44 +46,45 @@ const PrivacyPolicy = () => {
         </p>
         <p className=" text-xl font-bold mb-4">License</p>
         <p className="text-sm mb-2">
-          Unless otherwise stated, Argan Technology Services Pvt Ltd and/or its
+          Unless otherwise stated, Goanny Technologies Pvt Ltd and/or its
           licensors own the intellectual property rights for all material on
-          www.aegishrms.com. All intellectual property rights are reserved. You
-          may access this from www.aegishrms.com for your own personal use
+          www.SMarTeaHRMS.com. All intellectual property rights are reserved.
+          You may access this from www.SMarTeaHRMS.com for your own personal use
           subjected to restrictions set in these terms and conditions.
         </p>
         <p className=" text-xl font-bold mb-4">You must not:</p>
         <ul>
-          <li> Republish material from www.aegishrms.com</li>
-          <li>Sell, rent or sub-license material from www.aegishrms.com</li>
-          <li>Reproduce, duplicate or copy material from www.aegishrms.com</li>
-          <li>Redistribute content from www.aegishrms.com</li>
+          <li> Republish material from www.SMarTeaHRMS.com</li>
+          <li>Sell, rent or sub-license material from www.SMarTeaHRMS.com</li>
+          <li>
+            Reproduce, duplicate or copy material from www.SMarTeaHRMS.com
+          </li>
+          <li>Redistribute content from www.SMarTeaHRMS.com</li>
         </ul>
         <p className=" text-xl font-bold mb-4">
           Your access to and use of the Service are as
         </p>
         <p className="text-sm mb-2">
-          If You are acquiring a subscription to a Service operated by AEGISHRMS
-          from an unrelated third party authorized to sell such subscriptions
-          under a separate agreement with AEGISHRMS, the terms of this Main
-          Services Agreement shall be null and void, and the terms and
-          conditions that govern Parts of this website offer an opportunity for
-          users to post and exchange opinions and information in certain areas
-          of the website. aegishrms does not filter, edit, publish or review
-          Comments prior to their presence on the website. Comments do not
-          reflect the views and opinions of Argan Technology Services Pvt Ltd,
-          its agents and/or affiliates. Comments reflect the views and opinions
-          of the person who post their views and opinions. To the extent
-          permitted by applicable laws, Argan Technology Services Pvt Ltd shall
-          not be liable for the Comments or for any liability, damages or
-          expenses caused and/or suffered as a result of any use of and/or
-          posting of and/or appearance of the Comments on this website.
+          If You are acquiring a subscription to a Service operated by
+          SMarTeaHRMS from an unrelated third party authorized to sell such
+          subscriptions under a separate agreement with SMarTeaHRMS, the terms
+          of this Main Services Agreement shall be null and void, and the terms
+          and conditions that govern Parts of this website offer an opportunity
+          for users to post and exchange opinions and information in certain
+          areas of the website. SMarTeaHRMS does not filter, edit, publish or
+          review Comments prior to their presence on the website. Comments do
+          not reflect the views and opinions of Goanny Technologies Pvt Ltd, its
+          agents and/or affiliates. Comments reflect the views and opinions of
+          the person who post their views and opinions. To the extent permitted
+          by applicable laws, Goanny Technologies Pvt Ltd shall not be liable
+          for the Comments or for any liability, damages or expenses caused
+          and/or suffered as a result of any use of and/or posting of and/or
+          appearance of the Comments on this website.
         </p>
         <p className=" text-lg mb-2">
-          Argan Technology Services Pvt Ltd reserves the right to monitor all
-          Comments and to remove any Comments which can be considered
-          inappropriate, offensive or causes breach of these Terms and
-          Conditions.
+          Goanny Technologies Pvt Ltd reserves the right to monitor all Comments
+          and to remove any Comments which can be considered inappropriate,
+          offensive or causes breach of these Terms and Conditions.
         </p>
         <ul>
           <li>
@@ -104,9 +107,9 @@ const PrivacyPolicy = () => {
           </li>
         </ul>
         <p className=" text-lg mb-2">
-          You hereby grant aegishrms a non-exclusive license to use, reproduce,
-          edit and authorize others to use, reproduce and edit any of your
-          Comments in any and all forms, formats or media.
+          You hereby grant SMarTeaHRMS a non-exclusive license to use,
+          reproduce, edit and authorize others to use, reproduce and edit any of
+          your Comments in any and all forms, formats or media.
         </p>
         <p className=" text-lg mb-2">
           The following organizations may link to our Website without prior
@@ -155,7 +158,7 @@ const PrivacyPolicy = () => {
           that: (a) the link would not make us look unfavorably to ourselves or
           to our accredited businesses; (b) the organization does not have any
           negative records with us; (c) the benefit to us from the visibility of
-          the hyperlink compensates the absence of aegishrms; and (d) the link
+          the hyperlink compensates the absence of SMarTeaHRMS; and (d) the link
           is in the context of general resource information.
         </p>
         <p className="text-sm mb-2">
@@ -169,7 +172,7 @@ const PrivacyPolicy = () => {
           that: (a) the link would not make us look unfavorably to ourselves or
           to our accredited businesses; (b) the organization does not have any
           negative records with us; (c) the benefit to us from the visibility of
-          the hyperlink compensates the absence of aegishrms; and (d) the link
+          the hyperlink compensates the absence of SMarTeaHRMS; and (d) the link
           is in the context of general resource information.
         </p>
 
@@ -182,23 +185,23 @@ const PrivacyPolicy = () => {
         <p className="text-sm mb-2">
           If you are one of the organizations and are interested in linking to
           our website, you must inform us by sending an e-mail to
-          support@aegishrms.com Please include your name, your organization
+          support@SMarTeaHRMS.com Please include your name, your organization
           name, contact information as well as the URL of your site, a list of
           any URLs from which you intend to link to our Website, and a list of
           the URLs on our site to which you would like to link. Wait 2-3 weeks
           for a response.
         </p>
         <p className="text-sm mb-2">
-          Aegishrms may use third-party service providers that are utilized to
+          SMarTeaHRMS may use third-party service providers that are utilized to
           assist in providing the Services to Subscriber, but do not have access
           to Service Data. Any third-party service providers utilized by the
-          Aegishrms will be subject to confidentiality obligations which are
+          SMarTeaHRMS will be subject to confidentiality obligations which are
           substantially similar to the confidentiality terms herein
         </p>
         <p className="text-sm mb-2">
-          Aegishrms shall be responsible for the acts and omissions of members
-          of Aegishrms’s third-party service providers to the same extent that
-          Aegishrms would be responsible if Aegishrms was performing the
+          SMarTeaHRMS shall be responsible for the acts and omissions of members
+          of SMarTeaHRMS’s third-party service providers to the same extent that
+          SMarTeaHRMS would be responsible if SMarTeaHRMS was performing the
           services of each third-party service provider directly under the terms
           of this Agreement.
         </p>
@@ -215,8 +218,8 @@ const PrivacyPolicy = () => {
           </li>
         </ul>
         <p className="text-sm mb-2">
-          No use of aehishrms logo or other artwork will be allowed for linking
-          absent a trademark license agreement
+          No use of SMarTeaHRMS logo or other artwork will be allowed for
+          linking absent a trademark license agreement
         </p>
         <p className=" text-xl mb-2">Grievance Office Information</p>
         <p className="text-sm mb-2">Name-Rahul Gaikwad</p>
@@ -224,7 +227,7 @@ const PrivacyPolicy = () => {
           Address- C503, The Onyx, Pink City
           Road,Wakad,Pune,Maharashtra,India-411057
         </p>
-        <p className="text-sm mb-2">Email: support@aegishrms.com</p>
+        <p className="text-sm mb-2">Email: support@SMarTeaHRMS.com</p>
       </div>
     </>
   );

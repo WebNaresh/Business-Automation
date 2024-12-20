@@ -99,46 +99,9 @@ export default function SwipeableTemporaryDrawer() {
             </IconButton>
 
             <div className="hidden sm:flex items-center">
-              {/* temperoary */}
-
-              {/* <img
-              src="/Aegis_log.jpg"
-              // src="/Aegis_logo_white.png"
-                //  src="/Aegis_only_logo.png"
-              alt="AEGIS"
-              className="w-16 h-20 -mt-2 -top-2 object-cover"
-              // className="w-[1.9rem] h-[2.0rem] -mt-2 -top-2 zobject-cover"
-            /> */}
-
-              {/* _________ */}
-              {/* <img
-                src="/A1.jpg"
-                alt="AEGIS"
-                className="w-[1.9rem] h-[2.0rem] -mt-2 -top-2 object-cover"
-              />
-              <img
-                src="/A2.jpg"
-                alt="AEGIS"
-                className="w-[3.2rem] h-[2.0rem] -mt-2 ml-1 -top-2 object-cover text-white"
-              /> */}
-              {/* _________ */}
-
-              {/* updated */}
-              {/* <span className="bg-white border rounded-full border-gray-500 p-3 "> 
-  
-<img
-                // src="/Aegis_only_logo.png"
-                // white bg-image logo
-                 src="/A1.jpg"
-                alt="AEGIS"
-                className="w-[1.9rem] h-[2.0rem] -mt-2 -top-2 object-cover  mix-blend-multiply"
-              />
-
-</span> */}
-
               <span className="inline-flex items-center justify-center w-13 h-13 bg-white border border-gray-500 rounded-full p-2">
                 <img
-                  src="/A1.jpg"
+                  src="/logo.svg"
                   alt="AEGIS"
                   className="w-8 h-8 object-cover rounded-full mix-blend-multiply"
                 />
@@ -147,7 +110,7 @@ export default function SwipeableTemporaryDrawer() {
               <img
                 src="/Aegis_logo_name.png"
                 alt="AEGIS"
-                className="w-[3.6rem] h-[2.3rem] -mt-2 ml-1 -top-2 object-cover text-white "
+                className="w-[4.3rem] h-[2.3rem] -mt-2 ml-1 -top-2 object-cover text-white "
               />
             </div>
           </div>
@@ -179,7 +142,7 @@ export default function SwipeableTemporaryDrawer() {
         <div className="py-2 px-10 border-b-[.5px] flex items-center gap-2 border-gray-300">
           <span className="inline-flex items-center justify-center w-13 h-13 bg-white border border-gray-500 rounded-full p-2">
             <img
-              src="/A1.jpg"
+              src="/logo.svg"
               alt="AEGIS"
               className="w-8 h-8 object-cover rounded-full mix-blend-multiply"
             />
@@ -187,9 +150,9 @@ export default function SwipeableTemporaryDrawer() {
 
           <img
             // src="/Aegis_logo_name.png"
-            src="/A2.jpg"
+            src="/A2.png"
             alt="AEGIS"
-            className="w-[3.6rem] h-[2.1rem] -mt-1   object-cover text-white mix-blend-multiply"
+            className="w-[4.3rem] h-[2.3rem] -mt-1   object-cover text-white mix-blend-multiply"
           />
         </div>
         <ChangeRole />

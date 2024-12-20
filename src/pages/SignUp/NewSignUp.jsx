@@ -429,7 +429,7 @@ const SignIn = () => {
                 to={location.pathname === "/sign-up" ? "/sign-in" : "/sign-up"}
                 className="font-medium text-blue-500 hover:underline transition-all "
               >
-                Sign In for AEGIS 
+                Sign In for SMarTea
               </Link>
             </p>
           </form>
