@@ -104,7 +104,7 @@ const AnimationComponent = () => {
                 Reset Your Password
               </h1>
               <p className="text-gray-500 tracking-tight ">
-                Reset password for your AEGIS account{" "}
+                Reset password for your SMarTea account{" "}
               </p>
             </div>
             <form className="w-full" onSubmit={handleSubmit(OnSubmit)}>

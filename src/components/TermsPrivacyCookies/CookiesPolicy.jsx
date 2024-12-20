@@ -14,38 +14,40 @@ const CookiesPolicy = () => {
             </h1>
           </div>
         </div>
-        <p className=" text-xl font-bold mb-4">Welcome to WWW.AEGISHRMS.COM</p>
+        <p className=" text-xl font-bold mb-4">
+          Welcome to WWW.SMarTeaHRMS.COM
+        </p>
         <p className="text-sm mb-2">
           These terms and conditions outline the rules and regulations for the
           use of Company Argan Technology Services Pvt Ltd, (including its
           subsidiaries or affiliated companies, henceforth also referred as
-          ‘aegishrms’ )located at www.aegishrms.com here onwards and or named as
-          AEGISHRMS.
+          ‘SMarTeaHRMS’ )located at www.SMarTeaHRMS.com here onwards and or
+          named as SMarTeaHRMS.
         </p>
         <p className="text-sm mb-2">
-          By accessing this www.aegishrms.com website we assume you accept these
-          terms and conditions
+          By accessing this www.SMarTeaHRMS.com website we assume you accept
+          these terms and conditions
         </p>
         <p className="text-sm mb-2">
           The following terminology applies to these Terms and Conditions,
           Privacy Statement and Disclaimer Notice and all Agreements: “Client”,
           “You” and “Your” refers to you, the person log on this website and
           compliant to the Company's terms and conditions. “The Company”,
-          “Ourselves”, “We”, “Our”, “Us” and “aegishrms”, refers to our Company.
-          “Party”, “Parties”, or “Us”, refers to both the Client and ourselves.
-          All terms refer to the offer, acceptance and consideration of payment
-          necessary to undertake the process of our assistance to the Client in
-          the most appropriate manner for the express purpose of meeting the
-          Client's needs in respect of provision of the Company's stated
-          services, in accordance with and subject to, prevailing law of India.
-          Any use of the above terminology or other words in the singular,
-          plural, capitalization and/or he/she or they, are taken as
+          “Ourselves”, “We”, “Our”, “Us” and “SMarTeaHRMS”, refers to our
+          Company. “Party”, “Parties”, or “Us”, refers to both the Client and
+          ourselves. All terms refer to the offer, acceptance and consideration
+          of payment necessary to undertake the process of our assistance to the
+          Client in the most appropriate manner for the express purpose of
+          meeting the Client's needs in respect of provision of the Company's
+          stated services, in accordance with and subject to, prevailing law of
+          India. Any use of the above terminology or other words in the
+          singular, plural, capitalization and/or he/she or they, are taken as
           interchangeable and therefore as referring to same
         </p>
         <h1 className="text-2xl font-bold mb-4">Cookies</h1>
         <p className="text-sm mb-2">
-          We employ the use of cookies. By accessing www.aegishrms.com, you
-          agreed to use cookies in agreement with the aegishrms & Privacy
+          We employ the use of cookies. By accessing www.SMarTeaHRMS.com, you
+          agreed to use cookies in agreement with the SMarTeaHRMS & Privacy
           Policy.
         </p>
         <p className="text-sm mb-2">
@@ -86,7 +88,7 @@ const CookiesPolicy = () => {
           for longer than is necessary to fulfil the purposes covered herein.
         </p>
         <p className=" text-xl mb-2">
-          You may contact on support@aegishrms.com for additional information.
+          You may contact on support@SMarTeaHRMS.com for additional information.
         </p>
       </div>
     </>
