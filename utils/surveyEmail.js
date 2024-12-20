@@ -1,19 +1,19 @@
 const nodemailer = require("nodemailer");
 
-const sendSurveyEmail = async ({ from, to,subject, html }) => {
-  console.log({ from, to,subject, html });
+const sendSurveyEmail = async ({ from, to, subject, html }) => {
+  console.log({ from, to, subject, html });
   try {
-     const transporter = nodemailer.createTransport({
-      host: process.env.HOST,
-      port: Number(process.env.EMAIL_PORT),
-      secure: Boolean(process.env.SECURE),
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT),
+      secure: Boolean(process.env.SMTP_SECURE),
       auth: {
-        user: process.env.USEREMAIL,
-        pass: process.env.PASS,
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
     });
     const info = await transporter.sendMail({
-      from: process.env.USEREMAIL,
+      from: process.env.SMTP_USER,
       to: to,
       subject: subject,
       html: html,

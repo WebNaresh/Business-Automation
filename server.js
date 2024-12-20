@@ -19,9 +19,9 @@ connectDatabase();
 new JobEmail();
 invokerazorpay();
 
-const server = app.listen(process.env.PORT, () => {
-  logger.info(`Server is working on http://localhost:${process.env.PORT}`);
-  console.log(`Server is working on http://localhost:${process.env.PORT}`);
+const server = app.listen(process.env.APP_PORT, () => {
+  logger.info(`Server is working on http://localhost:${process.env.APP_PORT}`);
+  console.log(`Server is working on http://localhost:${process.env.APP_PORT}`);
 });
 
 // Unhandled Promise Rejection

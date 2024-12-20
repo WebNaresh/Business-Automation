@@ -11,7 +11,7 @@ AWS.config.update({
   region: process.env.AWS_REGION,
 });
 
-const uri = process.env.LOCALHOST;
+const uri = process.env.DB_URI;
 const backupName = "ok1";
 const bucket = process.env.AWS_BUCKET_NAME;
 

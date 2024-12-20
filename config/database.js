@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const connectDatabase = () => {
   const LOCALHOST =
-    process.env.LOCALHOST || "mongodb://localhost:27017/your-database-name";
+    process.env.DB_URI || "mongodb://localhost:27017/your-database-name";
   mongoose
     .connect(LOCALHOST)
     .then((data) => {

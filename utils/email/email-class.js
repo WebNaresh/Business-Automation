@@ -2,20 +2,20 @@ const nodemailer = require("nodemailer");
 class Email {
   constructor() {
     this.transporter = nodemailer.createTransport({
-      host: process.env.HOST,
-      port: Number(process.env.EMAIL_PORT),
-      secure: Boolean(process.env.SECURE),
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT),
+      secure: Boolean(process.env.SMTP_SECURE),
       auth: {
-        user: process.env.USEREMAIL,
-        pass: process.env.PASS,
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
     });
     console.log(
-      process.env.HOST,
-      process.env.EMAIL_PORT,
-      process.env.SECURE,
-      process.env.USEREMAIL,
-      process.env.PASS
+      process.env.SMTP_HOST,
+      process.env.SMTP_PORT,
+      process.env.SMTP_SECURE,
+      process.env.SMTP_USER,
+      process.env.SMTP_PASS
     );
   }
 
@@ -23,7 +23,7 @@ class Email {
     try {
       console.log("I am sending email");
       const response = await this.transporter.sendMail({
-        from: process.env.USEREMAIL,
+        from: process.env.SMTP_USER,
         to: email,
         subject: subject,
         html: htmlContent,

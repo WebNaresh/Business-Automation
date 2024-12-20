@@ -4,7 +4,7 @@ require("dotenv").config();
 
 async function seedRoles() {
   try {
-    await mongoose.connect(process.env.LOCALHOST, {
+    await mongoose.connect(process.env.DB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
