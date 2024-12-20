@@ -6,7 +6,7 @@ import useGetUser from "../../../Token/useUser";
 import UserProfile from "../../../UserData/useUser";
 
 const useLeaveNotificationHook = () => {
-  const { authToken, decodedToken } = useGetUser();
+  const { authToken } = useGetUser();
   const { setNotificationCount } = useNotificationCount();
   const user = UserProfile().getCurrentUser();
   const [organizationId, setOrganizationId] = useState(user?.organizationId);

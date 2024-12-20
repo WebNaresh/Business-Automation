@@ -31,11 +31,7 @@ const SetupSideNav = () => {
         ))}
       </aside>
       <div className="md:block hidden">
-        <Setup>
-          <article className="SetupSection bg-white w-[80%]  shadow-md rounded-sm border flex items-center h-[80vh] justify-center">
-            <div className="p-4 flex items-center gap-3 w-full border-gray-300 justify-center"></div>
-          </article>
-        </Setup>
+        <Setup></Setup>
       </div>
     </>
   );
