@@ -8,7 +8,6 @@ import {
   MonetizationOn,
   PersonAddAlt,
   PersonPin,
-  Today,
   TodayOutlined,
   Work,
 } from "@mui/icons-material";
@@ -408,7 +407,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
                 errors={errors}
                 error={errors.designation}
               />
-              <AuthInputFiled
+              {/* <AuthInputFiled
                 name="shift_allocation"
                 value={shift_allocation}
                 icon={Today}
@@ -419,7 +418,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
                 label="Select Shift "
                 errors={errors}
                 error={errors.shift_allocation}
-              />
+              /> */}
             </div>
             <div className="grid grid-cols-1  md:grid-cols-2 w-full gap-3">
               <AuthInputFiled
