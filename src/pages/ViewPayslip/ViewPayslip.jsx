@@ -363,7 +363,7 @@ const ViewPayslip = () => {
         ) : (
           <div className="flex flex-col items-center mt-12">
             <img
-              src="/payslip.svg"
+              src="/payslip.jpg"
               style={{ height: "400px", marginBottom: "20px" }}
               alt="No payslip available"
             />

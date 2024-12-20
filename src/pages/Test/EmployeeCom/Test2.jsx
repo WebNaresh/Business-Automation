@@ -10,7 +10,6 @@ import {
   MonetizationOn, 
   PersonAddAlt,
   PersonPin,
-  Today,
   TodayOutlined,
   Work,
 } from "@mui/icons-material";
@@ -36,7 +35,6 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
     Departmentoptions,
     onBoardManageroptions,
     RolesOptions,
-    Shiftoptions,
     locationoption,
     cosnotoptions,
     salaryTemplateoption,
@@ -61,7 +59,6 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
     companyemail,
     setStep2Data,
     password,
-    shift_allocation,
     date_of_birth,
   } = useEmpState();
 
@@ -361,7 +358,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             error={errors.designation}
             className="text-sm" 
           />
-          <AuthInputFiled
+          {/* <AuthInputFiled
             name="shift_allocation"
             value={shift_allocation}
             icon={Today}
@@ -373,7 +370,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             errors={errors}
             error={errors.shift_allocation}
             className="text-sm" 
-          />
+          /> */}
         {/* </div>
         <div className="grid grid-cols-1  md:grid-cols-2 w-full gap-3"> */}
           <AuthInputFiled
