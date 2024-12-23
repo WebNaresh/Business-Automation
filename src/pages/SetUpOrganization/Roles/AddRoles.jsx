@@ -1,5 +1,5 @@
 import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
-import { Checkbox, FormControlLabel, Skeleton } from "@mui/material";
+import { Button, Checkbox, FormControlLabel, Skeleton } from "@mui/material";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
@@ -139,12 +139,9 @@ const AddRoles = () => {
                   </div>
                 ))}
                 <div className="px-6 py-2 w-full">
-                  <button
-                    onClick={handleSubmit}
-                    className=" flex  group justify-center gap-2 items-center rounded-md px-6 py-2 text-md  text-white bg-blue-500 hover:bg-blue-500 focus-visible:outline-blue-500"
-                  >
+                  <Button variant="contained" onClick={handleSubmit}>
                     Submit
-                  </button>
+                  </Button>
                 </div>
               </div>
             )}

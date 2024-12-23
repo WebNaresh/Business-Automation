@@ -1,3 +1,4 @@
+import { createTheme, ThemeProvider } from "@mui/material";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import { useLocation } from "react-router-dom";
@@ -26,37 +27,50 @@ function App() {
   useEffect(() => {
     hideLoadingScreen();
   }, []);
+  const theme = createTheme({
+    palette: {
+      mode: "light",
+      primary: {
+        main: "#00a2ad",
+      },
+      secondary: {
+        main: "#f50057",
+      },
+    },
+  });
 
   //TODO: remove the issue
   return (
     <>
-      <UseState>
-        <TestState>
-          <AuthProvider>
-            <UseEffectState>
-              <TopLoadingBar />
-              <AppLoader />
-              <AppAlert />
+      <ThemeProvider theme={theme}>
+        <UseState>
+          <TestState>
+            <AuthProvider>
+              <UseEffectState>
+                <TopLoadingBar />
+                <AppLoader />
+                <AppAlert />
 
-              <div
-                className={`h-full ${
-                  !isNavEnabled.some((value) => {
-                    return location.pathname.includes(value);
-                  }) && "mt-[55px]"
-                } `}
-              >
-                {/* <SwipeableTemporaryDrawer /> */}
-                {/* <BackComponent /> */}
-                <Toaster />
+                <div
+                  className={`h-full ${
+                    !isNavEnabled.some((value) => {
+                      return location.pathname.includes(value);
+                    }) && "mt-[55px]"
+                  } `}
+                >
+                  {/* <SwipeableTemporaryDrawer /> */}
+                  {/* <BackComponent /> */}
+                  <Toaster />
 
-                <div style={{ height: "100%", width: "100%" }}>
-                  <Route />
+                  <div style={{ height: "100%", width: "100%" }}>
+                    <Route />
+                  </div>
                 </div>
-              </div>
-            </UseEffectState>
-          </AuthProvider>
-        </TestState>
-      </UseState>
+              </UseEffectState>
+            </AuthProvider>
+          </TestState>
+        </UseState>
+      </ThemeProvider>
     </>
   );
 }
