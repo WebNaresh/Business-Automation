@@ -4,7 +4,6 @@ import {
   SellOutlined,
 } from "@mui/icons-material";
 import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined";
-import CreditCardIcon from "@mui/icons-material/CreditCard";
 import FolderOutlinedIcon from "@mui/icons-material/FolderOutlined";
 import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
 import HolidayVillageOutlinedIcon from "@mui/icons-material/HolidayVillageOutlined";
@@ -141,28 +140,13 @@ const useSetupSideNav = ({ organisationId }) => {
       ),
     },
     {
-      label: "Loan Management",
-      icon: CreditCardIcon,
-      href: `/organisation/${organisationId}/setup/loan-management`,
-      active:
-        location.pathname ===
-        `/organisation/${organisationId}/setup/loan-management`,
-      isVisible:
-        data?.organisation?.packageInfo !== "Essential Plan" &&
-        user?.profile?.some((role) =>
-          ["Super-Admin", "Delegate-Super-Admin"].includes(role)
-        ),
-    },
-    {
       label: "Remote Punching",
       icon: SellOutlined,
       href: `/organisation/${organisationId}/setup/remote-punching`,
       active:
         location.pathname ===
         `/organisation/${organisationId}/setup/remote-punching`,
-      isVisible:
-        data?.organisation?.packageInfo === "Intermediate Plan" ||
-        data?.organisation?.packageInfo === "Enterprise Plan",
+      isVisible: true,
     },
     {
       label: "Training",
