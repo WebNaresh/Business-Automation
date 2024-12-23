@@ -94,28 +94,6 @@ const Organisation = ({ item }) => {
     return orgName;
   };
 
-  const checkHasOrgDisabled = () => {
-    if (item?.subscriptionDetails?.status === "Active") {
-      if (
-        moment(item?.subscriptionDetails?.expirationDate).diff(
-          moment(),
-          "days"
-        ) > 0
-      ) {
-        return false;
-      } else {
-        return true;
-      }
-    } else if (item?.subscriptionDetails?.status === "Pending") {
-      if (moment(item?.createdAt).add(7, "days").diff(moment(), "days") > 0) {
-        return false;
-      } else {
-        return true;
-      }
-    }
-    return true;
-  };
-
   return (
     <>
       <div
@@ -207,7 +185,6 @@ const Organisation = ({ item }) => {
         >
           <Button
             variant="contained"
-            disabled={checkHasOrgDisabled()}
             onClick={() => {
               let link;
               if (window.innerWidth <= 768) {
@@ -221,21 +198,12 @@ const Organisation = ({ item }) => {
             Setup
           </Button>
 
-          {!checkHasOrgDisabled() ? (
-            <Link to={`/organisation/${item._id}/dashboard/super-admin`}>
-              <Button variant="text" className="gap-2">
-                Go to Dashboard
-                <FaArrowCircleRight className="group-hover:translate-x-1 transition-transform duration-300 ease-in-out" />
-              </Button>
-            </Link>
-          ) : (
-            <Link to={`/billing`}>
-              <button className="flex group justify-center gap-2 items-center rounded-md px-4 py-1 text-sm font-semibold text-blue-500 transition-all bg-white  focus-visible:outline-blue-500 duration-300 ease-in-out">
-                Go to Billing
-                <FaArrowCircleRight className="group-hover:translate-x-1 transition-transform duration-300 ease-in-out" />
-              </button>
-            </Link>
-          )}
+          <Link to={`/organisation/${item._id}/dashboard/super-admin`}>
+            <Button variant="text" className="gap-2">
+              Go to Dashboard
+              <FaArrowCircleRight className="group-hover:translate-x-1 transition-transform duration-300 ease-in-out" />
+            </Button>
+          </Link>
         </div>
       </div>
 

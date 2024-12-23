@@ -980,7 +980,7 @@ const TestNavItems = ({ toggleDrawer }) => {
               },
             ],
           },
-          Organisation: {
+          Branches: {
             open: false,
             isVisible: ["Super-Admin", "Delegate-Super-Admin"].includes(role),
             icon: <MonetizationOn className=" !text-[1.2em] text-[#67748E]" />,
@@ -994,7 +994,7 @@ const TestNavItems = ({ toggleDrawer }) => {
                 icon: (
                   <BusinessOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
                 ),
-                text: "Add Organisation",
+                text: "Add Branches",
               },
 
               {
@@ -1006,7 +1006,7 @@ const TestNavItems = ({ toggleDrawer }) => {
                 icon: (
                   <AccountTreeOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
                 ),
-                text: "Organisation List",
+                text: "Branch List",
               },
               {
                 key: "organisationList",
@@ -1017,7 +1017,7 @@ const TestNavItems = ({ toggleDrawer }) => {
                 icon: (
                   <AccountTreeOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
                 ),
-                text: "Organisation Hierarchy",
+                text: "Branch Hierarchy",
               },
             ],
           },

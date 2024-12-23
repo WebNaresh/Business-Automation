@@ -148,8 +148,8 @@ const Step1 = ({ nextStep }) => {
             icon={Business}
             control={control}
             type="text"
-            placeholder="Organisation Name"
-            label="Organisation Name *"
+            placeholder="Branch Name"
+            label="Branch Name *"
             errors={errors}
             error={errors.orgName}
           />
@@ -158,8 +158,8 @@ const Step1 = ({ nextStep }) => {
             icon={LocalPostOfficeOutlined}
             control={control}
             type="email"
-            placeholder="Organisation Email"
-            label="Organisation Email *"
+            placeholder="Branch Email"
+            label="Branch Email *"
             errors={errors}
             error={errors.email}
           />

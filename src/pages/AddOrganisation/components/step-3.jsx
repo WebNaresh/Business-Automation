@@ -1,5 +1,3 @@
-
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Calculate,
@@ -8,13 +6,16 @@ import {
 } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import axios from "axios";
-import React, { useContext, useState, useEffect } from "react";
+import moment from "moment";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useMutation } from "react-query";
+import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { TestContext } from "../../../State/Function/Main";
 import useOrg from "../../../State/Org/Org";
 import AuthInputFiled from "../../../components/InputFileds/AuthInputFiled";
-import useAuthToken from "../../../hooks/Token/useAuth";
+import useGetUser from "../../../hooks/Token/useUser";
 import { packagesArray } from "./data";
 
 // to define the package count schema
@@ -29,20 +30,28 @@ const packageCountSchema = z.object({
   paymentType: z.enum(["Phone_Pay", "RazorPay"]),
 });
 
-const Step3 = ({  nextStep, prevStep }) => {
+const Step3 = ({ prevStep }) => {
   // to define the state, hook and import the other function
+
+  const data = useOrg();
+  const { authToken, decodedToken } = useGetUser();
+  const config = {
+    headers: {
+      Authorization: authToken,
+    },
+  };
   const {
     count,
-    setStep3Data,
     cycleCount,
     paymentType,
     packageInfo,
     setVerifyToken,
     coupan,
-  } = useOrg();
+  } = data;
+  const navigate = useNavigate();
 
   // use useForm
-  const { control, handleSubmit, formState, watch } = useForm({
+  const { control, handleSubmit, formState } = useForm({
     defaultValues: {
       count,
       cycleCount,
@@ -51,8 +60,104 @@ const Step3 = ({  nextStep, prevStep }) => {
     },
     resolver: zodResolver(packageCountSchema),
   });
+  const getPackagesPrice = packagesArray
+    .filter((item) => data?.packages?.find((pkg) => item?.label === pkg.label))
+    .reduce((acc, item) => acc + item.price, 0);
+  const getPriceMain = useMemo(() => {
+    const expirationDate = moment().add(3 * data?.cycleCount, "months");
+    const dateDifference = expirationDate.diff(moment(), "days");
+    if (data?.packageInfo?.packageName === "Basic Plan") {
+      const perDayPrice = 55 / dateDifference;
+      return Math.round(perDayPrice * dateDifference);
+    } else if (data?.packageInfo?.packageName === "Essential Plan") {
+      const perDayPrice = 30 / dateDifference;
+      return Math.round(perDayPrice * dateDifference);
+    } else if (data?.packageInfo?.packageName === "Intermediate Plan") {
+      const perDayPrice = 85 / dateDifference;
+      return Math.round(perDayPrice * dateDifference);
+    } else {
+      return 115 + Number(getPackagesPrice) ?? 0;
+    }
+  }, [data?.cycleCount, data?.packageInfo?.packageName, getPackagesPrice]);
+  // to define the handleForm function to add organization
 
-  const authToken = useAuthToken();
+  const handleForm = async () => {
+    if (data.packageInfo === undefined) {
+      return "Please Select Plan And Package";
+    }
+
+    let totalPrice =
+      getPriceMain * data?.count -
+      (data?.verifyToken?.discount
+        ? Number((getPriceMain * data?.count) / data?.verifyToken?.discount) ??
+          0
+        : 0);
+    const mainData = {
+      ...data,
+      coupan: data?.verifyToken?.coupan,
+      packageInfo: data?.packageInfo?.packageName,
+      totalPrice: totalPrice + totalPrice * 0.02,
+    };
+
+    const response = await axios.post(
+      `${process.env.REACT_APP_API}/route/organization`,
+      mainData,
+      config
+    );
+    return response.data;
+  };
+
+  const { mutate } = useMutation({
+    mutationFn: handleForm,
+    onSuccess: async (data) => {
+      if (data?.paymentType === "Phone_Pay") {
+        window.location.href = data?.redirectUrl;
+      } else if (data?.paymentType === "RazorPay") {
+        const options = {
+          key: data?.key,
+          amount: data?.order?.amount,
+          currency: "INR",
+          name: "Aegis Plan for software", //your business name
+          description: "Get Access to all premium keys",
+          image: data?.organization?.image,
+          order_id: data.order.id, //This
+          callback_url: data?.callbackURI,
+          prefill: {
+            name: `${decodedToken?.user?.first_name} ${decodedToken?.user?.last_name}`, //your customer's name
+            email: decodedToken?.user?.email,
+            contact: decodedToken?.user?.phone_number,
+          },
+          notes: {
+            address:
+              "C503, The Onyx-Kalate Business Park, near Euro School, Shankar Kalat Nagar, Wakad, Pune, Pimpri-Chinchwad, Maharashtra 411057",
+          },
+          theme: {
+            color: "#1976d2",
+          },
+          modal: {
+            ondismiss: function () {
+              console.log("Checkout form closed by the user");
+            },
+          },
+        };
+        const razor = new window.Razorpay(options);
+        razor.open();
+      } else {
+        handleAlert(true, "success", data?.message);
+        //
+        navigate("/organizationList");
+      }
+    },
+    onError: async (data) => {
+      console.error(`🚀 ~ file: mini-form.jsx:48 ~ data:`, data);
+
+      handleAlert(
+        true,
+        "error",
+        data?.response?.data?.message || "Please fill all mandatory field"
+      );
+    },
+  });
   const { handleAlert } = useContext(TestContext);
   const { errors } = formState;
 
@@ -94,44 +199,7 @@ const Step3 = ({  nextStep, prevStep }) => {
   const onSubmit = async (data) => {
     setVerifyToken(null);
 
-    // Set the selected packages in the submitted data
-    data.packages = selectedPackages;
-
-    // Handle coupon verification
-    if (watch("coupan") !== undefined && watch("coupan") !== "") {
-      const checkToken = await axios.post(
-        `${process.env.REACT_APP_API}/route/organization/verify/coupon`,
-        {
-          coupan: data?.coupan,
-        },
-        {
-          headers: {
-            Authorization: authToken,
-          },
-        }
-      );
-
-      if (!checkToken?.data?.status) {
-        handleAlert(
-          true,
-          "error",
-          checkToken?.data?.message || "Invalid Token"
-        );
-        return false;
-      }
-
-      if (checkToken?.data?.status) {
-        setVerifyToken(checkToken?.data?.verfiyCoupan);
-        handleAlert(
-          true,
-          "success",
-          checkToken?.data?.message || "Coupan code is correct"
-        );
-      }
-    }
-
-    setStep3Data(data);
-    nextStep();
+    mutate();
   };
 
   // const totalPrice = calculateTotalPrice(); // Calculate total price
@@ -169,9 +237,8 @@ const Step3 = ({  nextStep, prevStep }) => {
           />
         </div>
 
-       
-          {packageInfo?.packageName === "Enterprise Plan" && (
-             <div className="flex flex-col pb-4 mb-4">
+        {packageInfo?.packageName === "Enterprise Plan" && (
+          <div className="flex flex-col pb-4 mb-4">
             <div className="package-selection">
               <h3 className="text-gray-500 text-md font-semibold mb-4">
                 Select Package Additions:
@@ -204,31 +271,11 @@ const Step3 = ({  nextStep, prevStep }) => {
                   </div>
                 ))}
               </div>
-              {/* Uncomment if you want to show total price */}
-              {/* <div className="mt-3 text-md font-semibold">
-                  Total Price: <span className="text-blue-600">{calculateTotalPrice()} rs</span>
-                  </div> */}
             </div>
-            </div>
-          )}
-       
+          </div>
+        )}
 
         <div className="grid grid-cols-2 w-full gap-4">
-          <AuthInputFiled
-            name="paymentType"
-            icon={FactoryOutlined}
-            control={control}
-            type="naresh-select"
-            placeholder="Select your Merchant"
-            label="Payment Gateway *"
-            errors={errors}
-            error={errors.paymentType}
-            options={[
-              { value: "Phone_Pay", label: "Phone_Pay" },
-              { value: "RazorPay", label: "RazorPay" },
-            ]}
-            descriptionText={"Additional 2% charges on every transaction"}
-          />
           <div className="my-2">
             <AuthInputFiled
               name="coupan"
@@ -252,25 +299,20 @@ const Step3 = ({  nextStep, prevStep }) => {
           Confirm & Pay
         </Button>
         </div> */}
-<div className="flex justify-center space-x-4 mt-4">
-  <Button
-    type="button"
-    variant="outlined"
-    onClick={prevStep}
-    className="!w-max mb-2"
-  >
-    Back
-  </Button>
+        <div className="flex justify-center space-x-4 mt-4">
+          <Button
+            type="button"
+            variant="outlined"
+            onClick={prevStep}
+            className="!w-max mb-2"
+          >
+            Back
+          </Button>
 
-  <Button
-    type="submit"
-    variant="contained"
-    className="!w-max"
-  >
-    Confirm & Pay
-  </Button>
-</div>
-
+          <Button type="submit" variant="contained" className="!w-max">
+            Confirm & Pay
+          </Button>
+        </div>
       </form>
     </div>
   );
