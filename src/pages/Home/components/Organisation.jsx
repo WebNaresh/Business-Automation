@@ -1,7 +1,3 @@
-import { useEffect, useState, useContext } from "react";
-import { motion } from "framer-motion";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { MoreVert } from "@mui/icons-material";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
@@ -16,16 +12,19 @@ import {
   Menu,
   MenuItem,
 } from "@mui/material";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import axios from "axios";
 import moment from "moment";
+import { useContext, useEffect, useState } from "react";
 // import randomColor from "randomcolor";
 import { FaArrowCircleRight } from "react-icons/fa";
 import { useQueryClient } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import { TestContext } from "../../../State/Function/Main";
 import { UseContext } from "../../../State/UseState/UseContext";
 import EditOrganisation from "./edit-organization";
-import styled from "styled-components";
 
 const Organisation = ({ item }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -92,13 +91,17 @@ const Organisation = ({ item }) => {
 
   const truncateOrgName = (orgName) => {
 
+    // const wordCount = (orgName.match(/\S+/g) || []).length;
+    // if (wordCount > 6) {
+    //   return orgName.split(/\s+/).slice(0,6).join(" ") + " ...";
+    // }
+    // return orgName;
 
     const maxLength = 29;
     if (orgName.length > maxLength) {
       return orgName.slice(0, maxLength) + " ...";
     }
     return orgName;
-
   };
 
   const checkHasOrgDisabled = () => {
@@ -125,14 +128,13 @@ const Organisation = ({ item }) => {
 
   return (
     <>
-      <motion.div
-        className=" border-b-[2px] border-white block min-w-[18rem] max-w-[20rem] rounded-md bg-sky-100 shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out relative px-2 py-3"
+      <div
+        className="border-b-[2px] border block min-w-[18rem] max-w-[20rem] rounded-md h-fit shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out relative"
         initial={{ scale: 1 }}
         whileHover={{ scale: 1.05 }}
         transition={{ type: "spring", stiffness: 200 }}
         data-aos="zoom-in"
         data-aos-offset="100"
-        style={{ height: "210px", width: "300px" }}
       >
         {/* <StyledTag
           className="tag "
@@ -152,7 +154,7 @@ const Organisation = ({ item }) => {
           data-aos-offset="100"
         >
           <div className="flex col-span-4 gap-2 items-center">
-            <motion.div
+            <div
               className="p-[1px] ring-1 ring-gray-300"
               initial={{ scale: 1 }}
               whileHover={{ scale: 1.1 }}
@@ -165,7 +167,7 @@ const Organisation = ({ item }) => {
                 variant="rounded"
                 className="w-12 h-12"
               />
-            </motion.div>
+            </div>
             <div className="flex flex-col">
               <h5
                 className="text-sm font-semibold leading-tight text-blue-950 truncate"
@@ -224,11 +226,13 @@ const Organisation = ({ item }) => {
           </p>
         </div>
         <div
-          className="p-4 py-2 flex gap-4"
+          className="p-4 py-2 flex justify-between"
           data-aos="zoom-in"
           data-aos-offset="0"
         >
-          <button
+          <Button
+            variant="contained"
+            disabled={checkHasOrgDisabled()}
             onClick={() => {
               let link;
               if (window.innerWidth <= 768) {
@@ -238,21 +242,27 @@ const Organisation = ({ item }) => {
               }
               navigate(link);
             }}
-            className="flex disabled:bg-gray-300 group justify-center gap-2 items-center rounded-md px-4 py-1 text-sm text-white bg-gray-600 hover:bg-gray-700 focus-visible:outline-blue-500 transition-all duration-300 ease-in-out"
           >
             Setup
-          </button>
+          </Button>
 
-
-          <Link to={`/organisation/${item._id}/dashboard/super-admin`}>
-            <button className="flex group justify-center gap-2 items-center rounded-md px-4 py-1 text-sm font-semibold text-black-600 transition-all bg-white hover:bg-black-700  focus-visible:outline-black-500 duration-300 ease-in-out">
-              Go to Dashboard
-              <FaArrowCircleRight className="group-hover:translate-x-1 transition-transform duration-300 ease-in-out" />
-            </button>
-          </Link>
-
+          {!checkHasOrgDisabled() ? (
+            <Link to={`/organisation/${item._id}/dashboard/super-admin`}>
+              <Button variant="text" className="gap-2">
+                Go to Dashboard
+                <FaArrowCircleRight className="group-hover:translate-x-1 transition-transform duration-300 ease-in-out" />
+              </Button>
+            </Link>
+          ) : (
+            <Link to={`/billing`}>
+              <button className="flex group justify-center gap-2 items-center rounded-md px-4 py-1 text-sm font-semibold text-blue-500 transition-all bg-white  focus-visible:outline-blue-500 duration-300 ease-in-out">
+                Go to Billing
+                <FaArrowCircleRight className="group-hover:translate-x-1 transition-transform duration-300 ease-in-out" />
+              </button>
+            </Link>
+          )}
         </div>
-      </motion.div>
+      </div>
 
       <Dialog
         open={deleteConfirmation !== null}
