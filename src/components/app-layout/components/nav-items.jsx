@@ -1,7 +1,6 @@
 import {
   Business,
   Category,
-  CircleNotifications,
   Dashboard,
   Description,
   Fingerprint,
@@ -530,17 +529,9 @@ const TestNavItems = ({ toggleDrawer }) => {
             icon: (
               <NotificationsActive className=" !text-[1.2em] text-[#67748E]" />
             ),
-            routes: [
-              {
-                key: "listNotification",
-                isVisible: true,
-                link: `/organisation/${orgId}/notification`,
-                icon: (
-                  <CircleNotifications className=" !text-[1.2em] text-[#67748E]" />
-                ),
-                text: "Notifications",
-              },
-            ],
+            routes: [],
+            isClickable: true,
+            link: `/organisation/${orgId}/notification`,
           },
           Department: {
             open: false,
@@ -1023,11 +1014,7 @@ const TestNavItems = ({ toggleDrawer }) => {
             open: false,
             isVisible:
               (["Employee"].includes(role) && isUserMatchInEmployeeList) ||
-              (["Manager", "Super-Admin", "Delegate-Super-Admin"].includes(
-                role
-              ) &&
-                (data?.organisation?.packageInfo === "Intermediate Plan" ||
-                  data?.organisation?.packageInfo === "Enterprise Plan")),
+              ["Manager", "Super-Admin", "Delegate-Super-Admin"].includes(role),
             icon: <MonetizationOn className=" !text-[1.2em] text-[#67748E]" />,
             routes: [
               {
