@@ -58,7 +58,7 @@ const TestAccordian = ({
     <div className={`block ${!isVisible && "hidden"}  `}>
       <div
         className={`my-2 flex gap-3 justify-between px-4 text-sm items-center cursor-pointer ${
-          open && "bg-blue-50"
+          open && "bg-primary/10"
         }`}
         onClick={handleAccordianClick}
       >
