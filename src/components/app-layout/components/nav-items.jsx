@@ -965,42 +965,9 @@ const TestNavItems = ({ toggleDrawer }) => {
             open: false,
             isVisible: ["Super-Admin", "Delegate-Super-Admin"].includes(role),
             icon: <MonetizationOn className=" !text-[1.2em] text-[#67748E]" />,
-            routes: [
-              {
-                key: "addOrganisation",
-                isVisible: ["Super-Admin", "Delegate-Super-Admin"].includes(
-                  role
-                ),
-                link: "/add-organisation",
-                icon: (
-                  <BusinessOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
-                ),
-                text: "Add Branches",
-              },
-
-              {
-                key: "organisationList",
-                isVisible: ["Super-Admin", "Delegate-Super-Admin"].includes(
-                  role
-                ),
-                link: "/organizationList",
-                icon: (
-                  <AccountTreeOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
-                ),
-                text: "Branch List",
-              },
-              {
-                key: "organisationList",
-                isVisible: ["Super-Admin", "Delegate-Super-Admin"].includes(
-                  role
-                ),
-                link: `/organisation/${orgId}/organisation-hierarchy`,
-                icon: (
-                  <AccountTreeOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
-                ),
-                text: "Branch Hierarchy",
-              },
-            ],
+            isClickable: true,
+            routes: [],
+            link: "/organizationList",
           },
           "Remote Punch": {
             open: false,

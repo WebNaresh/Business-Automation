@@ -1,17 +1,20 @@
-
-import React, { useEffect, useContext } from "react";
-import { Skeleton } from "@mui/material";
+import { Button, Skeleton } from "@mui/material";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import {
+  CategoryScale,
+  Chart as ChartJS,
+  LinearScale,
+  LineElement,
+} from "chart.js";
+import React, { useContext, useEffect } from "react";
 import { Line } from "react-chartjs-2";
+import { FaFileExcel } from "react-icons/fa";
 import { useMutation } from "react-query";
 import Select from "react-select";
 import * as XLSX from "xlsx";
 import { TestContext } from "../../../../State/Function/Main";
 import UserProfile from "../../../../hooks/UserData/useUser";
-import { motion } from "framer-motion";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { FaFileExcel } from 'react-icons/fa';
-import { Chart as ChartJS, LineElement, CategoryScale, LinearScale } from 'chart.js';
 
 ChartJS.register(LineElement, CategoryScale, LinearScale);
 
@@ -59,18 +62,17 @@ const customStyles = {
     boxShadow: "none",
     backgroundColor: "#f9f9f9",
     borderRadius: "4px",
-    // padding: "2px 4px", 
+    // padding: "2px 4px",
     fontFamily: "'Roboto', sans-serif",
     zIndex: 10,
-    // minHeight: '20px', 
-    // height: '28px', 
-    minheight:'90%',
+    // minHeight: '20px',
+    // height: '28px',
+    minheight: "90%",
     // width:"100%",
-    display: 'flex',
-    alignItems: 'center', 
-    justifyContent: 'center', 
-    margin:'auto',
-    
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: "auto",
   }),
   menu: (base) => ({
     ...base,
@@ -78,20 +80,20 @@ const customStyles = {
     minWidth: "100%",
     right: 0,
     fontFamily: "'Roboto', sans-serif",
-    fontSize: 12, 
+    fontSize: 12,
   }),
   placeholder: (defaultStyles) => ({
     ...defaultStyles,
     color: "#555",
     fontFamily: "'Roboto', sans-serif",
-    fontSize: 12, 
-    textAlign: 'center', 
+    fontSize: 12,
+    textAlign: "center",
   }),
   singleValue: (base) => ({
     ...base,
     fontFamily: "'Roboto', sans-serif",
-    fontSize: 12, 
-    textAlign: 'center', 
+    fontSize: 12,
+    textAlign: "center",
   }),
   dropdownIndicator: (base) => ({
     ...base,
@@ -100,7 +102,7 @@ const customStyles = {
   }),
   indicatorSeparator: (base) => ({
     ...base,
-    display: 'none', // Hide the separator
+    display: "none", // Hide the separator
   }),
 };
 
@@ -132,7 +134,18 @@ const organizeDataByMonth = (data) => {
 };
 
 const monthNames = [
-  "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
 
 const LineGraph = ({
@@ -175,20 +188,33 @@ const LineGraph = ({
       const wsData = salaryDataWithoutId.map(Object.values);
       wsData.unshift(Object.keys(salaryDataWithoutId[0]));
 
-      const padding = [["", "", "", ""], ["", "", "", ""]];
+      const padding = [
+        ["", "", "", ""],
+        ["", "", "", ""],
+      ];
       const finalData = padding.concat(employeeInfo, padding, wsData);
 
       const ws = XLSX.utils.aoa_to_sheet(finalData);
       XLSX.utils.book_append_sheet(wb, ws, "Salary Data");
       XLSX.writeFile(wb, "SalaryData.xlsx");
     } catch (error) {
-      handleAlert(true, "error", "There is an issue with the server, please try again later");
+      handleAlert(
+        true,
+        "error",
+        "There is an issue with the server, please try again later"
+      );
     }
   };
 
   const mutation = useMutation(generateReport, {
-    onSuccess: () => handleAlert(true, "success", "Report Generated Successfully"),
-    onError: () => handleAlert(true, "error", "There is an issue with the server, please try again later"),
+    onSuccess: () =>
+      handleAlert(true, "success", "Report Generated Successfully"),
+    onError: () =>
+      handleAlert(
+        true,
+        "error",
+        "There is an issue with the server, please try again later"
+      ),
   });
 
   const currentYear = new Date().getFullYear();
@@ -228,10 +254,13 @@ const LineGraph = ({
   };
 
   return (
-    <div className="relative mb-6 h-[440px] bg-gradient-to-r from-green-50 via-green-100 to-green-200 p-4 rounded-lg shadow-md">
+    <div className="relative mb-6 h-[440px] border p-4 rounded-lg shadow-md">
       {isLoading ? (
         <div className="flex flex-col items-center justify-center p-4 rounded-lg shadow-md">
-          <h1  data-aos="fade-up" className="text-md font-semibold text-gray-700 mb-2">
+          <h1
+            data-aos="fade-up"
+            className="text-md font-semibold text-gray-700 mb-2"
+          >
             <Skeleton variant="text" width={140} height={20} />
           </h1>
           <div className="w-full h-48">
@@ -239,25 +268,26 @@ const LineGraph = ({
           </div>
         </div>
       ) : (
-        <div className="flex flex-col gap-2">
-          <div data-aos="fade-up" className="flex-col sm:flex-row sm:justify-between items-start gap-2 mb-2">
+        <div className="flex flex-col gap-2 ">
+          <div
+            data-aos="fade-up"
+            className="flex-col sm:flex-row sm:justify-between items-start gap-2 mb-2"
+          >
             <h1 className="text-xl font-bold text-gray-800">Salary Overview</h1>
             <p className="text-gray-600 text-xs">
               The chart below provides an overview of salary data.
             </p>
           </div>
           <div className="flex gap-2 items-center">
-            <motion.button
+            <Button
               onClick={() => mutation.mutate()}
               disabled={mutation.isLoading}
-              className={`flex items-center gap-1 px-2 py-2 text-sm rounded-md text-white bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 ${mutation.isLoading ? "cursor-not-allowed bg-gray-400 text-gray-700" : ""}`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               aria-label="Generate Excel Report"
+              variant="contained"
             >
               <FaFileExcel className="text-xs" />
               {mutation.isLoading ? "Generating..." : "Generate Report"}
-            </motion.button>
+            </Button>
             <Select
               placeholder={"Select year"}
               onChange={(year) => setSelectedYear(year)}
@@ -266,10 +296,9 @@ const LineGraph = ({
               value={selectedyear}
               options={yearOptions}
               data-aos="fade-up"
-              
             />
           </div>
-          <div  data-aos="fade-up" className=" relative w-full h-[300px]">
+          <div data-aos="fade-up" className=" relative w-full h-[300px]">
             <Line data={data} options={option} />
           </div>
         </div>

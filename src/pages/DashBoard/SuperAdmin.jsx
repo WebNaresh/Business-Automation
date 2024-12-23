@@ -8,16 +8,15 @@ import {
   LocationOn,
   NearMe,
   SupervisorAccount,
-
 } from "@mui/icons-material";
-import { IconButton, Popover } from "@mui/material";
+import { Button, IconButton, Popover } from "@mui/material";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { motion } from "framer-motion";
 import React, { useEffect } from "react";
 import { useQueryClient } from "react-query";
-import {  useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import Select from "react-select";
+import TempHeader from "../../components/header/TempHeader";
 import useDashGlobal from "../../hooks/Dashboard/useDashGlobal";
 import useDashboardFilter from "../../hooks/Dashboard/useDashboardFilter";
 import useEmployee from "../../hooks/Dashboard/useEmployee";
@@ -27,7 +26,6 @@ import AttendenceBar from "./Components/Bar/SuperAdmin/AttendenceBar";
 import SuperAdminCard from "./Components/Card/superadmin/SuperAdminCard";
 import SkeletonFilterSection from "./Components/Skeletons/SkeletonFilterSection";
 import useRemoteCount from "./hooks/useRemoteCount";
-import TempHeader from "../../components/header/TempHeader";
 
 const customSelectStyles = {
   control: (provided) => ({
@@ -127,18 +125,16 @@ const SuperAdmin = () => {
     //     </Link>
     //     Organisation Dashboard
     //   </header>
-    
+
     //TEMP UPDATE
-      <section className="p-2 mt-10 shadow-lg ">
-        <TempHeader
-          heading={"Organization Dashboard"}
-          oneLineInfo={
-            "Get insights of your organization's data with interactive charts and reports"
-          }
-        />
- <br />
-      
-    
+    <section className="p-2 mt-10 shadow-lg ">
+      <TempHeader
+        heading={"Organization Dashboard"}
+        oneLineInfo={
+          "Get insights of your organization's data with interactive charts and reports"
+        }
+      />
+      <br />
 
       <div className="md:px-8 px-2 w-full mt-2">
         <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 mt-6 w-full gap-2 md:gap-5">
@@ -215,14 +211,11 @@ const SuperAdmin = () => {
                 {/* <h1 className="text-md font-bold text-[#67748E]">Dashboard</h1> */}
               </div>
               <div className="w-[70%] md:hidden flex gap-6 items-center justify-end">
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
+                <div>
                   <IconButton onClick={handleClick}>
                     <FilterAlt />
                   </IconButton>
-                </motion.div>
+                </div>
               </div>
 
               <Popover
@@ -236,7 +229,7 @@ const SuperAdmin = () => {
                 }}
               >
                 <div className="w-full flex-col h-auto pr-10 p-4 flex gap-4">
-                  <motion.button
+                  <Button
                     onClick={() => {
                       setLocations("");
                       setDepartment("");
@@ -244,14 +237,10 @@ const SuperAdmin = () => {
                       queryClient.invalidateQueries("organization-attenedence");
                       queryClient.invalidateQueries("Org-Salary-overview");
                     }}
-                    className="!w-max flex justify-center h-[35px] gap-2 items-center rounded-md px-4 text-sm font-semibold text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    data-aos="fade-up"
                   >
                     <FilterAltOff className="!text-[1.4em] text-white" />
                     Remove Filter
-                  </motion.button>
+                  </Button>
 
                   <Select
                     placeholder={"Departments"}
@@ -314,21 +303,18 @@ const SuperAdmin = () => {
 
               {location.pathname?.includes("/super-admin") && (
                 <div className="w-[80%] hidden md:flex gap-6 items-center justify-end">
-                  <motion.button
+                  <Button
                     onClick={() => {
                       setLocations("");
                       setDepartment("");
                       setManager("");
                       queryClient.invalidateQueries("organization-attenedence");
                     }}
-                    className="!w-max flex justify-center h-[35px] gap-2 items-center rounded-md px-4 text-sm font-semibold text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    data-aos="fade-up"
+                    variant="contained"
                   >
                     <FilterAltOff className="!text-[1.4em] text-white" />
-                    Remove Filter
-                  </motion.button>
+                    Remove Filter One
+                  </Button>
 
                   <Select
                     placeholder={"Departments"}
