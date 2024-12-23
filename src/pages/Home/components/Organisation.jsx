@@ -133,7 +133,7 @@ const Organisation = ({ item }) => {
   return (
     <>
       <div
-        className=" border-b-[2px] border block min-w-[18rem] max-w-[20rem] rounded-md h-fit shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out relative"
+        className="border-b-[2px] border block min-w-[18rem] max-w-[20rem] rounded-md h-fit shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out relative"
         initial={{ scale: 1 }}
         whileHover={{ scale: 1.05 }}
         transition={{ type: "spring", stiffness: 200 }}
