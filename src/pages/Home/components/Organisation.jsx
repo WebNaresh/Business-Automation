@@ -20,7 +20,6 @@ import { useContext, useEffect, useState } from "react";
 import { FaArrowCircleRight } from "react-icons/fa";
 import { useQueryClient } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import { TestContext } from "../../../State/Function/Main";
 import { UseContext } from "../../../State/UseState/UseContext";
 import EditOrganisation from "./edit-organization";
@@ -55,13 +54,6 @@ const Organisation = ({ item }) => {
     setDeleteConfirmation(null);
     setEditConfirmation(null);
   };
-
-  const StyledTag = styled.div`
-    background-color: rgb(75 85 99);
-    &::after {
-      background-color: rgb(75 85 99);
-    }
-  `;
 
   const handleDelete = async (id) => {
     try {
