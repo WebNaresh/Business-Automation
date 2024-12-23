@@ -366,10 +366,12 @@ exports.acceptLeaveRequest = catchAssyncError(async (req, res, next) => {
     // Check if the user is a manager
     const user = await EmployeeModel.findOne({
       _id: userId,
-      profiles: { $in: ["Manager"] },
     });
 
-    if (user) {
+    if (
+      user?.profile.includes("Manager") ||
+      user?.profile.includes("Super-Admin")
+    ) {
       const leaveRequest = await AttendanceModel.updateOne(
         { _id: leaveRequestId },
         {
