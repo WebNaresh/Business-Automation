@@ -10,7 +10,7 @@ import useGetUser from "../../hooks/Token/useUser";
 import UserProfile from "../../hooks/UserData/useUser";
 import ProfileIcon from "../profieicon/profileIcon";
 import NotificationIcon from "./components/NotificationIcon";
-import TestNavItems from "./components/test-nav-items";
+import TestNavItems from "./components/nav-items";
 
 export default function SwipeableTemporaryDrawer() {
   const [open, setOpen] = React.useState(false);

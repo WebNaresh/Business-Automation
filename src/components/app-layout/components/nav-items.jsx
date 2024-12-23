@@ -51,7 +51,7 @@ import useGetUser from "../../../hooks/Token/useUser";
 import UserProfile from "../../../hooks/UserData/useUser";
 import useGetCommunicationPermission from "../../../pages/EmployeeSurvey/useContext/Permission";
 import useOrgGeo from "../../../pages/Geo-Fence/useOrgGeo";
-import TestAccordian from "./TestAccordian";
+import NavAccordion from "./NavAccordian";
 
 const TestNavItems = ({ toggleDrawer }) => {
   // to define the route and pass the dynamic organization id
@@ -180,6 +180,15 @@ const TestNavItems = ({ toggleDrawer }) => {
                 text: "Dashboard",
               },
             ],
+            isClickable: true,
+            link:
+              role === "Manager"
+                ? `/organisation/${orgId}/dashboard/manager-dashboard`
+                : role === "HR"
+                ? `/organisation/${orgId}/dashboard/HR-dashboard`
+                : role === "Employee"
+                ? `/organisation/${orgId}/dashboard/employee-dashboard`
+                : "/organizationList",
           },
 
           Attendence: {
@@ -493,6 +502,15 @@ const TestNavItems = ({ toggleDrawer }) => {
                 text: "Dashboard",
               },
             ],
+            isClickable: true,
+            link:
+              role === "Manager"
+                ? `/organisation/${orgId}/dashboard/manager-dashboard`
+                : role === "HR"
+                ? `/organisation/${orgId}/dashboard/HR-dashboard`
+                : role === "Employee"
+                ? `/organisation/${orgId}/dashboard/employee-dashboard`
+                : "/organizationList",
           },
 
           Attendence: {
@@ -1259,10 +1277,10 @@ const TestNavItems = ({ toggleDrawer }) => {
   return (
     <>
       {Object.keys(navItems).map((role, i) => {
-        const { icon, routes, isVisible } = navItems[role];
+        const { icon, routes, isVisible, isClickable } = navItems[role];
 
         return (
-          <TestAccordian
+          <NavAccordion
             key={i}
             role={role}
             icon={icon}
@@ -1270,6 +1288,7 @@ const TestNavItems = ({ toggleDrawer }) => {
             toggleDrawer={toggleDrawer}
             isVisible={isVisible}
             valueBoolean={navItems[role].open}
+            isClickable={isClickable}
           />
         );
       })}
