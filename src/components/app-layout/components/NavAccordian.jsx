@@ -10,6 +10,7 @@ const NavAccordion = ({
   valueBoolean,
   isVisible,
   isClickable = false,
+  link,
 }) => {
   const [open, setOpen] = useState(valueBoolean);
 
@@ -60,7 +61,7 @@ const NavAccordion = ({
       ) : (
         <Link
           onClick={() => toggleDrawer()}
-          to={routes.link}
+          to={link}
           className="rounded-md flex items-center gap-2 py-2 hover:bg-gray-100 hover:!text-white m-2 px-6"
         >
           <h1 className="py-1 font-semibold text-[#67748E]">{role}</h1>

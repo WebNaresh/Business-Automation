@@ -2,7 +2,6 @@ import {
   Business,
   Category,
   CircleNotifications,
-  CurrencyRupee,
   Dashboard,
   Description,
   Fingerprint,
@@ -18,8 +17,6 @@ import {
   PeopleAlt,
   PersonAdd,
   PersonRemove,
-  Settings,
-  SupervisorAccount,
   TrendingUp,
 } from "@mui/icons-material";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -34,7 +31,6 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import CallMissedIcon from "@mui/icons-material/CallMissed";
 import ChatIcon from "@mui/icons-material/Chat";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
-import HomeRepairServiceOutlinedIcon from "@mui/icons-material/HomeRepairServiceOutlined";
 import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
 import PunchClockIcon from "@mui/icons-material/PunchClock";
 import ReceiptIcon from "@mui/icons-material/Receipt";
@@ -160,7 +156,7 @@ const TestNavItems = ({ toggleDrawer }) => {
     () => {
       if (data?.organisation?.packageInfo === "Essential Plan") {
         return {
-          Home: {
+          Dashboard: {
             open: false,
             icon: <Category className=" !text-[1.2em] text-[#67748E]" />,
             isVisible: true,
@@ -220,188 +216,6 @@ const TestNavItems = ({ toggleDrawer }) => {
                   <AccessTimeOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
                 ),
                 text: "Employee Attendance",
-              },
-            ],
-          },
-          "Self Help": {
-            open: true,
-            icon: <Category className=" !text-[1.2em] text-[#67748E]" />,
-            isVisible: true,
-            routes: [
-              {
-                key: "accountSettings",
-                isVisible: true,
-                link: `/employee-profile`,
-                icon: <Settings className="text-[#67748E]" />,
-                text: "Account Settings",
-              },
-              {
-                key: "billing",
-                isVisible: ["Super-Admin", "Delegate-Super-Admin"].includes(
-                  role
-                )
-                  ? true
-                  : false,
-                link: `/billing`,
-                icon: <CurrencyRupee className="text-[#67748E]" />,
-                text: "Billing",
-              },
-              {
-                key: "add-delegate-super-admin",
-                isVisible: ["Super-Admin"].includes(role) ? true : false,
-                link: `/organisation/${orgId}/add-delegate`,
-                icon: <SupervisorAccount className="text-[#67748E]" />,
-                text: "Add Delegate Super Admin",
-              },
-              {
-                key: "shiftManagement",
-                isVisible: ["Employee"].includes(role),
-                link: "/shift-management",
-                icon: (
-                  <HomeRepairServiceOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
-                ),
-                text: "Shift Management",
-              },
-            ],
-          },
-          Payroll: {
-            open: false,
-            isVisible: true,
-            icon: <Payment className=" !text-[1.2em] text-[#67748E]" />,
-            routes: [
-              {
-                key: "payslip",
-                isVisible: true,
-                link: `/organisation/${orgId}/view-payslip`,
-                icon: <ListAlt className=" !text-[1.2em] text-[#67748E]" />,
-                text: "Pay Slip",
-              },
-
-              {
-                key: "createsalary",
-                isVisible:
-                  isVisible &&
-                  [
-                    "Super-Admin",
-                    "Delegate-Super-Admin",
-                    "HR",
-                    "Accountant",
-                    "Delegate-Super-Admin",
-                  ].includes(role),
-                link: `/organisation/${orgId}/salary-management`,
-                icon: (
-                  <AccountBalanceWalletOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
-                ),
-                text: "Salary Management",
-              },
-            ],
-          },
-          Employee: {
-            open: false,
-            icon: <PeopleAlt className=" !text-[1.2em] text-[#67748E]" />,
-            isVisible:
-              window.location.pathname?.includes("organisation") &&
-              [
-                "Super-Admin",
-                "Delegate-Super-Admin",
-                "Delegate-Super-Admin",
-                "Department-Head",
-                "Delegate-Department-Head",
-                "Department-Admin",
-                "Delegate-Department-Admin",
-                "Accountant",
-                "Delegate-Accountant",
-                "HR",
-                "Manager",
-                "Employee",
-              ]?.includes(role),
-            routes: [
-              {
-                key: "onboarding",
-                isVisible: [
-                  "Super-Admin",
-                  "Delegate-Super-Admin",
-                  "HR",
-                  "Delegate-Super-Admin",
-                ].includes(role),
-                link: `/organisation/${orgId}/employee-onboarding`,
-                icon: <PersonAdd className=" !text-[1.2em] text-[#67748E]" />,
-                text: "Onboarding",
-              },
-              {
-                key: "offboarding",
-                isVisible: [
-                  "Super-Admin",
-                  "Delegate-Super-Admin",
-                  "HR",
-                  "Delegate-Super-Admin",
-                ].includes(role),
-                link: `/organisation/${orgId}/employee-offboarding`,
-                icon: (
-                  <PersonRemove className=" !text-[1.2em] text-[#67748E]" />
-                ),
-                text: "Offboarding",
-              },
-              {
-                key: "employeeList",
-                isVisible: [
-                  "Super-Admin",
-                  "Delegate-Super-Admin",
-                  "Delegate-Super-Admin",
-                  "Department-Head",
-                  "Delegate-Department-Head",
-                  "Department-Admin",
-                  "Delegate-Department-Admin",
-                  "Accountant",
-                  "Delegate-Accountant",
-                  "HR",
-                  "Manager",
-                  "Employee",
-                ].includes(role),
-                link: `/organisation/${orgId}/employee-list`,
-                icon: <Groups className=" !text-[1.2em] text-[#67748E]" />,
-                text: "Employee List",
-              },
-            ],
-          },
-          Organisation: {
-            open: false,
-            isVisible: ["Super-Admin", "Delegate-Super-Admin"].includes(role),
-            icon: <MonetizationOn className=" !text-[1.2em] text-[#67748E]" />,
-            routes: [
-              {
-                key: "addOrganisation",
-                isVisible: ["Super-Admin", "Delegate-Super-Admin"].includes(
-                  role
-                ),
-                link: "/add-organisation",
-                icon: (
-                  <BusinessOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
-                ),
-                text: "Add Organisation",
-              },
-
-              {
-                key: "organisationList",
-                isVisible: ["Super-Admin", "Delegate-Super-Admin"].includes(
-                  role
-                ),
-                link: "/organizationList",
-                icon: (
-                  <AccountTreeOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
-                ),
-                text: "Organisation List",
-              },
-              {
-                key: "organisationList",
-                isVisible: ["Super-Admin", "Delegate-Super-Admin"].includes(
-                  role
-                ),
-                link: `/organisation/${orgId}/organisation-hierarchy`,
-                icon: (
-                  <AccountTreeOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
-                ),
-                text: "Organisation Hierarchy",
               },
             ],
           },
@@ -479,10 +293,152 @@ const TestNavItems = ({ toggleDrawer }) => {
               },
             ],
           },
+          Employee: {
+            open: false,
+            icon: <PeopleAlt className=" !text-[1.2em] text-[#67748E]" />,
+            isVisible:
+              window.location.pathname?.includes("organisation") &&
+              [
+                "Super-Admin",
+                "Delegate-Super-Admin",
+                "Delegate-Super-Admin",
+                "Department-Head",
+                "Delegate-Department-Head",
+                "Department-Admin",
+                "Delegate-Department-Admin",
+                "Accountant",
+                "Delegate-Accountant",
+                "HR",
+                "Manager",
+                "Employee",
+              ]?.includes(role),
+            routes: [
+              {
+                key: "onboarding",
+                isVisible: [
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "HR",
+                  "Delegate-Super-Admin",
+                ].includes(role),
+                link: `/organisation/${orgId}/employee-onboarding`,
+                icon: <PersonAdd className=" !text-[1.2em] text-[#67748E]" />,
+                text: "Onboarding",
+              },
+              {
+                key: "offboarding",
+                isVisible: [
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "HR",
+                  "Delegate-Super-Admin",
+                ].includes(role),
+                link: `/organisation/${orgId}/employee-offboarding`,
+                icon: (
+                  <PersonRemove className=" !text-[1.2em] text-[#67748E]" />
+                ),
+                text: "Offboarding",
+              },
+              {
+                key: "employeeList",
+                isVisible: [
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "Delegate-Super-Admin",
+                  "Department-Head",
+                  "Delegate-Department-Head",
+                  "Department-Admin",
+                  "Delegate-Department-Admin",
+                  "Accountant",
+                  "Delegate-Accountant",
+                  "HR",
+                  "Manager",
+                  "Employee",
+                ].includes(role),
+                link: `/organisation/${orgId}/employee-list`,
+                icon: <Groups className=" !text-[1.2em] text-[#67748E]" />,
+                text: "Employee List",
+              },
+            ],
+          },
+          Payroll: {
+            open: false,
+            isVisible: true,
+            icon: <Payment className=" !text-[1.2em] text-[#67748E]" />,
+            routes: [
+              {
+                key: "payslip",
+                isVisible: true,
+                link: `/organisation/${orgId}/view-payslip`,
+                icon: <ListAlt className=" !text-[1.2em] text-[#67748E]" />,
+                text: "Pay Slip",
+              },
+
+              {
+                key: "createsalary",
+                isVisible:
+                  isVisible &&
+                  [
+                    "Super-Admin",
+                    "Delegate-Super-Admin",
+                    "HR",
+                    "Accountant",
+                    "Delegate-Super-Admin",
+                  ].includes(role),
+                link: `/organisation/${orgId}/salary-management`,
+                icon: (
+                  <AccountBalanceWalletOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
+                ),
+                text: "Salary Management",
+              },
+            ],
+          },
+
+          Organisation: {
+            open: false,
+            isVisible: ["Super-Admin", "Delegate-Super-Admin"].includes(role),
+            icon: <MonetizationOn className=" !text-[1.2em] text-[#67748E]" />,
+            routes: [
+              {
+                key: "addOrganisation",
+                isVisible: ["Super-Admin", "Delegate-Super-Admin"].includes(
+                  role
+                ),
+                link: "/add-organisation",
+                icon: (
+                  <BusinessOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
+                ),
+                text: "Add Organisation",
+              },
+
+              {
+                key: "organisationList",
+                isVisible: ["Super-Admin", "Delegate-Super-Admin"].includes(
+                  role
+                ),
+                link: "/organizationList",
+                icon: (
+                  <AccountTreeOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
+                ),
+                text: "Organisation List",
+              },
+              {
+                key: "organisationList",
+                isVisible: ["Super-Admin", "Delegate-Super-Admin"].includes(
+                  role
+                ),
+                link: `/organisation/${orgId}/organisation-hierarchy`,
+                icon: (
+                  <AccountTreeOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
+                ),
+                text: "Organisation Hierarchy",
+              },
+            ],
+          },
         };
       } else {
         return {
-          Home: {
+          Dashboard: {
             open: false,
             icon: <Category className=" !text-[1.2em] text-[#67748E]" />,
             isVisible: true,
@@ -543,48 +499,6 @@ const TestNavItems = ({ toggleDrawer }) => {
               },
             ],
           },
-          "Self Help": {
-            open: true,
-            icon: <Category className=" !text-[1.2em] text-[#67748E]" />,
-            isVisible: true,
-            routes: [
-              {
-                key: "accountSettings",
-                isVisible: true,
-                link: `/employee-profile`,
-                icon: <Settings className="text-[#67748E]" />,
-                text: "Account Settings",
-              },
-              {
-                key: "billing",
-                isVisible: ["Super-Admin", "Delegate-Super-Admin"].includes(
-                  role
-                )
-                  ? true
-                  : false,
-                link: `/billing`,
-                icon: <CurrencyRupee className="text-[#67748E]" />,
-                text: "Billing",
-              },
-              {
-                key: "add-delegate-super-admin",
-                isVisible: ["Super-Admin"].includes(role) ? true : false,
-                link: `/organisation/${orgId}/add-delegate`,
-                icon: <SupervisorAccount className="text-[#67748E]" />,
-                text: "Add Delegate Super Admin",
-              },
-              {
-                key: "shiftManagement",
-                isVisible: ["Employee"].includes(role),
-                link: "/shift-management",
-                icon: (
-                  <HomeRepairServiceOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
-                ),
-                text: "Shift Management",
-              },
-            ],
-          },
-
           Report: {
             open: false,
             isVisible:
@@ -626,6 +540,148 @@ const TestNavItems = ({ toggleDrawer }) => {
                   <CircleNotifications className=" !text-[1.2em] text-[#67748E]" />
                 ),
                 text: "Notifications",
+              },
+            ],
+          },
+          Department: {
+            open: false,
+            isVisible:
+              window.location.pathname.includes("organisation") &&
+              [
+                "Super-Admin",
+                "Delegate-Super-Admin",
+                "Delegate-Super-Admin",
+                "HR",
+                "Department-Head",
+                "Delegate-Department-Head",
+                "Department-Admin",
+                "Delegate-Department-Admin",
+              ].includes(role),
+            // : false
+            icon: <Business className=" !text-[1.2em] text-[#67748E]" />,
+            routes: [
+              {
+                key: "addDepartment",
+                isVisible: [
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "Delegate-Super-Admin",
+                  "HR",
+                  "Department-Head",
+                  "Delegate-Department-Head",
+                  "Department-Admin",
+                  "Delegate-Department-Admin",
+                ].includes(role),
+                link: `/organisation/${orgId}/add-department`,
+                icon: (
+                  <AddCircleOutlineOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
+                ),
+                text: "Add Department",
+              },
+
+              {
+                key: "deptDeletion",
+                isVisible: [
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "Delegate-Super-Admin",
+                  "HR",
+                  "Department-Head",
+                  "Delegate-Department-Head",
+                  "Department-Admin",
+                  "Delegate-Department-Admin",
+                ].includes(role),
+                link: `/organisation/${orgId}/dept-deletion`,
+                icon: (
+                  <DeleteForeverOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
+                ),
+                text: "Delete Department",
+              },
+              {
+                key: "departmentList",
+                isVisible: [
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "Delegate-Super-Admin",
+                  "HR",
+                  "Department-Head",
+                  "Delegate-Department-Head",
+                  "Department-Admin",
+                  "Delegate-Department-Admin",
+                ].includes(role),
+                link: `/organisation/${orgId}/department-list`,
+                icon: (
+                  <ListAltOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
+                ),
+                text: "Manage Department",
+              },
+            ],
+          },
+          Employee: {
+            open: false,
+            icon: <PeopleAlt className=" !text-[1.2em] text-[#67748E]" />,
+            isVisible:
+              window.location.pathname?.includes("organisation") &&
+              [
+                "Super-Admin",
+                "Delegate-Super-Admin",
+                "Delegate-Super-Admin",
+                "Department-Head",
+                "Delegate-Department-Head",
+                "Department-Admin",
+                "Delegate-Department-Admin",
+                "Accountant",
+                "Delegate-Accountant",
+                "HR",
+                "Manager",
+                "Employee",
+              ]?.includes(role),
+            routes: [
+              {
+                key: "onboarding",
+                isVisible: [
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "HR",
+                  "Delegate-Super-Admin",
+                ].includes(role),
+                link: `/organisation/${orgId}/employee-onboarding`,
+                icon: <PersonAdd className=" !text-[1.2em] text-[#67748E]" />,
+                text: "Onboarding",
+              },
+              {
+                key: "offboarding",
+                isVisible: [
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "HR",
+                  "Delegate-Super-Admin",
+                ].includes(role),
+                link: `/organisation/${orgId}/employee-offboarding`,
+                icon: (
+                  <PersonRemove className=" !text-[1.2em] text-[#67748E]" />
+                ),
+                text: "Offboarding",
+              },
+              {
+                key: "employeeList",
+                isVisible: [
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "Delegate-Super-Admin",
+                  "Department-Head",
+                  "Delegate-Department-Head",
+                  "Department-Admin",
+                  "Delegate-Department-Admin",
+                  "Accountant",
+                  "Delegate-Accountant",
+                  "HR",
+                  "Manager",
+                  "Employee",
+                ].includes(role),
+                link: `/organisation/${orgId}/employee-list`,
+                icon: <Groups className=" !text-[1.2em] text-[#67748E]" />,
+                text: "Employee List",
               },
             ],
           },
@@ -738,74 +794,7 @@ const TestNavItems = ({ toggleDrawer }) => {
               },
             ],
           },
-          Employee: {
-            open: false,
-            icon: <PeopleAlt className=" !text-[1.2em] text-[#67748E]" />,
-            isVisible:
-              window.location.pathname?.includes("organisation") &&
-              [
-                "Super-Admin",
-                "Delegate-Super-Admin",
-                "Delegate-Super-Admin",
-                "Department-Head",
-                "Delegate-Department-Head",
-                "Department-Admin",
-                "Delegate-Department-Admin",
-                "Accountant",
-                "Delegate-Accountant",
-                "HR",
-                "Manager",
-                "Employee",
-              ]?.includes(role),
-            routes: [
-              {
-                key: "onboarding",
-                isVisible: [
-                  "Super-Admin",
-                  "Delegate-Super-Admin",
-                  "HR",
-                  "Delegate-Super-Admin",
-                ].includes(role),
-                link: `/organisation/${orgId}/employee-onboarding`,
-                icon: <PersonAdd className=" !text-[1.2em] text-[#67748E]" />,
-                text: "Onboarding",
-              },
-              {
-                key: "offboarding",
-                isVisible: [
-                  "Super-Admin",
-                  "Delegate-Super-Admin",
-                  "HR",
-                  "Delegate-Super-Admin",
-                ].includes(role),
-                link: `/organisation/${orgId}/employee-offboarding`,
-                icon: (
-                  <PersonRemove className=" !text-[1.2em] text-[#67748E]" />
-                ),
-                text: "Offboarding",
-              },
-              {
-                key: "employeeList",
-                isVisible: [
-                  "Super-Admin",
-                  "Delegate-Super-Admin",
-                  "Delegate-Super-Admin",
-                  "Department-Head",
-                  "Delegate-Department-Head",
-                  "Department-Admin",
-                  "Delegate-Department-Admin",
-                  "Accountant",
-                  "Delegate-Accountant",
-                  "HR",
-                  "Manager",
-                  "Employee",
-                ].includes(role),
-                link: `/organisation/${orgId}/employee-list`,
-                icon: <Groups className=" !text-[1.2em] text-[#67748E]" />,
-                text: "Employee List",
-              },
-            ],
-          },
+
           "Machine Punching": {
             open: false,
             icon: <PeopleAlt className=" !text-[1.2em] text-[#67748E]" />,
@@ -885,80 +874,7 @@ const TestNavItems = ({ toggleDrawer }) => {
               },
             ],
           },
-          Department: {
-            open: false,
-            isVisible:
-              window.location.pathname.includes("organisation") &&
-              [
-                "Super-Admin",
-                "Delegate-Super-Admin",
-                "Delegate-Super-Admin",
-                "HR",
-                "Department-Head",
-                "Delegate-Department-Head",
-                "Department-Admin",
-                "Delegate-Department-Admin",
-              ].includes(role),
-            // : false
-            icon: <Business className=" !text-[1.2em] text-[#67748E]" />,
-            routes: [
-              {
-                key: "addDepartment",
-                isVisible: [
-                  "Super-Admin",
-                  "Delegate-Super-Admin",
-                  "Delegate-Super-Admin",
-                  "HR",
-                  "Department-Head",
-                  "Delegate-Department-Head",
-                  "Department-Admin",
-                  "Delegate-Department-Admin",
-                ].includes(role),
-                link: `/organisation/${orgId}/add-department`,
-                icon: (
-                  <AddCircleOutlineOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
-                ),
-                text: "Add Department",
-              },
 
-              {
-                key: "deptDeletion",
-                isVisible: [
-                  "Super-Admin",
-                  "Delegate-Super-Admin",
-                  "Delegate-Super-Admin",
-                  "HR",
-                  "Department-Head",
-                  "Delegate-Department-Head",
-                  "Department-Admin",
-                  "Delegate-Department-Admin",
-                ].includes(role),
-                link: `/organisation/${orgId}/dept-deletion`,
-                icon: (
-                  <DeleteForeverOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
-                ),
-                text: "Delete Department",
-              },
-              {
-                key: "departmentList",
-                isVisible: [
-                  "Super-Admin",
-                  "Delegate-Super-Admin",
-                  "Delegate-Super-Admin",
-                  "HR",
-                  "Department-Head",
-                  "Delegate-Department-Head",
-                  "Department-Admin",
-                  "Delegate-Department-Admin",
-                ].includes(role),
-                link: `/organisation/${orgId}/department-list`,
-                icon: (
-                  <ListAltOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
-                ),
-                text: "Manage Department",
-              },
-            ],
-          },
           Recruitment: {
             open: false,
             icon: <PeopleAlt className=" !text-[1.2em] text-[#67748E]" />,
@@ -1277,7 +1193,7 @@ const TestNavItems = ({ toggleDrawer }) => {
   return (
     <>
       {Object.keys(navItems).map((role, i) => {
-        const { icon, routes, isVisible, isClickable } = navItems[role];
+        const { icon, routes, isVisible, isClickable, link } = navItems[role];
 
         return (
           <NavAccordion
@@ -1289,6 +1205,7 @@ const TestNavItems = ({ toggleDrawer }) => {
             isVisible={isVisible}
             valueBoolean={navItems[role].open}
             isClickable={isClickable}
+            link={link}
           />
         );
       })}
