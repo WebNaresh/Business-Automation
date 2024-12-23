@@ -40,6 +40,7 @@ import { SiMicrosoftexcel } from "react-icons/si";
 import { useQueryClient } from "react-query";
 import { useLocation } from "react-router-dom";
 import { UseContext } from "../../../State/UseState/UseContext";
+import useOrgList from "../../../hooks/QueryHook/Orglist/hook";
 import useSubscriptionGet from "../../../hooks/QueryHook/Subscription/hook";
 import useGetUser from "../../../hooks/Token/useUser";
 import UserProfile from "../../../hooks/UserData/useUser";
@@ -61,6 +62,8 @@ const TestNavItems = ({ toggleDrawer }) => {
   const empId = user?._id;
   const role = useGetCurrentRole();
   const queryClient = useQueryClient();
+  const { data: org_list, isLoading, refetch } = useOrgList();
+  console.log(`🚀 ~ file: nav-items.jsx:66 ~ org_list:`, org_list);
 
   //_--------------------geofencing---------------
   //selected employee list for geofencing
@@ -70,8 +73,6 @@ const TestNavItems = ({ toggleDrawer }) => {
   const isUserMatchInEmployeeList = geofencingData?.area?.some((area) =>
     area.employee.includes(empId)
   );
-
-  //////////////////////////////////////////////////
 
   // Update organization ID when URL changes
   useEffect(() => {
@@ -140,6 +141,7 @@ const TestNavItems = ({ toggleDrawer }) => {
     // eslint-disable-next-line
   }, [location.pathname]);
 
+  console.log(`🚀 ~ file: nav-items.jsx:136 ~ role:`, role === "Super-Admin");
   const [isVisible, setisVisible] = useState(true);
 
   useEffect(() => {
@@ -182,6 +184,8 @@ const TestNavItems = ({ toggleDrawer }) => {
                 ? `/organisation/${orgId}/dashboard/HR-dashboard`
                 : role === "Employee"
                 ? `/organisation/${orgId}/dashboard/employee-dashboard`
+                : role === "Super-Admin"
+                ? `/organisation/${orgId}/dashboard/super-admin`
                 : "/organizationList",
           },
 
@@ -464,6 +468,8 @@ const TestNavItems = ({ toggleDrawer }) => {
                 ? `/organisation/${orgId}/dashboard/HR-dashboard`
                 : role === "Employee"
                 ? `/organisation/${orgId}/dashboard/employee-dashboard`
+                : role === "Super-Admin"
+                ? `/organisation/${orgId}/dashboard/super-admin`
                 : "/organizationList",
           },
 

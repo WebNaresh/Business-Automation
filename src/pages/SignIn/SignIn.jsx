@@ -100,7 +100,9 @@ const SignIn = () => {
             role: "Super-Admin",
             email: response.data.user?.email,
           });
-          return redirect("/organizationList");
+          return redirect(
+            `/organisation/${response?.data?.user?.organizationId}/dashboard/super-admin`
+          );
         } else if (
           response.data.user?.profile?.includes("Delegate-Super-Admin")
         ) {
