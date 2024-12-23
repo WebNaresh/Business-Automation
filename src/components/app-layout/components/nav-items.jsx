@@ -62,8 +62,7 @@ const TestNavItems = ({ toggleDrawer }) => {
   const empId = user?._id;
   const role = useGetCurrentRole();
   const queryClient = useQueryClient();
-  const { data: org_list, isLoading, refetch } = useOrgList();
-  console.log(`🚀 ~ file: nav-items.jsx:66 ~ org_list:`, org_list);
+  const { data: org_list } = useOrgList();
 
   //_--------------------geofencing---------------
   //selected employee list for geofencing
@@ -124,7 +123,6 @@ const TestNavItems = ({ toggleDrawer }) => {
   const { data } = useSubscriptionGet({
     organisationId: orgId,
   });
-  console.log("data", data);
 
   //git communication employee survey permission
   const organisationId = data?.organisation?._id;
