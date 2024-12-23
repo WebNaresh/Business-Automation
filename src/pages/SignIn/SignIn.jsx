@@ -364,18 +364,7 @@ const SignIn = () => {
               </Link>
             </div>
 
-            <GoogleButton
-              // className="items-center rounded-md h-[30px] w-[400px] px-4 py-3 text-md font-semibold text-white bg-blue-500 hover:bg-blue-500 focus-visible:outline-blue-500"
-              type="dark" // can be light or dark
-              onClick={googleLogin}
-              style={{
-                width: "400px",
-                height: "40px",
-                paddingTop: "-10px",
-                paddingBottom: "-10px",
-              }}
-              // style={{ width: '400px', height:"50px",borderRadius:"5px"  }}
-            />
+           
           </form>
         </article>
       </section>

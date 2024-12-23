@@ -11,6 +11,7 @@ import {
   LocationOn,
   ModelTrainingOutlined,
   MonetizationOn,
+  MonetizationOnOutlined,
   NotificationsActive,
   PanToolAlt,
   Payment,
@@ -128,11 +129,7 @@ const TestNavItems = ({ toggleDrawer }) => {
   const { data } = useSubscriptionGet({
     organisationId: orgId,
   });
-  console.log(
-    "data",
-    ["HR", "Super-Admin", "Delegate-Super-Admin"].includes(role) &&
-      window.location.pathname?.includes("organisation")
-  );
+  console.log("data", data);
 
   //git communication employee survey permission
   const organisationId = data?.organisation?._id;
@@ -161,9 +158,9 @@ const TestNavItems = ({ toggleDrawer }) => {
 
   let navItems = useMemo(
     () => {
-      if (data) {
+      if (data?.organisation?.packageInfo === "Essential Plan") {
         return {
-          Dashboard: {
+          Home: {
             open: false,
             icon: <Category className=" !text-[1.2em] text-[#67748E]" />,
             isVisible: true,
@@ -214,6 +211,47 @@ const TestNavItems = ({ toggleDrawer }) => {
                   <AccessTimeOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
                 ),
                 text: "Employee Attendance",
+              },
+            ],
+          },
+          "Self Help": {
+            open: true,
+            icon: <Category className=" !text-[1.2em] text-[#67748E]" />,
+            isVisible: true,
+            routes: [
+              {
+                key: "accountSettings",
+                isVisible: true,
+                link: `/employee-profile`,
+                icon: <Settings className="text-[#67748E]" />,
+                text: "Account Settings",
+              },
+              {
+                key: "billing",
+                isVisible: ["Super-Admin", "Delegate-Super-Admin"].includes(
+                  role
+                )
+                  ? true
+                  : false,
+                link: `/billing`,
+                icon: <CurrencyRupee className="text-[#67748E]" />,
+                text: "Billing",
+              },
+              {
+                key: "add-delegate-super-admin",
+                isVisible: ["Super-Admin"].includes(role) ? true : false,
+                link: `/organisation/${orgId}/add-delegate`,
+                icon: <SupervisorAccount className="text-[#67748E]" />,
+                text: "Add Delegate Super Admin",
+              },
+              {
+                key: "shiftManagement",
+                isVisible: ["Employee"].includes(role),
+                link: "/shift-management",
+                icon: (
+                  <HomeRepairServiceOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
+                ),
+                text: "Shift Management",
               },
             ],
           },
@@ -575,20 +613,23 @@ const TestNavItems = ({ toggleDrawer }) => {
           },
           Performance: {
             open: false,
-            isVisible: [
-              "Super-Admin",
-              "Delegate-Super-Admin",
-              "Delegate-Super-Admin",
-              "Department-Head",
-              "Delegate-Department-Head",
-              "Department-Admin",
-              "Delegate-Department-Admin",
-              "Accountant",
-              "Delegate-Accountant",
-              "HR",
-              "Manager",
-              "Employee",
-            ]?.includes(role),
+            isVisible:
+              data?.organisation?.packageInfo === "Intermediate Plan" &&
+              window.location.pathname?.includes("organisation") &&
+              [
+                "Super-Admin",
+                "Delegate-Super-Admin",
+                "Delegate-Super-Admin",
+                "Department-Head",
+                "Delegate-Department-Head",
+                "Department-Admin",
+                "Delegate-Department-Admin",
+                "Accountant",
+                "Delegate-Accountant",
+                "HR",
+                "Manager",
+                "Employee",
+              ]?.includes(role),
             icon: <Payment className=" !text-[1.2em] text-[#67748E]" />,
             routes: [
               {
@@ -658,6 +699,24 @@ const TestNavItems = ({ toggleDrawer }) => {
                   <AccountBalanceWalletOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
                 ),
                 text: "Salary Management",
+              },
+              {
+                key: "loanmanagement",
+                isVisible: true,
+                link: `/organisation/${orgId}/add-loan`,
+                icon: (
+                  <MonetizationOnOutlined className=" !text-[1.2em] text-[#67748E]" />
+                ),
+                text: "Loan Management",
+              },
+              {
+                key: "advanceSalary",
+                isVisible: true,
+                link: `/organisation/${orgId}/advance-salary`,
+                icon: (
+                  <MonetizationOnOutlined className=" !text-[1.2em] text-[#67748E]" />
+                ),
+                text: "Advance Salary",
               },
             ],
           },
@@ -1031,20 +1090,29 @@ const TestNavItems = ({ toggleDrawer }) => {
           "Remote Punch": {
             open: false,
             isVisible:
-              (["Employee"].includes(role) && !isUserMatchInEmployeeList) ||
-              ["Super-Admin", "Manager", "Delegate-Super-Admin", "HR"].includes(
-                role
-              ),
+              ((["Employee"].includes(role) && !isUserMatchInEmployeeList) ||
+                ([
+                  "Super-Admin",
+                  "Manager",
+                  "Delegate-Super-Admin",
+                  "HR",
+                ].includes(role) &&
+                  data?.organisation?.packageInfo === "Enterprise Plan")) &&
+              (data?.organisation?.packageInfo === "Intermediate Plan" ||
+                data?.organisation?.packageInfo === "Enterprise Plan"),
             icon: <MonetizationOn className=" !text-[1.2em] text-[#67748E]" />,
             routes: [
               {
                 key: "addRemoteVisitTask",
-                isVisible: [
-                  "Super-Admin",
-                  "Manager",
-                  "HR",
-                  "Delegate-Super-Admin",
-                ].includes(role),
+                isVisible:
+                  [
+                    "Super-Admin",
+                    "Manager",
+                    "HR",
+                    "Delegate-Super-Admin",
+                  ].includes(role) &&
+                  data?.organisation?.packageInfo === "Enterprise Plan" &&
+                  data?.organisation?.packages.includes("Remote Task"),
                 link: `/organisation/${orgId}/remote-punching-tasks`,
                 icon: (
                   <AssignmentIcon className=" !text-[1.2em] text-[#67748E]" />
@@ -1073,7 +1141,11 @@ const TestNavItems = ({ toggleDrawer }) => {
             open: false,
             isVisible:
               (["Employee"].includes(role) && isUserMatchInEmployeeList) ||
-              ["Manager", "Super-Admin", "Delegate-Super-Admin"].includes(role),
+              (["Manager", "Super-Admin", "Delegate-Super-Admin"].includes(
+                role
+              ) &&
+                (data?.organisation?.packageInfo === "Intermediate Plan" ||
+                  data?.organisation?.packageInfo === "Enterprise Plan")),
             icon: <MonetizationOn className=" !text-[1.2em] text-[#67748E]" />,
             routes: [
               {
@@ -1130,7 +1202,7 @@ const TestNavItems = ({ toggleDrawer }) => {
 
           Training: {
             open: false,
-            isVisible: true,
+            isVisible: data?.organisation?.packageInfo === "Intermediate Plan",
             icon: <MonetizationOn className=" !text-[1.2em] text-[#67748E]" />,
             routes: [
               {
