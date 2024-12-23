@@ -8,7 +8,6 @@ import { useLocation } from "react-router-dom";
 import useSubscriptionGet from "../../hooks/QueryHook/Subscription/hook";
 import useGetUser from "../../hooks/Token/useUser";
 import UserProfile from "../../hooks/UserData/useUser";
-import ChangeRole from "../InputFileds/ChangeRole";
 import ProfileIcon from "../profieicon/profileIcon";
 import NotificationIcon from "./components/NotificationIcon";
 import TestNavItems from "./components/test-nav-items";
@@ -155,7 +154,6 @@ export default function SwipeableTemporaryDrawer() {
             className="w-[4.3rem] h-[2.3rem] -mt-1   object-cover text-white mix-blend-multiply"
           />
         </div>
-        <ChangeRole />
         {list}
       </SwipeableDrawer>
     </div>

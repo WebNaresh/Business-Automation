@@ -31,11 +31,7 @@ const Shifts = () => {
                   </p>
                 </div>
               </div>
-              <Button
-                className="!font-semibold !bg-sky-500 flex items-center gap-2"
-                onClick={() => setOpen(true)}
-                variant="contained"
-              >
+              <Button onClick={() => setOpen(true)} variant="contained">
                 <Add className="!text-md" />
                 Add Shift
               </Button>

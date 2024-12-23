@@ -63,11 +63,7 @@ const LeaveTypes = ({ open, handleClose, id }) => {
                 </p>
               </div>
             </div>
-            <Button
-              className="!bg-[#0ea5e9]"
-              variant="contained"
-              onClick={handleCreateLeave}
-            >
+            <Button variant="contained" onClick={handleCreateLeave}>
               <Add />
               Add Leave
             </Button>

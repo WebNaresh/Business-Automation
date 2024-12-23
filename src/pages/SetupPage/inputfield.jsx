@@ -1,5 +1,5 @@
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import { Checkbox, FormControlLabel } from "@mui/material";
+import { Button, Checkbox, FormControlLabel } from "@mui/material";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
@@ -110,12 +110,9 @@ const Inputfield = () => {
               ))}
             </div>
             <div className="w-full px-4 py-2 mt-2">
-              <button
-                onClick={sendRequestToBackend}
-                className="flex justify-center rounded-md px-3 py-2 text-sm font-semibold text-white bg-sky-500 hover:bg-sky-600 focus-visible:outline-sky-600 w-full lg:w-auto"
-              >
+              <Button variant="contained" onClick={sendRequestToBackend}>
                 Submit
-              </button>
+              </Button>
             </div>
           </div>
         </Setup>

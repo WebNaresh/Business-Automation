@@ -155,11 +155,7 @@ const PublicHoliday = () => {
                 </p>
               </div>
             </div>
-            <Button
-              className="!font-semibold !bg-sky-500 flex items-center gap-2"
-              variant="contained"
-              onClick={() => setOpenModal(true)}
-            >
+            <Button variant="contained" onClick={() => setOpenModal(true)}>
               Add Holiday
             </Button>
           </div>

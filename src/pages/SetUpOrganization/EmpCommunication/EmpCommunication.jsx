@@ -2,6 +2,7 @@ import { Add, Info } from "@mui/icons-material";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import GroupIcon from "@mui/icons-material/Group";
 import {
   Button,
   Dialog,
@@ -18,10 +19,9 @@ import { TestContext } from "../../../State/Function/Main";
 import { UseContext } from "../../../State/UseState/UseContext";
 import AddCommunicationModal from "../../../components/Modal/CommunicationModal/AddCommunicationModal";
 import EditCommunicationModal from "../../../components/Modal/CommunicationModal/EditCommunicationModal";
+import useGetCommunicationPermission from "../../EmployeeSurvey/useContext/Permission";
 import Setup from "../Setup";
 import EmployeeTypeSkeleton from "../components/EmployeeTypeSkeleton";
-import useGetCommunicationPermission from "../../EmployeeSurvey/useContext/Permission";
-import GroupIcon from '@mui/icons-material/Group';
 
 const EmpCommunication = () => {
   //Hooks
@@ -35,8 +35,9 @@ const EmpCommunication = () => {
   //Get organisationId
   const { organisationId } = useParams();
   console.log("organisationId././", organisationId);
-  //Get Communication Permission 
-  const { data, surveyPermission, setSurveyPermission } = useGetCommunicationPermission(organisationId)
+  //Get Communication Permission
+  const { data, surveyPermission, setSurveyPermission } =
+    useGetCommunicationPermission(organisationId);
 
   useEffect(() => {
     if (data !== undefined) {
@@ -61,8 +62,14 @@ const EmpCommunication = () => {
     {
       onSuccess: async () => {
         await queryClient.invalidateQueries("survey-permission");
-        handleAlert(true, "success", data === undefined ? "Survey permission saved successfully" : "Survey permission updated successfully");
-        window.location.Reload()
+        handleAlert(
+          true,
+          "success",
+          data === undefined
+            ? "Survey permission saved successfully"
+            : "Survey permission updated successfully"
+        );
+        window.location.Reload();
       },
     }
   );
@@ -89,7 +96,6 @@ const EmpCommunication = () => {
       return response.data.data;
     }
   );
-
 
   // for add
   const [openCommunciationModal, setOpenCommunicationModal] = useState(false);
@@ -162,10 +168,12 @@ const EmpCommunication = () => {
                 <div>
                   <h1 className="!text-lg">Communication</h1>
                   <p className="text-xs text-gray-600">
-                    Here you can manage organisational communication as well as employee surveys.
+                    Here you can manage organisational communication as well as
+                    employee surveys.
                   </p>
                 </div>
-              </div><br />
+              </div>
+              <br />
               <div className="pl-9">
                 <label htmlFor="surveyPermission" className="flex items-center">
                   <input
@@ -176,10 +184,12 @@ const EmpCommunication = () => {
                     checked={surveyPermission}
                     onChange={handleCheckboxChange}
                   />
-                  <p className="ml-2">Employee Survey</p><br />
+                  <p className="ml-2">Employee Survey</p>
+                  <br />
                 </label>
                 <p className="text-xs text-gray-600">
-                  By enabling this checkbox you are allowing to create employee surveys.
+                  By enabling this checkbox you are allowing to create employee
+                  surveys.
                 </p>
               </div>
             </div>
@@ -196,7 +206,6 @@ const EmpCommunication = () => {
                 </div>
               </div>
               <Button
-                className="!font-semibold !bg-sky-500 flex items-center gap-2"
                 variant="contained"
                 onClick={handleOpenCommunicationModal}
               >

@@ -65,7 +65,6 @@ import EmployeeTest from "./pages/Test/EmployeeTest";
 // import TestYash from "./pages/Test/testYash";
 import DepartmentTest from "./pages/Test2/DepartmentTest";
 import HrTrainings from "./pages/Training/page";
-import EmployeeProfile from "./pages/UserProfile/UserProfile";
 import ViewPayslip from "./pages/ViewPayslip/ViewPayslip";
 import WaitMain from "./pages/Waiting-comp/waiting-main";
 import AddDelegate from "./pages/add-delegate/AddDelegate";
@@ -138,7 +137,6 @@ import PFESIC from "./pages/SetUpOrganization/PFESIC";
 import PerformanceSetup from "./pages/SetUpOrganization/Performance/PerformanceSetup";
 import RemoteSetup from "./pages/SetUpOrganization/Remote/RemoteSetup";
 import AddRoles from "./pages/SetUpOrganization/Roles/AddRoles";
-import Training from "./pages/SetUpOrganization/Traning/Training";
 import CompOff from "./pages/SetupPage/CompOff/CompOff";
 import ExtraDay from "./pages/SetupPage/ExtraDay/ExtraDay";
 import SetupShift from "./pages/SetupPage/ShiftManagement/SetupShift";
@@ -744,28 +742,7 @@ const App = () => {
               </RequireAuth>
             }
           />
-          <Route
-            path="/employee-profile"
-            element={
-              <RequireAuth
-                permission={[
-                  "Super-Admin",
-                  "Delegate-Super-Admin",
-                  "Department-Head",
-                  "Delegate-Department-Head",
-                  "Department-Admin",
-                  "Delegate-Department-Admin",
-                  "Accountant",
-                  "Delegate-Accountant",
-                  "HR",
-                  "Manager",
-                  "Employee",
-                ]}
-              >
-                <EmployeeProfile />
-              </RequireAuth>
-            }
-          />
+
           <Route
             path="/organisation/:organisationId/employee-onboarding"
             element={
@@ -1341,14 +1318,7 @@ const App = () => {
               </RequireAuth>
             }
           />
-          <Route
-            path="/organisation/:organisationId/setup/training"
-            element={
-              <RequireAuth permission={["Super-Admin", "Delegate-Super-Admin"]}>
-                <Training />
-              </RequireAuth>
-            }
-          />
+
           <Route
             path="/setup/:organisationId"
             element={

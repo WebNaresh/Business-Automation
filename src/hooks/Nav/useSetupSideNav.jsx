@@ -1,8 +1,4 @@
-import {
-  ManageAccountsOutlined,
-  SchoolOutlined,
-  SellOutlined,
-} from "@mui/icons-material";
+import { ManageAccountsOutlined, SellOutlined } from "@mui/icons-material";
 import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined";
 import FolderOutlinedIcon from "@mui/icons-material/FolderOutlined";
 import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
@@ -146,14 +142,6 @@ const useSetupSideNav = ({ organisationId }) => {
       active:
         location.pathname ===
         `/organisation/${organisationId}/setup/remote-punching`,
-      isVisible: true,
-    },
-    {
-      label: "Training",
-      icon: SchoolOutlined,
-      href: `/organisation/${organisationId}/setup/training`,
-      active:
-        location.pathname === `/organisation/${organisationId}/setup/training`,
       isVisible: true,
     },
     {

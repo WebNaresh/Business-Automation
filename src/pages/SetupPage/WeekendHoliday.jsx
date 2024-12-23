@@ -227,11 +227,7 @@ const WeekendHoliday = () => {
                 </p>
               </div>
             </div>
-            <Button
-              className="!font-semibold !bg-sky-500 flex items-center gap-2"
-              variant="contained"
-              onClick={handleOpenClose}
-            >
+            <Button variant="contained" onClick={handleOpenClose}>
               Add Days
             </Button>
           </div>

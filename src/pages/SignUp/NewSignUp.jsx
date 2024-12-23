@@ -208,21 +208,8 @@ const SignIn = () => {
     <>
       <section className="flex  w-full">
         {/* Left Section */}
-        <div className="!w-[40%]  md:justify-start lg:flex hidden text-white flex-col items-center justify-center lg:h-screen relative">
-          <div className="bg__gradient  absolute inset-0 "></div>
-          <ul className="circles">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
-          <div className="space-y-2 mb-8 flex-col flex items-center justify-center"></div>
+        <div className="!w-[40%]  md:justify-start lg:flex hidden text-white flex-col items-center justify-center lg:h-screen relative border border-r px-4">
+          <img src="/v1/register.svg" className="h-full" alt="logo" />
         </div>
         {/* Right Section */}
         <article className="lg:!w-[60%] w-full h-auto bg-white min-h-screen  md:block flex items-center flex-col justify-center">
@@ -309,9 +296,10 @@ const SignIn = () => {
                         number?.length !== 10 || isTimeVisible ? true : false
                       }
                       onClick={SendOtp}
-                      className={`w-max flex group justify-center gap-2 items-center rounded-md h-max px-4 py-1 text-md font-semibold text-white bg-blue-500  ${(number?.length !== 10 || isTimeVisible) &&
+                      className={`w-max flex group justify-center gap-2 items-center rounded-md h-max px-4 py-1 text-md font-semibold text-white bg-blue-500  ${
+                        (number?.length !== 10 || isTimeVisible) &&
                         "bg-gray-400 text-gray-900"
-                        }`}
+                      }`}
                     >
                       Get OTP
                     </button>

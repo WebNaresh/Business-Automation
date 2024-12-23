@@ -34,11 +34,7 @@ const Designation = () => {
                   </p>
                 </div>
               </div>
-              <Button
-                className="!font-semibold !bg-sky-500 flex items-center gap-2"
-                onClick={() => setClick(true)}
-                variant="contained"
-              >
+              <Button onClick={() => setClick(true)} variant="contained">
                 <Add />
                 Add Designation
               </Button>

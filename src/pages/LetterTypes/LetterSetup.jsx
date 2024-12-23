@@ -1,4 +1,5 @@
 import FolderOutlinedIcon from "@mui/icons-material/FolderOutlined";
+import { Button } from "@mui/material";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -97,7 +98,7 @@ const LetterSetup = () => {
                   <h1 className="!text-lg">Letter Setup</h1>
                   <h1 className="text-xs">
                     Here you can manage different types of letters for your
-                    organisation 
+                    organisation
                   </h1>
                 </div>
               </div>
@@ -132,13 +133,13 @@ const LetterSetup = () => {
             ))}
 
             <div className="p-4">
-              <button
+              <Button
+                variant="contained"
                 onClick={handleSubmit}
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                 disabled={loading}
               >
                 {loading ? "Submitting..." : "Submit"}
-              </button>
+              </Button>
             </div>
           </article>
         </Setup>

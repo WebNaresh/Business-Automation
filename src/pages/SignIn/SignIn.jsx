@@ -215,21 +215,8 @@ const SignIn = () => {
   return (
     <>
       <section className="lg:min-h-screen  flex w-full">
-        <div className="!w-[40%]  md:justify-start lg:flex hidden text-white flex-col items-center justify-center lg:h-screen relative">
-          <div className="bg__gradient  absolute inset-0 "></div>
-          <ul className="circles">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
-          <div className="space-y-2 mb-8 flex-col flex items-center justify-center"></div>
+        <div className="!w-[40%]  md:justify-start lg:flex hidden text-white flex-col items-center justify-center lg:h-screen relative border border-r px-4">
+          <img src="/v1/register.svg" className="h-full" alt="logo" />
         </div>
 
         <article className="lg:w-[60%] h-screen  !bg-white w-full flex lg:justify-start justify-center  items-center lg:items-start flex-col ">
