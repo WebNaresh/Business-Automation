@@ -282,7 +282,7 @@ exports.addOrganization = catchAssyncError(async (req, res, next) => {
       organisationId: newOrganization._id,
       creatorId: req.user.user._id,
     });
-z
+    z;
     // Extract the IDs of created InputFieldDetails
     const inputDetailsIds = createdInputDetails.map((detail) => detail._id);
 
@@ -433,54 +433,20 @@ exports.createAndPayOrganization = catchAssyncError(async (req, res) => {
       contact_number,
       description,
       creator,
-      subscriptionDetails: { status: "Pending" },
       memberCount: count,
       cycleCount,
       coupan,
       packageInfo,
-      packages:
-        packageInfo === "Enterprise Plan"
-          ? packages?.map((item) => item?.value)
-          : [],
     };
 
     const org = await OrganisationModel.create(dataToEncode);
+    org.save();
 
-    const isOrganizationAlreadyExists = await EmployeeModel.findById(user._id);
-
-    if (!isOrganizationAlreadyExists?.organizationId) {
-      const updatedOne = await EmployeeModel.findByIdAndUpdate(
-        user._id,
-        {
-          organizationId: org._id,
-        },
-        { new: true }
-      );
-
-      console.log(updatedOne, "udpaeOne");
-    }
-    console.log(isOrganizationAlreadyExists, "this data runs");
-
-    if (!isTrial) {
-      console.log(1);
-      await org.remove();
-      const encodedData = encodeURI(JSON.stringify(dataToEncode));
-      console.log(2);
-
-      if (paymentType === "RazorPay") {
-        console.log(3);
-        return createOrganizationWithRazorPay(req, res, encodedData, user);
-      } else {
-        console.log(4);
-        return createOrderWithAmountPhonePay(req, res, encodedData, user);
-      }
-    } else {
-      console.log(5);
-      return res.status(201).json({
-        message: "Organisation created You are on 7 day trial period.",
-        success: true,
-      });
-    }
+    console.log(5);
+    return res.status(201).json({
+      message: "Organisation created You can go ahead",
+      success: true,
+    });
   } catch (err) {
     console.error(`🚀 ~ file: organizationController.js:349 ~ err:`, err);
     let message;

@@ -84,25 +84,7 @@ const Organization = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    subscriptionDetails: {
-      status: {
-        required: true,
-        type: String,
-      },
-      orderId: {
-        type: String,
-      },
-      invoiceNumber: {
-        type: Number,
-        unique: true,
-      },
-      paymentDate: {
-        type: Date,
-      },
-      expirationDate: {
-        type: Date,
-      },
-    },
+
     memberCount: {
       type: Number,
       default: 0,
@@ -111,7 +93,6 @@ const Organization = new mongoose.Schema(
       type: Number,
       default: 1,
     },
-    packages: [],
     coupan: {
       type: String,
       required: false,
