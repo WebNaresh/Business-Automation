@@ -1,18 +1,8 @@
-import ClearIcon from "@mui/icons-material/Clear";
-import {
-  Avatar,
-  Button,
-  IconButton,
-  Skeleton,
-  TextField,
-  Tooltip,
-} from "@mui/material";
+import { Avatar, Skeleton } from "@mui/material";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
 import { motion } from "framer-motion";
-import { debounce } from "lodash";
-import React, { useCallback, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import HeaderComponentPro from "../../components/header/HeaderComponentPro";
 import useOrgList from "../../hooks/QueryHook/Orglist/hook";
 import Organisation from "../Home/components/Organisation";
@@ -20,25 +10,14 @@ import Organisation from "../Home/components/Organisation";
 const OrgList = () => {
   const { data, isLoading, refetch } = useOrgList();
   const [searchQuery, setSearchQuery] = useState("");
+  console.log(`🚀 ~ file: OrgList.jsx:13 ~ setSearchQuery:`, setSearchQuery);
 
   // Handle search query with debouncing to reduce the number of renders
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleSearch = useCallback(
-    debounce((query) => {
-      setSearchQuery(query);
-    }, 300),
-    []
-  );
 
   // Filter organizations based on search query
   const filteredOrganizations = data?.organizations?.filter((org) =>
     org.orgName.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
-  // Clear search input field
-  const clearSearch = () => {
-    setSearchQuery("");
-  };
 
   // Initialize AOS for animations
   useEffect(() => {

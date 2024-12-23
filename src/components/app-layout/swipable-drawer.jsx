@@ -96,22 +96,16 @@ export default function SwipeableTemporaryDrawer() {
             >
               <Menu />
             </IconButton>
-
-            <div className="hidden sm:flex items-center">
-              <span className="inline-flex items-center justify-center w-13 h-13 bg-white border border-gray-500 rounded-full p-2">
-                <img
-                  src="/logo.svg"
-                  alt="AEGIS"
-                  className="w-8 h-8 object-cover rounded-full mix-blend-multiply"
-                />
-              </span>
-
-              <img
-                src="/Aegis_logo_name.png"
-                alt="AEGIS"
-                className="w-[4.3rem] h-[2.3rem] -mt-2 ml-1 -top-2 object-cover text-white "
-              />
-            </div>
+            <img
+              src="/smartea.jpeg"
+              className="h-[45px] rounded-md"
+              alt="logo"
+            />
+            {/* <img
+              src="/smartea.jpeg"
+              className="hidden sm:flex items-center"
+              about
+            ></img> */}
           </div>
 
           <div className="flex gap-2 items-center">
