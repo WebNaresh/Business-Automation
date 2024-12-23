@@ -133,20 +133,7 @@ export default function SwipeableTemporaryDrawer() {
         onOpen={toggleDrawer}
       >
         <div className="py-2 px-10 border-b-[.5px] flex items-center gap-2 border-gray-300">
-          <span className="inline-flex items-center justify-center w-13 h-13 bg-white border border-gray-500 rounded-full p-2">
-            <img
-              src="/logo.svg"
-              alt="AEGIS"
-              className="w-8 h-8 object-cover rounded-full mix-blend-multiply"
-            />
-          </span>
-
-          <img
-            // src="/Aegis_logo_name.png"
-            src="/A2.png"
-            alt="AEGIS"
-            className="w-[4.3rem] h-[2.3rem] -mt-1   object-cover text-white mix-blend-multiply"
-          />
+          <img src="/smartea.jpeg" className="h-[45px]" alt="logo" />
         </div>
         {list}
       </SwipeableDrawer>
