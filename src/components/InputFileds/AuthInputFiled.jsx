@@ -702,7 +702,7 @@ const AuthInputFiled = ({
                   <Link
                     target="blank"
                     to="/terms-policy-cookies"
-                    className="font-semibold text-blue-500 hover:underline text-md  "
+                    className="font-semibold text-primary hover:underline text-md  "
                   >
                     Terms and Conditions
                   </Link>

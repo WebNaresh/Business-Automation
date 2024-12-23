@@ -9,7 +9,7 @@ import {
   PermContactCalendar,
   Phone,
 } from "@mui/icons-material";
-import { SvgIcon } from "@mui/material";
+import { Button, SvgIcon } from "@mui/material";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -409,12 +409,9 @@ const SignIn = () => {
 
             {/* Signup Button */}
             <div className="flex gap-5 mt-2">
-              <button
-                type="submit"
-                className=" flex group justify-center w-full  gap-2 items-center rounded-md h-max px-4 py-2 text-md font-semibold text-white bg-blue-500 hover:bg-blue-500 focus-visible:outline-blue-500"
-              >
+              <Button variant="contained" fullWidth type="submit">
                 Register Account
-              </button>
+              </Button>
             </div>
 
             <p className="flex gap-2 my-2">
@@ -427,7 +424,7 @@ const SignIn = () => {
               </Link> */}
               <Link
                 to={location.pathname === "/sign-up" ? "/sign-in" : "/sign-up"}
-                className="font-medium text-blue-500 hover:underline transition-all "
+                className="font-medium text-primary hover:underline transition-all "
               >
                 Sign In for SMarTea
               </Link>
