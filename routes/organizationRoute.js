@@ -19,7 +19,8 @@ const {
   verifyRenewPlan,
   verifyPayPlan,
   payOrganizationPlan,
-  generateMisReport,
+  generateMisReport, 
+  editOrganization 
 } = require("../controller/organizationController");
 const auth = require("../middleware/Auth");
 const multer = require("multer");
@@ -28,6 +29,7 @@ const router = express.Router();
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 router.route("/organization/create").post(auth, addOrganization);
+router.route("/organization/update/:id").put(auth, editOrganization);
 // router.route("/organization/getall").get(auth, getAllOrgDetails);
 router.route("/organization/get").get(auth, getOrganization);
 router.route("/organization/connect").post(updateOrganization);

@@ -593,7 +593,10 @@ exports.getSubscriptionDetails = catchAssyncError(async (req, res) => {
 
 exports.updateOrganizationStructure = catchAssyncError(async (req, res) => {
   try {
-    const { organizationId } = req.params;
+    const { organizationId } = req.params; 
+
+    console.log("organizationId" , organizationId);
+    
 
     const {
       orgName,
