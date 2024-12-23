@@ -469,70 +469,6 @@ exports.createAndPayOrganization = catchAssyncError(async (req, res) => {
   }
 });
 
-const getNextInvoiceNumber = async () => {
-  const lastInvoice = await OrganisationModel.findOne()
-    .sort({ "subscriptionDetails.invoiceNumber": -1 })
-    .select("subscriptionDetails.invoiceNumber");
-
-  const lastInvoiceNumber = lastInvoice
-    ? lastInvoice.subscriptionDetails.invoiceNumber
-    : 0;
-  const nextInvoiceNumber = (lastInvoiceNumber + 1).toString().padStart(4, "0"); // Ensure padding
-
-  return nextInvoiceNumber;
-};
-
-// exports.verifyOrganization = catchAssyncError(async (req, res) => {
-//   try {
-//     const { paymentType, data } = req.params;
-
-//     if (paymentType === "Phone_Pay") {
-//       return verifyPhonePayStatus(req, res);
-//     } else {
-//       const { razorpay_payment_id, razorpay_order_id, razorpay_signature } =
-//         req.body;
-
-//       const generated_signature = crypto
-//         .createHmac("sha256", process.env.RAZORPAY_API_SECRET)
-//         .update(razorpay_order_id + "|" + razorpay_payment_id, "utf-8")
-//         .digest("hex");
-
-//       const isAuthentic = generated_signature === razorpay_signature;
-
-//       if (!isAuthentic) {
-//         return res.redirect(`${process.env.BASE_URL}/paymentfailed`);
-//       }
-
-//       const orgData = JSON.parse(data);
-//       const organisation2 = await OrganisationModel.create({
-//         ...orgData,
-//         subscriptionDetails: {
-//           status: "Active",
-//           paymentDate: new Date(),
-//           expirationDate: orgData?.isTrial
-//             ? moment()
-//               .add(3 * orgData?.cycleCount, "month")
-//               .add(7, "days")
-//             : moment().add(3 * orgData?.cycleCount, "month"),
-//         },
-//       });
-//       // organisation2.save();
-//       return res.redirect(
-//         `${process.env.BASE_URL}/organisation/${organisation2._id}/setup`
-//       );
-//     }
-//   } catch (err) {
-//     console.error(`🚀 ~ file: organizationController.js:462 ~ err:`, err);
-//     console.error(
-//       `🚀 ~ file: organizationController.js:411 ~ err:`,
-//       err.message
-//     );
-//     return res.status(401).json({
-//       message: "failed",
-//       success: false,
-//     });
-//   }s
-// });
 exports.verifyOrganization = catchAssyncError(async (req, res) => {
   const session = await mongoose.startSession();
   session.startTransaction();
@@ -558,23 +494,11 @@ exports.verifyOrganization = catchAssyncError(async (req, res) => {
       }
 
       const orgData = JSON.parse(data);
-      const nextInvoiceNumber = await getNextInvoiceNumber(); // Using the formatted invoice number
-
-      if (!nextInvoiceNumber) {
-        throw new Error("Invalid invoice number generated");
-      }
 
       const organisation = await OrganisationModel.create(
         [
           {
             ...orgData,
-            subscriptionDetails: {
-              status: "Active",
-              orderId: razorpay_order_id,
-              invoiceNumber: nextInvoiceNumber, // Correctly padded with zeros
-              paymentDate: new Date(),
-              expirationDate: moment().add(3 * orgData?.cycleCount, "month"),
-            },
           },
         ],
         { session }
