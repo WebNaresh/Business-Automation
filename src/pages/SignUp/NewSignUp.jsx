@@ -233,9 +233,9 @@ const SignIn = () => {
           >
             <div className="flex flex-col space-x-4 lg:items-start items-center">
               <div className="flex flex-col gap-1  w-full items-center justify-center space-y-1">
-                <img src="/logo.svg" className="h-[45px]" alt="logo" />
+                <img src="/smartea.jpeg" className="h-[45px]" alt="logo" />
                 <h1 className="font-[600] text-center w-full text-3xl">
-                  Register Account
+                  Sign Up
                 </h1>
               </div>
             </div>
@@ -309,10 +309,9 @@ const SignIn = () => {
                         number?.length !== 10 || isTimeVisible ? true : false
                       }
                       onClick={SendOtp}
-                      className={`w-max flex group justify-center gap-2 items-center rounded-md h-max px-4 py-1 text-md font-semibold text-white bg-blue-500  ${
-                        (number?.length !== 10 || isTimeVisible) &&
+                      className={`w-max flex group justify-center gap-2 items-center rounded-md h-max px-4 py-1 text-md font-semibold text-white bg-blue-500  ${(number?.length !== 10 || isTimeVisible) &&
                         "bg-gray-400 text-gray-900"
-                      }`}
+                        }`}
                     >
                       Get OTP
                     </button>

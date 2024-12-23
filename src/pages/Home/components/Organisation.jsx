@@ -90,10 +90,6 @@ const Organisation = ({ item }) => {
   };
 
   const truncateOrgName = (orgName) => {
-    // const words = orgName.split(" ");
-    // if (words.length > 4) {
-    //   return words.slice(0, 4).join(" ") + " ...";
-    // }
 
     // const wordCount = (orgName.match(/\S+/g) || []).length;
     // if (wordCount > 6) {
@@ -140,7 +136,7 @@ const Organisation = ({ item }) => {
         data-aos="zoom-in"
         data-aos-offset="100"
       >
-        <StyledTag
+        {/* <StyledTag
           className="tag "
           style={{
             backgroundColor: "rgb(75, 85, 99)",
@@ -150,7 +146,7 @@ const Organisation = ({ item }) => {
           }}
         >
           {item?.packageInfo}
-        </StyledTag>
+        </StyledTag> */}
 
         <div
           className="border-b-2 grid grid-cols-5 items-center justify-between border-[#0000002d] px-4 py-2 text-black"
@@ -224,26 +220,9 @@ const Organisation = ({ item }) => {
           </div>
         </div>
         <div className="p-4 pt-4 pb-2" data-aos="zoom-in" data-aos-offset="100">
-          <Chip
-            label={item?.industry_type}
-            color="primary"
-            variant="outlined"
-            sx={{ color: "rgb(45 102 187)" }}
-            className="chip-dark-text transition-transform duration-300 ease-in-out hover:scale-105 mb-2"
-          />
+
           <p className="h-4 mt-1  text-xs font-bold text-black-600">
-            {item?.subscriptionDetails?.status === "Pending" &&
-            moment(item?.createdAt).add(7, "days").diff(moment(), "days") > 0 &&
-            moment(item?.createdAt).add(7, "days").diff(moment(), "days") <
-              7 ? (
-              <span>
-                Your{" "}
-                {moment(item?.createdAt).add(7, "days").diff(moment(), "days")}{" "}
-                day trial left
-              </span>
-            ) : (
-              <span className="ml-2 py-7 ">Active Plan</span>
-            )}
+
           </p>
         </div>
         <div
