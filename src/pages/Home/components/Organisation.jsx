@@ -4,7 +4,6 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import {
   Avatar,
   Button,
-  Chip,
   Dialog,
   DialogActions,
   DialogContent,
@@ -90,7 +89,6 @@ const Organisation = ({ item }) => {
   };
 
   const truncateOrgName = (orgName) => {
-
     // const wordCount = (orgName.match(/\S+/g) || []).length;
     // if (wordCount > 6) {
     //   return orgName.split(/\s+/).slice(0,6).join(" ") + " ...";
@@ -136,18 +134,6 @@ const Organisation = ({ item }) => {
         data-aos="zoom-in"
         data-aos-offset="100"
       >
-        {/* <StyledTag
-          className="tag "
-          style={{
-            backgroundColor: "rgb(75, 85, 99)",
-            height: "16%",
-            width: "43%",
-            fontSize: "13px",
-          }}
-        >
-          {item?.packageInfo}
-        </StyledTag> */}
-
         <div
           className="border-b-2 grid grid-cols-5 items-center justify-between border-[#0000002d] px-4 py-2 text-black"
           data-aos="fade-up"
@@ -220,10 +206,7 @@ const Organisation = ({ item }) => {
           </div>
         </div>
         <div className="p-4 pt-4 pb-2" data-aos="zoom-in" data-aos-offset="100">
-
-          <p className="h-4 mt-1  text-xs font-bold text-black-600">
-
-          </p>
+          <p className="h-4 mt-1  text-xs font-bold text-black-600"></p>
         </div>
         <div
           className="p-4 py-2 flex justify-between"

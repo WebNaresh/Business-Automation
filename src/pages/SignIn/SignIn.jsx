@@ -185,7 +185,7 @@ const SignIn = () => {
           true,
           error?.response.status !== 401 ? "success" : "error",
           error?.response?.data?.message ||
-          "Failed to sign in. Please try again."
+            "Failed to sign in. Please try again."
         );
       },
     }
@@ -256,10 +256,11 @@ const SignIn = () => {
               <div
                 className={`
                 flex  rounded-md px-2  bg-white py-[6px]
-                ${focusedInput === "email"
+                ${
+                  focusedInput === "email"
                     ? "outline-blue-500 outline-3 !border-blue-500 border-[2px]"
                     : "border-gray-200 border-[.5px]"
-                  }`}
+                }`}
               >
                 <Email className="text-gray-700" />
                 <input
@@ -292,10 +293,11 @@ const SignIn = () => {
                 <div
                   className={`
                 flex  rounded-md px-2 sm:w-[400px] w-full  bg-white py-[6px]
-                ${focusedInput === "password"
-                      ? "outline-blue-500 outline-3 !border-blue-500 border-[2px]"
-                      : "border-gray-200 border-[.5px]"
-                    }`}
+                ${
+                  focusedInput === "password"
+                    ? "outline-blue-500 outline-3 !border-blue-500 border-[2px]"
+                    : "border-gray-200 border-[.5px]"
+                }`}
                 >
                   <Lock className="text-gray-700" />
                   <input
@@ -363,19 +365,6 @@ const SignIn = () => {
                 Sign up for SMarTea
               </Link>
             </div>
-
-            <GoogleButton
-              // className="items-center rounded-md h-[30px] w-[400px] px-4 py-3 text-md font-semibold text-white bg-blue-500 hover:bg-blue-500 focus-visible:outline-blue-500"
-              type="dark" // can be light or dark
-              onClick={googleLogin}
-              style={{
-                width: "400px",
-                height: "40px",
-                paddingTop: "-10px",
-                paddingBottom: "-10px",
-              }}
-              // style={{ width: '400px', height:"50px",borderRadius:"5px"  }}
-            />
           </form>
         </article>
       </section>
