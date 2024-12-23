@@ -89,7 +89,7 @@ const LeaveAcceptModal = () => {
                 label: org?.orgName,
               }))}
               onChange={(e) => updateOrganizationId(e)}
-              placeholder={"Select Organisations"}
+              placeholder={"Select Branch"}
               value={organizationId}
               className="!w-[300px]"
             />

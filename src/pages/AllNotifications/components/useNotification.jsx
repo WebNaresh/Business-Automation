@@ -482,7 +482,7 @@ const useNotification = () => {
     // eslint-disable-next-line
   }, []);
 
-  const dummyData = [
+  const notificationList = [
     {
       name: "Leave Notification",
       count: Leavecount,
@@ -641,7 +641,7 @@ const useNotification = () => {
       visible: true,
     },
   ];
-  return { dummyData };
+  return { dummyData: notificationList };
 };
 
 export default useNotification;
