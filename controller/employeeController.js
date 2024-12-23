@@ -2252,6 +2252,9 @@ exports.getPaginatedEmployees = catchAssyncError(async (req, res, next) => {
   // Create a base filter object for querying
   let filter = { organizationId };
 
+  // Exclude employees with "Super Admin" in the profile array
+  filter.profile = { $nin: ["Super-Admin"] };
+
   // Apply search filters if they are provided
   if (nameSearch && nameSearch.trim()) {
     filter.first_name = { $regex: nameSearch.trim(), $options: "i" };
@@ -2291,7 +2294,7 @@ exports.getPaginatedEmployees = catchAssyncError(async (req, res, next) => {
       .populate("designation")
       .populate("salarystructure");
 
-    // Count total employees after search filters
+    // Count total employees after search filters and exclusion of Super Admins
     const totalEmployees = employeesData.length;
 
     // Apply pagination AFTER filtering the results
@@ -2310,75 +2313,6 @@ exports.getPaginatedEmployees = catchAssyncError(async (req, res, next) => {
   }
 });
 
-// exports.getPaginatedEmployees = catchAssyncError(async (req, res, next) => {
-//   const page = parseInt(req.query.page) || 1;
-//   const perPage = 10;
-//   const skip = (page - 1) * perPage;
-//   const organizationId = req.params.organizationId;
-
-//   // Extract search queries
-//   const { nameSearch, deptSearch, locationSearch } = req.query;
-
-//   // Create a base filter object for querying
-//   let filter = { organizationId };
-
-//   // Apply search filters if they are provided (non-empty, non-null, non-undefined)
-//   if (nameSearch && nameSearch.trim()) {
-//     filter.first_name = { $regex: nameSearch.trim(), $options: "i" };
-//   }
-
-//   if (deptSearch && deptSearch.trim()) {
-//     filter["deptname.departmentName"] = {
-//       $regex: deptSearch.trim(),
-//       $options: "i",
-//     };
-//   }
-
-//   if (locationSearch && locationSearch.trim()) {
-//     filter["worklocation.city"] = {
-//       $regex: locationSearch.trim(),
-//       $options: "i",
-//     };
-//   }
-
-//   try {
-//     // Query the database with the filter and populate relevant fields
-//     const employeesData = await EmployeeModel.find(filter)
-//       .populate({
-//         path: "worklocation",
-//         match:
-//           locationSearch && locationSearch.trim()
-//             ? { city: { $regex: locationSearch.trim(), $options: "i" } }
-//             : {},
-//       })
-//       .populate({
-//         path: "deptname",
-//         match:
-//           deptSearch && deptSearch.trim()
-//             ? { departmentName: { $regex: deptSearch.trim(), $options: "i" } }
-//             : {},
-//       })
-//       .populate("designation")
-//       .populate("salarystructure")
-//       .skip(skip)
-//       .limit(perPage);
-
-//     // Count total employees based on the same filter
-//     const totalEmployees = await EmployeeModel.countDocuments(filter);
-
-//     // Send the response with the employees data and pagination details
-//     res.status(200).json({
-//       employees: employeesData,
-//       totalEmployees,
-//       currentPage: page,
-//       totalPages: Math.ceil(totalEmployees / perPage),
-//     });
-//   } catch (error) {
-//     // Log and respond with error if something goes wrong
-//     console.error("Error fetching employees:", error);
-//     res.status(500).json({ message: error.message });
-//   }
-// });
 
 exports.getUserProfileData = catchAssyncError(async (req, res, next) => {
   try {
