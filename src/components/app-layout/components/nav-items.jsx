@@ -40,7 +40,6 @@ import { SiMicrosoftexcel } from "react-icons/si";
 import { useQueryClient } from "react-query";
 import { useLocation } from "react-router-dom";
 import { UseContext } from "../../../State/UseState/UseContext";
-import useOrgList from "../../../hooks/QueryHook/Orglist/hook";
 import useSubscriptionGet from "../../../hooks/QueryHook/Subscription/hook";
 import useGetUser from "../../../hooks/Token/useUser";
 import UserProfile from "../../../hooks/UserData/useUser";
@@ -62,7 +61,6 @@ const TestNavItems = ({ toggleDrawer }) => {
   const empId = user?._id;
   const role = useGetCurrentRole();
   const queryClient = useQueryClient();
-  const { data: org_list } = useOrgList();
 
   //_--------------------geofencing---------------
   //selected employee list for geofencing
