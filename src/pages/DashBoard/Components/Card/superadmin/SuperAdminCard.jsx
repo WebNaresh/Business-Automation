@@ -1,7 +1,6 @@
 import { Avatar } from "@mui/material";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { motion } from "framer-motion";
 import React, { useEffect } from "react";
 import AdminCardSke from "../../Skeletons/AdminCardSke";
 
@@ -30,7 +29,7 @@ const SuperAdminCard = ({
         <AdminCardSke />
       ) : (
         <>
-          <motion.div
+          <div
             whileHover={{ scale: 1.15, rotate: 10 }}
             className={`flex items-center justify-center ${color} rounded-full p-2 shadow-lg mb-2 absolute -top-8 ${sizeClass}`}
             style={{ width: "4rem", height: "4rem" }} // Explicitly set icon container size
@@ -53,7 +52,7 @@ const SuperAdminCard = ({
             >
               <Icon style={{ fontSize: "2em" }} />
             </Avatar>
-          </motion.div>
+          </div>
 
           <div className="text-center mt-12 space-y-1">
             <h1 className="text-xl font-bold text-gray-800 mb-0.5">{title}</h1>

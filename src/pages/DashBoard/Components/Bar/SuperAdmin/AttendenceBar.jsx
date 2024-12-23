@@ -1,4 +1,4 @@
-import { Skeleton } from "@mui/material";
+import { Button, Skeleton } from "@mui/material";
 import React, { useContext, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import { useMutation } from "react-query";
@@ -9,7 +9,6 @@ import useDashGlobal from "../../../../../hooks/Dashboard/useDashGlobal";
 // import UserProfile from "../../../../../hooks/UserData/useUser";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { motion } from "framer-motion";
 import { FaFileExcel } from "react-icons/fa";
 import UserProfile from "../../../../../hooks/UserData/useUser";
 
@@ -251,19 +250,15 @@ const AttendenceBar = ({ attendenceData, isLoading }) => {
               The chart below provides an overview of attendance data.
             </p>
             <div className="pt-4 flex gap-2 items-center">
-              <motion.button
+              <Button
                 onClick={() => mutation.mutate()}
                 disabled={mutation.isLoading}
-                className={`flex items-center gap-1 px-2 py-2 text-sm rounded-md text-white bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800 focus:outline-none focus:ring-2 focus:ring-purple-500 ${
-                  mutation.isLoading &&
-                  "cursor-not-allowed bg-gray-400 text-gray-700"
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="gap-4"
+                variant="contained"
               >
                 <FaFileExcel className="text-xs" />
                 {mutation.isLoading ? "Generating..." : "Generate Report"}
-              </motion.button>
+              </Button>
               <Select
                 placeholder={"Select year"}
                 onChange={(year) => setSelectedYear(year)}
