@@ -91,18 +91,9 @@ const Organisation = ({ item }) => {
   };
 
   const truncateOrgName = (orgName) => {
-    // const words = orgName.split(" ");
-    // if (words.length > 4) {
-    //   return words.slice(0, 4).join(" ") + " ...";
-    // }
 
-    // const wordCount = (orgName.match(/\S+/g) || []).length; 
-    // if (wordCount > 6) {
-    //   return orgName.split(/\s+/).slice(0,6).join(" ") + " ..."; 
-    // }
-    // return orgName;
 
-    const maxLength = 29; 
+    const maxLength = 29;
     if (orgName.length > maxLength) {
       return orgName.slice(0, maxLength) + " ...";
     }
@@ -143,7 +134,7 @@ const Organisation = ({ item }) => {
         data-aos-offset="100"
         style={{ height: "210px", width: "300px" }}
       >
-        <StyledTag
+        {/* <StyledTag
           className="tag "
           style={{
             backgroundColor: "rgb(75, 85, 99)",
@@ -153,7 +144,7 @@ const Organisation = ({ item }) => {
           }}
         >
           {item?.packageInfo}
-        </StyledTag>
+        </StyledTag> */}
 
         <div
           className="border-b-2 grid grid-cols-5 items-center justify-between border-[#0000002d] px-4 py-2 text-black"
@@ -227,26 +218,9 @@ const Organisation = ({ item }) => {
           </div>
         </div>
         <div className="p-4 pt-4 pb-2" data-aos="zoom-in" data-aos-offset="100">
-          <Chip
-            label={item?.industry_type}
-            color="primary"
-            variant="outlined"
-            sx={{ color: "rgb(45 102 187)" }}
-            className="chip-dark-text transition-transform duration-300 ease-in-out hover:scale-105 mb-2"
-          />
+
           <p className="h-4 mt-1  text-xs font-bold text-black-600">
-            {item?.subscriptionDetails?.status === "Pending" &&
-            moment(item?.createdAt).add(7, "days").diff(moment(), "days") > 0 &&
-            moment(item?.createdAt).add(7, "days").diff(moment(), "days") <
-              7 ? (
-              <span>
-                Your{" "}
-                {moment(item?.createdAt).add(7, "days").diff(moment(), "days")}{" "}
-                day trial left
-              </span>
-            ) : (
-              <span className="ml-2 py-7 ">Active Plan</span>
-            )}
+
           </p>
         </div>
         <div
@@ -255,7 +229,6 @@ const Organisation = ({ item }) => {
           data-aos-offset="0"
         >
           <button
-            disabled={checkHasOrgDisabled()}
             onClick={() => {
               let link;
               if (window.innerWidth <= 768) {
@@ -270,21 +243,14 @@ const Organisation = ({ item }) => {
             Setup
           </button>
 
-          {!checkHasOrgDisabled() ? (
-            <Link to={`/organisation/${item._id}/dashboard/super-admin`}>
-              <button className="flex group justify-center gap-2 items-center rounded-md px-4 py-1 text-sm font-semibold text-black-600 transition-all bg-white hover:bg-black-700  focus-visible:outline-black-500 duration-300 ease-in-out">
-                Go to Dashboard
-                <FaArrowCircleRight className="group-hover:translate-x-1 transition-transform duration-300 ease-in-out" />
-              </button>
-            </Link>
-          ) : (
-            <Link to={`/billing`}>
-              <button className="flex group justify-center gap-2 items-center rounded-md px-4 py-1 text-sm font-semibold text-blue-500 transition-all bg-white  focus-visible:outline-blue-500 duration-300 ease-in-out">
-                Go to Billing
-                <FaArrowCircleRight className="group-hover:translate-x-1 transition-transform duration-300 ease-in-out" />
-              </button>
-            </Link>
-          )}
+
+          <Link to={`/organisation/${item._id}/dashboard/super-admin`}>
+            <button className="flex group justify-center gap-2 items-center rounded-md px-4 py-1 text-sm font-semibold text-black-600 transition-all bg-white hover:bg-black-700  focus-visible:outline-black-500 duration-300 ease-in-out">
+              Go to Dashboard
+              <FaArrowCircleRight className="group-hover:translate-x-1 transition-transform duration-300 ease-in-out" />
+            </button>
+          </Link>
+
         </div>
       </motion.div>
 

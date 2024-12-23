@@ -161,9 +161,9 @@ const TestNavItems = ({ toggleDrawer }) => {
 
   let navItems = useMemo(
     () => {
-      if (data?.organisation?.packageInfo === "Essential Plan") {
+      if (data) {
         return {
-          Home: {
+          Dashboard: {
             open: false,
             icon: <Category className=" !text-[1.2em] text-[#67748E]" />,
             isVisible: true,
@@ -214,47 +214,6 @@ const TestNavItems = ({ toggleDrawer }) => {
                   <AccessTimeOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
                 ),
                 text: "Employee Attendance",
-              },
-            ],
-          },
-          "Self Help": {
-            open: true,
-            icon: <Category className=" !text-[1.2em] text-[#67748E]" />,
-            isVisible: true,
-            routes: [
-              {
-                key: "accountSettings",
-                isVisible: true,
-                link: `/employee-profile`,
-                icon: <Settings className="text-[#67748E]" />,
-                text: "Account Settings",
-              },
-              {
-                key: "billing",
-                isVisible: ["Super-Admin", "Delegate-Super-Admin"].includes(
-                  role
-                )
-                  ? true
-                  : false,
-                link: `/billing`,
-                icon: <CurrencyRupee className="text-[#67748E]" />,
-                text: "Billing",
-              },
-              {
-                key: "add-delegate-super-admin",
-                isVisible: ["Super-Admin"].includes(role) ? true : false,
-                link: `/organisation/${orgId}/add-delegate`,
-                icon: <SupervisorAccount className="text-[#67748E]" />,
-                text: "Add Delegate Super Admin",
-              },
-              {
-                key: "shiftManagement",
-                isVisible: ["Employee"].includes(role),
-                link: "/shift-management",
-                icon: (
-                  <HomeRepairServiceOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
-                ),
-                text: "Shift Management",
               },
             ],
           },

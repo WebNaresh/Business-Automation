@@ -187,7 +187,7 @@ const SignIn = () => {
           true,
           error?.response.status !== 401 ? "success" : "error",
           error?.response?.data?.message ||
-            "Failed to sign in. Please try again."
+          "Failed to sign in. Please try again."
         );
       },
     }
@@ -366,9 +366,9 @@ const SignIn = () => {
           >
             <div className="flex flex-col space-x-4 lg:items-start items-center">
               <div className="flex flex-col gap-1  w-full items-center justify-center space-y-1">
-                <img src="/logo.svg" className="h-[45px]" alt="logo" />
+                <img src="/smartea.jpeg" className="h-[45px]" alt="logo" />
                 <h1 className="font-[600] text-center w-full text-3xl">
-                  Log in to SMarTea
+                  Sign In
                 </h1>
               </div>
             </div>
@@ -382,11 +382,10 @@ const SignIn = () => {
               <div
                 className={`
                 flex  rounded-md px-2  bg-white py-[6px]
-                ${
-                  focusedInput === "email"
+                ${focusedInput === "email"
                     ? "outline-blue-500 outline-3 !border-blue-500 border-[2px]"
                     : "border-gray-200 border-[.5px]"
-                }`}
+                  }`}
               >
                 <Email className="text-gray-700" />
                 <input
@@ -419,11 +418,10 @@ const SignIn = () => {
                 <div
                   className={`
                 flex  rounded-md px-2 sm:w-[400px] w-full  bg-white py-[6px]
-                ${
-                  focusedInput === "password"
-                    ? "outline-blue-500 outline-3 !border-blue-500 border-[2px]"
-                    : "border-gray-200 border-[.5px]"
-                }`}
+                ${focusedInput === "password"
+                      ? "outline-blue-500 outline-3 !border-blue-500 border-[2px]"
+                      : "border-gray-200 border-[.5px]"
+                    }`}
                 >
                   <Lock className="text-gray-700" />
                   <input
@@ -460,9 +458,8 @@ const SignIn = () => {
               <button
                 type="submit"
                 disabled={handleLogin.isLoading}
-                className={`${
-                  handleLogin.isLoading && "!bg-gray-200 shadow-lg"
-                } flex group justify-center w-full gap-2 items-center rounded-md h-[30px] px-4 py-3 text-md font-semibold text-white bg-blue-500 hover:bg-blue-500 focus-visible:outline-blue-500`}
+                className={`${handleLogin.isLoading && "!bg-gray-200 shadow-lg"
+                  } flex group justify-center w-full gap-2 items-center rounded-md h-[30px] px-4 py-3 text-md font-semibold text-white bg-blue-500 hover:bg-blue-500 focus-visible:outline-blue-500`}
               >
                 {handleLogin.isLoading ? (
                   <>
@@ -503,7 +500,7 @@ const SignIn = () => {
                 paddingTop: "-10px",
                 paddingBottom: "-10px",
               }}
-              // style={{ width: '400px', height:"50px",borderRadius:"5px"  }}
+            // style={{ width: '400px', height:"50px",borderRadius:"5px"  }}
             />
           </form>
         </article>
