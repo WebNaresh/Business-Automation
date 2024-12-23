@@ -10,7 +10,6 @@ import {
   LocationOn,
   ModelTrainingOutlined,
   MonetizationOn,
-  MonetizationOnOutlined,
   NotificationsActive,
   PanToolAlt,
   Payment,
@@ -773,24 +772,6 @@ const TestNavItems = ({ toggleDrawer }) => {
                   <AccountBalanceWalletOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
                 ),
                 text: "Salary Management",
-              },
-              {
-                key: "loanmanagement",
-                isVisible: true,
-                link: `/organisation/${orgId}/add-loan`,
-                icon: (
-                  <MonetizationOnOutlined className=" !text-[1.2em] text-[#67748E]" />
-                ),
-                text: "Loan Management",
-              },
-              {
-                key: "advanceSalary",
-                isVisible: true,
-                link: `/organisation/${orgId}/advance-salary`,
-                icon: (
-                  <MonetizationOnOutlined className=" !text-[1.2em] text-[#67748E]" />
-                ),
-                text: "Advance Salary",
               },
             ],
           },

@@ -1,8 +1,9 @@
-import { Avatar, Skeleton } from "@mui/material";
+import { Avatar, Button, Skeleton } from "@mui/material";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import HeaderComponentPro from "../../components/header/HeaderComponentPro";
 import useOrgList from "../../hooks/QueryHook/Orglist/hook";
 import Organisation from "../Home/components/Organisation";
@@ -74,6 +75,18 @@ const OrgList = () => {
               <p className="text-gray-600">
                 Select and Manage Your Organisation
               </p>
+            </div>
+            <div className="flex gap-4">
+              <Link to="/add-organisation">
+                <Button variant="contained">Add Organisation</Button>
+              </Link>
+              {filteredOrganizations && (
+                <Link
+                  to={`/organisation/${filteredOrganizations[0]._id}/organisation-hierarchy`}
+                >
+                  <Button variant="contained">View Branch Hierarchy</Button>
+                </Link>
+              )}
             </div>
           </div>
         </div>
