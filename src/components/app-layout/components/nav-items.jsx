@@ -717,7 +717,6 @@ const TestNavItems = ({ toggleDrawer }) => {
             },
           ],
         },
-
         "Remote Punch": {
           open: false,
           isVisible:
