@@ -17,7 +17,7 @@ const useHook = () => {
 
   const fetchUserInformation = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/employee/get/profile/${userId}`,
+      `${import.meta.env.VITE_API}/route/employee/get/profile/${userId}`,
       {
         headers: { Authorization: authToken },
       }
@@ -68,7 +68,7 @@ export default useHook;
 
 //   const  getUserInformation = async () => {
 //     const response = await axios.get(
-//       `${process.env.REACT_APP_API}/route/employee/get/profile/${userId}`,
+//       `${import.meta.env.VITE_API}/route/employee/get/profile/${userId}`,
 //       {
 //         headers: { Authorization: authToken },
 //       }

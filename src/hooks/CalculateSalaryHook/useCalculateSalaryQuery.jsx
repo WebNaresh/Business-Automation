@@ -19,7 +19,7 @@ const useCalculateSalaryQuery = ({
   const fetchEmployeeData = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/employeeSalary/viewpayslip/${userId}/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/employeeSalary/viewpayslip/${userId}/${organisationId}`,
         {
           headers: {
             Authorization: token,
@@ -42,7 +42,7 @@ const useCalculateSalaryQuery = ({
   const fetchAvailableEmployee = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/employee/get/profile/${userId}`,
+        `${import.meta.env.VITE_API}/route/employee/get/profile/${userId}`,
         {
           headers: {
             Authorization: token,
@@ -65,7 +65,7 @@ const useCalculateSalaryQuery = ({
     ["empLoanAplication", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/${userId}/get-ongoing-loan-data`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/${userId}/get-ongoing-loan-data`,
         {
           headers: {
             Authorization: token,
@@ -81,7 +81,7 @@ const useCalculateSalaryQuery = ({
     ["remote-punching"],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/remote-punch/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/remote-punch/${organisationId}`,
         {
           headers: {
             Authorization: token,

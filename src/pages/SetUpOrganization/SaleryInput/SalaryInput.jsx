@@ -83,7 +83,7 @@ const SalaryInput = () => {
   // Delete Query
   const deleteMutation = useMutation(
     (id) =>
-      axios.delete(`${process.env.REACT_APP_API}/route/salary-template/${id}`, {
+      axios.delete(`${import.meta.env.VITE_API}/route/salary-template/${id}`, {
         headers: {
           Authorization: authToken,
         },
@@ -102,7 +102,7 @@ const SalaryInput = () => {
     ["salaryTemplates", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/salary-template-org/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/salary-template-org/${organisationId}`,
         {
           headers: {
             Authorization: authToken,

@@ -70,7 +70,7 @@ const OvertimeSetup = () => {
     ["overtimeSettings", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/get/${organisationId}/overtime`,
+        `${import.meta.env.VITE_API}/route/get/${organisationId}/overtime`,
         {
           headers: {
             Authorization: authToken,
@@ -164,7 +164,7 @@ const OvertimeSetup = () => {
       };
 
       await axios.post(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/overtime`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/overtime`,
         overtimeSettings,
         {
           headers: {

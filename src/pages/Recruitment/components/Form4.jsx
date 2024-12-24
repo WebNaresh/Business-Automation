@@ -16,7 +16,7 @@ const Form4 = ({ prevStep }) => {
   const handleSubmit = useMutation(
     (data) => {
       const response = axios.post(
-        `${process.env.REACT_APP_API}/route/department/create/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/department/create/${organisationId}`,
         deptData,
         {
           headers: {

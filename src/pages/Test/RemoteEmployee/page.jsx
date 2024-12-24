@@ -38,7 +38,7 @@ const RemoteEmployee = () => {
       console.info(`🚀 ~ file: page.jsx:34 ~ body:`, body);
 
       const result = await axios.post(
-        `${process.env.REACT_APP_API}/route/punch/miss-punch`,
+        `${import.meta.env.VITE_API}/route/punch/miss-punch`,
         body,
         {
           headers: {
@@ -86,8 +86,8 @@ const RemoteEmployee = () => {
   const [array, setArray] = useState([]);
   const [index1, setIndex] = useState(0);
   const { isLoaded } = useJsApiLoader({
-    id: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    id: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
   });
   let tag = watch("today");
   useEffect(() => {

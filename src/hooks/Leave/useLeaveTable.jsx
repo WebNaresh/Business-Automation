@@ -11,7 +11,7 @@ const useLeaveTable = () => {
     "withOutLeaves-leave-table",
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/leave/getEmployeeCurrentYearLeave`,
+        `${import.meta.env.VITE_API}/route/leave/getEmployeeCurrentYearLeave`,
         {
           headers: { Authorization: authToken },
         }
@@ -25,7 +25,7 @@ const useLeaveTable = () => {
     "employee-leave-table",
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/leave/getEmployeeLeaveTable`,
+        `${import.meta.env.VITE_API}/route/leave/getEmployeeLeaveTable`,
         {
           headers: { Authorization: authToken },
         }

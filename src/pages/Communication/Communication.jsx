@@ -35,7 +35,7 @@ const Communication = () => {
     ["getEmailCommunication", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/getEmail-communication`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/getEmail-communication`,
         {
           headers: {
             Authorization: authToken,
@@ -97,7 +97,7 @@ const Communication = () => {
   const deleteMutation = useMutation(
     (id) =>
       axios.delete(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/deleteEmailCommunication/${id}`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/deleteEmailCommunication/${id}`,
         {
           headers: {
             Authorization: authToken,

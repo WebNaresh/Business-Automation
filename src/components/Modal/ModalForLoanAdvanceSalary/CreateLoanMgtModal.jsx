@@ -135,7 +135,7 @@ const CreateLoanMgtModal = ({ handleClose, open, organisationId }) => {
   const AddLoanData = useMutation(
     (data) =>
       axios.post(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/add-loan-data`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/add-loan-data`,
         data,
         {
           headers: {

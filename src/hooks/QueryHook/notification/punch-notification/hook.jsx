@@ -9,7 +9,7 @@ const usePunchNotification = () => {
   console.log(`🚀 ~ file: hook.jsx:9 ~ setOrganizationId:`, setOrganizationId);
   const getUserPunchNotification = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/punch-notification/notification-user?organizationId=${organizationId}`,
+      `${import.meta.env.VITE_API}/route/punch-notification/notification-user?organizationId=${organizationId}`,
       {
         headers: { Authorization: authToken },
       }

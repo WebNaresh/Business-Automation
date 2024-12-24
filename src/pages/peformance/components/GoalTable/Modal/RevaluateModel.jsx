@@ -59,7 +59,7 @@ const RevaluateModel = ({
   const performanceSetup = useMutation(
     async (data) => {
       await axios.patch(
-        `${process.env.REACT_APP_API}/route/performance/updateSingleGoal/${id._id}`,
+        `${import.meta.env.VITE_API}/route/performance/updateSingleGoal/${id._id}`,
         { data },
         {
           headers: {
@@ -81,7 +81,7 @@ const RevaluateModel = ({
     queryKey: ["getGoalMonitoring", id],
     queryFn: async () => {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/route/performance/getSingleGoals/${id._id}`,
+        `${import.meta.env.VITE_API}/route/performance/getSingleGoals/${id._id}`,
         {
           headers: {
             Authorization: authToken,
@@ -110,7 +110,7 @@ const RevaluateModel = ({
 
   useQuery("employee", async () => {
     const { data } = await axios.get(
-      `${process.env.REACT_APP_API}/route/employee/getEmployeeUnderManager`,
+      `${import.meta.env.VITE_API}/route/employee/getEmployeeUnderManager`,
       {
         headers: {
           Authorization: authToken,

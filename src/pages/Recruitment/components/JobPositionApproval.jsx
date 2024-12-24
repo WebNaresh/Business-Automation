@@ -25,7 +25,7 @@ const JobPositionApproval = ({ employee, onActionComplete }) => {
   const acceptJobPosition = useMutation(
     () =>
       axios.put(
-        `${process.env.REACT_APP_API}/route/${jobPositionId}/accept-job-position`,
+        `${import.meta.env.VITE_API}/route/${jobPositionId}/accept-job-position`,
         {},
         {
           headers: {
@@ -53,7 +53,7 @@ const JobPositionApproval = ({ employee, onActionComplete }) => {
   const deleteJobPosition = useMutation(
     () =>
       axios.put(
-        `${process.env.REACT_APP_API}/route/${jobPositionId}/reject-job-posistion`,
+        `${import.meta.env.VITE_API}/route/${jobPositionId}/reject-job-posistion`,
         {},
         {
           headers: {

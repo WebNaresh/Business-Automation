@@ -60,7 +60,7 @@ const EmployeeCodeGenerator = () => {
 
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/get/employee-code/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/get/employee-code/${organisationId}`,
         config
       );
 
@@ -97,7 +97,7 @@ const EmployeeCodeGenerator = () => {
   const deleteMutation = useMutation(
     (id) =>
       axios.delete(
-        `${process.env.REACT_APP_API}/route/delete/employee-code/${organisationId}/${id}`,
+        `${import.meta.env.VITE_API}/route/delete/employee-code/${organisationId}/${id}`,
         {
           headers: {
             Authorization: authToken,

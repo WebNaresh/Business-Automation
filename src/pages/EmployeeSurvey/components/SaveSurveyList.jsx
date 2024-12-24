@@ -41,7 +41,7 @@ const SaveSurveyList = () => {
         ["createdSurvey", organisationId],
         async () => {
             const response = await axios.get(
-                `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-save-survey`,
+                `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-save-survey`,
                 {
                     headers: {
                         Authorization: authToken,
@@ -74,7 +74,7 @@ const SaveSurveyList = () => {
     const deleteMutation = useMutation(
         (surveyId) =>
             axios.delete(
-                `${process.env.REACT_APP_API}/route/organization/${organisationId}/delete-draft-survey/${surveyId}`,
+                `${import.meta.env.VITE_API}/route/organization/${organisationId}/delete-draft-survey/${surveyId}`,
                 {
                     headers: {
                         Authorization: authToken,

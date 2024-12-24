@@ -63,7 +63,7 @@ const ViewJobPosition = () => {
   const deleteMutation = useMutation(
     (id) =>
       axios.delete(
-        `${process.env.REACT_APP_API}/route/delete-job-position/${id}`,
+        `${import.meta.env.VITE_API}/route/delete-job-position/${id}`,
         {
           headers: {
             Authorization: authToken,

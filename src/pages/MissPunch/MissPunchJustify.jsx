@@ -23,7 +23,7 @@ const MissPunchJustify = () => {
     ["missedJustifyData", organisationId, currentPage],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/unavailable-record?page=${currentPage}`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/unavailable-record?page=${currentPage}`,
         {
           headers: {
             Authorization: authToken,

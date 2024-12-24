@@ -101,7 +101,7 @@ const Test4 = ({ prevStep }) => {
       console.log("fdfd" ,userData);
       
       const response = axios.post(
-        `${process.env.REACT_APP_API}/route/employee/add-employee`,
+        `${import.meta.env.VITE_API}/route/employee/add-employee`,
         userData,
         {
           headers: {

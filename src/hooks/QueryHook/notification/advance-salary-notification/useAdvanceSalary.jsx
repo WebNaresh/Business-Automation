@@ -11,7 +11,7 @@ const useAdvanceSalaryData = () => {
     data: getAdvanceSalary,
   } = useQuery(["getAdvanceSalary"], async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/advance-salary-data`,
+      `${import.meta.env.VITE_API}/route/advance-salary-data`,
       {
         headers: {
           Authorization: authToken,
@@ -25,7 +25,7 @@ const useAdvanceSalaryData = () => {
     ["advance-salary-notification"],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/advance-salary-notification-to-emp`,
+        `${import.meta.env.VITE_API}/route/advance-salary-notification-to-emp`,
         {
           headers: {
             Authorization: authToken,

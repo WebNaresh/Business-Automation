@@ -7,7 +7,7 @@ export const getSignedUrl = async () => {
   try {
     console.log("Requesting signed URL...");
     const resp = await axios.get(
-      `${process.env.REACT_APP_API}/route/employee/upload`
+      `${import.meta.env.VITE_API}/route/employee/upload`
     );
     console.log("Signed URL response:", resp.data);
     return resp.data;

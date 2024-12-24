@@ -11,7 +11,7 @@ const useGetCommunicationPermission = (organisationId) => {
     [`survey-permission`],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-employee-survey-permission`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-employee-survey-permission`,
         {
           headers: {
             Authorization: authToken,

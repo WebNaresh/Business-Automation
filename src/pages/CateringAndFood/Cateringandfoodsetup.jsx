@@ -41,7 +41,7 @@ const CateringAndFoodSetup = () => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/route/vendor/foodsetuppage`,
+        `${import.meta.env.VITE_API}/route/vendor/foodsetuppage`,
         { formData }
       );
       setAppAlert({ show: true, type: "success", message: response.data.message });
@@ -227,7 +227,7 @@ export default CateringAndFoodSetup;
 //     event.preventDefault();
 //     try {
 //       const response = await axios.post(
-//         `${process.env.REACT_APP_API}/route/vendor/foodsetuppage`,
+//         `${import.meta.env.VITE_API}/route/vendor/foodsetuppage`,
 //         {
 //           formData
 //         }

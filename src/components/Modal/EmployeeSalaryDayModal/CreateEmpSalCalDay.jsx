@@ -61,7 +61,7 @@ const CreateEmpSalCalDayModel = ({ handleClose, open, id }) => {
     async (data) => {
       try {
         const response = await axios.post(
-          `${process.env.REACT_APP_API}/route/employee-salary-cal-day/${id}`,
+          `${import.meta.env.VITE_API}/route/employee-salary-cal-day/${id}`,
           data,
           {
             headers: {

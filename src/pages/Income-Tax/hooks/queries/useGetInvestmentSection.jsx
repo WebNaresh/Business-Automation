@@ -9,7 +9,7 @@ const useGetInvestmentSection = (search, page, empId = undefined) => {
   const getInvestmentSection = async () => {
     try {
       const res = await axios.get(
-        `${process.env.REACT_APP_API}/route/tds/getInvestment?search=${debouncedSearchTerm}&page=${page}&employeeId=${empId}`,
+        `${import.meta.env.VITE_API}/route/tds/getInvestment?search=${debouncedSearchTerm}&page=${page}&employeeId=${empId}`,
         {
           headers: {
             Authorization: authToken,

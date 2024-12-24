@@ -40,7 +40,7 @@ const NewCommunication = ({ handleClose, open, organisationId }) => {
     ["communication-type", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-communication`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-communication`,
         {
           headers: {
             Authorization: authToken,
@@ -65,7 +65,7 @@ const NewCommunication = ({ handleClose, open, organisationId }) => {
     ["employee", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/employee/${organisationId}/get-emloyee`,
+        `${import.meta.env.VITE_API}/route/employee/${organisationId}/get-emloyee`,
         {
           headers: {
             Authorization: authToken,
@@ -161,7 +161,7 @@ const NewCommunication = ({ handleClose, open, organisationId }) => {
   const SendEmailCommunication = useMutation(
     (data) =>
       axios.post(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/sendEmail-communication`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/sendEmail-communication`,
         data,
         {
           headers: {
@@ -205,7 +205,7 @@ const NewCommunication = ({ handleClose, open, organisationId }) => {
   const SaveForLatter = useMutation(
     (data) =>
       axios.post(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/saveEmail-communication`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/saveEmail-communication`,
         data,
         {
           headers: {

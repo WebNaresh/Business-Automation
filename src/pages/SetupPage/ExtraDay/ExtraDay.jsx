@@ -35,7 +35,7 @@ const ExtraDay = () => {
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/route/add/extra-day`,
+        `${import.meta.env.VITE_API}/route/add/extra-day`,
         data,
         {
           headers: {
@@ -60,7 +60,7 @@ const ExtraDay = () => {
     "extra-day",
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/get/extra-day`,
+        `${import.meta.env.VITE_API}/route/get/extra-day`,
         {
           headers: { Authorization: authToken },
         }

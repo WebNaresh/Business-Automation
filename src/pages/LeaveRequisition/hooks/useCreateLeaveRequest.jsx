@@ -22,7 +22,7 @@ const useCreateLeaveRequest = (empId) => {
         }
 
         await axios.post(
-          `${process.env.REACT_APP_API}/route/leave/create?role=${role}&empId=${empId}`,
+          `${import.meta.env.VITE_API}/route/leave/create?role=${role}&empId=${empId}`,
           value,
           {
             headers: {
@@ -53,7 +53,7 @@ const useCreateLeaveRequest = (empId) => {
     async (value) => {
       try {
         await axios.post(
-          `${process.env.REACT_APP_API}/route/leave/create?role=${role}&empId=${empId}`,
+          `${import.meta.env.VITE_API}/route/leave/create?role=${role}&empId=${empId}`,
           value,
           {
             headers: {

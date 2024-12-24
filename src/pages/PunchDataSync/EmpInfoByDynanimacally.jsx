@@ -37,7 +37,7 @@ const EmpInfoByDynimacally = ({ organisationId }) => {
     ["tempPunchData", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-temp-punching-data`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-temp-punching-data`,
         {
           headers: {
             Authorization: authToken,

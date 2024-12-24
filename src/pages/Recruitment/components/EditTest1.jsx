@@ -111,7 +111,7 @@ const EditTest1 = ({ nextStep, isLastStep }) => {
     ["jjob-position", jobPositionId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/${jobPositionId}/get-job-position`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/${jobPositionId}/get-job-position`,
         {
           headers: {
             Authorization: authToken,

@@ -26,7 +26,7 @@ const Dashboard = () => {
   const getSalaryTemplate = async () => {
     try {
       const res = await axios.get(
-        `${process.env.REACT_APP_API}/route/employeeSalary/viewpayslip/${user._id}/${user.organizationId}/${selectedyear.value}`,
+        `${import.meta.env.VITE_API}/route/employeeSalary/viewpayslip/${user._id}/${user.organizationId}/${selectedyear.value}`,
         {
           headers: {
             Authorization: authToken,

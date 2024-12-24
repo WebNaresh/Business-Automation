@@ -17,7 +17,7 @@ const useCreateDeclaration = () => {
 
   const uploadProof = async (tdsfile) => {
     const data = await axios.get(
-      `${process.env.REACT_APP_API}/route/s3createFile/TDS`,
+      `${import.meta.env.VITE_API}/route/s3createFile/TDS`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -74,7 +74,7 @@ const useCreateDeclaration = () => {
       }
 
       axios.post(
-        `${process.env.REACT_APP_API}/route/tds/createInvestment`,
+        `${import.meta.env.VITE_API}/route/tds/createInvestment`,
         updatedData,
         {
           headers: {

@@ -45,7 +45,7 @@ function CalculateSalary() {
     const fetchDataAndFilter = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/route/employee/leaves/${year}/${month}/${userId}`,
+          `${import.meta.env.VITE_API}/route/employee/leaves/${year}/${month}/${userId}`,
           {
             headers: {
               Authorization: token,
@@ -79,7 +79,7 @@ function CalculateSalary() {
   const fetchHoliday = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/holiday/get/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/holiday/get/${organisationId}`,
         {
           headers: {
             Authorization: token,
@@ -119,7 +119,7 @@ function CalculateSalary() {
   const fetchRemotePunchingCount = async (userId, startDate, endDate) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/remote-punch-count/${userId}?startDate=${startDate}&endDate=${endDate}`,
+        `${import.meta.env.VITE_API}/route/remote-punch-count/${userId}?startDate=${startDate}&endDate=${endDate}`,
         {
           headers: {
             Authorization: token,
@@ -179,7 +179,7 @@ function CalculateSalary() {
     ["salary-component", userId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/get-salary-component/${userId}`,
+        `${import.meta.env.VITE_API}/route/get-salary-component/${userId}`,
         {
           headers: {
             Authorization: token,
@@ -409,7 +409,7 @@ function CalculateSalary() {
       };
       console.log("data", data);
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/route/employeeSalary/add-salary/${userId}/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/employeeSalary/add-salary/${userId}/${organisationId}`,
         data,
         {
           headers: {

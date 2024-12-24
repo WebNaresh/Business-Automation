@@ -50,7 +50,7 @@ const EmpCommunication = () => {
   const mutationPermission = useMutation(
     async (isChecked) => {
       await axios.post(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/employee-survey-permission`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/employee-survey-permission`,
         { surveyPermission: isChecked },
         {
           headers: {
@@ -86,7 +86,7 @@ const EmpCommunication = () => {
     ["emailCommunication", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-communication`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-communication`,
         {
           headers: {
             Authorization: authToken,
@@ -139,7 +139,7 @@ const EmpCommunication = () => {
   const deleteMutation = useMutation(
     (id) =>
       axios.delete(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/${id}/delete-communication`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/${id}/delete-communication`,
         {
           headers: {
             Authorization: authToken,

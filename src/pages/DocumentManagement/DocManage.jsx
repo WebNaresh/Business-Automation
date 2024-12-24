@@ -34,7 +34,7 @@ const DocManage = () => {
     ["getRecordOfEmp"],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/emp/get-document/${employeeId}/${organizationId}`,
+        `${import.meta.env.VITE_API}/route/emp/get-document/${employeeId}/${organizationId}`,
         {
           headers: {
             Authorization: token,
@@ -74,7 +74,7 @@ const DocManage = () => {
   const deleteMutation = useMutation(
     (id) =>
       axios.delete(
-        `${process.env.REACT_APP_API}/route/delete-update-document/${id}`,
+        `${import.meta.env.VITE_API}/route/delete-update-document/${id}`,
         {
           headers: {
             Authorization: token,
@@ -130,7 +130,7 @@ const DocManage = () => {
       formData.append("file", file);
 
       return axios.put(
-        `${process.env.REACT_APP_API}/route/update-document/${fileId}`,
+        `${import.meta.env.VITE_API}/route/update-document/${fileId}`,
         formData,
         {
           headers: {

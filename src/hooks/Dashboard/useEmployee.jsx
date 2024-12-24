@@ -7,7 +7,7 @@ const useEmployee = (organisationId, page) => {
   const getEmployees = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/employee/get-paginated-emloyee/${organisationId}?page=${page}`,
+        `${import.meta.env.VITE_API}/route/employee/get-paginated-emloyee/${organisationId}?page=${page}`,
         {
           headers: {
             Authorization: authToken,

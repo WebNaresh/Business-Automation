@@ -119,7 +119,7 @@ const GoalSettingTab = () => {
   //   "performancePeriod",
   //   async () => {
   //     const { data } = await axios.get(
-  //       `${process.env.REACT_APP_API}/route/performance/getSetup/${user.organizationId}`,
+  //       `${import.meta.env.VITE_API}/route/performance/getSetup/${user.organizationId}`,
   //       {
   //         headers: {
   //           Authorization: authToken,

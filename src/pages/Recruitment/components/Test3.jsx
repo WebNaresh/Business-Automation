@@ -67,7 +67,7 @@ const Test3 = ({ prevStep }) => {
       };
 
       const response = axios.post(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/create-job-position`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/create-job-position`,
         JobPositionData,
         {
           headers: {
@@ -100,7 +100,7 @@ const Test3 = ({ prevStep }) => {
   const SaveForLatter = useMutation(
     (data) =>
       axios.post(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/save-job-position`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/save-job-position`,
         data,
         {
           headers: {

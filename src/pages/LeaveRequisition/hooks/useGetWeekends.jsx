@@ -8,7 +8,7 @@ const useGetWeekends = () => {
     ["employee-disable-weekend"],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/weekend/get`,
+        `${import.meta.env.VITE_API}/route/weekend/get`,
         {
           headers: { Authorization: authToken },
         }

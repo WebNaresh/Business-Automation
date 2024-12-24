@@ -21,7 +21,7 @@ const EmpNotification = () => {
     queryFn: async () => {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_API}/route/punch/get-notification/${employeeId}`,
+          `${import.meta.env.VITE_API}/route/punch/get-notification/${employeeId}`,
           {
             headers: {
               Authorization: authToken,
@@ -43,7 +43,7 @@ const EmpNotification = () => {
     async () => {
       try {
         const res = await axios.patch(
-          `${process.env.REACT_APP_API}/route/update/notificationCount/punch/manager/accept/${employeeId}`,
+          `${import.meta.env.VITE_API}/route/update/notificationCount/punch/manager/accept/${employeeId}`,
           { organizationId: user.organizationId, punchId },
           {
             headers: {

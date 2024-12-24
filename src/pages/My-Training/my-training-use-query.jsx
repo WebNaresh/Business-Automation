@@ -12,7 +12,7 @@ const useTrainingFormEmployee = () => {
 
   const getEmployee = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/training/get-recent-training/${decodedToken?.user?.organizationId}?page=${page}&trainingName=${trainingName}&trainingDepartment=${trainingDepartment?.value}&trainingType=${trainingType?.value}`,
+      `${import.meta.env.VITE_API}/route/training/get-recent-training/${decodedToken?.user?.organizationId}?page=${page}&trainingName=${trainingName}&trainingDepartment=${trainingDepartment?.value}&trainingType=${trainingType?.value}`,
       {
         headers: {
           Authorization: authToken,

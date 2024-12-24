@@ -41,7 +41,7 @@ const Mapped = ({
 
   const { data: extraDay } = useQuery("extra-day", async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/get/extra-day`,
+      `${import.meta.env.VITE_API}/route/get/extra-day`,
       {
         headers: { Authorization: authToken },
       }
@@ -56,7 +56,7 @@ const Mapped = ({
     (async () => {
       try {
         const resp = await axios.get(
-          `${process.env.REACT_APP_API}/route/shifts/${id}`,
+          `${import.meta.env.VITE_API}/route/shifts/${id}`,
           {
             headers: {
               Authorization: authToken,

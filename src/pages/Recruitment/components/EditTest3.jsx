@@ -65,7 +65,7 @@ const EditTest3 = ({ prevStep }) => {
       };
 
       const response = axios.put(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/${jobPositionId}/update-job-position`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/${jobPositionId}/update-job-position`,
         JobPositionData,
         {
           headers: {

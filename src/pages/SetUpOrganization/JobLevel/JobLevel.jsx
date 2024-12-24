@@ -39,7 +39,7 @@ const JobLevel = () => {
     ["emailCommunication", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-communication`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-communication`,
         {
           headers: {
             Authorization: authToken,
@@ -92,7 +92,7 @@ const JobLevel = () => {
   const deleteMutation = useMutation(
     (id) =>
       axios.delete(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/${id}/delete-communication`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/${id}/delete-communication`,
         {
           headers: {
             Authorization: authToken,

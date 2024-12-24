@@ -34,7 +34,7 @@ const ViewCalculateAttendance = () => {
     ["empAttendanceData", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-punching-info`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-punching-info`,
         {
           headers: {
             Authorization: authToken,

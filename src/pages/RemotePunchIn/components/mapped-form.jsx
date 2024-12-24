@@ -36,7 +36,7 @@ const Mapped = ({
     (async () => {
       try {
         const resp = await axios.get(
-          `${process.env.REACT_APP_API}/route/getAllShifts`
+          `${import.meta.env.VITE_API}/route/getAllShifts`
         );
         setSName(resp.data.shifts);
       } catch (error) {

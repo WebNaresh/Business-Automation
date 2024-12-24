@@ -13,7 +13,7 @@ const InputForm = () => {
     ["getApprovedRejectedData"],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/get-approved-reject-loan-to-employee`,
+        `${import.meta.env.VITE_API}/route/get-approved-reject-loan-to-employee`,
         {
           headers: {
             Authorization: authToken,

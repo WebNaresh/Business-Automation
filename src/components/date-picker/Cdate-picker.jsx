@@ -57,7 +57,7 @@
 //     async () => {
 //       setCalLoader(true);
 //       const response = await axios.get(
-//         `${process.env.REACT_APP_API}/route/weekend/get`,
+//         `${import.meta.env.VITE_API}/route/weekend/get`,
 //         {
 //           headers: { Authorization: authToken },
 //         }
@@ -497,7 +497,7 @@
 //     async () => {
 //       setCalLoader(true);
 //       const response = await axios.get(
-//         `${process.env.REACT_APP_API}/route/weekend/get`,
+//         `${import.meta.env.VITE_API}/route/weekend/get`,
 //         {
 //           headers: { Authorization: authToken },
 //         }
@@ -870,7 +870,7 @@
 //     async () => {
 //       setCalLoader(true);
 //       const response = await axios.get(
-//         `${process.env.REACT_APP_API}/route/weekend/get`,
+//         `${import.meta.env.VITE_API}/route/weekend/get`,
 //         {
 //           headers: { Authorization: authToken },
 //         }
@@ -1303,7 +1303,7 @@
 //     async () => {
 //       setCalLoader(true);
 //       const response = await axios.get(
-//         `${process.env.REACT_APP_API}/route/weekend/get`,
+//         `${import.meta.env.VITE_API}/route/weekend/get`,
 //         {
 //           headers: { Authorization: authToken },
 //         }
@@ -1726,7 +1726,7 @@ const CAppDatePicker = ({
     async () => {
       setCalLoader(true);
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/weekend/get`,
+        `${import.meta.env.VITE_API}/route/weekend/get`,
         {
           headers: { Authorization: authToken },
         }

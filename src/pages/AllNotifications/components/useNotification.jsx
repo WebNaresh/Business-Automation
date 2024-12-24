@@ -78,7 +78,7 @@ const useNotification = () => {
     queryFn: async () => {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_API}/route/punch/get-notification/${employeeId}`,
+          `${import.meta.env.VITE_API}/route/punch/get-notification/${employeeId}`,
           {
             headers: {
               Authorization: authToken,
@@ -298,7 +298,7 @@ const useNotification = () => {
     (async () => {
       if (user?._id) {
         await axios.get(
-          `${process.env.REACT_APP_API}/route/employee/get/profile/${user?._id}`,
+          `${import.meta.env.VITE_API}/route/employee/get/profile/${user?._id}`,
           {
             headers: {
               Authorization: token,

@@ -13,7 +13,7 @@ const ForgotPassword = () => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/route/employee/forgot-password`,
+        `${import.meta.env.VITE_API}/route/employee/forgot-password`,
         {
           email,
         }
@@ -109,7 +109,7 @@ const ForgotPassword = () => {
 //     event.preventDefault();
 //     try {
 //       const response = await axios.post(
-//         `${process.env.REACT_APP_API}/route/employee/forgot-password`,
+//         `${import.meta.env.VITE_API}/route/employee/forgot-password`,
 //         {
 //           email,
 //         }

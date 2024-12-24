@@ -16,7 +16,7 @@ const OnlyPlaceAutoComplete = ({
   Icon,
   placeholder,
   errors,
-  apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+  apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
   center,
 }) => {
   const [scriptLoaded, setScriptLoaded] = useState(false);

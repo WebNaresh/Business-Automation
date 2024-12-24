@@ -62,7 +62,7 @@ const AddCommunicationModal = ({ handleClose, open, organisationId }) => {
   const AddEmailCommunication = useMutation(
     (data) =>
       axios.post(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/add-communication`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/add-communication`,
         data,
         {
           headers: {

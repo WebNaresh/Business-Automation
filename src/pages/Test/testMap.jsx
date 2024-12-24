@@ -32,7 +32,7 @@ const TestMap = () => {
   const fetchReportees = async () => {
     try {
       const resp = await axios.get(
-        `${process.env.REACT_APP_API}/route/employee/countofEmployees`,
+        `${import.meta.env.VITE_API}/route/employee/countofEmployees`,
         {
           headers: {
             Authorization: authToken,
@@ -150,7 +150,7 @@ const TestMap = () => {
   const getEmp = async (id) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/punch/getForEmp/${id}`,
+        `${import.meta.env.VITE_API}/route/punch/getForEmp/${id}`,
         {
           headers: {
             Authorization: authToken,

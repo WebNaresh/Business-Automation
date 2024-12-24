@@ -9,7 +9,7 @@ const useGetSinglePunchEntry = ({ Id }) => {
     async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/route/punch-entry/${Id}`,
+          `${import.meta.env.VITE_API}/route/punch-entry/${Id}`,
           {
             headers: {
               Authorization: authToken,

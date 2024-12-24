@@ -14,7 +14,7 @@ const SummaryTable = () => {
     "employee-summary-table",
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/leave/getEmployeeSummaryTable`,
+        `${import.meta.env.VITE_API}/route/leave/getEmployeeSummaryTable`,
         {
           headers: { Authorization: authToken },
         }

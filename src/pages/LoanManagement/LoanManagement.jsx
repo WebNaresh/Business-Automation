@@ -44,7 +44,7 @@ const LoanManagement = () => {
     ["loanDatas", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/${userId}/get-loan-data`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/${userId}/get-loan-data`,
         {
           headers: {
             Authorization: authToken,
@@ -179,7 +179,7 @@ const LoanManagement = () => {
   const deleteMutation = useMutation(
     (id) =>
       axios.delete(
-        `${process.env.REACT_APP_API}/route/delete-loan-data/${id}`,
+        `${import.meta.env.VITE_API}/route/delete-loan-data/${id}`,
         {
           headers: {
             Authorization: authToken,

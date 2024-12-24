@@ -11,7 +11,7 @@ import { useQuery } from "react-query";
 
 //get added employee in geofence area
 const fetchAddedEmployee = async (circleId) => {
-  const { data } = await axios.get(`${process.env.REACT_APP_API}/route/geo-fence/${circleId}/employee`);
+  const { data } = await axios.get(`${import.meta.env.VITE_API}/route/geo-fence/${circleId}/employee`);
   return data?.data;
 };
 

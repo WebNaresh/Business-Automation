@@ -42,7 +42,7 @@ const AdvanceSalary = () => {
     ["advanceSalary", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/${userId}/get-advancesalary-data`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/${userId}/get-advancesalary-data`,
         {
           headers: {
             Authorization: authToken,
@@ -99,7 +99,7 @@ const AdvanceSalary = () => {
   const deleteMutation = useMutation(
     (id) =>
       axios.delete(
-        `${process.env.REACT_APP_API}/route/delete-advance-salary-data/${id}`,
+        `${import.meta.env.VITE_API}/route/delete-advance-salary-data/${id}`,
         {
           headers: {
             Authorization: authToken,

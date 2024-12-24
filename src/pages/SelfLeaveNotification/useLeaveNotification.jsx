@@ -17,7 +17,7 @@ const useLeaveNotification = () => {
   const { authToken, decodedToken } = useGetUser();
   const getLeaveNotification = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/leave/get-leave-notification/${decodedToken?.user?._id}?status=${status}&leaveTypeDetailsId=${leaveTypeDetailsId}&minDate=${minDate}&maxDate=${maxDate}&skip=${skip}`,
+      `${import.meta.env.VITE_API}/route/leave/get-leave-notification/${decodedToken?.user?._id}?status=${status}&leaveTypeDetailsId=${leaveTypeDetailsId}&minDate=${minDate}&maxDate=${maxDate}&skip=${skip}`,
       {
         headers: { Authorization: authToken },
       }

@@ -171,7 +171,7 @@ const TDSTable4Tab3 = () => {
 
     try {
       await axios.patch(
-        `${process.env.REACT_APP_API}/route/tds/createInvestment`,
+        `${import.meta.env.VITE_API}/route/tds/createInvestment`,
         requestData,
         {
           headers: {
@@ -198,7 +198,7 @@ const TDSTable4Tab3 = () => {
     queryFn: async () => {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_API}/route/tds/getInvestment/SectionDeduction`,
+          `${import.meta.env.VITE_API}/route/tds/getInvestment/SectionDeduction`,
           {
             headers: {
               Authorization: authToken,
@@ -292,7 +292,7 @@ const TDSTable4Tab3 = () => {
     };
     try {
       await axios.post(
-        `${process.env.REACT_APP_API}/route/tds/createInvestment`,
+        `${import.meta.env.VITE_API}/route/tds/createInvestment`,
         requestData,
         {
           headers: {

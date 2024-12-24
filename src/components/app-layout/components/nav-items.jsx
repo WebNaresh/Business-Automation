@@ -84,7 +84,7 @@ const TestNavItems = ({ toggleDrawer }) => {
     (async () => {
       if (user?._id) {
         const resp = await axios.get(
-          `${process.env.REACT_APP_API}/route/employee/get/profile/${user?._id}`,
+          `${import.meta.env.VITE_API}/route/employee/get/profile/${user?._id}`,
           {
             headers: {
               Authorization: token,

@@ -36,7 +36,7 @@ const CompOff = () => {
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/route/add/compOff`,
+        `${import.meta.env.VITE_API}/route/add/compOff`,
         data,
         {
           headers: {
@@ -61,7 +61,7 @@ const CompOff = () => {
     "comp-off",
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/get/comp-off`,
+        `${import.meta.env.VITE_API}/route/get/comp-off`,
         {
           headers: { Authorization: authToken },
         }

@@ -21,7 +21,7 @@ const DepartmentApproval = ({ employee, onApprovalCompletion }) => {
   const handleApprovalReject = async (status) => {
     try {
       const response = await axios.put(
-        `${process.env.REACT_APP_API}/route/accept/reject/${departmentId}`,
+        `${import.meta.env.VITE_API}/route/accept/reject/${departmentId}`,
         {
           action: status === "accept" ? "accept" : "reject",
         },

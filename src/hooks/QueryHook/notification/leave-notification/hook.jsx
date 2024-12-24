@@ -16,7 +16,7 @@ const useLeaveNotificationHook = () => {
 
   const getUserNotification = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/leave/get?organizationId=${
+      `${import.meta.env.VITE_API}/route/leave/get?organizationId=${
         organizationId?.value ?? user?.organizationId
       }`,
       {

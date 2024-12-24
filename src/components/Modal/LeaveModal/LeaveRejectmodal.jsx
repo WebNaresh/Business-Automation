@@ -38,7 +38,7 @@ const LeaveRejectmodal = ({ items, isLoading, isFetching, length }) => {
   const { mutate: rejectMutate, isLoading: rejectLoading } = useMutation(
     async (length) => {
       await axios.post(
-        `${process.env.REACT_APP_API}/route/leave/reject/${items._id}`,
+        `${import.meta.env.VITE_API}/route/leave/reject/${items._id}`,
         { message },
         {
           headers: {
@@ -60,7 +60,7 @@ const LeaveRejectmodal = ({ items, isLoading, isFetching, length }) => {
     useMutation(
       ({ id, length }) => {
         axios.post(
-          `${process.env.REACT_APP_API}/route/leave/accept/${id}`,
+          `${import.meta.env.VITE_API}/route/leave/accept/${id}`,
           { message: "Your Request is successfully approved" },
           {
             headers: {

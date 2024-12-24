@@ -53,7 +53,7 @@ const DataTable = () => {
         const managerIdPromises = allEmployeeIds.map(async (empId) => {
           try {
             const managerResponse = await axios.get(
-              `${process.env.REACT_APP_API}/route/org/getManager/${empId}`,
+              `${import.meta.env.VITE_API}/route/org/getManager/${empId}`,
               {
                 headers: {
                   Authorization: authToken,
@@ -104,7 +104,7 @@ const DataTable = () => {
       const managerIdPromises = newSelected.map(async (empId) => {
         try {
           const managerResponse = await axios.get(
-            `${process.env.REACT_APP_API}/route/org/getManager/${empId}`,
+            `${import.meta.env.VITE_API}/route/org/getManager/${empId}`,
             {
               headers: {
                 Authorization: authToken,
@@ -135,7 +135,7 @@ const DataTable = () => {
         let response;
         if (role === "HR") {
           response = await axios.get(
-            `${process.env.REACT_APP_API}/route/organization/getOneOrgHr`,
+            `${import.meta.env.VITE_API}/route/organization/getOneOrgHr`,
             {
               headers: { Authorization: authToken },
             }
@@ -143,7 +143,7 @@ const DataTable = () => {
           setData1(response.data.orgData);
         }
         response = await axios.get(
-          `${process.env.REACT_APP_API}/route/organization/getall`,
+          `${import.meta.env.VITE_API}/route/organization/getall`,
           {
             headers: { Authorization: authToken },
           }
@@ -163,7 +163,7 @@ const DataTable = () => {
   useEffect(() => {
     (async () => {
       const resp = await axios.get(
-        `${process.env.REACT_APP_API}/route/org/getmanagers`,
+        `${import.meta.env.VITE_API}/route/org/getmanagers`,
         {
           headers: {
             Authorization: authToken,
@@ -179,7 +179,7 @@ const DataTable = () => {
   const fetchEmployees = async (orgId) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/employee/get/${orgId}`,
+        `${import.meta.env.VITE_API}/route/employee/get/${orgId}`,
         {
           headers: { Authorization: authToken },
         }
@@ -194,7 +194,7 @@ const DataTable = () => {
   const fetchDepartments = async (orgId) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/department/getall/${orgId}`,
+        `${import.meta.env.VITE_API}/route/department/getall/${orgId}`,
         {
           headers: { Authorization: authToken },
         }
@@ -218,7 +218,7 @@ const DataTable = () => {
     const fetchDocuments = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/route/org/getdocs`,
+          `${import.meta.env.VITE_API}/route/org/getdocs`,
           {
             headers: { Authorization: authToken },
           }
@@ -284,7 +284,7 @@ const DataTable = () => {
       });
 
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/route/org/updatearr/${selectedDocumentId}`,
+        `${import.meta.env.VITE_API}/route/org/updatearr/${selectedDocumentId}`,
         {
           employeeId: employeeIds,
         },

@@ -15,7 +15,7 @@ function PhoneAuth() {
     };
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/route/employee/send-code`,
+        `${import.meta.env.VITE_API}/route/employee/send-code`,
         user
       );
       console.log(`🚀 ~ response:`, response);
@@ -38,7 +38,7 @@ function PhoneAuth() {
     };
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/route/employee/verify-code`,
+        `${import.meta.env.VITE_API}/route/employee/verify-code`,
         user
       );
       console.log(`🚀 ~ response:`, response);

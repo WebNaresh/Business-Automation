@@ -148,7 +148,7 @@
     
 
 // //       const response = await axios.post(
-// //         `${process.env.REACT_APP_API}/route/employee/create`,
+// //         `${import.meta.env.VITE_API}/route/employee/create`,
 // //         data
 // //       );
 // //       handleAlert(true, "success", response.data.message);
@@ -164,7 +164,7 @@
 
 // //   const OtpRequest = useMutation(
 // //     (data) =>
-// //       axios.post(`${process.env.REACT_APP_API}/route/employee/sendOtp`, {
+// //       axios.post(`${import.meta.env.VITE_API}/route/employee/sendOtp`, {
 // //         number: data,
 // //         countryCode,
 // //       }),
@@ -192,7 +192,7 @@
 
 // //     const VerifyOtpRequest = useMutation(
 // //     (data) =>
-// //       axios.post(`${process.env.REACT_APP_API}/route/employee/verifyOtp`, data),
+// //       axios.post(`${import.meta.env.VITE_API}/route/employee/verifyOtp`, data),
 // //     {
 // //       onSuccess: (data) => {
 // //         if (data?.data?.success === false) {

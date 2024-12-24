@@ -11,7 +11,7 @@ const LocationSearchInput = ({ field }) => {
 
   return (
     <PlacesAutocomplete
-      key={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
+      key={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
       value={address}
       onChange={handleChange}
       onSelect={handleSelect}

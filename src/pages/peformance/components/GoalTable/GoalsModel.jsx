@@ -48,7 +48,7 @@ const GoalsModel = ({
     queryKey: "getSingleGoal",
     queryFn: async () => {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/route/performance/getSingleGoals/${id._id}`,
+        `${import.meta.env.VITE_API}/route/performance/getSingleGoals/${id._id}`,
         {
           headers: {
             Authorization: authToken,
@@ -151,7 +151,7 @@ const GoalsModel = ({
         console.log(data?.assignee?.map((emp) => emp));
       }
       await axios.post(
-        `${process.env.REACT_APP_API}/route/performance/createGoal`,
+        `${import.meta.env.VITE_API}/route/performance/createGoal`,
         { goals: currentData },
         {
           headers: {
@@ -176,7 +176,7 @@ const GoalsModel = ({
         assignee: { label: id?.empId._id, value: id?.empId._id },
       };
       await axios.patch(
-        `${process.env.REACT_APP_API}/route/performance/updateSingleGoal/${id._id}`,
+        `${import.meta.env.VITE_API}/route/performance/updateSingleGoal/${id._id}`,
         {
           data: goals,
         },
@@ -221,7 +221,7 @@ const GoalsModel = ({
 
   const { data: employeeData } = useQuery("employee", async () => {
     const { data } = await axios.get(
-      `${process.env.REACT_APP_API}/route/employee/getEmployeeUnderManager/${role}`,
+      `${import.meta.env.VITE_API}/route/employee/getEmployeeUnderManager/${role}`,
       {
         headers: {
           Authorization: authToken,

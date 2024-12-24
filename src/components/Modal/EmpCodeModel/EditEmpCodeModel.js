@@ -42,7 +42,7 @@ const EditEmpCodeModel = ({ handleClose, open, organisationId, empCodeId }) => {
   //for  Get Query
   const { data: codeData } = useQuery(["empCode", organisationId], async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/get/employee-code/${organisationId}/${empCodeId}`,
+      `${import.meta.env.VITE_API}/route/get/employee-code/${organisationId}/${empCodeId}`,
       {
         headers: {
           Authorization: authToken,
@@ -63,7 +63,7 @@ const EditEmpCodeModel = ({ handleClose, open, organisationId, empCodeId }) => {
     async (data) => {
       try {
         const response = await axios.put(
-          `${process.env.REACT_APP_API}/route/update/employee-code/${organisationId}/${empCodeId}`,
+          `${import.meta.env.VITE_API}/route/update/employee-code/${organisationId}/${empCodeId}`,
           data,
           {
             headers: {

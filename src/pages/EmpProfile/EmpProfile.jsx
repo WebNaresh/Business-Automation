@@ -80,7 +80,7 @@ const EmpProfile = () => {
     ["employeeProfile", userId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/employee/get/profile/${userId}`,
+        `${import.meta.env.VITE_API}/route/employee/get/profile/${userId}`,
         {
           headers: {
             Authorization: authToken,
@@ -141,7 +141,7 @@ const EmpProfile = () => {
   const deleteProfilePhotoMutation = useMutation(
     async () => {
       await axios.delete(
-        `${process.env.REACT_APP_API}/route/employee/photo/${userId}`,
+        `${import.meta.env.VITE_API}/route/employee/photo/${userId}`,
         {
           headers: {
             Authorization: authToken,
@@ -179,7 +179,7 @@ const EmpProfile = () => {
   const AddAdditionalInformation = useMutation(
     (data) =>
       axios.post(
-        `${process.env.REACT_APP_API}/route/employee/profile/add/${userId}`,
+        `${import.meta.env.VITE_API}/route/employee/profile/add/${userId}`,
         data,
         {
           headers: {

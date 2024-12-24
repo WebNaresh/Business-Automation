@@ -23,7 +23,7 @@ const useDeptQuery = ({ organisationId }) => {
       queryKey: ["departmentLocationList"],
       queryFn: () =>
         getDepartmentDataApi(
-          `${process.env.REACT_APP_API}/route/location/getOrganizationLocations/${organisationId}`
+          `${import.meta.env.VITE_API}/route/location/getOrganizationLocations/${organisationId}`
         ),
     });
 
@@ -35,7 +35,7 @@ const useDeptQuery = ({ organisationId }) => {
       queryKey: ["departmentHeadList"],
       queryFn: () =>
         getDepartmentDataApi(
-          `${process.env.REACT_APP_API}/route/employee/get-department-head/${organisationId}`
+          `${import.meta.env.VITE_API}/route/employee/get-department-head/${organisationId}`
         ),
     });
 
@@ -47,7 +47,7 @@ const useDeptQuery = ({ organisationId }) => {
       queryKey: ["delegateDepartmetnHeadList"],
       queryFn: () =>
         getDepartmentDataApi(
-          `${process.env.REACT_APP_API}/route/employee/get-department-delegate-head/${organisationId}`
+          `${import.meta.env.VITE_API}/route/employee/get-department-delegate-head/${organisationId}`
         ),
     });
 

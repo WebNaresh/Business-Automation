@@ -24,7 +24,7 @@ const useEmployeeQuery = ( organisationId ) => {
       queryKey: ["department"],
       queryFn: () =>
         getEmployeeDataApi(
-          `${process.env.REACT_APP_API}/route/department/get/${organisationId}`
+          `${import.meta.env.VITE_API}/route/department/get/${organisationId}`
         ),
     });
 
@@ -36,7 +36,7 @@ const useEmployeeQuery = ( organisationId ) => {
       queryKey: ["managersList"],
       queryFn: () =>
         getEmployeeDataApi(
-          `${process.env.REACT_APP_API}/route/employee/getAllManager/${organisationId}`,
+          `${import.meta.env.VITE_API}/route/employee/getAllManager/${organisationId}`,
           {
             headers: {
               Authorization: authToken,
@@ -53,7 +53,7 @@ const useEmployeeQuery = ( organisationId ) => {
       queryKey: ["empCode"],
       queryFn: () =>
         getEmployeeDataApi(
-          `${process.env.REACT_APP_API}/route/get/employee-code/${organisationId}`
+          `${import.meta.env.VITE_API}/route/get/employee-code/${organisationId}`
         ),
     });
 
@@ -65,7 +65,7 @@ const useEmployeeQuery = ( organisationId ) => {
       queryKey: ["empRoleList"],
       queryFn: () =>
         getEmployeeDataApi(
-          ` ${process.env.REACT_APP_API}/route/profile/role/${organisationId}`
+          ` ${import.meta.env.VITE_API}/route/profile/role/${organisationId}`
         ),
     });
 
@@ -77,7 +77,7 @@ const useEmployeeQuery = ( organisationId ) => {
       queryKey: ["costNumber"],
       queryFn: () =>
         getEmployeeDataApi(
-          `${process.env.REACT_APP_API}/route/department/get/cost-center-id/${organisationId}`
+          `${import.meta.env.VITE_API}/route/department/get/cost-center-id/${organisationId}`
         ),
     });
 
@@ -89,7 +89,7 @@ const useEmployeeQuery = ( organisationId ) => {
       queryKey: ["shiftList"],
       queryFn: () =>
         getEmployeeDataApi(
-          `${process.env.REACT_APP_API}/route/shifts/${organisationId}`
+          `${import.meta.env.VITE_API}/route/shifts/${organisationId}`
         ),
     });
 
@@ -101,7 +101,7 @@ const useEmployeeQuery = ( organisationId ) => {
       queryKey: ["inputFieldList"],
       queryFn: () =>
         getEmployeeDataApi(
-          `${process.env.REACT_APP_API}/route/inputfield/${organisationId}`
+          `${import.meta.env.VITE_API}/route/inputfield/${organisationId}`
         ),
     });
 
@@ -113,7 +113,7 @@ const useEmployeeQuery = ( organisationId ) => {
       queryKey: ["locationList"],
       queryFn: () =>
         getEmployeeDataApi(
-          `${process.env.REACT_APP_API}/route/location/getOrganizationLocations/${organisationId}`
+          `${import.meta.env.VITE_API}/route/location/getOrganizationLocations/${organisationId}`
         ),
     });
 
@@ -125,7 +125,7 @@ const useEmployeeQuery = ( organisationId ) => {
       queryKey: ["EmpTypes"],
       queryFn: () =>
         getEmployeeDataApi(
-          `${process.env.REACT_APP_API}/route/employment-types-organisation/${organisationId}`
+          `${import.meta.env.VITE_API}/route/employment-types-organisation/${organisationId}`
         ),
     });
 
@@ -137,7 +137,7 @@ const useEmployeeQuery = ( organisationId ) => {
       queryKey: ["SalaryTemp"],
       queryFn: () =>
         getEmployeeDataApi(
-          `${process.env.REACT_APP_API}/route/salary-template-org/${organisationId}`
+          `${import.meta.env.VITE_API}/route/salary-template-org/${organisationId}`
         ),
     });
     return SalaryTemp;
@@ -148,7 +148,7 @@ const useEmployeeQuery = ( organisationId ) => {
       queryKey: ["desingnationList"],
       queryFn: () =>
         getEmployeeDataApi(
-          `${process.env.REACT_APP_API}/route/designation/create/${organisationId}`
+          `${import.meta.env.VITE_API}/route/designation/create/${organisationId}`
         ),
     });
 
@@ -160,7 +160,7 @@ const useEmployeeQuery = ( organisationId ) => {
       queryKey: ["additionalFields"],
       queryFn: () =>
         getEmployeeDataApi(
-          `${process.env.REACT_APP_API}/route/inputfield/${organisationId}`
+          `${import.meta.env.VITE_API}/route/inputfield/${organisationId}`
         ),
     });
     return { addtionalFields, addtionalLoading };

@@ -10,7 +10,7 @@ const useCardQuery = ({ trainingId }) => {
   const queryClient = useQueryClient();
   const getEmployeeTrainingInfo = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/training/get-employee-training-info/${trainingId}`,
+      `${import.meta.env.VITE_API}/route/training/get-employee-training-info/${trainingId}`,
       {
         headers: {
           Authorization: authToken,
@@ -29,7 +29,7 @@ const useCardQuery = ({ trainingId }) => {
   });
   const createTrainingEmployee = async (data) => {
     const response = await axios.put(
-      `${process.env.REACT_APP_API}/route/training/complete-training-and-create-feedback/${trainingId}`,
+      `${import.meta.env.VITE_API}/route/training/complete-training-and-create-feedback/${trainingId}`,
       data,
       {
         headers: {
@@ -56,7 +56,7 @@ const useCardQuery = ({ trainingId }) => {
   );
   const getProofOfSubmissionUrl = async (fullObject) => {
     const result = await axios.get(
-      `${process.env.REACT_APP_API}/route/s3createFile/training-proof-of-submission-${fullObject?.employeeTrainingId}`,
+      `${import.meta.env.VITE_API}/route/s3createFile/training-proof-of-submission-${fullObject?.employeeTrainingId}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -82,7 +82,7 @@ const useCardQuery = ({ trainingId }) => {
   });
   const completeTrainingAndCreateFeedbackFunction = async (data) => {
     const response = await axios.put(
-      `${process.env.REACT_APP_API}/route/training/complete-training-and-create-feedback/${data?.employeeTrainingId}`,
+      `${import.meta.env.VITE_API}/route/training/complete-training-and-create-feedback/${data?.employeeTrainingId}`,
       data,
       {
         headers: {

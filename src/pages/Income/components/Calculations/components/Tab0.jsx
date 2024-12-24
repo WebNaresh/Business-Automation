@@ -27,7 +27,7 @@ const Tab0 = () => {
   //       const { financialYearStart, financialYearEnd } =
   //         getCurrentFinancialYear();
   //       const salaryData = await axios.get(
-  //         `${process.env.REACT_APP_API}/route/employeeSalary/getEmployeeSalaryPerFinancialYear?fromDate=${financialYearStart}&toDate=${financialYearEnd}`,
+  //         `${import.meta.env.VITE_API}/route/employeeSalary/getEmployeeSalaryPerFinancialYear?fromDate=${financialYearStart}&toDate=${financialYearEnd}`,
   //         {
   //           headers: {
   //             Authorization: authToken,
@@ -43,7 +43,7 @@ const Tab0 = () => {
 
   async function GetOldTax() {
     const data = await axios.get(
-      `${process.env.REACT_APP_API}/route/tds/getMyDeclaration/2024-2025/${salaryAmount?.TotalInvestInvestment}`,
+      `${import.meta.env.VITE_API}/route/tds/getMyDeclaration/2024-2025/${salaryAmount?.TotalInvestInvestment}`,
       {
         headers: {
           Authorization: authToken,

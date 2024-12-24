@@ -43,7 +43,7 @@
 //   const AddEmpCode = useMutation(
 //     (data) =>
 //       axios.post(
-//         `${process.env.REACT_APP_API}/route/create/employee-code-generator/${organisationId}`,
+//         `${import.meta.env.VITE_API}/route/create/employee-code-generator/${organisationId}`,
 //         data,
 //         {
 //           headers: {
@@ -172,7 +172,7 @@ const CreateEmpCodeModel = ({ handleClose, open, organisationId }) => {
   const AddEmpCode = useMutation(
     (data) =>
       axios.post(
-        `${process.env.REACT_APP_API}/route/create/employee-code-generator/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/create/employee-code-generator/${organisationId}`,
         data,
         {
           headers: {

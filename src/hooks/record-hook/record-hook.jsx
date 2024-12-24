@@ -13,7 +13,7 @@ const useRecordHook = () => {
     ["getRecordOfEmployee"],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/get-document/to-approval-id`,
+        `${import.meta.env.VITE_API}/route/get-document/to-approval-id`,
         {
           headers: {
             Authorization: authToken,

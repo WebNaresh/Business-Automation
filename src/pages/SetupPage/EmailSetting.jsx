@@ -33,7 +33,7 @@ const EmailSetting = () => {
 
   const { data } = useQuery("emails", async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/email/get/${id}`
+      `${import.meta.env.VITE_API}/route/email/get/${id}`
     );
 
     return response.data.emails;
@@ -50,7 +50,7 @@ const EmailSetting = () => {
 
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/email/getone/${id}`
+        `${import.meta.env.VITE_API}/route/email/getone/${id}`
       );
       reset({ email: response?.data.email.email || "" });
     } catch (error) {
@@ -71,7 +71,7 @@ const EmailSetting = () => {
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/route/email/create`,
+        `${import.meta.env.VITE_API}/route/email/create`,
         { email: data.email, organizationId: id }
       );
       setAppAlert({
@@ -108,7 +108,7 @@ const EmailSetting = () => {
   const handleDeleteConfirmation = async () => {
     try {
       await axios.delete(
-        `${process.env.REACT_APP_API}/route/email/delete/${editEmailId}`
+        `${import.meta.env.VITE_API}/route/email/delete/${editEmailId}`
       );
       setAppAlert({
         alert: true,
@@ -130,7 +130,7 @@ const EmailSetting = () => {
   const handleUpdate = async (data) => {
     try {
       await axios.patch(
-        `${process.env.REACT_APP_API}/route/email/edit/${editEmailId}`,
+        `${import.meta.env.VITE_API}/route/email/edit/${editEmailId}`,
         { email: data.email }
       );
       queryClient.invalidateQueries("emails");

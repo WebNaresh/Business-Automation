@@ -21,7 +21,7 @@ const EmpShiftNotification = () => {
     queryFn: async () => {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_API}/route/shiftApply/get`,
+          `${import.meta.env.VITE_API}/route/shiftApply/get`,
           {
             headers: {
               Authorization: authToken,

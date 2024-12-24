@@ -18,7 +18,7 @@ const DeleteGoal = ({ deleteConfirmation, handleClose }) => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `${process.env.REACT_APP_API}/route/performance/deleteSingleGoal/${id}`,
+        `${import.meta.env.VITE_API}/route/performance/deleteSingleGoal/${id}`,
         {
           headers: {
             Authorization: authToken,

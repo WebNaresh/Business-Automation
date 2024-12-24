@@ -86,7 +86,7 @@ const EmployeeTest = () => {
   useEffect(() => {
     (async () => {
       const resp = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/get/${orgId}`
+        `${import.meta.env.VITE_API}/route/organization/get/${orgId}`
       );
       setOrg(resp.data.organizations);
     })();
@@ -95,7 +95,7 @@ const EmployeeTest = () => {
   useEffect(() => {
     (async () => {
       const resp = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/getmembers/${orgId}`
+        `${import.meta.env.VITE_API}/route/organization/getmembers/${orgId}`
       );
       setMembers(resp.data.members);
     })();
@@ -193,7 +193,7 @@ const EmployeeTest = () => {
       if (validEmployees.length > 0) {
         try {
           const response = await axios.post(
-            `${process.env.REACT_APP_API}/route/employee/add-employee-excel`, // Adjusted endpoint
+            `${import.meta.env.VITE_API}/route/employee/add-employee-excel`, // Adjusted endpoint
             validEmployees,
             {
               headers: {
@@ -247,7 +247,7 @@ const EmployeeTest = () => {
 
       //   try {
       //     await axios.post(
-      //       `${process.env.REACT_APP_API}/route/employee/add-employee`,
+      //       `${import.meta.env.VITE_API}/route/employee/add-employee`,
       //       employee,
       //       {
       //         headers: {
@@ -567,7 +567,7 @@ export default EmployeeTest;
 //   useEffect(() => {
 //     (async () => {
 //       const resp = await axios.get(
-//         `${process.env.REACT_APP_API}/route/organization/get/${orgId}`
+//         `${import.meta.env.VITE_API}/route/organization/get/${orgId}`
 //       );
 //       setOrg(resp.data.organizations);
 //     })();
@@ -576,7 +576,7 @@ export default EmployeeTest;
 //   useEffect(() => {
 //     (async () => {
 //       const resp = await axios.get(
-//         `${process.env.REACT_APP_API}/route/organization/getmembers/${orgId}`
+//         `${import.meta.env.VITE_API}/route/organization/getmembers/${orgId}`
 //       );
 //       setMembers(resp.data.members);
 //     })();
@@ -674,7 +674,7 @@ export default EmployeeTest;
 //       if (validEmployees.length > 0) {
 //         try {
 //           const response = await axios.post(
-//             `${process.env.REACT_APP_API}/route/employee/add-employee-excel`, // Adjusted endpoint
+//             `${import.meta.env.VITE_API}/route/employee/add-employee-excel`, // Adjusted endpoint
 //             validEmployees,
 //             {
 //               headers: {
@@ -727,7 +727,7 @@ export default EmployeeTest;
 
 //       //   try {
 //       //     await axios.post(
-//       //       `${process.env.REACT_APP_API}/route/employee/add-employee`,
+//       //       `${import.meta.env.VITE_API}/route/employee/add-employee`,
 //       //       employee,
 //       //       {
 //       //         headers: {

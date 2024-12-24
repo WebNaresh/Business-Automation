@@ -11,7 +11,7 @@ const useSubscriptionGet = ({ organisationId }) => {
 
   const getSubscription = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/organization/subscription/${organisationId}`,
+      `${import.meta.env.VITE_API}/route/organization/subscription/${organisationId}`,
       {
         headers: {
           Authorization: authToken,

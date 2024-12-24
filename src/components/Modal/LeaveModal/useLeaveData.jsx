@@ -8,7 +8,7 @@ const useLeaveData = () => {
   const { mutate: acceptDeleteLeaveMutation } = useMutation(
     async ({ id }) => {
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/route/leave/delete-request-accept/${id}`,
+        `${import.meta.env.VITE_API}/route/leave/delete-request-accept/${id}`,
         { message: "Your Request is successfully approved" },
         {
           headers: {
@@ -28,7 +28,7 @@ const useLeaveData = () => {
   const { mutate: rejectDeleteLeaveMutation } = useMutation(
     ({ id }) =>
       axios.post(
-        `${process.env.REACT_APP_API}/route/leave/delete-request-reject/${id}`,
+        `${import.meta.env.VITE_API}/route/leave/delete-request-reject/${id}`,
         { message: "Your Request is successfully approved" },
         {
           headers: {

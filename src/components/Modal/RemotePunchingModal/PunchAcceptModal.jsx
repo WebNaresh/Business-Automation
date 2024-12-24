@@ -22,7 +22,7 @@ const PunchAcceptModal = () => {
   const mutation = useMutation(
     ({ employeeId, punchId }) => {
       return axios.patch(
-        `${process.env.REACT_APP_API}/route/punch-notification/update-notification-count/${employeeId}`,
+        `${import.meta.env.VITE_API}/route/punch-notification/update-notification-count/${employeeId}`,
         { notificationCount: 0, selectedPunchId: punchId },
         {
           headers: {
@@ -49,7 +49,7 @@ const PunchAcceptModal = () => {
     queryFn: async () => {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_API}/route/punch-notification/notification-user/${employeeId}`,
+          `${import.meta.env.VITE_API}/route/punch-notification/notification-user/${employeeId}`,
           {
             headers: {
               Authorization: authToken,

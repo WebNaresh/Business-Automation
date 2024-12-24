@@ -11,7 +11,7 @@ export default function OrgChart() {
   const authToken = useAuthToken();
   const { data: orgChart, isLoading } = useQuery("orgChart", async () => {
     const { data } = await axios.get(
-      `${process.env.REACT_APP_API}/route/employee/getOrgTree/${organizationId}`,
+      `${import.meta.env.VITE_API}/route/employee/getOrgTree/${organizationId}`,
       {
         headers: {
           Authorization: authToken,

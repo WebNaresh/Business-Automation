@@ -54,7 +54,7 @@ const Form16UploadModal = ({
     try {
       // Check if file is already uploaded for the given organization and employee
       const response = await fetch(
-        `${process.env.REACT_APP_API}/route/check/form16`,
+        `${import.meta.env.VITE_API}/route/check/form16`,
         {
           method: "POST",
           headers: {
@@ -97,7 +97,7 @@ const Form16UploadModal = ({
     formData.append("form16FileUrl", file);
 
     // Make a POST request to upload the form
-    fetch(`${process.env.REACT_APP_API}/route/add/form16`, {
+    fetch(`${import.meta.env.VITE_API}/route/add/form16`, {
       method: "POST",
       headers: {
         Authorization: authToken,

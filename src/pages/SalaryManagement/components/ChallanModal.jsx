@@ -139,7 +139,7 @@ const ChallanModal = ({ handleClose, open, id }) => {
   const getESICChallan = async () => {
     try {
       const getResponse = await axios.get(
-        `${process.env.REACT_APP_API}/route/employeeSalary/getESICChallan/${id}/${challanData?.year}/${challanData?.month}`,
+        `${import.meta.env.VITE_API}/route/employeeSalary/getESICChallan/${id}/${challanData?.year}/${challanData?.month}`,
         {
           headers: {
             Authorization: authToken,
@@ -184,7 +184,7 @@ const ChallanModal = ({ handleClose, open, id }) => {
   const getPFChallan = async () => {
     try {
       const getResponse = await axios.get(
-        `${process.env.REACT_APP_API}/route/employeeSalary/getPFChallan/${id}/${challanData?.year}/${challanData?.month}`,
+        `${import.meta.env.VITE_API}/route/employeeSalary/getPFChallan/${id}/${challanData?.year}/${challanData?.month}`,
         {
           headers: {
             Authorization: authToken,

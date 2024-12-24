@@ -82,7 +82,7 @@ import {
     useEffect(() => {
       (async () => {
         const resp = await axios.get(
-          `${process.env.REACT_APP_API}/route/organization/get/${orgId}`
+          `${import.meta.env.VITE_API}/route/organization/get/${orgId}`
         );
         setOrg(resp.data.organizations);
       })();
@@ -91,7 +91,7 @@ import {
     useEffect(() => {
       (async () => {
         const resp = await axios.get(
-          `${process.env.REACT_APP_API}/route/organization/getmembers/${orgId}`
+          `${import.meta.env.VITE_API}/route/organization/getmembers/${orgId}`
         );
         setMembers(resp.data.members);
       })();
@@ -190,7 +190,7 @@ import {
         if (validEmployees.length > 0) {
           try {
             const response = await axios.post(
-              `${process.env.REACT_APP_API}/route/employee/add-employee-excel`, // Adjusted endpoint
+              `${import.meta.env.VITE_API}/route/employee/add-employee-excel`, // Adjusted endpoint
               validEmployees,
               {
                 headers: {
@@ -249,7 +249,7 @@ import {
   
         //   try {
         //     await axios.post(
-        //       `${process.env.REACT_APP_API}/route/employee/add-employee`,
+        //       `${import.meta.env.VITE_API}/route/employee/add-employee`,
         //       employee,
         //       {
         //         headers: {

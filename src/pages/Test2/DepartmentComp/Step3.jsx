@@ -46,7 +46,7 @@ const Step3 = ({ prevStep }) => {
       };
 
       const response = axios.post(
-        `${process.env.REACT_APP_API}/route/department/create/${organisationId}?role=${role}`,
+        `${import.meta.env.VITE_API}/route/department/create/${organisationId}?role=${role}`,
         deptData,
         {
           headers: {

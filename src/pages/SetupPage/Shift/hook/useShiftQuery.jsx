@@ -13,7 +13,7 @@ const useShiftQuery = () => {
 
   const getShifts = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/shifts/${organisationId}`,
+      `${import.meta.env.VITE_API}/route/shifts/${organisationId}`,
       {
         headers: {
           Authorization: authToken,
@@ -34,7 +34,7 @@ const useShiftQuery = () => {
       id,
       onClose,
     });
-    await axios.delete(`${process.env.REACT_APP_API}/route/shifts/${id}`, {
+    await axios.delete(`${import.meta.env.VITE_API}/route/shifts/${id}`, {
       headers: {
         Authorization: authToken,
       },
@@ -53,7 +53,7 @@ const useShiftQuery = () => {
   });
 
   const addShift = async ({ data, onClose }) => {
-    await axios.post(`${process.env.REACT_APP_API}/route/shifts/create`, data, {
+    await axios.post(`${import.meta.env.VITE_API}/route/shifts/create`, data, {
       headers: {
         Authorization: authToken,
       },
@@ -78,7 +78,7 @@ const useShiftQuery = () => {
 
   const editShift = async ({ data, onClose }) => {
     await axios.patch(
-      `${process.env.REACT_APP_API}/route/shifts/${data._id}`,
+      `${import.meta.env.VITE_API}/route/shifts/${data._id}`,
       data,
       {
         headers: {

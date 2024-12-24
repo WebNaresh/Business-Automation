@@ -11,7 +11,7 @@ const OrgDocManage = () => {
   const [selectedDocumentUrl, setSelectedDocumentUrl] = useState(""); // State to store the URL of the selected document
   const { data } = useQuery(`getdocsforemp`, async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/org/getdocsforemp`,
+      `${import.meta.env.VITE_API}/route/org/getdocsforemp`,
       {
         headers: { Authorization: authToken },
       }

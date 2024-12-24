@@ -19,7 +19,7 @@ const LeavePublicholidayModal = ({ open, handleClose, id }) => {
   //   console.log(leaveTypes);
   //   try {
   //     const createLeave = await axios.post(
-  //       `${process.env.REACT_APP_API}/route/leave-types/create/${id}`,
+  //       `${import.meta.env.VITE_API}/route/leave-types/create/${id}`,
   //       { leaveTypes: leaveTypes },
   //       {
   //         headers: {

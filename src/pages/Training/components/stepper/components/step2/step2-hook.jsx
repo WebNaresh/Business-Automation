@@ -10,7 +10,7 @@ const useGetDepartments = () => {
 
   const getDepartments = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/get-departments/${
+      `${import.meta.env.VITE_API}/route/get-departments/${
         organisationId ?? decodedToken?.user?.organizationId
       }`,
       {

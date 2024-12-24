@@ -32,7 +32,7 @@ const ShiftAcceptModal = ({ data }) => {
   const { data: data2 } = useQuery("shift-emp", async () => {
     let url;
     if (isAcc && isSuper) {
-      url = `${process.env.REACT_APP_API}/route/shiftApply/getForManager`;
+      url = `${import.meta.env.VITE_API}/route/shiftApply/getForManager`;
       const response = await axios.get(url, {
         headers: { Authorization: authToken },
       });
@@ -40,7 +40,7 @@ const ShiftAcceptModal = ({ data }) => {
       return response.data;
     }
     else if (isAcc) {
-      url = `${process.env.REACT_APP_API}/route/shiftApply/getForAccountant/${organisationId}`;
+      url = `${import.meta.env.VITE_API}/route/shiftApply/getForAccountant/${organisationId}`;
       const response = await axios.get(url, {
         headers: { Authorization: authToken },
       });
@@ -48,7 +48,7 @@ const ShiftAcceptModal = ({ data }) => {
       return response.data;
     }
     else {
-      url = `${process.env.REACT_APP_API}/route/shiftApply/getForManager`;
+      url = `${import.meta.env.VITE_API}/route/shiftApply/getForManager`;
       const response = await axios.get(url, {
         headers: { Authorization: authToken },
       });
@@ -62,7 +62,7 @@ const ShiftAcceptModal = ({ data }) => {
     queryFn: async () => {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_API}/route/shiftApply/getForEmp/${employeeId}`,
+          `${import.meta.env.VITE_API}/route/shiftApply/getForEmp/${employeeId}`,
           {
             headers: {
               Authorization: authToken,
@@ -87,7 +87,7 @@ const ShiftAcceptModal = ({ data }) => {
 
 
         const res = await axios.get(
-          `${process.env.REACT_APP_API}/route/shiftApply/getForEmp2/${employeeId}/${organisationId}`,
+          `${import.meta.env.VITE_API}/route/shiftApply/getForEmp2/${employeeId}/${organisationId}`,
           {
             headers: {
               Authorization: authToken,
@@ -119,7 +119,7 @@ const ShiftAcceptModal = ({ data }) => {
   const mutation = useMutation(
     ({ employeeId }) => {
       return axios.put(
-        `${process.env.REACT_APP_API}/route/shift/update/notificationCount/${employeeId}`,
+        `${import.meta.env.VITE_API}/route/shift/update/notificationCount/${employeeId}`,
         { notificationCount: 0 },
         {
           headers: {

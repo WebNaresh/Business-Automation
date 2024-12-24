@@ -72,7 +72,7 @@ const PFESIC = () => {
   const PFSetup = useMutation(
     async (data) => {
       await axios.put(
-        `${process.env.REACT_APP_API}/route/PfEsic/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/PfEsic/${organisationId}`,
         { data },
         {
           headers: {

@@ -5,29 +5,29 @@ const useOrg = create((set) => {
 
   return {
     // Organization details
-    orgName: process.env.REACT_APP_orgName ?? undefined,
-    foundation_date: process.env.REACT_APP_foundation_date ?? undefined,
-    web_url: process.env.REACT_APP_web_url ?? undefined,
-    industry_type: process.env.REACT_APP_industry_type ?? undefined,
-    email: process.env.REACT_APP_email ?? undefined,
+    orgName: import.meta.env.VITE_orgName ?? undefined,
+    foundation_date: import.meta.env.VITE_foundation_date ?? undefined,
+    web_url: import.meta.env.VITE_web_url ?? undefined,
+    industry_type: import.meta.env.VITE_industry_type ?? undefined,
+    email: import.meta.env.VITE_email ?? undefined,
     organization_linkedin_url:
-      process.env.REACT_APP_organization_linkedin_url ?? undefined,
+      import.meta.env.VITE_organization_linkedin_url ?? undefined,
     location: {
-      address: process.env.REACT_APP_location_address ?? undefined,
+      address: import.meta.env.VITE_location_address ?? undefined,
       position: {
-        lat: process.env.REACT_APP_location_position_lat ?? undefined,
-        lng: process.env.REACT_APP_location_position_lng ?? undefined,
+        lat: import.meta.env.VITE_location_position_lat ?? undefined,
+        lng: import.meta.env.VITE_location_position_lng ?? undefined,
       },
     },
-    contact_number: process.env.REACT_APP_contact_number ?? undefined,
-    description: process.env.REACT_APP_description ?? undefined,
+    contact_number: import.meta.env.VITE_contact_number ?? undefined,
+    description: import.meta.env.VITE_description ?? undefined,
     verfiedToken: undefined,
-    creator: process.env.REACT_APP_creator ?? undefined, // Using the obtained decoded token
-    isTrial: Boolean(process.env.REACT_APP_isTrial) ?? false,
-    packageInfo: process.env.REACT_APP_packageInfo ?? undefined,
-    count: process.env.REACT_APP_count ?? undefined,
-    cycleCount: process.env.REACT_APP_cycleCount ?? "1",
-    paymentType: process.env.REACT_APP_paymentType ?? undefined,
+    creator: import.meta.env.VITE_creator ?? undefined, // Using the obtained decoded token
+    isTrial: Boolean(import.meta.env.VITE_isTrial) ?? false,
+    packageInfo: import.meta.env.VITE_packageInfo ?? undefined,
+    count: import.meta.env.VITE_count ?? undefined,
+    cycleCount: import.meta.env.VITE_cycleCount ?? "1",
+    paymentType: import.meta.env.VITE_paymentType ?? undefined,
     packages: undefined,
     coupan: undefined,
 

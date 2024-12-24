@@ -17,7 +17,7 @@ const AddRoles = () => {
   const fetchProfiles = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/profile/role/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/profile/role/${organisationId}`,
         {
           headers: {
             Authorization: authToken,
@@ -35,7 +35,7 @@ const AddRoles = () => {
   const AddProfiles = useMutation(
     (data) =>
       axios.patch(
-        `${process.env.REACT_APP_API}/route/profile/role/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/profile/role/${organisationId}`,
         data,
         {
           headers: {

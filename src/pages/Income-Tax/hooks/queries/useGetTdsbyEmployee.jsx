@@ -7,7 +7,7 @@ const useGetTdsbyEmployee = (empId, financialYear) => {
   const getTdsForEmployee = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/route/tds/getTDSDetails/${empId}/${financialYear}`,
+        `${import.meta.env.VITE_API}/route/tds/getTDSDetails/${empId}/${financialYear}`,
         {
           headers: {
             Authorization: authToken,

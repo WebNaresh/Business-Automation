@@ -150,7 +150,7 @@ const EditLoanModal = ({ handleClose, open, organisationId, loan }) => {
   const updateLoanData = useMutation(
     (data) =>
       axios.put(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/${loanId}/update-loan-data`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/${loanId}/update-loan-data`,
         data,
         {
           headers: {

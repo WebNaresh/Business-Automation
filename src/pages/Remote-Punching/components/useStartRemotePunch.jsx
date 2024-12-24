@@ -31,7 +31,7 @@ const useStartRemotePunch = () => {
         };
 
         const response = await axios.patch(
-            `${process.env.REACT_APP_API}/route/punch`,
+            `${import.meta.env.VITE_API}/route/punch`,
             payload,
             {
                 headers: { Authorization: authToken },

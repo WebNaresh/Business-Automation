@@ -13,7 +13,7 @@ const useGetCompletedTraining = () => {
       decodedToken
     );
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/training/get-completed-trainings/${decodedToken?.user?._id}`,
+      `${import.meta.env.VITE_API}/route/training/get-completed-trainings/${decodedToken?.user?._id}`,
       {
         headers: {
           Authorization: authToken,

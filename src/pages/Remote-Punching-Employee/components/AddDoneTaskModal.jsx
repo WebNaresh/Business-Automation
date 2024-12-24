@@ -78,7 +78,7 @@ const AddDoneTaskModal = ({ taskData, onClose, userLocationData, punchObjectId }
     const updateTaskStatus = useMutation(
         async (data) => {
             await axios.patch(
-                `${process.env.REACT_APP_API}/route/update-tasks-status/${organisationId}/${data.taskId}/${data.subtaskId}/${employeeEmail}`,
+                `${import.meta.env.VITE_API}/route/update-tasks-status/${organisationId}/${data.taskId}/${data.subtaskId}/${employeeEmail}`,
                 {
                     status: data.status,
                     comments: data.comments,
@@ -111,7 +111,7 @@ const AddDoneTaskModal = ({ taskData, onClose, userLocationData, punchObjectId }
         ["acceptTask", organisationId],
         async () => {
             const response = await axios.get(
-                `${process.env.REACT_APP_API}/route/set-remote-task/${organisationId}/accepted-tasks/${employeeEmail}`,
+                `${import.meta.env.VITE_API}/route/set-remote-task/${organisationId}/accepted-tasks/${employeeEmail}`,
                 {
                     headers: {
                         Authorization: authToken,

@@ -41,7 +41,7 @@ const ViewPayslip = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/employeeSalary/viewpayslip/${employeeId}/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/employeeSalary/viewpayslip/${employeeId}/${organisationId}`,
         {
           headers: {
             Authorization: authToken,

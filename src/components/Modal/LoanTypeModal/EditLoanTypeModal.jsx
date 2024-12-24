@@ -109,7 +109,7 @@ const EditLoanTypeModal = ({ handleClose, open, organisationId, loanId }) => {
     ["loanType", organisationId, loanId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/${loanId}/get-loan-type`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/${loanId}/get-loan-type`,
         {
           headers: {
             Authorization: authToken,
@@ -134,7 +134,7 @@ const EditLoanTypeModal = ({ handleClose, open, organisationId, loanId }) => {
     ["loanType", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-loan-type`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-loan-type`,
         {
           headers: {
             Authorization: authToken,
@@ -149,7 +149,7 @@ const EditLoanTypeModal = ({ handleClose, open, organisationId, loanId }) => {
   const EditLoanType = useMutation(
     (data) =>
       axios.put(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/${loanId}/update-loan-type`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/${loanId}/update-loan-type`,
         data,
         {
           headers: {

@@ -15,7 +15,7 @@ const useRecruitmentQuery = (organisationId) => {
     ["get-job-position", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-job-position/${role}`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-job-position/${role}`,
         {
           headers: {
             Authorization: authToken,
@@ -31,7 +31,7 @@ const useRecruitmentQuery = (organisationId) => {
     ["get-job-open-position", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/get-open-job-position`,
+        `${import.meta.env.VITE_API}/route/get-open-job-position`,
         {
           headers: {
             Authorization: authToken,

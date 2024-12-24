@@ -29,7 +29,7 @@ const DeleteSalaryModal = ({ open, handleClose, empId }) => {
     isError,
   } = useQuery(["salary-component", empId], async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/get-salary-component/${empId}`,
+      `${import.meta.env.VITE_API}/route/get-salary-component/${empId}`,
       {
         headers: {
           Authorization: authToken,
@@ -58,7 +58,7 @@ const DeleteSalaryModal = ({ open, handleClose, empId }) => {
   const deleteMutation = useMutation(
     (id) =>
       axios.delete(
-        `${process.env.REACT_APP_API}/route/delete-salary-component/${empId}/${id}`,
+        `${import.meta.env.VITE_API}/route/delete-salary-component/${empId}/${id}`,
         {
           headers: {
             Authorization: authToken,

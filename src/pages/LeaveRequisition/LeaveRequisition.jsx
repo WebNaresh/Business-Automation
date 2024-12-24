@@ -49,7 +49,7 @@ const LeaveRequisition = () => {
     ["machinePunching", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/availableRecords`,
+        `${import.meta.env.VITE_API}/route/availableRecords`,
         {
           headers: { Authorization: authToken },
         }

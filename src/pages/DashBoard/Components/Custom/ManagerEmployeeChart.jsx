@@ -149,7 +149,7 @@
 
 //   const getYearLeaves = async () => {
 //     const { data } = await axios.get(
-//       `${process.env.REACT_APP_API}/route/leave/getManagerEmployeeAttendence/${selectedyear.value}/${selectMonth.value}`,
+//       `${import.meta.env.VITE_API}/route/leave/getManagerEmployeeAttendence/${selectedyear.value}/${selectMonth.value}`,
 //       {
 //         headers: {
 //           Authorization: authToken,
@@ -610,7 +610,7 @@
 
 //   const getYearLeaves = async () => {
 //     const { data } = await axios.get(
-//       `${process.env.REACT_APP_API}/route/leave/getManagerEmployeeAttendence/${selectedyear.value}/${selectMonth.value}`,
+//       `${import.meta.env.VITE_API}/route/leave/getManagerEmployeeAttendence/${selectedyear.value}/${selectMonth.value}`,
 //       {
 //         headers: {
 //           Authorization: authToken,
@@ -909,7 +909,7 @@ const ManagerEmployeeChart = ({ selectedyear, setSelectedYear }) => {
 
   const getYearLeaves = async () => {
     const { data } = await axios.get(
-      `${process.env.REACT_APP_API}/route/leave/getManagerEmployeeAttendence/${selectedyear.value}/${selectMonth.value}`,
+      `${import.meta.env.VITE_API}/route/leave/getManagerEmployeeAttendence/${selectedyear.value}/${selectMonth.value}`,
       {
         headers: {
           Authorization: authToken,

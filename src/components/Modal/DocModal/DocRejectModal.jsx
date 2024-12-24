@@ -33,7 +33,7 @@ const DocRejectModal = ({ items }) => {
   const rejectRequestMutation = useMutation(
     async () => {
       await axios.post(
-        `${process.env.REACT_APP_API}/route/org/rejectNotification/${items._id}`,
+        `${import.meta.env.VITE_API}/route/org/rejectNotification/${items._id}`,
         { message },
         {
           headers: {
@@ -58,7 +58,7 @@ const DocRejectModal = ({ items }) => {
   const { mutate: acceptLeaveMutation, isLoading: mutateLoading } = useMutation(
     ({ id }) =>
       axios.post(
-        `${process.env.REACT_APP_API}/route/org/acceptNotification/${id}`,
+        `${import.meta.env.VITE_API}/route/org/acceptNotification/${id}`,
         { message: "Your Request is successfully approved" },
         {
           headers: {

@@ -87,7 +87,7 @@ const RemotePunchingTaskForm = ({ taskData, onClose }) => {
                 deadlineDate: data.deadlineDate,
             };
             await axios.post(
-                `${process.env.REACT_APP_API}/route/set-remote-task/${organisationId}`,
+                `${import.meta.env.VITE_API}/route/set-remote-task/${organisationId}`,
                 newdata,
                 {
                     headers: {
@@ -118,7 +118,7 @@ const RemotePunchingTaskForm = ({ taskData, onClose }) => {
                 deadlineDate: data.deadlineDate,
             };
             await axios.put(
-                `${process.env.REACT_APP_API}/route/set-remote-task/${organisationId}/${taskData._id}`,
+                `${import.meta.env.VITE_API}/route/set-remote-task/${organisationId}/${taskData._id}`,
                 updatedData,
                 {
                     headers: {
@@ -144,7 +144,7 @@ const RemotePunchingTaskForm = ({ taskData, onClose }) => {
         ["employee", organisationId],
         async () => {
             const response = await axios.get(
-                `${process.env.REACT_APP_API}/route/employee/${organisationId}/get-emloyee`,
+                `${import.meta.env.VITE_API}/route/employee/${organisationId}/get-emloyee`,
                 {
                     headers: {
                         Authorization: authToken,

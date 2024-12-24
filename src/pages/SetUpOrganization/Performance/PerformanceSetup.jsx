@@ -70,7 +70,7 @@ const PerformanceSetup = () => {
     "performancePeriod",
     async () => {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/route/performance/getSetup/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/performance/getSetup/${organisationId}`,
         {
           headers: {
             Authorization: authToken,
@@ -233,7 +233,7 @@ const PerformanceSetup = () => {
         ratings: data.ratings.map((rating) => rating.value),
       };
       await axios.post(
-        `${process.env.REACT_APP_API}/route/performance/createSetup/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/performance/createSetup/${organisationId}`,
         { performanceSetting },
         {
           headers: {

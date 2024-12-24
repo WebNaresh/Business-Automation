@@ -14,7 +14,7 @@ const useSubscription = (organizationId) => {
   } = useQuery({
     queryFn: async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/subscription/${organizationId}`,
+        `${import.meta.env.VITE_API}/route/subscription/${organizationId}`,
         {
           headers: {
             Authorization: authToken,

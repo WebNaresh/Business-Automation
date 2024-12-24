@@ -33,7 +33,7 @@ const Form16DeleteModal = ({
     ["form16"],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/get/form16/${organizationId}/${employeeId}`,
+        `${import.meta.env.VITE_API}/route/get/form16/${organizationId}/${employeeId}`,
         {
           headers: {
             Authorization: authToken,
@@ -60,7 +60,7 @@ const Form16DeleteModal = ({
   const handleDelete = async () => {
     try {
       await axios.delete(
-        `${process.env.REACT_APP_API}/route/delete/form16/${organizationId}/${employeeId}`
+        `${import.meta.env.VITE_API}/route/delete/form16/${organizationId}/${employeeId}`
       );
       handleAlert(true, "success", "Form 16 deleted succesfully.");
       setDeleteConfirmation(null);

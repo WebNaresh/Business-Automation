@@ -15,7 +15,7 @@ const useHook = () => {
       },
     };
     let data = await axios.get(
-      `${process.env.REACT_APP_API}/route/notification`,
+      `${import.meta.env.VITE_API}/route/notification`,
       config
     );
     return data.data;
@@ -38,7 +38,7 @@ const useHook = () => {
     };
 
     let response = await axios.post(
-      `${process.env.REACT_APP_API}/route${doc.backend_link}${doc._id}`,
+      `${import.meta.env.VITE_API}/route${doc.backend_link}${doc._id}`,
       {
         status: "approved",
       },
@@ -69,7 +69,7 @@ const useHook = () => {
     };
 
     let response = await axios.post(
-      `${process.env.REACT_APP_API}/route/employee/login`,
+      `${import.meta.env.VITE_API}/route/employee/login`,
       doc,
       config
     );

@@ -18,7 +18,7 @@ const Inputfield = () => {
     const fetchInputFieldData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/route/inputfield/${organisationId}`,
+          `${import.meta.env.VITE_API}/route/inputfield/${organisationId}`,
           {
             headers: {
               Authorization: authToken,
@@ -56,7 +56,7 @@ const Inputfield = () => {
 
       // Send a PUT request to update the input fields
       const response = await axios.put(
-        `${process.env.REACT_APP_API}/route/inputfield/update/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/inputfield/update/${organisationId}`,
         { inputDetails: updatedInputDetails },
         {
           headers: {

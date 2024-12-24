@@ -34,7 +34,7 @@ const AttendanceBioModal = ({
   // to fetch the data
   const fetchAvailableEmployee = async (page) => {
     try {
-      const apiUrl = `${process.env.REACT_APP_API}/route/employee/get-paginated-emloyee/${organisationId}?page=${page}`;
+      const apiUrl = `${import.meta.env.VITE_API}/route/employee/get-paginated-emloyee/${organisationId}?page=${page}`;
       const response = await axios.get(apiUrl, {
         headers: {
           Authorization: authToken,
@@ -104,7 +104,7 @@ const AttendanceBioModal = ({
       await Promise.all(
         EmployeeIds.map((EmployeeId) =>
           axios.post(
-            `${process.env.REACT_APP_API}/route/organization/${organisationId}/add-attendance-data`,
+            `${import.meta.env.VITE_API}/route/organization/${organisationId}/add-attendance-data`,
             {
               EmployeeId: EmployeeId,
               punchingRecords: syncedData,

@@ -10,7 +10,7 @@ import { useQuery } from "react-query";
 
 //get added geofencing zone
 const fetchGeoFencingCircle = async (circleId) => {
-  const { data } = await axios.get(`${process.env.REACT_APP_API}/route/geo-fence/area/${circleId}`);
+  const { data } = await axios.get(`${import.meta.env.VITE_API}/route/geo-fence/area/${circleId}`);
   return data?.data;
 };
 

@@ -8,7 +8,7 @@ const useAssignTraining = (trainingId) => {
   const { organisationId } = useParams();
   const getAllEmployee = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/employee/get-org-employee/${organisationId}/${trainingId}`,
+      `${import.meta.env.VITE_API}/route/employee/get-org-employee/${organisationId}/${trainingId}`,
       {
         headers: {
           Authorization: authToken,

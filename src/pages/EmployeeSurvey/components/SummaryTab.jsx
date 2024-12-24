@@ -20,7 +20,7 @@ const SummaryTab = () => {
     ['surveyResponseSurverId', organisationId, surveyId, authToken],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-response-survey-surveyId/${surveyId}`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-response-survey-surveyId/${surveyId}`,
         {
           headers: {
             Authorization: authToken,

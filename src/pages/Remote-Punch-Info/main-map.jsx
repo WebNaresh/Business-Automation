@@ -48,7 +48,7 @@ const MainMap = ({ punchData, isLoaded, geofencingCircleData, taskData }) => {
   const getLocationName = async (lat, lng) => {
     try {
       const response = await axios.get(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`
       );
       if (response.data.results.length > 0) {
         return response.data.results[0].formatted_address;
@@ -72,7 +72,7 @@ const MainMap = ({ punchData, isLoaded, geofencingCircleData, taskData }) => {
 
   return (
     <GoogleMap
-      key={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
+      key={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
       mapContainerStyle={{
         width: "100%",
         height: "91.8vh",

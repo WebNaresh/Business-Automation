@@ -63,7 +63,7 @@ const ShiftRejectModel = ({ items, key, mayuri }) => {
   // const rejectRequestMutation = useMutation(
   //   async () => {
   //     await axios.post(
-  //       `${process.env.REACT_APP_API}/route/shiftApply/reject/${items._id}`,
+  //       `${import.meta.env.VITE_API}/route/shiftApply/reject/${items._id}`,
   //       { message },
   //       {
   //         headers: {
@@ -89,7 +89,7 @@ const ShiftRejectModel = ({ items, key, mayuri }) => {
   // const { mutate: acceptLeaveMutation } = useMutation(
   //   ({ id }) =>
   //     axios.post(
-  //       `${process.env.REACT_APP_API}/route/shiftApply/accept/${id}`,
+  //       `${import.meta.env.VITE_API}/route/shiftApply/accept/${id}`,
   //       { message: "Your Request is successfully approved" },
   //       {
   //         headers: {
@@ -114,7 +114,7 @@ const ShiftRejectModel = ({ items, key, mayuri }) => {
   // const { mutate: acceptAccMutation } = useMutation(
   //   ({ id }) =>
   //     axios.post(
-  //       `${process.env.REACT_APP_API}/route/shiftApply/acceptAcc/${id}`,
+  //       `${import.meta.env.VITE_API}/route/shiftApply/acceptAcc/${id}`,
   //       { message: "Your Request is successfully approved" },
   //       {
   //         headers: {
@@ -138,7 +138,7 @@ const ShiftRejectModel = ({ items, key, mayuri }) => {
   // const rejectAccRequestMutation = useMutation(
   //   async () => {
   //     await axios.post(
-  //       `${process.env.REACT_APP_API}/route/shiftApply/rejectAcc/${items._id}`,
+  //       `${import.meta.env.VITE_API}/route/shiftApply/rejectAcc/${items._id}`,
   //       { message },
   //       {
   //         headers: {
@@ -164,7 +164,7 @@ const ShiftRejectModel = ({ items, key, mayuri }) => {
   const acceptLeaveMutation = useMutation(
     async (id) =>
       axios.post(
-        `${process.env.REACT_APP_API}/route/shiftApply/accept/${id}`,
+        `${import.meta.env.VITE_API}/route/shiftApply/accept/${id}`,
         { message: "Your Request is successfully approved" },
         {
           headers: {
@@ -190,7 +190,7 @@ const ShiftRejectModel = ({ items, key, mayuri }) => {
   const acceptAccMutation = useMutation(
     async (id) =>
       axios.post(
-        `${process.env.REACT_APP_API}/route/shiftApply/acceptAcc/${id}`,
+        `${import.meta.env.VITE_API}/route/shiftApply/acceptAcc/${id}`,
         { message: "Your Request is successfully approved" },
         {
           headers: {
@@ -215,7 +215,7 @@ const ShiftRejectModel = ({ items, key, mayuri }) => {
   const rejectAccRequestMutation = useMutation(
     async () =>
       axios.post(
-        `${process.env.REACT_APP_API}/route/shiftApply/rejectAcc/${items._id}`,
+        `${import.meta.env.VITE_API}/route/shiftApply/rejectAcc/${items._id}`,
         { message },
         {
           headers: {
@@ -241,7 +241,7 @@ const ShiftRejectModel = ({ items, key, mayuri }) => {
   const rejectRequestMutation = useMutation(
     async () =>
       axios.post(
-        `${process.env.REACT_APP_API}/route/shiftApply/reject/${items._id}`,
+        `${import.meta.env.VITE_API}/route/shiftApply/reject/${items._id}`,
         { message },
         {
           headers: {

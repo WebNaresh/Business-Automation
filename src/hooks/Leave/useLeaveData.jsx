@@ -21,7 +21,7 @@ const useLeaveData = () => {
     async () => {
       setCalLoader(true);
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/leave/getEmployeeCurrentYearLeave`,
+        `${import.meta.env.VITE_API}/route/leave/getEmployeeCurrentYearLeave`,
         {
           headers: { Authorization: authToken },
         }
@@ -45,7 +45,7 @@ const useLeaveData = () => {
     async () => {
       setCalLoader(true);
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/shiftApply/get`,
+        `${import.meta.env.VITE_API}/route/shiftApply/get`,
         {
           headers: { Authorization: authToken },
         }
@@ -73,7 +73,7 @@ const useLeaveData = () => {
     newAppliedLeaveEvents.forEach(async (value) => {
       try {
         await axios.post(
-          `${process.env.REACT_APP_API}/route/leave/create`,
+          `${import.meta.env.VITE_API}/route/leave/create`,
           value,
           {
             headers: {
@@ -122,7 +122,7 @@ const useLeaveData = () => {
     async ({ id, deleteReason }) => {
       setCalLoader(true);
       await axios.post(
-        `${process.env.REACT_APP_API}/route/leave/delete/${id}`,
+        `${import.meta.env.VITE_API}/route/leave/delete/${id}`,
         {
           deleteReason,
         },

@@ -49,7 +49,7 @@ function AddNewUserId({ open1, handleClose1 }) {
     try {
       // Make the POST request to your backend API
       await axios.post(
-        `${process.env.REACT_APP_API}/route/employee/add-user-id`,
+        `${import.meta.env.VITE_API}/route/employee/add-user-id`,
         {
           email: user?.email,
           newUserId: newUserid,
@@ -207,7 +207,7 @@ export default AddNewUserId;
 //     try {
 //       // Make the POST request to your backend API
 
-//       await axios.post(`${process.env.REACT_APP_API}/route/employee/add-user-id`, {
+//       await axios.post(`${import.meta.env.VITE_API}/route/employee/add-user-id`, {
 //          email: user?.email, 
 //         newUserId: newUserid,
 //       },{Authorization: authToken}

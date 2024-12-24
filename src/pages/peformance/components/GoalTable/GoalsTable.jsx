@@ -180,7 +180,7 @@ const GoalsTable = ({ performance, isError }) => {
 
   const { data: employeeData } = useQuery(["employee", role], async () => {
     const { data } = await axios.get(
-      `${process.env.REACT_APP_API}/route/employee/getEmployeeUnderManager/${role}`,
+      `${import.meta.env.VITE_API}/route/employee/getEmployeeUnderManager/${role}`,
       {
         headers: {
           Authorization: authToken,
@@ -195,7 +195,7 @@ const GoalsTable = ({ performance, isError }) => {
     async () => {
       // if (role === "Employee" || employeeGoals) {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/route/performance/getOrganizationGoals`,
+        `${import.meta.env.VITE_API}/route/performance/getOrganizationGoals`,
         {
           headers: {
             Authorization: authToken,
@@ -239,7 +239,7 @@ const GoalsTable = ({ performance, isError }) => {
       }
 
       await axios.patch(
-        `${process.env.REACT_APP_API}/route/performance/updateSingleGoal/${openMenu._id}`,
+        `${import.meta.env.VITE_API}/route/performance/updateSingleGoal/${openMenu._id}`,
         { data },
         {
           headers: {

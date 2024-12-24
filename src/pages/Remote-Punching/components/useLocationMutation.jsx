@@ -74,7 +74,7 @@ const useLocationMutation = () => {
     const fetchUrl = async () => {
         const data1 = await getUserLocation?.mutateAsync();
         const data = await axios.get(
-            `${process.env.REACT_APP_API}/route/punch-main/create-image-url?lat=${data1?.latitude}&lng=${data1?.longitude}`,
+            `${import.meta.env.VITE_API}/route/punch-main/create-image-url?lat=${data1?.latitude}&lng=${data1?.longitude}`,
             {
                 headers: {
                     "Content-Type": "application/json",
@@ -116,7 +116,7 @@ const useLocationMutation = () => {
     //get punch object id
     const fetchPunchObject = async (image) => {
         const data = await axios.post(
-            `${process.env.REACT_APP_API}/route/punch`,
+            `${import.meta.env.VITE_API}/route/punch`,
             { image, geoFencingArea },
             {
                 headers: {

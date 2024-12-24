@@ -19,7 +19,7 @@ const ModalForStatusShow = ({ taskData }) => {
         ["employee", organisationId],
         async () => {
             const response = await axios.get(
-                `${process.env.REACT_APP_API}/route/employee/${organisationId}/get-emloyee`,
+                `${import.meta.env.VITE_API}/route/employee/${organisationId}/get-emloyee`,
                 {
                     headers: {
                         Authorization: authToken,

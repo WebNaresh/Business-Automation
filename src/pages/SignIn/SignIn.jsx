@@ -58,7 +58,7 @@ const SignIn = () => {
     (data) => {
       console.log("Data==", data);
       const res = axios.post(
-        `${process.env.REACT_APP_API}/route/employee/changerole`,
+        `${import.meta.env.VITE_API}/route/employee/changerole`,
         data
       );
       return res;
@@ -79,7 +79,7 @@ const SignIn = () => {
   const handleLogin = useMutation(
     async (data) => {
       const res = await axios.post(
-        `${process.env.REACT_APP_API}/route/employee/login`,
+        `${import.meta.env.VITE_API}/route/employee/login`,
         data
       );
 

@@ -71,7 +71,7 @@ const AuthInputFiled = ({
     setFocusedInput(fieldName);
   };
   const { ref } = usePlacesWidget({
-    apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
     onPlaceSelected: (place) => console.log(place),
   });
 
@@ -564,7 +564,7 @@ const AuthInputFiled = ({
                 <Icon className="text-gray-700" />
 
                 <Autocomplete
-                  apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
+                  apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
                   ref={ref}
                   value={field.value}
                   rows={2}

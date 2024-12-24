@@ -53,7 +53,7 @@ const MissPunchJustifyModal = ({
   const AddMissJustifyData = useMutation(
     (data) => {
       axios.put(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/update-punching-data/${unavailableRecordId}`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/update-punching-data/${unavailableRecordId}`,
         data,
         {
           headers: {

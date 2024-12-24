@@ -78,7 +78,7 @@ const Step1 = ({ nextStep, isLastStep }) => {
     async () => {
       if (deptId !== null && deptId !== undefined) {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/route/get-department/${organisationId}/${deptId}`,
+          `${import.meta.env.VITE_API}/route/get-department/${organisationId}/${deptId}`,
           {
             headers: {
               Authorization: authToken,

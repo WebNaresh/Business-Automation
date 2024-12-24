@@ -17,14 +17,14 @@ const useShiftNotification = () => {
   const getShiftNotification = async () => {
     let url;
     if (role === "Accountant") {
-      url = `${process.env.REACT_APP_API}/route/shiftApply/getForAccountant/${organisationId}`;
+      url = `${import.meta.env.VITE_API}/route/shiftApply/getForAccountant/${organisationId}`;
       const response = await axios.get(url, {
         headers: { Authorization: authToken },
       });
 
       return response.data.requests;
     } else {
-      url = `${process.env.REACT_APP_API}/route/shiftApply/getForManager`;
+      url = `${import.meta.env.VITE_API}/route/shiftApply/getForManager`;
       const response = await axios.get(url, {
         headers: { Authorization: authToken },
       });
@@ -36,7 +36,7 @@ const useShiftNotification = () => {
   };
   const getCount = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/shiftApply/getCount/${organisationId}`,
+      `${import.meta.env.VITE_API}/route/shiftApply/getCount/${organisationId}`,
       {
         headers: { Authorization: authToken },
       }

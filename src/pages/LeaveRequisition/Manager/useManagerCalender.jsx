@@ -15,7 +15,7 @@ const useManagerCalender = ({ employee, organisationId }) => {
     ["manager-employee-leave", employee],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/leave/getOrgEmployeeYearLeave/${employee}`,
+        `${import.meta.env.VITE_API}/route/leave/getOrgEmployeeYearLeave/${employee}`,
         {
           headers: { Authorization: authToken },
         }
@@ -31,7 +31,7 @@ const useManagerCalender = ({ employee, organisationId }) => {
     ["employee-leave-status", employee],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/leave/getLeaveTableForEmployee/${employee}/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/leave/getLeaveTableForEmployee/${employee}/${organisationId}`,
         {
           headers: { Authorization: authToken },
         }
@@ -48,7 +48,7 @@ const useManagerCalender = ({ employee, organisationId }) => {
     ["employee-under", role],
     async () => {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/route/employee/getEmployeesUnderForLeaves/${role}`,
+        `${import.meta.env.VITE_API}/route/employee/getEmployeesUnderForLeaves/${role}`,
         {
           headers: {
             Authorization: authToken,

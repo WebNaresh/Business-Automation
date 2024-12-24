@@ -23,7 +23,7 @@ export default function useDashboardFilter(organisationId) {
     async () => {
       try {
         const response = await axios.post(
-          `${process.env.REACT_APP_API}/route/leave/getAbsent/${organisationId}`,
+          `${import.meta.env.VITE_API}/route/leave/getAbsent/${organisationId}`,
           {
             employeeId: employee?.employees.map((item) => item._id),
           },
@@ -59,7 +59,7 @@ export default function useDashboardFilter(organisationId) {
     ["departments-data", organisationId],
     () =>
       getAPIData(
-        `${process.env.REACT_APP_API}/route/department/get/${organisationId}`
+        `${import.meta.env.VITE_API}/route/department/get/${organisationId}`
       )
   );
 
@@ -67,7 +67,7 @@ export default function useDashboardFilter(organisationId) {
     ["organization-locations", organisationId],
     () =>
       getAPIData(
-        `${process.env.REACT_APP_API}/route/location/getOrganizationLocations/${organisationId}`
+        `${import.meta.env.VITE_API}/route/location/getOrganizationLocations/${organisationId}`
       )
   );
 
@@ -75,7 +75,7 @@ export default function useDashboardFilter(organisationId) {
   const getManagerData = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/employee/get-manager/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/employee/get-manager/${organisationId}`,
         {
           headers: {
             Authorization: authToken,
@@ -163,7 +163,7 @@ export default function useDashboardFilter(organisationId) {
     ["organization-attenedence", organisationId, selectedYear],
     () =>
       getAttendenceData(
-        `${process.env.REACT_APP_API}/route/leave/getOrganizationAttendece/${organisationId}/${selectedYear.value}`
+        `${import.meta.env.VITE_API}/route/leave/getOrganizationAttendece/${organisationId}/${selectedYear.value}`
       ),
     {
       onSuccess: (organizationAttendenceData) => {
@@ -178,7 +178,7 @@ export default function useDashboardFilter(organisationId) {
     ["department-attenedence", department],
     () =>
       getAttendenceData(
-        `${process.env.REACT_APP_API}/route/leave/getDepartmentAttendece/${department}/${selectedYear.value}`
+        `${import.meta.env.VITE_API}/route/leave/getDepartmentAttendece/${department}/${selectedYear.value}`
       ),
     {
       onSuccess: (attendenceData) => setData(attendenceData),
@@ -190,7 +190,7 @@ export default function useDashboardFilter(organisationId) {
     ["manager-attenedence", manager, selectedYear],
     () =>
       getAttendenceData(
-        `${process.env.REACT_APP_API}/route/leave/getManagerAttendence/${manager}/${selectedYear.value}`
+        `${import.meta.env.VITE_API}/route/leave/getManagerAttendence/${manager}/${selectedYear.value}`
       ),
     {
       onSuccess: (attendenceData) => setData(attendenceData),
@@ -202,7 +202,7 @@ export default function useDashboardFilter(organisationId) {
     ["location-attenedence", locations, selectedYear],
     () =>
       getAttendenceData(
-        `${process.env.REACT_APP_API}/route/leave/getLocationAttendece/${locations}/${selectedYear.value}`
+        `${import.meta.env.VITE_API}/route/leave/getLocationAttendece/${locations}/${selectedYear.value}`
       ),
     {
       onSuccess: (attendenceData) => setData(attendenceData),
@@ -230,7 +230,7 @@ export default function useDashboardFilter(organisationId) {
     ["Org-Salary-overview", organisationId, selectedSalaryYear],
     () =>
       getSalaryData(
-        `${process.env.REACT_APP_API}/route/employeeSalary/organizationSalaryOverview/${organisationId}/${selectedSalaryYear.value}`
+        `${import.meta.env.VITE_API}/route/employeeSalary/organizationSalaryOverview/${organisationId}/${selectedSalaryYear.value}`
       ),
     {
       onSuccess: (organizationAttendenceData) => {
@@ -245,7 +245,7 @@ export default function useDashboardFilter(organisationId) {
     ["department-salary", department, selectedSalaryYear],
     () =>
       getSalaryData(
-        `${process.env.REACT_APP_API}/route/employeeSalary/departmentSalaryOverview/${department}/${selectedSalaryYear.value}`
+        `${import.meta.env.VITE_API}/route/employeeSalary/departmentSalaryOverview/${department}/${selectedSalaryYear.value}`
       ),
     {
       onSuccess: (organizationAttendenceData) => {
@@ -259,7 +259,7 @@ export default function useDashboardFilter(organisationId) {
     ["manager-salary", manager, selectedSalaryYear],
     () =>
       getSalaryData(
-        `${process.env.REACT_APP_API}/route/employeeSalary/managerSalaryOverview/${manager}/${selectedSalaryYear.value}`
+        `${import.meta.env.VITE_API}/route/employeeSalary/managerSalaryOverview/${manager}/${selectedSalaryYear.value}`
       ),
     {
       onSuccess: (organizationAttendenceData) => {
@@ -273,7 +273,7 @@ export default function useDashboardFilter(organisationId) {
     ["location-salary", locations],
     () =>
       getSalaryData(
-        `${process.env.REACT_APP_API}/route/employeeSalary/locationSalaryOverview/${locations}/${selectedSalaryYear.value}`
+        `${import.meta.env.VITE_API}/route/employeeSalary/locationSalaryOverview/${locations}/${selectedSalaryYear.value}`
       ),
     {
       onSuccess: (organizationAttendenceData) => {

@@ -9,7 +9,7 @@ const useEmpConfirmation = () => {
     async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/route/punch`,
+          `${import.meta.env.VITE_API}/route/punch`,
           {
             headers: {
               Authorization: authToken,

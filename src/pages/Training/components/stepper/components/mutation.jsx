@@ -15,7 +15,7 @@ const useTrainingCreationMutation = () => {
   const { organisationId } = useParams();
   const getTrainingImageUrl = async (fullObject) => {
     const result = await axios.get(
-      `${process.env.REACT_APP_API}/route/s3createFile/training-banner`,
+      `${import.meta.env.VITE_API}/route/s3createFile/training-banner`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -33,7 +33,7 @@ const useTrainingCreationMutation = () => {
   };
   const createTrainingObject = async (data) => {
     await axios.post(
-      `${process.env.REACT_APP_API}/route/training/${organisationId}/create`,
+      `${import.meta.env.VITE_API}/route/training/${organisationId}/create`,
       data,
       {
         headers: {
@@ -69,7 +69,7 @@ const useTrainingCreationMutation = () => {
   const updateTrainingData = async (data) => {
     if (typeof data.trainingImage === "object" && data.trainingImage !== null) {
       const result = await axios.get(
-        `${process.env.REACT_APP_API}/route/s3createFile/training-banner`,
+        `${import.meta.env.VITE_API}/route/s3createFile/training-banner`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -92,7 +92,7 @@ const useTrainingCreationMutation = () => {
     useMutation(updateTrainingData, {
       onSuccess: async (data) => {
         await axios.put(
-          `${process.env.REACT_APP_API}/route/training/${data.trainingId}`,
+          `${import.meta.env.VITE_API}/route/training/${data.trainingId}`,
           data,
           {
             headers: {

@@ -45,7 +45,7 @@ const PreviewGoalModal = ({ open, handleClose, id, performance, assignee }) => {
     refetchOnMount: false,
     queryFn: async () => {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/route/performance/getSingleGoals/${id}`,
+        `${import.meta.env.VITE_API}/route/performance/getSingleGoals/${id}`,
         {
           headers: {
             Authorization: authToken,
@@ -77,7 +77,7 @@ const PreviewGoalModal = ({ open, handleClose, id, performance, assignee }) => {
         requestData = { ...requestData, goalStatus: goalStatus.value };
 
       await axios.patch(
-        `${process.env.REACT_APP_API}/route/performance/updateSingleGoal/${id}`,
+        `${import.meta.env.VITE_API}/route/performance/updateSingleGoal/${id}`,
         { data: requestData },
         {
           headers: {

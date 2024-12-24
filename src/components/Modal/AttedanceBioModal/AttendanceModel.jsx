@@ -34,7 +34,7 @@ const AttendanceModel = ({
   // call get api for retrive the employee in organization
   const fetchAvailableEmployee = async (page) => {
     try {
-      const apiUrl = `${process.env.REACT_APP_API}/route/employee/get-paginated-emloyee/${organisationId}?page=${page}`;
+      const apiUrl = `${import.meta.env.VITE_API}/route/employee/get-paginated-emloyee/${organisationId}?page=${page}`;
       const response = await axios.get(apiUrl, {
         headers: {
           Authorization: authToken,
@@ -110,7 +110,7 @@ const AttendanceModel = ({
       await Promise.all(
         EmployeeIds.map((EmployeeId) =>
           axios.post(
-            `${process.env.REACT_APP_API}/route/organization/${organisationId}/add-attendance-data`,
+            `${import.meta.env.VITE_API}/route/organization/${organisationId}/add-attendance-data`,
             {
               EmployeeId: EmployeeId,
               punchingRecords: syncedData,

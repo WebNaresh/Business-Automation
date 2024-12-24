@@ -13,7 +13,7 @@ const LeaveDisplayList = () => {
 
   const GetLastLeaves = async () => {
     const { data } = await axios.get(
-      `${process.env.REACT_APP_API}/route/leave/get-3-leaves-employee`,
+      `${import.meta.env.VITE_API}/route/leave/get-3-leaves-employee`,
       {
         headers: {
           Authorization: authToken,

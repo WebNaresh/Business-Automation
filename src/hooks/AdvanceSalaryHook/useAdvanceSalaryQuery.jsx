@@ -12,7 +12,7 @@ const useAdvanceSalaryQuery = (organisationId) => {
     ["totalSalary", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/employee/${organisationId}/total-salary`,
+        `${import.meta.env.VITE_API}/route/employee/${organisationId}/total-salary`,
         {
           headers: {
             Authorization: authToken,
@@ -29,7 +29,7 @@ const useAdvanceSalaryQuery = (organisationId) => {
     ["department", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/department/get/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/department/get/${organisationId}`,
         {
           headers: {
             Authorization: authToken,

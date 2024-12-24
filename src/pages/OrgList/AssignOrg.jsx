@@ -38,7 +38,7 @@ const AssignOrg = () => {
   const handleSubmit = async () => {
     try {
       const data = await axios.put(
-        `${process.env.REACT_APP_API}/route/employee/assignOrgToSelf`,
+        `${import.meta.env.VITE_API}/route/employee/assignOrgToSelf`,
         { organizationId },
         {
           headers: {

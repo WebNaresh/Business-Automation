@@ -19,7 +19,7 @@ const Tab1 = () => {
     queryFn: async () => {
       try {
         const salaryData = await axios.get(
-          `${process.env.REACT_APP_API}/route/employeeSalary/getEmployeeSalaryPerFinancialYear?fromDate=5-2024&toDate=3-2025`,
+          `${import.meta.env.VITE_API}/route/employeeSalary/getEmployeeSalaryPerFinancialYear?fromDate=5-2024&toDate=3-2025`,
           {
             headers: {
               Authorization: authToken,
@@ -35,7 +35,7 @@ const Tab1 = () => {
 
   async function GetOldTax() {
     const data = await axios.get(
-      `${process.env.REACT_APP_API}/route/tds/getNewRegime/2024-2025/${salaryAmount?.TotalInvestInvestment}`,
+      `${import.meta.env.VITE_API}/route/tds/getNewRegime/2024-2025/${salaryAmount?.TotalInvestInvestment}`,
       {
         headers: {
           Authorization: authToken,

@@ -14,7 +14,7 @@ const usePublicHoliday = (id) => {
     async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/route/holiday/get/${id}`
+          `${import.meta.env.VITE_API}/route/holiday/get/${id}`
         );
         return response.data.holidays;
       } catch (error) {

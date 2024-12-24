@@ -44,7 +44,7 @@ const TrackingMap = () => {
   }
   const fetchPts = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/punch/getone`,
+      `${import.meta.env.VITE_API}/route/punch/getone`,
       {
         headers: { Authorization: authToken },
       }

@@ -35,7 +35,7 @@ const LeaveTypeEditBox = ({ leaveType, index }) => {
   const handleDeleteType = async () => {
     try {
       const response = await axios.delete(
-        `${process.env.REACT_APP_API}/route/leave-types-details/${leaveType._id}`,
+        `${import.meta.env.VITE_API}/route/leave-types-details/${leaveType._id}`,
         {
           headers: {
             Authorization: authToken,

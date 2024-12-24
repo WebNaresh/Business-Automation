@@ -158,7 +158,7 @@ const TDSTable1 = () => {
     queryFn: async () => {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_API}/route/tds/getInvestment/Salary`,
+          `${import.meta.env.VITE_API}/route/tds/getInvestment/Salary`,
           {
             headers: {
               Authorization: authToken,

@@ -21,7 +21,7 @@ const LetterSetup = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/letter/get/${organisationId}`
+        `${import.meta.env.VITE_API}/route/letter/get/${organisationId}`
       );
       const fetchedData = response.data;
 
@@ -58,7 +58,7 @@ const LetterSetup = () => {
     setLoading(true);
     try {
       await axios.post(
-        `${process.env.REACT_APP_API}/route/letter/post/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/letter/post/${organisationId}`,
         formData
       );
       setAppAlert({

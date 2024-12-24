@@ -24,7 +24,7 @@
 
 //     const { data, error, isLoading, refetch } = useQuery(["addedTask", organisationId], async () => {
 //         const response = await axios.get(
-//             `${process.env.REACT_APP_API}/route/set-remote-task/${organisationId}`,
+//             `${import.meta.env.VITE_API}/route/set-remote-task/${organisationId}`,
 //             {
 //                 headers: {
 //                     Authorization: authToken,
@@ -38,7 +38,7 @@
 //     const deleteTask = useMutation(
 //         async (taskId) => {
 //             await axios.delete(
-//                 `${process.env.REACT_APP_API}/route/set-remote-task/${organisationId}/${taskId}`,
+//                 `${import.meta.env.VITE_API}/route/set-remote-task/${organisationId}/${taskId}`,
 //                 {
 //                     headers: {
 //                         Authorization: authToken,
@@ -66,7 +66,7 @@
 
 //     const handleEdit = async (taskId) => {
 //         const response = await axios.get(
-//             `${process.env.REACT_APP_API}/route/set-remote-task/${organisationId}/${taskId}`,
+//             `${import.meta.env.VITE_API}/route/set-remote-task/${organisationId}/${taskId}`,
 //             {
 //                 headers: {
 //                     Authorization: authToken,
@@ -243,7 +243,7 @@ const GetAddedTask = () => {
 
     const { data, error, isLoading, refetch } = useQuery(["addedTask", organisationId], async () => {
         const response = await axios.get(
-            `${process.env.REACT_APP_API}/route/set-remote-task/${organisationId}`,
+            `${import.meta.env.VITE_API}/route/set-remote-task/${organisationId}`,
             {
                 headers: {
                     Authorization: authToken,
@@ -256,7 +256,7 @@ const GetAddedTask = () => {
     const deleteTask = useMutation(
         async (taskId) => {
             await axios.delete(
-                `${process.env.REACT_APP_API}/route/set-remote-task/${organisationId}/${taskId}`,
+                `${import.meta.env.VITE_API}/route/set-remote-task/${organisationId}/${taskId}`,
                 {
                     headers: {
                         Authorization: authToken,
@@ -277,7 +277,7 @@ const GetAddedTask = () => {
 
     const handleEdit = async (taskId) => {
         const response = await axios.get(
-            `${process.env.REACT_APP_API}/route/set-remote-task/${organisationId}/${taskId}`,
+            `${import.meta.env.VITE_API}/route/set-remote-task/${organisationId}/${taskId}`,
             {
                 headers: {
                     Authorization: authToken,

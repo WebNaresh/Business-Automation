@@ -40,7 +40,7 @@ const AppDatePicker = ({
   const getLatestShifts = async () => {
     try {
       const resp = await axios.get(
-        `${process.env.REACT_APP_API}/route/shiftApply/get`,
+        `${import.meta.env.VITE_API}/route/shiftApply/get`,
         {
           headers: {
             Authorization: authToken,
@@ -55,7 +55,7 @@ const AppDatePicker = ({
 
   const { data: data2 } = useQuery("employee-disable-weekends", async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/weekend/get`,
+      `${import.meta.env.VITE_API}/route/weekend/get`,
       {
         headers: { Authorization: authToken },
       }
@@ -238,7 +238,7 @@ const AppDatePicker = ({
     try {
       if (selectedLeave._id) {
         await axios.delete(
-          `${process.env.REACT_APP_API}/route/shiftApply/delete/${selectedLeave._id}`,
+          `${import.meta.env.VITE_API}/route/shiftApply/delete/${selectedLeave._id}`,
           {
             headers: {
               Authorization: authToken,

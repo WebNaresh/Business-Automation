@@ -17,7 +17,7 @@ const ShiftsTable = () => {
   const { data, isLoading } = useQuery("table", async () => {
     try {
       const resp = await axios.get(
-        `${process.env.REACT_APP_API}/route/shiftApply/get`,
+        `${import.meta.env.VITE_API}/route/shiftApply/get`,
         {
           headers: {
             Authorization: authToken,

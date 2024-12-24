@@ -31,7 +31,7 @@ const OpenSurveyList = () => {
     ["openSurveys", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-open-survey`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-open-survey`,
         {
           headers: {
             Authorization: authToken,
@@ -50,7 +50,7 @@ const OpenSurveyList = () => {
     ["responseSurveys", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-response-survey`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-response-survey`,
         {
           headers: {
             Authorization: authToken,

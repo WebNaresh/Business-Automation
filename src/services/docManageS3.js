@@ -4,7 +4,7 @@ export const getSignedUrl = async () => {
   try {
     console.log("Requesting signed URL...");
     const resp = await axios.get(
-      `${process.env.REACT_APP_API}/route/employee/upload`
+      `${import.meta.env.VITE_API}/route/employee/upload`
     );
     console.log("Signed URL response:", resp.data);
     return resp.data;
@@ -17,7 +17,7 @@ export const getSignedUrlForDocs = async (token, data) => {
   try {
     console.log("Requesting signed URL...");
     const resp = await axios.post(
-      `${process.env.REACT_APP_API}/route/employee/uploaddocs`,
+      `${import.meta.env.VITE_API}/route/employee/uploaddocs`,
       data,
       {
         headers: {
@@ -37,7 +37,7 @@ export const getSignedUrlForOrgDocs = async (token, data) => {
   try {
     console.log("Requesting signed URL...");
     const resp = await axios.post(
-      `${process.env.REACT_APP_API}/route/org/uploaddocs`,
+      `${import.meta.env.VITE_API}/route/org/uploaddocs`,
       data,
       {
         headers: {

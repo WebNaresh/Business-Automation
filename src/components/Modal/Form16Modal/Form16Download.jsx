@@ -21,7 +21,7 @@ const Form16Download = ({ handleClose, open, employeeId, organizationId }) => {
     ["getForm16"],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/get/form16/${organizationId}/${employeeId}`,
+        `${import.meta.env.VITE_API}/route/get/form16/${organizationId}/${employeeId}`,
         {
           headers: {
             Authorization: authToken,

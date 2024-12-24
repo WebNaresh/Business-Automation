@@ -50,7 +50,7 @@ const Step3 = ({ prevStep }) => {
       console.log("deptData", deptData);
 
       const response = axios.put(
-        `${process.env.REACT_APP_API}/route/update-department/${organisationId}/${deptId}?role=${role}`,
+        `${import.meta.env.VITE_API}/route/update-department/${organisationId}/${deptId}?role=${role}`,
         deptData,
         {
           headers: {

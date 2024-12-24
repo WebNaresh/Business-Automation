@@ -20,7 +20,7 @@ const AcceptRejectTaskModal = () => {
 
     const { data, error, isLoading, refetch } = useQuery(["addedTask", organisationId], async () => {
         const response = await axios.get(
-            `${process.env.REACT_APP_API}/route/set-remote-task/${organisationId}`,
+            `${import.meta.env.VITE_API}/route/set-remote-task/${organisationId}`,
             {
                 headers: {
                     Authorization: authToken,
@@ -56,7 +56,7 @@ const AcceptRejectTaskModal = () => {
     const handleAccept = async (subtaskId, employeeEmail, taskId) => {
         try {
             await axios.patch(
-                `${process.env.REACT_APP_API}/route/set-remote-task/${organisationId}/${taskId}/accept-reject`,
+                `${import.meta.env.VITE_API}/route/set-remote-task/${organisationId}/${taskId}/accept-reject`,
                 {
                     subtaskId,
                     employeeEmail,
@@ -79,7 +79,7 @@ const AcceptRejectTaskModal = () => {
     const handleReject = async (taskId, employeeEmail, subtaskId) => {
         try {
             await axios.patch(
-                `${process.env.REACT_APP_API}/route/set-remote-task/${organisationId}/${taskId}/accept-reject`,
+                `${import.meta.env.VITE_API}/route/set-remote-task/${organisationId}/${taskId}/accept-reject`,
                 {
                     subtaskId,
                     employeeEmail,

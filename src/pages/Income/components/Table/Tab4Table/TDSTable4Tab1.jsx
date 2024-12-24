@@ -171,7 +171,7 @@ const TDSTable4Tab1 = () => {
     queryFn: async () => {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_API}/route/tds/getInvestment/SectionDeduction`,
+          `${import.meta.env.VITE_API}/route/tds/getInvestment/SectionDeduction`,
           {
             headers: {
               Authorization: authToken,

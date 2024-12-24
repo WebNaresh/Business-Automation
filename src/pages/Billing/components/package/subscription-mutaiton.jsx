@@ -10,7 +10,7 @@ const useManageSubscriptionMutation = () => {
 
   const handleForm = async (data) => {
     const result = await axios.post(
-      `${process.env.REACT_APP_API}/route/organization/organization-upgrade/${data?.organisationId}`,
+      `${import.meta.env.VITE_API}/route/organization/organization-upgrade/${data?.organisationId}`,
       data,
       {
         headers: {
@@ -66,7 +66,7 @@ const useManageSubscriptionMutation = () => {
   });
   const renewHandleForm = async (data) => {
     const result = await axios.post(
-      `${process.env.REACT_APP_API}/route/organization/organization-renew/${data?.organisationId}`,
+      `${import.meta.env.VITE_API}/route/organization/organization-renew/${data?.organisationId}`,
       data,
       {
         headers: {
@@ -121,7 +121,7 @@ const useManageSubscriptionMutation = () => {
   });
   const payHandleForm = async (data) => {
     const result = await axios.post(
-      `${process.env.REACT_APP_API}/route/organization/organization-pay/${data?.organisationId}`,
+      `${import.meta.env.VITE_API}/route/organization/organization-pay/${data?.organisationId}`,
       data,
       {
         headers: {
@@ -181,7 +181,7 @@ const useManageSubscriptionMutation = () => {
       promoCode
     );
     const result = await axios.get(
-      `${process.env.REACT_APP_API}/route/promo-code/promo-code-verify/${promoCode}`,
+      `${import.meta.env.VITE_API}/route/promo-code/promo-code-verify/${promoCode}`,
       {
         headers: {
           Authorization: authToken,

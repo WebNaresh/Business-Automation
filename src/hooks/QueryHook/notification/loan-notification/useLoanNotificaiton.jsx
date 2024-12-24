@@ -18,7 +18,7 @@ const useLoanNotification = () => {
     ["empLoanApplyRequest"],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/pendingLoans`,
+        `${import.meta.env.VITE_API}/route/pendingLoans`,
         {
           headers: {
             Authorization: authToken,
@@ -41,7 +41,7 @@ const useLoanNotification = () => {
     ["getLoanEmployee"],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/get-loan-to-employee`,
+        `${import.meta.env.VITE_API}/route/get-loan-to-employee`,
         {
           headers: {
             Authorization: authToken,

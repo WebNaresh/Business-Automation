@@ -6,11 +6,9 @@ import { BrowserRouter } from "react-router-dom";
 import "tw-elements/dist/css/tw-elements.min.css";
 import App from "./App";
 import "./index.css";
-import reportWebVitals from "./reportWebVitals";
 import "./services/i18n";
-// import "bootstrap/dist/css/bootstrap.min.css";
-const root = ReactDOM.createRoot(document.getElementById("root"));
 
+// Create a client
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -18,7 +16,8 @@ const queryClient = new QueryClient({
     },
   },
 });
-root.render(
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
@@ -29,6 +28,6 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// Remove reportWebVitals as it's a CRA-specific feature
+// If you need performance monitoring, consider using Vite's built-in options
+// or a third-party solution compatible with Vite

@@ -13,7 +13,7 @@ const useShiftNotification = () => {
   const { authToken } = useGetUser();
   const getShiftNotification = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/shiftApply/get?status=${status}&minDate=${minDate}&maxDate=${maxDate}&skip=${skip}`,
+      `${import.meta.env.VITE_API}/route/shiftApply/get?status=${status}&minDate=${minDate}&maxDate=${maxDate}&skip=${skip}`,
       {
         headers: { Authorization: authToken },
       }

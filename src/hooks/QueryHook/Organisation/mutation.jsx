@@ -36,7 +36,7 @@ const useOrganisationMutation = () => {
     formData.append("description", data.description);
 
     const response = await axios.patch(
-      `${process.env.REACT_APP_API}/route/organization/edit/${id}`,
+      `${import.meta.env.VITE_API}/route/organization/edit/${id}`,
       formData,
       {
         headers: {

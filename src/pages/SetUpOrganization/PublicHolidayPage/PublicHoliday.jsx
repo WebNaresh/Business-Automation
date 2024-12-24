@@ -89,7 +89,7 @@ const PublicHoliday = () => {
       };
       await axios
         .patch(
-          `${process.env.REACT_APP_API}/route/holiday/update/${selectedHolidayId}`,
+          `${import.meta.env.VITE_API}/route/holiday/update/${selectedHolidayId}`,
           patchData
         )
         .then((response) => {
@@ -108,7 +108,7 @@ const PublicHoliday = () => {
     } else if (operation === "delete") {
       try {
         await axios.delete(
-          `${process.env.REACT_APP_API}/route/holiday/delete/${id}`
+          `${import.meta.env.VITE_API}/route/holiday/delete/${id}`
         );
         console.log("Holiday deleted successfully.");
         setOpenModal(false);

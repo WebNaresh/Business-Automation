@@ -27,7 +27,7 @@ const LeaveTypes = ({ open, handleClose, id }) => {
         },
       };
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/route/leave-types-details/get`,
+        `${import.meta.env.VITE_API}/route/leave-types-details/get`,
         { organisationId: params.organisationId },
         config
       );

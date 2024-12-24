@@ -57,7 +57,7 @@ const CreteLeaveTypeModal = ({ handleClose, open }) => {
   const { mutate, isLoading } = useMutation(
     async (data) => {
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/route/leave-types/${param.organisationId}`,
+        `${import.meta.env.VITE_API}/route/leave-types/${param.organisationId}`,
         data,
         {
           headers: {

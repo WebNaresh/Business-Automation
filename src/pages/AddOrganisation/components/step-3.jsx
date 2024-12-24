@@ -100,7 +100,7 @@ const Step3 = ({ prevStep }) => {
     };
 
     const response = await axios.post(
-      `${process.env.REACT_APP_API}/route/organization`,
+      `${import.meta.env.VITE_API}/route/organization`,
       mainData,
       config
     );

@@ -13,7 +13,7 @@ const useDesignation = () => {
 
   const getDesignation = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/designation/create/${organisationId}`
+      `${import.meta.env.VITE_API}/route/designation/create/${organisationId}`
     );
 
     return response.data.designations;
@@ -28,7 +28,7 @@ const useDesignation = () => {
 
   const addDesignation = async ({ data, onClose }) => {
     const response = await axios.post(
-      `${process.env.REACT_APP_API}/route/designation/create`,
+      `${import.meta.env.VITE_API}/route/designation/create`,
       data,
       {
         headers: {
@@ -65,7 +65,7 @@ const useDesignation = () => {
 
   const deleteDesignation = async ({ designationId, onClose }) => {
     const response = await axios.delete(
-      `${process.env.REACT_APP_API}/route/designation/create/${designationId}`,
+      `${import.meta.env.VITE_API}/route/designation/create/${designationId}`,
       {
         headers: {
           Authorization: authToken,
@@ -97,7 +97,7 @@ const useDesignation = () => {
 
   const editDesignation = async ({ designationId, data, onClose }) => {
     const response = await axios.patch(
-      `${process.env.REACT_APP_API}/route/designation/create/${designationId}`,
+      `${import.meta.env.VITE_API}/route/designation/create/${designationId}`,
       data
     );
     return response.data;

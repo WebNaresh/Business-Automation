@@ -56,7 +56,7 @@ const EditJobLevel = ({
     ["emailCommunication", organisationId,  jobLevelId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/${organisationId}/${jobLevelId}/get-job-level`,
+        `${import.meta.env.VITE_API}/route/${organisationId}/${jobLevelId}/get-job-level`,
         {
           headers: {
             Authorization: authToken,
@@ -83,7 +83,7 @@ const EditJobLevel = ({
   const EditCommunication = useMutation(
     (data) =>
       axios.put(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/${editCommunicationId}/update-communication`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/${editCommunicationId}/update-communication`,
         data,
         {
           headers: {

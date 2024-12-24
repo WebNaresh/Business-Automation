@@ -69,7 +69,7 @@ const useSelfieFaceDetect = () => {
 
     const getEmployeeRemoteSet = async () => {
         const response = await axios.get(
-            `${process.env.REACT_APP_API}/route/remote-punch/get-employee-org-obj/org`,
+            `${import.meta.env.VITE_API}/route/remote-punch/get-employee-org-obj/org`,
             {
                 headers: { Authorization: authToken },
             }
@@ -155,7 +155,7 @@ const useSelfieFaceDetect = () => {
     const getImageAndVerify = async ({ localDescriptor }) => {
         const config = { headers: { "Content-Type": "application/json" } };
         const response = await axios.get(
-            `${process.env.REACT_APP_API}/route/face-model/face/${decodedToken?.user?._id}`,
+            `${import.meta.env.VITE_API}/route/face-model/face/${decodedToken?.user?._id}`,
             config
         );
         return response.data;

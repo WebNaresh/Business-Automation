@@ -116,7 +116,7 @@ const AddLoanTypeModal = ({ handleClose, open, organisationId }) => {
   const AddLoanType = useMutation(
     (data) =>
       axios.post(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/add-loan-type`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/add-loan-type`,
         data,
         {
           headers: {
@@ -143,7 +143,7 @@ const AddLoanTypeModal = ({ handleClose, open, organisationId }) => {
     ["loanType", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-loan-type`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-loan-type`,
         {
           headers: {
             Authorization: authToken,

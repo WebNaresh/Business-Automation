@@ -1,4 +1,4 @@
-import { weekdays } from "moment";
+import moment from "moment";
 import React from "react";
 import useCustomCal from "./useCustomCal";
 
@@ -13,9 +13,12 @@ const CustomCalendar = () => {
     endDate,
   } = useCustomCal();
 
+  // Use moment.weekdaysShort() instead of weekdays()
+  const weekdayNames = moment.weekdaysShort();
+
   return (
     <div className="grid grid-cols-7 gap-1 mt-48">
-      {weekdays().map((day) => (
+      {weekdayNames.map((day) => (
         <div key={day} className="day-header text-center">
           {day}
         </div>

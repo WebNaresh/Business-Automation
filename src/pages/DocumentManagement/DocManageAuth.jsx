@@ -22,7 +22,7 @@ const DocManageAuth = () => {
 
   const { data: data2 } = useQuery(`getOrgDocs`, async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/org/getdocs`,
+      `${import.meta.env.VITE_API}/route/org/getdocs`,
       {
         headers: { Authorization: authToken },
       }
@@ -43,7 +43,7 @@ const DocManageAuth = () => {
     try {
       setDocId(id.toString());
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/org/getdoc/${id}`,
+        `${import.meta.env.VITE_API}/route/org/getdoc/${id}`,
         {
           headers: { Authorization: authToken },
         }
@@ -57,7 +57,7 @@ const DocManageAuth = () => {
   const handleDeleteDoc = async (id) => {
     try {
       const resp = await axios.delete(
-        `${process.env.REACT_APP_API}/route/org/deletedoc/${id}`,
+        `${import.meta.env.VITE_API}/route/org/deletedoc/${id}`,
         {
           headers: {
             Authorization: authToken,
@@ -105,7 +105,7 @@ const DocManageAuth = () => {
       await uploadFile(signedUrlResponse.url, blob);
 
       await axios.post(
-        `${process.env.REACT_APP_API}/route/org/adddocuments`,
+        `${import.meta.env.VITE_API}/route/org/adddocuments`,
         {
           title: newDocument.title,
           details: newDocument.details,
@@ -137,7 +137,7 @@ const DocManageAuth = () => {
   const handleUpdateDocument = async () => {
     try {
       const resp = await axios.patch(
-        `${process.env.REACT_APP_API}/route/org/updatedocuments/${docId}`,
+        `${import.meta.env.VITE_API}/route/org/updatedocuments/${docId}`,
         {
           title: newDocument.title,
           details: newDocument.details,

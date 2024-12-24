@@ -20,7 +20,7 @@ const ResetPassword = () => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/route/employee/reset-password/${token}`,
+        `${import.meta.env.VITE_API}/route/employee/reset-password/${token}`,
         {
           password,
         }

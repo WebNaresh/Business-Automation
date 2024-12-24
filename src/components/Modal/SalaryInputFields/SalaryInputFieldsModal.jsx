@@ -63,7 +63,7 @@ const SalaryInputFieldsModal = ({ handleClose, open, id, salaryId }) => {
   // Get Query
   const { data: empTypeslist } = useQuery("empTypes", async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/employment-types-organisation/${id}`,
+      `${import.meta.env.VITE_API}/route/employment-types-organisation/${id}`,
       {
         headers: {
           Authorization: authToken,
@@ -119,7 +119,7 @@ const SalaryInputFieldsModal = ({ handleClose, open, id, salaryId }) => {
     async () => {
       if (open && salaryId !== null) {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/route/salary-template/${salaryId}`,
+          `${import.meta.env.VITE_API}/route/salary-template/${salaryId}`,
           {
             headers: {
               Authorization: authToken,
@@ -208,7 +208,7 @@ const SalaryInputFieldsModal = ({ handleClose, open, id, salaryId }) => {
         desc: data.desc,
       };
       await axios.post(
-        `${process.env.REACT_APP_API}/route/salary-template-org/${id}`,
+        `${import.meta.env.VITE_API}/route/salary-template-org/${id}`,
         newdata,
         {
           headers: {
@@ -245,7 +245,7 @@ const SalaryInputFieldsModal = ({ handleClose, open, id, salaryId }) => {
         desc: data.desc,
       };
       await axios.put(
-        `${process.env.REACT_APP_API}/route/salary-template/${salaryId}`,
+        `${import.meta.env.VITE_API}/route/salary-template/${salaryId}`,
         newdata,
         {
           headers: {

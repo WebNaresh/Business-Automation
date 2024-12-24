@@ -16,7 +16,7 @@ const useDeleteLeave = ({ id }) => {
   const deleteLeaveMutation = useMutation(
     async (data) => {
       await axios.post(
-        `${process.env.REACT_APP_API}/route/leave/delete/${id}?empId=${employee}&role=${role}`,
+        `${import.meta.env.VITE_API}/route/leave/delete/${id}?empId=${employee}&role=${role}`,
 
         {
           deleteReason: data?.deleteReason,

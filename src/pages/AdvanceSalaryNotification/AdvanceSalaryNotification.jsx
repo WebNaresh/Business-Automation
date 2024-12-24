@@ -18,7 +18,7 @@ const AdvanceSalaryNotification = () => {
     data: getAdvanceSalaryData,
   } = useQuery(["getAdvanceSalaryData"], async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/pending-advance-salary-data`,
+      `${import.meta.env.VITE_API}/route/pending-advance-salary-data`,
       {
         headers: {
           Authorization: authToken,

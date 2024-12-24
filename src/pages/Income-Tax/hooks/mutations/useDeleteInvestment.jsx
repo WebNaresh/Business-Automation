@@ -24,7 +24,7 @@ const useDeleteInvestment = () => {
 
     try {
       await axios.patch(
-        `${process.env.REACT_APP_API}/route/tds/deleteInvestment`,
+        `${import.meta.env.VITE_API}/route/tds/deleteInvestment`,
         requestData,
         {
           headers: {

@@ -76,7 +76,7 @@ const CreateSalaryModel = ({
     async () => {
       if (open && empId !== null) {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/route/employee/get/profile/${empId}`,
+          `${import.meta.env.VITE_API}/route/employee/get/profile/${empId}`,
           {
             headers: {
               Authorization: authToken,
@@ -98,7 +98,7 @@ const CreateSalaryModel = ({
     ["salary-component", empId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/get-salary-component/${empId}`,
+        `${import.meta.env.VITE_API}/route/get-salary-component/${empId}`,
         {
           headers: {
             Authorization: authToken,
@@ -150,7 +150,7 @@ const CreateSalaryModel = ({
       };
 
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/route/add-salary-component/${empId}`,
+        `${import.meta.env.VITE_API}/route/add-salary-component/${empId}`,
         data,
         {
           headers: {

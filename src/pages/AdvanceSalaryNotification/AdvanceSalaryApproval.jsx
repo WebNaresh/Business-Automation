@@ -29,7 +29,7 @@ const AdvanceSalaryApproval = ({ employee }) => {
   const handleApprovalReject = async (status) => {
     try {
       const response = await axios.put(
-        `${process.env.REACT_APP_API}/route/organization/accept/reject/advance-salary/${advanceSalaryId}`,
+        `${import.meta.env.VITE_API}/route/organization/accept/reject/advance-salary/${advanceSalaryId}`,
         {
           action: status === "ongoing" ? "ongoing" : "reject",
         },

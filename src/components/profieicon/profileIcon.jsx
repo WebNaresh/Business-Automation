@@ -27,7 +27,7 @@ export default function ProfileIcon() {
 
   const { data } = useQuery("emp-profile", async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/employee/populate/get`,
+      `${import.meta.env.VITE_API}/route/employee/populate/get`,
       {
         headers: { Authorization: authToken },
       }

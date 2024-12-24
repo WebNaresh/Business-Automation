@@ -55,7 +55,7 @@ const EmployementTypes = () => {
     ["empTypes", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/employment-types-organisation/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/employment-types-organisation/${organisationId}`,
         {
           headers: {
             Authorization: authToken,
@@ -89,7 +89,7 @@ const EmployementTypes = () => {
   const deleteMutation = useMutation(
     (id) =>
       axios.delete(
-        `${process.env.REACT_APP_API}/route/employment-types/${id}`,
+        `${import.meta.env.VITE_API}/route/employment-types/${id}`,
         {
           headers: {
             Authorization: authToken,

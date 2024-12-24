@@ -100,7 +100,7 @@ const ApplyAdvanceSalaryModal = ({ handleClose, open, organisationId }) => {
     ["loaninfo", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/${userId}/get-ongoing-loan-data`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/${userId}/get-ongoing-loan-data`,
         {
           headers: {
             Authorization: authToken,
@@ -116,7 +116,7 @@ const ApplyAdvanceSalaryModal = ({ handleClose, open, organisationId }) => {
   const AddAdvanceSalary = useMutation(
     (data) =>
       axios.post(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/add-advance-salary`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/add-advance-salary`,
         data,
         {
           headers: {

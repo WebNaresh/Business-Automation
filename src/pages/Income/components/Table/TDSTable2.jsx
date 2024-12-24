@@ -149,7 +149,7 @@ const TDSTable2 = () => {
     queryFn: async () => {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_API}/route/tds/getInvestment/House`,
+          `${import.meta.env.VITE_API}/route/tds/getInvestment/House`,
           {
             headers: {
               Authorization: authToken,
@@ -313,7 +313,7 @@ const TDSTable2 = () => {
 
     try {
       await axios.patch(
-        `${process.env.REACT_APP_API}/route/tds/createInvestment`,
+        `${import.meta.env.VITE_API}/route/tds/createInvestment`,
         requestData,
         {
           headers: {
@@ -338,7 +338,7 @@ const TDSTable2 = () => {
   // };
   const uploadProof = async (tdsfile) => {
     const data = await axios.get(
-      `${process.env.REACT_APP_API}/route/s3createFile/TDS`,
+      `${import.meta.env.VITE_API}/route/s3createFile/TDS`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -425,7 +425,7 @@ const TDSTable2 = () => {
 
     try {
       await axios.post(
-        `${process.env.REACT_APP_API}/route/tds/createInvestment`,
+        `${import.meta.env.VITE_API}/route/tds/createInvestment`,
         requestData,
         {
           headers: {

@@ -55,7 +55,7 @@ const InputFieldModal = ({ handleClose, open, id, empTypeId }) => {
     async () => {
       if (open && empTypeId !== null) {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/route/employment-types/${empTypeId}`,
+          `${import.meta.env.VITE_API}/route/employment-types/${empTypeId}`,
           {
             headers: {
               Authorization: authToken,
@@ -77,7 +77,7 @@ const InputFieldModal = ({ handleClose, open, id, empTypeId }) => {
   const AddInputFields = useMutation(
     async (data) =>
       await axios.post(
-        `${process.env.REACT_APP_API}/route/inputfield/create/${id}`,
+        `${import.meta.env.VITE_API}/route/inputfield/create/${id}`,
         data,
         {
           headers: {
@@ -101,7 +101,7 @@ const InputFieldModal = ({ handleClose, open, id, empTypeId }) => {
   const EditEmployeeType = useMutation(
     async (data) =>
       await axios.put(
-        `${process.env.REACT_APP_API}/route/employment-types/${empTypeId}`,
+        `${import.meta.env.VITE_API}/route/employment-types/${empTypeId}`,
         data,
         {
           headers: {

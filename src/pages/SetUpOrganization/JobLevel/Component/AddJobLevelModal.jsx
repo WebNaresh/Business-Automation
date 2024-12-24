@@ -51,7 +51,7 @@ const AddJobLevel = ({ handleClose, open, organisationId }) => {
   const AddJobLevel = useMutation(
     (data) =>
       axios.post(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/add-job-level`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/add-job-level`,
         data,
         {
           headers: {

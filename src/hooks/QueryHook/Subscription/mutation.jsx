@@ -11,7 +11,7 @@ const useSubscriptionMutation = () => {
 
   const updateSubscription = async ({ subscriptionId, data, handleClose }) => {
     const response = await axios.patch(
-      `${process.env.REACT_APP_API}/route/subscription-status/${subscriptionId}`,
+      `${import.meta.env.VITE_API}/route/subscription-status/${subscriptionId}`,
       { data },
       {
         headers: {

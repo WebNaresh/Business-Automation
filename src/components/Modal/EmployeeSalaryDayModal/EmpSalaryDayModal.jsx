@@ -44,7 +44,7 @@ const EmpSalaryDayModal = ({ handleClose, open, id, empSalCalId }) => {
   const fetchAvailabeEmpSalCalDay = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/employee-salary-cal-day/get/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/employee-salary-cal-day/get/${organisationId}`,
         {
           headers: {
             Authorization: authToken,
@@ -73,7 +73,7 @@ const EmpSalaryDayModal = ({ handleClose, open, id, empSalCalId }) => {
     async (data) => {
       try {
         const response = await axios.put(
-          `${process.env.REACT_APP_API}/route/employee-salary-cal-day/update/${id}/${empSalCalId}`,
+          `${import.meta.env.VITE_API}/route/employee-salary-cal-day/update/${id}/${empSalCalId}`,
           data,
           {
             headers: {

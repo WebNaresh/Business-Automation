@@ -110,7 +110,7 @@ const WeekendHoliday = () => {
 
       if (editItem) {
         await axios.patch(
-          `${process.env.REACT_APP_API}/route/weekend/update/${editItem._id}`,
+          `${import.meta.env.VITE_API}/route/weekend/update/${editItem._id}`,
           { days: daysArray }
         );
 
@@ -122,7 +122,7 @@ const WeekendHoliday = () => {
         });
       } else {
         const existingWeekend = await axios.get(
-          `${process.env.REACT_APP_API}/route/weekend/get/${organizationId}`
+          `${import.meta.env.VITE_API}/route/weekend/get/${organizationId}`
         );
 
         if (existingWeekend.data.days.length > 0) {
@@ -136,7 +136,7 @@ const WeekendHoliday = () => {
           throw new Error("Weekend cannot have more than 3 days");
         }
 
-        await axios.post(`${process.env.REACT_APP_API}/route/weekend/create`, {
+        await axios.post(`${import.meta.env.VITE_API}/route/weekend/create`, {
           days: daysArray,
           organizationId,
         });
@@ -167,7 +167,7 @@ const WeekendHoliday = () => {
     try {
       console.log(ID);
       await axios.delete(
-        `${process.env.REACT_APP_API}/route/weekend/delete/${ID}`
+        `${import.meta.env.VITE_API}/route/weekend/delete/${ID}`
       );
       console.log("Successfully deleted");
       setAppAlert({
@@ -200,7 +200,7 @@ const WeekendHoliday = () => {
   const fetchDays = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/weekend/get/${organizationId}`
+        `${import.meta.env.VITE_API}/route/weekend/get/${organizationId}`
       );
       return response.data.days || [];
     } catch (error) {

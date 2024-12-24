@@ -25,7 +25,7 @@ const useShiftData = () => {
     "employee-leave-table-without-default",
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/shiftApply/get`,
+        `${import.meta.env.VITE_API}/route/shiftApply/get`,
         {
           headers: { Authorization: authToken },
         }
@@ -40,7 +40,7 @@ const useShiftData = () => {
     "employee-leave-table-without-default-leave",
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/leave/getEmployeeCurrentYearLeave`,
+        `${import.meta.env.VITE_API}/route/leave/getEmployeeCurrentYearLeave`,
         {
           headers: { Authorization: authToken },
         }
@@ -56,7 +56,7 @@ const useShiftData = () => {
       try {
         if (selectedLeave) {
           await axios.post(
-            `${process.env.REACT_APP_API}/route/shiftApply/create`,
+            `${import.meta.env.VITE_API}/route/shiftApply/create`,
             {
               title: value?.name,
               start: value?.start,

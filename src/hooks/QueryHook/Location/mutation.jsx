@@ -78,7 +78,7 @@ const useLocationMutation = () => {
   const fetchUrl = async () => {
     const data1 = await getUserLocation?.mutateAsync();
     const data = await axios.get(
-      `${process.env.REACT_APP_API}/route/punch-main/create-image-url?lat=${data1?.latitude}&lng=${data1?.longitude}`,
+      `${import.meta.env.VITE_API}/route/punch-main/create-image-url?lat=${data1?.latitude}&lng=${data1?.longitude}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -120,7 +120,7 @@ const useLocationMutation = () => {
   //get punch object id
   const fetchPunchObject = async (image) => {
     const data = await axios.post(
-      `${process.env.REACT_APP_API}/route/punch`,
+      `${import.meta.env.VITE_API}/route/punch`,
       { image, geoFencingArea },
       {
         headers: {
@@ -155,7 +155,7 @@ const useLocationMutation = () => {
     const distances = await Promise.all(
       employeeGeoArea?.area?.map(async (area) => {
         const response = await axios.get(
-          `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${latitude},${longitude}&destinations=${area?.center?.coordinates[0]},${area?.center?.coordinates[1]}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`
+          `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${latitude},${longitude}&destinations=${area?.center?.coordinates[0]},${area?.center?.coordinates[1]}&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`
         );
         const distanceValue = response.data.rows[0].elements[0].distance.value;
         return distanceValue < area?.radius;

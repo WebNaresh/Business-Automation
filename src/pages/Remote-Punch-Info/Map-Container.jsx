@@ -24,7 +24,7 @@ const MapComponent = ({ punchObjectId, isLoaded }) => {
     `geofencingCircleData`,
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/geo-fence/area/${circleId}`,
+        `${import.meta.env.VITE_API}/route/geo-fence/area/${circleId}`,
         {
           headers: {
             Authorization: authToken,

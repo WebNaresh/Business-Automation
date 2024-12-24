@@ -11,7 +11,7 @@ const useOrgList = () => {
     async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/route/organization/get`,
+          `${import.meta.env.VITE_API}/route/organization/get`,
           {
             headers: {
               Authorization: authToken, 

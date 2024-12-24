@@ -33,7 +33,7 @@ const StopGeoFencing = ({ setStart, geoFencing }) => {
     const stopGeoFence = async () => {
         try {
             await axios.patch(
-                `${process.env.REACT_APP_API}/route/punch`,
+                `${import.meta.env.VITE_API}/route/punch`,
                 {
                     temporaryArray,
                     punchObjectId,

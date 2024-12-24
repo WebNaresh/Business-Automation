@@ -13,7 +13,7 @@ const useTDSNotificationHook = () => {
   const role = useGetCurrentRole();
   const getUserNotification = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/tds/getCountNotifications/${financialYear}/${role}`,
+      `${import.meta.env.VITE_API}/route/tds/getCountNotifications/${financialYear}/${role}`,
       {
         headers: { Authorization: authToken },
       }

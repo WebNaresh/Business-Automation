@@ -7,7 +7,7 @@ const useShiftQuery = () => {
   const { organisationId: orgId } = useParams();
   const getAllOrgShifts = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/shifts/${orgId}`,
+      `${import.meta.env.VITE_API}/route/shifts/${orgId}`,
       {
         headers: {
           Authorization: authToken,

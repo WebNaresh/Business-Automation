@@ -15,7 +15,7 @@ const ShowCompletetaskInMap = () => {
   const { data } = useQuery(`remote-punching-${Id}-post`, async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/punch-entry/${Id}`,
+        `${import.meta.env.VITE_API}/route/punch-entry/${Id}`,
         {
           headers: {
             Authorization: authToken,
@@ -31,8 +31,8 @@ const ShowCompletetaskInMap = () => {
   console.log("data", data);
 
   const { isLoaded } = useJsApiLoader({
-    id: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    id: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
   });
 
   return (

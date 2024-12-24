@@ -15,7 +15,7 @@ const useMissedPunchNotificationCount = () => {
   // to get the missed punch data
   const getMissedPunchNotification = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-unavaialble-record`,
+      `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-unavaialble-record`,
       {
         headers: { Authorization: authToken },
       }
@@ -32,7 +32,7 @@ const useMissedPunchNotificationCount = () => {
   //update notification api
   const getUpdateMissedPunchNotification = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/missed-punch-update-notification-to-employee`,
+      `${import.meta.env.VITE_API}/route/missed-punch-update-notification-to-employee`,
       {
         headers: { Authorization: authToken },
       }
@@ -49,7 +49,7 @@ const useMissedPunchNotificationCount = () => {
     ["getMissedPunchData"],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/missed-punch-notification-to-employee`,
+        `${import.meta.env.VITE_API}/route/missed-punch-notification-to-employee`,
         {
           headers: {
             Authorization: authToken,

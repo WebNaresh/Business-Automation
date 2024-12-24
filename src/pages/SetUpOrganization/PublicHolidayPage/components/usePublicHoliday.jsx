@@ -14,7 +14,7 @@ const usePublicHoliday = () => {
   const AddPublicHoliday = async ({ data, onClose }) => {
     console.log(data);
     const response = await axios.post(
-      `${process.env.REACT_APP_API}/route/holiday/create`,
+      `${import.meta.env.VITE_API}/route/holiday/create`,
       {
         ...data,
         organizationId: organisationId,
@@ -41,7 +41,7 @@ const usePublicHoliday = () => {
   });
   const getHoliday = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/holiday/get/${organisationId}`
+      `${import.meta.env.VITE_API}/route/holiday/get/${organisationId}`
     );
     return response.data.holidays;
   };
@@ -63,7 +63,7 @@ const usePublicHoliday = () => {
 
   const getLocation = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/location/getOrganizationLocations/${organisationId}`,
+      `${import.meta.env.VITE_API}/route/location/getOrganizationLocations/${organisationId}`,
       {
         headers: {
           Authorization: authToken,
@@ -90,7 +90,7 @@ const usePublicHoliday = () => {
 
   const editHoliday = async ({ selectedHolidayId, onClose, data }) => {
     const response = await axios.patch(
-      `${process.env.REACT_APP_API}/route/holiday/update/${selectedHolidayId}`,
+      `${import.meta.env.VITE_API}/route/holiday/update/${selectedHolidayId}`,
       data
     );
     return response.data;
@@ -114,7 +114,7 @@ const usePublicHoliday = () => {
 
   const deleteHoliday = async ({ selectedHolidayId }) => {
     const response = await axios.delete(
-      `${process.env.REACT_APP_API}/route/holiday/delete/${selectedHolidayId}`
+      `${import.meta.env.VITE_API}/route/holiday/delete/${selectedHolidayId}`
     );
     return response.data;
   };

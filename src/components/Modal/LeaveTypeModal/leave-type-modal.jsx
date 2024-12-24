@@ -45,7 +45,7 @@ const LeaveTypeModal = ({ handleClose, open, id, leaveType }) => {
     try {
       // Make the PATCH request using axios
       const response = await axios.patch(
-        `${process.env.REACT_APP_API}/route/leave-types-details/${leaveType._id}`,
+        `${import.meta.env.VITE_API}/route/leave-types-details/${leaveType._id}`,
         data,
         {
           headers: {

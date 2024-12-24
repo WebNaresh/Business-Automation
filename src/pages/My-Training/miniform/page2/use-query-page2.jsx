@@ -9,7 +9,7 @@ const useGetOngoingTrainings = () => {
 
   const getUpcomingTrainings = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/training/get-ongoing-trainings/${decodedToken?.user?._id}`,
+      `${import.meta.env.VITE_API}/route/training/get-ongoing-trainings/${decodedToken?.user?._id}`,
       {
         headers: {
           Authorization: authToken,

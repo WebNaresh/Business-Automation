@@ -121,7 +121,7 @@ const EditAdvanceSalaryModal = ({
   const UpdateAdvanceSalary = useMutation(
     (data) =>
       axios.put(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/${advanceSalaryId}/update-advance-salary-data`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/${advanceSalaryId}/update-advance-salary-data`,
         data,
         {
           headers: {

@@ -114,7 +114,7 @@ const CreateNewSurvey = ({ isEditable }) => {
   useEffect(() => {
     (async () => {
       const resp = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/get/${organisationId}`
+        `${import.meta.env.VITE_API}/route/organization/get/${organisationId}`
       );
       setOrg(resp.data.organizations);
     })();
@@ -125,7 +125,7 @@ const CreateNewSurvey = ({ isEditable }) => {
     ["singleDraftSurvey", id],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-single-draft-survey/${id}`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-single-draft-survey/${id}`,
         {
           headers: {
             Authorization: authToken,
@@ -182,7 +182,7 @@ const CreateNewSurvey = ({ isEditable }) => {
       if (id) {
         // Update survey
         response = await axios.put(
-          `${process.env.REACT_APP_API}/route/organization/${organisationId}/update-employee-survey/${id}`,
+          `${import.meta.env.VITE_API}/route/organization/${organisationId}/update-employee-survey/${id}`,
           formData,
           {
             headers: {
@@ -193,7 +193,7 @@ const CreateNewSurvey = ({ isEditable }) => {
       } else {
         // Add new survey
         response = await axios.post(
-          `${process.env.REACT_APP_API}/route/organization/${organisationId}/add-employee-survey-form`,
+          `${import.meta.env.VITE_API}/route/organization/${organisationId}/add-employee-survey-form`,
           formData,
           {
             headers: {
@@ -304,7 +304,7 @@ const CreateNewSurvey = ({ isEditable }) => {
     ["employee", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/employee/${organisationId}/get-emloyee`,
+        `${import.meta.env.VITE_API}/route/employee/${organisationId}/get-emloyee`,
         {
           headers: {
             Authorization: authToken,

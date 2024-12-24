@@ -32,7 +32,7 @@ const TDSTable0 = () => {
     queryFn: async () => {
       try {
         const salaryData = await axios.get(
-          `${process.env.REACT_APP_API}/route/employeeSalary/getEmployeeSalaryPerFinancialYear?fromDate=5-2023&toDate=3-2024`,
+          `${import.meta.env.VITE_API}/route/employeeSalary/getEmployeeSalaryPerFinancialYear?fromDate=5-2023&toDate=3-2024`,
           {
             headers: {
               Authorization: authToken,
@@ -53,7 +53,7 @@ const TDSTable0 = () => {
     queryKey: ["Tax"],
     queryFn: async () => {
       const salaryData = await axios.get(
-        `${process.env.REACT_APP_API}/route/tds/getTotalDeclarations/2023-2024`,
+        `${import.meta.env.VITE_API}/route/tds/getTotalDeclarations/2023-2024`,
         {
           headers: {
             Authorization: authToken,
@@ -120,7 +120,7 @@ const TDSTable0 = () => {
   //     try {
   //       const empId = user._id;
   //       const { data } = await axios.get(
-  //         `${process.env.REACT_APP_API}/route/tds/getTDSDetails/${empId}`,
+  //         `${import.meta.env.VITE_API}/route/tds/getTDSDetails/${empId}`,
   //         {
   //           headers: {
   //             Authorization: authToken,

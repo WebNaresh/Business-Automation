@@ -49,7 +49,7 @@ const EmpExcelOnboard = () => {
       finalData.forEach(async (employee) => {
         try {
           await axios.post(
-            `${process.env.REACT_APP_API}/route/employee/add-employee`,
+            `${import.meta.env.VITE_API}/route/employee/add-employee`,
             employee,
             {
               headers: {

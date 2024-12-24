@@ -32,7 +32,7 @@ const ViewAttendacneBiomatric = () => {
     ["empAttendanceData", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-attendance-data`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-attendance-data`,
         {
           headers: {
             Authorization: authToken,

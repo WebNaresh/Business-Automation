@@ -46,7 +46,7 @@ const DeleteEmployee = () => {
   // pull the employee data
   const fetchAvailableEmployee = async (page) => {
     try {
-      const apiUrl = `${process.env.REACT_APP_API}/route/employee/get-paginated-emloyee/${organisationId}?page=${page}`;
+      const apiUrl = `${import.meta.env.VITE_API}/route/employee/get-paginated-emloyee/${organisationId}?page=${page}`;
       const response = await axios.get(apiUrl, {
         headers: {
           Authorization: authToken,
@@ -137,7 +137,7 @@ const DeleteEmployee = () => {
   };
   const deleteMutation = useMutation(
     (id) =>
-      axios.delete(`${process.env.REACT_APP_API}/route/employee/delete/${id}`, {
+      axios.delete(`${import.meta.env.VITE_API}/route/employee/delete/${id}`, {
         headers: {
           Authorization: authToken,
         },
@@ -177,7 +177,7 @@ const DeleteEmployee = () => {
   const confirmDeleteMultiple = async () => {
     try {
       const response = await axios.delete(
-        `${process.env.REACT_APP_API}/route/employee/delete-multiple`,
+        `${import.meta.env.VITE_API}/route/employee/delete-multiple`,
         {
           headers: {
             Authorization: authToken,
@@ -330,7 +330,7 @@ const DeleteEmployee = () => {
           for (const employee of employeesToDelete) {
             try {
               await axios.delete(
-                `${process.env.REACT_APP_API}/route/employee/delete/${employee._id}`,
+                `${import.meta.env.VITE_API}/route/employee/delete/${employee._id}`,
                 { headers: { Authorization: authToken } }
               );
 

@@ -9,8 +9,8 @@ const RemoteManager = () => {
   const [punchObjectId, setPunchObjectId] = useState(null);
 
   const { isLoaded } = useJsApiLoader({
-    id: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    id: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
   });
   return (
     <div className="w-full h-[100%] flex justify-between relative">

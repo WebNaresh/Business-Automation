@@ -59,7 +59,7 @@ const DeclarationPage = () => {
     queryFn: async () => {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_API}/route/tds/getAllEmployeesUnderAccoutant/${role}`,
+          `${import.meta.env.VITE_API}/route/tds/getAllEmployeesUnderAccoutant/${role}`,
           {
             headers: {
               Authorization: authToken,
@@ -80,7 +80,7 @@ const DeclarationPage = () => {
     queryFn: async () => {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_API}/route/tds/getTDSWorkflow/${id}/${financialYear}`,
+          `${import.meta.env.VITE_API}/route/tds/getTDSWorkflow/${id}/${financialYear}`,
           {
             headers: {
               Authorization: authToken,

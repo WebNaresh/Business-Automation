@@ -27,7 +27,7 @@ const LeaveAcceptModal = () => {
     queryFn: async () => {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_API}/route/leave/get/${employeeId}`,
+          `${import.meta.env.VITE_API}/route/leave/get/${employeeId}`,
           {
             headers: {
               Authorization: authToken,
@@ -48,7 +48,7 @@ const LeaveAcceptModal = () => {
   const mutation = useMutation(
     ({ employeeId }) => {
       return axios.put(
-        `${process.env.REACT_APP_API}/route/leave/update/notificationCount/${employeeId}`,
+        `${import.meta.env.VITE_API}/route/leave/update/notificationCount/${employeeId}`,
         { notificationCount: 0 },
         {
           headers: {

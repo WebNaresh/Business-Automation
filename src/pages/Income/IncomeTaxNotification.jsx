@@ -21,7 +21,7 @@ const IncomeTaxNotification = () => {
     queryFn: async () => {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_API}/route/tds/getTDSNotify/${user._id}/${financialYear}`,
+          `${import.meta.env.VITE_API}/route/tds/getTDSNotify/${user._id}/${financialYear}`,
           {
             headers: {
               Authorization: authToken,

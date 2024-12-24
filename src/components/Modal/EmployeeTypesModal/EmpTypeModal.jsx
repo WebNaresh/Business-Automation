@@ -36,7 +36,7 @@
 //     async () => {
 //       if (empTypeId !== null && empTypeId !== undefined) {
 //         const response = await axios.get(
-//           `${process.env.REACT_APP_API}/route/employment-types/${empTypeId}`,
+//           `${import.meta.env.VITE_API}/route/employment-types/${empTypeId}`,
 //           {
 //             headers: { Authorization: authToken },
 //           }
@@ -65,7 +65,7 @@
 //   const addEmployeeTypeMutation = useMutation(
 //     (data) =>
 //       axios.post(
-//         `${process.env.REACT_APP_API}/route/employment-types/${id}`,
+//         `${import.meta.env.VITE_API}/route/employment-types/${id}`,
 //         data,
 //         {
 //           headers: { Authorization: authToken },
@@ -87,7 +87,7 @@
 //   const editEmployeeTypeMutation = useMutation(
 //     (data) =>
 //       axios.put(
-//         `${process.env.REACT_APP_API}/route/employment-types/${empTypeId}`,
+//         `${import.meta.env.VITE_API}/route/employment-types/${empTypeId}`,
 //         data,
 //         {
 //           headers: { Authorization: authToken },
@@ -213,7 +213,7 @@
 //     async () => {
 //       if (open && empTypeId !== null) {
 //         const response = await axios.get(
-//           `${process.env.REACT_APP_API}/route/employment-types/${empTypeId}`,
+//           `${import.meta.env.VITE_API}/route/employment-types/${empTypeId}`,
 //           {
 //             headers: {
 //               Authorization: authToken,
@@ -248,7 +248,7 @@
 //   const AddEmployeeTypes = useMutation(
 //     (data) =>
 //       axios.post(
-//         `${process.env.REACT_APP_API}/route/employment-types/${id}`,
+//         `${import.meta.env.VITE_API}/route/employment-types/${id}`,
 //         data,
 //         {
 //           headers: {
@@ -277,7 +277,7 @@
 //   const EditEmployeeType = useMutation(
 //     (data) =>
 //       axios.put(
-//         `${process.env.REACT_APP_API}/route/employment-types/${empTypeId}`,
+//         `${import.meta.env.VITE_API}/route/employment-types/${empTypeId}`,
 //         data,
 //         {
 //           headers: {
@@ -451,7 +451,7 @@ const EmpTypeModal = ({ handleClose, open, id, empTypeId }) => {
     async () => {
       if (open && empTypeId !== null) {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/route/employment-types/${empTypeId}`,
+          `${import.meta.env.VITE_API}/route/employment-types/${empTypeId}`,
           {
             headers: {
               Authorization: authToken,
@@ -489,7 +489,7 @@ const EmpTypeModal = ({ handleClose, open, id, empTypeId }) => {
   const AddEmployeeTypes = useMutation(
     (data) =>
       axios.post(
-        `${process.env.REACT_APP_API}/route/employment-types/${id}`,
+        `${import.meta.env.VITE_API}/route/employment-types/${id}`,
         data,
         {
           headers: {
@@ -512,7 +512,7 @@ const EmpTypeModal = ({ handleClose, open, id, empTypeId }) => {
   const EditEmployeeType = useMutation(
     (data) =>
       axios.put(
-        `${process.env.REACT_APP_API}/route/employment-types/${empTypeId}`,
+        `${import.meta.env.VITE_API}/route/employment-types/${empTypeId}`,
         data,
         {
           headers: {

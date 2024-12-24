@@ -67,7 +67,7 @@ const EditCommunicationModal = ({
     ["emailCommunication", organisationId, editCommunicationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/${editCommunicationId}/get-communication`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/${editCommunicationId}/get-communication`,
         {
           headers: {
             Authorization: authToken,
@@ -94,7 +94,7 @@ const EditCommunicationModal = ({
   const EditCommunication = useMutation(
     (data) =>
       axios.put(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/${editCommunicationId}/update-communication`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/${editCommunicationId}/update-communication`,
         data,
         {
           headers: {

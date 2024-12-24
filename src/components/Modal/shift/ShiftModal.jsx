@@ -94,7 +94,7 @@ const ShiftModal = ({
     async () => {
       if (open && shiftId !== null) {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/route/getSingleshifts/${shiftId}`,
+          `${import.meta.env.VITE_API}/route/getSingleshifts/${shiftId}`,
           {
             headers: {
               Authorization: authToken,
@@ -135,7 +135,7 @@ const ShiftModal = ({
 
   const AddShift = useMutation(
     (data) =>
-      axios.post(`${process.env.REACT_APP_API}/route/shifts/create`, data),
+      axios.post(`${import.meta.env.VITE_API}/route/shifts/create`, data),
     {
       onSuccess: (data) => {
         if (!data.data.success) {
@@ -156,7 +156,7 @@ const ShiftModal = ({
   const EditShift = useMutation(
     (data) =>
       axios.patch(
-        `${process.env.REACT_APP_API}/route/shifts/${shiftId}`,
+        `${import.meta.env.VITE_API}/route/shifts/${shiftId}`,
         data,
         {
           headers: {

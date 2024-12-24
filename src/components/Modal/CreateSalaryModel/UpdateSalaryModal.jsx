@@ -44,7 +44,7 @@ const UpdateSalaryModal = ({ handleClose, open, empId }) => {
     async () => {
       if (open && empId !== null) {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/route/employee/get/profile/${empId}`,
+          `${import.meta.env.VITE_API}/route/employee/get/profile/${empId}`,
           {
             headers: {
               Authorization: authToken,
@@ -142,7 +142,7 @@ const UpdateSalaryModal = ({ handleClose, open, empId }) => {
   const EditShift = useMutation(
     (data) =>
       axios.put(
-        `${process.env.REACT_APP_API}/route/employee/salary/update/${empId}`,
+        `${import.meta.env.VITE_API}/route/employee/salary/update/${empId}`,
         data,
         {
           headers: {

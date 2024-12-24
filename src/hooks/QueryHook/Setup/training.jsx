@@ -14,7 +14,7 @@ const useSetupTraining = (organisationId) => {
     async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/route/setup/training/${
+          `${import.meta.env.VITE_API}/route/setup/training/${
             organisationId ?? decodedToken?.user?.organizationId
           }`,
           {
@@ -37,7 +37,7 @@ const useSetupTraining = (organisationId) => {
   );
   const updateRemotePunching = async (data) => {
     await axios.put(
-      `${process.env.REACT_APP_API}/route/setup/training/${organisationId}`,
+      `${import.meta.env.VITE_API}/route/setup/training/${organisationId}`,
       data,
       {
         headers: { Authorization: authToken },

@@ -94,7 +94,7 @@ const TDSDeclarationModel = ({
     };
     try {
       await axios.post(
-        `${process.env.REACT_APP_API}/route/tds/changeApprovals/${financialYear}`,
+        `${import.meta.env.VITE_API}/route/tds/changeApprovals/${financialYear}`,
         { empId, ...requestData },
         {
           headers: {

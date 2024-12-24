@@ -51,7 +51,7 @@ const SaveAsDraft = () => {
     ["draftSurveys", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-draft-survey`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-draft-survey`,
         {
           params: {
             creatorId: user?._id,
@@ -86,7 +86,7 @@ const SaveAsDraft = () => {
   const deleteMutation = useMutation(
     (surveyId) =>
       axios.delete(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/delete-draft-survey/${surveyId}`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/delete-draft-survey/${surveyId}`,
         {
           headers: {
             Authorization: authToken,

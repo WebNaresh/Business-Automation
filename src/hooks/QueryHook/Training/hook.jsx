@@ -14,7 +14,7 @@ const useTrainingHook = () => {
 
   const getTrainingDetailsWithNameLimit10WithCreatorId = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/training/getTrainingDetailsWithNameLimit10WithCreatorId/${organisationId}?name=${trainingName}&page=${page}`,
+      `${import.meta.env.VITE_API}/route/training/getTrainingDetailsWithNameLimit10WithCreatorId/${organisationId}?name=${trainingName}&page=${page}`,
       {
         headers: {
           Authorization: authToken,

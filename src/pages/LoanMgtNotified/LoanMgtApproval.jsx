@@ -23,7 +23,7 @@ const LoanMgtApproval = ({ employee }) => {
     ["empLoanInfo", loanId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/loans/${loanId}`,
+        `${import.meta.env.VITE_API}/route/organization/loans/${loanId}`,
         {
           headers: {
             Authorization: authToken,
@@ -48,7 +48,7 @@ const LoanMgtApproval = ({ employee }) => {
   const handleApproval = async (status) => {
     try {
       const response = await axios.put(
-        `${process.env.REACT_APP_API}/route/organization/accept/reject/loans/${loanId}`,
+        `${import.meta.env.VITE_API}/route/organization/accept/reject/loans/${loanId}`,
         {
           action: status === "ongoing" ? "ongoing" : "reject",
         },

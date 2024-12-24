@@ -76,7 +76,7 @@
 //   const getRemoteEmployeeCount = async () => {
 //     try {
 //       const { data } = await axios.get(
-//         `${process.env.REACT_APP_API}/route/punch/getTodayRemoteEmp/${organisationId}`,
+//         `${import.meta.env.VITE_API}/route/punch/getTodayRemoteEmp/${organisationId}`,
 //         {
 //           headers: {
 //             Authorization: authToken,
@@ -500,7 +500,7 @@
 //   const getRemoteEmployeeCount = async () => {
 //     try {
 //       const { data } = await axios.get(
-//         `${process.env.REACT_APP_API}/route/punch/getTodayRemoteEmp/${organisationId}`,
+//         `${import.meta.env.VITE_API}/route/punch/getTodayRemoteEmp/${organisationId}`,
 //         {
 //           headers: {
 //             Authorization: authToken,

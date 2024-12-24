@@ -23,7 +23,7 @@ const MissedPunchNotified = ({ employeeId }) => {
     ["unavailableRecords", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/unavailable-record/${employeeId}`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/unavailable-record/${employeeId}`,
         {
           headers: {
             Authorization: authToken,
@@ -40,7 +40,7 @@ const MissedPunchNotified = ({ employeeId }) => {
   const handleApprovalUpdateByMgr = async (recordId) => {
     try {
       const response = await axios.put(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/update-approvalId/${recordId}`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/update-approvalId/${recordId}`,
         {},
         {
           headers: {
@@ -64,7 +64,7 @@ const MissedPunchNotified = ({ employeeId }) => {
   const handleRejectUnavailableRecord = async (recordId) => {
     try {
       const response = await axios.put(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/reject-unavailable-record/${recordId}`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/reject-unavailable-record/${recordId}`,
         {},
         {
           headers: {
@@ -87,7 +87,7 @@ const MissedPunchNotified = ({ employeeId }) => {
     try {
       console.log("record id", recordId);
       const response = await axios.put(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/approved-unavailable-record/${recordId}`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/approved-unavailable-record/${recordId}`,
         {},
         {
           headers: {
@@ -108,7 +108,7 @@ const MissedPunchNotified = ({ employeeId }) => {
   const handleApprovedUnpaidLeave = async (recordId) => {
     try {
       const response = await axios.put(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/approved-leave-unavailable-record/${recordId}`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/approved-leave-unavailable-record/${recordId}`,
         {},
         {
           headers: {
@@ -129,7 +129,7 @@ const MissedPunchNotified = ({ employeeId }) => {
   const handleApprovedExtraShift = async (recordId) => {
     try {
       const response = await axios.put(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/approved-extra-shift-record/${recordId}`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/approved-extra-shift-record/${recordId}`,
         {},
         {
           headers: {

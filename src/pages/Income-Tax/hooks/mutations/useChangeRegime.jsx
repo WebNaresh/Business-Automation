@@ -13,7 +13,7 @@ const useChangeRegime = () => {
     (data) => {
       const { start, end } = getFinancialCurrentYear();
       axios.put(
-        `${process.env.REACT_APP_API}/route/tds/changeRegime/${start}-${end}`,
+        `${import.meta.env.VITE_API}/route/tds/changeRegime/${start}-${end}`,
         data,
         {
           headers: {

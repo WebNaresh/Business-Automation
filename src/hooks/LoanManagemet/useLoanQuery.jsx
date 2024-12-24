@@ -30,7 +30,7 @@ const useLoanQuery = (organisationId) => {
       queryKey: ["loan-type-info"],
       queryFn: () =>
         getEmployeeLoanapi(
-          `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-loan-type`,
+          `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-loan-type`,
         ),
     });
 
@@ -43,7 +43,7 @@ const useLoanQuery = (organisationId) => {
     ["loanType", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-loan-type`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-loan-type`,
         {
           headers: {
             Authorization: authToken,
@@ -69,7 +69,7 @@ const useLoanQuery = (organisationId) => {
     ["totalSalary", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/employee/${organisationId}/total-salary`,
+        `${import.meta.env.VITE_API}/route/employee/${organisationId}/total-salary`,
         {
           headers: {
             Authorization: authToken,
@@ -86,7 +86,7 @@ const useLoanQuery = (organisationId) => {
     ["empLoanApplyRequest"],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/pendingLoans`,
+        `${import.meta.env.VITE_API}/route/pendingLoans`,
         {
           headers: {
             Authorization: authToken,
@@ -102,7 +102,7 @@ const useLoanQuery = (organisationId) => {
     ["loaninfo", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/${userId}/get-ongoing-loan-data`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/${userId}/get-ongoing-loan-data`,
         {
           headers: {
             Authorization: authToken,

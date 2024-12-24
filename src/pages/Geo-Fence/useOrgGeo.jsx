@@ -13,7 +13,7 @@ const useOrgGeo = (orgId) => {
   // const { handleAlert } = useContext(TestContext);
   const getOrgCircle = async () => {
     const result = await axios.get(
-      `${process.env.REACT_APP_API}/route/geo-fence/${organisationId}`
+      `${import.meta.env.VITE_API}/route/geo-fence/${organisationId}`
     );
     return result.data;
   };

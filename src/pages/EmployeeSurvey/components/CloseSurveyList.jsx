@@ -33,7 +33,7 @@ const CloseSurveyList = () => {
     ["closedSurveys", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-close-survey`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-close-survey`,
         {
           headers: {
             Authorization: authToken,
@@ -61,7 +61,7 @@ const CloseSurveyList = () => {
   const fetchSingleSurvey = async (surveyId) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-response-survey-surveyId/${surveyId}`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-response-survey-surveyId/${surveyId}`,
         {
           headers: {
             Authorization: authToken,

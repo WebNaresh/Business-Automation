@@ -276,7 +276,7 @@ const ReportForm = () => {
       }
 
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/mis/generateReport/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/mis/generateReport/${organisationId}`,
         {
           params: queryData,
           headers: {

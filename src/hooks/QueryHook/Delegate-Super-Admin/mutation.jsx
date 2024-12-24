@@ -11,7 +11,7 @@ const useDelegateSuperAdmin = () => {
 
   const createDelegate = async (data) => {
     const response = await axios.patch(
-      `${process.env.REACT_APP_API}/route/employee/delegate`,
+      `${import.meta.env.VITE_API}/route/employee/delegate`,
       data,
       {
         headers: {
@@ -43,7 +43,7 @@ const useDelegateSuperAdmin = () => {
 
   const deleteDelegate = async ({ id, reset }) => {
     const response = await axios.delete(
-      `${process.env.REACT_APP_API}/route/employee/delegate?employeeId=${id}`,
+      `${import.meta.env.VITE_API}/route/employee/delegate?employeeId=${id}`,
       {
         headers: {
           Authorization: authToken,

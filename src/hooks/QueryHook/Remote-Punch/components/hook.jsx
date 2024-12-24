@@ -7,7 +7,7 @@ const useGetSinglePunch = ({ Id }) => {
   const { data, isLoading } = useQuery(`remote-punching-${Id}`, async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/punch/${Id}`,
+        `${import.meta.env.VITE_API}/route/punch/${Id}`,
         {
           headers: {
             Authorization: authToken,

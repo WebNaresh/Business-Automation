@@ -57,7 +57,7 @@ const Rate_Review_Model = ({ handleClose, open, options, id, performance }) => {
   const giveRating = useMutation(
     async (data) => {
       await axios.put(
-        `${process.env.REACT_APP_API}/route/performance/giveRating`,
+        `${import.meta.env.VITE_API}/route/performance/giveRating`,
         {
           ...data,
           empId: id.empId._id,
@@ -89,7 +89,7 @@ const Rate_Review_Model = ({ handleClose, open, options, id, performance }) => {
 
   useQuery("employee", async () => {
     const { data } = await axios.get(
-      `${process.env.REACT_APP_API}/route/employee/getEmployeeUnderManager`,
+      `${import.meta.env.VITE_API}/route/employee/getEmployeeUnderManager`,
       {
         headers: {
           Authorization: authToken,

@@ -36,7 +36,7 @@ const EmployeeSurveyForm = () => {
         ['survey', organisationId, surveyId, authToken],
         async () => {
             const response = await axios.get(
-                `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-single-open-survey/${surveyId}`,
+                `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-single-open-survey/${surveyId}`,
                 {
                     headers: {
                         Authorization: authToken,
@@ -54,7 +54,7 @@ const EmployeeSurveyForm = () => {
         ["singleResponseSurvey", organisationId, surveyId, responseId, authToken],
         async () => {
             const response = await axios.get(
-                `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-single-response-survey/${surveyId}/${responseId}`,
+                `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-single-response-survey/${surveyId}/${responseId}`,
                 {
                     headers: {
                         Authorization: authToken,
@@ -80,7 +80,7 @@ const EmployeeSurveyForm = () => {
         if (data.isUpdate) {
             // Update response survey
             response = await axios.put(
-                `${process.env.REACT_APP_API}/route/organization/${organisationId}/update-employee-survey-response-form/${responseId}`,
+                `${import.meta.env.VITE_API}/route/organization/${organisationId}/update-employee-survey-response-form/${responseId}`,
                 data,
                 {
                     headers: {
@@ -91,7 +91,7 @@ const EmployeeSurveyForm = () => {
         } else {
             // Add new response survey
             response = await axios.post(
-                `${process.env.REACT_APP_API}/route/organization/${organisationId}/add-employee-survey-response-form`,
+                `${import.meta.env.VITE_API}/route/organization/${organisationId}/add-employee-survey-response-form`,
                 data,
                 {
                     headers: {
@@ -392,7 +392,7 @@ export default EmployeeSurveyForm;
 //         ['survey', organisationId, surveyId, authToken],
 //         async () => {
 //             const response = await axios.get(
-//                 `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-single-open-survey/${surveyId}`,
+//                 `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-single-open-survey/${surveyId}`,
 //                 { headers: { Authorization: authToken } }
 //             );
 //             return response.data;
@@ -409,7 +409,7 @@ export default EmployeeSurveyForm;
 //         ["singleResponseSurvey", organisationId, surveyId, responseId, authToken],
 //         async () => {
 //             const response = await axios.get(
-//                 `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-single-response-survey/${surveyId}/${responseId}`,
+//                 `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-single-response-survey/${surveyId}/${responseId}`,
 //                 { headers: { Authorization: authToken } }
 //             );
 //             return response.data;
@@ -429,13 +429,13 @@ export default EmployeeSurveyForm;
 //         let response;
 //         if (data.isUpdate) {
 //             response = await axios.put(
-//                 `${process.env.REACT_APP_API}/route/organization/${organisationId}/update-employee-survey-response-form/${responseId}`,
+//                 `${import.meta.env.VITE_API}/route/organization/${organisationId}/update-employee-survey-response-form/${responseId}`,
 //                 data,
 //                 { headers: { Authorization: authToken } }
 //             );
 //         } else {
 //             response = await axios.post(
-//                 `${process.env.REACT_APP_API}/route/organization/${organisationId}/add-employee-survey-response-form`,
+//                 `${import.meta.env.VITE_API}/route/organization/${organisationId}/add-employee-survey-response-form`,
 //                 data,
 //                 { headers: { Authorization: authToken } }
 //             );

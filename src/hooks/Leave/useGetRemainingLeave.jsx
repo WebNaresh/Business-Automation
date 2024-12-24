@@ -3,7 +3,7 @@ import React from "react";
 const useGetRemainingLeave = () => {
   const { data, isLoading, isError } = useQuery("remainingLeaves", async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/leave/getRemainingLeaves`,
+      `${import.meta.env.VITE_API}/route/leave/getRemainingLeaves`,
       {
         headers: {
           Authorization: authToken,

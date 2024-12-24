@@ -32,7 +32,7 @@ const DepartmentList = () => {
   const fetchDepartmentList = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/department/get/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/department/get/${organisationId}`,
         {
           headers: {
             Authorization: authToken,
@@ -73,7 +73,7 @@ const DepartmentList = () => {
   const deleteMutation = useMutation(
     (id) =>
       axios.delete(
-        `${process.env.REACT_APP_API}/route/department/delete/${organisationId}/${id}`,
+        `${import.meta.env.VITE_API}/route/department/delete/${organisationId}/${id}`,
         {
           headers: {
             Authorization: authToken,

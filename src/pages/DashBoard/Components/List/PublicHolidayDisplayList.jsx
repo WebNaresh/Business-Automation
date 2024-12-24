@@ -13,7 +13,7 @@ const PublicHolidayDisplayList = () => {
 
   const GetUpcomingHoliday = async () => {
     const data = await axios.get(
-      `${process.env.REACT_APP_API}/route/holiday/getUpcomingHoliday`,
+      `${import.meta.env.VITE_API}/route/holiday/getUpcomingHoliday`,
       {
         headers: {
           Authorization: authToken,

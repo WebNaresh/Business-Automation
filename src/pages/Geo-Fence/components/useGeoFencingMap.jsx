@@ -38,7 +38,7 @@ const useGeoFencingMap = ({ watch, onClose }) => {
 
   const addCircle = async () => {
     const result = await axios.post(
-      `${process.env.REACT_APP_API}/route/geo-fence/${organisationId}`,
+      `${import.meta.env.VITE_API}/route/geo-fence/${organisationId}`,
       { ...circle.center, radius: circle.radius }
     );
     return result.data;

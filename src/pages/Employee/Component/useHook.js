@@ -20,7 +20,7 @@ const useHook = () => {
       },
     };
     let data = await axios.get(
-      `${process.env.REACT_APP_API}/route/designation/create/${organisationId}`,
+      `${import.meta.env.VITE_API}/route/designation/create/${organisationId}`,
       config
     );
     return data.data;
@@ -39,7 +39,7 @@ const useHook = () => {
       },
     };
     let data = await axios.get(
-      `${process.env.REACT_APP_API}/route/location/getOrganizationLocations/${organisationId}`,
+      `${import.meta.env.VITE_API}/route/location/getOrganizationLocations/${organisationId}`,
       config
     );
     return data.data;
@@ -59,7 +59,7 @@ const useHook = () => {
       },
     };
     let data = await axios.get(
-      `${process.env.REACT_APP_API}/route/employment-types-organisation/${organisationId}`,
+      `${import.meta.env.VITE_API}/route/employment-types-organisation/${organisationId}`,
       config
     );
     return data.data;
@@ -79,7 +79,7 @@ const useHook = () => {
       },
     };
     let data = await axios.get(
-      `${process.env.REACT_APP_API}/route/salary-template-org/${organisationId}`,
+      `${import.meta.env.VITE_API}/route/salary-template-org/${organisationId}`,
       config
     );
     return data.data;
@@ -99,7 +99,7 @@ const useHook = () => {
       },
     };
     let data = await axios.get(
-      `${process.env.REACT_APP_API}/route/department/get/${organisationId}`,
+      `${import.meta.env.VITE_API}/route/department/get/${organisationId}`,
       config
     );
     return data.data;
@@ -118,7 +118,7 @@ const useHook = () => {
       },
     };
     let data = await axios.get(
-      `${process.env.REACT_APP_API}/route/profile/role/${organisationId}`,
+      `${import.meta.env.VITE_API}/route/profile/role/${organisationId}`,
       config
     );
     const getProfileData = Object.entries(data.data.roles ?? {})
@@ -146,7 +146,7 @@ const useHook = () => {
       },
     };
     let data = await axios.get(
-      `${process.env.REACT_APP_API}/route/inputfield/${organisationId}`,
+      `${import.meta.env.VITE_API}/route/inputfield/${organisationId}`,
       config
     );
     return data.data.inputField.inputDetail;
@@ -165,7 +165,7 @@ const useHook = () => {
       },
     };
     let data = await axios.get(
-      `${process.env.REACT_APP_API}/route/employee/get-manager/${organisationId}`,
+      `${import.meta.env.VITE_API}/route/employee/get-manager/${organisationId}`,
       config
     );
     return data.data.manager;
@@ -189,7 +189,7 @@ const useHook = () => {
 
       // Check if the selected profile exists
       const checkProfileResponse = await axios.post(
-        `${process.env.REACT_APP_API}/route/employee/check-profile-exists/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/employee/check-profile-exists/${organisationId}`,
         { profile: user.profile },
         config
       );
@@ -205,7 +205,7 @@ const useHook = () => {
         if (createProfileConfirmation) {
           // Proceed with profile creation
           const response = await axios.post(
-            `${process.env.REACT_APP_API}/route/employee/add-employee`,
+            `${import.meta.env.VITE_API}/route/employee/add-employee`,
             user,
             config
           );
@@ -222,7 +222,7 @@ const useHook = () => {
       } else {
         // Profile does not exist, proceed with creation
         const response = await axios.post(
-          `${process.env.REACT_APP_API}/route/employee/add-employee`,
+          `${import.meta.env.VITE_API}/route/employee/add-employee`,
           user,
           config
         );

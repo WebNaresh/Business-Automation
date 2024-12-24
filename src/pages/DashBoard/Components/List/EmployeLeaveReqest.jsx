@@ -26,7 +26,7 @@ const EmployeeLeaveRequest = () => {
     async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/route/leave/get`,
+          `${import.meta.env.VITE_API}/route/leave/get`,
           {
             headers: { Authorization: authToken },
           }

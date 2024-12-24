@@ -9,7 +9,7 @@ const usePerformanceApi = create((set) => ({
   getPerformanceTable: async ({ role, authToken, organisationId }) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/performance/getPerformanceTable/${role}/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/performance/getPerformanceTable/${role}/${organisationId}`,
         {
           headers: {
             Authorization: authToken,
@@ -26,7 +26,7 @@ const usePerformanceApi = create((set) => ({
   getEmployeePerformanceTable: async ({ authToken, empId }) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/performance/getPerformanceTableForEmployee/${empId}`,
+        `${import.meta.env.VITE_API}/route/performance/getPerformanceTableForEmployee/${empId}`,
         {
           headers: {
             Authorization: authToken,
@@ -42,7 +42,7 @@ const usePerformanceApi = create((set) => ({
 
   fetchPerformanceSetup: async ({ user, authToken }) => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/performance/getSetup/${user.organizationId}`,
+      `${import.meta.env.VITE_API}/route/performance/getSetup/${user.organizationId}`,
       {
         headers: {
           Authorization: authToken,
@@ -55,7 +55,7 @@ const usePerformanceApi = create((set) => ({
 
   getEmployeePerformance: async ({ id, authToken }) => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/performance/getEmployeeDashboard/${id}`,
+      `${import.meta.env.VITE_API}/route/performance/getEmployeeDashboard/${id}`,
       {
         headers: {
           Authorization: authToken,
@@ -67,7 +67,7 @@ const usePerformanceApi = create((set) => ({
   },
   getPerformanceDashboardTable: async ({ role, authToken }) => {
     const { data } = await axios.get(
-      `${process.env.REACT_APP_API}/route/performance/getPerformanceDashboard/${role}`,
+      `${import.meta.env.VITE_API}/route/performance/getPerformanceDashboard/${role}`,
       {
         headers: {
           Authorization: authToken,
@@ -80,7 +80,7 @@ const usePerformanceApi = create((set) => ({
 
   changeStatus: async ({ status, empId, authToken }) => {
     const { data } = await axios.post(
-      `${process.env.REACT_APP_API}/route/performance/changeRatingStatus`,
+      `${import.meta.env.VITE_API}/route/performance/changeRatingStatus`,
       {
         empId,
         status,

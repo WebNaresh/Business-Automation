@@ -57,7 +57,7 @@ const RolePage = () => {
   const handleRole = useMutation(
     (data) => {
       const res = axios.post(
-        `${process.env.REACT_APP_API}/route/employee/changerole`,
+        `${import.meta.env.VITE_API}/route/employee/changerole`,
         data
       );
       return res;

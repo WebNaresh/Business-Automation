@@ -14,7 +14,7 @@ const InputForm = () => {
     ["emp-advance-salary-notification"],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/send-notification-to-emp`,
+        `${import.meta.env.VITE_API}/route/send-notification-to-emp`,
         {
           headers: {
             Authorization: authToken,

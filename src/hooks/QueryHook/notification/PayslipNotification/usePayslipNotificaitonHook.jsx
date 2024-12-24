@@ -17,7 +17,7 @@ const usePayslipNotificationHook = () => {
 
   const getPaySlipNotification = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/employeeSalary/viewpayslip/${userId}/${organisationId}`,
+      `${import.meta.env.VITE_API}/route/employeeSalary/viewpayslip/${userId}/${organisationId}`,
       {
         headers: { Authorization: authToken },
       }
@@ -39,7 +39,7 @@ const usePayslipNotificationHook = () => {
 
   const getPaySlipNotificationCount = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/employeeSalary/viewpayslip/notification/${userId}/${organisationId}`,
+      `${import.meta.env.VITE_API}/route/employeeSalary/viewpayslip/notification/${userId}/${organisationId}`,
       {
         headers: { Authorization: authToken },
       }

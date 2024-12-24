@@ -61,7 +61,7 @@ const EmployeeSalaryCalculateDay = () => {
     async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/route/employee-salary-cal-day/get/${organisationId}`,
+          `${import.meta.env.VITE_API}/route/employee-salary-cal-day/get/${organisationId}`,
           {
             headers: {
               Authorization: authToken,
@@ -111,7 +111,7 @@ const EmployeeSalaryCalculateDay = () => {
   const deleteMutation = useMutation(
     (id) =>
       axios.delete(
-        `${process.env.REACT_APP_API}/route/delete/employee-computation-day/${organisationId}/${id}`,
+        `${import.meta.env.VITE_API}/route/delete/employee-computation-day/${organisationId}/${id}`,
         {
           headers: {
             Authorization: authToken,

@@ -39,7 +39,7 @@ const DashboardDH = () => {
     queryFn: async () => {
       try {
         const { data } = await axios.get(
-          `${process.env.REACT_APP_API}/route/leave/getDepartmentAttendece/${user.deptname}`,
+          `${import.meta.env.VITE_API}/route/leave/getDepartmentAttendece/${user.deptname}`,
           {
             headers: {
               Authorization: authToken,
@@ -59,7 +59,7 @@ const DashboardDH = () => {
     queryFn: async () => {
       try {
         const { data } = await axios.get(
-          `${process.env.REACT_APP_API}/route/employeeSalary/departmentSalaryOverview/${user.deptname}`,
+          `${import.meta.env.VITE_API}/route/employeeSalary/departmentSalaryOverview/${user.deptname}`,
           {
             headers: {
               Authorization: authToken,
@@ -78,7 +78,7 @@ const DashboardDH = () => {
     queryKey: ["deptEmployeeCount"],
     queryFn: async () => {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/route/departmentHead/getAllEmployees`,
+        `${import.meta.env.VITE_API}/route/departmentHead/getAllEmployees`,
         {
           headers: {
             Authorization: authToken,
@@ -96,7 +96,7 @@ const DashboardDH = () => {
     queryKey: ["deptEmployeeLeaveCount"],
     queryFn: async () => {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/route/leave/getDeptAbsent/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/leave/getDeptAbsent/${organisationId}`,
         {
           headers: {
             Authorization: authToken,
@@ -112,7 +112,7 @@ const DashboardDH = () => {
       queryKey: ["deptEmployeeOnShift"],
       queryFn: async () => {
         const { data } = await axios.get(
-          `${process.env.REACT_APP_API}/route/leave/getDeptShift/${organisationId}`,
+          `${import.meta.env.VITE_API}/route/leave/getDeptShift/${organisationId}`,
           {
             headers: {
               Authorization: authToken,
@@ -127,7 +127,7 @@ const DashboardDH = () => {
     queryKey: ["deptManagerEmployeeCount"],
     queryFn: async () => {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/route/departmentHead/getAllManagers`,
+        `${import.meta.env.VITE_API}/route/departmentHead/getAllManagers`,
         {
           headers: {
             Authorization: authToken,

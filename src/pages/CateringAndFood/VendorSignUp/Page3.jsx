@@ -94,7 +94,7 @@ const Page3 = ({ prevStep }) => {
         creatorId,
       };
       const response = axios.put(
-        `${process.env.REACT_APP_API}/route/employee/update/${organisationId}/${employeeId}`,
+        `${import.meta.env.VITE_API}/route/employee/update/${organisationId}/${employeeId}`,
         userData,
         {
           headers: {

@@ -31,7 +31,7 @@ const useGetEmployeeSalaryByFinaicalYear = () => {
     queryFn: async () => {
       try {
         const salaryData = await axios.get(
-          `${process.env.REACT_APP_API}/route/employeeSalary/getEmployeeSalaryPerFinancialYear?fromDate=${start}&toDate=${end}`,
+          `${import.meta.env.VITE_API}/route/employeeSalary/getEmployeeSalaryPerFinancialYear?fromDate=${start}&toDate=${end}`,
           {
             headers: {
               Authorization: authToken,

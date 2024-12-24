@@ -12,7 +12,7 @@ const useGetPfEsicSetup = ({ organisationId }) => {
     queryKey: ["getPFEFICSetup"],
     queryFn: async () => {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/route/PfEsic/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/PfEsic/${organisationId}`,
         {
           headers: {
             Authorization: authToken,

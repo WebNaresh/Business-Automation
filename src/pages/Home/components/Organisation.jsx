@@ -59,7 +59,7 @@ const Organisation = ({ item }) => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `${process.env.REACT_APP_API}/route/organization/delete/${id}`,
+        `${import.meta.env.VITE_API}/route/organization/delete/${id}`,
         {
           headers: {
             Authorization: authToken,

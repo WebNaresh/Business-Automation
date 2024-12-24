@@ -18,7 +18,7 @@ const useJobPositionNotification = () => {
     ["job-position"],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/get-job-position-to-manager`,
+        `${import.meta.env.VITE_API}/route/get-job-position-to-manager`,
         {
           headers: {
             Authorization: authToken,
@@ -40,7 +40,7 @@ const useJobPositionNotification = () => {
     ["job-positionss"],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/get-notification-to-emp`,
+        `${import.meta.env.VITE_API}/route/get-notification-to-emp`,
         {
           headers: {
             Authorization: authToken,

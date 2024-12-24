@@ -7,7 +7,7 @@ const useDepartmentNotification = () => {
 
   const getDepartmentNotification = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/punch-notification/notification-user`,
+      `${import.meta.env.VITE_API}/route/punch-notification/notification-user`,
       {
         headers: { Authorization: authToken },
       }
@@ -22,7 +22,7 @@ const useDepartmentNotification = () => {
 
   const { data: getDepartmnetData } = useQuery(["get-department"], async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/getDepartment/toApproval`,
+      `${import.meta.env.VITE_API}/route/getDepartment/toApproval`,
       {
         headers: {
           Authorization: authToken,
@@ -37,7 +37,7 @@ const useDepartmentNotification = () => {
     ["get-departments"],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/sendNotficationToEmp`,
+        `${import.meta.env.VITE_API}/route/sendNotficationToEmp`,
         {
           headers: {
             Authorization: authToken,

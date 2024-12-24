@@ -50,7 +50,7 @@ const SetupShift = () => {
     try {
       if (data.amount === "0") {
         const resp2 = await axios.post(
-          `${process.env.REACT_APP_API}/route/shiftApply/postallowance/${orgId}`,
+          `${import.meta.env.VITE_API}/route/shiftApply/postallowance/${orgId}`,
           {
             data: {
               ...data,
@@ -65,7 +65,7 @@ const SetupShift = () => {
         console.log(resp2);
       } else {
         const resp1 = await axios.post(
-          `${process.env.REACT_APP_API}/route/shifts/setAllowance/${orgId}`,
+          `${import.meta.env.VITE_API}/route/shifts/setAllowance/${orgId}`,
           {
             data: {
               ...data,
@@ -94,7 +94,7 @@ const SetupShift = () => {
 
   const { data } = useQuery("get-shift-allowance", async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/shiftApply/getallowance/${orgId}`,
+      `${import.meta.env.VITE_API}/route/shiftApply/getallowance/${orgId}`,
       {
         headers: { Authorization: authToken },
       }

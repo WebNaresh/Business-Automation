@@ -15,7 +15,7 @@ const useLeaveRequesationHook = () => {
     "employee-leave-table",
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/leave/getEmployeeLeaveTable`,
+        `${import.meta.env.VITE_API}/route/leave/getEmployeeLeaveTable`,
         {
           headers: { Authorization: authToken },
         }
@@ -31,7 +31,7 @@ const useLeaveRequesationHook = () => {
   // to get the comp off from organisation
   const { data: compOff } = useQuery("comp-off", async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/get/comp-off`,
+      `${import.meta.env.VITE_API}/route/get/comp-off`,
       {
         headers: { Authorization: authToken },
       }
@@ -41,7 +41,7 @@ const useLeaveRequesationHook = () => {
 
   const { data: publicHoliday } = useQuery("publicHoliday", async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/holiday/get/${organisationId}`,
+      `${import.meta.env.VITE_API}/route/holiday/get/${organisationId}`,
       {
         headers: { Authorization: authToken },
       }
@@ -51,7 +51,7 @@ const useLeaveRequesationHook = () => {
 
   const { data: weekendDay } = useQuery("weekendDay", async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/weekend/get`,
+      `${import.meta.env.VITE_API}/route/weekend/get`,
       {
         headers: { Authorization: authToken },
       }

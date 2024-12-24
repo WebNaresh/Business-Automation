@@ -32,9 +32,9 @@ const EmployeeRemotePunch = () => {
 
   //google map loaded
   const { isLoaded } = useJsApiLoader({
-    id: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    id: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
 
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
   });
 
   return (

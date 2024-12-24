@@ -35,7 +35,7 @@ const DepartmentDeletion = () => {
       try {
         console.log(organizationId);
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/route/location/getOrganizationLocations/${organizationId}`,
+          `${import.meta.env.VITE_API}/route/location/getOrganizationLocations/${organizationId}`,
           {
             headers: { Authorization: authToken },
           }
@@ -60,7 +60,7 @@ const DepartmentDeletion = () => {
 
     try {
       let departments = await axios.get(
-        `${process.env.REACT_APP_API}/route/department/getbylocation/${deptLocationId}`,
+        `${import.meta.env.VITE_API}/route/department/getbylocation/${deptLocationId}`,
         {
           headers: { Authorization: authToken },
         }
@@ -79,7 +79,7 @@ const DepartmentDeletion = () => {
       }
       await axios
         .delete(
-          `${process.env.REACT_APP_API}/route/department/delete/${deptLocationId}`,
+          `${import.meta.env.VITE_API}/route/department/delete/${deptLocationId}`,
           {
             headers: { Authorization: authToken },
           }
@@ -103,7 +103,7 @@ const DepartmentDeletion = () => {
         });
 
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/department/get`
+        `${import.meta.env.VITE_API}/route/department/get`
       );
       setDepartments(response.data.department);
       setSelectedLocation("");
@@ -208,7 +208,7 @@ const DepartmentDeletion = () => {
             try {
               await axios
                 .delete(
-                  `${process.env.REACT_APP_API}/route/department/delete/${department._id}`,
+                  `${import.meta.env.VITE_API}/route/department/delete/${department._id}`,
                   {
                     headers: { Authorization: authToken },
                   }
@@ -273,14 +273,14 @@ const DepartmentDeletion = () => {
     if (confirmed) {
       try {
         await axios.delete(
-          `${process.env.REACT_APP_API}/route/department/delete/${deptLocationId}`,
+          `${import.meta.env.VITE_API}/route/department/delete/${deptLocationId}`,
           {
             headers: { Authorization: authToken },
           }
         );
 
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/route/department/get`
+          `${import.meta.env.VITE_API}/route/department/get`
         );
         setDepartments(response.data.department);
         setSelectedLocation("");

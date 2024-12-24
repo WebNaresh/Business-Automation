@@ -33,7 +33,7 @@ const DashboardManger = () => {
 
   const getAllEmployeeForManger = async () => {
     const { data } = await axios.get(
-      `${process.env.REACT_APP_API}/route/employee/countofEmployees`,
+      `${import.meta.env.VITE_API}/route/employee/countofEmployees`,
       {
         headers: {
           Authorization: authToken,
@@ -50,7 +50,7 @@ const DashboardManger = () => {
 
   const getManagerAttendenceChart = async () => {
     const { data } = await axios.get(
-      `${process.env.REACT_APP_API}/route/leave/getManagerEmployeeAttendence/${user._id}`,
+      `${import.meta.env.VITE_API}/route/leave/getManagerEmployeeAttendence/${user._id}`,
       {
         headers: {
           Authorization: authToken,
@@ -66,7 +66,7 @@ const DashboardManger = () => {
     queryKey: ["deptEmployeeOnShift"],
     queryFn: async () => {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/route/leave/getManagerShifts/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/leave/getManagerShifts/${organisationId}`,
         {
           headers: {
             Authorization: authToken,
@@ -82,7 +82,7 @@ const DashboardManger = () => {
       queryKey: ["deptEmployeeAbsent"],
       queryFn: async () => {
         const { data } = await axios.get(
-          `${process.env.REACT_APP_API}/route/leave/getTodaysAbsentUnderManager/${organisationId}`,
+          `${import.meta.env.VITE_API}/route/leave/getTodaysAbsentUnderManager/${organisationId}`,
           {
             headers: {
               Authorization: authToken,

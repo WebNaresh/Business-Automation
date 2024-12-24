@@ -159,7 +159,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
     async () => {
       if (employeeId !== null && employeeId !== undefined) {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/route/employee/get/profile/${employeeId}`,
+          `${import.meta.env.VITE_API}/route/employee/get/profile/${employeeId}`,
           {
             headers: {
               Authorization: authToken,

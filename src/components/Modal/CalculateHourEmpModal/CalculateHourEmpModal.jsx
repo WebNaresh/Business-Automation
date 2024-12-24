@@ -129,7 +129,7 @@
 //     ["getWeekend", organisationId],
 //     async () => {
 //       const response = await axios.get(
-//         `${process.env.REACT_APP_API}/route/weekend/get/${organisationId}`,
+//         `${import.meta.env.VITE_API}/route/weekend/get/${organisationId}`,
 //         {
 //           headers: {
 //             Authorization: authToken,
@@ -148,7 +148,7 @@
 //     ["overtime", organisationId],
 //     async () => {
 //       const response = await axios.get(
-//         `${process.env.REACT_APP_API}/route/get/${organisationId}/overtime`,
+//         `${import.meta.env.VITE_API}/route/get/${organisationId}/overtime`,
 //         {
 //           headers: {
 //             Authorization: authToken,
@@ -329,7 +329,7 @@
 //       console.log("post data", postData);
 //       try {
 //         const response = await fetch(
-//           `${process.env.REACT_APP_API}/route/organization/${organisationId}/punching-data`,
+//           `${import.meta.env.VITE_API}/route/organization/${organisationId}/punching-data`,
 //           {
 //             method: "POST",
 //             headers: {
@@ -667,7 +667,7 @@ const CalculateHourEmpModal = ({
     ["getWeekend", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/weekend/get/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/weekend/get/${organisationId}`,
         {
           headers: {
             Authorization: authToken,
@@ -686,7 +686,7 @@ const CalculateHourEmpModal = ({
     ["overtime", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/get/${organisationId}/overtime`,
+        `${import.meta.env.VITE_API}/route/get/${organisationId}/overtime`,
         {
           headers: {
             Authorization: authToken,
@@ -873,7 +873,7 @@ const CalculateHourEmpModal = ({
       console.log("post data", postData);
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_API}/route/organization/${organisationId}/punching-data`,
+          `${import.meta.env.VITE_API}/route/organization/${organisationId}/punching-data`,
           {
             method: "POST",
             headers: {

@@ -52,7 +52,7 @@ const useIncomeAPI = (
   }, [isLoading]); // This effect runs whenever isLoading changes
   const uploadProof = async (tdsfile) => {
     const data = await axios.get(
-      `${process.env.REACT_APP_API}/route/s3createFile/TDS`,
+      `${import.meta.env.VITE_API}/route/s3createFile/TDS`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -77,7 +77,7 @@ const useIncomeAPI = (
     queryFn: async () => {
       try {
         const salaryData = await axios.get(
-          `${process.env.REACT_APP_API}/route/employeeSalary/getEmployeeSalaryPerFinancialYear/?fromDate=5-2023&toDate=3-2024&empId=${empId}`,
+          `${import.meta.env.VITE_API}/route/employeeSalary/getEmployeeSalaryPerFinancialYear/?fromDate=5-2023&toDate=3-2024&empId=${empId}`,
           {
             headers: {
               Authorization: authToken,
@@ -95,7 +95,7 @@ const useIncomeAPI = (
   const mutation = useMutation(
     (requestData) =>
       axios.post(
-        `${process.env.REACT_APP_API}/route/tds/createInvestment`,
+        `${import.meta.env.VITE_API}/route/tds/createInvestment`,
         requestData,
         {
           headers: {
@@ -193,7 +193,7 @@ const useIncomeAPI = (
 
     try {
       await axios.post(
-        `${process.env.REACT_APP_API}/route/tds/createInvestment`,
+        `${import.meta.env.VITE_API}/route/tds/createInvestment`,
         requestData,
         {
           headers: {

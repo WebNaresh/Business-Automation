@@ -10,7 +10,7 @@ const useForm16NotificationHook = () => {
 
   const getForm16Notification = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/get/form16NotificationToEmp`,
+      `${import.meta.env.VITE_API}/route/get/form16NotificationToEmp`,
       {
         headers: { Authorization: authToken },
       }

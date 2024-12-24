@@ -10,7 +10,7 @@ const useNotificationRemotePunching = () => {
   const { handleAlert } = useContext(TestContext);
   const notifyToManager = async (punchId) => {
     const response = await axios.post(
-      `${process.env.REACT_APP_API}/route/punch/manager/${punchId}`,
+      `${import.meta.env.VITE_API}/route/punch/manager/${punchId}`,
       { status: "Pending" },
       {
         headers: {
@@ -44,7 +44,7 @@ const useNotificationRemotePunching = () => {
       role = "manager";
     }
     const response = await axios.patch(
-      `${process.env.REACT_APP_API}/route/punch/${role}/accept/${punchId}`,
+      `${import.meta.env.VITE_API}/route/punch/${role}/accept/${punchId}`,
       { status: "A-Approved" },
       {
         headers: {
@@ -81,7 +81,7 @@ const useNotificationRemotePunching = () => {
         role = "manager";
       }
       const resp = await axios.patch(
-        `${process.env.REACT_APP_API}/route/punch/${role}/reject/${punchId.id}`,
+        `${import.meta.env.VITE_API}/route/punch/${role}/reject/${punchId.id}`,
         {
           mReason: punchId.mReason,
         },
@@ -117,7 +117,7 @@ const useNotificationRemotePunching = () => {
   const handleRejectAccountant = async (punchId) => {
     try {
       const resp = await axios.post(
-        `${process.env.REACT_APP_API}/route/punch/accoutant/reject/:punchId`,
+        `${import.meta.env.VITE_API}/route/punch/accoutant/reject/:punchId`,
         {
           status: "A-Rejected",
         },

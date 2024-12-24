@@ -78,7 +78,7 @@ const EditModelOpen = ({ handleClose, open, employeeId, organisationId }) => {
       try {
         if (open && employeeId !== null && employeeId !== undefined) {
           const response = await axios.get(
-            `${process.env.REACT_APP_API}/route/employee/get/profile/${employeeId}`,
+            `${import.meta.env.VITE_API}/route/employee/get/profile/${employeeId}`,
             {
               headers: {
                 Authorization: authToken,
@@ -102,7 +102,7 @@ const EditModelOpen = ({ handleClose, open, employeeId, organisationId }) => {
   const fetchAvailableLocation = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/location/getOrganizationLocations/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/location/getOrganizationLocations/${organisationId}`,
         {
           headers: {
             Authorization: authToken,
@@ -124,7 +124,7 @@ const EditModelOpen = ({ handleClose, open, employeeId, organisationId }) => {
   const fetchAvailableDepartment = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/department/get/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/department/get/${organisationId}`,
         {
           headers: {
             Authorization: authToken,
@@ -146,7 +146,7 @@ const EditModelOpen = ({ handleClose, open, employeeId, organisationId }) => {
   const fetchAvailableDesignation = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/designation/create/${organisationId}`
+        `${import.meta.env.VITE_API}/route/designation/create/${organisationId}`
       );
 
       setAvailableDesignation(response.data.designations);
@@ -165,7 +165,7 @@ const EditModelOpen = ({ handleClose, open, employeeId, organisationId }) => {
   const fetchAvailableSalaryTemplate = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/salary-template-org/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/salary-template-org/${organisationId}`,
         {
           headers: {
             Authorization: authToken,
@@ -187,7 +187,7 @@ const EditModelOpen = ({ handleClose, open, employeeId, organisationId }) => {
   const fetchAvailabeEmpTypes = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/employment-types-organisation/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/employment-types-organisation/${organisationId}`,
         {
           headers: {
             Authorization: authToken,
@@ -210,7 +210,7 @@ const EditModelOpen = ({ handleClose, open, employeeId, organisationId }) => {
   const fetchManagerData = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/employee/getAllManager/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/employee/getAllManager/${organisationId}`,
         {
           headers: {
             Authorization: authToken,
@@ -234,7 +234,7 @@ const EditModelOpen = ({ handleClose, open, employeeId, organisationId }) => {
   const fetchAvailableProfiles = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/profile/role/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/profile/role/${organisationId}`,
         {
           headers: {
             Authorization: authToken,
@@ -265,7 +265,7 @@ const EditModelOpen = ({ handleClose, open, employeeId, organisationId }) => {
   const fetchAvailableCostCenter = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/department/get/cost-center-id/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/department/get/cost-center-id/${organisationId}`,
         {
           headers: {
             Authorization: authToken,
@@ -286,7 +286,7 @@ const EditModelOpen = ({ handleClose, open, employeeId, organisationId }) => {
   const fetchAvailableShiftAllocation = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/shifts/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/shifts/${organisationId}`,
         {
           headers: {
             Authorization: authToken,
@@ -464,7 +464,7 @@ const EditModelOpen = ({ handleClose, open, employeeId, organisationId }) => {
   const EditEmployeeData = useMutation(
     (data) =>
       axios.put(
-        `${process.env.REACT_APP_API}/route/employee/update/${organisationId}/${employeeId}`,
+        `${import.meta.env.VITE_API}/route/employee/update/${organisationId}/${employeeId}`,
         data,
         {
           headers: {

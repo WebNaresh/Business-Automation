@@ -11,7 +11,7 @@ const useGetDelegateSuperAdmin = () => {
     `delegate-super-admin-${decodedToken?.user?._id}`,
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/employee/delegate`,
+        `${import.meta.env.VITE_API}/route/employee/delegate`,
         {
           headers: {
             Authorization: authToken,

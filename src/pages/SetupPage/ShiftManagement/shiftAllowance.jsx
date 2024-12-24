@@ -46,7 +46,7 @@ const ShiftAllowance = () => {
   const getLatestShifts = async () => {
     try {
       const resp = await axios.get(
-        `${process.env.REACT_APP_API}/route/shiftApply/get`,
+        `${import.meta.env.VITE_API}/route/shiftApply/get`,
         {
           headers: {
             Authorization: authToken,
@@ -66,7 +66,7 @@ const ShiftAllowance = () => {
     try {
       console.log("inside the update function", newAppliedLeaveEvents);
       const response = await axios.patch(
-        `${process.env.REACT_APP_API}/route/shiftApply/update/${updateId}`,
+        `${import.meta.env.VITE_API}/route/shiftApply/update/${updateId}`,
         {
           title: newAppliedLeaveEvents[0].name,
           start: newAppliedLeaveEvents[0].start,

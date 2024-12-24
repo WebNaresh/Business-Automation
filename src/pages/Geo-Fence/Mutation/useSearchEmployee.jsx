@@ -16,7 +16,7 @@ const useSearchEmployee = ({ watch, circleId }) => {
 
   const fetchEmployee = async () => {
     const response = await axios.put(
-      `${process.env.REACT_APP_API}/route/geo-fence/${organisationId}?firstName=${debouncedFirstName}&page=${page}&email=${debouncedEmail}&circleId=${circleId}`,
+      `${import.meta.env.VITE_API}/route/geo-fence/${organisationId}?firstName=${debouncedFirstName}&page=${page}&email=${debouncedEmail}&circleId=${circleId}`,
       {
         headers: {
           Authorization: authToken,

@@ -45,7 +45,7 @@ const NewEditCommunication = ({
     ["communication-type", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/get-communication`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/get-communication`,
         {
           headers: {
             Authorization: authToken,
@@ -68,7 +68,7 @@ const NewEditCommunication = ({
     ["employee", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/employee/${organisationId}/get-emloyee`,
+        `${import.meta.env.VITE_API}/route/employee/${organisationId}/get-emloyee`,
         {
           headers: {
             Authorization: authToken,
@@ -199,7 +199,7 @@ const NewEditCommunication = ({
   const EditEmail = useMutation(
     (data) =>
       axios.put(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/updateEmail-communication/${emailCommunicationId}`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/updateEmail-communication/${emailCommunicationId}`,
         data,
         {
           headers: {

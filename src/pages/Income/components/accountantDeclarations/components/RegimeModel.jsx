@@ -23,7 +23,7 @@ const RegimeModel = ({ open, handleClose }) => {
   const changeRegimeMutation = useMutation(
     (data) => {
       axios.put(
-        `${process.env.REACT_APP_API}/route/tds/changeRegime/${financialYear}`,
+        `${import.meta.env.VITE_API}/route/tds/changeRegime/${financialYear}`,
         data,
         {
           headers: {

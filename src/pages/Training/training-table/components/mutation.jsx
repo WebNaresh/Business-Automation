@@ -16,7 +16,7 @@ const useTrainingDetailsMutation = () => {
       id
     );
     const response = await axios.delete(
-      `${process.env.REACT_APP_API}/route/training/${id}`,
+      `${import.meta.env.VITE_API}/route/training/${id}`,
       {
         headers: {
           Authorization: authToken,
@@ -46,7 +46,7 @@ const useTrainingDetailsMutation = () => {
       data
     );
     const response = await axios.post(
-      `${process.env.REACT_APP_API}/route/training-employee/assign-training-employees/${trainingId}`,
+      `${import.meta.env.VITE_API}/route/training-employee/assign-training-employees/${trainingId}`,
       data,
       {
         headers: {

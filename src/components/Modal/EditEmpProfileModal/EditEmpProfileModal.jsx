@@ -32,7 +32,7 @@ const EditEmpProfileModal = ({ handleClose, open, userId }) => {
   const fetchAvailableUserProfileData = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/employee/get/profile/${userId}`,
+        `${import.meta.env.VITE_API}/route/employee/get/profile/${userId}`,
         {
           headers: {
             Authorization: token,

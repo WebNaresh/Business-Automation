@@ -61,7 +61,7 @@ const ViewAttendanceCallModal = ({
   const deleteMutation = useMutation(
     (id) =>
       axios.delete(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/delete-record/${id}`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/delete-record/${id}`,
         {
           headers: {
             Authorization: authToken,

@@ -31,7 +31,7 @@ const ViewEmployeeRecord = ({ employeeId }) => {
     ["getRecordOneEmployee"],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/emp/get-document/${employeeId}/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/emp/get-document/${employeeId}/${organisationId}`,
         {
           headers: {
             Authorization: authToken,

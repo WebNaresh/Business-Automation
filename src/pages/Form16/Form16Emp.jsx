@@ -18,7 +18,7 @@ const Form16Emp = () => {
   console.log(employeeId);
   const { data: getForm16 } = useQuery(["getForm16"], async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/get/form16/${organizationId}/${employeeId}`,
+      `${import.meta.env.VITE_API}/route/get/form16/${organizationId}/${employeeId}`,
       {
         headers: {
           Authorization: authToken,

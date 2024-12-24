@@ -17,7 +17,7 @@ const MissPunchInOut = () => {
     ["unavailableRecord", organisationId],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/organization/${organisationId}/missed-punch-record-to-hr`,
+        `${import.meta.env.VITE_API}/route/organization/${organisationId}/missed-punch-record-to-hr`,
         {
           headers: {
             Authorization: authToken,

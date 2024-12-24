@@ -17,7 +17,7 @@ const useSetupRemotePunching = (organisationId) => {
     async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/route/remote-punch/${organisationId}`,
+          `${import.meta.env.VITE_API}/route/remote-punch/${organisationId}`,
           {
             headers: { Authorization: authToken },
           }
@@ -39,7 +39,7 @@ const useSetupRemotePunching = (organisationId) => {
 
   const updateRemotePunching = async (data) => {
     await axios.post(
-      `${process.env.REACT_APP_API}/route/remote-punch/${organisationId}`,
+      `${import.meta.env.VITE_API}/route/remote-punch/${organisationId}`,
       data,
       {
         headers: { Authorization: authToken },

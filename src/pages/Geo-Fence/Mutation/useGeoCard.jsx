@@ -8,7 +8,7 @@ const useGeoMutation = () => {
   const { handleAlert } = useContext(TestContext);
   const deleteGeoCard = async ({ id }) => {
     const response = await axios.delete(
-      `${process.env.REACT_APP_API}/route/geo-fence/area/${id}`
+      `${import.meta.env.VITE_API}/route/geo-fence/area/${id}`
     );
     return response.data;
   };
@@ -21,7 +21,7 @@ const useGeoMutation = () => {
 
   const addEmployeeToCircle = async ({ circleId, employeeId, onClose }) => {
     const response = await axios.post(
-      `${process.env.REACT_APP_API}/route/geo-fence/${circleId}/employee`,
+      `${import.meta.env.VITE_API}/route/geo-fence/${circleId}/employee`,
       { employeeId }
     );
     return response.data;
@@ -41,7 +41,7 @@ const useGeoMutation = () => {
 
   const removeEmployeeToCircle = async ({ circleId, employeeId, onClose }) => {
     const response = await axios.put(
-      `${process.env.REACT_APP_API}/route/geo-fence/${circleId}/employee/`,
+      `${import.meta.env.VITE_API}/route/geo-fence/${circleId}/employee/`,
       { employeeId }
     );
     return response.data;

@@ -6,7 +6,7 @@ const useDocNotification = () => {
   const { authToken } = useGetUser();
   const getUserDocNotification = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API}/route/org/getdocsmanager`,
+      `${import.meta.env.VITE_API}/route/org/getdocsmanager`,
       {
         headers: { Authorization: authToken },
       }

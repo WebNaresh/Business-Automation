@@ -28,7 +28,7 @@ const SalaryManagement = () => {
   // get query for fetch the employee
   const fetchAvailableEmployee = async (page) => {
     try {
-      const apiUrl = `${process.env.REACT_APP_API}/route/employee/get-paginated-emloyee/${organisationId}?page=${page}`;
+      const apiUrl = `${import.meta.env.VITE_API}/route/employee/get-paginated-emloyee/${organisationId}?page=${page}`;
       const response = await axios.get(apiUrl, {
         headers: {
           Authorization: authToken,

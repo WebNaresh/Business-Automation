@@ -10,7 +10,7 @@ const useVerifyUser = () => {
   const { handleAlert } = useContext(TestContext);
   const navigate = useNavigate();
   const verifyEmailUrl = async () => {
-    const url = `${process.env.REACT_APP_API}/route/employee/verify/${param.token}`;
+    const url = `${import.meta.env.VITE_API}/route/employee/verify/${param.token}`;
     const { data } = await axios.get(url);
     console.log(data);
   };

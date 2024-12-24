@@ -9,7 +9,7 @@ const useGetAllManager = (organisationId) => {
     queryKey: ["managers"],
     queryFn: async () => {
       const data = await axios.get(
-        `${process.env.REACT_APP_API}/route/employee/getAllManager/${organisationId}`,
+        `${import.meta.env.VITE_API}/route/employee/getAllManager/${organisationId}`,
         {
           headers: {
             Authorization: authToken,

@@ -140,7 +140,7 @@ const UploadDocumentModal = ({ handleClose, open }) => {
     ["getRecordOfEmployee"],
     async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/emp/get-document/${employeeId}/${organizationId}`,
+        `${import.meta.env.VITE_API}/route/emp/get-document/${employeeId}/${organizationId}`,
         {
           headers: {
             Authorization: token,
@@ -210,7 +210,7 @@ const UploadDocumentModal = ({ handleClose, open }) => {
 
       // Call the POST API using async/await with Axios
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/route/emp/add-document`,
+        `${import.meta.env.VITE_API}/route/emp/add-document`,
         formData,
         {
           headers: { Authorization: token },

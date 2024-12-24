@@ -63,7 +63,7 @@ const ResetNewPassword = ({ open, handleClose }) => {
     (data) => {
       console.log(`🚀 ~ data:`, data);
       const res = axios.put(
-        `${process.env.REACT_APP_API}/route/employee/reset`,
+        `${import.meta.env.VITE_API}/route/employee/reset`,
         {
           password: data.password,
           email: user?.email,

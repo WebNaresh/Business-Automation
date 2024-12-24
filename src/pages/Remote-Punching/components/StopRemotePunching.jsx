@@ -25,7 +25,7 @@ const StopRemotePunching = ({ setStart }) => {
         try {
             // Making the PATCH API call to stop remote punching
             await axios.patch(
-                `${process.env.REACT_APP_API}/route/punch`,
+                `${import.meta.env.VITE_API}/route/punch`,
                 {
                     temporaryArray,
                     punchObjectId,

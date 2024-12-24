@@ -10,7 +10,7 @@ const useLocationStore = () => {
 
   useEffect(() => {
     async function fetchData2() {
-      await axios.get(`${process.env.REACT_APP_API}/route/punch/getPunch/1`, {
+      await axios.get(`${import.meta.env.VITE_API}/route/punch/getPunch/1`, {
         headers: {
           Authorization: authToken,
         },
@@ -40,7 +40,7 @@ const useLocationStore = () => {
     };
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/route/punch/create/test`,
+        `${import.meta.env.VITE_API}/route/punch/create/test`,
         payload,
         {
           headers: { Authorization: authToken },
@@ -87,7 +87,7 @@ const useLocationStore = () => {
 
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/punch/getone`,
+        `${import.meta.env.VITE_API}/route/punch/getone`,
         { headers: { Authorization: authToken } }
       );
 
@@ -112,7 +112,7 @@ const useLocationStore = () => {
 
         // Update the existing document with the modified data
         await axios.patch(
-          `${process.env.REACT_APP_API}/route/punch/update/${ID}`,
+          `${import.meta.env.VITE_API}/route/punch/update/${ID}`,
           updatedData, // Send the updated copy
           {
             headers: { Authorization: authToken },
@@ -135,7 +135,7 @@ const useLocationStore = () => {
 
         // Send a POST request to create a new punch document
         await axios.post(
-          `${process.env.REACT_APP_API}/route/punch/create`,
+          `${import.meta.env.VITE_API}/route/punch/create`,
           payload,
           {
             headers: { Authorization: authToken },

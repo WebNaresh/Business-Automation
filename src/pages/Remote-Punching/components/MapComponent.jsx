@@ -6,7 +6,7 @@ import {
 const MapComponent = ({ isLoaded, data, locationArray }) => {
   return isLoaded ? (
     <GoogleMap
-      key={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
+      key={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
       mapContainerStyle={{
         width: "100%",
         height: "91.8vh",

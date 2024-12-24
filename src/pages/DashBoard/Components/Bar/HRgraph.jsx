@@ -61,7 +61,7 @@
 
 //   const getYearLeaves = async () => {
 //     const { data } = await axios.get(
-//       `${process.env.REACT_APP_API}/route/leave/getYearLeaves/${user?._id}/${selectedyear.value}`,
+//       `${import.meta.env.VITE_API}/route/leave/getYearLeaves/${user?._id}/${selectedyear.value}`,
 //       {
 //         headers: {
 //           Authorization: authToken,
@@ -388,7 +388,7 @@ const HRgraph = () => {
 
   const getYearLeaves = async () => {
     const { data } = await axios.get(
-      `${process.env.REACT_APP_API}/route/leave/getYearLeaves/${user?._id}/${selectedyear.value}`,
+      `${import.meta.env.VITE_API}/route/leave/getYearLeaves/${user?._id}/${selectedyear.value}`,
       {
         headers: {
           Authorization: authToken,

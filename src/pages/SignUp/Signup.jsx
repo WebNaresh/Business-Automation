@@ -79,7 +79,7 @@ const Signup = () => {
     };
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/route/employee/create`,
+        `${import.meta.env.VITE_API}/route/employee/create`,
         user
       );
       handleAlert(true, "success", response.data.message);

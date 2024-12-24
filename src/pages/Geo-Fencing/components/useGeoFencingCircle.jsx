@@ -7,7 +7,7 @@ const useGeoFencingCircle = () => {
 
     const fetchEmployeeLocation = async () => {
         const response = await axios.get(
-            `${process.env.REACT_APP_API}/route/geo-fence/get-employee-circle/${decodedToken?.user?._id}`,
+            `${import.meta.env.VITE_API}/route/geo-fence/get-employee-circle/${decodedToken?.user?._id}`,
             {
                 headers: {
                     Authorization: authToken,
