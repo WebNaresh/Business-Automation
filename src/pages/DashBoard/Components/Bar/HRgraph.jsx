@@ -550,7 +550,7 @@ const HRgraph = () => {
             {/* The chart below provides an overview of employee attendance, including available days, unpaid leave days, and paid leave days for each month. */}
             The chart below provides an overview of employee attendance.
           </p>
-          <div className=" pt-4 flex gap-2 items-center">
+          <div className=" pt-4 flex gap-2 items-center justify-between">
             <motion.button
               onClick={() => mutation.mutate()}
               disabled={mutation.isLoading}

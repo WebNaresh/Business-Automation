@@ -257,10 +257,7 @@ const LineGraph = ({
     <div className="relative mb-6 h-[440px] border p-4 rounded-lg shadow-md">
       {isLoading ? (
         <div className="flex flex-col items-center justify-center p-4 rounded-lg shadow-md">
-          <h1
-            data-aos="fade-up"
-            className="text-md font-semibold text-gray-700 mb-2"
-          >
+          <h1 className="text-md font-semibold text-gray-700 mb-2">
             <Skeleton variant="text" width={140} height={20} />
           </h1>
           <div className="w-full h-48">
@@ -269,10 +266,7 @@ const LineGraph = ({
         </div>
       ) : (
         <div className="flex flex-col gap-2 ">
-          <div
-            data-aos="fade-up"
-            className="flex-col sm:flex-row sm:justify-between items-start gap-2 mb-2"
-          >
+          <div className="flex-col sm:flex-row sm:justify-between items-start gap-2 mb-2">
             <h1 className="text-xl font-bold text-gray-800">Salary Overview</h1>
             <p className="text-gray-600 text-xs">
               The chart below provides an overview of salary data.
@@ -295,10 +289,9 @@ const LineGraph = ({
               styles={customStyles}
               value={selectedyear}
               options={yearOptions}
-              data-aos="fade-up"
             />
           </div>
-          <div data-aos="fade-up" className=" relative w-full h-[300px]">
+          <div className=" relative w-full h-[300px]">
             <Line data={data} options={option} />
           </div>
         </div>

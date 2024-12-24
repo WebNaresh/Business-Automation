@@ -1,13 +1,13 @@
-import { Button, Container, TextField, IconButton } from "@mui/material";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import { Container, IconButton, TextField } from "@mui/material";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { TestContext } from "../../State/Function/Main";
 import { UseContext } from "../../State/UseState/UseContext";
 import CreateSalaryModel from "../../components/Modal/CreateSalaryModel/CreateSalaryModel";
-import ChallanModal from "./components/ChallanModal";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import DeleteSalaryModal from "../../components/Modal/CreateSalaryModel/DeleteSalaryModal";
+import ChallanModal from "./components/ChallanModal";
 
 const SalaryManagement = () => {
   // state
@@ -104,7 +104,7 @@ const SalaryManagement = () => {
 
   return (
     <>
-      <Container maxWidth="xl" className="bg-gray-50 min-h-screen">
+      <Container maxWidth="xl" className="bg-gray-50 min-h-screen pt-12">
         <article className=" bg-white w-full h-max shadow-md rounded-sm border items-center">
           <h1 className="text-lg pl-2 font-semibold text-center modal-title py-2">
             Salary Management
@@ -112,14 +112,6 @@ const SalaryManagement = () => {
           <p className="text-xs text-gray-600 text-center">
             Create and calculate the salary of your employee here.
           </p>
-          <div className="flex w-full justify-center my-2 items-center">
-            <Button
-              onClick={() => setOpenChallanModal(true)}
-              variant="contained"
-            >
-              Generate Challan
-            </Button>
-          </div>
 
           <ChallanModal
             open={openChallanModal}
