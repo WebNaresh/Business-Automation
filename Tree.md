@@ -19,10 +19,10 @@
 │   │   ├── app-layout
 │   │   │   ├── components
 │   │   │   │   ├── accordian.jsx
+│   │   │   │   ├── nav-items.jsx
+│   │   │   │   ├── NavAccordian.jsx
 │   │   │   │   ├── NotificationIcon.jsx
-│   │   │   │   ├── Tabs.jsx
-│   │   │   │   ├── test-nav-items.jsx
-│   │   │   │   └── TestAccordian.jsx
+│   │   │   │   └── Tabs.jsx
 │   │   │   ├── nav-items.jsx
 │   │   │   ├── notification-zustand.jsx
 │   │   │   └── swipable-drawer.jsx
@@ -54,7 +54,6 @@
 │   │   │   └── TempHeader.jsx
 │   │   ├── InputFileds
 │   │   │   ├── AuthInputFiled.jsx
-│   │   │   ├── ChangeRole.jsx
 │   │   │   ├── only-place-autocomplete.jsx
 │   │   │   └── places-autocomplete.jsx
 │   │   ├── Modal
@@ -334,8 +333,7 @@
 │   │   │   │   │   └── pricing-card.jsx
 │   │   │   │   ├── step-2-mini-form.jsx
 │   │   │   │   ├── step-2.jsx
-│   │   │   │   ├── step-3.jsx
-│   │   │   │   └── step-4.jsx
+│   │   │   │   └── step-3.jsx
 │   │   │   └── OrgFrom.jsx
 │   │   ├── AdvanceSalary
 │   │   │   └── AdvanceSalary.jsx
@@ -898,15 +896,11 @@
 │   │   │   │   ├── SalaryInput.jsx
 │   │   │   │   └── SkeletonSalaryInput.jsx
 │   │   │   ├── Setup.jsx
-│   │   │   ├── Subscription
-│   │   │   │   ├── components
-│   │   │   │   │   ├── subscription-card.jsx
-│   │   │   │   │   └── subscriptionRow.jsx
-│   │   │   │   └── Subscription.jsx
-│   │   │   └── Traning
+│   │   │   └── Subscription
 │   │   │       ├── components
-│   │   │       │   └── mini-form.jsx
-│   │   │       └── Training.jsx
+│   │   │       │   ├── subscription-card.jsx
+│   │   │       │   └── subscriptionRow.jsx
+│   │   │       └── Subscription.jsx
 │   │   ├── SetupPage
 │   │   │   ├── CompOff
 │   │   │   │   └── CompOff.jsx
@@ -1007,8 +1001,6 @@
 │   │   │       │   ├── TableRow.jsx
 │   │   │       │   └── useAssignTraining.jsx
 │   │   │       └── page.jsx
-│   │   ├── UserProfile
-│   │   │   └── UserProfile.jsx
 │   │   ├── ViewAttendanceBiomatric
 │   │   │   └── ViewAttendacneBiomatric.jsx
 │   │   ├── ViewCalculateAttendance
@@ -1052,4 +1044,5 @@
 │       │   └── TopLoadingBar.jsx
 │       └── TopNav
 │           └── TopNav.jsx
-└── tailwind.config.js
+├── tailwind.config.js
+└── Tree.md
