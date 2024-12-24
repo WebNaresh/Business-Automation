@@ -88,10 +88,16 @@ exports.manageEmployeeInCircle = catchAssyncError(async (req, res, next) => {
   const { employeeId } = req.body;
 
   if (!circleId || !employeeId || !Array.isArray(employeeId)) {
-    return next(new ErrorHandler("Please provide all required fields in the correct format", 400));
+    return next(
+      new ErrorHandler(
+        "Please provide all required fields in the correct format",
+        400
+      )
+    );
   }
 
-  const objectIdArray = employeeId.map(id => mongoose.Types.ObjectId(id));
+  const objectIdArray = employeeId.map((id) => new mongoose.Types.ObjectId(id));
+  console.log(`🚀 ~ file: controller.js:95 ~ objectIdArray:`, objectIdArray);
 
   const circle = await GeoFencingModel.findById(circleId);
 
@@ -100,14 +106,18 @@ exports.manageEmployeeInCircle = catchAssyncError(async (req, res, next) => {
   }
 
   // Determine employees to add and remove
-  const currentEmployeeIds = circle.employee.map(id => id.toString());
-  const newEmployeeIds = objectIdArray.map(id => id.toString());
+  const currentEmployeeIds = circle.employee.map((id) => id.toString());
+  const newEmployeeIds = objectIdArray.map((id) => id.toString());
 
   // Determine which employees need to be removed
-  const employeesToRemove = currentEmployeeIds.filter(id => !newEmployeeIds.includes(id));
+  const employeesToRemove = currentEmployeeIds.filter(
+    (id) => !newEmployeeIds.includes(id)
+  );
 
   // Determine which employees need to be added
-  const employeesToAdd = newEmployeeIds.filter(id => !currentEmployeeIds.includes(id));
+  const employeesToAdd = newEmployeeIds.filter(
+    (id) => !currentEmployeeIds.includes(id)
+  );
 
   // Update the circle
   if (employeesToRemove.length > 0) {
@@ -163,7 +173,7 @@ exports.getEmployeesInCircle = catchAssyncError(async (req, res, next) => {
     return next(new ErrorHandler("Circle ID is required", 400));
   }
 
-  const circle = await GeoFencingModel.findById(circleId).populate('employee');
+  const circle = await GeoFencingModel.findById(circleId).populate("employee");
 
   if (!circle) {
     return next(new ErrorHandler("Geofencing area not found", 404));
@@ -174,7 +184,6 @@ exports.getEmployeesInCircle = catchAssyncError(async (req, res, next) => {
     data: circle.employee,
   });
 });
-
 
 exports.removeEmployeeFromCircle = catchAssyncError(async (req, res, next) => {
   const { circleId } = req?.params;
@@ -287,9 +296,12 @@ exports.getOrgEmployeeWithFilter = catchAssyncError(async (req, res, next) => {
   try {
     const { organizationId } = req.params;
     const { firstName, email, page, circleId } = req.query;
-    const addedEmployeeDoc = await GeoFencingModel.findById(circleId).populate("employee");
+    const addedEmployeeDoc = await GeoFencingModel.findById(circleId).populate(
+      "employee"
+    );
 
-    const addedEmployeeIds = addedEmployeeDoc?.employee.map(emp => emp._id.toString()) || [];
+    const addedEmployeeIds =
+      addedEmployeeDoc?.employee.map((emp) => emp._id.toString()) || [];
 
     const allCircleEmployees = await GeoFencingModel.find({ organizationId })
       .select("employee")
@@ -297,9 +309,9 @@ exports.getOrgEmployeeWithFilter = catchAssyncError(async (req, res, next) => {
       .lean();
 
     const otherCircleEmployeeIds = new Set();
-    allCircleEmployees.forEach(circle => {
+    allCircleEmployees.forEach((circle) => {
       if (circle._id.toString() !== circleId) {
-        circle.employee.forEach(emp => {
+        circle.employee.forEach((emp) => {
           otherCircleEmployeeIds.add(emp._id.toString());
         });
       }
@@ -321,9 +333,9 @@ exports.getOrgEmployeeWithFilter = catchAssyncError(async (req, res, next) => {
       .skip(Number(page) * 10)
       .limit(10);
 
-    const allEmployees = employees.map(emp => ({
+    const allEmployees = employees.map((emp) => ({
       ...emp.toObject(),
-      isAdded: addedEmployeeIds.includes(emp._id.toString())
+      isAdded: addedEmployeeIds.includes(emp._id.toString()),
     }));
 
     return res.status(200).json({
