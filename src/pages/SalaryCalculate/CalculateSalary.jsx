@@ -1,12 +1,11 @@
 import axios from "axios";
 import dayjs from "dayjs";
-import React, { useContext, useEffect, useState, useMemo } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { TestContext } from "../../State/Function/Main";
 import { UseContext } from "../../State/UseState/UseContext";
 import useCalculateSalaryQuery from "../../hooks/CalculateSalaryHook/useCalculateSalaryQuery";
 import { useQuery } from "react-query";
-import useAdvanceSalaryQuery from "../../hooks/AdvanceSalaryHook/useAdvanceSalaryQuery";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import Button from "@mui/material/Button";
@@ -74,7 +73,7 @@ function CalculateSalary() {
   useEffect(() => {
     setNumDaysInMonth(selectedDate.daysInMonth());
   }, [selectedDate]);
-  console.log("employee summary", employeeSummary);
+
 
   // to get holiday in the organization
   const fetchHoliday = async () => {
@@ -115,84 +114,6 @@ function CalculateSalary() {
   };
   let publicHolidaysCount = countPublicHolidaysInCurrentMonth();
 
-  // to get shifts of employee based on month
-  const selectedMonths = selectedDate.format("M");
-  const selectedYears = selectedDate.format("YYYY");
-  const { data: getShifts } = useQuery(
-    ["shiftAllowance", userId, selectedMonths, selectedYears],
-    async () => {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/get/shifts/${userId}`,
-        {
-          headers: {
-            Authorization: token,
-          },
-          params: {
-            month: parseInt(selectedMonths),
-            year: parseInt(selectedYears),
-          },
-        }
-      );
-      return response.data.shiftRequests;
-    }
-  );
-  console.log("getShifts", getShifts);
-
-  // to get shift count of employee
-  const countShifts = (shifts) => {
-    const shiftCount = {};
-    shifts.forEach((shift) => {
-      const title = shift?.title;
-      if (shiftCount[title]) {
-        shiftCount[title]++;
-      } else {
-        shiftCount[title] = 1;
-      }
-    });
-    return shiftCount;
-  };
-  const shiftCounts = useMemo(
-    () => (getShifts ? countShifts(getShifts) : {}),
-    [getShifts]
-  );
-  console.log("shiftCounts", shiftCounts);
-
-  // get the amount of shift in the organization
-  const { data: shiftAllowanceAmount } = useQuery(
-    ["shift-allowance-amount"],
-    async () => {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/shifts/${organisationId}`,
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
-      return response.data.shifts;
-    }
-  );
-  const shiftAllowances = useMemo(() => {
-    if (shiftAllowanceAmount) {
-      return shiftAllowanceAmount?.reduce((acc, shift) => {
-        acc[shift.shiftName.toLowerCase()] = shift.allowance;
-        return acc;
-      }, {});
-    }
-    return {};
-  }, [shiftAllowanceAmount]);
-
-  const [shiftTotalAllowance, setShiftTotalAllowance] = useState(0);
-  useEffect(() => {
-    let total = 0;
-    for (const [shiftTitle, count] of Object.entries(shiftCounts)) {
-      const shiftAllowance = shiftAllowances[shiftTitle.toLowerCase()];
-      if (shiftAllowance) {
-        total += count * shiftAllowance;
-      }
-    }
-    setShiftTotalAllowance(total);
-  }, [shiftCounts, shiftAllowances]);
 
   // to fetch the remote punching count of employee in a specific month
   const fetchRemotePunchingCount = async (userId, startDate, endDate) => {
@@ -219,20 +140,6 @@ function CalculateSalary() {
     // eslint-disable-next-line
   }, [selectedDate, userId, startDate, endDate]);
 
-  // to get the total salary of employee
-  const { getTotalSalaryEmployee } = useAdvanceSalaryQuery(organisationId);
-
-  // Check if getShifts is defined and is an array before filtering
-  const extradayShifts = Array.isArray(getShifts)
-    ? getShifts.filter((shift) => shift.title === "Extra Day")
-    : []; // Default to an empty array if getShifts is not valid
-
-  // Check if extradayShifts is defined and is an array before getting the length
-  const extradayCount = Array.isArray(extradayShifts)
-    ? extradayShifts.length
-    : 0; // Default to 0 if extradayShifts is not a valid array
-
-  console.log("Count of 'extraday' shifts:", extradayCount);
 
   // calculate the no fo days employee present
   // Extract the dynamic joining date from the employee data
@@ -262,79 +169,10 @@ function CalculateSalary() {
   let noOfDaysEmployeePresent = calculateDaysEmployeePresent(joiningDate);
 
   // Calculate the total payable days including extra days
-  const totalAvailableDays =
-    typeof noOfDaysEmployeePresent === "number" &&
-    !isNaN(noOfDaysEmployeePresent) &&
-    typeof extradayCount === "number" &&
-    !isNaN(extradayCount)
-      ? noOfDaysEmployeePresent + extradayCount
-      : 0; // Default to 0 if any of the values are not valid numbers
-
-  console.log("totalAvailableDays", totalAvailableDays);
-
-  // Get Query for fetching overtime allowance in the organization
-  const { data: overtime } = useQuery(
-    ["overtime", organisationId],
-    async () => {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/get/${organisationId}/overtime`,
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
-      return response.data.data;
-    }
-  );
-  let otamount = overtime && overtime?.allowanceAmount;
-  let otparameter = overtime && overtime?.allowanceParameter;
-  console.log("otamount", otamount);
-  console.log("otparameter", otparameter);
-
-  // to get the overtime hour of employee in specific month from machine punching
-  const sd = selectedDate.startOf("month").format("YYYY-MM-DD");
-  const ed = selectedDate.endOf("month").format("YYYY-MM-DD");
-  console.log("sd", sd);
-  console.log("ed", ed);
-  const { data: empOverTimeData } = useQuery(
-    ["empOverTimeHour", sd, ed],
-    async () => {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/getOvertimeHour/${organisationId}/${userId}`,
-        {
-          params: {
-            startDate: sd,
-            endDate: ed,
-          },
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
-      return response.data;
-    }
-  );
-  // Destructure the employee overtime data
-  const overtimeRecordCount = empOverTimeData?.overtimeRecordCount || 0;
-  const totalOvertimeHours = empOverTimeData?.totalOvertimeHours || 0;
-
-  console.log("overtimeRecordCount", overtimeRecordCount);
-  console.log("totalOvertimeHours", totalOvertimeHours);
-
-  // calculate overtime amount of employee in specific month
-  // Initialize overtimeAllowance
-  let totalOvertimeAllowance = 0;
-  // Calculate the overtime allowance based on the parameter
-  if (otparameter === "perDay") {
-    // Calculate allowance per day (use the overtimeRecordCount as the number of overtime days)
-    totalOvertimeAllowance = otamount * overtimeRecordCount;
-  } else if (otparameter === "perHour") {
-    // Calculate allowance per hour (use the totalOvertimeHours)
-    totalOvertimeAllowance = otamount * totalOvertimeHours;
-  }
-  // Log the calculated overtime allowance
-  console.log("Overtime Allowance:", totalOvertimeAllowance);
+  // Calculate the total payable days including extra days
+  const totalAvailableDays = Number.isFinite(noOfDaysEmployeePresent)
+    ? noOfDaysEmployeePresent
+    : 0;
 
   // to get employee salary component data of employee
   const { data: salaryComponent, isFetching } = useQuery(
@@ -378,25 +216,6 @@ function CalculateSalary() {
         });
       }
     });
-
-    // Check if shiftTotalAllowance is greater than 0 and if the name "Shift Allowance" does not already exist
-    if (shiftTotalAllowance > 0) {
-      const existingIndex = updatedIncomeValues.findIndex(
-        (ele) => ele.name === "Shift Allowance"
-      );
-
-      if (existingIndex === -1) {
-        // If "Shift Allowance" does not exist, add it to the array
-        updatedIncomeValues.push({
-          name: "Shift Allowance",
-          value: shiftTotalAllowance,
-        });
-      } else {
-        // If "Shift Allowance" already exists, update its value
-        updatedIncomeValues[existingIndex].value = shiftTotalAllowance;
-      }
-    }
-
     // Add Remote Punch Allowance if applicable
     if (remotePunchAllowance > 0) {
       const existingIndex = updatedIncomeValues.findIndex(
@@ -415,23 +234,7 @@ function CalculateSalary() {
       }
     }
 
-    // Add overtime Allowance if applicable
-    if (totalOvertimeAllowance > 0) {
-      const existingIndex = updatedIncomeValues.findIndex(
-        (ele) => ele.name === "Overtime Allowance"
-      );
 
-      if (existingIndex === -1) {
-        // If "Overtime Allowance" does not exist, add it to the array
-        updatedIncomeValues.push({
-          name: "Overtime Allowance",
-          value: totalOvertimeAllowance,
-        });
-      } else {
-        // If "Overtime Allowance" already exists, update its value
-        updatedIncomeValues[existingIndex].value = remotePunchAllowance;
-      }
-    }
     // Update the incomeValues state with the new array
     setIncomeValues(updatedIncomeValues);
 
@@ -440,9 +243,8 @@ function CalculateSalary() {
     selectedDate,
     salaryComponent,
     totalAvailableDays,
-    shiftTotalAllowance,
     remotePunchAllowance,
-    totalOvertimeAllowance,
+    ,
   ]);
 
   // get the PFsetup from organizaiton
@@ -453,74 +255,6 @@ function CalculateSalary() {
   // Initialize the state for set deduction value
   let pwd = availableEmployee?.pwd;
 
-  // calculate the financial year
-  const calculateFinancialYear = (date) => {
-    const month = date?.month();
-    const currentYear = date?.year();
-    if (month < 3) {
-      // January, February, March
-      return `${currentYear - 1}-${currentYear}`;
-    } else {
-      return `${currentYear}-${currentYear + 1}`;
-    }
-  };
-  const financialYear = calculateFinancialYear(dayjs(selectedDate));
-
-  // to get the annual income tax
-  const { data: annualIncomeTax } = useQuery(
-    ["getIncomeTax", organisationId],
-    async () => {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API}/route/tds/getMyDeclaration/${financialYear}/${getTotalSalaryEmployee}`,
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
-      return response.data.getTotalTaxableIncome;
-    }
-  );
-
-  // calculate monthly income tax based on annual income tax
-  const monthlyIncomeTax =
-    typeof annualIncomeTax === "number" && annualIncomeTax > 0
-      ? annualIncomeTax / 12
-      : "0";
-  console.log("monthlyIncomeTax :", monthlyIncomeTax);
-
-  // get the loan deduction amount from loan application data of employee
-  let loanDeduction = 0;
-  if (Array.isArray(empLoanAplicationInfo)) {
-    const currentDate = new Date();
-    // Filter loan applications that are currently active
-    const loanDeductionApplications = empLoanAplicationInfo?.filter(
-      (application) => {
-        const loanDisbursementDate = new Date(
-          application?.loanDisbursementDate
-        );
-        const loanCompletionDate = new Date(application?.loanCompletedDate);
-        return (
-          loanDisbursementDate <= currentDate &&
-          currentDate <= loanCompletionDate
-        );
-      }
-    );
-    // Calculate the total loan deduction for active loans
-    loanDeduction = loanDeductionApplications.reduce((total, application) => {
-      // Check if the current application is within the loan disbursement and completion dates
-      const loanDisbursementDate = new Date(application.loanDisbursementDate);
-      const loanCompletionDate = new Date(application.loanCompletedDate);
-      if (
-        loanDisbursementDate <= currentDate &&
-        currentDate <= loanCompletionDate
-      ) {
-        return total + parseFloat(application.totalDeduction || 0);
-      }
-      return total;
-    }, 0);
-  }
-  loanDeduction = isNaN(loanDeduction) ? 0 : Math.round(loanDeduction);
 
   // calculate the deduction value
   const [deductionValues, setDeductionValues] = useState([]);
@@ -549,61 +283,30 @@ function CalculateSalary() {
         ? (totalGrossSalary * PfSetup?.ECP) / 100
         : 0
       : totalGrossSalary <= 21000
-      ? (totalGrossSalary * PfSetup?.ECP) / 100
-      : 0;
+        ? (totalGrossSalary * PfSetup?.ECP) / 100
+        : 0;
 
     const emlCtr = pwd
       ? totalGrossSalary <= 25000
         ? (totalGrossSalary * PfSetup?.ECS) / 100
         : 0
       : totalGrossSalary <= 21000
-      ? (totalGrossSalary * PfSetup?.ECS) / 100
-      : 0;
+        ? (totalGrossSalary * PfSetup?.ECS) / 100
+        : 0;
 
     // Safely reduce deductions, ensuring deduction array exists
     const updatedDeductions = salaryComponent?.deductions
       ? salaryComponent?.deductions?.reduce((acc, deduction) => {
-          if (deduction.name === "PF") {
-            acc.push({ ...deduction, value: employeePF });
-          } else if (deduction.name === "ESIC" && empCtr > 0) {
-            acc.push({ ...deduction, value: Math.round(empCtr) });
-          } else {
-            acc.push(deduction);
-          }
-          return acc;
-        }, [])
-      : [];
-
-    // Process loan deductions if applicable
-    const selectedDateObj = new Date(selectedDate);
-    empLoanAplicationInfo?.forEach((loanInfo) => {
-      const loanDisbursement = new Date(loanInfo?.loanDisbursementDate);
-      const loanCompleted = new Date(loanInfo?.loanCompletedDate);
-
-      if (
-        loanDeduction > 0 &&
-        selectedDateObj >= loanDisbursement &&
-        selectedDateObj <= loanCompleted
-      ) {
-        const existingIndex = updatedDeductions?.findIndex(
-          (ele) => ele.name === "Loan Deduction"
-        );
-
-        if (existingIndex !== -1) {
-          // Update existing deduction
-          updatedDeductions[existingIndex] = {
-            name: "Loan Deduction",
-            value: loanDeduction,
-          };
+        if (deduction.name === "PF") {
+          acc.push({ ...deduction, value: employeePF });
+        } else if (deduction.name === "ESIC" && empCtr > 0) {
+          acc.push({ ...deduction, value: Math.round(empCtr) });
         } else {
-          // Push new loan deduction entry
-          updatedDeductions.push({
-            name: "Loan Deduction",
-            value: loanDeduction,
-          });
+          acc.push(deduction);
         }
-      }
-    });
+        return acc;
+      }, [])
+      : [];
 
     setDeductionValues(updatedDeductions);
     setEmployerContribution(emlCtr > 0 ? emlCtr : 0);
@@ -614,7 +317,6 @@ function CalculateSalary() {
     PfSetup,
     selectedDate,
     incomeValues,
-    loanDeduction,
     empLoanAplicationInfo,
   ]);
 
@@ -660,6 +362,8 @@ function CalculateSalary() {
       ).format("MM");
       const nextMonth =
         parseInt(currentMonth) === 12 ? 1 : parseInt(currentMonth);
+
+      console.log({ currentYear, currentMonth, selectedYear, selectedMonth, employeeJoiningYear, employeeJoiningMonth });
 
       if (
         parseInt(selectedYear) > parseInt(currentYear) ||
@@ -848,8 +552,8 @@ function CalculateSalary() {
                     <td class="px-4 py-2 border">
                       {availableEmployee?.joining_date
                         ? new Date(
-                            availableEmployee?.joining_date
-                          ).toLocaleDateString("en-GB")
+                          availableEmployee?.joining_date
+                        ).toLocaleDateString("en-GB")
                         : ""}
                     </td>
                   </tr>
@@ -905,14 +609,7 @@ function CalculateSalary() {
                   <tr>
                     <td class="px-4 py-2 border"></td>
                     <td class="px-4 py-2 border"></td>
-                    {extradayCount > 0 && (
-                      <>
-                        <td className="px-4 py-2 border">
-                          No Of Extra Days in Month:
-                        </td>
-                        <td className="px-4 py-2 border">{extradayCount}</td>
-                      </>
-                    )}
+
                   </tr>
                 </tbody>
               </table>
