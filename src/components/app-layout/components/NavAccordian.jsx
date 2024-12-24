@@ -48,7 +48,7 @@ const NavAccordion = ({
                 <Link
                   onClick={() => toggleDrawer()}
                   to={route.link}
-                  className="rounded-md flex items-center gap-2 py-2 hover:bg-gray-100 hover:!text-white m-2 px-6"
+                  className="rounded-md flex items-center gap-2 p-2 hover:bg-gray-100 hover:!text-white m-2 px-6"
                 >
                   {route.icon}
                   <h1 className="font-bold text-[.9em] text-[#2e343f]">
@@ -62,7 +62,7 @@ const NavAccordion = ({
         <Link
           onClick={() => toggleDrawer()}
           to={link}
-          className="rounded-md flex items-center gap-2 py-2 hover:bg-gray-100 hover:!text-white m-2 px-6"
+          className="rounded-md flex items-center gap-2 py-2 hover:bg-gray-100 hover:!text-white m-2 px-2"
         >
           <h1 className="py-1 font-semibold text-[#67748E]">{role}</h1>
           <h1 className="font-bold text-[.9em] text-[#2e343f]">
