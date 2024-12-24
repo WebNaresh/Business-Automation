@@ -181,6 +181,80 @@ const TestNavItems = ({ toggleDrawer }) => {
               ? `/organisation/${orgId}/dashboard/super-admin`
               : "/organizationList",
         },
+        Department: {
+          open: false,
+          isVisible:
+            window.location.pathname.includes("organisation") &&
+            [
+              "Super-Admin",
+              "Delegate-Super-Admin",
+              "Delegate-Super-Admin",
+              "HR",
+              "Department-Head",
+              "Delegate-Department-Head",
+              "Department-Admin",
+              "Delegate-Department-Admin",
+            ].includes(role),
+          // : false
+          icon: <Business className=" !text-[1.2em] text-[#67748E]" />,
+          routes: [
+            {
+              key: "addDepartment",
+              isVisible: [
+                "Super-Admin",
+                "Delegate-Super-Admin",
+                "Delegate-Super-Admin",
+                "HR",
+                "Department-Head",
+                "Delegate-Department-Head",
+                "Department-Admin",
+                "Delegate-Department-Admin",
+              ].includes(role),
+              link: `/organisation/${orgId}/add-department`,
+              icon: (
+                <AddCircleOutlineOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
+              ),
+              text: "Add Department",
+            },
+
+            {
+              key: "deptDeletion",
+              isVisible: [
+                "Super-Admin",
+                "Delegate-Super-Admin",
+                "Delegate-Super-Admin",
+                "HR",
+                "Department-Head",
+                "Delegate-Department-Head",
+                "Department-Admin",
+                "Delegate-Department-Admin",
+              ].includes(role),
+              link: `/organisation/${orgId}/dept-deletion`,
+              icon: (
+                <DeleteForeverOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
+              ),
+              text: "Delete Department",
+            },
+            {
+              key: "departmentList",
+              isVisible: [
+                "Super-Admin",
+                "Delegate-Super-Admin",
+                "Delegate-Super-Admin",
+                "HR",
+                "Department-Head",
+                "Delegate-Department-Head",
+                "Department-Admin",
+                "Delegate-Department-Admin",
+              ].includes(role),
+              link: `/organisation/${orgId}/department-list`,
+              icon: (
+                <ListAltOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
+              ),
+              text: "Manage Department",
+            },
+          ],
+        },
         Employee: {
           open: false,
           icon: <PeopleAlt className=" !text-[1.2em] text-[#67748E]" />,
@@ -350,80 +424,6 @@ const TestNavItems = ({ toggleDrawer }) => {
               link: `/organisation/${orgId}/missed-justify`,
               icon: <ReceiptIcon className=" !text-[1.2em] text-[#67748E]" />,
               text: "Missed Justify",
-            },
-          ],
-        },
-        Department: {
-          open: false,
-          isVisible:
-            window.location.pathname.includes("organisation") &&
-            [
-              "Super-Admin",
-              "Delegate-Super-Admin",
-              "Delegate-Super-Admin",
-              "HR",
-              "Department-Head",
-              "Delegate-Department-Head",
-              "Department-Admin",
-              "Delegate-Department-Admin",
-            ].includes(role),
-          // : false
-          icon: <Business className=" !text-[1.2em] text-[#67748E]" />,
-          routes: [
-            {
-              key: "addDepartment",
-              isVisible: [
-                "Super-Admin",
-                "Delegate-Super-Admin",
-                "Delegate-Super-Admin",
-                "HR",
-                "Department-Head",
-                "Delegate-Department-Head",
-                "Department-Admin",
-                "Delegate-Department-Admin",
-              ].includes(role),
-              link: `/organisation/${orgId}/add-department`,
-              icon: (
-                <AddCircleOutlineOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
-              ),
-              text: "Add Department",
-            },
-
-            {
-              key: "deptDeletion",
-              isVisible: [
-                "Super-Admin",
-                "Delegate-Super-Admin",
-                "Delegate-Super-Admin",
-                "HR",
-                "Department-Head",
-                "Delegate-Department-Head",
-                "Department-Admin",
-                "Delegate-Department-Admin",
-              ].includes(role),
-              link: `/organisation/${orgId}/dept-deletion`,
-              icon: (
-                <DeleteForeverOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
-              ),
-              text: "Delete Department",
-            },
-            {
-              key: "departmentList",
-              isVisible: [
-                "Super-Admin",
-                "Delegate-Super-Admin",
-                "Delegate-Super-Admin",
-                "HR",
-                "Department-Head",
-                "Delegate-Department-Head",
-                "Department-Admin",
-                "Delegate-Department-Admin",
-              ].includes(role),
-              link: `/organisation/${orgId}/department-list`,
-              icon: (
-                <ListAltOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
-              ),
-              text: "Manage Department",
             },
           ],
         },
