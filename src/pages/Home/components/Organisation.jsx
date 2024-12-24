@@ -53,6 +53,7 @@ const Organisation = ({ item }) => {
   const handleCloseConfirmation = () => {
     setDeleteConfirmation(null);
     setEditConfirmation(null);
+    setAnchorEl(null);
   };
 
   const handleDelete = async (id) => {
@@ -81,12 +82,6 @@ const Organisation = ({ item }) => {
   };
 
   const truncateOrgName = (orgName) => {
-    // const wordCount = (orgName.match(/\S+/g) || []).length;
-    // if (wordCount > 6) {
-    //   return orgName.split(/\s+/).slice(0,6).join(" ") + " ...";
-    // }
-    // return orgName;
-
     const maxLength = 29;
     if (orgName.length > maxLength) {
       return orgName.slice(0, maxLength) + " ...";

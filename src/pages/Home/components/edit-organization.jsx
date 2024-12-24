@@ -3,7 +3,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Business,
   Description,
-  FactoryOutlined,
   Link,
   LocalPostOfficeOutlined,
   LocationOn,
@@ -18,6 +17,7 @@ import { z } from "zod";
 import AuthInputFiled from "../../../components/InputFileds/AuthInputFiled";
 import useOrganisationMutation from "../../../hooks/QueryHook/Organisation/mutation";
 import ImageInput from "../../AddOrganisation/components/image-input";
+
 const organizationSchema = z.object({
   orgName: z.string(),
   foundation_date: z.string().refine(
@@ -28,59 +28,6 @@ const organizationSchema = z.object({
     { message: "Foundation date must be less than or equal to current date" }
   ),
   web_url: z.string(),
-  // industry_type: z.enum(
-  //   // ["Technology", "Finance", "Healthcare", "Education"]
-  //   [ 
-  //     "Technology",
-  //     "Finance",
-  //     "Healthcare",
-  //     "Education",
-  //     "Manufacturing",
-  //     "Retail",
-  //     "Transportation",
-  //     "Telecommunications",
-  //     "Real Estate",
-  //     "Hospitality",
-  //     "Pharmaceuticals",
-  //     "Automotive",
-  //     "Insurance",
-  //     "Nonprofit",
-  //     "Government",
-  //     "Consulting",
-  //     "Media",
-  //     "Advertising",
-  //     "Biotechnology",
-  //   ]
-  // ),
-  industry_type: z.string().optional().refine(
-    (val) => {
-      const predefinedValues = [ 
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "Education",
-        "Manufacturing",
-        "Retail",
-        "Transportation",
-        "Telecommunications",
-        "Real Estate",
-        "Hospitality",
-        "Pharmaceuticals",
-        "Automotive",
-        "Insurance",
-        "Nonprofit",
-        "Government",
-        "Consulting",
-        "Media",
-        "Advertising",
-        "Biotechnology",
-      ];
-      return predefinedValues.includes(val) || val === "other";
-    },
-    { message: "Invalid industry type" }
-  ),
-  custom_industry_type: z.string(),
-
   email: z.string().email(),
   organization_linkedin_url: z.string(),
   location: z.any({
@@ -105,15 +52,18 @@ const organizationSchema = z.object({
     { message: "Image size must be 5kb to 50kb" }
   ),
 });
+
 const EditOrganisation = ({ item, handleCloseConfirmation }) => {
+
   const { updateOrganizationMutation } = useOrganisationMutation();
+
   const { control, formState, handleSubmit, watch } = useForm({
     defaultValues: {
       orgName: item?.orgName,
       foundation_date: item?.foundation_date,
       web_url: item?.web_url,
       industry_type: item?.industry_type,
-      custom_industry_type:item?.custom_industry_type,
+      custom_industry_type: item?.custom_industry_type,
       email: item?.email,
       organization_linkedin_url: item?.organization_linkedin_url,
       location: item?.location,
@@ -125,7 +75,9 @@ const EditOrganisation = ({ item, handleCloseConfirmation }) => {
     },
     resolver: zodResolver(organizationSchema),
   });
+
   const onSubmit = async (data) => {
+    console.log("data");
     if (data.industry_type === "other") {
       data.industry_type = data.custom_industry_type;
     }
@@ -136,6 +88,9 @@ const EditOrganisation = ({ item, handleCloseConfirmation }) => {
     });
   };
   const { errors } = formState;
+
+  console.log("errors", errors);
+
 
   return (
     <div className="flex flex-col gap-4 mt-3">
@@ -204,52 +159,6 @@ const EditOrganisation = ({ item, handleCloseConfirmation }) => {
             errors={errors}
             error={errors.organization_linkedin_url}
           />
-          <AuthInputFiled
-            name="industry_type"
-            icon={FactoryOutlined}
-            control={control}
-            type="naresh-select"
-            placeholder="Type of Industry "
-            label="Type of Industry  *"
-            errors={errors}
-            error={errors.industry_type}
-            options={[
-              { value: "Technology", label: "Technology" },
-              { value: "Finance", label: "Finance" },
-              { value: "Healthcare", label: "Healthcare" },
-              { value: "Education", label: "Education" },
-              { value: "Manufacturing", label: "Manufacturing" },
-              { value: "Retail", label: "Retail" },
-              { value: "Transportation", label: "Transportation" },
-              { value: "Telecommunications", label: "Telecommunications" },
-              { value: "Real Estate", label: "Real Estate" },
-              { value: "Hospitality", label: "Hospitality" },
-              { value: "Pharmaceuticals", label: "Pharmaceuticals" },
-              { value: "Automotive", label: "Automotive" },
-              { value: "Insurance", label: "Insurance" },
-              { value: "Nonprofit", label: "Nonprofit" },
-              { value: "Government", label: "Government" },
-              { value: "Consulting", label: "Consulting" },
-              { value: "Media", label: "Media" },
-              { value: "Advertising", label: "Advertising" },
-              { value: "Biotechnology", label: "Biotechnology" },
-              { value: "other", label: "Other" },
-            
-            ]}
-          />
-
-{watch("industry_type") === "other" && (
-            <AuthInputFiled
-              name="custom_industry_type"
-              icon={FactoryOutlined}
-              control={control}
-              type="text"
-              placeholder="Specify Custom Industry"
-              label="Specify Custom Industry *"
-              errors={errors}
-              error={errors.custom_industry_type}
-            />
-          )}
           <AuthInputFiled
             name="email"
             icon={LocalPostOfficeOutlined}

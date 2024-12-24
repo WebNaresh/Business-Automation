@@ -23,7 +23,6 @@ import DashboardManger from "./pages/DashBoard/DashboardManger";
 import SuperAdmin from "./pages/DashBoard/SuperAdmin";
 import DepartmentList from "./pages/Departments/DepartmentList";
 import Designation from "./pages/Designation/Designation";
-// import EmployeeConfirmation from "./pages/Employee-Confirm/page";
 import DeleteEmployee from "./pages/Employee/DeleteEmployee";
 import Employee from "./pages/Employee/Employee";
 import Form16 from "./pages/Form16/Form16";
@@ -60,9 +59,6 @@ import Inputfield from "./pages/SetupPage/inputfield";
 import SignIn from "./pages/SignIn/SignIn";
 import Signup from "./pages/SignUp/NewSignUp";
 import EmployeeTest from "./pages/Test/EmployeeTest";
-// import RemoteNotification from "./pages/Test/RemoteNotification";
-// import TestMap from "./pages/Test/testMap";
-// import TestYash from "./pages/Test/testYash";
 import DepartmentTest from "./pages/Test2/DepartmentTest";
 import HrTrainings from "./pages/Training/page";
 import ViewPayslip from "./pages/ViewPayslip/ViewPayslip";
@@ -71,7 +67,6 @@ import AddDelegate from "./pages/add-delegate/AddDelegate";
 import SingleDepartment from "./pages/single-department/single-department";
 import SingleOrganisation from "./pages/single-orgnisation/single-organisation";
 import NotFound from "./utils/Forbidden/NotFound";
-// import AccountantNotification from "./pages/Notification/AccountantNotification";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import OrgChart from "./Test/OrgChart";
 import GeoFencingAcceptModal from "./components/Modal/RemotePunchingModal/GeoFencingAcceptModal";
@@ -150,6 +145,9 @@ import LeaveNotification from "./pages/leave-notification/page";
 import Performance from "./pages/peformance/Performance";
 import PunchNotification from "./pages/punch-notification/page";
 import ShiftNotification from "./pages/shift-notification/page";
+import EmpProfile from "./pages/EmpProfile/EmpProfile";
+
+
 
 const App = () => {
   return (
@@ -283,14 +281,6 @@ const App = () => {
               </RequireAuth>
             }
           />
-          {/* <Route
-            path="/organisation/:organisationId/employee-remote-punching"
-            element={
-              <RequireAuth permission={["Employee"]}>
-                <EmployeeRemotePunch />
-              </RequireAuth>
-            }
-          /> */}
           <Route
             path="/organisation/:organisationId/employee-remote-punching"
             element={
@@ -299,14 +289,6 @@ const App = () => {
               </RequireAuth>
             }
           />
-          {/* <Route
-            path="/organisation/:organisationId/geo-fencing"
-            element={
-              <RequireAuth permission={["Employee"]}>
-                <GeoFencingEmployeeSide />
-              </RequireAuth>
-            }
-          /> */}
           <Route
             path="/organisation/:organisationId/geo-fencing"
             element={
@@ -325,14 +307,6 @@ const App = () => {
             }
           />
           <Route path="/missedPunch" element={<MissedPunch />} />
-          {/* <Route path="/test3" element={<TestYash />} />
-          <Route path="/test5" element={<TestMap />} /> */}
-          {/* <Route path="/remote/emp" element={<RemoteEmployee />} /> */}
-          {/* this component need to update */}
-          {/* <Route
-            path="/remote/employee-confirmation"
-            element={<EmployeeConfirmation />}
-          /> */}
           <Route path="/custom/calendar" element={<CustomCalander />} />
           <Route
             path="/organisation/:organisationId/setup/letter-types"
@@ -372,7 +346,6 @@ const App = () => {
               </RequireAuth>
             }
           />
-          {/* <Route path="/remote/notification" element={<RemoteNotification />} /> */}
           <Route
             path="/doc-notification"
             element={
@@ -383,9 +356,6 @@ const App = () => {
               </RequireAuth>
             }
           />
-
-          {/* <Route path="/remote/notification" element={<RemoteNotification />} /> */}
-
           <Route
             path="/organisation/:organisationId/records"
             element={
@@ -401,7 +371,6 @@ const App = () => {
               </RequireAuth>
             }
           />
-
           <Route
             path="/organisation/:organisationId/org/docs/auth"
             element={
@@ -410,7 +379,6 @@ const App = () => {
               </RequireAuth>
             }
           />
-          {/* <Route path="/doc-notification" element={<DocNotification />} /> */}
           <Route path="/sign-in" element={<SignIn />} />
           <Route
             path="/billing"
@@ -420,9 +388,7 @@ const App = () => {
               </RequireAuth>
             }
           />
-          {/* <Route path="/choose-role" element={<RolePage />} /> */}
           <Route path="/sign-up" element={<Signup />} />
-          {/* <Route path="/notification" element={<ParentNotification />} /> */}
           <Route
             path="/leave-notification"
             element={
@@ -476,10 +442,7 @@ const App = () => {
               </RequireAuth>
             }
           />
-          {/* <Route
-          path="self/shift-notification"
-          element={<EmpShiftNotification />}
-        /> */}
+
           <Route
             path="/punch-notification/:employeeId"
             element={
@@ -590,9 +553,6 @@ const App = () => {
           <Route path="/verify/:token/" element={<AnimationComponent />} />
           <Route path="/reset-password/:token" element={<ResetPassword />} />
 
-          {/* Login Routes */}
-
-          {/* //TODO Setup Sidebar */}
           <Route
             path="/organisation/:organisationId/setup"
             element={
@@ -601,9 +561,6 @@ const App = () => {
               </RequireAuth>
             }
           />
-          {/* //TODO Setup Sidenar */}
-
-          {/* Dashboard Routes */}
           <Route
             path="/organisation/:id/dashboard/employee-dashboard"
             element={
@@ -677,6 +634,28 @@ const App = () => {
             element={
               <RequireAuth permission={["Super-Admin", "Delegate-Super-Admin"]}>
                 <AssignOrg />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/employee-profile"
+            element={
+              <RequireAuth
+                permission={[
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "Department-Head",
+                  "Delegate-Department-Head",
+                  "Department-Admin",
+                  "Delegate-Department-Admin",
+                  "Accountant",
+                  "Delegate-Accountant",
+                  "HR",
+                  "Manager",
+                  "Employee",
+                ]}
+              >
+                <EmpProfile/>
               </RequireAuth>
             }
           />
@@ -937,29 +916,7 @@ const App = () => {
             }
           />
 
-          {/* LiveSyncData */}
-          {/* <Route
-          path="/organisation/:organisationId/liveSyncData"
-          element={
-            <RequireAuth
-              permission={[
-                "Super-Admin",
-                "Delegate-Super-Admin",
-                "Department-Head",
-                "Delegate-Department-Head",
-                "Department-Admin",
-                "Delegate-Department-Admin",
-                "Accountant",
-                "Delegate-Accountant",
-                "HR",
-                "Manager",
-                "Employee",
-              ]}
-            >
-             <LiveSyncData/>
-            </RequireAuth>
-          }
-        /> */}
+
           <Route
             path="/organisation/:organisationId/employee-offboarding"
             element={
