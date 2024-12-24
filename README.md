@@ -153,6 +153,35 @@ Thoroughly test your application after migration. There might be subtle differen
 By following these steps, you should be able to successfully migrate your Create React App project to Vite. Remember to commit your changes to version control regularly during the migration process.
 
 ```
-
+<!--
 This documentation provides a comprehensive guide for migrating your project from Create React App to Vite. It covers all the necessary steps, including configuration changes, file updates, and potential pitfalls to watch out for during the migration process.
 ```
+
+const fs = require('fs');
+const path = require('path');
+
+function replaceInFile(filePath) {
+const content = fs.readFileSync(filePath, 'utf8');
+const updatedContent = content.replace(/process\.env\.REACT*APP*/g, 'import.meta.env.VITE\_');
+
+if (content !== updatedContent) {
+fs.writeFileSync(filePath, updatedContent, 'utf8');
+console.log(`Updated: ${filePath}`);
+}
+}
+
+function walkDir(dir) {
+const files = fs.readdirSync(dir);
+files.forEach(file => {
+const filePath = path.join(dir, file);
+const stat = fs.statSync(filePath);
+if (stat.isDirectory()) {
+walkDir(filePath);
+} else if (stat.isFile() && /\.(js|jsx|ts|tsx)$/.test(file)) {
+replaceInFile(filePath);
+}
+});
+}
+
+// Start the script from your src directory
+walkDir('./src'); -->
