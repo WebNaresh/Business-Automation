@@ -28,26 +28,21 @@ const Home = () => {
       <div className="md:p-8 py-4 px-0 bg-white h-screen">
         <div className="flex items-center h-[70vh] justify-center w-full">
           <div className="xl:!w-max w-full md:px-8 px-0 flex justify-center items-center xl:justify-end xl:items-end  flex-col">
-            <div className="w-full  lg:w-max md:px-0 px-2">
-              <h1 className="md:text-[2.30rem] w-max xs:text-[1.5rem] font-thin">
+            <div className="w-full lg:w-max md:px-0 px-2">
+              <h1 className="md:text-4xl xs:text-2xl font-light">
                 Welcome to{" "}
-                <span className="md:text-[2.30rem] xl:text-left text-center w-max xs:text-[1.5rem]  gradient font-semibold text-primary ">
-                  SMarTea
+                <span className="md:text-4xl xl:text-left text-center xs:text-2xl gradient font-semibold text-primary">
+                  InnovateTech
                 </span>{" "}
               </h1>
-              <h1 className="md:text-[2.40rem] w-max xs:text-[1.40rem] sm:text-[1.70rem] !leading-10 sm:text-2xl font-bold  mb-4">
-                Unleashing
-                <span className="text-primary font-bold">
-                  {" "}
-                  Organisational Excellence
-                </span>
-              </h1>
+              <h2 className="md:text-5xl xs:text-3xl sm:text-4xl leading-tight font-bold mb-4">
+                Transforming
+                <span className="text-primary font-bold"> Ideas into Reality</span>
+              </h2>
 
-              <p className="md:text-xl w-[80%] xs:text-md mb-8 text-gray-600 md:leading-10 xs:leading-5 ">
-                Empower your journey by making us your first choice. Elevate
-                your experience with the{" "}
-                <span className="!text-bold text-primary">SMarTea</span>, Lets
-                start
+              <p className="md:text-xl w-[80%] xs:text-base mb-8 text-gray-600 md:leading-relaxed xs:leading-normal">
+                Embark on a journey of innovation with us. Experience the power of{" "}
+                <span className="font-bold text-primary">InnovateTech</span>, where cutting-edge solutions meet your business needs.
               </p>
 
               {isLoading ? (
