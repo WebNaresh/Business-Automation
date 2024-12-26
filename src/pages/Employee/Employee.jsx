@@ -1,4 +1,3 @@
-import { Container } from "@mui/material";
 import React from "react";
 import { useParams } from "react-router-dom";
 import UserProfile from "../../hooks/UserData/useUser";
@@ -37,9 +36,7 @@ const Employee = () => {
   };
 
   return (
-    <Container maxWidth="xl" className="bg-gray-50 min-h-screen">
-      {renderEmployeeComponent()}
-    </Container>
+    <div className="bg-gray-50 min-h-screen">{renderEmployeeComponent()}</div>
   );
 };
 

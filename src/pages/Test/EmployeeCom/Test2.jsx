@@ -2,12 +2,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   AddBusiness,
   Badge,
-  ClosedCaption,
   ContactMail,
   Key,
   KeyOff,
   LocationCity,
-  MonetizationOn, 
+  MonetizationOn,
   PersonAddAlt,
   PersonPin,
   TodayOutlined,
@@ -36,13 +35,12 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
     onBoardManageroptions,
     RolesOptions,
     locationoption,
-    cosnotoptions,
     salaryTemplateoption,
     empTypesoption,
     Designationoption,
   } = useEmpOption(organisationId);
 
-  console.log("department opeion" , Departmentoptions);
+  console.log("department opeion", Departmentoptions);
 
   const {
     confirmPassword,
@@ -72,7 +70,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
   };
 
   const { data } = useSubscriptionGet(organisationId);
-  
+
   // employee schema using zod
   const EmployeeSchema = z
     .object({
@@ -163,8 +161,8 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
       message: "Password don't match",
       path: ["confirmPassword"],
     });
-  
-    // to define the useForm
+
+  // to define the useForm
   const { control, formState, handleSubmit } = useForm({
     defaultValues: {
       confirmPassword: confirmPassword,
@@ -200,9 +198,9 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
         onSubmit={handleSubmit(onsubmit)}
         className="w-full flex space-y-1  flex-1 flex-col"
       >
-        
+
         <div className="grid grid-cols-1  md:grid-cols-3 w-full gap-4">
-        <AuthInputFiled
+          <AuthInputFiled
             name="empId"
             icon={Work}
             control={control}
@@ -211,7 +209,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             label="Employee Code *"
             errors={errors}
             error={errors.empId}
-            className="text-sm" 
+            className="text-sm"
           />
           <AuthInputFiled
             name="companyemail"
@@ -222,7 +220,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             label="Company Email *"
             errors={errors}
             error={errors.companyemail}
-            className="text-sm" 
+            className="text-sm"
             wrapperMessage={"Note this email is used for login credentails"}
           />
           <AuthInputFiled
@@ -233,22 +231,10 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             placeholder="dd-mm-yyyy"
             label="Date of Joining *"
             errors={errors}
-            className="text-sm" 
+            className="text-sm"
             error={errors.joining_date}
           />
         </div>
-        {/* <div className="md:flex block w-full ">
-          <AuthInputFiled
-            name="empId"
-            icon={Work}
-            control={control}
-            type="text"
-            placeholder="Employee Code"
-            label="Employee Code *"
-            errors={errors}
-            error={errors.empId}
-          />
-        </div> */}
         <div className="grid grid-cols-1  md:grid-cols-3 w-full gap-4">
           <AuthInputFiled
             name="deptname"
@@ -260,7 +246,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             label="Select Department  *"
             errors={errors}
             error={errors.deptname}
-            className="text-sm" 
+            className="text-sm"
             options={Departmentoptions}
           />
           <AuthInputFiled
@@ -271,12 +257,12 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             isClearable={true}
             type="select"
             placeholder="Manager"
-            label="Select Manager "
+            label="Select Reporting Person "
             errors={errors}
             error={errors.mgrempid}
             options={onBoardManageroptions}
-              className="text-sm" 
-              
+            className="text-sm"
+
           />
           <AuthInputFiled
             name="profile"
@@ -285,37 +271,14 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             type="mutltiselect"
             value={profile}
             placeholder="Role"
-            label="Select Role "
+            label="Select Role of Employee"
             errors={errors}
-            className="text-sm" 
+            className="text-sm"
             error={errors.profile}
             options={RolesOptions}
           />
         </div>
-{/* 
-        <div className="grid grid-cols-1  md:grid-cols-2 w-full gap-3">
-          <AuthInputFiled
-            name="companyemail"
-            icon={ContactMail}
-            control={control}
-            type="text"
-            placeholder="Email"
-            label="Company Email *"
-            errors={errors}
-            error={errors.companyemail}
-            wrapperMessage={"Note this email is used for login credentails"}
-          />
-          <AuthInputFiled
-            name="joining_date"
-            icon={TodayOutlined}
-            control={control}
-            type="date"
-            placeholder="dd-mm-yyyy"
-            label="Date of Joining *"
-            errors={errors}
-            error={errors.joining_date}
-          />
-        </div> */}
+
         <div className="grid grid-cols-1  md:grid-cols-3 w-full gap-4">
           <AuthInputFiled
             name="password"
@@ -328,7 +291,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             label="Password *"
             errors={errors}
             error={errors.password}
-            className="text-sm" 
+            className="text-sm"
           />
           <AuthInputFiled
             name="confirmPassword"
@@ -341,11 +304,9 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             label="Confirm Password *"
             errors={errors}
             error={errors.confirmPassword}
-            className="text-sm" 
+            className="text-sm"
           />
-        </div>
-        <div className="grid grid-cols-1  md:grid-cols-3 w-full gap-4">
-          <AuthInputFiled
+           <AuthInputFiled
             name="designation"
             icon={Work}
             control={control}
@@ -356,38 +317,11 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             options={Designationoption}
             errors={errors}
             error={errors.designation}
-            className="text-sm" 
+            className="text-sm"
           />
-          {/* <AuthInputFiled
-            name="shift_allocation"
-            value={shift_allocation}
-            icon={Today}
-            control={control}
-            type="select"
-            options={Shiftoptions}
-            placeholder="Shift"
-            label="Select Shift"
-            errors={errors}
-            error={errors.shift_allocation}
-            className="text-sm" 
-          /> */}
-        {/* </div>
-        <div className="grid grid-cols-1  md:grid-cols-2 w-full gap-3"> */}
-          <AuthInputFiled
-            name="dept_cost_center_no"
-            value={dept_cost_center_no}
-            icon={ClosedCaption}
-            control={control}
-            options={cosnotoptions}
-            type="select"
-            placeholder="Department Cost No"
-            label="Select Department Cost No*"
-            errors={errors}
-            error={errors.dept_cost_center_no}
-            className="text-sm" 
-          />
-            </div>
-            <div className="grid grid-cols-1  md:grid-cols-3 w-full gap-4">
+        </div>
+       
+        <div className="grid grid-cols-1  md:grid-cols-3 w-full gap-4">
           <AuthInputFiled
             name="worklocation"
             value={worklocation}
@@ -399,9 +333,9 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             options={locationoption}
             errors={errors}
             error={errors.worklocation}
-            className="text-sm" 
+            className="text-sm"
           />
-        {/* </div>
+          {/* </div>
         <div className="grid grid-cols-1  md:grid-cols-2 w-full gap-3"> */}
           <AuthInputFiled
             value={employmentType}
@@ -414,7 +348,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             options={empTypesoption}
             errors={errors}
             error={errors.employmentType}
-            className="text-sm" 
+            className="text-sm"
           />
           <AuthInputFiled
             name="salarystructure"
@@ -427,7 +361,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             options={salaryTemplateoption}
             errors={errors}
             error={errors.salarystructure}
-            className="text-sm" 
+            className="text-sm"
           />
         </div>
 

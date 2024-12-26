@@ -16,7 +16,6 @@ import "aos/dist/aos.css";
 import axios from "axios";
 import moment from "moment";
 import { useContext, useEffect, useState } from "react";
-// import randomColor from "randomcolor";
 import { FaArrowCircleRight } from "react-icons/fa";
 import { useQueryClient } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
@@ -75,12 +74,7 @@ const Organisation = ({ item }) => {
       handleCloseConfirmation();
       setAnchorEl(null);
     }
-  };
-
-  const handleEdit = async (id) => {
-    setEditConfirmation(true);
-  };
-
+  }; 
   const truncateOrgName = (orgName) => {
     const maxLength = 29;
     if (orgName.length > maxLength) {
@@ -88,6 +82,12 @@ const Organisation = ({ item }) => {
     }
     return orgName;
   };
+
+  const handleEdit = async (id) => {
+    setEditConfirmation(true);
+  };
+
+  
 
   return (
     <>

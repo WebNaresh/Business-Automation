@@ -39,7 +39,6 @@ function App() {
     },
   });
 
-  //TODO: remove the issue
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -50,7 +49,6 @@ function App() {
                 <TopLoadingBar />
                 <AppLoader />
                 <AppAlert />
-
                 <div
                   className={`h-full ${
                     !isNavEnabled.some((value) => {
@@ -58,10 +56,7 @@ function App() {
                     }) && "mt-[55px]"
                   } `}
                 >
-                  {/* <SwipeableTemporaryDrawer /> */}
-                  {/* <BackComponent /> */}
                   <Toaster />
-
                   <div style={{ height: "100%", width: "100%" }}>
                     <Route />
                   </div>

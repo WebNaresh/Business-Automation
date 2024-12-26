@@ -1,6 +1,6 @@
 import { Container, TextField, Typography } from "@mui/material";
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UseContext } from "../../State/UseState/UseContext";
 const EmployeeListToEmployee = ({ organisationId }) => {
   // to define the state, hook , and import other function
@@ -13,12 +13,13 @@ const EmployeeListToEmployee = ({ organisationId }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [numbers, setNumbers] = useState([]);
-  
 
   // to fetch the employee
   const fetchAvailableEmployee = async (page) => {
     try {
-      const apiUrl = `${import.meta.env.VITE_API}/route/employee/get-paginated-emloyee/${organisationId}?page=${page}`;
+      const apiUrl = `${
+        import.meta.env.VITE_API
+      }/route/employee/get-paginated-emloyee/${organisationId}?page=${page}`;
       const response = await axios.get(apiUrl, {
         headers: {
           Authorization: authToken,
@@ -42,7 +43,6 @@ const EmployeeListToEmployee = ({ organisationId }) => {
     fetchAvailableEmployee(currentPage);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
-  
 
   // to pagination
   const prePage = () => {
@@ -66,7 +66,7 @@ const EmployeeListToEmployee = ({ organisationId }) => {
       <Container maxWidth="xl" className="bg-gray-50 min-h-screen">
         <article className=" bg-white w-full h-max shadow-md rounded-sm border items-center">
           <Typography variant="h4" className=" text-center pl-10  mb-6 mt-2">
-            Employee List
+            Employee Data
           </Typography>
           <p className="text-xs text-gray-600 pl-10 text-center">
             Edit employee data here by using edit button.

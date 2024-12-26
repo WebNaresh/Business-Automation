@@ -26,7 +26,6 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import CallMissedIcon from "@mui/icons-material/CallMissed";
 import ChatIcon from "@mui/icons-material/Chat";
-import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
 import PunchClockIcon from "@mui/icons-material/PunchClock";
 import ReceiptIcon from "@mui/icons-material/Receipt";
@@ -216,25 +215,6 @@ const TestNavItems = ({ toggleDrawer }) => {
               ),
               text: "Add Department",
             },
-
-            {
-              key: "deptDeletion",
-              isVisible: [
-                "Super-Admin",
-                "Delegate-Super-Admin",
-                "Delegate-Super-Admin",
-                "HR",
-                "Department-Head",
-                "Delegate-Department-Head",
-                "Department-Admin",
-                "Delegate-Department-Admin",
-              ].includes(role),
-              link: `/organisation/${orgId}/dept-deletion`,
-              icon: (
-                <DeleteForeverOutlinedIcon className=" !text-[1.2em] text-[#67748E]" />
-              ),
-              text: "Delete Department",
-            },
             {
               key: "departmentList",
               isVisible: [
@@ -317,7 +297,7 @@ const TestNavItems = ({ toggleDrawer }) => {
               ].includes(role),
               link: `/organisation/${orgId}/employee-list`,
               icon: <Groups className=" !text-[1.2em] text-[#67748E]" />,
-              text: "Employee List",
+              text: "Employee Data",
             },
           ],
         },

@@ -1,4 +1,3 @@
-
 import {
   AccessTime,
   AdminPanelSettings,
@@ -6,9 +5,9 @@ import {
   Groups,
 } from "@mui/icons-material";
 import axios from "axios";
-import { default as React } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom/dist";
+import HeaderComponentPro from "../../components/header/HeaderComponentPro";
 import useDashGlobal from "../../hooks/Dashboard/useDashGlobal";
 import useDashboardFilter from "../../hooks/Dashboard/useDashboardFilter";
 import useAuthToken from "../../hooks/Token/useAuth";
@@ -16,17 +15,16 @@ import UserProfile from "../../hooks/UserData/useUser";
 import LineGraph from "./Components/Bar/LineGraph";
 import AttendenceBar from "./Components/Bar/SuperAdmin/AttendenceBar";
 import SuperAdminCard from "./Components/Card/superadmin/SuperAdminCard";
-import HeaderComponentPro from "../../components/header/HeaderComponentPro";
 
 const DashboardDH = () => {
   const { getCurrentUser } = UserProfile();
-  const user = getCurrentUser(); 
+  const user = getCurrentUser();
   const authToken = useAuthToken();
 
   const { setSelectedSalaryYear, selectedSalaryYear } = useDashGlobal();
   const { organisationId } = useParams("");
 
-  const DHcardSize = "w-66 h-30"; 
+  const DHcardSize = "w-66 h-30";
   console.log(user.deptname);
 
   // custom hooks
@@ -39,7 +37,9 @@ const DashboardDH = () => {
     queryFn: async () => {
       try {
         const { data } = await axios.get(
-          `${import.meta.env.VITE_API}/route/leave/getDepartmentAttendece/${user.deptname}`,
+          `${import.meta.env.VITE_API}/route/leave/getDepartmentAttendece/${
+            user.deptname
+          }`,
           {
             headers: {
               Authorization: authToken,
@@ -59,7 +59,9 @@ const DashboardDH = () => {
     queryFn: async () => {
       try {
         const { data } = await axios.get(
-          `${import.meta.env.VITE_API}/route/employeeSalary/departmentSalaryOverview/${user.deptname}`,
+          `${
+            import.meta.env.VITE_API
+          }/route/employeeSalary/departmentSalaryOverview/${user.deptname}`,
           {
             headers: {
               Authorization: authToken,
@@ -79,6 +81,7 @@ const DashboardDH = () => {
     queryFn: async () => {
       const { data } = await axios.get(
         `${import.meta.env.VITE_API}/route/departmentHead/getAllEmployees`,
+        `${import.meta.env.VITE_API}/route/departmentHead/getAllEmployees`,
         {
           headers: {
             Authorization: authToken,
@@ -96,7 +99,9 @@ const DashboardDH = () => {
     queryKey: ["deptEmployeeLeaveCount"],
     queryFn: async () => {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API}/route/leave/getDeptAbsent/${organisationId}`,
+        `${
+          import.meta.env.VITE_API
+        }/route/leave/getDeptAbsent/${organisationId}`,
         {
           headers: {
             Authorization: authToken,
@@ -112,7 +117,9 @@ const DashboardDH = () => {
       queryKey: ["deptEmployeeOnShift"],
       queryFn: async () => {
         const { data } = await axios.get(
-          `${import.meta.env.VITE_API}/route/leave/getDeptShift/${organisationId}`,
+          `${
+            import.meta.env.VITE_API
+          }/route/leave/getDeptShift/${organisationId}`,
           {
             headers: {
               Authorization: authToken,
@@ -127,6 +134,7 @@ const DashboardDH = () => {
     queryKey: ["deptManagerEmployeeCount"],
     queryFn: async () => {
       const { data } = await axios.get(
+        `${import.meta.env.VITE_API}/route/departmentHead/getAllManagers`,
         `${import.meta.env.VITE_API}/route/departmentHead/getAllManagers`,
         {
           headers: {
@@ -147,14 +155,12 @@ const DashboardDH = () => {
     //   </header>
 
     <section className="p-2 mt-10 shadow-lg ">
-    <HeaderComponentPro  
-         heading={"Department Head Dashboard"}
-      oneLineInfo={
-       "Manage and review department-specific metrics and reports for better insights"
-      }
-    />
-
-
+      <HeaderComponentPro
+        heading={"Department Head Dashboard"}
+        oneLineInfo={
+          "Manage and review department-specific metrics and reports for better insights"
+        }
+      />
 
       <div className="md:px-8  px-2 w-full">
         <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 mt-6 w-full gap-2 md:gap-5 ">
@@ -164,18 +170,18 @@ const DashboardDH = () => {
             data={employeeCount ?? 0}
             isLoading={employeeCountLoading}
             title={"Subordinates"}
-               DHcardSize={DHcardSize}
+            DHcardSize={DHcardSize}
           />
           <SuperAdminCard
             color={"!bg-green-500"}
             icon={AdminPanelSettings}
             data={managerCount?.deptEmployees?.length ?? 0}
             isLoading={managerCountLoading}
-            title={"People's Manager"}
+            title={"Manager Statistics"}
             DHcardSize={DHcardSize}
           />
           <SuperAdminCard
-            title={"Today's Leave"}
+            title={"Absent Employee"}
             icon={ErrorOutline}
             color={"!bg-red-500"}
             data={employeeDeptLeaveCount ?? 0}

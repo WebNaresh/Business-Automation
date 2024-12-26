@@ -1,7 +1,7 @@
 import { Avatar } from "@mui/material";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import AdminCardSke from "../../Skeletons/AdminCardSke";
 
 const SuperAdminCard = ({
