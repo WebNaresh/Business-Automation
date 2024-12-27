@@ -48,10 +48,11 @@ const Employee = new mongoose.Schema({
     type: String,
   },
 
-  // user_id: {
-  //   type: [String],
-  // default: []
-  // },
+  status: {
+    type: String,
+
+  },
+
 
   user_id: {
     type: String,
@@ -78,9 +79,7 @@ const Employee = new mongoose.Schema({
     type: String,
     // unique: true,
   },
-  dept_cost_center_no: {
-    type: String,
-  },
+
   shift_allocation: {
     type: String,
     default: null,

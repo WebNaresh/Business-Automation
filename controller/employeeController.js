@@ -34,7 +34,6 @@ const {
 const { oauth2 } = require("googleapis/build/src/apis/oauth2");
 const { default: axios } = require("axios");
 const { oauth2client } = require("../utils/googleConfig");
-const { Console } = require("winston/lib/winston/transports");
 require("dotenv").config(); // Ensure environment variables are loaded
 // mobile verify
 exports.sendOtpRequest = catchAssyncError(async (req, res, next) => {
@@ -1050,7 +1049,6 @@ exports.addEmployee = catchAssyncError(async (req, res, next) => {
       address,
       adhar_card_number,
       pan_card_number,
-      dept_cost_center_no,
       shift_allocation,
       bank_account_no,
       phone_number,
@@ -1071,8 +1069,12 @@ exports.addEmployee = catchAssyncError(async (req, res, next) => {
       organizationId,
       creatorId,
       mgrempid,
+      status,
       ...dynamicFields
     } = req.body;
+
+    console.log("req.body", req.body);
+
 
     // check if employee count limit is over or not
     const empLimit = await OrganisationModel.findById(organizationId);
@@ -1118,7 +1120,7 @@ exports.addEmployee = catchAssyncError(async (req, res, next) => {
       address,
       adhar_card_number,
       pan_card_number,
-      dept_cost_center_no,
+      status,
       shift_allocation: shift_allocation ? shift_allocation : null,
       bank_account_no,
       phone_number,
@@ -1251,7 +1253,7 @@ exports.addEmployeeExcel = catchAssyncError(async (req, res, next) => {
         address,
         adhar_card_number,
         pan_card_number,
-        dept_cost_center_no,
+
         shift_allocation,
         bank_account_no,
         phone_number,
@@ -2236,7 +2238,7 @@ exports.deleteMultipleEmployees = catchAssyncError(async (req, res, next) => {
       success: true,
       deletedCount: deleteEmployees.deletedCount,
     });
-  } catch (err) {}
+  } catch (err) { }
 });
 
 // fetch employee
@@ -2454,7 +2456,7 @@ exports.employeeCountManager = catchAssyncError(async (req, res, next) => {
       managerId: userId,
     }).populate("reporteeIds");
     return res.json({ data });
-  } catch (error) {}
+  } catch (error) { }
 });
 
 // employee counta api
