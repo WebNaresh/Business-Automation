@@ -2,7 +2,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   AddBusiness,
   Badge,
-  ClosedCaption,
   ContactMail,
   LocationCity,
   MonetizationOn,
@@ -10,6 +9,7 @@ import {
   PersonPin,
   TodayOutlined,
   Work,
+  Today,
 } from "@mui/icons-material";
 import { CircularProgress } from "@mui/material";
 import axios from "axios";
@@ -40,7 +40,6 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
     mgrempid,
     joining_date,
     salarystructure,
-    dept_cost_center_no,
     companyemail,
     setStep2Data,
     shift_allocation,
@@ -55,7 +54,6 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
     RolesOptions,
     Shiftoptions,
     locationoption,
-    cosnotoptions,
     salaryTemplateoption,
     empTypesoption,
     Designationoption,
@@ -117,10 +115,6 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
         label: z.string(),
         value: z.string(),
       }),
-      dept_cost_center_no: z.object({
-        label: z.string(),
-        value: z.string(),
-      }),
       status: z
         .string(),
       companyemail: z.string().email(),
@@ -148,7 +142,6 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
       mgrempid: mgrempid,
       joining_date: joining_date,
       salarystructure: salarystructure,
-      dept_cost_center_no: dept_cost_center_no,
       companyemail: companyemail,
       shift_allocation: shift_allocation,
       status: status,
@@ -178,7 +171,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
         if (data) {
           console.log("dataemp", data.employee);
           setValue("empId", data.employee.empId || "");
-          setValue("status", data.employee.status || "");
+          setValue("status", data.employee.employeeStatus || "");
           setValue("companyemail", data.employee.companyemail || "");
           const joiningDate = new Date(data.employee.joining_date);
           if (!isNaN(joiningDate.getTime())) {
@@ -242,19 +235,6 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
               value: salaryTemplate._id,
             });
           }
-
-          setValue("dept_cost_center_no", {
-            label:
-              (
-                data.employee?.dept_cost_center_no &&
-                cosnotoptions &&
-                cosnotoptions.find(
-                  (val) => val.value === data.employee?.dept_cost_center_no
-                )
-              )?.label || "",
-            value: data.employee.dept_cost_center_no || "",
-          });
-
           setValue("shift_allocation", {
             label:
               (
@@ -418,7 +398,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
                 errors={errors}
                 error={errors.designation}
               />
-              {/* <AuthInputFiled
+              <AuthInputFiled
                 name="shift_allocation"
                 value={shift_allocation}
                 icon={Today}
@@ -429,21 +409,10 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
                 label="Select Shift "
                 errors={errors}
                 error={errors.shift_allocation}
-              /> */}
+              />
             </div>
             <div className="grid grid-cols-1  md:grid-cols-2 w-full gap-3">
-              <AuthInputFiled
-                name="dept_cost_center_no"
-                value={dept_cost_center_no}
-                icon={ClosedCaption}
-                control={control}
-                options={cosnotoptions}
-                type="select"
-                placeholder="Department Cost No"
-                label="Select Department Cost No*"
-                errors={errors}
-                error={errors.dept_cost_center_no}
-              />
+
               <AuthInputFiled
                 name="worklocation"
                 value={worklocation}

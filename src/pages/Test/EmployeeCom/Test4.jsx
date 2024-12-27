@@ -83,7 +83,7 @@ const Test4 = ({ prevStep }) => {
         pwd,
         uanNo,
         esicNo,
-        status ,
+        employeeStatus: status,
         //TODO This is additonal field data
         ...filteredData,
         designation: designation.value,
@@ -210,10 +210,10 @@ const Test4 = ({ prevStep }) => {
                 <p className="">{status}</p>
               </div>
               <div className="p-2 w-[30%] rounded-sm ">
-               
+
               </div>
               <div className="p-2 w-[30%] rounded-sm ">
-               
+
               </div>
             </div>
 

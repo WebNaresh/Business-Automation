@@ -41,7 +41,6 @@ const Test4 = ({ prevStep }) => {
     empId,
     joining_date,
     salarystructure,
-    dept_cost_center_no,
     companyemail,
     shift_allocation,
     data,
@@ -50,6 +49,7 @@ const Test4 = ({ prevStep }) => {
     pwd,
     uanNo,
     esicNo,
+    status
   } = useEmployeeState();
 
   // to define the handleSumbit function
@@ -81,6 +81,7 @@ const Test4 = ({ prevStep }) => {
         pwd,
         uanNo,
         esicNo,
+        employeeStatus: status,
         //TODO This is additonal field data
         ...filteredData,
         designation: designation.value,
@@ -88,11 +89,13 @@ const Test4 = ({ prevStep }) => {
         deptname: deptname.value,
         employmentType: employmentType.value,
         salarystructure: salarystructure.value,
-        dept_cost_center_no: dept_cost_center_no.value,
         shift_allocation: shift_allocation.value,
         organizationId: organisationId,
         creatorId,
       };
+
+      console.log("user data", userData);
+
       const response = axios.put(
         `${import.meta.env.VITE_API}/route/employee/update/${organisationId}/${employeeId}`,
         userData,
@@ -185,6 +188,7 @@ const Test4 = ({ prevStep }) => {
               </div>
             </div>
 
+
             <div className="grid grid-cols-1 sm:!grid-cols-2 md:!grid-cols-3 justify-between">
               <div className="p-2 w-[30%] rounded-sm ">
                 <h1 className="text-gray-500 text-sm">Bank Account</h1>
@@ -245,9 +249,9 @@ const Test4 = ({ prevStep }) => {
               </div>
               <div className="p-2 rounded-sm ">
                 <h1 className="text-gray-500 text-sm w-full">
-                  Department Cost No
+                  Employee  status
                 </h1>
-                <p className="">{dept_cost_center_no?.label}</p>
+                <p className="">{employeeStatus}</p>
               </div>
               <div className="p-2 rounded-sm ">
                 <h1 className="text-gray-500 text-sm w-full">Location</h1>

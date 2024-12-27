@@ -1,8 +1,7 @@
 import AddIcon from "@mui/icons-material/Add";
-import BusinessIcon from "@mui/icons-material/Business";
 import EditIcon from "@mui/icons-material/Edit";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import SearchIcon from "@mui/icons-material/Search";
+import PrintIcon from "@mui/icons-material/Print";
 import {
   Button,
   IconButton,
@@ -24,14 +23,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { UseContext } from "../../State/UseState/UseContext";
 import DeleteIcon from "@mui/icons-material/Delete";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import * as XLSX from "xlsx";
 
 const EmployeeListToRole = () => {
   const navigate = useNavigate();
   const { cookies } = useContext(UseContext);
   const authToken = cookies["aegis"];
   const [nameSearch, setNameSearch] = useState("");
-  const [locationSearch, setLocationSearch] = useState("");
-  const [deptSearch, setDeptSearch] = useState("");
   const [availableEmployee, setAvailableEmployee] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -40,7 +38,7 @@ const EmployeeListToRole = () => {
   const fetchAvailableEmployee = async (page) => {
     try {
       const apiUrl = `${import.meta.env.VITE_API
-        }/route/employee/get-paginated-emloyee/${organisationId}?page=${page}&nameSearch=${nameSearch}&deptSearch=${deptSearch}&locationSearch=${locationSearch}`;
+        }/route/employee/get-paginated-emloyee/${organisationId}?page=${page}&nameSearch=${nameSearch}`;
       const response = await axios.get(apiUrl, {
         headers: {
           Authorization: authToken,
@@ -56,7 +54,7 @@ const EmployeeListToRole = () => {
 
   useEffect(() => {
     fetchAvailableEmployee(currentPage);
-  }, [currentPage, nameSearch, deptSearch, locationSearch]);
+  }, [currentPage, nameSearch,]);
 
   const prePage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
@@ -128,7 +126,38 @@ const EmployeeListToRole = () => {
   };
 
 
+  // 📊 Handle Export to Excel
+  const handleExportToExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet(
+      availableEmployee.map((item, index) => ({
+        "Sr. No": index + 1,
+        "First Name": item.first_name || "-",
+        "Last Name": item.last_name || "-",
+        "Email": item.email || "-",
+        "Employee Id": item.empId || "-",
+      }))
+    );
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Employees");
+    XLSX.writeFile(workbook, "employee_list.xlsx");
+  };
 
+  // 🖨️ Handle Export to PDF
+  const handleExportToPDF = () => {
+    const doc = new jsPDF();
+    doc.text("Employee List", 14, 10);
+    autoTable(doc, {
+      head: [["Sr. No", "First Name", "Last Name", "Email", "Employee Id"]],
+      body: availableEmployee.map((item, index) => [
+        index + 1,
+        item.first_name || "-",
+        item.last_name || "-",
+        item.email || "-",
+        item.empId || "-",
+      ]),
+    });
+    doc.save("employee_list.pdf");
+  };
 
   return (
     <div className="py-6 bg-gray-50 min-h-screen">
@@ -153,7 +182,7 @@ const EmployeeListToRole = () => {
         </div>
 
         <div className="p-6 border-b border-gray-200">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-4 items-center">
             <Tooltip
               title="No employees found"
               placement="top"
@@ -170,9 +199,35 @@ const EmployeeListToRole = () => {
                 }}
               />
             </Tooltip>
+            <Button
+              variant="contained"
+              size="small"
+              startIcon={<PrintIcon />}
+              sx={{
+                backgroundColor: "#d32f2f",
+                "&:hover": { backgroundColor: "#b71c1c" },
+                textTransform: "none",
 
+              }}
+            >
+              Export PDF
+            </Button>
+            <Button
+              variant="contained"
+              size="small"
+              startIcon={<PrintIcon />}
+              sx={{
+                backgroundColor: "#388e3c",
+                "&:hover": { backgroundColor: "#2e7d32" },
+                textTransform: "none",
+              }}
+              onClick={handleExportToExcel}
+            >
+              Export Excel
+            </Button>
           </div>
         </div>
+
         <TableContainer component={Paper} sx={{ boxShadow: "none" }}>
           <Table sx={{ minWidth: 650 }} aria-label="employee table">
             <TableHead>
@@ -197,30 +252,14 @@ const EmployeeListToRole = () => {
                         (item.first_name &&
                           item.first_name
                             .toLowerCase()
-                            .includes(nameSearch))) &&
-                      (!deptSearch ||
-                        (item.deptname &&
-                          item.deptname.some(
-                            (dept) =>
-                              dept.departmentName &&
-                              dept.departmentName
-                                .toLowerCase()
-                                .includes(deptSearch.toLowerCase())
-                          ))) &&
-                      (!locationSearch.toLowerCase() ||
-                        item.worklocation.some(
-                          (location) =>
-                            location &&
-                            location.city &&
-                            location.city.toLowerCase().includes(locationSearch)
-                        ))
+                            .includes(nameSearch)))
                     );
                   })
                   .map((item, id) => (
                     <TableRow
                       key={id}
                       sx={{
-                        backgroundColor: id % 2 === 0 ? "#ffffff" : "#f9fafb", // Alternating row colors
+                        backgroundColor: id % 2 === 0 ? "#ffffff" : "#f9fafb",
                         "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.04)" },
                       }}
                     >
