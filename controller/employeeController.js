@@ -2609,3 +2609,46 @@ exports.getOrgTree = catchAssyncError(async (req, res, next) => {
 
 //   return res.json(orgTree);
 // });
+
+
+exports.getEmployeeInDepartment = catchAssyncError(async (req, res, next) => {
+  try {
+    const { organizationId, deptname } = req.params;
+
+    const query = {};
+
+    if (organizationId) {
+      query.organizationId = organizationId;
+    }
+
+    if (deptname) {
+      query.deptname = deptname;
+    }
+
+    // Fetch employees based on query
+    const employees = await EmployeeModel.find(query)
+      .populate('deptname', 'name')
+      .populate('organizationId', 'name')
+      .select('first_name last_name email deptname organizationId');
+
+    // Check if employees exist
+    if (!employees || employees.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No employees found in the specified department.",
+      });
+    }
+
+    // Respond with employee data
+    return res.status(200).json({
+      success: true,
+      data: employees,
+    });
+  } catch (error) {
+    console.error("Error fetching employees by department:", error);
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+});

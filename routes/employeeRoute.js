@@ -45,7 +45,8 @@ const {
   confirmLogout,
   loginapp,
   getTotalSalary,
-  deleteProfilePhoto
+  deleteProfilePhoto , 
+  getEmployeeInDepartment
   
 } = require("../controller/employeeController");
 const auth = require("../middleware/Auth");
@@ -130,5 +131,8 @@ router
 router
   .route("/employee/get/:organizationId")
   .get(auth, getEmployeeDateBasedOrgId);
+  router
+  .route("/get-employee/from-department/:organizationId/:deptname")
+  .get(auth, getEmployeeInDepartment);
 
 module.exports = router;
