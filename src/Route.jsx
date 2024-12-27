@@ -48,6 +48,8 @@ import EmployeeNotification from "./pages/Employee-Notification/page";
 import DeleteEmployee from "./pages/Employee/DeleteEmployee";
 import EditEmployee from "./pages/Employee/EditEmployee";
 import Employee from "./pages/Employee/Employee";
+import EmployeeView from "./pages/Employee/EmployeeView";
+import ProfilePage from "./pages/Employee/UpdateEmployeeView";
 import EmployeeSurvey from "./pages/EmployeeSurvey/EmployeeSurvey";
 import CreateNewSurvey from "./pages/EmployeeSurvey/components/CreateNewSurvey";
 import EmployeeSurveyForm from "./pages/EmployeeSurvey/components/EmployeeSurveyForm";
@@ -146,9 +148,6 @@ import ShiftNotification from "./pages/shift-notification/page";
 import SingleDepartment from "./pages/single-department/single-department";
 import SingleOrganisation from "./pages/single-orgnisation/single-organisation";
 import NotFound from "./utils/Forbidden/NotFound";
-import EmployeeView from "./pages/Employee/EmployeeView"
-
-
 
 const App = () => {
   return (
@@ -753,13 +752,23 @@ const App = () => {
               </RequireAuth>
             }
           />
-           <Route
+          <Route
             path="/organisation/:organisationId/employee-view/:empId"
             element={
               <RequireAuth
                 permission={["Super-Admin", "Delegate-Super-Admin", "HR"]}
               >
                 <EmployeeView />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/organisation/:organisationId/employee-view-new/:empId"
+            element={
+              <RequireAuth
+                permission={["Super-Admin", "Delegate-Super-Admin", "HR"]}
+              >
+                <ProfilePage />
               </RequireAuth>
             }
           />
