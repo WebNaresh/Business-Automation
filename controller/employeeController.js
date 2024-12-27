@@ -1069,7 +1069,7 @@ exports.addEmployee = catchAssyncError(async (req, res, next) => {
       organizationId,
       creatorId,
       mgrempid,
-      status,
+      employeeStatus,
       ...dynamicFields
     } = req.body;
 
@@ -1120,7 +1120,7 @@ exports.addEmployee = catchAssyncError(async (req, res, next) => {
       address,
       adhar_card_number,
       pan_card_number,
-      status,
+      employeeStatus: employeeStatus,
       shift_allocation: shift_allocation ? shift_allocation : null,
       bank_account_no,
       phone_number,
@@ -1163,9 +1163,6 @@ exports.addEmployee = catchAssyncError(async (req, res, next) => {
 
     await newEmployee.save();
     console.log("new employee", newEmployee);
-    // return res.status(400).json({
-    //   message: "Invalid profile provided.",
-    // });
 
     const userWithoutPassword = {
       _id: newEmployee._id,
@@ -1408,368 +1405,6 @@ exports.addEmployeeExcel = catchAssyncError(async (req, res, next) => {
   }
 });
 
-// send email using bcc
-//  exports.addEmployeeExcel = catchAssyncError(async (req, res, next) => {
-//    try {
-//     const employeesData = req.body; // Expecting an array of employee objects
-//     console.log("employeesData", employeesData);
-
-//     const results = [];
-//     const errorMessages = [];
-//     const emailList = []; // Array to hold all employee emails
-//     const verificationLinks = []; // Array to hold all verification links
-
-//     // Check organization limit
-//     const { organizationId } = employeesData[0];
-//     console.log("organizationId====", organizationId);
-
-//     const empLimit = await OrganisationModel.findById(organizationId);
-//     const empCountInOrg = await EmployeeModel.countDocuments({
-//       organizationId,
-//     });
-
-//     if (empCountInOrg >= empLimit.memberCount) {
-//       return res.status(400).json({
-//         message: "You have exceeded employee onboarding limit.",
-//         status: false,
-//       });
-//     }
-
-//     const employeePromises = employeesData.map(async (employeeData) => {
-//       const {
-//         first_name,
-//         last_name,
-//         email,
-//         password,
-//         companyemail,
-//         address,
-//         adhar_card_number,
-//         pan_card_number,
-//         dept_cost_center_no,
-//         shift_allocation,
-//         bank_account_no,
-//         phone_number,
-//         deptname,
-//         citizenship,
-//         employmentType,
-//         date_of_birth,
-//         joining_date,
-//         designation,
-//         profile,
-//         empId,
-//         salarystructure,
-//         worklocation,
-//         gender,
-//         pwd,
-//         uanNo,
-//         esicNo,
-//         mgrempid,
-//         ...dynamicFields
-//       } = employeeData;
-
-//       // Check for existing employee by email
-//       let existingEmployee = await EmployeeModel.findOne({ email });
-//       if (existingEmployee) {
-//         errorMessages.push(`Email ${email} already registered.`);
-//         return;
-//       }
-
-//       // Check for existing employee code
-//       const isEmpCodeExist = await EmployeeModel.findOne({
-//         empId,
-//         organizationId,
-//       });
-//       if (isEmpCodeExist) {
-//         errorMessages.push(
-//           `Employee code ${empId} already exists for this organization.`
-//         );
-//         return;
-//       }
-
-//       const filteredFields = Object.fromEntries(
-//         Object.entries(dynamicFields).filter(([_, value]) => value !== "")
-//       );
-
-//       let newEmployee = new EmployeeModel({
-//         first_name,
-//         last_name,
-//         email,
-//         password, // Make sure to hash this before saving
-//         companyemail,
-//         address,
-//         adhar_card_number,
-//         pan_card_number,
-//         dept_cost_center_no,
-//         shift_allocation: shift_allocation ? shift_allocation : null,
-//         bank_account_no,
-//         phone_number,
-//         deptname: deptname || null,
-//         citizenship,
-//         employmentType,
-//         date_of_birth,
-//         joining_date,
-//         designation: designation || null,
-//         worklocation,
-//         gender,
-//         profile: profile ? [...profile, "Employee"] : ["Employee"],
-//         empId,
-//         salarystructure,
-//         organizationId,
-//         creatorId: req.user.id, // Assuming creatorId is from the authenticated user
-//         additionalInfo: filteredFields,
-//       });
-
-//       // Handle manager logic
-//       if (newEmployee.profile.includes("Manager")) {
-//         await EmployeeManagementModel.create({
-//           managerId: newEmployee._id,
-//           organizationId,
-//         });
-//       }
-
-//       if (mgrempid) {
-//         const assignedData = await EmployeeManagementModel.findOneAndUpdate(
-//           { managerId: mgrempid },
-//           { $addToSet: { reporteeIds: newEmployee._id } },
-//           { new: true }
-//         );
-//         newEmployee.mgrempid = assignedData._id;
-//       }
-
-//       await newEmployee.save();
-//       console.log("newEmployee========", newEmployee);
-//       results.push(newEmployee);
-//       emailList.push(newEmployee.email); // Collect email addresses
-
-//       // Verification token creation logic
-//       const userWithoutPassword = {
-//         _id: newEmployee._id,
-//         first_name: newEmployee.first_name,
-//         last_name: newEmployee.last_name,
-//         email: newEmployee.email,
-//       };
-
-//       // Create a verification token
-//       const token = jwt.sign(userWithoutPassword, process.env.JWT_SECRET, {
-//         expiresIn: "5m",
-//       });
-
-//       console.log("TOKEN===", token);
-
-//       // Construct email verification URL
-//       const verificationUrl = `${process.env.BASE_URL}/verify/${token}`;
-//       verificationLinks.push({ email: newEmployee.email, name: newEmployee.first_name, verificationUrl });
-//     });
-
-//     await Promise.all(employeePromises);
-
-//     // Send emails with BCC
-//     const bccEmails = verificationLinks.map(link => link.email).join(", ");
-//     await Promise.all(verificationLinks.map(async ({ email, name, verificationUrl }) => {
-//       const emailContent = `
-//         <h2>Email Verification for Your Account</h2>
-//         <p>Dear ${name},</p>
-//         <p>Please verify your email using the following link:</p>
-//         <p><a href="${verificationUrl}">Verify Email</a></p>
-//       `;
-//       // Send individual email
-//       await sendEmail(email, "Email Verification", emailContent, { bcc: bccEmails });
-//     }));
-
-//     res.status(201).send({
-//       message: `${results.length} Emails have been sent to the respective accounts. Please verify your email address.`,
-//       successes: results,
-//       errors: errorMessages,
-//     });
-//   } catch (error) {
-//     console.error("Error in addEmployee:", error);
-//     res.status(500).json({ message: "Server Error", error: error.message });
-//   }
-// });
-
-// exports.addEmployeeExcel = catchAssyncError(async (req, res, next) => {
-//   try {
-//     const employeesData = req.body; // Expecting an array of employee objects
-//     console.log("employeesData", employeesData);
-
-//     const results = [];
-//     const errorMessages = [];
-
-//     // Check organization limit
-//     const { organizationId } = employeesData[0];
-//     console.log("organizationId====", organizationId);
-
-//     const empLimit = await OrganisationModel.findById(organizationId);
-//     const empCountInOrg = await EmployeeModel.countDocuments({
-//       organizationId,
-//     });
-
-//     if (empCountInOrg >= empLimit.memberCount) {
-//       return res.status(400).json({
-//         message: "You have exceeded employee onboarding limit.",
-//         status: false,
-//       });
-//     }
-
-//     const employeePromises = employeesData.map(async (employeeData) => {
-//       const {
-//         first_name,
-//         last_name,
-//         email,
-//         password,
-//         companyemail,
-//         address,
-//         adhar_card_number,
-//         pan_card_number,
-//         dept_cost_center_no,
-//         shift_allocation,
-//         bank_account_no,
-//         phone_number,
-//         deptname,
-//         citizenship,
-//         employmentType,
-//         date_of_birth,
-//         joining_date,
-//         designation,
-//         profile,
-//         empId,
-//         salarystructure,
-//         worklocation,
-//         gender,
-//         pwd,
-//         uanNo,
-//         esicNo,
-//         mgrempid,
-//         ...dynamicFields
-//       } = employeeData;
-
-//       // Check for existing employee by email
-//       let existingEmployee = await EmployeeModel.findOne({ email });
-//       if (existingEmployee) {
-//         errorMessages.push(`Email ${email} already registered.`);
-//         return;
-//       }
-
-//       // Check for existing employee code
-//       const isEmpCodeExist = await EmployeeModel.findOne({
-//         empId,
-//         organizationId,
-//       });
-//       if (isEmpCodeExist) {
-//         errorMessages.push(
-//           `Employee code ${empId} already exists for this organization.`
-//         );
-//         return;
-//       }
-
-//       const filteredFields = Object.fromEntries(
-//         Object.entries(dynamicFields).filter(([_, value]) => value !== "")
-//       );
-
-//       let newEmployee = new EmployeeModel({
-//         first_name,
-//         last_name,
-//         email,
-//         password, // Make sure to hash this before saving
-//         companyemail,
-//         address,
-//         adhar_card_number,
-//         pan_card_number,
-//         dept_cost_center_no,
-//         shift_allocation: shift_allocation ? shift_allocation : null,
-//         bank_account_no,
-//         phone_number,
-//         deptname: deptname || null,
-//         citizenship,
-//         employmentType,
-//         date_of_birth,
-//         joining_date,
-//         designation: designation || null,
-//         worklocation,
-//         gender,
-//         profile: profile ? [...profile, "Employee"] : ["Employee"],
-//         empId,
-//         salarystructure,
-//         organizationId,
-//         creatorId: req.user.id, // Assuming creatorId is from the authenticated user
-//         additionalInfo: filteredFields,
-//       });
-
-//       // Handle manager logic
-//       if (newEmployee.profile.includes("Manager")) {
-//         await EmployeeManagementModel.create({
-//           managerId: newEmployee._id,
-//           organizationId,
-//         });
-//       }
-
-//       if (mgrempid) {
-//         const assignedData = await EmployeeManagementModel.findOneAndUpdate(
-//           { managerId: mgrempid },
-//           { $addToSet: { reporteeIds: newEmployee._id } },
-//           { new: true }
-//         );
-//         newEmployee.mgrempid = assignedData._id;
-//       }
-
-//       await newEmployee.save();
-//       console.log("newEmployee========", newEmployee);
-//       results.push(newEmployee);
-
-//       // Verification token creation and email sending logic
-//       const userWithoutPassword = {
-//         _id: newEmployee._id,
-//         first_name: newEmployee.first_name,
-//         last_name: newEmployee.last_name,
-//         email: newEmployee.email,
-//       };
-
-//       // Create a verification token
-//       const token = jwt.sign(userWithoutPassword, process.env.JWT_SECRET, {
-//         expiresIn: "5m",
-//       });
-
-//       console.log("TOKEN===", token);
-
-//       // Construct email verification URLs
-//       const verificationUrl = `${process.env.BASE_URL}/verify/${token}`;
-//       const emailContent = `
-//         <h2>Email Verification for Your Account</h2>
-//         <p>Dear ${newEmployee.first_name} ${newEmployee.last_name},</p>
-//         <p>We have received a request to verify your email address associated with your account on AEIGS software. Please click on the following link to complete the verification process:</p>
-//         <a href="${verificationUrl}" style="text-decoration: none; background-color: #4CAF50; color: white; padding: 10px 20px; border-radius: 5px;">Email Verification Link</a>
-//         <p>If you did not initiate this request, please ignore this email. Your account security is important to us.</p>
-//         <p>Thank you for choosing AEIGS software.</p>
-//         <p><strong>Best regards,</strong></p>
-//         <p>AEIGS software Team</p>
-//         <p>Email: <a href="mailto:support@aegishrms.com">support@aegishrms.com</a></p>
-//         <p>Phone: 9082462161</p>
-//         <p>Address: 603, Haware grand heritage, Kaspate Wasti, Wakad, Pune, Maharashtra 411057</p>
-//       `;
-
-//       // Send the verification email
-
-//       await sendEmail(
-//         newEmployee.email,
-//         "Email Verification",
-//         emailContent,
-//         newEmployee,
-//         token
-//       );
-//     });
-
-//     await Promise.all(employeePromises);
-
-//     res.status(201).send({
-//       message: `${results.length} employees processed successfully.`,
-//       successes: results,
-//       errors: errorMessages,
-//     });
-//   } catch (error) {
-//     console.error("Error in addEmployee:", error);
-//     res.status(500).json({ message: "Server Error", error: error.message });
-//   }
-// });
 
 exports.updateEmployee = catchAssyncError(async (req, res, next) => {
   try {
@@ -1803,6 +1438,7 @@ exports.updateEmployee = catchAssyncError(async (req, res, next) => {
       uanNo,
       esicNo,
       empId,
+      employeeStatus,
       ...filteredData
     } = req.body;
 
@@ -1858,6 +1494,7 @@ exports.updateEmployee = catchAssyncError(async (req, res, next) => {
       employmentType,
       mgrempid: mgrempid || null,
       empId,
+      employeeStatus,
       additionalInfo: additionalInfo || {},
     };
     console.log("update field", updateFields);
@@ -2249,60 +1886,33 @@ exports.getPaginatedEmployees = catchAssyncError(async (req, res, next) => {
   const organizationId = req.params.organizationId;
 
   // Extract search queries
-  const { nameSearch, deptSearch, locationSearch } = req.query;
-
-  // Create a base filter object for querying
-  let filter = { organizationId };
-
-  // Exclude employees with "Super Admin" in the profile array
-  filter.profile = { $nin: ["Super-Admin"] };
-
-  // Apply search filters if they are provided
-  if (nameSearch && nameSearch.trim()) {
-    filter.first_name = { $regex: nameSearch.trim(), $options: "i" };
-  }
-
-  if (deptSearch && deptSearch.trim()) {
-    filter["deptname.departmentName"] = {
-      $regex: deptSearch.trim(),
-      $options: "i",
-    };
-  }
-
-  if (locationSearch && locationSearch.trim()) {
-    filter["worklocation.city"] = {
-      $regex: locationSearch.trim(),
-      $options: "i",
-    };
-  }
+  const { nameSearch } = req.query;
 
   try {
-    // Query the database with the filter and populate relevant fields
-    let employeesData = await EmployeeModel.find(filter)
-      .populate({
-        path: "worklocation",
-        match:
-          locationSearch && locationSearch.trim()
-            ? { city: { $regex: locationSearch.trim(), $options: "i" } }
-            : {},
-      })
-      .populate({
-        path: "deptname",
-        match:
-          deptSearch && deptSearch.trim()
-            ? { departmentName: { $regex: deptSearch.trim(), $options: "i" } }
-            : {},
-      })
+    // Create a base filter object for querying
+    let filter = {
+      organizationId,
+      profile: { $nin: ["Super-Admin"] }, // Exclude Super Admins
+    };
+
+    // Apply name search filter if provided
+    if (nameSearch && nameSearch.trim()) {
+      filter.first_name = { $regex: nameSearch.trim(), $options: "i" };
+    }
+
+    // Count total employees after applying filters
+    const totalEmployees = await EmployeeModel.countDocuments(filter);
+
+    // Fetch paginated employee data
+    const employeesData = await EmployeeModel.find(filter)
+      .populate("worklocation")
+      .populate("deptname")
       .populate("designation")
-      .populate("salarystructure");
+      .populate("salarystructure")
+      .skip(skip)
+      .limit(perPage);
 
-    // Count total employees after search filters and exclusion of Super Admins
-    const totalEmployees = employeesData.length;
-
-    // Apply pagination AFTER filtering the results
-    employeesData = employeesData.slice(skip, skip + perPage);
-
-    // Send the response with the employees data and pagination details
+    // Send the response with employees data and pagination details
     res.status(200).json({
       employees: employeesData,
       totalEmployees,
@@ -2311,9 +1921,10 @@ exports.getPaginatedEmployees = catchAssyncError(async (req, res, next) => {
     });
   } catch (error) {
     console.error("Error fetching employees:", error);
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
+
 
 
 exports.getUserProfileData = catchAssyncError(async (req, res, next) => {

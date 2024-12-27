@@ -48,12 +48,10 @@ const Employee = new mongoose.Schema({
     type: String,
   },
 
-  status: {
+  employeeStatus: {
     type: String,
 
   },
-
-
   user_id: {
     type: String,
     default: null,
