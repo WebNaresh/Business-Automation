@@ -44,7 +44,7 @@ const DepartmentList = () => {
   const fetchDepartmentList = async () => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API}/route/department/get/${organisationId}`,
+        // `${import.meta.env.VITE_API}/route/department/get/${organisationId}`,
         `${import.meta.env.VITE_API}/route/department/get/${organisationId}`,
         {
           headers: {
@@ -62,6 +62,7 @@ const DepartmentList = () => {
     "department",
     fetchDepartmentList
   );
+  console.log(`🚀 ~ file: DepartmentList.jsx:62 ~ deptList:`, deptList);
 
   // for edit
   // to navigate to other component
@@ -287,6 +288,7 @@ const DepartmentList = () => {
                         {[
                           "Sr. No",
                           "Department Name",
+                          "Count of Department",
                           "Department Location",
                           "Actions",
                         ].map((header) => (
@@ -341,6 +343,16 @@ const DepartmentList = () => {
                             }}
                           >
                             {department?.departmentName || ""}
+                          </TableCell>
+
+                          <TableCell
+                            sx={{
+                              padding: "16px 24px",
+                              color: "#64748b",
+                              fontSize: "0.875rem",
+                            }}
+                          >
+                            {department?.employeeCount || 0}
                           </TableCell>
                           <TableCell
                             sx={{
