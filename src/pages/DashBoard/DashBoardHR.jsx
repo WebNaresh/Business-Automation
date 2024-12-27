@@ -942,7 +942,7 @@ const DashboardHr = () => {
               color={"!bg-blue-500"}
               data={employee?.totalEmployees}
               isLoading={employeeLoading}
-              title={"Overall Employees"}
+              title={"Overall Employee"}
               data-aos="fade-up"
               cardSize={cardSize}
             />
@@ -960,7 +960,7 @@ const DashboardHr = () => {
               cardSize={cardSize}
             />
             <SuperAdminCard
-              title={"Today's Leave"}
+              title={"Absent Employee"}
               icon={EventBusy}
               color={"!bg-red-500"}
               data={absentEmployee}
@@ -973,7 +973,7 @@ const DashboardHr = () => {
               icon={SupervisorAccount}
               data={Managers?.length}
               isLoading={managerLoading}
-              title={"People's Manager"}
+              title={"Manager Statistics"}
               data-aos="fade-up"
               cardSize={cardSize}
             />
@@ -982,7 +982,7 @@ const DashboardHr = () => {
               isLoading={false}
               icon={LocationOn}
               data={loc?.locationCount}
-              title={"Locations"}
+              title={"Work Location Overview"}
               data-aos="fade-up"
               cardSize={cardSize}
             />

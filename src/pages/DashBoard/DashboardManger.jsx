@@ -1,4 +1,3 @@
-
 import {
   AccessTime,
   EventAvailable,
@@ -6,24 +5,24 @@ import {
   Groups,
 } from "@mui/icons-material";
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { UseContext } from "../../State/UseState/UseContext";
+import HeaderComponentPro from "../../components/header/HeaderComponentPro";
 import UserProfile from "../../hooks/UserData/useUser";
 import SuperAdminCard from "./Components/Card/superadmin/SuperAdminCard";
 import ManagerEmployeeChart from "./Components/Custom/ManagerEmployeeChart";
 import EmployeeLeaveRequest from "./Components/List/EmployeLeaveReqest";
-import HeaderComponentPro from "../../components/header/HeaderComponentPro";
 
 const DashboardManger = () => {
-  const { cookies } = useContext(UseContext); 
+  const { cookies } = useContext(UseContext);
   const authToken = cookies["aegis"];
   const { organisationId } = useParams("");
   const { getCurrentUser } = UserProfile();
   const user = getCurrentUser();
 
-  // const cardSize = "w-72 h-28 "; // Adjust card size here  
+  // const cardSize = "w-72 h-28 "; // Adjust card size here
   const cardSize = "w-66 h-30 "; // Adjust card size here
 
   const [selectedyear, setSelectedYear] = useState({
@@ -33,6 +32,7 @@ const DashboardManger = () => {
 
   const getAllEmployeeForManger = async () => {
     const { data } = await axios.get(
+      `${import.meta.env.VITE_API}/route/employee/countofEmployees`,
       `${import.meta.env.VITE_API}/route/employee/countofEmployees`,
       {
         headers: {
@@ -50,7 +50,9 @@ const DashboardManger = () => {
 
   const getManagerAttendenceChart = async () => {
     const { data } = await axios.get(
-      `${import.meta.env.VITE_API}/route/leave/getManagerEmployeeAttendence/${user._id}`,
+      `${import.meta.env.VITE_API}/route/leave/getManagerEmployeeAttendence/${
+        user._id
+      }`,
       {
         headers: {
           Authorization: authToken,
@@ -66,7 +68,9 @@ const DashboardManger = () => {
     queryKey: ["deptEmployeeOnShift"],
     queryFn: async () => {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API}/route/leave/getManagerShifts/${organisationId}`,
+        `${
+          import.meta.env.VITE_API
+        }/route/leave/getManagerShifts/${organisationId}`,
         {
           headers: {
             Authorization: authToken,
@@ -82,7 +86,9 @@ const DashboardManger = () => {
       queryKey: ["deptEmployeeAbsent"],
       queryFn: async () => {
         const { data } = await axios.get(
-          `${import.meta.env.VITE_API}/route/leave/getTodaysAbsentUnderManager/${organisationId}`,
+          `${
+            import.meta.env.VITE_API
+          }/route/leave/getTodaysAbsentUnderManager/${organisationId}`,
           {
             headers: {
               Authorization: authToken,
@@ -99,14 +105,13 @@ const DashboardManger = () => {
     //     Manager Dashboard
     //   </header>
     <section className="p-2 mt-10 shadow-lg ">
-    <HeaderComponentPro  
-         heading={"Manager Dashboard"}
-      oneLineInfo={
-      //  "Manage and review department-specific metrics and reports for better insights"
-       "Manage and review employee attendance and leave management  "
-      }
-    />
-
+      <HeaderComponentPro
+        heading={"Manager Dashboard"}
+        oneLineInfo={
+          //  "Manage and review department-specific metrics and reports for better insights"
+          "Manage and review employee attendance and leave management  "
+        }
+      />
 
       <div className=" lg:px-8 sm:px-4 px-2 w-full">
         <div className="flex mt-6">
@@ -132,7 +137,7 @@ const DashboardManger = () => {
                   data={managerShift ?? 0}
                   color={"!bg-orange-500"}
                   cardSize={cardSize}
-                  // 
+                  //
                 />
                 <SuperAdminCard
                   icon={EventAvailable}
@@ -142,7 +147,7 @@ const DashboardManger = () => {
                       managerAttendence ?? 0
                   }
                   isLoading={managerAttendenceLoading}
-                  title={"Present Today"}
+                  title={"Present Employee"}
                   color={"!bg-green-500"}
                   cardSize={cardSize}
                 />
@@ -151,7 +156,7 @@ const DashboardManger = () => {
                   // className={"!min-w-[150px]"}
                   data={managerAttendence ?? 0}
                   isLoading={managerAttendenceLoading}
-                  title={"Today's Leave"}
+                  title={"Absent Employee"}
                   color={"!bg-red-500"}
                   cardSize={cardSize}
                 />
@@ -167,10 +172,10 @@ const DashboardManger = () => {
                 />
               </div>
             </div>
-<br />
+            <br />
             <div className="w-full lg:w-[30%]  space-y-3">
               <EmployeeLeaveRequest />
-            </div> 
+            </div>
           </div>
         </div>
       </div>
@@ -179,16 +184,3 @@ const DashboardManger = () => {
 };
 
 export default DashboardManger;
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -17,7 +17,7 @@ const Options = ({ setOption }) => {
             color: "green",
           }}
         />
-        <div>Employee List</div>
+        <div>Employee Data</div>
       </div>
       <div
         onClick={() => setOption("doc")}

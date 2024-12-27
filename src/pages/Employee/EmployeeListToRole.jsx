@@ -1,20 +1,31 @@
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import AddIcon from "@mui/icons-material/Add";
+import BusinessIcon from "@mui/icons-material/Business";
+import EditIcon from "@mui/icons-material/Edit";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import SearchIcon from "@mui/icons-material/Search";
 import {
-  Container,
+  Button,
   IconButton,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
   TextField,
   Tooltip,
   Typography,
+  Box,
 } from "@mui/material";
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { UseContext } from "../../State/UseState/UseContext";
-import { Button } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+
 const EmployeeListToRole = () => {
-  // to  define state, hook and import other function  if user needed
   const navigate = useNavigate();
   const { cookies } = useContext(UseContext);
   const authToken = cookies["aegis"];
@@ -26,10 +37,10 @@ const EmployeeListToRole = () => {
   const [totalPages, setTotalPages] = useState(1);
   const { organisationId } = useParams();
 
-  // Update the fetch function to include all query parameters
   const fetchAvailableEmployee = async (page) => {
     try {
-      const apiUrl = `${import.meta.env.VITE_API}/route/employee/get-paginated-emloyee/${organisationId}?page=${page}&nameSearch=${nameSearch}&deptSearch=${deptSearch}&locationSearch=${locationSearch}`;
+      const apiUrl = `${import.meta.env.VITE_API
+        }/route/employee/get-paginated-emloyee/${organisationId}?page=${page}&nameSearch=${nameSearch}&deptSearch=${deptSearch}&locationSearch=${locationSearch}`;
       const response = await axios.get(apiUrl, {
         headers: {
           Authorization: authToken,
@@ -43,17 +54,10 @@ const EmployeeListToRole = () => {
     }
   };
 
-  // to fetch the employee
   useEffect(() => {
-    // Fetch employees whenever currentPage, nameSearch, deptSearch, or locationSearch changes
     fetchAvailableEmployee(currentPage);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage, nameSearch, deptSearch, locationSearch]);
 
-  console.log("available employee", availableEmployee);
-
-  // for pagination
-  // pagination
   const prePage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
   };
@@ -70,7 +74,6 @@ const EmployeeListToRole = () => {
     const pageNumbers = [];
 
     if (totalPages <= 5) {
-      // If total pages are less than or equal to 5, show all pages
       for (let i = 1; i <= totalPages; i++) {
         pageNumbers.push(i);
       }
@@ -107,153 +110,215 @@ const EmployeeListToRole = () => {
     ));
   };
 
-  // to navigate to other component
   const handleEditClick = (empId) => {
     navigate(`/organisation/${organisationId}/edit-employee/${empId}`);
+  };
+
+  const handleAddEmployee = () => {
+    navigate(`/organisation/${organisationId}/employee-onboarding`);
   };
 
 
   const handleDeleteClick = () => {
     navigate(`/organisation/${organisationId}/employee-offboarding`);
-  }; 
+  };
 
   const handleViewClick = (empId) => {
     navigate(`/organisation/${organisationId}/employee-view/${empId}`);
   };
-  
+
+
+
 
   return (
-    <>
-      <Container maxWidth="xl" className="bg-gray-50 min-h-screen">
-        <article className=" bg-white w-full h-max shadow-md rounded-sm border items-center mb-6">
-          <Typography variant="h4" className=" text-center pl-10  mb-6 mt-6">
-            Manage Employee
-          </Typography>
-          <p className="text-xs text-gray-600 pl-10 text-center">
-            Edit employee data here by using edit button.
-          </p>
+    <div className="py-6 bg-gray-50 min-h-screen">
+      <article className="bg-white w-full h-max shadow-lg rounded-lg border">
+        <div className="p-6 border-b border-gray-200 flex justify-between items-center">
+          <div>
+            <h4 className="text-2xl font-bold text-gray-800 mb-2">
+              Manage Employee
+            </h4>
+            <Typography variant="body2" className="text-center text-gray-600">
+              Manage and edit employee information using the controls below
+            </Typography>
+          </div>
+          <Button
+            variant="contained"
+            color="primary"
+            startIcon={<AddIcon />}
+            onClick={handleAddEmployee}
+          >
+            Add Employee
+          </Button>
+        </div>
 
-          <div className="p-4 border-b-[.5px] flex flex-col md:flex-row items-center justify-between gap-3 w-full border-gray-300">
-            <div className="flex items-center gap-3 mb-3 md:mb-0 w-full md:w-auto">
-              <Tooltip
-                title="No employees found"
-                placement="top"
-                open={availableEmployee.length < 1 && nameSearch !== ""}
-              >
-                <TextField
-                  onChange={(e) => setNameSearch(e.target.value)}
-                  placeholder="Search"
-                  variant="outlined"
-                  size="small"
-                  sx={{ width: { xs: "100%", sm: "auto" }, minWidth: 200 }}
-                />
-              </Tooltip>
-            </div>
+        <div className="p-6 border-b border-gray-200">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Tooltip
+              title="No employees found"
+              placement="top"
+              open={availableEmployee.length < 1 && nameSearch !== ""}
+            >
+              <TextField
+                onChange={(e) => setNameSearch(e.target.value)}
+                placeholder="Search"
+                variant="outlined"
+                size="small"
+                fullWidth
+                InputProps={{
+                  startAdornment: <SearchIcon className="text-gray-400 mr-2" />,
+                }}
+              />
+            </Tooltip>
 
           </div>
+        </div>
+        <TableContainer component={Paper} sx={{ boxShadow: "none" }}>
+          <Table sx={{ minWidth: 650 }} aria-label="employee table">
+            <TableHead>
+              <TableRow sx={{ backgroundColor: "#f3f4f6" }}>
+                <TableCell sx={{ fontWeight: "bold" }}>Sr. No</TableCell>
+                <TableCell sx={{ fontWeight: "bold" }}>First Name</TableCell>
+                <TableCell sx={{ fontWeight: "bold" }}>Last Name</TableCell>
+                <TableCell sx={{ fontWeight: "bold" }}>Email</TableCell>
+                <TableCell sx={{ fontWeight: "bold" }}>Employee Id</TableCell>
+                <TableCell sx={{ fontWeight: "bold" }}>Location</TableCell>
+                <TableCell sx={{ fontWeight: "bold" }}>Department</TableCell>
+                <TableCell sx={{ fontWeight: "bold" }}>Actions</TableCell>
+              </TableRow>
+            </TableHead>
 
-          <div className="overflow-auto !p-0 border-[.5px] border-gray-200">
-            <table className="min-w-full bg-white  text-left !text-sm font-light">
-              <thead className="bg-gray-200 font-medium">
-                <tr>
-                  <th className="pl-8 py-3">SR No</th>
-                  <th className="pl-8 py-3">Employee ID</th>
-                  <th className="pl-8 py-3">Employee Name</th>
-                  <th className="pl-8 py-3">Email ID</th>
-                  <th className="pl-8 py-3">Department</th>
-                  <th className="pl-8 py-3">Designation</th>
-                  <th className="pl-8 py-3">Shift</th>
-                  <th className="pl-8 py-3">Status</th>
-                  <th className="pl-8 py-3">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {availableEmployee.length > 0 &&
-                  availableEmployee
-                    .filter((item) => {
-                      return (
-                        (!nameSearch.toLowerCase() ||
-                          (item.first_name !== null &&
-                            item.first_name !== undefined &&
-                            item.first_name
-                              .toLowerCase()
-                              .includes(nameSearch))) &&
-                        (!deptSearch ||
-                          (item.deptname !== null &&
-                            item.deptname !== undefined &&
-                            item.deptname.some(
-                              (dept) =>
-                                dept.departmentName !== null &&
-                                dept.departmentName
-                                  .toLowerCase()
-                                  .includes(deptSearch.toLowerCase())
-                            ))) &&
-                        (!locationSearch.toLowerCase() ||
-                          item.worklocation.some(
-                            (location) =>
-                              location &&
-                              location.city !== null &&
-                              location.city !== undefined &&
-                              location.city
+            <TableBody>
+              {availableEmployee.length > 0 &&
+                availableEmployee
+                  .filter((item) => {
+                    return (
+                      (!nameSearch.toLowerCase() ||
+                        (item.first_name &&
+                          item.first_name
+                            .toLowerCase()
+                            .includes(nameSearch))) &&
+                      (!deptSearch ||
+                        (item.deptname &&
+                          item.deptname.some(
+                            (dept) =>
+                              dept.departmentName &&
+                              dept.departmentName
                                 .toLowerCase()
-                                .includes(locationSearch)
-                          ))
-                      );
-                    })
-                    .map((item, id) => (
-                      <tr className="!font-medium border-b" key={id}>
-                        <td className="!text-left pl-8 py-3">{id + 1}</td>
-                        <td className="py-3 pl-8">{item?.empId}</td>
-                        <td className="py-3 pl-8">{item?.first_name}</td>
-                        <td className="py-3 pl-8">{item?.email}</td>
-                        <td className="py-3 pl-8 ">
-                          {item?.deptname?.map((dept, index) => (
-                            <span key={index}>{dept?.departmentName}</span>
-                          ))}
-                        </td>
-                        <td className="py-3 pl-8 ">
-                          {item?.deptname?.map((dept, index) => (
-                            <span key={index}>{dept?.departmentName}</span>
-                          ))}
-                        </td>
-                        <td className="py-3 pl-8"></td>
-                        <td className="py-3 pl-8"></td>
-                        <td className="pl-8 py-3">
-                          <IconButton color="info">
-                            <VisibilityOutlinedIcon onClick={() => handleViewClick(item._id)} />
+                                .includes(deptSearch.toLowerCase())
+                          ))) &&
+                      (!locationSearch.toLowerCase() ||
+                        item.worklocation.some(
+                          (location) =>
+                            location &&
+                            location.city &&
+                            location.city.toLowerCase().includes(locationSearch)
+                        ))
+                    );
+                  })
+                  .map((item, id) => (
+                    <TableRow
+                      key={id}
+                      sx={{
+                        backgroundColor: id % 2 === 0 ? "#ffffff" : "#f9fafb", // Alternating row colors
+                        "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.04)" },
+                      }}
+                    >
+                      <TableCell>{id + 1}</TableCell>
+                      <TableCell>{item?.first_name}</TableCell>
+                      <TableCell>{item?.last_name}</TableCell>
+                      <TableCell>{item?.email}</TableCell>
+                      <TableCell>{item?.empId}</TableCell>
+                      <TableCell>
+                        {item?.worklocation?.map((location, index) => (
+                          <span key={index}>{location?.city}</span>
+                        ))}
+                      </TableCell>
+                      <TableCell>
+                        {item?.deptname?.map((dept, index) => (
+                          <span key={index}>{dept?.departmentName}</span>
+                        ))}
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          padding: "16px 24px",
+                        }}
+                      >
+                        <Box
+                          className="action-buttons"
+                          sx={{
+                            display: "flex",
+                            gap: "8px",
+                            opacity: 0.7,
+                            transition: "opacity 0.2s ease",
+                          }}
+                        >
+                          <IconButton
+                            onClick={() => handleViewClick(item._id)}
+                            sx={{
+                              backgroundColor: "#f1f5f9",
+                              "&:hover": { backgroundColor: "#e2e8f0" },
+                            }}
+                            size="small"
+                          >
+                            <VisibilityIcon
+                              sx={{ fontSize: "1.25rem", color: "#0ea5e9" }}
+                            />
                           </IconButton>
-                          <IconButton color="primary" onClick={() => handleEditClick(item._id)}>
-                            <EditOutlinedIcon />
+                          <IconButton
+                            onClick={() => handleEditClick(item._id)}
+                            sx={{
+                              backgroundColor: "#f1f5f9",
+                              "&:hover": { backgroundColor: "#e2e8f0" },
+                            }}
+                            size="small"
+                          >
+                            <EditIcon
+                              sx={{ fontSize: "1.25rem", color: "#6366f1" }}
+                            />
                           </IconButton>
-                          <IconButton color="error">
-                            <DeleteOutlineIcon onClick={handleDeleteClick} />
+                          <IconButton
+                            onClick={() => handleDeleteClick(item._id)}
+                            sx={{
+                              backgroundColor: "#f1f5f9",
+                              "&:hover": { backgroundColor: "#fee2e2" },
+                            }}
+                            size="small"
+                          >
+                            <DeleteIcon
+                              sx={{ fontSize: "1.25rem", color: "#ef4444" }}
+                            />
                           </IconButton>
-                        </td>
-                      </tr>
-                    ))}
-              </tbody>
-            </table>
-            <div className="flex items-center justify-center gap-2 py-3">
-              <Button
-                variant="outlined"
-                onClick={prePage}
-                disabled={currentPage === 1}
-              >
-                PREVIOUS
-              </Button>
-              {renderPagination()}
-              <Button
-                variant="outlined"
-                onClick={nextPage}
-                disabled={currentPage === totalPages}
-              >
-                NEXT
-              </Button>
-            </div>
-          </div>
-        </article>
-      </Container>
-    </>
+                        </Box>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+
+
+        <div className="flex items-center justify-center gap-3 p-4 bg-gray-50 border-t border-gray-200">
+          <Button
+            variant="contained"
+            onClick={prePage}
+            disabled={currentPage === 1}
+            className="text-sm"
+          >
+            Previous
+          </Button>
+          {renderPagination()}
+          <Button
+            variant="contained"
+            onClick={nextPage}
+            disabled={currentPage === totalPages}
+            className="text-sm"
+          >
+            Next
+          </Button>
+        </div>
+      </article>
+    </div>
   );
 };
 

@@ -12,96 +12,62 @@ import ResetPassword from "./components/resetpassword/resetpassword";
 import Vendortest from "./pages/CateringAndFood/VendorSignUp/Vendortest";
 // import ResetNewUserId from "./pages/ResetNewUserId/ResetNewUserId";
 
-import RequireAuth, { AuthProvider } from "./context/AuthProvider";
-import NewOranisationForm from "./pages/AddOrganisation/OrgFrom";
-import Application from "./pages/Application/Application";
-import Billing from "./pages/Billing/page";
-import DashBoardHR from "./pages/DashBoard/DashBoardHR";
-import Dashboard from "./pages/DashBoard/Dashboard";
-import DashboardDH from "./pages/DashBoard/DashboardDH";
-import DashboardManger from "./pages/DashBoard/DashboardManger";
-import SuperAdmin from "./pages/DashBoard/SuperAdmin";
-import DepartmentList from "./pages/Departments/DepartmentList";
-import Designation from "./pages/Designation/Designation";
-import DeleteEmployee from "./pages/Employee/DeleteEmployee";
-import Employee from "./pages/Employee/Employee";
-import Form16 from "./pages/Form16/Form16";
-import Home from "./pages/Home/Home";
-import IncomeTax from "./pages/Income/IncomeTax";
-import TDSTab1 from "./pages/Income/components/TDSTab1";
-import DeclarationPage from "./pages/Income/components/accountantDeclarations/DeclarationPage";
-import LeaveRequisition from "./pages/LeaveRequisition/LeaveRequisition";
-import LoanManagement from "./pages/LoanManagement/LoanManagement";
-import OrgList from "./pages/OrgList/OrgList";
-import PaymentFailed from "./pages/Payment/page";
-import RemoteManager from "./pages/Remote-Punch-Info/RemoteManager";
-import MissedPunch from "./pages/RemotePunchIn/MissedPunch";
-import CalculateSalary from "./pages/SalaryCalculate/CalculateSalary";
-import SalaryManagement from "./pages/SalaryManagement/SalaryManagement";
-import EmployeeSalaryCalculateDay from "./pages/SetUpOrganization/EmoloyeeSalaryCalculate/EmployeeSalaryCalculate";
-import EmployeeCodeGenerator from "./pages/SetUpOrganization/EmployeeCodeGenerator/EmployeeCodeGenerator";
-import EmpLoanMgt from "./pages/SetUpOrganization/EmployeeLoanManagement/EmpLoanMgt";
-import EmployementTypes from "./pages/SetUpOrganization/EmployementType/EmployementTypes";
-import LeaveTypes from "./pages/SetUpOrganization/LeaveComponents/LeaveTypes";
-import PublicHoliday from "./pages/SetUpOrganization/PublicHolidayPage/PublicHoliday";
-import SalaryInput from "./pages/SetUpOrganization/SaleryInput/SalaryInput";
-import Setup from "./pages/SetUpOrganization/Setup";
-import Subscription from "./pages/SetUpOrganization/Subscription/Subscription";
-import {
-  default as DeleteDepartment,
-  default as DepartmentDeletion,
-} from "./pages/SetupPage/DepartmentDeletion";
-import EmailSetting from "./pages/SetupPage/EmailSetting";
-import Shifts from "./pages/SetupPage/Shift/Page";
-import ShiftManagement from "./pages/SetupPage/ShiftManagement/shiftAllowance";
-import WeekendHoliday from "./pages/SetupPage/WeekendHoliday";
-import Inputfield from "./pages/SetupPage/inputfield";
-import SignIn from "./pages/SignIn/SignIn";
-import Signup from "./pages/SignUp/NewSignUp";
-import EmployeeTest from "./pages/Test/EmployeeTest";
-import DepartmentTest from "./pages/Test2/DepartmentTest";
-import HrTrainings from "./pages/Training/page";
-import ViewPayslip from "./pages/ViewPayslip/ViewPayslip";
-import WaitMain from "./pages/Waiting-comp/waiting-main";
-import AddDelegate from "./pages/add-delegate/AddDelegate";
-import SingleDepartment from "./pages/single-department/single-department";
-import SingleOrganisation from "./pages/single-orgnisation/single-organisation";
-import NotFound from "./utils/Forbidden/NotFound";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import OrgChart from "./Test/OrgChart";
 import GeoFencingAcceptModal from "./components/Modal/RemotePunchingModal/GeoFencingAcceptModal";
 import CookiesPolicy from "./components/TermsPrivacyCookies/CookiesPolicy";
 import PrivacyPolicy from "./components/TermsPrivacyCookies/PrivacyPolicy";
 import TabTermsPrivacyPolicy from "./components/TermsPrivacyCookies/TabTermsPrivacyPolicy";
+import RequireAuth, { AuthProvider } from "./context/AuthProvider";
 import useSubscriptionGet from "./hooks/QueryHook/Subscription/hook";
+import NewOranisationForm from "./pages/AddOrganisation/OrgFrom";
 import AdvanceSalary from "./pages/AdvanceSalary/AdvanceSalary";
 import AdvanceSalaryApproval from "./pages/AdvanceSalaryNotification/AdvanceSalaryApproval";
 import AdvanceSalaryNotification from "./pages/AdvanceSalaryNotification/AdvanceSalaryNotification";
 import AdvanceSalaryNotificationToEmp from "./pages/AdvanceSalaryNotification/AdvanceSalaryNotificationToEmp";
 import ParentNotification from "./pages/AllNotifications/page";
+import Application from "./pages/Application/Application";
+import Billing from "./pages/Billing/page";
 import Cateringandfoodsetup from "./pages/CateringAndFood/Cateringandfoodsetup";
 import Communication from "./pages/Communication/Communication";
+import DashBoardHR from "./pages/DashBoard/DashBoardHR";
+import Dashboard from "./pages/DashBoard/Dashboard";
+import DashboardDH from "./pages/DashBoard/DashboardDH";
+import DashboardManger from "./pages/DashBoard/DashboardManger";
+import SuperAdmin from "./pages/DashBoard/SuperAdmin";
+import DepartmentList from "./pages/Departments/DepartmentList";
 import EditDepartment from "./pages/Departments/EditDepartment";
 import DepartmentNotification from "./pages/DeptNotification/DepartmentNotification";
 import DepartmentNotificationToEmp from "./pages/DeptNotification/DepartmentNotificationToEmp";
+import Designation from "./pages/Designation/Designation";
 import DocManageAuth from "./pages/DocumentManagement/DocManageAuth";
 import RenderDocManage from "./pages/DocumentManagement/RenderDocManage";
 import EmpExcelOnboard from "./pages/EmpExcelOnboard/EmpExcelOnboard";
+import EmpProfile from "./pages/EmpProfile/EmpProfile";
 import EmployeeNotification from "./pages/Employee-Notification/page";
+import DeleteEmployee from "./pages/Employee/DeleteEmployee";
 import EditEmployee from "./pages/Employee/EditEmployee";
+import Employee from "./pages/Employee/Employee";
 import EmployeeSurvey from "./pages/EmployeeSurvey/EmployeeSurvey";
 import CreateNewSurvey from "./pages/EmployeeSurvey/components/CreateNewSurvey";
 import EmployeeSurveyForm from "./pages/EmployeeSurvey/components/EmployeeSurveyForm";
 import SurveyDetails from "./pages/EmployeeSurvey/components/SurveyDetails";
+import Form16 from "./pages/Form16/Form16";
 import Form16NotificationToEmp from "./pages/Form16NotificationToEmp/Form16NotificationToEmp";
 import GeoFencing from "./pages/Geo-Fence/page";
 import EmployeeSideGeoFencing from "./pages/Geo-Fencing/EmployeeSideGeoFencing";
+import Home from "./pages/Home/Home";
 import EmployeeInvestmentPage from "./pages/Income-Tax/accountant/page";
 import IncomeTaxPage from "./pages/Income-Tax/page";
+import IncomeTax from "./pages/Income/IncomeTax";
 import IncomeTaxNotification from "./pages/Income/IncomeTaxNotification";
 import TDSCalculation from "./pages/Income/components/Calculations/TDSCalculation";
+import TDSTab1 from "./pages/Income/components/TDSTab1";
+import DeclarationPage from "./pages/Income/components/accountantDeclarations/DeclarationPage";
+import LeaveRequisition from "./pages/LeaveRequisition/LeaveRequisition";
 import ManagementCalender from "./pages/LeaveRequisition/Manager/ManagementCalender";
 import LetterSetup from "./pages/LetterTypes/LetterSetup";
+import LoanManagement from "./pages/LoanManagement/LoanManagement";
 import LoanMgtApproval from "./pages/LoanMgtNotified/LoanMgtApproval";
 import LoanMgtNotification from "./pages/LoanMgtNotified/LoanMgtNotification";
 import LoanNotificationToEmp from "./pages/LoanMgtNotified/LoanNotificationToEmp";
@@ -111,7 +77,9 @@ import MissedPunchNotification from "./pages/MissedPunchNotification/MissedPunch
 import MissedPunchNotificationToEmp from "./pages/MissedPunchNotification/MissedPunchNotificationToEmp";
 import MyTraining from "./pages/My-Training/page";
 import AssignOrg from "./pages/OrgList/AssignOrg";
+import OrgList from "./pages/OrgList/OrgList";
 import OvertimeSetup from "./pages/OvertimeSetup/OvertimeSetup";
+import PaymentFailed from "./pages/Payment/page";
 import PayslipNotification from "./pages/PayslipNotification/PayslipNotification";
 import RendarPunchSyncFile from "./pages/PunchDataSync/RendarPunchSyncFile";
 import CreateJobPosition from "./pages/Recruitment/CreateJobPosition";
@@ -120,24 +88,54 @@ import JobNotificationToEmp from "./pages/Recruitment/Notification/JobNotificati
 import JobPositionNotificaitonToMgr from "./pages/Recruitment/Notification/JobPositonNotificatinToMgr";
 import OpenJobPosition from "./pages/Recruitment/OpenRoleJobPosition";
 import ViewJobPosition from "./pages/Recruitment/ViewJobPosition";
+import RemoteManager from "./pages/Remote-Punch-Info/RemoteManager";
 import AddRemotePunchingTask from "./pages/Remote-Punching-Employee/AddRemotePunchingTask";
 import ShowCompletetaskInMap from "./pages/Remote-Punching-Employee/components/ShowCompletetaskInMap";
 import EmployeeSideRemotePunching from "./pages/Remote-Punching/EmployeeSideRemotePunching";
+import MissedPunch from "./pages/RemotePunchIn/MissedPunch";
 import ReportingMis from "./pages/ReportingMis/page";
 import ResetNewPassword from "./pages/ResetNewPassword/ResetNewPassword";
+import CalculateSalary from "./pages/SalaryCalculate/CalculateSalary";
+import SalaryManagement from "./pages/SalaryManagement/SalaryManagement";
 import SelfLeaveNotification from "./pages/SelfLeaveNotification/page";
 import SelfShiftNotification from "./pages/SelfShiftNotification/page";
+import EmployeeSalaryCalculateDay from "./pages/SetUpOrganization/EmoloyeeSalaryCalculate/EmployeeSalaryCalculate";
 import EmpCommunication from "./pages/SetUpOrganization/EmpCommunication/EmpCommunication";
+import EmployeeCodeGenerator from "./pages/SetUpOrganization/EmployeeCodeGenerator/EmployeeCodeGenerator";
+import EmpLoanMgt from "./pages/SetUpOrganization/EmployeeLoanManagement/EmpLoanMgt";
+import EmployementTypes from "./pages/SetUpOrganization/EmployementType/EmployementTypes";
+import LeaveTypes from "./pages/SetUpOrganization/LeaveComponents/LeaveTypes";
 import PFESIC from "./pages/SetUpOrganization/PFESIC";
 import PerformanceSetup from "./pages/SetUpOrganization/Performance/PerformanceSetup";
+import PublicHoliday from "./pages/SetUpOrganization/PublicHolidayPage/PublicHoliday";
 import RemoteSetup from "./pages/SetUpOrganization/Remote/RemoteSetup";
 import AddRoles from "./pages/SetUpOrganization/Roles/AddRoles";
+import SalaryInput from "./pages/SetUpOrganization/SaleryInput/SalaryInput";
+import Setup from "./pages/SetUpOrganization/Setup";
+import Subscription from "./pages/SetUpOrganization/Subscription/Subscription";
 import CompOff from "./pages/SetupPage/CompOff/CompOff";
+import {
+  default as DeleteDepartment,
+  default as DepartmentDeletion,
+} from "./pages/SetupPage/DepartmentDeletion";
+import EmailSetting from "./pages/SetupPage/EmailSetting";
 import ExtraDay from "./pages/SetupPage/ExtraDay/ExtraDay";
+import Shifts from "./pages/SetupPage/Shift/Page";
 import SetupShift from "./pages/SetupPage/ShiftManagement/SetupShift";
+import ShiftManagement from "./pages/SetupPage/ShiftManagement/shiftAllowance";
+import WeekendHoliday from "./pages/SetupPage/WeekendHoliday";
+import Inputfield from "./pages/SetupPage/inputfield";
+import SignIn from "./pages/SignIn/SignIn";
+import Signup from "./pages/SignUp/NewSignUp";
+import EmployeeTest from "./pages/Test/EmployeeTest";
 import RemoteEmployee from "./pages/Test/RemoteEmployee/page";
+import DepartmentTest from "./pages/Test2/DepartmentTest";
+import HrTrainings from "./pages/Training/page";
 import ViewAttendacneBiomatric from "./pages/ViewAttendanceBiomatric/ViewAttendacneBiomatric";
 import ViewCalculateAttendance from "./pages/ViewCalculateAttendance/ViewCalculateAttendance";
+import ViewPayslip from "./pages/ViewPayslip/ViewPayslip";
+import WaitMain from "./pages/Waiting-comp/waiting-main";
+import AddDelegate from "./pages/add-delegate/AddDelegate";
 import CustomCalander from "./pages/custom/Calendar";
 import EmpGeoFencingNotification from "./pages/emp-notifications/EmpGeoFencingNotification";
 import EmpNotification from "./pages/emp-notifications/EmpNotification";
@@ -145,7 +143,9 @@ import LeaveNotification from "./pages/leave-notification/page";
 import Performance from "./pages/peformance/Performance";
 import PunchNotification from "./pages/punch-notification/page";
 import ShiftNotification from "./pages/shift-notification/page";
-import EmpProfile from "./pages/EmpProfile/EmpProfile";
+import SingleDepartment from "./pages/single-department/single-department";
+import SingleOrganisation from "./pages/single-orgnisation/single-organisation";
+import NotFound from "./utils/Forbidden/NotFound";
 import EmployeeView from "./pages/Employee/EmployeeView"
 
 
@@ -656,7 +656,7 @@ const App = () => {
                   "Employee",
                 ]}
               >
-                <EmpProfile/>
+                <EmpProfile />
               </RequireAuth>
             }
           />
@@ -714,6 +714,7 @@ const App = () => {
               </RequireAuth>
             }
           />
+
           <Route
             path="/organisation/:id"
             element={
@@ -926,7 +927,6 @@ const App = () => {
               </RequireAuth>
             }
           />
-
 
           <Route
             path="/organisation/:organisationId/employee-offboarding"
@@ -2118,6 +2118,14 @@ const App = () => {
               </RequireAuth>
             }
           />
+          <Route
+            path="/organisation/:organisationId/view-option"
+            element={
+              <RequireAuth permission={["Super-Admin", "Delegate-Super-Admin"]}>
+                <ViewOption />
+              </RequireAuth>
+            }
+          />
         </Routes>
       </AuthProvider>
     </GoogleOAuthProvider>
@@ -2156,4 +2164,13 @@ function RequireSubscription({ children }) {
   }
 
   return children;
+}
+
+function ViewOption() {
+  return (
+    <div>
+      <h1>View Option</h1>
+      <button onClick={() => alert("View Option Clicked!")}>View Option</button>
+    </div>
+  );
 }
