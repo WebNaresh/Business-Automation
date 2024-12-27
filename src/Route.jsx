@@ -1,4 +1,3 @@
-import React from "react";
 import { Route, Routes, useParams } from "react-router-dom";
 
 // Components
@@ -35,6 +34,7 @@ import Dashboard from "./pages/DashBoard/Dashboard";
 import DashboardDH from "./pages/DashBoard/DashboardDH";
 import DashboardManger from "./pages/DashBoard/DashboardManger";
 import SuperAdmin from "./pages/DashBoard/SuperAdmin";
+import DepartmentEmployee from "./pages/Department-Employee/page";
 import DepartmentList from "./pages/Departments/DepartmentList";
 import EditDepartment from "./pages/Departments/EditDepartment";
 import DepartmentNotification from "./pages/DeptNotification/DepartmentNotification";
@@ -708,6 +708,24 @@ const App = () => {
                 ]}
               >
                 <DepartmentList />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="organisation/:organisationId/view-department/:departmentId"
+            element={
+              <RequireAuth
+                permission={[
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "Department-Head",
+                  "Delegate-Department-Head",
+                  "Department-Admin",
+                  "Delegate-Department-Admin",
+                  "HR",
+                ]}
+              >
+                <DepartmentEmployee />
               </RequireAuth>
             }
           />
@@ -2120,27 +2138,6 @@ const App = () => {
 };
 
 export default App;
-
-// function RequireAuth({ children, permission }) {
-//   const { getCurrentUser, useGetCurrentRole } = UserProfile();
-//   const navigate = useNavigate("");
-//   const user = getCurrentUser();
-//   const role = useGetCurrentRole();
-//   const isPermission = permission?.includes(role);
-
-//   // Check if the current path includes either "sign-in" or "sign-up"
-//   const isAuthPage =
-//     window.location.pathname.includes("sign-in") ||
-//     window.location.pathname.includes("sign-up");
-
-//   if (!isAuthPage) {
-//     if (!user) return <Navigate to={"/sign-in"} />;
-//     if (user && isPermission) return children;
-//     if (!isPermission) return navigate(-1);
-//   }
-
-//   return children;
-// }
 
 function RequireSubscription({ children }) {
   const { organisationId } = useParams();

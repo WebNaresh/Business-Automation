@@ -125,7 +125,7 @@ export default function SwipeableTemporaryDrawer() {
       </AppBar>
 
       <SwipeableDrawer
-        PaperProps={{ style: { background: "white" } }}
+        PaperProps={{ style: { background: "#00a2ad" } }}
         color="white"
         anchor="left"
         open={open}
@@ -133,7 +133,7 @@ export default function SwipeableTemporaryDrawer() {
         onOpen={toggleDrawer}
       >
         <div className="py-2 px-10 border-b-[.5px] flex items-center gap-2 border-gray-300">
-          <img src="/smartea.jpeg" className="h-[45px]" alt="logo" />
+          <img src="/smartea.jpeg" className="h-[45px] rounded-lg" alt="logo" />
         </div>
         {list}
       </SwipeableDrawer>

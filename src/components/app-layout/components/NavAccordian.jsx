@@ -29,10 +29,10 @@ const NavAccordion = ({
             onClick={handleAccordianClick}
           >
             {/* {icon} */}
-            <h1 className="py-1 font-semibold text-[#67748E]">{role}</h1>
+            <h1 className="py-1 font-semibold text-white">{role}</h1>
             {
               <ChevronRight
-                className={`text-[#67748E] !h-5 transition-all ${
+                className={`text-white !h-5 transition-all ${
                   open ? "transform rotate-90" : "rotate-0"
                 }`}
               />
@@ -48,10 +48,10 @@ const NavAccordion = ({
                 <Link
                   onClick={() => toggleDrawer()}
                   to={route.link}
-                  className="rounded-md flex items-center gap-2 p-2 hover:bg-gray-100 hover:!text-white m-2 px-6"
+                  className="rounded-md flex items-center gap-2 p-2 m-2 px-6"
                 >
                   {route.icon}
-                  <h1 className="font-bold text-[.9em] text-[#2e343f]">
+                  <h1 className="font-bold text-[.9em] text-[#59504c]">
                     {route.text}
                   </h1>
                 </Link>
@@ -62,9 +62,9 @@ const NavAccordion = ({
         <Link
           onClick={() => toggleDrawer()}
           to={link}
-          className="rounded-md flex items-center gap-2 py-2 hover:bg-gray-100 hover:!text-white m-2 px-2"
+          className="rounded-md flex items-center gap-2 py-2 text-white m-2 px-2"
         >
-          <h1 className="py-1 font-semibold text-[#67748E]">{role}</h1>
+          <h1 className="py-1 font-semibold text-white">{role}</h1>
           <h1 className="font-bold text-[.9em] text-[#2e343f]">
             {routes.text}
           </h1>
