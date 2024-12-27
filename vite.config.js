@@ -5,7 +5,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   define: {
-    'process.env': process.env,
+    "process.env": process.env,
   },
   plugins: [react()],
   resolve: {
@@ -14,7 +14,7 @@ export default defineConfig({
     },
   },
   server: {
-    port: 4000,
+    port: 3000,
   },
   esbuild: {
     loader: "tsx",
