@@ -41,7 +41,6 @@ const Test4 = ({ prevStep }) => {
     empId,
     joining_date,
     salarystructure,
-    dept_cost_center_no,
     companyemail,
     shift_allocation,
     data,
@@ -50,9 +49,10 @@ const Test4 = ({ prevStep }) => {
     pwd,
     uanNo,
     esicNo,
+    status
   } = useEmpState();
-   console.log(shift_allocation);
-   
+  console.log(shift_allocation);
+
 
   // define the handleSubmit function
   const handleSubmit = useMutation(
@@ -83,6 +83,7 @@ const Test4 = ({ prevStep }) => {
         pwd,
         uanNo,
         esicNo,
+        status ,
         //TODO This is additonal field data
         ...filteredData,
         designation: designation.value,
@@ -90,16 +91,12 @@ const Test4 = ({ prevStep }) => {
         deptname: deptname.value,
         employmentType: employmentType.value,
         salarystructure: salarystructure.value,
-        dept_cost_center_no: dept_cost_center_no.value,
-        // shift_allocation: shift_allocation.value || null,
-        // shift_allocation: shift_allocation.value || '',
-        // shift_allocation: shift_allocation.value || {},
         shift_allocation: data.shift_allocation?.value || null,
         organizationId: organisationId,
         creatorId,
       };
-      console.log("fdfd" ,userData);
-      
+      console.log("fdfd", userData);
+
       const response = axios.post(
         `${import.meta.env.VITE_API}/route/employee/add-employee`,
         userData,
@@ -207,6 +204,18 @@ const Test4 = ({ prevStep }) => {
                 <p className="">{esicNo ?? "-"}</p>
               </div>
             </div>
+            <div className="grid grid-cols-1 sm:!grid-cols-2 md:!grid-cols-3 justify-between">
+              <div className="p-2 w-[30%] rounded-sm ">
+                <h1 className="text-gray-500 text-sm">Status</h1>
+                <p className="">{status}</p>
+              </div>
+              <div className="p-2 w-[30%] rounded-sm ">
+               
+              </div>
+              <div className="p-2 w-[30%] rounded-sm ">
+               
+              </div>
+            </div>
 
             <h1 className=" text-lg bg-gray-200 px-4 py-2 w-full  my-2">
               Company Details
@@ -250,10 +259,7 @@ const Test4 = ({ prevStep }) => {
                 <p className="">{shift_allocation?.label}</p>
               </div>
               <div className="p-2 rounded-sm ">
-                <h1 className="text-gray-500 text-sm w-full">
-                  Department Cost No
-                </h1>
-                <p className="">{dept_cost_center_no?.label}</p>
+
               </div>
               <div className="p-2 rounded-sm ">
                 <h1 className="text-gray-500 text-sm w-full">Location</h1>

@@ -11,6 +11,7 @@ import {
   PersonPin,
   TodayOutlined,
   Work,
+  Today,
 } from "@mui/icons-material";
 import moment from "moment";
 import React, { useState } from "react";
@@ -38,9 +39,9 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
     salaryTemplateoption,
     empTypesoption,
     Designationoption,
+    Shiftoptions
   } = useEmpOption(organisationId);
 
-  console.log("department opeion", Departmentoptions);
 
   const {
     confirmPassword,
@@ -53,11 +54,12 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
     mgrempid,
     joining_date,
     salarystructure,
-    dept_cost_center_no,
+    shift_allocation,
     companyemail,
     setStep2Data,
     password,
     date_of_birth,
+    status
   } = useEmpState();
 
   const isAtLeastNineteenYearsOld = (value) => {
@@ -103,6 +105,8 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
         .string()
         .min(1, { message: "Employee code is required" })
         .max(25, { message: "Employee code is not greater than 25 character" }),
+      status: z
+        .string(),
       mgrempid: z
         .object({
           label: z.string().optional(),
@@ -145,11 +149,6 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
         label: z.string(),
         value: z.string(),
       }),
-      dept_cost_center_no: z.object({
-        label: z.string(),
-        value: z.string(),
-      }),
-
       companyemail: z.string().email(),
       profile: z.string().array().optional(),
       shift_allocation: z.object({
@@ -176,9 +175,9 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
       mgrempid: mgrempid,
       joining_date: joining_date,
       salarystructure: salarystructure,
-      dept_cost_center_no: dept_cost_center_no,
       companyemail: companyemail,
-      // shift_allocation: shift_allocation ,
+      shift_allocation: shift_allocation,
+      status: status,
     },
     resolver: zodResolver(EmployeeSchema),
   });
@@ -189,6 +188,9 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
     setStep2Data(data);
     nextStep();
   };
+
+  console.log("errors", errors);
+
 
   return (
     <div className="w-full mt-1">
@@ -306,7 +308,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             error={errors.confirmPassword}
             className="text-sm"
           />
-           <AuthInputFiled
+          <AuthInputFiled
             name="designation"
             icon={Work}
             control={control}
@@ -320,7 +322,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             className="text-sm"
           />
         </div>
-       
+
         <div className="grid grid-cols-1  md:grid-cols-3 w-full gap-4">
           <AuthInputFiled
             name="worklocation"
@@ -335,8 +337,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             error={errors.worklocation}
             className="text-sm"
           />
-          {/* </div>
-        <div className="grid grid-cols-1  md:grid-cols-2 w-full gap-3"> */}
+
           <AuthInputFiled
             value={employmentType}
             name="employmentType"
@@ -363,6 +364,37 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             error={errors.salarystructure}
             className="text-sm"
           />
+        </div>
+
+
+        <div className="grid grid-cols-1  md:grid-cols-3 w-full gap-4">
+          <AuthInputFiled
+            name="shift_allocation"
+            value={shift_allocation}
+            icon={Today}
+            control={control}
+            type="select"
+            options={Shiftoptions}
+            placeholder="Shift"
+            label="Select Shift"
+            errors={errors}
+            error={errors.shift_allocation}
+            className="text-sm"
+          />
+
+          <AuthInputFiled
+            name="status"
+            icon={Work}
+            control={control}
+            type="text"
+            placeholder="Status"
+            label="Status"
+            errors={errors}
+            error={errors.status}
+            className="text-sm"
+          />
+
+
         </div>
 
         <div className="flex items-end w-full justify-between">

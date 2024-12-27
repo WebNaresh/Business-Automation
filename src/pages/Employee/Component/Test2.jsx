@@ -45,6 +45,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
     setStep2Data,
     shift_allocation,
     date_of_birth,
+    status
   } = useEmployeeState();
 
   // to get the data from organization like department , location data
@@ -120,7 +121,8 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
         label: z.string(),
         value: z.string(),
       }),
-
+      status: z
+        .string(),
       companyemail: z.string().email(),
       profile: z.any(),
       shift_allocation: z.object({
@@ -149,6 +151,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
       dept_cost_center_no: dept_cost_center_no,
       companyemail: companyemail,
       shift_allocation: shift_allocation,
+      status: status,
     },
     resolver: zodResolver(EmployeeSchema),
   });
@@ -173,13 +176,10 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
     {
       onSuccess: (data) => {
         if (data) {
+          console.log("dataemp", data.employee);
           setValue("empId", data.employee.empId || "");
+          setValue("status", data.employee.status || "");
           setValue("companyemail", data.employee.companyemail || "");
-          // setValue(
-          //   "joining_date",
-          //   new Date(data.employee.joining_date).toISOString().split("T")[0] ||
-          //     ""
-          // );
           const joiningDate = new Date(data.employee.joining_date);
           if (!isNaN(joiningDate.getTime())) {
             setValue(
@@ -318,7 +318,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             onSubmit={handleSubmit(onsubmit)}
             className="w-full flex space-y-2  flex-1 flex-col"
           >
-            <div className="md:flex block w-full ">
+            <div className="grid grid-cols-1  md:grid-cols-2 w-full gap-3">
               <AuthInputFiled
                 name="empId"
                 icon={Work}
@@ -328,6 +328,17 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
                 label="Employee Code *"
                 errors={errors}
                 error={errors.empId}
+              />
+              <AuthInputFiled
+                name="status"
+                icon={Work}
+                control={control}
+                type="text"
+                placeholder="Status"
+                label="Status"
+                errors={errors}
+                error={errors.status}
+                className="text-sm"
               />
             </div>
             <div className="grid grid-cols-1  md:grid-cols-3 w-full gap-3">

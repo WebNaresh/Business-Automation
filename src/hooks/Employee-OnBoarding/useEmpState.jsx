@@ -31,6 +31,7 @@ const useEmpState = create((set) => {
     pwd: false,
     uanNo: undefined,
     esicNo: undefined,
+    status: undefined,
 
     // Setter function for updating multiple properties at once
     setStep2Data: (remotePunching) => {
@@ -85,6 +86,7 @@ const useEmpState = create((set) => {
         pwd: false,
         uanNo: undefined,
         esicNo: undefined,
+        status: undefined,
       });
     },
   };

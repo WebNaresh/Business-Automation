@@ -73,7 +73,10 @@ const SignIn = () => {
         window.location.reload();
       },
     }
-  );
+  ); 
+
+  console.log("env" , import.meta.env.VITE_API);
+  
 
   // to define the fuction for logged in
   const handleLogin = useMutation(

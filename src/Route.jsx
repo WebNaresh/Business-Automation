@@ -146,6 +146,9 @@ import ShiftNotification from "./pages/shift-notification/page";
 import SingleDepartment from "./pages/single-department/single-department";
 import SingleOrganisation from "./pages/single-orgnisation/single-organisation";
 import NotFound from "./utils/Forbidden/NotFound";
+import EmployeeView from "./pages/Employee/EmployeeView"
+
+
 
 const App = () => {
   return (
@@ -747,6 +750,16 @@ const App = () => {
               >
                 {/* <EmployeeAdd /> */}
                 <EmployeeTest />
+              </RequireAuth>
+            }
+          />
+           <Route
+            path="/organisation/:organisationId/employee-view/:empId"
+            element={
+              <RequireAuth
+                permission={["Super-Admin", "Delegate-Super-Admin", "HR"]}
+              >
+                <EmployeeView />
               </RequireAuth>
             }
           />
