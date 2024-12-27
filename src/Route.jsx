@@ -146,6 +146,7 @@ import Performance from "./pages/peformance/Performance";
 import PunchNotification from "./pages/punch-notification/page";
 import ShiftNotification from "./pages/shift-notification/page";
 import EmpProfile from "./pages/EmpProfile/EmpProfile";
+import EmployeeView from "./pages/Employee/EmployeeView"
 
 
 
@@ -730,6 +731,16 @@ const App = () => {
               >
                 {/* <EmployeeAdd /> */}
                 <EmployeeTest />
+              </RequireAuth>
+            }
+          />
+           <Route
+            path="/organisation/:organisationId/employee-view/:empId"
+            element={
+              <RequireAuth
+                permission={["Super-Admin", "Delegate-Super-Admin", "HR"]}
+              >
+                <EmployeeView />
               </RequireAuth>
             }
           />

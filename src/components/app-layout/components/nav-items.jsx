@@ -285,20 +285,20 @@ const TestNavItems = ({ toggleDrawer }) => {
               ].includes(role),
               link: `/organisation/${orgId}/employee-onboarding`,
               icon: <PersonAdd className=" !text-[1.2em] text-[#67748E]" />,
-              text: "Onboarding",
+              text: "Add Employee",
             },
-            {
-              key: "offboarding",
-              isVisible: [
-                "Super-Admin",
-                "Delegate-Super-Admin",
-                "HR",
-                "Delegate-Super-Admin",
-              ].includes(role),
-              link: `/organisation/${orgId}/employee-offboarding`,
-              icon: <PersonRemove className=" !text-[1.2em] text-[#67748E]" />,
-              text: "Offboarding",
-            },
+            // {
+            //   key: "offboarding",
+            //   isVisible: [
+            //     "Super-Admin",
+            //     "Delegate-Super-Admin",
+            //     "HR",
+            //     "Delegate-Super-Admin",
+            //   ].includes(role),
+            //   link: `/organisation/${orgId}/employee-offboarding`,
+            //   icon: <PersonRemove className=" !text-[1.2em] text-[#67748E]" />,
+            //   text: "Offboarding",
+            // },
             {
               key: "employeeList",
               isVisible: [
@@ -317,7 +317,7 @@ const TestNavItems = ({ toggleDrawer }) => {
               ].includes(role),
               link: `/organisation/${orgId}/employee-list`,
               icon: <Groups className=" !text-[1.2em] text-[#67748E]" />,
-              text: "Employee List",
+              text: "Manage Employee",
             },
           ],
         },

@@ -109,12 +109,13 @@ const DepartmentList = () => {
       ) : (
         <div className="w-full m-auto h-full">
           <div className="p-4 ">
-            <Typography variant="h4" className="text-center mb-6">
+            <Typography variant="h4" className="text-center mb-4">
               Manage Department
             </Typography>
-            <p className="text-xs text-gray-600 text-center">
+            <p className="text-xs text-gray-600 text-center mt-4 mb-4 text-bold">
               Manage your departments here.
             </p>
+
             <table
               style={{ borderRadius: "20px" }}
               className="min-w-full bg-white text-left text-sm font-light  shadow-md"

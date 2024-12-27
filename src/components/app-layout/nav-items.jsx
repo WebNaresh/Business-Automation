@@ -412,12 +412,12 @@ const NavItems = ({ toggleDrawer }) => {
                         }}
                         style={{ fontSize: "10px" }}
                         className="text-white text-sm"
-                        primary={"Onboarding"}
+                        primary={"Add Employee"}
                       />
                     </ListItemButton>
                   </Link>
                 </ListItem>
-                <ListItem disablePadding>
+                {/* <ListItem disablePadding>
                   <Link
                     onClick={() => toggleDrawer()}
                     to="#"
@@ -437,8 +437,8 @@ const NavItems = ({ toggleDrawer }) => {
                       />
                     </ListItemButton>
                   </Link>
-                </ListItem>
-                <ListItem disablePadding>
+                </ListItem> */}
+                {/* <ListItem disablePadding>
                   <Link
                     onClick={() => toggleDrawer()}
                     to="/del-employee"
@@ -458,7 +458,7 @@ const NavItems = ({ toggleDrawer }) => {
                       />
                     </ListItemButton>
                   </Link>
-                </ListItem>
+                </ListItem> */}
                 <ListItem disablePadding>
                   <Link
                     onClick={() => toggleDrawer()}
