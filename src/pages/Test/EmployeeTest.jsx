@@ -327,7 +327,7 @@ const EmployeeTest = () => {
       icon: Person,
     },
     {
-      label: "Company Details",
+      label: "Official  Details",
       icon: Business,
     },
     {

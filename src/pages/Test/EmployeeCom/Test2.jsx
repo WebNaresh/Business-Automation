@@ -166,9 +166,9 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
       }).optional().nullable(),
 
       current_ctc: z
-        .string()
-        .regex(/^\d+(\.\d{1,2})?$/, { message: "CTC must be a valid number with up to two decimal places" })
-        .min(1, { message: "Current CTC is required" }),
+        .string() 
+        .regex(/^\d+(\.\d{1,2})?$/, { message: "Incentive must be a valid number" })
+        .optional(),
 
       incentive: z
         .string()
@@ -204,8 +204,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
 
       id_card_no: z
         .string()
-        .optional()
-        .min(1, { message: "ID Card No is required" }),
+        .optional(),
 
       company_assets: z.string().optional(),
     })
@@ -240,6 +239,8 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
   // to define the onSubmit 
   const onsubmit = (data) => {
     setStep2Data(data);
+    console.log("data" , data);
+    
     nextStep();
   };
 
@@ -248,7 +249,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
 
   return (
     <div className="w-full mt-1">
-      <h1 className="text-2xl mb-3 font-bold">Company Info</h1>
+      <h1 className="text-2xl mb-3 font-bold">Official  Details</h1>
 
       <form
         onSubmit={handleSubmit(onsubmit)}
@@ -421,7 +422,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
         </div>
 
 
-        <div className="grid grid-cols-1  md:grid-cols-3 w-full gap-4">
+        <div className="grid grid-cols-1  md:grid-cols-2 w-full gap-4">
           <AuthInputFiled
             name="shift_allocation"
             value={shift_allocation}
@@ -447,17 +448,14 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             error={errors.status}
             className="text-sm"
           />
-
-
         </div>
-
 
         <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
           <AuthInputFiled
             name="current_ctc"
             icon={Work}
             control={control}
-            type="number"
+            type="text"
             placeholder="Current CTC"
             label="Current CTC"
             errors={errors}
@@ -465,61 +463,19 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             pattern="[A-Za-z\s]+"
             className="text-sm"
           />
-
-          <AuthInputFiled
-            name="incentive"
-            icon={AccountBalance}
-            control={control}
-            type="text"
-            placeholder="Incentive"
-            label="Incentive"
-            errors={errors}
-            error={errors.incentive}
-            className="text-sm
-"
-          />
-          <AuthInputFiled
-            name="health_insurance"
-            icon={AccountBalance}
-            control={control}
-            type="text"
-            placeholder="Health Insurance"
-            label="Health Insurance"
-            errors={errors}
-            error={errors.health_insurance}
-            pattern="[A-Za-z\s]+"
-            className=" text-sm"
-          />
-        </div>
-
-
-        <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
-          <AuthInputFiled
+            <AuthInputFiled
             name="exit_date"
             icon={Work}
             control={control}
             type="date"
-            placeholder="Current CTC"
-            label="Current CTC"
+            placeholder="Exit Date"
+            label="Exit Date"
             errors={errors}
-            error={errors.current_ctc}
+            error={errors.exit_date}
             pattern="[A-Za-z\s]+"
             className="text-sm"
-          />
-
-          <AuthInputFiled
-            name="travel_expenses_allowance"
-            icon={AccountBalance}
-            control={control}
-            type="text"
-            placeholder="Travel Expenses Allowance"
-            label="Travel Expenses Allowance"
-            errors={errors}
-            error={errors.travel_expenses_allowance}
-            className="text-sm
-"
-          />
-          <AuthInputFiled
+          /> 
+            <AuthInputFiled
             name="travel_requirement"
             icon={AccountBalance}
             control={control}
@@ -531,11 +487,10 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             pattern="[A-Za-z\s]+"
             className=" text-sm"
           />
-        </div> 
+        </div>
 
+        <div className="grid md:grid-cols-2 grid-cols-1 w-full gap-4">
 
-        <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
-         
           <AuthInputFiled
             name="id_card_no"
             icon={AccountBalance}
@@ -561,8 +516,6 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             className=" text-sm"
           />
         </div>
-
-
 
         <div className="flex items-end w-full justify-between">
           <button
