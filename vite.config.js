@@ -28,6 +28,8 @@ export default defineConfig({
       "@emotion/styled",
       "@mui/material",
       "@mui/system",
+      "jspdf" , 
+      "jspdf-autotable"
     ],
     esbuildOptions: {
       loader: {

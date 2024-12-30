@@ -163,10 +163,10 @@ const TestNavItems = ({ toggleDrawer }) => {
                 role === "Manager"
                   ? `/organisation/${orgId}/dashboard/manager-dashboard`
                   : role === "HR"
-                  ? `/organisation/${orgId}/dashboard/HR-dashboard`
-                  : role === "Employee"
-                  ? `/organisation/${orgId}/dashboard/employee-dashboard`
-                  : "/organizationList",
+                    ? `/organisation/${orgId}/dashboard/HR-dashboard`
+                    : role === "Employee"
+                      ? `/organisation/${orgId}/dashboard/employee-dashboard`
+                      : "/organizationList",
               icon: <Dashboard className=" !text-[1.2em]" />,
               text: "Dashboard",
             },
@@ -176,129 +176,20 @@ const TestNavItems = ({ toggleDrawer }) => {
             role === "Manager"
               ? `/organisation/${orgId}/dashboard/manager-dashboard`
               : role === "HR"
-              ? `/organisation/${orgId}/dashboard/HR-dashboard`
-              : role === "Employee"
-              ? `/organisation/${orgId}/dashboard/employee-dashboard`
-              : role === "Super-Admin"
-              ? `/organisation/${orgId}/dashboard/super-admin`
-              : "/organizationList",
+                ? `/organisation/${orgId}/dashboard/HR-dashboard`
+                : role === "Employee"
+                  ? `/organisation/${orgId}/dashboard/employee-dashboard`
+                  : role === "Super-Admin"
+                    ? `/organisation/${orgId}/dashboard/super-admin`
+                    : "/organizationList",
         },
-        Department: {
+        Notification: {
           open: false,
-          isVisible:
-            window.location.pathname.includes("organisation") &&
-            [
-              "Super-Admin",
-              "Delegate-Super-Admin",
-              "Delegate-Super-Admin",
-              "HR",
-              "Department-Head",
-              "Delegate-Department-Head",
-              "Department-Admin",
-              "Delegate-Department-Admin",
-            ].includes(role),
-          // : false
-          icon: <VscTypeHierarchySub className=" !text-[1.2rem]" />,
-          routes: [
-            {
-              key: "addDepartment",
-              isVisible: [
-                "Super-Admin",
-                "Delegate-Super-Admin",
-                "Delegate-Super-Admin",
-                "HR",
-                "Department-Head",
-                "Delegate-Department-Head",
-                "Department-Admin",
-                "Delegate-Department-Admin",
-              ].includes(role),
-              link: `/organisation/${orgId}/add-department`,
-              icon: <AddCircleOutlineOutlinedIcon className=" !text-[1.2em]" />,
-              text: "Add Department",
-            },
-            {
-              key: "departmentList",
-              isVisible: [
-                "Super-Admin",
-                "Delegate-Super-Admin",
-                "Delegate-Super-Admin",
-                "HR",
-                "Department-Head",
-                "Delegate-Department-Head",
-                "Department-Admin",
-                "Delegate-Department-Admin",
-              ].includes(role),
-              link: `/organisation/${orgId}/department-list`,
-              icon: <ListAltOutlinedIcon className=" !text-[1.2em]" />,
-              text: "Manage Department",
-            },
-          ],
-        },
-        Employee: {
-          open: false,
-          icon: <PeopleAlt className=" !text-[1.2em]" />,
-          isVisible:
-            window.location.pathname?.includes("organisation") &&
-            [
-              "Super-Admin",
-              "Delegate-Super-Admin",
-              "Delegate-Super-Admin",
-              "Department-Head",
-              "Delegate-Department-Head",
-              "Department-Admin",
-              "Delegate-Department-Admin",
-              "Accountant",
-              "Delegate-Accountant",
-              "HR",
-              "Manager",
-              "Employee",
-            ]?.includes(role),
-          routes: [
-            {
-              key: "onboarding",
-              isVisible: [
-                "Super-Admin",
-                "Delegate-Super-Admin",
-                "HR",
-                "Delegate-Super-Admin",
-              ].includes(role),
-              link: `/organisation/${orgId}/employee-onboarding`,
-              icon: <PersonAdd className=" !text-[1.2em]" />,
-              text: "Add Employee",
-            },
-            // {
-            //   key: "offboarding",
-            //   isVisible: [
-            //     "Super-Admin",
-            //     "Delegate-Super-Admin",
-            //     "HR",
-            //     "Delegate-Super-Admin",
-            //   ].includes(role),
-            //   link: `/organisation/${orgId}/employee-offboarding`,
-            //   icon: <PersonRemove className=" !text-[1.2em]" />,
-            //   text: "Offboarding",
-            // },
-            {
-              key: "employeeList",
-              isVisible: [
-                "Super-Admin",
-                "Delegate-Super-Admin",
-                "Delegate-Super-Admin",
-                "Department-Head",
-                "Delegate-Department-Head",
-                "Department-Admin",
-                "Delegate-Department-Admin",
-                "Accountant",
-                "Delegate-Accountant",
-                "HR",
-                "Manager",
-                "Employee",
-              ].includes(role),
-              link: `/organisation/${orgId}/employee-list`,
-              icon: <Groups className=" !text-[1.2em]" />,
-              text: "Manage Employee",
-            },
-          ],
+          isVisible: true,
+          icon: <NotificationsActive className=" !text-[1.2em]" />,
+          routes: [],
+          isClickable: true,
+          link: `/organisation/${orgId}/notification`,
         },
         Attendence: {
           open: true,
@@ -323,6 +214,67 @@ const TestNavItems = ({ toggleDrawer }) => {
               link: `/organisation/${orgId}/ManagementCalender`,
               icon: <FaUserClock className=" !text-[1.2rem]" />,
               text: "Employee Attendance",
+            },
+          ],
+        },
+        Payroll: {
+          open: false,
+          isVisible: true,
+          icon: <Payment className=" !text-[1.2em]" />,
+          routes: [
+            {
+              key: "payslip",
+              isVisible: true,
+              link: `/organisation/${orgId}/view-payslip`,
+              icon: <ListAlt className=" !text-[1.2em]" />,
+              text: "Pay Slip",
+            },
+            {
+              key: "IncomeTax",
+              isVisible: true,
+              link: `/organisation/${orgId}/income-tax-section`,
+              icon: <TrendingUp className=" !text-[1.2em]" />,
+              text: "Income Tax",
+            },
+            {
+              key: "Employee TDS Details",
+              isVisible:
+                window.location.pathname?.includes("organisation") &&
+                [
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "Accountant",
+                  "Delegate-Accountant",
+                  "HR",
+                ]?.includes(role),
+              link: `/organisation/${orgId}/employee/income-tax-section`,
+              icon: <TrendingUp className=" !text-[1.2em]" />,
+              text: "Employee TDS Details",
+            },
+            {
+              key: "form-16",
+              isVisible: true,
+              link: `/organisation/${orgId}/form-16`,
+              icon: <Description className=" !text-[1.2em]" />,
+              text: "Form-16",
+            },
+
+            {
+              key: "createsalary",
+              isVisible:
+                isVisible &&
+                [
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "HR",
+                  "Accountant",
+                  "Delegate-Super-Admin",
+                ].includes(role),
+              link: `/organisation/${orgId}/salary-management`,
+              icon: (
+                <AccountBalanceWalletOutlinedIcon className=" !text-[1.2em]" />
+              ),
+              text: "Salary Management",
             },
           ],
         },
@@ -394,67 +346,6 @@ const TestNavItems = ({ toggleDrawer }) => {
             },
           ],
         },
-        Payroll: {
-          open: false,
-          isVisible: true,
-          icon: <Payment className=" !text-[1.2em]" />,
-          routes: [
-            {
-              key: "payslip",
-              isVisible: true,
-              link: `/organisation/${orgId}/view-payslip`,
-              icon: <ListAlt className=" !text-[1.2em]" />,
-              text: "Pay Slip",
-            },
-            {
-              key: "IncomeTax",
-              isVisible: true,
-              link: `/organisation/${orgId}/income-tax-section`,
-              icon: <TrendingUp className=" !text-[1.2em]" />,
-              text: "Income Tax",
-            },
-            {
-              key: "Employee TDS Details",
-              isVisible:
-                window.location.pathname?.includes("organisation") &&
-                [
-                  "Super-Admin",
-                  "Delegate-Super-Admin",
-                  "Accountant",
-                  "Delegate-Accountant",
-                  "HR",
-                ]?.includes(role),
-              link: `/organisation/${orgId}/employee/income-tax-section`,
-              icon: <TrendingUp className=" !text-[1.2em]" />,
-              text: "Employee TDS Details",
-            },
-            {
-              key: "form-16",
-              isVisible: true,
-              link: `/organisation/${orgId}/form-16`,
-              icon: <Description className=" !text-[1.2em]" />,
-              text: "Form-16",
-            },
-
-            {
-              key: "createsalary",
-              isVisible:
-                isVisible &&
-                [
-                  "Super-Admin",
-                  "Delegate-Super-Admin",
-                  "HR",
-                  "Accountant",
-                  "Delegate-Super-Admin",
-                ].includes(role),
-              link: `/organisation/${orgId}/salary-management`,
-              icon: (
-                <AccountBalanceWalletOutlinedIcon className=" !text-[1.2em]" />
-              ),
-              text: "Salary Management",
-            },
-          ],
-        },
         "Geo Fencing": {
           open: false,
           isVisible:
@@ -483,71 +374,91 @@ const TestNavItems = ({ toggleDrawer }) => {
             },
           ],
         },
-        Branches: {
+        Employee: {
           open: false,
-          isVisible: ["Super-Admin", "Delegate-Super-Admin"].includes(role),
-          icon: <MonetizationOn className=" !text-[1.2em]" />,
-          isClickable: true,
-          routes: [],
-          link: "/organizationList",
-        },
-        Training: {
-          open: false,
-          isVisible: data?.organisation?.packageInfo === "Intermediate Plan",
-          icon: <MonetizationOn className=" !text-[1.2em]" />,
-          routes: [
-            {
-              key: "myTraining",
-              isVisible: ["Employee", "Manager", "Accountant"].includes(role),
-              link: "/my-training",
-              icon: <ArticleIcon className=" !text-[1.2em]" />,
-              text: "My Trainings",
-            },
-            {
-              key: "manageTraining",
-              isVisible:
-                ["HR", "Super-Admin", "Delegate-Super-Admin"].includes(role) &&
-                window.location.pathname?.includes("organisation"),
-              link: `/organisation/${orgId}/manage-training`,
-              icon: <ModelTrainingOutlined className=" !text-[1.2em]" />,
-              text: "Manage Trainings",
-            },
-          ],
-        },
-        Report: {
-          open: false,
+          icon: <PeopleAlt className=" !text-[1.2em]" />,
           isVisible:
-            data?.organisation?.packageInfo === "Intermediate Plan" &&
             window.location.pathname?.includes("organisation") &&
             [
               "Super-Admin",
               "Delegate-Super-Admin",
+              "Delegate-Super-Admin",
+              "Department-Head",
+              "Delegate-Department-Head",
+              "Department-Admin",
+              "Delegate-Department-Admin",
               "Accountant",
+              "Delegate-Accountant",
               "HR",
+              "Manager",
+              "Employee",
             ]?.includes(role),
-          icon: <NotificationsActive className=" !text-[1.2em]" />,
           routes: [
             {
-              key: "reportingMIS",
-              isVisible: true,
-              link: `/organisation/${orgId}/mis-report`,
-              icon: <SiMicrosoftexcel className=" !text-[1.2em]" />,
-              text: "Reporting MIS",
+              key: "onboarding",
+              isVisible: [
+                "Super-Admin",
+                "Delegate-Super-Admin",
+                "HR",
+                "Delegate-Super-Admin",
+              ].includes(role),
+              link: `/organisation/${orgId}/employee-onboarding`,
+              icon: <PersonAdd className=" !text-[1.2em]" />,
+              text: "Add Employee",
+            },
+            {
+              key: "employeeList",
+              isVisible: [
+                "Super-Admin",
+                "Delegate-Super-Admin",
+                "Delegate-Super-Admin",
+                "Department-Head",
+                "Delegate-Department-Head",
+                "Department-Admin",
+                "Delegate-Department-Admin",
+                "Accountant",
+                "Delegate-Accountant",
+                "HR",
+                "Manager",
+                "Employee",
+              ].includes(role),
+              link: `/organisation/${orgId}/employee-list`,
+              icon: <Groups className=" !text-[1.2em]" />,
+              text: "Manage Employee",
             },
           ],
         },
-        Notification: {
+        Communication: {
           open: false,
-          isVisible: true,
-          icon: <NotificationsActive className=" !text-[1.2em]" />,
-          routes: [],
-          isClickable: true,
-          link: `/organisation/${orgId}/notification`,
+          isVisible:
+            survey?.surveyPermission,
+          icon: <Business className=" !text-[1.2em]" />,
+          routes: [
+            {
+              key: "createCommunication",
+              isVisible:
+                survey?.surveyPermission,
+              link: `/organisation/${orgId}/create-communication`,
+              icon: <ChatIcon className=" !text-[1.2em]" />,
+              text: "Broadcast",
+            },
+            {
+              key: "EmployeeSurvey",
+              isVisible:
+                survey?.surveyPermission,
+              link:
+                user?.profile.includes("Super-Admin") ||
+                  user?.profile.includes("HR")
+                  ? `/organisation/${orgId}/employee-survey`
+                  : `/organisation/${orgId}/employee-survey/${empId}`,
+              icon: <AssignmentIcon className=" !text-[1.2em]" />,
+              text: "Employee Survey",
+            },
+          ],
         },
         Performance: {
           open: false,
           isVisible:
-            data?.organisation?.packageInfo === "Intermediate Plan" &&
             window.location.pathname?.includes("organisation") &&
             [
               "Super-Admin",
@@ -574,106 +485,88 @@ const TestNavItems = ({ toggleDrawer }) => {
             },
           ],
         },
-
-        Recruitment: {
+        Report: {
           open: false,
-          icon: <PeopleAlt className=" !text-[1.2em]" />,
           isVisible:
+            window.location.pathname?.includes("organisation") &&
             [
               "Super-Admin",
               "Delegate-Super-Admin",
+              "Accountant",
+              "HR",
+            ]?.includes(role),
+          icon: <NotificationsActive className=" !text-[1.2em]" />,
+          routes: [
+            {
+              key: "reportingMIS",
+              isVisible: true,
+              link: `/organisation/${orgId}/mis-report`,
+              icon: <SiMicrosoftexcel className=" !text-[1.2em]" />,
+              text: "Reporting MIS",
+            },
+          ],
+        },
+        Department: {
+          open: false,
+          isVisible:
+            window.location.pathname.includes("organisation") &&
+            [
+              "Super-Admin",
+              "Delegate-Super-Admin",
+              "Delegate-Super-Admin",
+              "HR",
               "Department-Head",
               "Delegate-Department-Head",
               "Department-Admin",
               "Delegate-Department-Admin",
-              "Accountant",
-              "Delegate-Accountant",
-              "HR",
-              "Manager",
-              "Employee",
-            ].includes(role) &&
-            data?.organisation?.packageInfo === "Enterprise Plan",
+            ].includes(role),
+          // : false
+          icon: <VscTypeHierarchySub className=" !text-[1.2rem]" />,
           routes: [
             {
-              key: "createjobposition",
+              key: "addDepartment",
               isVisible: [
                 "Super-Admin",
+                "Delegate-Super-Admin",
                 "Delegate-Super-Admin",
                 "HR",
-                "Department-Head",
-                "Delegate-Department-Head",
-                "Manager",
-              ].includes(role),
-              link: `organisation/${orgId}/create-job-position`,
-              icon: <WorkIcon className=" !text-[1.2em]" />,
-              text: "Create Job Position",
-            },
-            {
-              key: "viewjobposition",
-              isVisible: [
-                "Super-Admin",
-                "Delegate-Super-Admin",
-                "HR",
-                "Department-Head",
-                "Delegate-Department-Head",
-                "Manager",
-              ].includes(role),
-              link: `organisation/${orgId}/view-job-position`,
-              icon: <PersonRemove className=" !text-[1.2em]" />,
-              text: "View Job Position",
-            },
-            {
-              key: "openjobposition",
-              isVisible: [
-                "Super-Admin",
-                "Delegate-Super-Admin",
                 "Department-Head",
                 "Delegate-Department-Head",
                 "Department-Admin",
                 "Delegate-Department-Admin",
-                "Accountant",
-                "Delegate-Accountant",
-                "HR",
-                "Manager",
-                "Employee",
               ].includes(role),
-              link: `organisation/${orgId}/open-job-position`,
-              icon: <PersonRemove className=" !text-[1.2em]" />,
-              text: "Open Job Role",
+              link: `/organisation/${orgId}/add-department`,
+              icon: <AddCircleOutlineOutlinedIcon className=" !text-[1.2em]" />,
+              text: "Add Department",
+            },
+            {
+              key: "departmentList",
+              isVisible: [
+                "Super-Admin",
+                "Delegate-Super-Admin",
+                "Delegate-Super-Admin",
+                "HR",
+                "Department-Head",
+                "Delegate-Department-Head",
+                "Department-Admin",
+                "Delegate-Department-Admin",
+              ].includes(role),
+              link: `/organisation/${orgId}/department-list`,
+              icon: <ListAltOutlinedIcon className=" !text-[1.2em]" />,
+              text: "Manage Department",
             },
           ],
         },
-        Communication: {
+        Branches: {
           open: false,
-          isVisible:
-            data?.organisation?.packageInfo === "Intermediate Plan" &&
-            survey?.surveyPermission,
-          icon: <Business className=" !text-[1.2em]" />,
-          routes: [
-            {
-              key: "createCommunication",
-              isVisible:
-                data?.organisation?.packageInfo === "Intermediate Plan" &&
-                survey?.surveyPermission,
-              link: `/organisation/${orgId}/create-communication`,
-              icon: <ChatIcon className=" !text-[1.2em]" />,
-              text: "Broadcast",
-            },
-            {
-              key: "EmployeeSurvey",
-              isVisible:
-                data?.organisation?.packageInfo === "Intermediate Plan" &&
-                survey?.surveyPermission,
-              link:
-                user?.profile.includes("Super-Admin") ||
-                user?.profile.includes("HR")
-                  ? `/organisation/${orgId}/employee-survey`
-                  : `/organisation/${orgId}/employee-survey/${empId}`,
-              icon: <AssignmentIcon className=" !text-[1.2em]" />,
-              text: "Employee Survey",
-            },
-          ],
+          isVisible: ["Super-Admin", "Delegate-Super-Admin"].includes(role),
+          icon: <MonetizationOn className=" !text-[1.2em]" />,
+          isClickable: true,
+          routes: [],
+          link: "/organizationList",
         },
+
+
         "Remote Punch": {
           open: false,
           isVisible:

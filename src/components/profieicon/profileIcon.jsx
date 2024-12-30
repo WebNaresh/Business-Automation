@@ -131,7 +131,7 @@ export default function ProfileIcon() {
             <Link key="sign-in-link" to="/sign-in">
               <MenuItem onClick={handleClose}>Sign In</MenuItem>
             </Link>
-            <Button>Hello</Button>
+
           </>
         )}
       </Menu>
