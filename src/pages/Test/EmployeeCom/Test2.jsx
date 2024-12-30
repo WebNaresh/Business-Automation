@@ -12,6 +12,7 @@ import {
   TodayOutlined,
   Work,
   Today,
+  AccountBalance,
 } from "@mui/icons-material";
 import moment from "moment";
 import React, { useState } from "react";
@@ -59,7 +60,15 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
     setStep2Data,
     password,
     date_of_birth,
-    status
+    status,
+    current_ctc,
+    incentive,
+    health_insurance,
+    exit_date,
+    travel_expenses_allowance,
+    travel_requirement,
+    id_card_no,
+    company_assets
   } = useEmpState();
 
   const isAtLeastNineteenYearsOld = (value) => {
@@ -155,7 +164,52 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
         label: z.string().optional(),
         value: z.string().optional(),
       }).optional().nullable(),
+
+      current_ctc: z
+        .string()
+        .regex(/^\d+(\.\d{1,2})?$/, { message: "CTC must be a valid number with up to two decimal places" })
+        .min(1, { message: "Current CTC is required" }),
+
+      incentive: z
+        .string()
+        .regex(/^\d+(\.\d{1,2})?$/, { message: "Incentive must be a valid number" })
+        .optional(),
+
+      health_insurance: z
+        .string()
+        .regex(/^\d+(\.\d{1,2})?$/, { message: "Health Insurance must be a valid number" })
+        .optional(),
+      exit_date: z
+        .string()
+        .optional()
+        .refine(
+          (value) => {
+            if (value) {
+              const exitDate = moment(value, "YYYY-MM-DD");
+              const currentDate = moment();
+              return exitDate.isSameOrBefore(currentDate);
+            }
+            return true;
+          },
+          { message: "Exit date cannot be in the future" }
+        ),
+
+      travel_expenses_allowance: z
+        .string()
+        .regex(/^\d+(\.\d{1,2})?$/, { message: "Travel expenses allowance must be a valid number" })
+        .optional(),
+      travel_requirement: z
+        .string()
+        .optional(),
+
+      id_card_no: z
+        .string()
+        .optional()
+        .min(1, { message: "ID Card No is required" }),
+
+      company_assets: z.string().optional(),
     })
+
     .refine((data) => data.password === data.confirmPassword, {
       message: "Password don't match",
       path: ["confirmPassword"],
@@ -396,6 +450,119 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
 
 
         </div>
+
+
+        <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
+          <AuthInputFiled
+            name="current_ctc"
+            icon={Work}
+            control={control}
+            type="number"
+            placeholder="Current CTC"
+            label="Current CTC"
+            errors={errors}
+            error={errors.current_ctc}
+            pattern="[A-Za-z\s]+"
+            className="text-sm"
+          />
+
+          <AuthInputFiled
+            name="incentive"
+            icon={AccountBalance}
+            control={control}
+            type="text"
+            placeholder="Incentive"
+            label="Incentive"
+            errors={errors}
+            error={errors.incentive}
+            className="text-sm
+"
+          />
+          <AuthInputFiled
+            name="health_insurance"
+            icon={AccountBalance}
+            control={control}
+            type="text"
+            placeholder="Health Insurance"
+            label="Health Insurance"
+            errors={errors}
+            error={errors.health_insurance}
+            pattern="[A-Za-z\s]+"
+            className=" text-sm"
+          />
+        </div>
+
+
+        <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
+          <AuthInputFiled
+            name="exit_date"
+            icon={Work}
+            control={control}
+            type="date"
+            placeholder="Current CTC"
+            label="Current CTC"
+            errors={errors}
+            error={errors.current_ctc}
+            pattern="[A-Za-z\s]+"
+            className="text-sm"
+          />
+
+          <AuthInputFiled
+            name="travel_expenses_allowance"
+            icon={AccountBalance}
+            control={control}
+            type="text"
+            placeholder="Travel Expenses Allowance"
+            label="Travel Expenses Allowance"
+            errors={errors}
+            error={errors.travel_expenses_allowance}
+            className="text-sm
+"
+          />
+          <AuthInputFiled
+            name="travel_requirement"
+            icon={AccountBalance}
+            control={control}
+            type="text"
+            placeholder="Travel Requirement"
+            label="Travel Requirement"
+            errors={errors}
+            error={errors.travel_requirement}
+            pattern="[A-Za-z\s]+"
+            className=" text-sm"
+          />
+        </div> 
+
+
+        <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
+         
+          <AuthInputFiled
+            name="id_card_no"
+            icon={AccountBalance}
+            control={control}
+            type="text"
+            placeholder="Travel Expenses Allowance"
+            label="Travel Expenses Allowance"
+            errors={errors}
+            error={errors.id_card_no}
+            className="text-sm
+"
+          />
+          <AuthInputFiled
+            name="company_assets"
+            icon={AccountBalance}
+            control={control}
+            type="text"
+            placeholder="Company Assets"
+            label="Company Assets"
+            errors={errors}
+            error={errors.company_assets}
+            pattern="[A-Za-z\s]+"
+            className=" text-sm"
+          />
+        </div>
+
+
 
         <div className="flex items-end w-full justify-between">
           <button

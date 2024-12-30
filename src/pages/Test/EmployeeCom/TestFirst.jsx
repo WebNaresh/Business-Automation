@@ -32,7 +32,7 @@ export const isAtLeastNineteenYearsOld = (value) => {
   return differenceInYears >= 19;
 };
 
-const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
+const TestFirst = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
   const {
     setStep1Data,
     first_name,
@@ -516,10 +516,103 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
 
         </div>
 
+        <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
+          <AuthInputFiled
+            name="height"
+            icon={AccountBalance}
+            control={control}
+            type="text"
+            placeholder="Height"
+            label="Height"
+            errors={errors}
+            error={errors.height}
+            className="text-sm
+"
+          />
+          <AuthInputFiled
+            name="weight"
+            icon={AccountBalance}
+            control={control}
+            type="text"
+            placeholder="Weight"
+            label="Weight"
+            errors={errors}
+            error={errors.weight}
+            pattern="[A-Za-z\s]+"
+            className=" text-sm"
+          />
+
+          <AuthInputFiled
+            name="blood_group"
+            icon={LocationOn}
+            control={control}
+            type="text"
+            placeholder="Blood Group"
+            label="Blood Group"
+            errors={errors}
+            error={errors.blood_group}
+            pattern="[A-Za-z\s]+"
+            className="text-sm"
+          />
+
+        </div>
 
         <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
 
-        <AuthInputFiled
+          <AuthInputFiled
+            name="emergency_contact_no"
+            icon={LocationOn}
+            control={control}
+            type="number"
+            placeholder="Emergency Contact No"
+            label="Emergency Contact No"
+            errors={errors}
+            error={errors.emergency_contact_no}
+            pattern="[A-Za-z\s]+"
+            className="text-sm"
+          />
+
+          <AuthInputFiled
+            name="emergency_contact_name"
+            icon={AccountBalance}
+            control={control}
+            type="text"
+            placeholder="Emergency Contact Name"
+            label="Emergency Contact Name"
+            errors={errors}
+            error={errors.emergency_contact_name}
+            className="text-sm
+         "
+          />
+          <AuthInputFiled
+            name="relationship_with_emergency_contact"
+            icon={AccountBalance}
+            control={control}
+            type="text"
+            placeholder="Relationship with Emergency Contact"
+            label="Relationship with Emergency Contact"
+            errors={errors}
+            error={errors.relationship_with_emergency_contact}
+            pattern="[A-Za-z\s]+"
+            className=" text-sm"
+          />
+        </div>
+
+        <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
+
+          <AuthInputFiled
+            name="alternate_contact_no"
+            icon={LocationOn}
+            control={control}
+            type="number"
+            placeholder="Alternate Contact No"
+            label="Alternate Contact No"
+            errors={errors}
+            error={errors.alternate_contact_no}
+            pattern="[A-Za-z\s]+"
+            className="text-sm"
+          />
+          <AuthInputFiled
             name="voting_card_no"
             icon={AccountBalance}
             control={control}
@@ -530,7 +623,136 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
             error={errors.voting_card_no}
             className="text-sm"
           />
+          <AuthInputFiled
+            name="permanent_address"
+            icon={AccountBalance}
+            control={control}
+            type="text"
+            placeholder="Permanent Address"
+            label="Permanent Address"
+            errors={errors}
+            error={errors.permanent_address}
+            pattern="[A-Za-z\s]+"
+            className=" text-sm"
+          />
         </div>
+
+        <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
+
+        </div>
+        <h1 className="text-2xl mb-3 font-bold">Family Details</h1>
+
+        <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
+
+          <AuthInputFiled
+            name="parent_name"
+            icon={LocationOn}
+            control={control}
+            type="text"
+            placeholder="Parent Name"
+            label="Parent Name"
+            errors={errors}
+            error={errors.parent_name}
+            pattern="[A-Za-z\s]+"
+            className="text-sm"
+          />
+
+          <AuthInputFiled
+            name="spouse_name"
+            icon={AccountBalance}
+            control={control}
+            type="text"
+            placeholder="Spouse Name"
+            label="Spouse Name"
+            errors={errors}
+            error={errors.spouse_name}
+            className="text-sm
+"
+          />
+
+        </div>
+
+
+        <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
+          <AuthInputFiled
+            name="father_first_name"
+            icon={LocationOn}
+            control={control}
+            type="text"
+            placeholder="Father First Name"
+            label="Father First Name"
+            errors={errors}
+            error={errors.father_first_name}
+            pattern="[A-Za-z\s]+"
+            className="text-sm"
+          />
+
+          <AuthInputFiled
+            name="father_middal_name"
+            icon={AccountBalance}
+            control={control}
+            type="text"
+            placeholder="Father Middal Name"
+            label="Father Middal Name"
+            errors={errors}
+            error={errors.father_middal_name}
+            className="text-sm
+"
+          />
+          <AuthInputFiled
+            name="father_last_name"
+            icon={AccountBalance}
+            control={control}
+            type="text"
+            placeholder="Father Last Name"
+            label="Father Last Name"
+            errors={errors}
+            error={errors.father_last_name}
+            pattern="[A-Za-z\s]+"
+            className=" text-sm"
+          />
+        </div>
+
+        <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
+          <AuthInputFiled
+            name="mother_first_name"
+            icon={LocationOn}
+            control={control}
+            type="text"
+            placeholder="Mother First Name"
+            label="Mother First Name"
+            errors={errors}
+            error={errors.mother_first_name}
+            pattern="[A-Za-z\s]+"
+            className="text-sm"
+          />
+
+          <AuthInputFiled
+            name="mother_middal_name"
+            icon={AccountBalance}
+            control={control}
+            type="text"
+            placeholder="Mother Middal Name"
+            label="Mother Middal Name"
+            errors={errors}
+            error={errors.mother_middal_name}
+            className="text-sm
+"
+          />
+          <AuthInputFiled
+            name="mother_last_name"
+            icon={AccountBalance}
+            control={control}
+            type="text"
+            placeholder="Mother Last Name"
+            label="Mother Last Name"
+            errors={errors}
+            error={errors.mother_last_name}
+            pattern="[A-Za-z\s]+"
+            className=" text-sm"
+          />
+        </div>
+
         <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
           <AuthInputFiled
             name="father_occupation"
@@ -780,4 +1002,4 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
   );
 };
 
-export default Test1;
+export default TestFirst;
