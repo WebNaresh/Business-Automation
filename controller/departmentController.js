@@ -240,28 +240,12 @@ exports.getDepartmentDetails = catchAssyncError(async (req, res, next) => {
       return res.status(404).json({ message: "Departments not found" });
     }
 
-    // Count employees in each department
-    const employeeCounts = await EmployeeModel.aggregate([
-      { $match: { organizationId } },
-      { $group: { _id: "$departmentId", count: { $sum: 1 } } },
-    ]);
-
-    // Map employee counts to departments
-    const departmentsWithEmployeeCount = departments.map((department) => {
-      const employeeCount = employeeCounts.find(
-        (count) => count._id.toString() === department._id.toString()
-      );
-      return {
-        ...department.toObject(),
-        employeeCount: employeeCount ? employeeCount.count : 0,
-      };
-    });
-
     res.status(200).json({
-      departments: departmentsWithEmployeeCount,
+      departments,
       departmentCount,
     });
   } catch (error) {
+    console.error(error);
     res
       .status(500)
       .json({ message: "Error from function", error: error.message });

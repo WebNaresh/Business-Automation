@@ -50,7 +50,6 @@ const Employee = new mongoose.Schema({
 
   employeeStatus: {
     type: String,
-
   },
   user_id: {
     type: String,
@@ -71,11 +70,9 @@ const Employee = new mongoose.Schema({
   },
   adhar_card_number: {
     type: Number,
-    // unique: true,
   },
   pan_card_number: {
     type: String,
-    // unique: true,
   },
 
   shift_allocation: {
@@ -110,7 +107,6 @@ const Employee = new mongoose.Schema({
   },
   empId: {
     type: String,
-    // unique: true,
   },
 
   esicNo: {
@@ -161,7 +157,6 @@ const Employee = new mongoose.Schema({
 
   bank_account_no: {
     type: Number,
-    // unique: true,
   },
   organizationId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -173,6 +168,115 @@ const Employee = new mongoose.Schema({
     ref: "SalaryTemplate",
     default: null,
   },
+  emergency_contact_no: {
+    type: Number,
+  },
+  emergency_contact_name: {
+    type: String,
+  },
+  relationship_with_emergency_contact: {
+    type: String,
+  },
+  height: {
+    type: String,
+  },
+  weight: {
+    type: String,
+  },
+  blood_group: {
+    type: String,
+  },
+  voting_card_no: {
+    type: String,
+  },
+  permanent_address: {
+    type: String,
+  },
+  parent_name: {
+    type: String,
+  },
+  spouse_name: {
+    type: String,
+  },
+  father_first_name: {
+    type: String,
+  },
+  father_middal_name: {
+    type: String,
+  },
+  father_last_name: {
+    type: String,
+  },
+  father_occupation: {
+    type: String,
+  },
+  mother_first_name: {
+    type: String,
+  },
+  mother_middal_name: {
+    type: String,
+  },
+  mother_last_name: {
+    type: String,
+  },
+  mother_occupation: {
+    type: String,
+  },
+  smoking_habits: {
+    type: String,
+  },
+  drinking_habits: {
+    type: String,
+  },
+  sports_interest: {
+    type: String,
+  },
+  favourite_book: {
+    type: String,
+  },
+  favourite_travel_destination: {
+    type: String,
+  },
+  disability_status: {
+    type: String,
+  },
+  emergency_medical_condition: {
+    type: String,
+  },
+  short_term_goal: {
+    type: String,
+  },
+  long_term_goal: {
+    type: String,
+  },
+  strength: {
+    type: String,
+  },
+  weakness: {
+    type: String,
+  },
+  bank_name: {
+    type: String,
+  },
+  ifsc_code: {
+    type: String,
+  },
+  current_ctc: {
+    type: String,
+  },
+  exit_date: {
+    type: Date,
+  },
+  travel_requirement: {
+    type: String,
+  },
+  id_card_no: {
+    type: String,
+  },
+  company_assets: {
+    type: String,
+  },
+
   verified: {
     type: Boolean,
     default: false,
@@ -188,8 +292,6 @@ const Employee = new mongoose.Schema({
     default: null,
   },
 });
-
-// console.log(user_id);
 
 Employee.pre("save", async function (next) {
   console.log(this.profile);
