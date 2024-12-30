@@ -16,6 +16,7 @@ import {
   Tooltip,
   Typography,
   Box,
+  Select, MenuItem, FormControl, InputLabel
 } from "@mui/material";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
@@ -24,6 +25,10 @@ import { UseContext } from "../../State/UseState/UseContext";
 import DeleteIcon from "@mui/icons-material/Delete";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import * as XLSX from "xlsx";
+import useEmpOption from "@/hooks/Employee-OnBoarding/useEmpOption";
+import AuthInputFiled from "@/components/InputFileds/AuthInputFiled";
+import useEmpState from "@/hooks/Employee-OnBoarding/useEmpState";
+
 
 const EmployeeListToRole = () => {
   const navigate = useNavigate();
@@ -34,6 +39,13 @@ const EmployeeListToRole = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const { organisationId } = useParams();
+
+
+
+
+  const {
+    Departmentoptions,
+  } = useEmpOption(organisationId);
 
   const fetchAvailableEmployee = async (page) => {
     try {
@@ -182,7 +194,7 @@ const EmployeeListToRole = () => {
         </div>
 
         <div className="p-6 border-b border-gray-200">
-          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-4 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-4 items-center">
             <Tooltip
               title="No employees found"
               placement="top"
@@ -199,6 +211,20 @@ const EmployeeListToRole = () => {
                 }}
               />
             </Tooltip>
+
+            <FormControl size="small" fullWidth>
+              <InputLabel>Filter by Department</InputLabel>
+              <Select
+                label="Filter by Department"
+              >
+                <MenuItem value="">All Departments</MenuItem>
+                <MenuItem value="HR">HR</MenuItem>
+                <MenuItem value="Engineering">Engineering</MenuItem>
+                <MenuItem value="Sales">Sales</MenuItem>
+                <MenuItem value="Marketing">Marketing</MenuItem>
+              </Select>
+            </FormControl>
+
             <Button
               variant="contained"
               size="small"
@@ -207,11 +233,11 @@ const EmployeeListToRole = () => {
                 backgroundColor: "#d32f2f",
                 "&:hover": { backgroundColor: "#b71c1c" },
                 textTransform: "none",
-
               }}
             >
               Export PDF
             </Button>
+
             <Button
               variant="contained"
               size="small"
@@ -227,6 +253,7 @@ const EmployeeListToRole = () => {
             </Button>
           </div>
         </div>
+
 
         <TableContainer component={Paper} sx={{ boxShadow: "none" }}>
           <Table sx={{ minWidth: 650 }} aria-label="employee table">

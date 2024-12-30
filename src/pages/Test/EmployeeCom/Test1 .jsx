@@ -32,7 +32,7 @@ export const isAtLeastNineteenYearsOld = (value) => {
   return differenceInYears >= 19;
 };
 
-const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
+const Test1 = ({ nextStep, isLastStep }) => {
   const {
     setStep1Data,
     first_name,
@@ -49,26 +49,12 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
     pwd,
     uanNo,
     esicNo,
-    emergency_contact_no,
-    emergency_contact_name,
-    relationship_with_emergency_contact,
-    alternate_contact_no,
     height,
     weight,
     blood_group,
     voting_card_no,
     permanent_address,
     religion,
-    parent_name,
-    spouse_name,
-    father_first_name,
-    father_middal_name,
-    father_last_name,
-    father_occupation,
-    mother_first_name,
-    mother_middal_name,
-    mother_last_name,
-    mother_occupation,
     smoking_habits,
     drinking_habits,
     sports_interest,
@@ -153,28 +139,13 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
         message: "ESIC number must be a 17-digit number",
       })
       .optional(),
-
     // Additional Fields
-    emergency_contact_no: z.string().regex(/^\d{10}$/, { message: "Emergency contact must be 10 digits" }).optional(),
-    emergency_contact_name: z.string().min(1, { message: "Emergency contact name is required" }).optional(),
-    relationship_with_emergency_contact: z.string().optional(),
-    alternate_contact_no: z.string().regex(/^\d{10}$/, { message: "Alternate contact must be 10 digits" }).optional(),
     height: z.string().optional(),
     weight: z.string().optional(),
     voting_card_no: z.string().optional(),
     blood_group: z.string().optional(),
     permanent_address: z.string().optional(),
     religion: z.string().optional(),
-    parent_name: z.string().optional(),
-    spouse_name: z.string().optional(),
-    father_first_name: z.string().optional(),
-    father_middal_name: z.string().optional(),
-    father_last_name: z.string().optional(),
-    father_occupation: z.string().optional(),
-    mother_first_name: z.string().optional(),
-    mother_middal_name: z.string().optional(),
-    mother_last_name: z.string().optional(),
-    mother_occupation: z.string().optional(),
     smoking_habits: z.string().optional(),
     drinking_habits: z.string().optional(),
     sports_interest: z.string().optional(),
@@ -216,13 +187,6 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
 
   console.log("errors", errors);
 
-
-  // const onSubmit = async (data) => {
-  //   console.log(`🚀 ~ data:`, data);
-  //   setStep1Data(data);
-  //   nextStep();
-  // };
-
   const onSubmit = async (data) => {
     // Convert the email to lowercase
     const processedData = {
@@ -234,8 +198,6 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
     setStep1Data(processedData);
     nextStep();
   };
-
-
 
   return (
     <div className="w-full mt-1">
@@ -283,7 +245,7 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
             className="text-sm"
           />
         </div>
-        <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
+        <div className="grid md:grid-cols-2 grid-cols-1 w-full gap-4">
           <AuthInputFiled
             name="email"
             icon={Email}
@@ -303,9 +265,24 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
             value={phone_number}
             type="number"
             placeholder="1234567890"
-            label="Contact *"
+            label="Contact No*"
             errors={errors}
             error={errors.phone_number}
+            className="text-sm"
+          />
+        </div> 
+
+        <div className="grid md:grid-cols-2 grid-cols-1 w-full gap-4">
+        <AuthInputFiled
+            name="address"
+            icon={Person}
+            control={control}
+            // type="textarea"
+            type="text"
+            placeholder="Pune"
+            label="Current Address *"
+            errors={errors}
+            error={errors.address}
             className="text-sm"
           />
 
@@ -322,6 +299,7 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
             className="text-sm"
           />
         </div>
+
 
         <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
           <div className=" ">
@@ -519,7 +497,7 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
 
         <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
 
-        <AuthInputFiled
+          <AuthInputFiled
             name="voting_card_no"
             icon={AccountBalance}
             control={control}
@@ -530,34 +508,31 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
             error={errors.voting_card_no}
             className="text-sm"
           />
-        </div>
-        <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
-          <AuthInputFiled
-            name="father_occupation"
-            icon={LocationOn}
-            control={control}
-            type="text"
-            placeholder="Father Occupation"
-            label="Father Occupation"
-            errors={errors}
-            error={errors.father_occupation}
-            pattern="[A-Za-z\s]+"
-            className="text-sm"
-          />
 
           <AuthInputFiled
-            name="mother_occupation"
+            name="bank_name"
             icon={AccountBalance}
             control={control}
             type="text"
-            placeholder="Mother Occupation"
-            label="Mother Occupation"
+            placeholder="Bank Name"
+            label="Bank Name"
             errors={errors}
-            error={errors.mother_occupation}
+            error={errors.bank_name}
             className="text-sm
 "
           />
-
+          <AuthInputFiled
+            name="ifsc_code"
+            icon={AccountBalance}
+            control={control}
+            type="text"
+            placeholder="IFSC Code"
+            label="IFSC Code"
+            errors={errors}
+            error={errors.ifsc_code}
+            pattern="[A-Za-z\s]+"
+            className=" text-sm"
+          />
         </div>
 
 
@@ -642,7 +617,7 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
           />
         </div>
 
-        <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
+        <div className="grid md:grid-cols-2 grid-cols-1 w-full gap-4">
           <AuthInputFiled
             name="short_term_goal"
             icon={LocationOn}
@@ -667,48 +642,10 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
             error={errors.long_term_goal}
             className="text-sm
 "
-          />
-          <AuthInputFiled
-            name="strength"
-            icon={AccountBalance}
-            control={control}
-            type="text"
-            placeholder="Strength"
-            label="Strength"
-            errors={errors}
-            error={errors.strength}
-            pattern="[A-Za-z\s]+"
-            className=" text-sm"
           />
         </div>
 
-
-        {/* <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
-          <AuthInputFiled
-            name="short_term_goal"
-            icon={LocationOn}
-            control={control}
-            type="text"
-            placeholder="Short Term Goal"
-            label="Short Term Goal"
-            errors={errors}
-            error={errors.short_term_goal}
-            pattern="[A-Za-z\s]+"
-            className="text-sm"
-          />
-
-          <AuthInputFiled
-            name="long_term_goal"
-            icon={AccountBalance}
-            control={control}
-            type="text"
-            placeholder="Long Term Goal"
-            label="Long Term Goal"
-            errors={errors}
-            error={errors.long_term_goal}
-            className="text-sm
-"
-          />
+        <div className="grid md:grid-cols-2 grid-cols-1 w-full gap-4">
           <AuthInputFiled
             name="strength"
             icon={AccountBalance}
@@ -721,9 +658,6 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
             pattern="[A-Za-z\s]+"
             className=" text-sm"
           />
-        </div> */}
-
-        <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
           <AuthInputFiled
             name="weakness"
             icon={LocationOn}
@@ -736,31 +670,6 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
             pattern="[A-Za-z\s]+"
             className="text-sm"
           />
-
-          <AuthInputFiled
-            name="bank_name"
-            icon={AccountBalance}
-            control={control}
-            type="text"
-            placeholder="Bank Name"
-            label="Bank Name"
-            errors={errors}
-            error={errors.bank_name}
-            className="text-sm
-"
-          />
-          <AuthInputFiled
-            name="ifsc_code"
-            icon={AccountBalance}
-            control={control}
-            type="text"
-            placeholder="IFSC Code"
-            label="IFSC Code"
-            errors={errors}
-            error={errors.ifsc_code}
-            pattern="[A-Za-z\s]+"
-            className=" text-sm"
-          />
         </div>
 
 
@@ -768,8 +677,6 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
           <button
             type="submit"
             disabled={isLastStep}
-            // className="!w-max flex group justify-center
-            // px-6 gap-2 items-center rounded-md py-1 text-md font-semibold text-white bg-blue-500 hover:bg-blue-500 focus-visible:outline-blue-500"
             className="flex justify-center px-4 py-1 text-md font-semibold text-white bg-blue-500 rounded-md hover:bg-blue-600"
           >
             Next
