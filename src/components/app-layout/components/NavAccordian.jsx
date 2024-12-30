@@ -23,16 +23,18 @@ const NavAccordion = ({
       {!isClickable ? (
         <div className={`block ${!isVisible && "hidden"}  `}>
           <div
-            className={`my-2 flex gap-3 justify-between px-4 text-sm items-center cursor-pointer ${
-              open && "bg-primary/10"
+            className={`my-2 p-3 flex gap-3 justify-between px-4 text-sm items-center cursor-pointer ${
+              open && "bg-[#0051ff16]"
             }`}
             onClick={handleAccordianClick}
           >
-            {/* {icon} */}
-            <h1 className="py-1 font-semibold text-white">{role}</h1>
+            <div className="flex items-center gap-2">
+              {icon}
+              <h1 className="py-1 font-semibold ">{role}</h1>
+            </div>
             {
               <ChevronRight
-                className={`text-white !h-5 transition-all ${
+                className={`!h-5 transition-all ${
                   open ? "transform rotate-90" : "rotate-0"
                 }`}
               />
@@ -62,9 +64,11 @@ const NavAccordion = ({
         <Link
           onClick={() => toggleDrawer()}
           to={link}
-          className="rounded-md flex items-center gap-2 py-2 text-white m-2 px-2"
+          className="rounded-md flex items-center gap-2 py-2 m-2 px-2"
         >
-          <h1 className="py-1 font-semibold text-white">{role}</h1>
+          {" "}
+          {icon}
+          <h1 className="py-1 font-semibold ">{role}</h1>
           <h1 className="font-bold text-[.9em] text-[#2e343f]">
             {routes.text}
           </h1>

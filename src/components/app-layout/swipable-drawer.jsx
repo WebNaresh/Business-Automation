@@ -84,8 +84,8 @@ export default function SwipeableTemporaryDrawer() {
           : "block"
       }`}
     >
-      <AppBar position="fixed">
-        <Toolbar className="flex justify-between items-center">
+      <AppBar position="fixed" className="!shadow-none border-b">
+        <Toolbar className="flex justify-between items-center bg-white border-none !shadow-none">
           <div className="flex items-center">
             <IconButton
               color="inherit"
@@ -94,26 +94,16 @@ export default function SwipeableTemporaryDrawer() {
               edge="start"
               sx={{ marginRight: 2 }}
             >
-              <Menu />
+              <Menu className="text-black" />
             </IconButton>
             <img
               src="/smartea.jpeg"
               className="h-[45px] rounded-md"
               alt="logo"
             />
-            {/* <img
-              src="/smartea.jpeg"
-              className="hidden sm:flex items-center"
-              about
-            ></img> */}
           </div>
 
           <div className="flex gap-2 items-center">
-            {/* {data?.organisation?.orgName &&
-            !isLocation &&
-            data?.organisation?.orgName}
-            {role && <NotificationIcon />} */}
-            {/* //resolved bug */}
             {data?.organisation?.orgName &&
               !isLocation &&
               !pathsToHideOrgName.includes(location.pathname) &&
@@ -125,11 +115,12 @@ export default function SwipeableTemporaryDrawer() {
       </AppBar>
 
       <SwipeableDrawer
-        PaperProps={{ style: { background: "#00a2ad" } }}
+        PaperProps={{ style: { background: "white" } }}
         color="white"
         anchor="left"
         open={open}
         onClose={toggleDrawer}
+        className="border-none !shadow-none"
         onOpen={toggleDrawer}
       >
         <div className="py-2 px-10 border-b-[.5px] flex items-center gap-2 border-gray-300">

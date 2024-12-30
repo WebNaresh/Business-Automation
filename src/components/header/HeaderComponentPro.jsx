@@ -2,7 +2,6 @@
 
 import { West } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import UserProfile from "../../hooks/UserData/useUser";
 
@@ -21,7 +20,7 @@ const HeaderComponentPro = ({ heading, oneLineInfo }) => {
   const lastName = capitalizeFirstLetter(user?.last_name);
 
   return (
-    <header className="flex border mt-1 flex-col md:flex-row items-center  gap-2 justify-between p-3 bg-white  ">
+    <header className="flex border-b mt-1 flex-col md:flex-row items-center  gap-2 justify-between p-3 bg-white  ">
       <div className="flex-shrink-0 mt-1 mb-2 md:mb-0 ">
         <IconButton onClick={() => navigate(-1)}>
           <West />

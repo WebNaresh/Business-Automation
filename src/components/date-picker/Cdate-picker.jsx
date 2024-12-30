@@ -1668,7 +1668,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import moment from "moment";
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import { useQuery, useQueryClient } from "react-query";
 import { useParams } from "react-router-dom";
@@ -1962,12 +1962,16 @@ const CAppDatePicker = ({
   }, []);
 
   return (
-    <div className="relative border-2 border-gray-200 p-3">
+    <div className="relative p-3">
       {/* // <div className="relative  p-2"> */}
 
       {calLoader && (
-        <div className="absolute top-0 left-0 h-full w-full flex items-center justify-center z-50 bg-opacity-50 bg-gray-800">
-          <Backdrop style={{ position: "absolute" }} open={true}>
+        <div className="absolute !rounded-lg top-0 left-0 h-full w-full flex items-center justify-center z-50 bg-opacity-50 bg-gray-800">
+          <Backdrop
+            className="!rounded-lg"
+            style={{ position: "absolute" }}
+            open={true}
+          >
             <CircularProgress />
           </Backdrop>
         </div>

@@ -1,6 +1,6 @@
-import { Notifications } from "@mui/icons-material";
 import { Badge } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { IoIosNotificationsOutline } from "react-icons/io";
 import { Link, useLocation } from "react-router-dom";
 import useGetUser from "../../../hooks/Token/useUser";
 import UserProfile from "../../../hooks/UserData/useUser";
@@ -38,11 +38,9 @@ const NotificationIcon = () => {
     setOrgId(orgId);
   };
   const { dummyData } = useNotification();
-  console.log("dummyData",dummyData);
-  
+
   const totalCount = dummyData.reduce((acc, item) => acc + item.count, 0);
-  console.log("totalCount..",totalCount);
-  
+
   return (
     <Link to={`/organisation/${orgId}/notification`}>
       <Badge
@@ -50,7 +48,7 @@ const NotificationIcon = () => {
         color={"error"}
         badgeContent={totalCount ?? 0}
       >
-        <Notifications className="text-white" />
+        <IoIosNotificationsOutline className="text-black text-2xl" />
       </Badge>
     </Link>
   );

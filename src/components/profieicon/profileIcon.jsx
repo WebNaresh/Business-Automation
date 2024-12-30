@@ -7,12 +7,12 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
 import Cookies from "js-cookie";
-import React, { useState } from "react";
-import { useQuery } from "react-query";
+import { useState } from "react";
+import { useQuery, useQueryClient } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
 import useGetUser from "../../hooks/Token/useUser";
 import UserProfile from "../../hooks/UserData/useUser";
-import { useQueryClient } from 'react-query'; 
+import { Button } from "../ui/button";
 
 export default function ProfileIcon() {
   const navigate = useNavigate();
@@ -25,21 +25,20 @@ export default function ProfileIcon() {
   const queryClient = useQueryClient();
   const { authToken } = useGetUser();
 
-  const { data } = useQuery("emp-profile", async () => {
-    const response = await axios.get(
-      `${import.meta.env.VITE_API}/route/employee/populate/get`,
-      {
-        headers: { Authorization: authToken },
-      }
-    );
-    return response.data.emp;
+  const { data } = useQuery(
+    "emp-profile",
+    async () => {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API}/route/employee/populate/get`,
+        {
+          headers: { Authorization: authToken },
+        }
+      );
+      return response.data.emp;
+    },
 
-  },
-  
     {
-      onSuccess: () => {
-       
-      },
+      onSuccess: () => {},
     }
   );
   const handleClick = (event) => {
@@ -132,6 +131,7 @@ export default function ProfileIcon() {
             <Link key="sign-in-link" to="/sign-in">
               <MenuItem onClick={handleClose}>Sign In</MenuItem>
             </Link>
+            <Button>Hello</Button>
           </>
         )}
       </Menu>

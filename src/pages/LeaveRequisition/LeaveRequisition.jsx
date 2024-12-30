@@ -1,20 +1,20 @@
 import { CalendarMonth } from "@mui/icons-material";
 import { Badge, Button, Skeleton } from "@mui/material";
-import React, { useContext, useState, useEffect } from "react";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import { useQuery } from "react-query";
+import { useParams } from "react-router";
 import "tailwindcss/tailwind.css";
+import CalenderAnimation from "../../assets/CalenderAnimation.gif";
+import CAppDatePicker from "../../components/date-picker/Cdate-picker";
 import AppDatePicker from "../../components/date-picker/date-picker";
 import HeaderBackComponent2 from "../../components/header/HeaderBackComponent2";
 import useLeaveData from "../../hooks/Leave/useLeaveData";
+import UserProfile from "../../hooks/UserData/useUser";
+import { UseContext } from "../../State/UseState/UseContext";
 import LeaveTable from "./components/LeaveTabel";
 import Mapped from "./components/mapped-form";
-import { useQuery } from "react-query";
-import axios from "axios";
-import { UseContext } from "../../State/UseState/UseContext";
-import { useParams } from "react-router";
-import CalenderAnimation from "../../assets/CalenderAnimation.gif";
-import CAppDatePicker from "../../components/date-picker/Cdate-picker";
-import UserProfile from "../../hooks/UserData/useUser";
 
 const LeaveRequisition = () => {
   const {
@@ -158,7 +158,7 @@ const LeaveRequisition = () => {
         </div>
 
         {/* Right side - Date Picker & Selected Dates */}
-        <div className="flex flex-col lg:w-[80%] bg-gray-50  rounded-md ">
+        <div className="flex flex-col lg:w-[80%] bg-white border rounded-xl ">
           {/* Render Date Picker */}
           {isCAppDatePickerVisible ? (
             <CAppDatePicker

@@ -31,10 +31,20 @@ function App() {
     palette: {
       mode: "light",
       primary: {
-        main: "#00a2ad",
+        main: "#2563eb",
       },
       secondary: {
         main: "#f50057",
+      },
+    },
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            padding: "10px 12px", // Customize the padding here
+            borderRadius: "8px",
+          },
+        },
       },
     },
   });

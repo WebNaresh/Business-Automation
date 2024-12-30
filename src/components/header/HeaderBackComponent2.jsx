@@ -2,27 +2,25 @@
 
 import { West } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import UserProfile from "../../hooks/UserData/useUser";
 
 // Function to capitalize>>first letter of a string
 const capitalizeFirstLetter = (string) => {
-  if (!string) return '';
+  if (!string) return "";
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 };
 
 const HeaderBackComponent2 = ({ heading, oneLineInfo }) => {
   const navigate = useNavigate();
-  
-  const user = UserProfile().getCurrentUser();
 
+  const user = UserProfile().getCurrentUser();
 
   const firstName = capitalizeFirstLetter(user?.first_name);
   const lastName = capitalizeFirstLetter(user?.last_name);
 
   return (
-    <header className="flex flex-col md:flex-row items-center  gap-2 justify-between p-3 bg-gray-50 shadow-md ">
+    <header className="flex flex-col md:flex-row items-center  gap-2 justify-between p-3 bg-white shadow-md ">
       <div className="flex-shrink-0 mt-1 mb-2 md:mb-0 ">
         <IconButton onClick={() => navigate(-1)}>
           <West />
@@ -35,8 +33,8 @@ const HeaderBackComponent2 = ({ heading, oneLineInfo }) => {
           //   {oneLineInfo}
           // </p>
           <p className="text-xs md:text-sm text-gray-600 w-full  !text-left">
-          {oneLineInfo}
-        </p>
+            {oneLineInfo}
+          </p>
         )}
       </div>
       <div className="flex-shrink-0 mt-2 md:mt-0">
