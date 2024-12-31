@@ -5,12 +5,13 @@ import {
   Person,
   West,
 } from "@mui/icons-material";
-import {  IconButton } from "@mui/material";
+import { IconButton } from "@mui/material";
 import React from "react";
-import { useNavigate,  } from "react-router-dom";
+import { useNavigate, } from "react-router-dom";
 import StepFormWrapper from "../../components/step-form/wrapper";
 import useMultiStepForm from "../../hooks/useStepForm";
 import Test1 from "./Component/Test1";
+import TestFirst from "./Component/TestFirst";
 import Test2 from "./Component/Test2";
 import Test3 from "./Component/Test3";
 import Test4 from "./Component/Test4";
@@ -25,9 +26,9 @@ const EditEmployee = () => {
     isLastStep,
     totalSteps,
     goToStep,
-  } = useMultiStepForm(4);
+  } = useMultiStepForm(5);
   const navigate = useNavigate();
-   
+
   // to define the steppar
   const stepper = [
     {
@@ -35,11 +36,15 @@ const EditEmployee = () => {
       icon: Person,
     },
     {
-      label: "Company Info",
+      label: "Family Details",
+      icon: Person,
+    },
+    {
+      label: "Official  Details",
       icon: Business,
     },
     {
-      label: "Additional Fields",
+      label: "Additional Details",
       icon: AddCircle,
     },
     {
@@ -47,19 +52,20 @@ const EditEmployee = () => {
       icon: CheckCircle,
     },
   ];
-  
-  // swtiching the component based on Next and Prev button
+
+
   const useSwitch = (step) => {
     switch (step) {
       case 1:
         return <Test1 {...{ nextStep, prevStep, isLastStep, isFirstStep }} />;
       case 2:
-        return <Test2 {...{ nextStep, prevStep, isLastStep, isFirstStep }} />;
+        return <TestFirst {...{ nextStep, prevStep, isLastStep, isFirstStep }} />;
       case 3:
-        return <Test3 {...{ nextStep, prevStep, isLastStep, isFirstStep }} />;
+        return <Test2 {...{ nextStep, prevStep, isLastStep, isFirstStep }} />;
       case 4:
+        return <Test3 {...{ nextStep, prevStep, isLastStep, isFirstStep }} />;
+      case 5:
         return <Test4 {...{ nextStep, prevStep, isLastStep, isFirstStep }} />;
-
       default:
         return null;
     }

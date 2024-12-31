@@ -10,6 +10,7 @@ import {
   TodayOutlined,
   Work,
   Today,
+  AccountBalance,
 } from "@mui/icons-material";
 import { CircularProgress } from "@mui/material";
 import axios from "axios";
@@ -44,7 +45,15 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
     setStep2Data,
     shift_allocation,
     date_of_birth,
-    status
+    status,
+    current_ctc,
+    incentive,
+    health_insurance,
+    exit_date,
+    travel_expenses_allowance,
+    travel_requirement,
+    id_card_no,
+    company_assets
   } = useEmployeeState();
 
   // to get the data from organization like department , location data
@@ -123,6 +132,49 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
         label: z.string(),
         value: z.string(),
       }),
+      current_ctc: z
+        .string()
+        .regex(/^\d+(\.\d{1,2})?$/, { message: "Incentive must be a valid number" })
+        .optional(),
+
+      incentive: z
+        .string()
+        .regex(/^\d+(\.\d{1,2})?$/, { message: "Incentive must be a valid number" })
+        .optional(),
+
+      health_insurance: z
+        .string()
+        .regex(/^\d+(\.\d{1,2})?$/, { message: "Health Insurance must be a valid number" })
+        .optional(),
+      exit_date: z
+        .string()
+        .optional()
+        .refine(
+          (value) => {
+            if (value) {
+              const exitDate = moment(value, "YYYY-MM-DD");
+              const currentDate = moment();
+              return exitDate.isSameOrBefore(currentDate);
+            }
+            return true;
+          },
+          { message: "Exit date cannot be in the future" }
+        ),
+
+      travel_expenses_allowance: z
+        .string()
+        .regex(/^\d+(\.\d{1,2})?$/, { message: "Travel expenses allowance must be a valid number" })
+        .optional(),
+      travel_requirement: z
+        .string()
+        .optional(),
+
+      id_card_no: z
+        .string()
+        .optional(),
+
+      company_assets: z.string().optional(),
+
     })
     .refine((data) => data.password === data.confirmPassword, {
       message: "Password don't match",
@@ -274,7 +326,8 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
                 value: ev,
               }));
             setValue("profile", profileLabel);
-          }
+          } 
+          setValue("current_ctc", data.employee.current_ctc || "");
         }
       },
     }
@@ -452,6 +505,76 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
                 error={errors.salarystructure}
               />
             </div>
+
+            <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
+              <AuthInputFiled
+                name="current_ctc"
+                icon={Work}
+                control={control}
+                type="text"
+                placeholder="Current CTC"
+                label="Current CTC"
+                errors={errors}
+                error={errors.current_ctc}
+                pattern="[A-Za-z\s]+"
+                className="text-sm"
+              />
+              <AuthInputFiled
+                name="exit_date"
+                icon={Work}
+                control={control}
+                type="date"
+                placeholder="Exit Date"
+                label="Exit Date"
+                errors={errors}
+                error={errors.exit_date}
+                pattern="[A-Za-z\s]+"
+                className="text-sm"
+              />
+              <AuthInputFiled
+                name="travel_requirement"
+                icon={AccountBalance}
+                control={control}
+                type="text"
+                placeholder="Travel Requirement"
+                label="Travel Requirement"
+                errors={errors}
+                error={errors.travel_requirement}
+                pattern="[A-Za-z\s]+"
+                className=" text-sm"
+              />
+            </div>
+
+            <div className="grid md:grid-cols-2 grid-cols-1 w-full gap-4">
+
+              <AuthInputFiled
+                name="id_card_no"
+                icon={AccountBalance}
+                control={control}
+                type="text"
+                placeholder="Travel Expenses Allowance"
+                label="Travel Expenses Allowance"
+                errors={errors}
+                error={errors.id_card_no}
+                className="text-sm
+"
+              />
+              <AuthInputFiled
+                name="company_assets"
+                icon={AccountBalance}
+                control={control}
+                type="text"
+                placeholder="Company Assets"
+                label="Company Assets"
+                errors={errors}
+                error={errors.company_assets}
+                pattern="[A-Za-z\s]+"
+                className=" text-sm"
+              />
+            </div>
+
+
+
 
             <div className="flex items-end w-full justify-between">
               <button

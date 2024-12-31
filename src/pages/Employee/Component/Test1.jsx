@@ -41,7 +41,7 @@ const isAtLeastNineteenYearsOld = (value) => {
   return differenceInYears >= 19;
 };
 
-const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
+const Test1 = ({ nextStep, isLastStep , prevStep }) => {
   // to define the state, import funciton and hook
   const {
     setStep1Data,
@@ -59,6 +59,25 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
     pwd,
     uanNo,
     esicNo,
+    height,
+    weight,
+    blood_group,
+    voting_card_no,
+    permanent_address,
+    religion,
+    smoking_habits,
+    drinking_habits,
+    sports_interest,
+    favourite_book,
+    favourite_travel_destination,
+    disability_status,
+    emergency_medical_condition,
+    short_term_goal,
+    long_term_goal,
+    strength,
+    weakness,
+    bank_name,
+    ifsc_code
   } = useEmployeeState();
   const { employeeId } = useParams();
   const { cookies } = useContext(UseContext);
@@ -125,6 +144,26 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
         message: "ESIC number must be a 17-digit number",
       })
       .optional(),
+    // Additional Fields
+    height: z.string().optional(),
+    weight: z.string().optional(),
+    voting_card_no: z.string().optional(),
+    blood_group: z.string().optional(),
+    permanent_address: z.string().optional(),
+    religion: z.string().optional(),
+    smoking_habits: z.string().optional(),
+    drinking_habits: z.string().optional(),
+    sports_interest: z.string().optional(),
+    favourite_book: z.string().optional(),
+    favourite_travel_destination: z.string().optional(),
+    disability_status: z.string().optional(),
+    emergency_medical_condition: z.string().optional(),
+    short_term_goal: z.string().optional(),
+    long_term_goal: z.string().optional(),
+    strength: z.string().optional(),
+    weakness: z.string().optional(),
+    bank_name: z.string().optional(),
+    ifsc_code: z.string().regex(/^[A-Z]{4}0[A-Z0-9]{6}$/, { message: "Invalid IFSC code" }).optional(),
   });
 
   // use useForm
@@ -168,6 +207,7 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
     {
       onSuccess: (data) => {
         if (data) {
+          console.log("data", data);
           setValue("first_name", data.employee.first_name || "");
           setValue("last_name", data.employee.last_name || "");
           setValue(
@@ -183,7 +223,6 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
           setValue("phone_number", data.employee.phone_number || "");
           setValue("address", data.employee.address || "");
           setValue("citizenship", data.employee.citizenship || "");
-
           setValue(
             "adhar_card_number",
             data.employee.adhar_card_number !== null &&
@@ -191,7 +230,6 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
               ? data.employee.adhar_card_number.toString()
               : ""
           );
-
           setValue(
             "pan_card_number",
             data.employee.pan_card_number !== null &&
@@ -199,7 +237,6 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
               ? data.employee.pan_card_number
               : ""
           );
-
           setValue(
             "bank_account_no",
             data.employee.bank_account_no !== null &&
@@ -210,6 +247,23 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
           setValue("uanNo", data.employee.uanNo || undefined);
           setValue("esicNo", data.employee.esicNo || undefined);
           setValue("pwd", data.employee.pwd || undefined);
+          setValue("height", data.employee.height || "");
+          setValue("weight", data.employee.weight || "");
+          setValue("blood_group", data.employee.blood_group || "");
+          setValue("voting_card_no", data.employee.voting_card_no || "");
+          setValue("bank_name", data.employee.bank_name || "");
+          setValue("ifsc_code", data.employee.ifsc_code || "");
+          setValue("drinking_habits", data.employee.drinking_habits || "");
+          setValue("sports_interest", data.employee.sports_interest || "");
+          setValue("favourite_book", data.employee.favourite_book || "");
+          setValue("favourite_travel_destination", data.employee.favourite_travel_destination || "");
+          setValue("disability_status", data.employee.disability_status || "");
+          setValue("emergency_medical_condition", data.employee.emergency_medical_condition || "");
+          setValue("short_term_goal", data.employee.short_term_goal || "");
+          setValue("long_term_goal", data.employee.long_term_goal || "");
+          setValue("strength", data.employee.strength || "");
+          setValue("weakness", data.employee.weakness || "");
+         
         }
       },
     }
@@ -435,6 +489,226 @@ const Test1 = ({ nextStep, prevStep, isFirstStep, isLastStep }) => {
                 pattern="[A-Za-z\s]+"
               />
             </div>
+
+            <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
+              <AuthInputFiled
+                name="height"
+                icon={AccountBalance}
+                control={control}
+                type="text"
+                placeholder="Height"
+                label="Height"
+                errors={errors}
+                error={errors.height}
+                className="text-sm
+"
+              />
+              <AuthInputFiled
+                name="weight"
+                icon={AccountBalance}
+                control={control}
+                type="text"
+                placeholder="Weight"
+                label="Weight"
+                errors={errors}
+                error={errors.weight}
+                pattern="[A-Za-z\s]+"
+                className=" text-sm"
+              />
+
+              <AuthInputFiled
+                name="blood_group"
+                icon={LocationOn}
+                control={control}
+                type="text"
+                placeholder="Blood Group"
+                label="Blood Group"
+                errors={errors}
+                error={errors.blood_group}
+                pattern="[A-Za-z\s]+"
+                className="text-sm"
+              />
+
+            </div>
+
+
+            <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
+
+              <AuthInputFiled
+                name="voting_card_no"
+                icon={AccountBalance}
+                control={control}
+                type="text"
+                placeholder="Voting Card No"
+                label="Voting Card No"
+                errors={errors}
+                error={errors.voting_card_no}
+                className="text-sm"
+              />
+
+              <AuthInputFiled
+                name="bank_name"
+                icon={AccountBalance}
+                control={control}
+                type="text"
+                placeholder="Bank Name"
+                label="Bank Name"
+                errors={errors}
+                error={errors.bank_name}
+                className="text-sm
+"
+              />
+              <AuthInputFiled
+                name="ifsc_code"
+                icon={AccountBalance}
+                control={control}
+                type="text"
+                placeholder="IFSC Code"
+                label="IFSC Code"
+                errors={errors}
+                error={errors.ifsc_code}
+                pattern="[A-Za-z\s]+"
+                className=" text-sm"
+              />
+            </div>
+
+
+            <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
+              <AuthInputFiled
+                name="drinking_habits"
+                icon={LocationOn}
+                control={control}
+                type="text"
+                placeholder="Drinking Habbits"
+                label="Drinking Habbits"
+                errors={errors}
+                error={errors.drinking_habits}
+                pattern="[A-Za-z\s]+"
+                className="text-sm"
+              />
+
+              <AuthInputFiled
+                name="sports_interest"
+                icon={AccountBalance}
+                control={control}
+                type="text"
+                placeholder="Sport Interest"
+                label="Sport Interest"
+                errors={errors}
+                error={errors.sports_interest}
+                className="text-sm
+"
+              />
+              <AuthInputFiled
+                name="favourite_book"
+                icon={AccountBalance}
+                control={control}
+                type="text"
+                placeholder="Favourite Book"
+                label="Favourite Book"
+                errors={errors}
+                error={errors.favourite_book}
+                pattern="[A-Za-z\s]+"
+                className=" text-sm"
+              />
+            </div>
+
+
+            <div className="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
+              <AuthInputFiled
+                name="favourite_travel_destination"
+                icon={LocationOn}
+                control={control}
+                type="text"
+                placeholder="Favourite Travel Destination"
+                label="Favourite Travel Destination"
+                errors={errors}
+                error={errors.favourite_travel_destination}
+                pattern="[A-Za-z\s]+"
+                className="text-sm"
+              />
+
+              <AuthInputFiled
+                name="disability_status"
+                icon={AccountBalance}
+                control={control}
+                type="text"
+                placeholder="Disability Status"
+                label="Disability Status"
+                errors={errors}
+                error={errors.disability_status}
+                className="text-sm
+"
+              />
+              <AuthInputFiled
+                name="emergency_medical_condition"
+                icon={AccountBalance}
+                control={control}
+                type="text"
+                placeholder="Emergency Medical Condition"
+                label="Emergency Medical Condition"
+                errors={errors}
+                error={errors.emergency_medical_condition}
+                pattern="[A-Za-z\s]+"
+                className=" text-sm"
+              />
+            </div>
+
+            <div className="grid md:grid-cols-2 grid-cols-1 w-full gap-4">
+              <AuthInputFiled
+                name="short_term_goal"
+                icon={LocationOn}
+                control={control}
+                type="text"
+                placeholder="Short Term Goal"
+                label="Short Term Goal"
+                errors={errors}
+                error={errors.short_term_goal}
+                pattern="[A-Za-z\s]+"
+                className="text-sm"
+              />
+
+              <AuthInputFiled
+                name="long_term_goal"
+                icon={AccountBalance}
+                control={control}
+                type="text"
+                placeholder="Long Term Goal"
+                label="Long Term Goal"
+                errors={errors}
+                error={errors.long_term_goal}
+                className="text-sm
+"
+              />
+            </div>
+
+            <div className="grid md:grid-cols-2 grid-cols-1 w-full gap-4">
+              <AuthInputFiled
+                name="strength"
+                icon={AccountBalance}
+                control={control}
+                type="text"
+                placeholder="Strength"
+                label="Strength"
+                errors={errors}
+                error={errors.strength}
+                pattern="[A-Za-z\s]+"
+                className=" text-sm"
+              />
+              <AuthInputFiled
+                name="weakness"
+                icon={LocationOn}
+                control={control}
+                type="text"
+                placeholder="Weakness"
+                label="Weakness"
+                errors={errors}
+                error={errors.weakness}
+                pattern="[A-Za-z\s]+"
+                className="text-sm"
+              />
+            </div>
+
 
             <div className="flex justify-end">
               <button

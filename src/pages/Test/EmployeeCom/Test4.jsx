@@ -165,7 +165,7 @@ const Test4 = ({ prevStep }) => {
         organizationId: organisationId,
         creatorId,
       };
-      console.log("fdfd", userData);
+      console.log("userData", userData);
 
       const response = axios.post(
         `${import.meta.env.VITE_API}/route/employee/add-employee`,
@@ -403,7 +403,7 @@ const Test4 = ({ prevStep }) => {
             </div>
             <div className="p-2 w-[30%] rounded-sm ">
               <h1 className="text-gray-500 text-sm w-full">
-              Father First Name
+                Father First Name
               </h1>
               <p className="">{father_first_name}</p>
             </div>
@@ -457,87 +457,85 @@ const Test4 = ({ prevStep }) => {
               <h1 className="text-gray-500 text-sm">Company Email</h1>
               <p className="">{companyemail}</p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-between">
-              <div className=" p-2 rounded-sm ">
-                <h1 className="text-gray-500 text-sm w-full">
-                  Date Of Joining
-                </h1>
-                <p className="">{joining_date}</p>
-              </div>
-              <div className="p-2 rounded-sm ">
-                <h1 className="text-gray-500 text-sm w-full">Department</h1>
-                <p className="">{deptname?.label}</p>
-              </div>
-              <div className="p-2 rounded-sm ">
-                <h1 className="text-gray-500 text-sm w-full">Designation</h1>
-                <p className="">{designation?.label}</p>
-              </div>
+
+            <div className=" p-2 rounded-sm ">
+              <h1 className="text-gray-500 text-sm w-full">
+                Date Of Joining
+              </h1>
+              <p className="">{joining_date}</p>
+            </div>
+            <div className="p-2 rounded-sm ">
+              <h1 className="text-gray-500 text-sm w-full">Department</h1>
+              <p className="">{deptname?.label}</p>
+            </div>
+            <div className="p-2 rounded-sm ">
+              <h1 className="text-gray-500 text-sm w-full">Designation</h1>
+              <p className="">{designation?.label}</p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-between">
-              <div className=" p-2 rounded-sm ">
-                <h1 className="text-gray-500 text-sm w-full">Shift</h1>
-                <p className="">{shift_allocation?.label}</p>
-              </div>
-              <div className="p-2 rounded-sm ">
 
-              </div>
-              <div className="p-2 rounded-sm ">
-                <h1 className="text-gray-500 text-sm w-full">Location</h1>
-                <p className="">{worklocation?.label}</p>
-              </div>
+
+            <div className=" p-2 rounded-sm ">
+              <h1 className="text-gray-500 text-sm w-full">Shift</h1>
+              <p className="">{shift_allocation?.label}</p>
             </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-between">
-              <div className=" p-2 rounded-sm">
-                <h1 className="text-gray-500 w-full text-sm">
-                  Employment Types
-                </h1>
-                <p className="">{employmentType?.label}</p>
-              </div>
-              <div className="p-2 rounded-sm ">
-                <h1 className="text-gray-500 text-sm w-full">
-                  Salary Template
-                </h1>
-                <p className="">
-                  {typeof salarystructure === "object" &&
-                    salarystructure?.label}
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-between">
-              <div className=" p-2 rounded-sm ">
-                <h1 className="text-gray-500 text-sm w-full">
-                  Current CTC
-                </h1>
-                <p className="">{current_ctc}</p>
-              </div>
-              <div className="p-2 rounded-sm ">
-                <h1 className="text-gray-500 text-sm w-full">Exit Date</h1>
-                <p className="">{exit_date}</p>
-              </div>
-              <div className="p-2 rounded-sm ">
-                <h1 className="text-gray-500 text-sm w-full">Travel Requirement</h1>
-                <p className="">{travel_requirement}</p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 justify-between">
-              <div className=" p-2 rounded-sm ">
-                <h1 className="text-gray-500 text-sm w-full">
-                  ID Card No
-                </h1>
-                <p className="">{id_card_no}</p>
-              </div>
-              <div className="p-2 rounded-sm ">
-                <h1 className="text-gray-500 text-sm w-full">Company Assets</h1>
-                <p className="">{company_assets}</p>
-              </div>
+            <div className="p-2 rounded-sm ">
 
             </div>
+            <div className="p-2 rounded-sm ">
+              <h1 className="text-gray-500 text-sm w-full">Location</h1>
+              <p className="">{worklocation?.label}</p>
+            </div>
+
+
+
+            <div className=" p-2 rounded-sm">
+              <h1 className="text-gray-500 w-full text-sm">
+                Employment Types
+              </h1>
+              <p className="">{employmentType?.label}</p>
+            </div>
+            <div className="p-2 rounded-sm ">
+              <h1 className="text-gray-500 text-sm w-full">
+                Salary Template
+              </h1>
+              <p className="">
+                {typeof salarystructure === "object" &&
+                  salarystructure?.label}
+              </p>
+            </div>
+
+
+
+            <div className=" p-2 rounded-sm ">
+              <h1 className="text-gray-500 text-sm w-full">
+                Current CTC
+              </h1>
+              <p className="">{current_ctc}</p>
+            </div>
+            <div className="p-2 rounded-sm ">
+              <h1 className="text-gray-500 text-sm w-full">Exit Date</h1>
+              <p className="">{exit_date}</p>
+            </div>
+            <div className="p-2 rounded-sm ">
+              <h1 className="text-gray-500 text-sm w-full">Travel Requirement</h1>
+              <p className="">{travel_requirement}</p>
+            </div>
+
+
+
+            <div className=" p-2 rounded-sm ">
+              <h1 className="text-gray-500 text-sm w-full">
+                ID Card No
+              </h1>
+              <p className="">{id_card_no}</p>
+            </div>
+            <div className="p-2 rounded-sm ">
+              <h1 className="text-gray-500 text-sm w-full">Company Assets</h1>
+              <p className="">{company_assets}</p>
+            </div>
+
           </div>
-
 
           {data &&
             typeof data === "object" &&
@@ -558,22 +556,22 @@ const Test4 = ({ prevStep }) => {
             )}
         </>
         <div className="flex items-end w-full justify-between">
-            <button
-              type="button"
-              onClick={() => {
-                prevStep();
-              }}
-              className="!w-max flex group justify-center px-6  gap-2 items-center rounded-md py-1 text-md font-semibold text-white bg-blue-500 hover:bg-blue-500 focus-visible:outline-blue-500"
-            >
-              Prev
-            </button>
-            <button
-              onClick={() => handleSubmit.mutate()}
-              className="!w-max flex group justify-center px-6  gap-2 items-center rounded-md py-1 text-md font-semibold text-white bg-blue-500 hover:bg-blue-500 focus-visible:outline-blue-500"
-            >
-              Submit
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={() => {
+              prevStep();
+            }}
+            className="!w-max flex group justify-center px-6  gap-2 items-center rounded-md py-1 text-md font-semibold text-white bg-blue-500 hover:bg-blue-500 focus-visible:outline-blue-500"
+          >
+            Prev
+          </button>
+          <button
+            onClick={() => handleSubmit.mutate()}
+            className="!w-max flex group justify-center px-6  gap-2 items-center rounded-md py-1 text-md font-semibold text-white bg-blue-500 hover:bg-blue-500 focus-visible:outline-blue-500"
+          >
+            Submit
+          </button>
+        </div>
       </div>
     </>
   );

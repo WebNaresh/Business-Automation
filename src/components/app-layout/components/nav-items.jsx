@@ -183,14 +183,7 @@ const TestNavItems = ({ toggleDrawer }) => {
                     ? `/organisation/${orgId}/dashboard/super-admin`
                     : "/organizationList",
         },
-        Notification: {
-          open: false,
-          isVisible: true,
-          icon: <NotificationsActive className=" !text-[1.2em]" />,
-          routes: [],
-          isClickable: true,
-          link: `/organisation/${orgId}/notification`,
-        },
+
         Attendence: {
           open: true,
           icon: <HiOutlineIdentification className="!text-[1.5rem]" />,
