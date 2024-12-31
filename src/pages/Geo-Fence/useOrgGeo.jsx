@@ -5,8 +5,6 @@ import { useParams } from "react-router-dom";
 // import { TestContext } from "../../State/Function/Main";
 
 const useOrgGeo = (orgId) => {
-  console.log("orgId././", orgId);
-
   const { organisationId: paramsOrgId } = useParams();
   const organisationId = orgId || paramsOrgId;
 
