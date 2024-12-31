@@ -1283,6 +1283,264 @@ exports.addEmployee = catchAssyncError(async (req, res, next) => {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
   }
+}); 
+
+exports.updateEmployee = catchAssyncError(async (req, res, next) => {
+  try {
+    const { id, organizationId } = req.params;
+    const {
+      first_name,
+      last_name,
+      email,
+      gender,
+      phone_number,
+      location,
+      companyemail,
+      address,
+      citizenship,
+      adhar_card_number,
+      pan_card_number,
+      dept_cost_center_no,
+      shift_allocation,
+      date_of_birth,
+      joining_date,
+      bank_account_no,
+      profile,
+      creatorId,
+      worklocation,
+      designation,
+      deptname,
+      salarystructure,
+      employmentType,
+      mgrempid,
+      pwd,
+      uanNo,
+      esicNo,
+      empId,
+      employeeStatus,
+      emergency_contact_no,
+      emergency_contact_name,
+      relationship_with_emergency_contact,
+      height,
+      weight,
+      blood_group,
+      voting_card_no,
+      permanent_address,
+      parent_name,
+      spouse_name,
+      father_first_name,
+      father_middal_name,
+      father_last_name,
+      father_occupation,
+      mother_first_name,
+      mother_middal_name,
+      mother_last_name,
+      mother_occupation,
+      smoking_habits,
+      drinking_habits,
+      sports_interest,
+      favourite_book,
+      favourite_travel_destination,
+      disability_status,
+      emergency_medical_condition,
+      short_term_goal,
+      long_term_goal,
+      strength,
+      weakness,
+      bank_name,
+      ifsc_code,
+      current_ctc,
+      exit_date,
+      travel_requirement,
+      id_card_no,
+      company_assets,
+      ...filteredData
+    } = req.body;
+
+    console.log("req.boyd", req.body);
+
+    // Check if the email is already registered with another employee
+    const existingEmployeeEmail = await EmployeeModel.findOne({
+      email,
+      organizationId, // Ensure the check is within the same organization
+      _id: { $ne: id }, // Exclude the current employee being edited
+    });
+
+    if (existingEmployeeEmail) {
+      return res
+        .status(400)
+        .json({ message: "Email already registered by another employee." });
+    }
+
+    const filteredProfile = profile.filter((role) => role);
+    if (!filteredProfile.includes("Employee")) {
+      filteredProfile.push("Employee");
+    }
+
+    const additionalInfo = Object.fromEntries(
+      Object.entries(filteredData).filter(([_, value]) => value !== "")
+    );
+    const updateFields = {
+      first_name,
+      last_name,
+      email,
+      phone_number,
+      location,
+      companyemail,
+      address,
+      adhar_card_number,
+      pan_card_number,
+      dept_cost_center_no,
+      shift_allocation,
+      citizenship,
+      date_of_birth,
+      joining_date,
+      bank_account_no,
+      profile: filteredProfile,
+      creatorId,
+      worklocation,
+      designation,
+      deptname,
+      pwd,
+      uanNo,
+      esicNo,
+      gender,
+      salarystructure,
+      employmentType,
+      mgrempid: mgrempid || null,
+      empId,
+      employeeStatus,
+      emergency_contact_no,
+      emergency_contact_name,
+      relationship_with_emergency_contact,
+      height,
+      weight,
+      blood_group,
+      voting_card_no,
+      permanent_address,
+      parent_name,
+      spouse_name,
+      father_first_name,
+      father_middal_name,
+      father_last_name,
+      father_occupation,
+      mother_first_name,
+      mother_middal_name,
+      mother_last_name,
+      mother_occupation,
+      smoking_habits,
+      drinking_habits,
+      sports_interest,
+      favourite_book,
+      favourite_travel_destination,
+      disability_status,
+      emergency_medical_condition,
+      short_term_goal,
+      long_term_goal,
+      strength,
+      weakness,
+      bank_name,
+      ifsc_code,
+      current_ctc,
+      exit_date,
+      travel_requirement,
+      id_card_no,
+      company_assets,
+      additionalInfo: additionalInfo || {}, 
+
+    };
+    console.log("update field", updateFields);
+    let isManagerAssign, isManager;
+    if (id) {
+      isManagerAssign = await EmployeeManagementModel.findOne({
+        reporteeIds: id,
+      });
+
+      isManager = await EmployeeManagementModel.findOne({
+        managerId: id,
+      });
+    }
+
+    if (!profile.includes("Manager")) {
+      await EmployeeManagementModel.deleteMany({
+        managerId: id,
+      });
+
+      await EmployeeModel.updateMany(
+        {
+          mgrempid: id,
+        },
+        {
+          mgrempid: null,
+        },
+        {
+          new: true,
+        }
+      );
+    }
+
+    // TODO @required
+    if (!isManager) {
+      if (profile.includes("Manager")) {
+        console.log("includes condition this condition runs");
+        await EmployeeManagementModel.create({
+          managerId: id,
+          organizationId,
+        });
+      }
+    }
+
+    if (isManagerAssign?._id !== mgrempid && isManagerAssign) {
+      await EmployeeManagementModel.findByIdAndUpdate(
+        isManagerAssign._id,
+        {
+          $pull: { reporteeIds: id },
+        },
+        {
+          new: true,
+        }
+      );
+    }
+
+    if (mgrempid) {
+      await EmployeeManagementModel.findByIdAndUpdate(
+        mgrempid,
+        {
+          $addToSet: { reporteeIds: id },
+        },
+        {
+          new: true,
+        }
+      );
+    } else {
+      await EmployeeManagementModel.findByIdAndUpdate(
+        mgrempid,
+        {
+          $pull: { reporteeIds: id },
+        },
+        {
+          new: true,
+        }
+      );
+    }
+
+    const updatedEmployee = await EmployeeModel.findByIdAndUpdate(
+      id,
+      updateFields,
+      {
+        new: true,
+      }
+    );
+
+    return res.status(200).json({
+      message: "Employee updated successfully",
+      success: true,
+      updatedEmployee,
+    });
+  } catch (err) {
+    console.log(`🚀 ~ file: employeeController.js:861 ~ err:`, err);
+    return res.status(500).json({ message: err.message, success: false });
+  }
 });
 
 exports.addEmployeeExcel = catchAssyncError(async (req, res, next) => {
@@ -1476,190 +1734,7 @@ exports.addEmployeeExcel = catchAssyncError(async (req, res, next) => {
   }
 });
 
-exports.updateEmployee = catchAssyncError(async (req, res, next) => {
-  try {
-    const { id, organizationId } = req.params;
-    const {
-      first_name,
-      last_name,
-      email,
-      gender,
-      phone_number,
-      location,
-      companyemail,
-      address,
-      citizenship,
-      adhar_card_number,
-      pan_card_number,
-      dept_cost_center_no,
-      shift_allocation,
-      date_of_birth,
-      joining_date,
-      bank_account_no,
-      profile,
-      creatorId,
-      worklocation,
-      designation,
-      deptname,
-      salarystructure,
-      employmentType,
-      mgrempid,
-      pwd,
-      uanNo,
-      esicNo,
-      empId,
-      employeeStatus,
-      ...filteredData
-    } = req.body;
 
-    console.log("req.boyd", req.body);
-
-    // Check if the email is already registered with another employee
-    const existingEmployeeEmail = await EmployeeModel.findOne({
-      email,
-      organizationId, // Ensure the check is within the same organization
-      _id: { $ne: id }, // Exclude the current employee being edited
-    });
-
-    if (existingEmployeeEmail) {
-      return res
-        .status(400)
-        .json({ message: "Email already registered by another employee." });
-    }
-
-    const filteredProfile = profile.filter((role) => role);
-    if (!filteredProfile.includes("Employee")) {
-      filteredProfile.push("Employee");
-    }
-
-    const additionalInfo = Object.fromEntries(
-      Object.entries(filteredData).filter(([_, value]) => value !== "")
-    );
-    const updateFields = {
-      first_name,
-      last_name,
-      email,
-      phone_number,
-      location,
-      companyemail,
-      address,
-      adhar_card_number,
-      pan_card_number,
-      dept_cost_center_no,
-      shift_allocation,
-      citizenship,
-      date_of_birth,
-      joining_date,
-      bank_account_no,
-      profile: filteredProfile,
-      creatorId,
-      worklocation,
-      designation,
-      deptname,
-      pwd,
-      uanNo,
-      esicNo,
-      gender,
-      salarystructure,
-      employmentType,
-      mgrempid: mgrempid || null,
-      empId,
-      employeeStatus,
-      additionalInfo: additionalInfo || {},
-    };
-    console.log("update field", updateFields);
-    let isManagerAssign, isManager;
-    if (id) {
-      isManagerAssign = await EmployeeManagementModel.findOne({
-        reporteeIds: id,
-      });
-
-      isManager = await EmployeeManagementModel.findOne({
-        managerId: id,
-      });
-    }
-
-    if (!profile.includes("Manager")) {
-      await EmployeeManagementModel.deleteMany({
-        managerId: id,
-      });
-
-      await EmployeeModel.updateMany(
-        {
-          mgrempid: id,
-        },
-        {
-          mgrempid: null,
-        },
-        {
-          new: true,
-        }
-      );
-    }
-
-    // TODO @required
-    if (!isManager) {
-      if (profile.includes("Manager")) {
-        console.log("includes condition this condition runs");
-        await EmployeeManagementModel.create({
-          managerId: id,
-          organizationId,
-        });
-      }
-    }
-
-    if (isManagerAssign?._id !== mgrempid && isManagerAssign) {
-      await EmployeeManagementModel.findByIdAndUpdate(
-        isManagerAssign._id,
-        {
-          $pull: { reporteeIds: id },
-        },
-        {
-          new: true,
-        }
-      );
-    }
-
-    if (mgrempid) {
-      await EmployeeManagementModel.findByIdAndUpdate(
-        mgrempid,
-        {
-          $addToSet: { reporteeIds: id },
-        },
-        {
-          new: true,
-        }
-      );
-    } else {
-      await EmployeeManagementModel.findByIdAndUpdate(
-        mgrempid,
-        {
-          $pull: { reporteeIds: id },
-        },
-        {
-          new: true,
-        }
-      );
-    }
-
-    const updatedEmployee = await EmployeeModel.findByIdAndUpdate(
-      id,
-      updateFields,
-      {
-        new: true,
-      }
-    );
-
-    return res.status(200).json({
-      message: "Employee updated successfully",
-      success: true,
-      updatedEmployee,
-    });
-  } catch (err) {
-    console.log(`🚀 ~ file: employeeController.js:861 ~ err:`, err);
-    return res.status(500).json({ message: err.message, success: false });
-  }
-});
 
 exports.uploadImage = catchAssyncError(async (req, res, next) => {
   try {
