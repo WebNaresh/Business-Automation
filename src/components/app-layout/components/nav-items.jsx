@@ -180,7 +180,6 @@ const TestNavItems = ({ toggleDrawer }) => {
               ? `/organisation/${orgId}/dashboard/super-admin`
               : "/organizationList",
         },
-
         Attendence: {
           open: true,
           icon: <HiOutlineIdentification className="!text-[1.5rem]" />,
@@ -443,6 +442,20 @@ const TestNavItems = ({ toggleDrawer }) => {
             },
           ],
         },
+        Records: {
+          open: false,
+          isVisible: true,
+          icon: <MonetizationOn className=" !text-[1.2em]" />,
+          routes: [
+            {
+              key: "empDocs",
+              isVisible: true,
+              link: `/organisation/${orgId}/records`,
+              icon: <ArticleIcon className=" !text-[1.2em]" />,
+              text: "My Records",
+            },
+          ],
+        },
         Performance: {
           open: false,
           isVisible:
@@ -552,7 +565,6 @@ const TestNavItems = ({ toggleDrawer }) => {
           routes: [],
           link: "/organizationList",
         },
-
         "Remote Punch": {
           open: false,
           isVisible:
@@ -598,35 +610,6 @@ const TestNavItems = ({ toggleDrawer }) => {
               link: `/organisation/${orgId}/remotePunching`,
               icon: <PanToolAlt className=" !text-[1.2em]" />,
               text: "Apply Miss For Punch",
-            },
-          ],
-        },
-        "Catering and food": {
-          open: false,
-          isVisible: data?.organisation?.packageInfo === "Intermediate Plan",
-          icon: <MonetizationOn className=" !text-[1.2em]" />,
-          routes: [
-            {
-              key: "onboarding",
-              isVisible: ["Super-Admin", "HR"].includes(role),
-
-              link: `/organisation/${orgId}/catering/onboarding`,
-              icon: <ArticleIcon className=" !text-[1.2em]" />,
-              text: "New Vendor Onboard",
-            },
-          ],
-        },
-        Records: {
-          open: false,
-          isVisible: data?.organisation?.packageInfo === "Intermediate Plan",
-          icon: <MonetizationOn className=" !text-[1.2em]" />,
-          routes: [
-            {
-              key: "empDocs",
-              isVisible: true,
-              link: `/organisation/${orgId}/records`,
-              icon: <ArticleIcon className=" !text-[1.2em]" />,
-              text: "My Records",
             },
           ],
         },
