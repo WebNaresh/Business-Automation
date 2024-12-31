@@ -92,8 +92,8 @@ exports.createDepartment = catchAssyncError(async (req, res, next) => {
         departmentLocation,
         costCenterName,
         costCenterDescription,
-        departmentHeadName,
-        departmentHeadDelegateName,
+        departmentHeadName: departmentHeadName || null,
+        departmentHeadDelegateName: departmentHeadDelegateName || null,
         dept_cost_center_id,
         approvalIds,
         creator: creator,
@@ -127,6 +127,7 @@ exports.updateDepartment = catchAssyncError(async (req, res, next) => {
       departmentHeadDelegateName,
       departmentLocation,
     } = req.body;
+    console.log(`🚀 ~ file: departmentController.js:195 ~ req.body:`, req.body);
 
     const { organizationId, deptId } = req.params;
     const { role } = req.query;
@@ -172,9 +173,9 @@ exports.updateDepartment = catchAssyncError(async (req, res, next) => {
         existingDepartment.departmentDescription = departmentDescription;
         existingDepartment.costCenterName = costCenterName;
         existingDepartment.costCenterDescription = costCenterDescription;
-        existingDepartment.departmentHeadName = departmentHeadName;
+        existingDepartment.departmentHeadName = departmentHeadName || null;
         existingDepartment.departmentHeadDelegateName =
-          departmentHeadDelegateName;
+          departmentHeadDelegateName || null;
         existingDepartment.departmentLocation = departmentLocation;
         existingDepartment.approvalIds = approvalIds;
         existingDepartment.status = status;
@@ -188,6 +189,7 @@ exports.updateDepartment = catchAssyncError(async (req, res, next) => {
       }
     }
   } catch (error) {
+    console.log(`🚀 ~ file: departmentController.js:192 ~ error:`, error);
     logger.error(error);
     res.status(500).json({ error: error.message });
   }
