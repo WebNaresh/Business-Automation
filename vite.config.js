@@ -28,6 +28,17 @@ export default defineConfig({
       "@emotion/styled",
       "@mui/material",
       "@mui/system",
+      "@mui/icons-material",
+      "react-icons/lia",
+      "react-icons/io",
+      "react-icons/fa",
+      "react-icons/bs",
+      "react-icons/ai",
+      "react-icons/go",
+      "react-icons/md",
+      "react-icons/ti",
+      "react-icons/cg",
+      "react-icons/ri",
     ],
     esbuildOptions: {
       loader: {
@@ -38,55 +49,3 @@ export default defineConfig({
     },
   },
 });
-// import react from "@vitejs/plugin-react";
-// import path from "path";
-// import { defineConfig } from "vite";
-
-// export default defineConfig({
-//   plugins: [
-//     react({
-//       jsxImportSource: "@emotion/react",
-//       babel: {
-//         plugins: [
-//           "@emotion/babel-plugin",
-//           [
-//             "@babel/plugin-transform-react-jsx",
-//             {
-//               runtime: "automatic",
-//             },
-//           ],
-//         ],
-//       },
-//     }),
-//   ],
-//   resolve: {
-//     alias: {
-//       "@": path.resolve(__dirname, "./src"),
-//     },
-//   },
-//   server: {
-//     port: 3000,
-//   },
-//   optimizeDeps: {
-//     esbuildOptions: {
-//       loader: {
-//         ".js": "jsx",
-//         ".ts": "tsx",
-//       },
-//       define: {
-//         global: "globalThis",
-//       },
-//     },
-//     include: [
-//       "@emotion/react",
-//       "@emotion/styled",
-//       "@mui/material",
-//       "@mui/icons-material",
-//     ],
-//   },
-//   esbuild: {
-//     loader: "jsx",
-//     include: /src\/.*\.jsx?$/,
-//     exclude: [],
-//   },
-// });
