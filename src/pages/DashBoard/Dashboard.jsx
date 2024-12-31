@@ -26,7 +26,9 @@ const Dashboard = () => {
   const getSalaryTemplate = async () => {
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_API}/route/employeeSalary/viewpayslip/${user._id}/${user.organizationId}/${selectedyear.value}`,
+        `${import.meta.env.VITE_API}/route/employeeSalary/viewpayslip/${
+          user._id
+        }/${user.organizationId}/${selectedyear.value}`,
         {
           headers: {
             Authorization: authToken,
@@ -54,23 +56,6 @@ const Dashboard = () => {
             "Get insights of Employee's data with interactive charts and reports"
           }
         />
-
-        {/* 
-<section className="p-2 mt-10 shadow-lg bg-gray-50">
-  <HeaderComponentPro
-    heading={
-      location.pathname?.includes("/employee-dashboard")
-        ? "Employee Dashboard"
-        : "Accountant Dashboard"
-    }
-    oneLineInfo={
-      location.pathname?.includes("/employee-dashboard")
-        ? "View your performance metrics, tasks, and feedback."
-        : "Manage and review employee financial records and ensure compliance."
-    }
-  />
-</section> */}
-
         <div className="py-3 px-2 md:px-8 w-full">
           <div className="flex md:flex-row flex-col w-full justify-between gap-2">
             <div className="space-y-3 md:space-y-0 md:my-4 mb-1 flex md:gap-2 gap-1 flex-col md:!w-[60%] w-[100%] md:pb-2">

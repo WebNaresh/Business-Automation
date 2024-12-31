@@ -1,6 +1,6 @@
 import { Button, Skeleton } from "@mui/material";
 import axios from "axios";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { FaArrowCircleRight } from "react-icons/fa";
 import "react-multi-carousel/lib/styles.css";
 import { useQuery } from "react-query";
@@ -32,17 +32,21 @@ const Home = () => {
               <h1 className="md:text-4xl xs:text-2xl font-light">
                 Welcome to{" "}
                 <span className="md:text-4xl xl:text-left text-center xs:text-2xl gradient font-semibold text-primary">
-                  InnovateTech
+                  SMarTea
                 </span>{" "}
               </h1>
               <h2 className="md:text-5xl xs:text-3xl sm:text-4xl leading-tight font-bold mb-4">
                 Transforming
-                <span className="text-primary font-bold"> Ideas into Reality</span>
+                <span className="text-primary font-bold">
+                  {" "}
+                  Ideas into Reality
+                </span>
               </h2>
 
               <p className="md:text-xl w-[80%] xs:text-base mb-8 text-gray-600 md:leading-relaxed xs:leading-normal">
-                Embark on a journey of innovation with us. Experience the power of{" "}
-                <span className="font-bold text-primary">InnovateTech</span>, where cutting-edge solutions meet your business needs.
+                Embark on a journey of innovation with us. Experience the power
+                of <span className="font-bold text-primary">SMarTea</span>,
+                where cutting-edge solutions meet your business needs.
               </p>
 
               {isLoading ? (
@@ -68,10 +72,6 @@ const Home = () => {
                 </Link>
               )}
             </div>
-          </div>
-
-          <div className="xl:block hidden">
-            <img src="Home.svg" className="h-[400px]" alt="none" />
           </div>
         </div>
       </div>
