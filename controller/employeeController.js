@@ -1283,7 +1283,7 @@ exports.addEmployee = catchAssyncError(async (req, res, next) => {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
   }
-}); 
+});
 
 exports.updateEmployee = catchAssyncError(async (req, res, next) => {
   try {
@@ -1446,8 +1446,7 @@ exports.updateEmployee = catchAssyncError(async (req, res, next) => {
       travel_requirement,
       id_card_no,
       company_assets,
-      additionalInfo: additionalInfo || {}, 
-
+      additionalInfo: additionalInfo || {},
     };
     console.log("update field", updateFields);
     let isManagerAssign, isManager;
@@ -1733,8 +1732,6 @@ exports.addEmployeeExcel = catchAssyncError(async (req, res, next) => {
     res.status(500).json({ message: "Server Error", error: error.message });
   }
 });
-
-
 
 exports.uploadImage = catchAssyncError(async (req, res, next) => {
   try {
@@ -2814,6 +2811,10 @@ exports.getOrgTree = catchAssyncError(async (req, res, next) => {
 exports.getEmployeeInDepartment = catchAssyncError(async (req, res, next) => {
   try {
     const { organizationId, deptname } = req.params;
+    console.log(
+      `🚀 ~ file: employeeController.js:2814 ~ { organizationId, deptname }:`,
+      { organizationId, deptname }
+    );
 
     const query = {};
 
@@ -2829,7 +2830,10 @@ exports.getEmployeeInDepartment = catchAssyncError(async (req, res, next) => {
     const employees = await EmployeeModel.find(query)
       .populate("deptname", "name")
       .populate("organizationId", "name")
-      .select("first_name last_name email deptname organizationId");
+      .populate("designation", "designationName")
+      .select(
+        "first_name last_name email deptname organizationId designationName phone_number"
+      );
 
     // Check if employees exist
     if (!employees || employees.length === 0) {

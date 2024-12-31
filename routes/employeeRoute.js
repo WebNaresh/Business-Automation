@@ -45,16 +45,15 @@ const {
   confirmLogout,
   loginapp,
   getTotalSalary,
-  deleteProfilePhoto , 
-  getEmployeeInDepartment
-  
+  deleteProfilePhoto,
+  getEmployeeInDepartment,
 } = require("../controller/employeeController");
 const auth = require("../middleware/Auth");
 const router = express.Router();
 const multer = require("multer");
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
-''
+("");
 router.route("/employee/assignOrgToSelf").put(auth, setOrgIdtoSA);
 router.route("/employee/getOrgTree/:orgId").get(auth, getOrgTree);
 router.route("/employee/verifyOtp").post(verifyOtp);
@@ -119,8 +118,8 @@ router
   .post(auth, addUserProfileData);
 
 router.route("/employee/get/profile/:employeeId").get(auth, getUserProfileData);
-//delete profile 
-router.route('/employee/photo/:employeeId').delete(auth, deleteProfilePhoto);
+//delete profile
+router.route("/employee/photo/:employeeId").delete(auth, deleteProfilePhoto);
 
 router.route("/employee/populate/get").get(auth, populateEmp);
 router.route("/add-salary-component/:employeeId").post(auth, addSalaryData);
@@ -131,8 +130,8 @@ router
 router
   .route("/employee/get/:organizationId")
   .get(auth, getEmployeeDateBasedOrgId);
-  router
+router
   .route("/get-employee/from-department/:organizationId/:deptname")
-  .get(auth, getEmployeeInDepartment);
+  .get(getEmployeeInDepartment);
 
 module.exports = router;
