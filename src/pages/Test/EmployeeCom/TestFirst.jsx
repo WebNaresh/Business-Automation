@@ -25,7 +25,7 @@ export const isAtLeastNineteenYearsOld = (value) => {
   return differenceInYears >= 19;
 };
 
-const TestFirst = ({ nextStep,  isLastStep }) => {
+const TestFirst = ({ nextStep,  isLastStep , prevStep }) => {
   const {
     setStep1Data,
     emergency_contact_no,
