@@ -26,8 +26,9 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import * as XLSX from "xlsx";
 import useEmpOption from "@/hooks/Employee-OnBoarding/useEmpOption";
-import AuthInputFiled from "@/components/InputFileds/AuthInputFiled";
-import useEmpState from "@/hooks/Employee-OnBoarding/useEmpState";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
+
 
 
 const EmployeeListToRole = () => {
@@ -39,18 +40,28 @@ const EmployeeListToRole = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const { organisationId } = useParams();
-
-
-
+  const [selectedDepartment, setSelectedDepartment] = useState('');
 
   const {
     Departmentoptions,
-  } = useEmpOption(organisationId);
+  } = useEmpOption({ organisationId });
+
+  console.log("Departmentoptions", Departmentoptions);
+
+  const handleDepartmentChange = (event) => {
+    setSelectedDepartment(event.target.value);
+
+  };
+
+  console.log('Selected Department:', selectedDepartment);
+
 
   const fetchAvailableEmployee = async (page) => {
     try {
       const apiUrl = `${import.meta.env.VITE_API
-        }/route/employee/get-paginated-emloyee/${organisationId}?page=${page}&nameSearch=${nameSearch}`;
+        }/route/employee/get-paginated-emloyee/${organisationId}?page=${page}&nameSearch=${nameSearch}&department=${selectedDepartment}`;
+      console.log("apiUrl" , apiUrl);
+      
       const response = await axios.get(apiUrl, {
         headers: {
           Authorization: authToken,
@@ -66,7 +77,7 @@ const EmployeeListToRole = () => {
 
   useEffect(() => {
     fetchAvailableEmployee(currentPage);
-  }, [currentPage, nameSearch,]);
+  }, [currentPage, nameSearch,selectedDepartment]);
 
   const prePage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
@@ -212,16 +223,20 @@ const EmployeeListToRole = () => {
               />
             </Tooltip>
 
+            {/* Filter by Department Dropdown */}
             <FormControl size="small" fullWidth>
               <InputLabel>Filter by Department</InputLabel>
               <Select
+                value={selectedDepartment}
+                onChange={handleDepartmentChange}
                 label="Filter by Department"
               >
                 <MenuItem value="">All Departments</MenuItem>
-                <MenuItem value="HR">HR</MenuItem>
-                <MenuItem value="Engineering">Engineering</MenuItem>
-                <MenuItem value="Sales">Sales</MenuItem>
-                <MenuItem value="Marketing">Marketing</MenuItem>
+                {Departmentoptions?.map((department) => (
+                  <MenuItem key={department.value} value={department.value}>
+                    {department.label}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
 
@@ -234,6 +249,7 @@ const EmployeeListToRole = () => {
                 "&:hover": { backgroundColor: "#b71c1c" },
                 textTransform: "none",
               }}
+              onClick={handleExportToPDF}
             >
               Export PDF
             </Button>

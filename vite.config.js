@@ -39,6 +39,8 @@ export default defineConfig({
       "react-icons/ti",
       "react-icons/cg",
       "react-icons/ri",
+      "jspdf",
+      "jspdf-autotable",
     ],
     esbuildOptions: {
       loader: {
