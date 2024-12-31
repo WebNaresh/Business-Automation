@@ -10,7 +10,6 @@ import ForgotPassword from "./components/forgotpassword/forgotpassword";
 import ResetPassword from "./components/resetpassword/resetpassword";
 import Vendortest from "./pages/CateringAndFood/VendorSignUp/Vendortest";
 // import ResetNewUserId from "./pages/ResetNewUserId/ResetNewUserId";
-
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import OrgChart from "./Test/OrgChart";
 import GeoFencingAcceptModal from "./components/Modal/RemotePunchingModal/GeoFencingAcceptModal";
@@ -48,8 +47,7 @@ import EmployeeNotification from "./pages/Employee-Notification/page";
 import DeleteEmployee from "./pages/Employee/DeleteEmployee";
 import EditEmployee from "./pages/Employee/EditEmployee";
 import Employee from "./pages/Employee/Employee";
-import EmployeeView from "./pages/Employee/EmployeeView";
-import ProfilePage from "./pages/Employee/UpdateEmployeeView";
+import EmployeeProfileView from "./pages/Employee/EmployeeProfileView";
 import EmployeeSurvey from "./pages/EmployeeSurvey/EmployeeSurvey";
 import CreateNewSurvey from "./pages/EmployeeSurvey/components/CreateNewSurvey";
 import EmployeeSurveyForm from "./pages/EmployeeSurvey/components/EmployeeSurveyForm";
@@ -758,20 +756,11 @@ const App = () => {
               <RequireAuth
                 permission={["Super-Admin", "Delegate-Super-Admin", "HR"]}
               >
-                <EmployeeView />
+                <EmployeeProfileView />
               </RequireAuth>
             }
           />
-          <Route
-            path="/organisation/:organisationId/employee-view-new/:empId"
-            element={
-              <RequireAuth
-                permission={["Super-Admin", "Delegate-Super-Admin", "HR"]}
-              >
-                <ProfilePage />
-              </RequireAuth>
-            }
-          />
+         
           <Route
             path="/organisation/:organisationId/create-communication"
             element={
