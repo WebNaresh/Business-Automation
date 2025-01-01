@@ -6,14 +6,12 @@ import {
   Groups,
   ListAlt,
   LocationOn,
-  ModelTrainingOutlined,
   MonetizationOn,
   NotificationsActive,
   PanToolAlt,
   Payment,
   PeopleAlt,
   PersonAdd,
-  PersonRemove,
   TrendingUp,
 } from "@mui/icons-material";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -28,7 +26,6 @@ import ChatIcon from "@mui/icons-material/Chat";
 import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
 import PunchClockIcon from "@mui/icons-material/PunchClock";
 import ReceiptIcon from "@mui/icons-material/Receipt";
-import WorkIcon from "@mui/icons-material/Work";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useContext, useEffect, useMemo, useState } from "react";
@@ -163,10 +160,10 @@ const TestNavItems = ({ toggleDrawer }) => {
                 role === "Manager"
                   ? `/organisation/${orgId}/dashboard/manager-dashboard`
                   : role === "HR"
-                    ? `/organisation/${orgId}/dashboard/HR-dashboard`
-                    : role === "Employee"
-                      ? `/organisation/${orgId}/dashboard/employee-dashboard`
-                      : "/organizationList",
+                  ? `/organisation/${orgId}/dashboard/HR-dashboard`
+                  : role === "Employee"
+                  ? `/organisation/${orgId}/dashboard/employee-dashboard`
+                  : "/organizationList",
               icon: <Dashboard className=" !text-[1.2em]" />,
               text: "Dashboard",
             },
@@ -176,12 +173,12 @@ const TestNavItems = ({ toggleDrawer }) => {
             role === "Manager"
               ? `/organisation/${orgId}/dashboard/manager-dashboard`
               : role === "HR"
-                ? `/organisation/${orgId}/dashboard/HR-dashboard`
-                : role === "Employee"
-                  ? `/organisation/${orgId}/dashboard/employee-dashboard`
-                  : role === "Super-Admin"
-                    ? `/organisation/${orgId}/dashboard/super-admin`
-                    : "/organizationList",
+              ? `/organisation/${orgId}/dashboard/HR-dashboard`
+              : role === "Employee"
+              ? `/organisation/${orgId}/dashboard/employee-dashboard`
+              : role === "Super-Admin"
+              ? `/organisation/${orgId}/dashboard/super-admin`
+              : "/organizationList",
         },
         Attendence: {
           open: true,
@@ -422,25 +419,22 @@ const TestNavItems = ({ toggleDrawer }) => {
         },
         Communication: {
           open: false,
-          isVisible:
-            survey?.surveyPermission,
+          isVisible: survey?.surveyPermission,
           icon: <Business className=" !text-[1.2em]" />,
           routes: [
             {
               key: "createCommunication",
-              isVisible:
-                survey?.surveyPermission,
+              isVisible: survey?.surveyPermission,
               link: `/organisation/${orgId}/create-communication`,
               icon: <ChatIcon className=" !text-[1.2em]" />,
               text: "Broadcast",
             },
             {
               key: "EmployeeSurvey",
-              isVisible:
-                survey?.surveyPermission,
+              isVisible: survey?.surveyPermission,
               link:
                 user?.profile.includes("Super-Admin") ||
-                  user?.profile.includes("HR")
+                user?.profile.includes("HR")
                   ? `/organisation/${orgId}/employee-survey`
                   : `/organisation/${orgId}/employee-survey/${empId}`,
               icon: <AssignmentIcon className=" !text-[1.2em]" />,

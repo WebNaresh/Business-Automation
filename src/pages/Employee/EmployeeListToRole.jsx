@@ -1,8 +1,11 @@
 import AddIcon from "@mui/icons-material/Add";
+import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import SearchIcon from "@mui/icons-material/Search";
 import PrintIcon from "@mui/icons-material/Print";
+import SearchIcon from "@mui/icons-material/Search";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import {
+  Box,
   Button,
   IconButton,
   Paper,
@@ -15,21 +18,12 @@ import {
   TextField,
   Tooltip,
   Typography,
-  Box,
-  Select, MenuItem, FormControl, InputLabel
 } from "@mui/material";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { UseContext } from "../../State/UseState/UseContext";
-import DeleteIcon from "@mui/icons-material/Delete";
-import VisibilityIcon from "@mui/icons-material/Visibility";
 import * as XLSX from "xlsx";
-import useEmpOption from "@/hooks/Employee-OnBoarding/useEmpOption";
-import jsPDF from "jspdf";
-import autoTable from "jspdf-autotable";
-
-
+import { UseContext } from "../../State/UseState/UseContext";
 
 const EmployeeListToRole = () => {
   const navigate = useNavigate();
@@ -40,28 +34,12 @@ const EmployeeListToRole = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const { organisationId } = useParams();
-  const [selectedDepartment, setSelectedDepartment] = useState('');
-
-  const {
-    Departmentoptions,
-  } = useEmpOption({ organisationId });
-
-  console.log("Departmentoptions", Departmentoptions);
-
-  const handleDepartmentChange = (event) => {
-    setSelectedDepartment(event.target.value);
-
-  };
-
-  console.log('Selected Department:', selectedDepartment);
-
 
   const fetchAvailableEmployee = async (page) => {
     try {
-      const apiUrl = `${import.meta.env.VITE_API
-        }/route/employee/get-paginated-emloyee/${organisationId}?page=${page}&nameSearch=${nameSearch}&department=${selectedDepartment}`;
-      console.log("apiUrl" , apiUrl);
-      
+      const apiUrl = `${
+        import.meta.env.VITE_API
+      }/route/employee/get-paginated-emloyee/${organisationId}?page=${page}&nameSearch=${nameSearch}`;
       const response = await axios.get(apiUrl, {
         headers: {
           Authorization: authToken,
@@ -77,7 +55,7 @@ const EmployeeListToRole = () => {
 
   useEffect(() => {
     fetchAvailableEmployee(currentPage);
-  }, [currentPage, nameSearch,selectedDepartment]);
+  }, [currentPage, nameSearch]);
 
   const prePage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
@@ -139,7 +117,6 @@ const EmployeeListToRole = () => {
     navigate(`/organisation/${organisationId}/employee-onboarding`);
   };
 
-
   const handleDeleteClick = () => {
     navigate(`/organisation/${organisationId}/employee-offboarding`);
   };
@@ -148,7 +125,6 @@ const EmployeeListToRole = () => {
     navigate(`/organisation/${organisationId}/employee-view/${empId}`);
   };
 
-
   // 📊 Handle Export to Excel
   const handleExportToExcel = () => {
     const worksheet = XLSX.utils.json_to_sheet(
@@ -156,7 +132,7 @@ const EmployeeListToRole = () => {
         "Sr. No": index + 1,
         "First Name": item.first_name || "-",
         "Last Name": item.last_name || "-",
-        "Email": item.email || "-",
+        Email: item.email || "-",
         "Employee Id": item.empId || "-",
       }))
     );
@@ -205,7 +181,7 @@ const EmployeeListToRole = () => {
         </div>
 
         <div className="p-6 border-b border-gray-200">
-          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-4 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-4 items-center">
             <Tooltip
               title="No employees found"
               placement="top"
@@ -222,24 +198,6 @@ const EmployeeListToRole = () => {
                 }}
               />
             </Tooltip>
-
-            {/* Filter by Department Dropdown */}
-            <FormControl size="small" fullWidth>
-              <InputLabel>Filter by Department</InputLabel>
-              <Select
-                value={selectedDepartment}
-                onChange={handleDepartmentChange}
-                label="Filter by Department"
-              >
-                <MenuItem value="">All Departments</MenuItem>
-                {Departmentoptions?.map((department) => (
-                  <MenuItem key={department.value} value={department.value}>
-                    {department.label}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-
             <Button
               variant="contained"
               size="small"
@@ -249,11 +207,9 @@ const EmployeeListToRole = () => {
                 "&:hover": { backgroundColor: "#b71c1c" },
                 textTransform: "none",
               }}
-              onClick={handleExportToPDF}
             >
               Export PDF
             </Button>
-
             <Button
               variant="contained"
               size="small"
@@ -269,7 +225,6 @@ const EmployeeListToRole = () => {
             </Button>
           </div>
         </div>
-
 
         <TableContainer component={Paper} sx={{ boxShadow: "none" }}>
           <Table sx={{ minWidth: 650 }} aria-label="employee table">
@@ -291,11 +246,9 @@ const EmployeeListToRole = () => {
                 availableEmployee
                   .filter((item) => {
                     return (
-                      (!nameSearch.toLowerCase() ||
-                        (item.first_name &&
-                          item.first_name
-                            .toLowerCase()
-                            .includes(nameSearch)))
+                      !nameSearch.toLowerCase() ||
+                      (item.first_name &&
+                        item.first_name.toLowerCase().includes(nameSearch))
                     );
                   })
                   .map((item, id) => (
@@ -378,7 +331,6 @@ const EmployeeListToRole = () => {
             </TableBody>
           </Table>
         </TableContainer>
-
 
         <div className="flex items-center justify-center gap-3 p-4 bg-gray-50 border-t border-gray-200">
           <Button

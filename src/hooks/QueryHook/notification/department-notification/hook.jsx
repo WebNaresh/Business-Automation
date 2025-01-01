@@ -31,7 +31,6 @@ const useDepartmentNotification = () => {
     );
     return response.data.data;
   });
-  console.log("get department", getDepartmnetData);
 
   const { data: getDeptNotificationToEmp } = useQuery(
     ["get-departments"],
@@ -47,7 +46,6 @@ const useDepartmentNotification = () => {
       return response.data.data;
     }
   );
-  console.log("getNotification of dept", getDeptNotificationToEmp);
 
   return {
     data,
