@@ -563,6 +563,40 @@ const TestNavItems = ({ toggleDrawer }) => {
             },
           ],
         },
+        // Remote: {
+        //   open: false,
+        //   isVisible:
+        //     // (["Employee"].includes(role) && !isUserMatchInEmployeeList) ||
+        //     ["Super-Admin", "Manager", "Delegate-Super-Admin", "HR"].includes(role),
+        //   icon: <MonetizationOn className="!text-[1.2em]" />,
+        //   routes: [
+        //     {
+        //       key: "addRemoteVisitTask",
+        //       isVisible:
+        //         ["Super-Admin", "Manager", "HR", "Delegate-Super-Admin"].includes(role) &&
+        //         data?.organisation?.packageInfo === "Enterprise Plan" &&
+        //         data?.organisation?.packages?.includes("Remote Task"),
+        //       link: `/organisation/${orgId}/remote-punching-tasks`,
+        //       icon: <AssignmentIcon className="!text-[1.2em]" />,
+        //       text: "Remote Visit tasks",
+        //     },
+        //     {
+        //       key: "addPunch",
+        //       isVisible: ["Employee"].includes(role) && !isUserMatchInEmployeeList,
+        //       link: `/organisation/${orgId}/employee-remote-punching`,
+        //       icon: <Fingerprint className="!text-[1.2em]" />,
+        //       text: "Remote Punch-in-out",
+        //     },
+        //     {
+        //       key: "missPunch",
+        //       isVisible: ["Employee"].includes(role) && !isUserMatchInEmployeeList,
+        //       link: `/organisation/${orgId}/remotePunching`,
+        //       icon: <PanToolAlt className="!text-[1.2em]" />,
+        //       text: "Apply Miss For Punch",
+        //     },
+        //   ],
+        // },
+
         Branches: {
           open: false,
           isVisible: ["Super-Admin", "Delegate-Super-Admin"].includes(role),
@@ -571,54 +605,8 @@ const TestNavItems = ({ toggleDrawer }) => {
           routes: [],
           link: "/organizationList",
         },
-        "Remote Punch": {
-          open: false,
-          isVisible:
-            ((["Employee"].includes(role) && !isUserMatchInEmployeeList) ||
-              ([
-                "Super-Admin",
-                "Manager",
-                "Delegate-Super-Admin",
-                "HR",
-              ].includes(role) &&
-                data?.organisation?.packageInfo === "Enterprise Plan")) &&
-            (data?.organisation?.packageInfo === "Intermediate Plan" ||
-              data?.organisation?.packageInfo === "Enterprise Plan"),
-          icon: <MonetizationOn className=" !text-[1.2em]" />,
-          routes: [
-            {
-              key: "addRemoteVisitTask",
-              isVisible:
-                [
-                  "Super-Admin",
-                  "Manager",
-                  "HR",
-                  "Delegate-Super-Admin",
-                ].includes(role) &&
-                data?.organisation?.packageInfo === "Enterprise Plan" &&
-                data?.organisation?.packages.includes("Remote Task"),
-              link: `/organisation/${orgId}/remote-punching-tasks`,
-              icon: <AssignmentIcon className=" !text-[1.2em]" />,
-              text: "Remote Visit tasks",
-            },
-            {
-              key: "addPunch",
-              isVisible:
-                ["Employee"].includes(role) && !isUserMatchInEmployeeList,
-              link: `/organisation/${orgId}/employee-remote-punching`,
-              icon: <Fingerprint className=" !text-[1.2em]" />,
-              text: "Remote Punch-in-out",
-            },
-            {
-              key: "missPunch",
-              isVisible:
-                ["Employee"].includes(role) && !isUserMatchInEmployeeList,
-              link: `/organisation/${orgId}/remotePunching`,
-              icon: <PanToolAlt className=" !text-[1.2em]" />,
-              text: "Apply Miss For Punch",
-            },
-          ],
-        },
+
+
 
 
       };

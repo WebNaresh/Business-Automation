@@ -1,48 +1,39 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { ContactEmergency } from "@mui/icons-material";
-import ChatIcon from "@mui/icons-material/Chat";
-import InfoIcon from "@mui/icons-material/Info";
-import { Button, Divider, Paper, Skeleton } from "@mui/material";
-import axios from "axios";
-import React, { useContext, useRef, useState } from "react";
-import { useForm } from "react-hook-form";
+import React, { useContext, useRef, useState } from 'react';
+import {
+  FaUser, FaBriefcase, FaFileAlt, FaClipboardList, FaChevronLeft,
+  FaChevronRight,
+} from 'react-icons/fa';
+import { PersonalInfo } from './Component/PersonalInfo';
+import { FamilyInfo } from './Component/FamilyInfo';
+import { OfficialInfo } from './Component/OfficialInfo';
+import { AdditionalInfo } from './Component/AdditionalInfo';
+import { useNavigate } from 'react-router-dom';
+import { UseContext } from '../../State/UseState/UseContext';
+import axios from 'axios';
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { z } from "zod";
-import { TestContext } from "../../State/Function/Main";
-import { UseContext } from "../../State/UseState/UseContext";
-import AuthInputFiled from "../../components/InputFileds/AuthInputFiled";
-// import Loader from "../../components/Modal/Selfi-Image/components/Loader";
-import useLoadModel from "../../hooks/FaceMode/useFaceModal";
-import UserProfile from "../../hooks/UserData/useUser";
-import useHook from "../../hooks/UserProfile/useHook";
-import { getSignedUrl, uploadFile } from "../../services/api";
-import ResetNewPassword from "../ResetNewPassword/ResetNewPassword";
+import UserProfile from '../../hooks/UserData/useUser';
+import { Skeleton } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
-
-import AddNewUserId from "../AddNewUserId/AddNewUserId";
+import useLoadModel from "../../hooks/FaceMode/useFaceModal";
+import { getSignedUrl, uploadFile } from "../../services/api";
+import { TestContext } from '../../State/Function/Main';
+import { useForm } from "react-hook-form";
 
 const EmpProfile = () => {
   const { handleAlert } = useContext(TestContext);
   const { cookies } = useContext(UseContext);
   const authToken = cookies["aegis"];
+  const queryClient = useQueryClient();
   const { getCurrentUser } = UserProfile();
   const user = getCurrentUser();
-  const userId = user._id;
-  const queryClient = useQueryClient();
-  const { UserInformation } = useHook();
+  const empId = user?._id;
+  const organisationId = user?.organizationId;
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState('personal');
   const [url, setUrl] = useState();
   const fileInputRef = useRef();
   const [file, setFile] = useState();
-  const [open, setOpen] = useState(false);
-  const [open1, setOpen1] = useState(false);
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleClose1 = () => {
-    setOpen1(false);
-  };
+  const [visibleStartIndex, setVisibleStartIndex] = useState(0);
 
   const {
     detectFaceOnlyMutation,
@@ -52,60 +43,78 @@ const EmpProfile = () => {
     employeeOrgId,
   } = useLoadModel();
 
-  const UserProfileSchema = z.object({
-    additional_phone_number: z
-      .string()
-      .max(10, { message: "Phone Number must be 10 digits" })
-      .refine((value) => value.length === 10 || value.length === 0, {
-        message: "Phone Number must be either 10 digits or empty",
-      })
-      .optional(),
-    chat_id: z.string().optional(),
-    status_message: z.string().optional(),
-  });
-
   const {
-    control,
     formState: { errors },
     handleSubmit,
     reset,
-    setValue,
+
   } = useForm({
     defaultValues: {},
-    resolver: zodResolver(UserProfileSchema),
+
   });
 
-  // Fetch user profile data using useQuery
-  const { data: profileData } = useQuery(
-    ["employeeProfile", userId],
-    async () => {
-      const response = await axios.get(
-        `${import.meta.env.VITE_API}/route/employee/get/profile/${userId}`,
-        {
-          headers: {
-            Authorization: authToken,
-          },
-        }
-      );
-      return response.data;
-    },
-    {
-    
-      onSuccess: (data) => {
-        setValue("chat_id", data?.employee?.chat_id || "");
-        setValue(
-          "additional_phone_number",
-          String(data?.employee?.additional_phone_number || "")
-        );
-        setValue("status_message", data?.employee?.status_message || "");
-        handleAlert(true, "success", "Profile data loaded successfully!");
-      },
+  const tabs = [
+    { value: 'personal', label: 'Personal', icon: <FaUser />, content: <PersonalInfo empId={empId} /> },
+    { value: 'family', label: 'Family', icon: <FaUser />, content: <FamilyInfo empId={empId} /> },
+    { value: 'additionalInfo', label: 'Additional', icon: <FaUser />, content: <AdditionalInfo empId={empId} /> },
+    { value: 'work', label: 'Official', icon: <FaBriefcase />, content: <OfficialInfo empId={empId} /> },
+    { value: 'documents', label: 'Documents', icon: <FaFileAlt />, content: <div>Documents</div> },
+    { value: 'attendance', label: 'Attendance', icon: <FaClipboardList />, content: <div>Attendance</div> },
+    { value: 'project', label: 'Project', icon: <FaClipboardList />, content: <div>Project</div> },
+    { value: 'activity', label: 'Activity', icon: <FaClipboardList />, content: <div>Activity</div> },
+    { value: 'note', label: 'Note', icon: <FaClipboardList />, content: <div>Note</div> },
+    { value: 'fileManager', label: 'File Manager', icon: <FaClipboardList />, content: <div>File Manager</div> },
+  ];
 
-      onError: () => {},
+  const handlePrev = () => {
+    if (visibleStartIndex > 0) {
+      setVisibleStartIndex(visibleStartIndex - 1);
     }
-  );
-  console.log("profile data", profileData);
+  };
 
+  const handleNext = () => {
+    if (visibleStartIndex + 6 < tabs.length) {
+      setVisibleStartIndex(visibleStartIndex + 1);
+    }
+  };
+
+  const handleTabChange = (value) => {
+    setActiveTab(value);
+
+    if (value === 'documents') {
+      navigate(`/organisation/${orgId}/records`); // Redirect to documents page
+    } else if (value === 'attendance') {
+      navigate(`/organisation/${organisationId}/leave`); // Redirect to leave page
+    }
+  };
+
+
+
+  const visibleTabs = tabs.slice(visibleStartIndex, visibleStartIndex + 6); // Show only 6 tabs at a time
+
+
+  // Query to fetch employee profile
+  const { isLoading, data: profile } = useQuery(
+    ["empId", empId],
+    async () => {
+      if (empId) {
+        const response = await axios.get(
+          `${import.meta.env.VITE_API}/route/employee/get/profile/${empId}`,
+          {
+            headers: {
+              Authorization: authToken,
+            },
+          }
+        );
+        return response.data.employee;
+      }
+    },
+    { enabled: Boolean(empId) }
+  );
+
+  console.log("profile", profile);
+
+  // image changes
   const handleImageChange = (e) => {
     setLoading(true);
     const selectedFile = e.target.files[0];
@@ -137,11 +146,15 @@ const EmpProfile = () => {
       handleAlert(true, "error", "Please select a valid image file.");
     }
   };
+
+  console.log("url", url);
+
+
   //delete
   const deleteProfilePhotoMutation = useMutation(
     async () => {
       await axios.delete(
-        `${import.meta.env.VITE_API}/route/employee/photo/${userId}`,
+        `${import.meta.env.VITE_API}/route/employee/photo/${empId}`,
         {
           headers: {
             Authorization: authToken,
@@ -172,14 +185,12 @@ const EmpProfile = () => {
   const handleDeleteProfilePhoto = () => {
     deleteProfilePhotoMutation.mutate(); // Call the mutation
   };
-  console.log("Deleting photo for userId:", userId);
-  console.log("Using authToken:", authToken);
 
   // add user data to database
   const AddAdditionalInformation = useMutation(
     (data) =>
       axios.post(
-        `${import.meta.env.VITE_API}/route/employee/profile/add/${userId}`,
+        `${import.meta.env.VITE_API}/route/employee/profile/add/${empId}`,
         data,
         {
           headers: {
@@ -190,12 +201,12 @@ const EmpProfile = () => {
 
     {
       onSuccess: () => {
-        handleAlert(true, "success", "Additional details added successfully!");
+        handleAlert(true, "success", "Profile added successfully!");
         reset();
-        queryClient.invalidateQueries(["employeeProfile", userId]);
+        queryClient.invalidateQueries(["employeeProfile", empId]);
         queryClient.invalidateQueries({ queryKey: ["emp-profile"] });
       },
-      onError: () => {},
+      onError: () => { },
     }
   );
 
@@ -213,220 +224,153 @@ const EmpProfile = () => {
       console.log("imageUrl", imageUrl);
 
       const requestData = {
-        ...data,
         user_logo_url: imageUrl?.Location.split("?")[0],
       };
 
       console.log("requestData", requestData);
-      // Immediately update the local state with new values
-      setValue("chat_id", requestData.chat_id);
-      setValue("additional_phone_number", requestData.additional_phone_number);
-      setValue("status_message", requestData.status_message);
-
       await AddAdditionalInformation.mutateAsync(requestData);
-      //  queryClient.invalidateQueries({ queryKey: ["employeeProfile"] });
     } catch (error) {
       console.error("error", error);
       handleAlert(true, "error", error.message);
     }
   };
 
- 
 
   return (
-    <div>
-      <Paper
-        sx={{
-          width: "100%",
-          maxWidth: "800px",
-          margin: "6% auto",
-          padding: "20px",
-        }}
-      >
-        <div style={{ textAlign: "center" }}>
-          <h1 className="text-lg font-semibold md:text-xl">Account Setting</h1>
-        </div>
-        <div className=" mb-8">
-          <p className="text-xs text-gray-600  text-center">
-            Manage your account here.
-          </p>
-        </div>
+    <div className="min-h-screen bg-slate-50">
+      {/* Header */}
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto py-6 px-4 grid grid-cols-1 md:grid-cols-[300px,1fr] gap-6">
 
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex justify-around items-center w-full h-[25vh]">
-            <div className="w-[50%]">
-              <div>
-                <input
-                  style={{ display: "none" }}
-                  ref={fileInputRef}
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                />
-                <div className="w-full h-full flex flex-col justify-center items-center">
-                  {loading ? (
-                    <CircularProgress />
-                  ) : url || UserInformation?.user_logo_url ? (
-                    <img
-                      id="image-1"
-                      src={url || UserInformation?.user_logo_url}
-                      alt="profile-pic"
-                      className="object-cover"
-                      style={{
-                        width: "150px",
-                        height: "150px",
-                        borderRadius: "50%",
-                      }}
-                    />
-                  ) : (
-                    <Skeleton variant="circular" width="150px" height="150px" />
-                  )}
+        {/* Left Column: Profile Info */}
+        <div className="space-y-6 bg-white p-6 rounded-md shadow-md">
+          {/* Profile Photo and Info */}
+          {(activeTab === 'personal' ||
+            activeTab === 'family' ||
+            activeTab === 'work' ||
+            activeTab === 'documents' ||
+            activeTab === 'attendance' ||
+            activeTab === 'additionalInfo') && (
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                <div className="flex justify-center items-center">
+                  <div className="w-1/2 flex justify-center">
+                    <div>
+                      {/* File Input for Profile Photo */}
+                      <input
+                        style={{ display: 'none' }}
+                        ref={fileInputRef}
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageChange}
+                      />
+                      <div className="flex flex-col justify-center items-center">
+                        {/* Profile Image or Skeleton Loader */}
+                        {loading ? (
+                          <CircularProgress />
+                        ) : url || profile?.user_logo_url ? (
+                          <img
+                            id="image-1"
+                            src={url || profile?.user_logo_url}
+                            alt="profile-pic"
+                            className="object-cover"
+                            style={{
+                              width: '150px',
+                              height: '150px',
+                              borderRadius: '50%',
+                              border: '2px solid #1976d2',
+                            }}
+                          />
+                        ) : (
+                          <Skeleton variant="circular" width="150px" height="150px" />
+                        )}
+                        {/* Buttons in a Row */}
+                        <div className="flex space-x-4 mt-4">
+                          {/* Select Profile Button */}
+                          <button
+                            type="button"
+                            onClick={() => fileInputRef.current.click()}
+                            className="py-2 px-4 bg-[#1976d2] text-white font-semibold rounded-md shadow-md hover:bg-[#1565c0]"
+                          >
+                            {profile?.user_logo_url ? 'Update' : 'Select '}
+                          </button>
+                          {/* Delete Profile Button */}
+                          <button
+                            type="button"
+                            className="py-2 px-4 bg-[#d21919] text-white font-semibold rounded-md shadow-md hover:bg-[#9b0b0b]"
+                            onClick={handleDeleteProfilePhoto}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-                  {/* <Loader
-                    isLoading={loading}
-                    outerClassName="!w-screen !h-screen"
-                  /> */}
-
+                {/* Submit Button */}
+                <div className="flex justify-center">
                   <button
-                    type="button"
-                    onClick={() => fileInputRef.current.click()}
-                    className="flex justify-center h-full bg-[#1976d2] shadow-md pt-1 pb-1 pr-4 pl-4 rounded-md font-semibold mt-2 text-white"
+                    type="submit"
+                    className="w-36 py-2 bg-[#1976d2] text-white font-semibold rounded-md shadow-md hover:bg-[#1565c0] mt-4"
                   >
-                    {UserInformation?.user_logo_url
-                      ? "Update Profile Picture"
-                      : "Select Profile Picture"}
-                  </button>
-
-                  {/* Delete Profile Photo Button */}
-                  <button
-                    type="button"
-                    // variant="contained"
-                    color="error" // Red color for delete action
-                    className="flex justify-center h-full bg-[#d21919] shadow-md pt-1 pb-1 pr-4 pl-4 rounded-md font-semibold mt-2 text-white"
-                    onClick={handleDeleteProfilePhoto}
-                  >
-                    Delete Profile Photo
+                    Submit
                   </button>
                 </div>
-              </div>
-            </div>
+              </form>
+            )}
+        </div>
 
-            <div className="w-[50%] ml-20">
-              <div className="w-full h-full flex flex-col items-start">
-                <h1
-                  style={{
-                    fontSize: "24px",
-                    fontWeight: "bold",
-                    color: "#333",
-                    textAlign: "center",
-                  }}
-                  className="text-left"
+
+
+        {/* Right Column: Dynamic Content Based on Active Tab */}
+        <div className="bg-white p-4 rounded-md shadow-md">
+          <div className="font-semibold text-lg mb-4">
+            Welcome {profile?.first_name} {profile?.last_name}
+          </div>
+
+          <header className="bg-blue-500 text-white p-2 flex items-center">
+            <button
+              onClick={handlePrev}
+              className="text-white px-2 py-1 hover:bg-blue-600"
+              disabled={visibleStartIndex === 0}
+            >
+              <FaChevronLeft />
+            </button>
+            <div className="flex-1 flex justify-between overflow-hidden">
+              {visibleTabs.map((tab) => (
+                <button
+                  key={tab.value}
+                  onClick={() => handleTabChange(tab.value)}
+                  className={`flex items-center gap-2 px-4 py-1 text-sm font-medium ${activeTab === tab.value
+                    ? 'text-white border-b-2 border-white'
+                    : 'text-gray-300 hover:text-white'
+                    }`}
                 >
-                  {`${user?.first_name} ${user?.last_name}`}
-                </h1>
-                <h1 className="text-lg font-semibold text-left">
-                  {user?.profile.join(", ")}
-                </h1>
-
-                <div className="w-full">
-                  <h1 className="text-lg text-left" style={{ color: "#000" }}>
-                    <span>
-                      <strong>Status:</strong>{" "}
-                      {UserInformation?.status_message || ""}
-                    </span>
-                  </h1>
-                  <h1 className="text-lg text-left" style={{ color: "#000" }}>
-                    <span>
-                      <strong>Chat ID:</strong> {UserInformation?.chat_id || ""}
-                    </span>
-                  </h1>
-                  <h1 className="text-lg text-left" style={{ color: "#000" }}>
-                    <span>
-                      <strong>Contact:</strong>{" "}
-                      {UserInformation?.additional_phone_number || ""}
-                    </span>
-                  </h1>
-
-                  <button
-                    type="button"
-                    onClick={() => setOpen(true)}
-                    className="flex justify-center h-full bg-[#1976d2] shadow-md pt-1 pb-1 pr-4 pl-4 rounded-md font-semibold mt-2 text-white"
-                  >
-                    Reset Password
-                  </button>
-
-                  <button
-                    type="button"
-                    // onClick={handelchangeUserid}
-                    onClick={() => setOpen1(true)}
-                    className="flex justify-center h-full bg-[#1976d2] shadow-md pt-1 pb-1 pr-4 pl-4  rounded-md font-semibold mt-2 text-white"
-                  >
-                    Create User Id
-                  </button>
-                </div>
-              </div>
+                  {tab.icon}
+                  {tab.label}
+                </button>
+              ))}
             </div>
-          </div>
-          <br />
-          <div className="w-full py-6">
-            <Divider variant="fullWidth" orientation="horizontal" />
-          </div>
+            <button
+              onClick={handleNext}
+              className="text-white px-2 py-1 hover:bg-blue-600"
+              disabled={visibleStartIndex + 6 >= tabs.length}
+            >
+              <FaChevronRight />
+            </button>
+          </header>
 
-          <div className="px-5 space-y-4 mt-4">
-            <div className="space-y-2 ">
-              <AuthInputFiled
-                name="additional_phone_number"
-                icon={ContactEmergency}
-                control={control}
-                type="text"
-                placeholder="Contact"
-                label="Contact"
-                errors={errors}
-                error={errors.additional_phone_number}
-              />
-            </div>
-            <div className="space-y-2 ">
-              <AuthInputFiled
-                name="chat_id"
-                icon={ChatIcon}
-                control={control}
-                type="text"
-                placeholder="Chat Id"
-                label="Chat Id"
-                errors={errors}
-                error={errors.chat_id}
-              />
-            </div>
-            <div className="space-y-2 ">
-              <AuthInputFiled
-                name="status_message"
-                icon={InfoIcon}
-                control={control}
-                type="text"
-                placeholder="status"
-                label="status"
-                errors={errors}
-                error={errors.status_message}
-              />
-            </div>
+          {/* Tab Content */}
+          <div className="space-y-4 mt-4">{tabs.find((tab) => tab.value === activeTab)?.content}</div>
+        </div>
 
-            <div className="flex gap-4 mt-4 justify-center">
-              <Button type="submit" variant="contained" color="primary">
-                Submit
-              </Button>
-            </div>
-          </div>
-        </form>
-      </Paper>
 
-      <ResetNewPassword open={open} handleClose={handleClose} />
-      <AddNewUserId open1={open1} handleClose1={handleClose1} />
+      </div>
     </div>
   );
 };
 
 export default EmpProfile;
-
 
 
 
