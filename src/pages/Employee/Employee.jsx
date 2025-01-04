@@ -21,17 +21,7 @@ const Employee = () => {
       role === "Delegate-Department-Head"
     ) {
       return <EmployeeListToRole organisationId={organisationId} />;
-    } else if (
-      role === "Employee" ||
-      role === "Department-Admin" ||
-      role === "Delegate-Department-Admin" ||
-      role === "Accountant" ||
-      role === "Delegate-Accountant" ||
-      role === "Manager"
-    ) {
-      return <EmployeeListToEmployee organisationId={user.organizationId} />;
     }
-
     return null;
   };
 

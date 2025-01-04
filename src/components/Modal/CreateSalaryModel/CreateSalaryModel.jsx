@@ -7,7 +7,6 @@ import {
   DialogContent,
   Divider,
   IconButton,
- 
 } from "@mui/material";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
@@ -89,9 +88,9 @@ const CreateSalaryModel = ({
     {
       enabled: open && empId !== null && empId !== undefined,
     }
-  ); 
-  console.log("salaryInput" , salaryInput);
- 
+  );
+  console.log("salaryInput", salaryInput);
+
   // to get the data of existing salary component
   // to get employee salary component data of employee
   const { data: salaryComponent } = useQuery(
@@ -107,17 +106,17 @@ const CreateSalaryModel = ({
       );
       return response.data.data;
     }
-  ); 
+  );
 
-  console.log("salaryComponent" , salaryComponent);
+  console.log("salaryComponent", salaryComponent);
 
   useEffect(() => {
     setIncomeValues(salaryComponent?.income ?? []);
     setDeductionsValues(salaryComponent?.deductions ?? []);
     // eslint-disable-next-line
-  }, [salaryComponent, empId]); 
+  }, [salaryComponent, empId]);
 
-  console.log("incomeValues" , incomeValues);
+  console.log("incomeValues", incomeValues);
 
   const handleApply = async () => {
     try {
@@ -185,7 +184,7 @@ const CreateSalaryModel = ({
     >
       <div className="flex w-full justify-between py-4 items-center  px-4">
         <h1 id="modal-modal-title" className="text-lg pl-2 font-semibold">
-          Create, Update and Calculate Salary
+          Create, Update of Salary
         </h1>
         <IconButton onClick={handleClose}>
           <CloseIcon className="!text-[16px]" />
@@ -236,7 +235,7 @@ const CreateSalaryModel = ({
                     </h1>
                     {salaryInput?.employee?.salarystructure?.income &&
                       salaryInput?.employee?.salarystructure?.income?.length >
-                        0 &&
+                      0 &&
                       salaryInput?.employee?.salarystructure?.income?.map(
                         (item, id) => (
                           <tr key={id} className="space-y-4 w-full">
@@ -336,15 +335,6 @@ const CreateSalaryModel = ({
           <DialogActions>
             <Button onClick={handleApply} variant="contained" color="primary">
               Submit
-            </Button>
-            <Button
-              onClick={() =>
-                navigate(`/organisation/${id}/salary-calculate/${empId}`)
-              }
-              variant="contained"
-              color="primary"
-            >
-              Calculate Salary
             </Button>
             <Button onClick={handleClose} color="error" variant="outlined">
               Cancel

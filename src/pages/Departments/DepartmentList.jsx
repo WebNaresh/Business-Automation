@@ -27,6 +27,11 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { TestContext } from "../../State/Function/Main";
 import { UseContext } from "../../State/UseState/UseContext";
+import * as XLSX from "xlsx";
+import PrintIcon from "@mui/icons-material/Print";
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
+
 
 const DepartmentList = () => {
   // to define the state, import the funciton ,
@@ -97,8 +102,7 @@ const DepartmentList = () => {
   const deleteMutation = useMutation(
     (id) =>
       axios.delete(
-        `${
-          import.meta.env.VITE_API
+        `${import.meta.env.VITE_API
         }/route/department/delete/${organisationId}/${id}`,
         {
           headers: {
@@ -183,6 +187,61 @@ const DepartmentList = () => {
     </TableRow>
   );
 
+  // 📊 Handle Export to Excel for Department List
+  const handleExportDeptToExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet(
+      deptList.map((item, index) => ({
+        "Sr. No": index + 1,
+        "Department ID": item.departmentId || "-",
+        "Department Name": item.departmentName || "-",
+        "Cost Center ID": item.dept_cost_center_id || "-",
+        "Creator": item.creator || "-",
+        "Status": item.status || "-",
+        "Department Location": item.departmentLocation?.shortName || "-",
+        "Organization ID": item.organizationId || "-",
+      }))
+    );
+
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Departments");
+    XLSX.writeFile(workbook, "department_list.xlsx");
+  };
+
+
+  // 🖨️ Handle Export to PDF for Department List
+  const handleExportDeptToPDF = () => {
+    const doc = new jsPDF();
+
+    // Title
+    doc.setFontSize(18);
+    doc.text("Department List", 14, 20);
+
+    // Table
+    autoTable(doc, {
+      startY: 30,
+      head: [
+        [
+          "Sr. No",
+          "Department ID",
+          "Department Name",
+          "Department Location",
+        ],
+      ],
+      body: deptList.map((item, index) => [
+        index + 1,
+        item.departmentId || "-",
+        item.departmentName || "-",
+        item.departmentLocation?.shortName || "-",
+
+      ]),
+      styles: { fontSize: 10 },
+    });
+
+    // Save PDF
+    doc.save("department_list.pdf");
+  };
+
+
   return (
     <>
       {isLoading ? (
@@ -237,7 +296,7 @@ const DepartmentList = () => {
             </div>
           ) : (
             <div className="w-full m-auto h-full">
-              <div className="flex flex-col gap-4 p-6 items-start">
+              {/* <div className="flex flex-col gap-4 p-6 items-start">
                 <div className="w-full flex justify-between items-center">
                   <div>
                     <Typography
@@ -260,6 +319,32 @@ const DepartmentList = () => {
                       Manage your departments here.
                     </Typography>
                   </div>
+                  <Button
+                    variant="contained"
+                    size="small"
+                    startIcon={<PrintIcon />}
+                    sx={{
+                      backgroundColor: "#d32f2f",
+                      "&:hover": { backgroundColor: "#b71c1c" },
+                      textTransform: "none",
+                    }}
+                    onClick={handleExportDeptToPDF}
+                  >
+                    Export PDF
+                  </Button>
+                  <Button
+                    variant="contained"
+                    size="small"
+                    startIcon={<PrintIcon />}
+                    sx={{
+                      backgroundColor: "#388e3c",
+                      "&:hover": { backgroundColor: "#2e7d32" },
+                      textTransform: "none",
+                    }}
+                    onClick={handleExportDeptToExcel}
+                  >
+                    Export Excel
+                  </Button>
                   <Button
                     variant="contained"
                     color="primary"
@@ -422,7 +507,225 @@ const DepartmentList = () => {
                     </TableBody>
                   </Table>
                 </TableContainer>
+              </div> */}
+              <div className="flex flex-col gap-4 p-6">
+                {/* Header Section */}
+                <div className="w-full flex justify-between items-center">
+                  {/* Title and Subtitle on the Left */}
+                  <div>
+                    <Typography
+                      variant="h4"
+                      sx={{
+                        fontWeight: 600,
+                        color: "#1F2937",
+                      }}
+                    >
+                      Manage Department
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: "#6B7280",
+                      }}
+                    >
+                      Manage your departments here.
+                    </Typography>
+                  </div>
+
+                  {/* Action Buttons on the Right */}
+                  <div className="flex gap-2">
+                    <Button
+                      variant="contained"
+                      size="small"
+                      startIcon={<PrintIcon />}
+                      sx={{
+                        backgroundColor: "#d32f2f",
+                        "&:hover": { backgroundColor: "#b71c1c" },
+                        textTransform: "none",
+                      }}
+                      onClick={handleExportDeptToPDF}
+                    >
+                      Export PDF
+                    </Button>
+                    <Button
+                      variant="contained"
+                      size="small"
+                      startIcon={<PrintIcon />}
+                      sx={{
+                        backgroundColor: "#388e3c",
+                        "&:hover": { backgroundColor: "#2e7d32" },
+                        textTransform: "none",
+                      }}
+                      onClick={handleExportDeptToExcel}
+                    >
+                      Export Excel
+                    </Button>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={handleAddDepartment}
+                      sx={{
+                        textTransform: "none",
+                        borderRadius: "8px",
+                        boxShadow: "none",
+                      }}
+                    >
+                      Add Department
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Table Section */}
+                <TableContainer
+                  component={Paper}
+                  sx={{
+                    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.05)",
+                    borderRadius: "16px",
+                    overflow: "hidden",
+                    border: "1px solid #f1f5f9",
+                  }}
+                >
+                  <Table>
+                    <TableHead>
+                      <TableRow>
+                        {[
+                          "Sr. No",
+                          "Department Name",
+                          "Count of Department",
+                          "Department Location",
+                          "Actions",
+                        ].map((header) => (
+                          <TableCell
+                            key={header}
+                            sx={{
+                              backgroundColor: "#f8fafc",
+                              borderBottom: "2px solid #e2e8f0",
+                              color: "#1e293b",
+                              fontSize: "0.875rem",
+                              fontWeight: 600,
+                              padding: "16px 24px",
+                            }}
+                          >
+                            {header}
+                          </TableCell>
+                        ))}
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {deptList?.map((department, id) => (
+                        <TableRow
+                          key={id}
+                          sx={{
+                            "&:hover": {
+                              backgroundColor: "#f8fafc",
+                              "& .action-buttons": {
+                                opacity: 1,
+                              },
+                            },
+                            transition: "all 0.2s ease",
+                            position: "relative",
+                          }}
+                          onMouseEnter={(e) => handleMouseEnter(e, department)}
+                          onMouseLeave={handleMouseLeave}
+                        >
+                          <TableCell
+                            sx={{
+                              padding: "16px 24px",
+                              color: "#64748b",
+                              fontSize: "0.875rem",
+                            }}
+                          >
+                            {id + 1}
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              padding: "16px 24px",
+                              color: "#1e293b",
+                              fontSize: "0.875rem",
+                              fontWeight: 500,
+                            }}
+                          >
+                            {department?.departmentName || ""}
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              padding: "16px 24px",
+                              color: "#64748b",
+                              fontSize: "0.875rem",
+                            }}
+                          >
+                            {department?.employeeCount || 0}
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              padding: "16px 24px",
+                              color: "#64748b",
+                              fontSize: "0.875rem",
+                            }}
+                          >
+                            {department?.departmentLocation?.city || ""}
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              padding: "16px 24px",
+                            }}
+                          >
+                            <Box
+                              className="action-buttons"
+                              sx={{
+                                display: "flex",
+                                gap: "8px",
+                                opacity: 0.7,
+                                transition: "opacity 0.2s ease",
+                              }}
+                            >
+                              <IconButton
+                                onClick={() => handleViewClick(department._id)}
+                                sx={{
+                                  backgroundColor: "#f1f5f9",
+                                  "&:hover": { backgroundColor: "#e2e8f0" },
+                                }}
+                                size="small"
+                              >
+                                <VisibilityIcon
+                                  sx={{ fontSize: "1.25rem", color: "#0ea5e9" }}
+                                />
+                              </IconButton>
+                              <IconButton
+                                onClick={() => handleEditClick(department._id)}
+                                sx={{
+                                  backgroundColor: "#f1f5f9",
+                                  "&:hover": { backgroundColor: "#e2e8f0" },
+                                }}
+                                size="small"
+                              >
+                                <EditIcon
+                                  sx={{ fontSize: "1.25rem", color: "#6366f1" }}
+                                />
+                              </IconButton>
+                              <IconButton
+                                onClick={() =>
+                                  handleDeleteConfirmation(department?._id)
+                                }
+                                sx={{
+                                  backgroundColor: "#f1f5f9",
+                                  "&:hover": { backgroundColor: "#fee2e2" },
+                                }}
+                                size="small"
+                              >
+                                <DeleteIcon
+                                  sx={{ fontSize: "1.25rem", color: "#ef4444" }}
+                                />
+                              </IconButton>
+                            </Box>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
               </div>
+
             </div>
           )}
         </>

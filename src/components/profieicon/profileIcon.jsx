@@ -12,17 +12,24 @@ import { useQuery, useQueryClient } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
 import useGetUser from "../../hooks/Token/useUser";
 import UserProfile from "../../hooks/UserData/useUser";
+import ResetNewPassword from "../../pages/ResetNewPassword/ResetNewPassword";
+import { LockReset } from "@mui/icons-material";
+
 
 export default function ProfileIcon() {
   const navigate = useNavigate();
-  // const { removeCookie, cookies } = useContext(UseContext);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const { getCurrentUser } = UserProfile();
   const user = getCurrentUser();
-  // eslint-disable-next-line no-unused-vars
-  const queryClient = useQueryClient();
   const { authToken } = useGetUser();
+
+  const [open1, setOpen] = useState(false);
+
+  const handleClose1 = () => {
+    setOpen(false);
+  };
+
 
   const { data } = useQuery(
     "emp-profile",
@@ -37,7 +44,7 @@ export default function ProfileIcon() {
     },
 
     {
-      onSuccess: () => {},
+      onSuccess: () => { },
     }
   );
   const handleClick = (event) => {
@@ -115,6 +122,13 @@ export default function ProfileIcon() {
             >
               <PersonOutline className="!text-[19px]" /> Profile
             </MenuItem>
+            <MenuItem
+              key="change-password"
+              onClick={() => setOpen(true)}
+              className="flex gap-4 !text-sm items-center justify-center !py-3 hover:!bg-gray-100"
+            >
+              <LockReset className="!text-[19px]" /> Reset Password
+            </MenuItem>
 
             <MenuItem key="sign-out" className="!p-0" onClick={handleSignOut}>
               <div className="flex  w-full h-full items-center !text-sm  hover:!bg-red-500 !text-red-500 !py-3 hover:!text-white transition-all gap-4  px-4">
@@ -133,6 +147,8 @@ export default function ProfileIcon() {
           </>
         )}
       </Menu>
+
+      <ResetNewPassword open={open1} handleClose={handleClose1} />
     </>
   );
 }

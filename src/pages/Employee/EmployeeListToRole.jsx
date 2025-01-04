@@ -24,6 +24,9 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as XLSX from "xlsx";
 import { UseContext } from "../../State/UseState/UseContext";
+import jsPDF from 'jspdf';
+import 'jspdf-autotable'; // If you're using the autotable plugin
+
 
 const EmployeeListToRole = () => {
   const navigate = useNavigate();
@@ -37,9 +40,8 @@ const EmployeeListToRole = () => {
 
   const fetchAvailableEmployee = async (page) => {
     try {
-      const apiUrl = `${
-        import.meta.env.VITE_API
-      }/route/employee/get-paginated-emloyee/${organisationId}?page=${page}&nameSearch=${nameSearch}`;
+      const apiUrl = `${import.meta.env.VITE_API
+        }/route/employee/get-paginated-emloyee/${organisationId}?page=${page}&nameSearch=${nameSearch}`;
       const response = await axios.get(apiUrl, {
         headers: {
           Authorization: authToken,
@@ -207,6 +209,7 @@ const EmployeeListToRole = () => {
                 "&:hover": { backgroundColor: "#b71c1c" },
                 textTransform: "none",
               }}
+              onClick={handleExportToPDF}
             >
               Export PDF
             </Button>
