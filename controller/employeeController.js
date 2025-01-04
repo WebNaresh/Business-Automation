@@ -2021,63 +2021,16 @@ exports.deleteMultipleEmployees = catchAssyncError(async (req, res, next) => {
 });
 
 // fetch employee
-// exports.getPaginatedEmployees = catchAssyncError(async (req, res, next) => {
-//   const page = parseInt(req.query.page) || 1; // Default to page 1
-//   const perPage = 10;
-//   const skip = (page - 1) * perPage;
-//   const organizationId = req.params.organizationId;
-//   const {department} = req.query ;
-
-//   console.log("department" , department);
-
-//   // Extract search queries
-//   const { nameSearch } = req.query;
-
-//   try {
-//     // Create a base filter object for querying
-//     let filter = {
-//       organizationId,
-//       profile: { $nin: ["Super-Admin"] }, // Exclude Super Admins
-//     };
-
-//     // Apply name search filter if provided
-//     if (nameSearch && nameSearch.trim()) {
-//       filter.first_name = { $regex: nameSearch.trim(), $options: "i" };
-//     }
-
-//     // Count total employees after applying filters
-//     const totalEmployees = await EmployeeModel.countDocuments(filter);
-
-//     // Fetch paginated employee data
-//     const employeesData = await EmployeeModel.find(filter)
-//       .populate("worklocation")
-//       .populate("deptname")
-//       .populate("designation")
-//       .populate("salarystructure")
-//       .skip(skip)
-//       .limit(perPage);
-
-//     // Send the response with employees data and pagination details
-//     res.status(200).json({
-//       employees: employeesData,
-//       totalEmployees,
-//       currentPage: page,
-//       totalPages: Math.ceil(totalEmployees / perPage),
-//     });
-//   } catch (error) {
-//     console.error("Error fetching employees:", error);
-//     res.status(500).json({ message: "Internal Server Error" });
-//   }
-// });
 exports.getPaginatedEmployees = catchAssyncError(async (req, res, next) => {
   const page = parseInt(req.query.page) || 1; // Default to page 1
   const perPage = 10;
   const skip = (page - 1) * perPage;
   const organizationId = req.params.organizationId;
-  const { department, nameSearch } = req.query;
+  const { department, nameSearch, salarystructure } = req.query;
 
   console.log("Department:", department);
   console.log("Name Search:", nameSearch);
+  console.log("Salary Structure:", salarystructure);
 
   try {
     // Create a base filter object for querying
@@ -2096,7 +2049,12 @@ exports.getPaginatedEmployees = catchAssyncError(async (req, res, next) => {
       filter.first_name = { $regex: nameSearch.trim(), $options: "i" };
     }
 
-    console.log("filter", filter);
+    // Apply salarystructure filter if provided
+    if (salarystructure && salarystructure.trim()) {
+      filter.salarystructure = salarystructure.trim();
+    }
+
+    console.log("Filter:", filter);
 
     // Count total employees after applying filters
     const totalEmployees = await EmployeeModel.countDocuments(filter);
@@ -2110,7 +2068,7 @@ exports.getPaginatedEmployees = catchAssyncError(async (req, res, next) => {
       .skip(skip)
       .limit(perPage);
 
-    console.log("employeesData", employeesData);
+    console.log("employeesData:", employeesData);
 
     // Send the response with employees data and pagination details
     res.status(200).json({
@@ -2124,6 +2082,7 @@ exports.getPaginatedEmployees = catchAssyncError(async (req, res, next) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
+
 
 exports.getUserProfileData = catchAssyncError(async (req, res, next) => {
   try {
