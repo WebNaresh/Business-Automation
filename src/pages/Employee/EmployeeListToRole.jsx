@@ -18,6 +18,7 @@ import {
   TextField,
   Tooltip,
   Typography,
+  FormControl, InputLabel, Select, MenuItem
 } from "@mui/material";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
@@ -26,6 +27,7 @@ import * as XLSX from "xlsx";
 import { UseContext } from "../../State/UseState/UseContext";
 import jsPDF from 'jspdf';
 import 'jspdf-autotable'; // If you're using the autotable plugin
+import useEmpOption from "../../hooks/Employee-OnBoarding/useEmpOption";
 
 
 const EmployeeListToRole = () => {
@@ -36,12 +38,17 @@ const EmployeeListToRole = () => {
   const [availableEmployee, setAvailableEmployee] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [department, setDepartment] = useState("");
   const { organisationId } = useParams();
+
+  const {
+    Departmentoptions,
+  } = useEmpOption({ organisationId });
 
   const fetchAvailableEmployee = async (page) => {
     try {
-      const apiUrl = `${import.meta.env.VITE_API
-        }/route/employee/get-paginated-emloyee/${organisationId}?page=${page}&nameSearch=${nameSearch}`;
+      const apiUrl = `${import.meta.env.VITE_API}/route/employee/get-paginated-emloyee/${organisationId}?page=${page}&department=${department}`;
+      console.log("apiUrl", apiUrl);
       const response = await axios.get(apiUrl, {
         headers: {
           Authorization: authToken,
@@ -57,7 +64,7 @@ const EmployeeListToRole = () => {
 
   useEffect(() => {
     fetchAvailableEmployee(currentPage);
-  }, [currentPage, nameSearch]);
+  }, [currentPage, nameSearch , department]);
 
   const prePage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
@@ -70,6 +77,12 @@ const EmployeeListToRole = () => {
   const changePage = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  // Define the handler function
+  const handleDepartmentChange = (e) => {
+    setDepartment(e.target.value);
+  };
+
 
   const renderPagination = () => {
     const pageNumbers = [];
@@ -183,7 +196,8 @@ const EmployeeListToRole = () => {
         </div>
 
         <div className="p-6 border-b border-gray-200">
-          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-4 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+            {/* Search Bar */}
             <Tooltip
               title="No employees found"
               placement="top"
@@ -200,6 +214,25 @@ const EmployeeListToRole = () => {
                 }}
               />
             </Tooltip>
+
+            {/* Department Dropdown */}
+            <FormControl variant="outlined" size="small" fullWidth>
+              <InputLabel>Department</InputLabel>
+              <Select
+                value={department}
+                onChange={handleDepartmentChange}
+                label="Department"
+              >
+                <MenuItem value="">All Departments</MenuItem>
+                {Departmentoptions?.map((dept) => (
+                  <MenuItem key={dept.value} value={dept.value}>
+                    {dept.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
+            {/* Export PDF Button */}
             <Button
               variant="contained"
               size="small"
@@ -208,11 +241,14 @@ const EmployeeListToRole = () => {
                 backgroundColor: "#d32f2f",
                 "&:hover": { backgroundColor: "#b71c1c" },
                 textTransform: "none",
+                width: "100%",
               }}
               onClick={handleExportToPDF}
             >
               Export PDF
             </Button>
+
+            {/* Export Excel Button */}
             <Button
               variant="contained"
               size="small"
@@ -221,6 +257,7 @@ const EmployeeListToRole = () => {
                 backgroundColor: "#388e3c",
                 "&:hover": { backgroundColor: "#2e7d32" },
                 textTransform: "none",
+                width: "100%",
               }}
               onClick={handleExportToExcel}
             >
@@ -228,6 +265,8 @@ const EmployeeListToRole = () => {
             </Button>
           </div>
         </div>
+
+
 
         <TableContainer component={Paper} sx={{ boxShadow: "none" }}>
           <Table sx={{ minWidth: 650 }} aria-label="employee table">

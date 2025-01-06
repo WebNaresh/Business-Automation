@@ -5,9 +5,17 @@ import GetAppIcon from "@mui/icons-material/GetApp";
 import {
   Container,
   Menu,
-  MenuItem,
   TextField,
   Typography,
+  FormControl, InputLabel, Select, MenuItem,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Button
 } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import axios from "axios";
@@ -17,6 +25,8 @@ import { UseContext } from "../../State/UseState/UseContext";
 import Form16DeleteModal from "../../components/Modal/Form16Modal/Form16DeleteModal";
 import Form16Download from "../../components/Modal/Form16Modal/Form16Download";
 import Form16UploadModal from "../../components/Modal/Form16Modal/Form16UploadModal";
+import useEmpOption from "../../hooks/Employee-OnBoarding/useEmpOption";
+import SearchIcon from "@mui/icons-material/Search";
 
 const Form16Hr = () => {
   // state and other thing
@@ -29,12 +39,18 @@ const Form16Hr = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [numbers, setNumbers] = useState([]);
+  const [department, setDepartment] = useState("");
   const { organisationId } = useParams();
+
+  const {
+    Departmentoptions,
+  } = useEmpOption({ organisationId });
 
   //employee fetch
   const fetchAvailableEmployee = async (page) => {
     try {
-      const apiUrl = `${import.meta.env.VITE_API}/route/employee/get-paginated-emloyee/${organisationId}?page=${page}`;
+      const apiUrl = `${import.meta.env.VITE_API}/route/employee/get-paginated-emloyee/${organisationId}?page=${page}&department=${department}`;
+      console.log("apiUrl", apiUrl);
       const response = await axios.get(apiUrl, {
         headers: {
           Authorization: authToken,
@@ -56,25 +72,68 @@ const Form16Hr = () => {
 
   useEffect(() => {
     fetchAvailableEmployee(currentPage);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPage]);
+  }, [currentPage, nameSearch, department]);
 
   //   pagination
   const prePage = () => {
-    if (currentPage !== 1) {
-      fetchAvailableEmployee(currentPage - 1);
-    }
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
   };
 
   const nextPage = () => {
-    if (currentPage !== totalPages) {
-      fetchAvailableEmployee(currentPage + 1);
-    }
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
   };
 
-  const changePage = (id) => {
-    fetchAvailableEmployee(id);
+  const changePage = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
+
+  const renderPagination = () => {
+    const pageNumbers = [];
+
+    if (totalPages <= 5) {
+      for (let i = 1; i <= totalPages; i++) {
+        pageNumbers.push(i);
+      }
+    } else {
+      if (currentPage > 3) {
+        pageNumbers.push(1);
+        pageNumbers.push("...");
+      }
+
+      const startPage = Math.max(2, currentPage - 1);
+      const endPage = Math.min(totalPages - 1, currentPage + 1);
+
+      for (let i = startPage; i <= endPage; i++) {
+        pageNumbers.push(i);
+      }
+
+      if (currentPage < totalPages - 2) {
+        pageNumbers.push("...");
+      }
+
+      pageNumbers.push(totalPages);
+    }
+
+    return pageNumbers.map((number, index) => (
+      <Button
+        key={index}
+        variant={number === currentPage ? "contained" : "outlined"}
+        color="primary"
+        onClick={() => typeof number === "number" && changePage(number)}
+        disabled={number === "..."}
+      >
+        {number}
+      </Button>
+    ));
+  };
+
+
+  // Define the handler function
+  const handleDepartmentChange = (e) => {
+    setDepartment(e.target.value);
+  };
+
+
   //   for morevert icon
   const [anchorEl, setAnchorEl] = useState(null);
   const [employeeId, setEmployeeId] = useState(null);
@@ -124,43 +183,172 @@ const Form16Hr = () => {
     <>
       <Container maxWidth="xl" className="bg-gray-50 min-h-screen">
         <article className=" bg-white w-full h-max shadow-md rounded-sm border items-center">
-          <Typography variant="h4" className="text-center mb-6 mt-2">
-            Form-16
-          </Typography>
-          <p className="text-xs text-gray-600 text-center">
-            Upload , download and view form-16 of your employee here.
-          </p>
-          <div className="p-4 border-b-[.5px] flex flex-col md:flex-row items-center justify-between gap-3 w-full border-gray-300">
-            <div className="flex items-center gap-3 mb-3 md:mb-0 w-full md:w-auto">
-              <TextField
-                onChange={(e) => setNameSearch(e.target.value)}
-                placeholder="Search Employee Name...."
-                variant="outlined"
-                size="small"
-                sx={{ width: { xs: "100%", sm: 300 } }}
-              />
-            </div>
-            <div className="flex items-center gap-3 mb-3 md:mb-0 w-full md:w-auto">
-              <TextField
-                onChange={(e) => setDeptSearch(e.target.value)}
-                placeholder="Search Department Name...."
-                variant="outlined"
-                size="small"
-                sx={{ width: { xs: "100%", sm: 300 } }}
-              />
-            </div>
-            <div className="flex items-center gap-3 w-full md:w-auto">
-              <TextField
-                onChange={(e) => setLocationSearch(e.target.value)}
-                placeholder="Search Location ...."
-                variant="outlined"
-                size="small"
-                sx={{ width: { xs: "100%", sm: 300 } }}
-              />
+          <div className="p-6 border-b border-gray-200 flex justify-between items-center">
+            <div>
+              <h4 className="text-2xl font-bold text-gray-800 mb-2">
+                Form 16
+              </h4>
+              <Typography variant="body2" className="text-center text-gray-600">
+                Manage Form 16
+              </Typography>
             </div>
           </div>
 
-          <div className="overflow-auto !p-0 border-[.5px] border-gray-200">
+          <div className="p-6 border-b border-gray-200">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+              {/* Search Bar */}
+              <Tooltip
+                title="No employees found"
+                placement="top"
+                open={availableEmployee.length < 1 && nameSearch !== ""}
+              >
+                <TextField
+                  onChange={(e) => setNameSearch(e.target.value)}
+                  placeholder="Search"
+                  variant="outlined"
+                  size="small"
+                  fullWidth
+                  InputProps={{
+                    startAdornment: <SearchIcon className="text-gray-400 mr-2" />,
+                  }}
+                />
+              </Tooltip>
+
+              {/* Department Dropdown */}
+              <FormControl variant="outlined" size="small" fullWidth>
+                <InputLabel>Department</InputLabel>
+                <Select
+                  value={department}
+                  onChange={handleDepartmentChange}
+                  label="Department"
+                >
+                  <MenuItem value="">All Departments</MenuItem>
+                  {Departmentoptions?.map((dept) => (
+                    <MenuItem key={dept.value} value={dept.value}>
+                      {dept.label}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </div>
+          </div>
+
+          <TableContainer component={Paper} sx={{ boxShadow: "none" }}>
+            <Table sx={{ minWidth: 650 }} aria-label="employee table">
+              <TableHead>
+                <TableRow sx={{ backgroundColor: "#f3f4f6" }}>
+                  <TableCell sx={{ fontWeight: "bold" }}>Sr. No</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>First Name</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Last Name</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Email</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Employee Id</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Location</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Department</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Actions</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {availableEmployee.length > 0 &&
+                  availableEmployee
+                    .filter((item) => {
+                      return (
+                        !nameSearch.toLowerCase() ||
+                        (item.first_name &&
+                          item.first_name.toLowerCase().includes(nameSearch))
+                      );
+                    })
+                    .map((item, id) => (
+                      <TableRow
+                        key={id}
+                        sx={{
+                          backgroundColor: id % 2 === 0 ? "#ffffff" : "#f9fafb",
+                          "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.04)" },
+                        }}
+                      >
+                        <TableCell>{id + 1}</TableCell>
+                        <TableCell>{item?.first_name}</TableCell>
+                        <TableCell>{item?.last_name}</TableCell>
+                        <TableCell>{item?.email}</TableCell>
+                        <TableCell>{item?.empId}</TableCell>
+                        <TableCell>
+                          {item?.worklocation?.map((location, index) => (
+                            <span key={index}>{location?.city}</span>
+                          ))}
+                        </TableCell>
+                        <TableCell>
+                          {item?.deptname?.map((dept, index) => (
+                            <span key={index}>{dept?.departmentName}</span>
+                          ))}
+                        </TableCell>
+                        <TableCell sx={{ padding: "16px 24px" }}>
+                          <MoreVert
+                            onClick={(e) => handleClick(e, item._id)}
+                            className="cursor-pointer"
+                          />
+                          <Menu
+                            elevation={2}
+                            anchorEl={anchorEl}
+                            key={id}
+                            open={Boolean(anchorEl)}
+                            onClose={handleCloseIcon}
+                          >
+                            <Tooltip title="Button for uploading form 16">
+                              <MenuItem onClick={() => handleUploadModalOpen()}>
+                                <CloudUploadIcon
+                                  color="primary"
+                                  style={{ color: "#f50057", marginRight: "10px" }}
+                                />
+
+                              </MenuItem>
+                            </Tooltip>
+                            <Tooltip title="Button for downloading or viewing form 16">
+                              <MenuItem onClick={() => handleDownLoadModalOpen()}>
+                                <GetAppIcon
+                                  color="primary"
+                                  style={{ color: "#2196f3", marginRight: "10px" }}
+                                />
+
+                              </MenuItem>
+                            </Tooltip>
+                            <Tooltip title="Button for deleting form 16">
+                              <MenuItem onClick={() => handleDeleteModalOpen()}>
+                                <DeleteIcon
+                                  color="primary"
+                                  style={{ color: "#f50057", marginRight: "10px" }}
+                                />
+
+                              </MenuItem>
+                            </Tooltip>
+                          </Menu>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+
+          <div className="flex items-center justify-center gap-3 p-4 bg-gray-50 border-t border-gray-200">
+            <Button
+              variant="contained"
+              onClick={prePage}
+              disabled={currentPage === 1}
+              className="text-sm"
+            >
+              Previous
+            </Button>
+            {renderPagination()}
+            <Button
+              variant="contained"
+              onClick={nextPage}
+              disabled={currentPage === totalPages}
+              className="text-sm"
+            >
+              Next
+            </Button>
+          </div>
+
+
+          {/* <div className="overflow-auto !p-0 border-[.5px] border-gray-200">
             <table className="min-w-full bg-white  text-left !text-sm font-light">
               <thead className="border-b bg-gray-200  font-medium dark:border-neutral-500">
                 <tr className="!font-semibold">
@@ -374,7 +562,8 @@ const Form16Hr = () => {
                 </li>
               </ul>
             </nav>
-          </div>
+          </div> */}
+
         </article>
       </Container>
 
@@ -401,6 +590,7 @@ const Form16Hr = () => {
         open={deleteModalOpen}
         employeeId={employeeId}
       />
+
     </>
   );
 };

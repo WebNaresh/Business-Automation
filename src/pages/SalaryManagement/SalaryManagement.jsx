@@ -22,8 +22,8 @@ const SalaryManagement = () => {
   const { organisationId } = useParams();
   const [incomeValues, setIncomeValues] = useState([]);
   const [deductionsValues, setDeductionsValues] = useState([]);
-  const [selectedDepartment, setSelectedDepartment] = useState("");
-  const [selectedTemplate, setSelectedTemplate] = useState("");
+  const [department, setDepartment] = useState("");
+  const [salarystructure, setSalarystructure] = useState("");
   const navigate = useNavigate();
 
   const {
@@ -34,14 +34,13 @@ const SalaryManagement = () => {
   console.log("Departmentoptions", Departmentoptions);
   console.log("salaryTemplateoption", salaryTemplateoption);
 
-  console.log("selectedDepartment", selectedDepartment);
-  console.log("selectedTemplate", selectedTemplate);
-
 
   // get query for fetch the employee
   const fetchAvailableEmployee = async (page) => {
     try {
-      const apiUrl = `${import.meta.env.VITE_API}/route/employee/get-paginated-emloyee/${organisationId}?page=${page}?selectedDepartment=${selectedDepartment}?selectedTemplate={selectedTemplate}`;
+      const apiUrl = `${import.meta.env.VITE_API}/route/employee/get-paginated-emloyee/${organisationId}?page=${page}&department=${department}&salarystructure=${salarystructure}`;
+      console.log("apiUrl", apiUrl);
+
       const response = await axios.get(apiUrl, {
         headers: {
           Authorization: authToken,
@@ -65,7 +64,7 @@ const SalaryManagement = () => {
   useEffect(() => {
     fetchAvailableEmployee(currentPage);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPage]);
+  }, [currentPage, department, salarystructure]);
 
   // pagination
   const prePage = () => {
@@ -86,18 +85,23 @@ const SalaryManagement = () => {
 
   // Define the handler function
   const handleDepartmentChange = (e) => {
-    setSelectedDepartment(e.target.value);
+    setDepartment(e.target.value);
   };
 
   // Define the handler function
   const handleSalaryTemplateChange = (e) => {
-    setSelectedTemplate(e.target.value);
+    setSalarystructure(e.target.value);
   };
+
+  console.log("department", department);
+  console.log("salarystructure", salarystructure);
+
 
 
   // modal for create salary
   const [createModalOpen, setCreateModalOpen] = useState(false);
   const [employeeId, setEmployeeId] = useState(null);
+
   const handleCreateModalOpen = (id) => {
     setCreateModalOpen(true);
     setEmployeeId(id);
@@ -147,7 +151,7 @@ const SalaryManagement = () => {
               <FormControl variant="outlined" size="small" fullWidth>
                 <InputLabel>Department</InputLabel>
                 <Select
-                  value={selectedDepartment} // Ensure it's controlled
+                  value={department} // Ensure it's controlled
                   onChange={handleDepartmentChange}
                   label="Department"
                 >
@@ -164,7 +168,7 @@ const SalaryManagement = () => {
               <FormControl variant="outlined" size="small" fullWidth>
                 <InputLabel>Salary Template</InputLabel>
                 <Select
-                  value={selectedTemplate}
+                  value={salarystructure}
                   onChange={handleSalaryTemplateChange}
                   label="Salary Template"
                 >
@@ -211,12 +215,10 @@ const SalaryManagement = () => {
                   <th scope="col" className="px-6 py-3 ">
                     Calculate Salary
                   </th>
-
-
                 </tr>
               </thead>
               <tbody>
-                {availableEmployee.length > 0 &&
+                {availableEmployee.length > 0 ? (
                   availableEmployee
                     .filter((item) => {
                       return (
@@ -228,7 +230,7 @@ const SalaryManagement = () => {
                               .includes(nameSearch.toLowerCase())))
                       );
                     })
-                    ?.map((item, id) => (
+                    .map((item, id) => (
                       <tr className="!font-medium border-b" key={id}>
                         <td className="!text-left pl-8 py-3">{id + 1}</td>
                         <td className="py-3 pl-8">{item?.first_name}</td>
@@ -236,11 +238,9 @@ const SalaryManagement = () => {
                         <td className="py-3 pl-8">{item?.email}</td>
                         <td className="py-3 pl-8">{item?.empId}</td>
                         <td className="py-3 pl-9">
-                          {item?.deptname?.map((dept, index) => {
-                            return (
-                              <span key={index}>{dept?.departmentName}</span>
-                            );
-                          })}
+                          {item?.deptname?.map((dept, index) => (
+                            <span key={index}>{dept?.departmentName}</span>
+                          ))}
                         </td>
                         <td className="py-3 pl-9">
                           {item?.salarystructure?.name}
@@ -264,8 +264,17 @@ const SalaryManagement = () => {
                           </button>
                         </td>
                       </tr>
-                    ))}
+                    ))
+                ) : (
+                  <tr>
+                    <td colSpan="9" className="text-center py-4 text-red-500 text-lg font-bold">
+                      No Employee Found
+                    </td>
+                  </tr>
+
+                )}
               </tbody>
+
             </table>
             <nav
               style={{
