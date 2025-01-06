@@ -2017,7 +2017,7 @@ exports.deleteMultipleEmployees = catchAssyncError(async (req, res, next) => {
       success: true,
       deletedCount: deleteEmployees.deletedCount,
     });
-  } catch (err) {}
+  } catch (err) { }
 });
 
 // fetch employee
@@ -2027,6 +2027,7 @@ exports.getPaginatedEmployees = catchAssyncError(async (req, res, next) => {
   const skip = (page - 1) * perPage;
   const organizationId = req.params.organizationId;
   const { department, nameSearch, salarystructure } = req.query;
+
 
   console.log("Department:", department);
   console.log("Name Search:", nameSearch);
@@ -2224,7 +2225,7 @@ exports.employeeCountManager = catchAssyncError(async (req, res, next) => {
       managerId: userId,
     }).populate("reporteeIds");
     return res.json({ data });
-  } catch (error) {}
+  } catch (error) { }
 });
 
 // employee counta api
