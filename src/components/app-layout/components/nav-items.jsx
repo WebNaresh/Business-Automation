@@ -387,7 +387,7 @@ const TestNavItems = ({ toggleDrawer }) => {
               "Delegate-Accountant",
               "HR",
               "Manager",
-             
+
             ]?.includes(role),
           routes: [
             {
@@ -458,7 +458,7 @@ const TestNavItems = ({ toggleDrawer }) => {
               isVisible: true,
               link: `/organisation/${orgId}/records`,
               icon: <ArticleIcon className=" !text-[1.2em]" />,
-              text: "My Records",
+              text: "Records",
             },
           ],
         },

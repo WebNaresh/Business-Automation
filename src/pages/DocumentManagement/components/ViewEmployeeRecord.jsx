@@ -1,11 +1,12 @@
 import { Info, RequestQuote } from "@mui/icons-material";
-import { Avatar, Container,  } from "@mui/material";
+import { Avatar, Container, } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { UseContext } from "../../../State/UseState/UseContext";
 import ViewRecordModel from "./ViewRecordModel"; // Import your modal
+import PreviewIcon from '@mui/icons-material/Preview';
 
 const ViewEmployeeRecord = ({ employeeId }) => {
   const { organisationId } = useParams();
@@ -40,7 +41,10 @@ const ViewEmployeeRecord = ({ employeeId }) => {
       );
       return response.data.data;
     }
-  );
+  ); 
+
+  console.log("getRecordOneEmployee" , getRecordOneEmployee);
+  
 
   return (
     <>
@@ -87,9 +91,9 @@ const ViewEmployeeRecord = ({ employeeId }) => {
                     <td className="!text-left pl-6 py-3">
                       <button
                         className="text-blue-500 hover:underline"
-                        onClick={() => handleOpen(file)}
+                        onClick={() => handleOpen(file.fileName)}
                       >
-                        Preview
+                        <PreviewIcon />
                       </button>
                     </td>
                   </tr>

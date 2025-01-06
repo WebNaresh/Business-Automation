@@ -13,7 +13,7 @@ const DocManageToHr = () => {
   console.log("getRecordOfEmployee", getRecordOfEmployee);
 
   // to filter the employee based on first nanae , last name
-  const filteredEmployeesRecord =
+  const filteredEmployeesRecord = 
     getRecordOfEmployee && Array.isArray(getRecordOfEmployee)
       ? getRecordOfEmployee.filter(
           (employee) =>
@@ -42,7 +42,7 @@ const DocManageToHr = () => {
         Uploaded Record of Employee
       </header>
       <section className="min-h-[90vh] flex">
-        <article className="w-[20%] overflow-auto max-h-[90vh] h-full bg-white border-gray-200">
+        <article className="w-[30%] overflow-auto max-h-[80vh] h-full bg-white border-gray-200">
           <div className="p-6 !py-2">
             <div className="space-y-2">
               <div
@@ -82,6 +82,7 @@ const DocManageToHr = () => {
             </div>
           )}
         </article>
+
         <div className="w-[80%]">
           {selectedEmployee ? (
             <ViewEmployeeRecord

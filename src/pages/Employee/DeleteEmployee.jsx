@@ -14,6 +14,14 @@ import {
   TextField,
   Tooltip,
   Typography,
+  FormControl, InputLabel, Select,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
 } from "@mui/material";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
@@ -22,6 +30,9 @@ import { useParams } from "react-router-dom";
 import * as XLSX from "xlsx";
 import { TestContext } from "../../State/Function/Main";
 import { UseContext } from "../../State/UseState/UseContext";
+import SearchIcon from "@mui/icons-material/Search";
+import useEmpOption from "../../hooks/Employee-OnBoarding/useEmpOption";
+
 const DeleteEmployee = () => {
   // to define the state, hook and other if user neeed
   const { handleAlert } = useContext(TestContext);
@@ -29,8 +40,6 @@ const DeleteEmployee = () => {
   const authToken = cookies["aegis"];
   const queryClient = useQueryClient();
   const [nameSearch, setNameSearch] = useState("");
-  const [deptSearch, setDeptSearch] = useState("");
-  const [locationSearch, setLocationSearch] = useState("");
   const [availableEmployee, setAvailableEmployee] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -42,11 +51,16 @@ const DeleteEmployee = () => {
   const [showConfirmationExcel, setShowConfirmationExcel] = useState(false);
   const { organisationId } = useParams();
   const [selectedFile, setSelectedFile] = useState(null);
+  const [department, setDepartment] = useState("");
 
-  // pull the employee data
+  const {
+    Departmentoptions,
+  } = useEmpOption({ organisationId });
+
   const fetchAvailableEmployee = async (page) => {
     try {
-      const apiUrl = `${import.meta.env.VITE_API}/route/employee/get-paginated-emloyee/${organisationId}?page=${page}`;
+      const apiUrl = `${import.meta.env.VITE_API}/route/employee/get-paginated-emloyee/${organisationId}?page=${page}&department=${department}`;
+      console.log("apiUrl", apiUrl);
       const response = await axios.get(apiUrl, {
         headers: {
           Authorization: authToken,
@@ -62,8 +76,8 @@ const DeleteEmployee = () => {
 
   useEffect(() => {
     fetchAvailableEmployee(currentPage);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPage]);
+  }, [currentPage, nameSearch, department]);
+
 
   // function for previous button , next button and current button of pagination
   // pagination
@@ -77,6 +91,11 @@ const DeleteEmployee = () => {
 
   const changePage = (pageNumber) => {
     setCurrentPage(pageNumber);
+  };
+
+  // Define the handler function
+  const handleDepartmentChange = (e) => {
+    setDepartment(e.target.value);
   };
 
   const renderPagination = () => {
@@ -380,41 +399,49 @@ const DeleteEmployee = () => {
     <>
       <Container maxWidth="xl" className="bg-gray-50 min-h-screen">
         <article className=" bg-white w-full h-max shadow-md rounded-sm border items-center">
-          <Typography variant="h4" className="text-center mb-6 mt-2">
-            Employee Offboarding
-          </Typography>
-          <p className="text-xs text-gray-600 text-center">
-            Delete employee data here by using delete button.
-          </p>
+          <div className="p-6 border-b border-gray-200 flex justify-between items-center">
+            <div>
+              <h4 className="text-2xl font-bold text-gray-800 mb-2">
+                Employee Offboarding
+              </h4>
+              <Typography variant="body2" className="text-center text-gray-600">
+                Delete employee data here by using delete button.
+              </Typography>
+            </div>
+          </div>
 
           <div className="p-4 border-b-[.5px] flex flex-col md:flex-row items-center justify-between gap-3 w-full border-gray-300">
             <div className="flex items-center gap-3 mb-3 md:mb-0 w-full md:w-auto">
               <TextField
                 onChange={(e) => setNameSearch(e.target.value)}
-                placeholder="Search Employee Name...."
+                placeholder="Search"
                 variant="outlined"
                 size="small"
                 sx={{ width: { xs: "100%", sm: "auto" }, minWidth: 200 }}
+                InputProps={{
+                  startAdornment: <SearchIcon className="text-gray-400 mr-2" />,
+                }}
               />
             </div>
-            <div className="flex items-center gap-3 mb-3 md:mb-0 w-full md:w-auto">
-              <TextField
-                onChange={(e) => setDeptSearch(e.target.value)}
-                placeholder="Search Department Name...."
-                variant="outlined"
-                size="small"
-                sx={{ width: { xs: "100%", sm: "auto" }, minWidth: 200 }}
-              />
-            </div>
-            <div className="flex items-center gap-3 w-full md:w-auto">
-              <TextField
-                onChange={(e) => setLocationSearch(e.target.value)}
-                placeholder="Search Location ...."
-                variant="outlined"
-                size="small"
-                sx={{ width: { xs: "100%", sm: "auto" }, minWidth: 200 }}
-              />
-            </div>
+
+            {/* Department Dropdown */}
+            <FormControl variant="outlined" size="small" fullWidth     sx={{ width: { xs: "100%", sm: "auto" }, minWidth: 500 }}>
+              <InputLabel>Department</InputLabel>
+              <Select
+                value={department}
+                onChange={handleDepartmentChange}
+                label="Department"
+            
+              >
+                <MenuItem value="">All Departments</MenuItem>
+                {Departmentoptions?.map((dept) => (
+                  <MenuItem key={dept.value} value={dept.value}>
+                    {dept.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
             <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3 mb-3 md:mb-0">
               <div className="flex-grow flex-shrink-0">
                 <Tooltip
@@ -500,7 +527,69 @@ const DeleteEmployee = () => {
             </div>
           </div>
 
-          <div className="overflow-auto !p-0 border-[.5px] border-gray-200">
+          <TableContainer component={Paper} sx={{ boxShadow: "none" }}>
+            <Table sx={{ minWidth: 650 }} aria-label="employee table">
+              <TableHead>
+                <TableRow sx={{ backgroundColor: "#f3f4f6" }}>
+                  <TableCell sx={{ fontWeight: "bold" }}>Selection</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Sr. No</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>First Name</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Last Name</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Email</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Employee Id</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Department</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Actions</TableCell>
+                </TableRow>
+              </TableHead>
+
+              <TableBody>
+                {availableEmployee.length > 0 &&
+                  availableEmployee
+                    .filter((item) => {
+                      return (
+                        !nameSearch.toLowerCase() ||
+                        (item.first_name &&
+                          item.first_name.toLowerCase().includes(nameSearch))
+                      );
+                    })
+                    .map((item, id) => (
+                      <TableRow
+                        key={id}
+                        sx={{
+                          backgroundColor: id % 2 === 0 ? "#ffffff" : "#f9fafb",
+                          "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.04)" },
+                        }}
+                      >
+                        <TableCell><Checkbox
+                          checked={selectedEmployees.indexOf(item?._id) !== -1}
+                          onChange={() => handleEmployeeSelection(item?._id)}
+                        /></TableCell>
+                        <TableCell>{id + 1}</TableCell>
+                        <TableCell>{item?.first_name}</TableCell>
+                        <TableCell>{item?.last_name}</TableCell>
+                        <TableCell>{item?.email}</TableCell>
+                        <TableCell>{item?.empId}</TableCell>
+                        <TableCell>
+                          {item?.deptname?.map((dept, index) => (
+                            <span key={index}>{dept?.departmentName}</span>
+                          ))}
+                        </TableCell>
+                        <TableCell>
+                          <IconButton
+                            color="error"
+                            aria-label="delete"
+                            onClick={() => handleDeleteConfirmation(item?._id)}
+                          >
+                            <DeleteOutlineIcon />
+                          </IconButton>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+
+          {/* <div className="overflow-auto !p-0 border-[.5px] border-gray-200">
             <table className="min-w-full bg-white text-left !text-sm font-light">
               <thead className="border-b bg-gray-200 font-medium dark:border-neutral-500">
                 <tr className="!font-semibold">
@@ -618,7 +707,9 @@ const DeleteEmployee = () => {
                 NEXT
               </Button>
             </div>
-          </div>
+          </div> */}
+
+
         </article>
       </Container>
 
