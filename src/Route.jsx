@@ -1064,7 +1064,7 @@ const App = () => {
                   "Delegate-Accountant",
                   "HR",
                   "Manager",
-                  "Employee",
+                 
                 ]}
               >
                 <ViewPayslip />

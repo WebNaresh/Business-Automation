@@ -160,10 +160,10 @@ const TestNavItems = ({ toggleDrawer }) => {
                 role === "Manager"
                   ? `/organisation/${orgId}/dashboard/manager-dashboard`
                   : role === "HR"
-                  ? `/organisation/${orgId}/dashboard/HR-dashboard`
-                  : role === "Employee"
-                  ? `/organisation/${orgId}/dashboard/employee-dashboard`
-                  : "/organizationList",
+                    ? `/organisation/${orgId}/dashboard/HR-dashboard`
+                    : role === "Employee"
+                      ? `/organisation/${orgId}/dashboard/employee-dashboard`
+                      : "/organizationList",
               icon: <Dashboard className=" !text-[1.2em]" />,
               text: "Dashboard",
             },
@@ -173,12 +173,12 @@ const TestNavItems = ({ toggleDrawer }) => {
             role === "Manager"
               ? `/organisation/${orgId}/dashboard/manager-dashboard`
               : role === "HR"
-              ? `/organisation/${orgId}/dashboard/HR-dashboard`
-              : role === "Employee"
-              ? `/organisation/${orgId}/dashboard/employee-dashboard`
-              : role === "Super-Admin"
-              ? `/organisation/${orgId}/dashboard/super-admin`
-              : "/organizationList",
+                ? `/organisation/${orgId}/dashboard/HR-dashboard`
+                : role === "Employee"
+                  ? `/organisation/${orgId}/dashboard/employee-dashboard`
+                  : role === "Super-Admin"
+                    ? `/organisation/${orgId}/dashboard/super-admin`
+                    : "/organizationList",
         },
         Attendence: {
           open: true,
@@ -213,7 +213,14 @@ const TestNavItems = ({ toggleDrawer }) => {
           routes: [
             {
               key: "payslip",
-              isVisible: true,
+              isVisible: isVisible &&
+                [
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "HR",
+                  "Accountant",
+                  "Delegate-Super-Admin",
+                ].includes(role),
               link: `/organisation/${orgId}/view-payslip`,
               icon: <ListAlt className=" !text-[1.2em]" />,
               text: "Pay Slip",
@@ -380,7 +387,7 @@ const TestNavItems = ({ toggleDrawer }) => {
               "Delegate-Accountant",
               "HR",
               "Manager",
-              "Employee",
+             
             ]?.includes(role),
           routes: [
             {
@@ -409,7 +416,6 @@ const TestNavItems = ({ toggleDrawer }) => {
                 "Delegate-Accountant",
                 "HR",
                 "Manager",
-                "Employee",
               ].includes(role),
               link: `/organisation/${orgId}/employee-list`,
               icon: <Groups className=" !text-[1.2em]" />,
@@ -434,7 +440,7 @@ const TestNavItems = ({ toggleDrawer }) => {
               isVisible: survey?.surveyPermission,
               link:
                 user?.profile.includes("Super-Admin") ||
-                user?.profile.includes("HR")
+                  user?.profile.includes("HR")
                   ? `/organisation/${orgId}/employee-survey`
                   : `/organisation/${orgId}/employee-survey/${empId}`,
               icon: <AssignmentIcon className=" !text-[1.2em]" />,
