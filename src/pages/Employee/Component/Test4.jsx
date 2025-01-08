@@ -452,7 +452,7 @@ const Test4 = ({ prevStep }) => {
             </div>
             <div className="p-2 rounded-sm ">
               <h1 className="text-gray-500 text-sm w-full">Profile</h1>
-              <p className="">{profile?.map((item) => item) ?? "-"}</p>
+              {/* <p className="">{profile?.map((item) => item) ?? "-"}</p> */}
             </div>
             <div className="p-2 rounded-sm w-full">
               <h1 className="text-gray-500 text-sm">Company Email</h1>

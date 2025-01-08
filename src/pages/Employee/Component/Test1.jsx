@@ -163,7 +163,7 @@ const Test1 = ({ nextStep, isLastStep , prevStep }) => {
     strength: z.string().optional(),
     weakness: z.string().optional(),
     bank_name: z.string().optional(),
-    ifsc_code: z.string().regex(/^[A-Z]{4}0[A-Z0-9]{6}$/, { message: "Invalid IFSC code" }).optional(),
+    ifsc_code: z.string().optional(),
   });
 
   // use useForm

@@ -134,12 +134,10 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
       }),
       current_ctc: z
         .string()
-        .regex(/^\d+(\.\d{1,2})?$/, { message: "Incentive must be a valid number" })
         .optional(),
 
       incentive: z
         .string()
-        .regex(/^\d+(\.\d{1,2})?$/, { message: "Incentive must be a valid number" })
         .optional(),
 
       health_insurance: z
