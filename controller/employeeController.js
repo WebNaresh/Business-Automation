@@ -2098,7 +2098,6 @@ exports.getUserProfileData = catchAssyncError(async (req, res, next) => {
     if (!employee) {
       return res.status(404).json({ message: "Employee not found." });
     }
-
     res.status(200).json({ employee });
   } catch (error) {
     console.error("Error fetching employee details:", error);
@@ -2107,6 +2106,7 @@ exports.getUserProfileData = catchAssyncError(async (req, res, next) => {
       .json({ message: "Failed to fetch employee details. Please try again." });
   }
 });
+
 exports.getDeptHeadUserData = catchAssyncError(async (req, res, next) => {
   try {
     const organizationId = req.params.organizationId;
@@ -2129,6 +2129,7 @@ exports.getDeptHeadUserData = catchAssyncError(async (req, res, next) => {
       .json({ message: "Failed to fetch employee details. Please try again." });
   }
 });
+
 exports.getDeptDelegateHeadData = catchAssyncError(async (req, res, next) => {
   try {
     const organizationId = req.params.organizationId;
@@ -2153,6 +2154,7 @@ exports.getDeptDelegateHeadData = catchAssyncError(async (req, res, next) => {
       .json({ message: "Failed to fetch employee details. Please try again." });
   }
 });
+
 exports.getHr = catchAssyncError(async (req, res, next) => {
   try {
     const organizationId = req.params.organizationId;
