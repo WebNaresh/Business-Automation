@@ -88,6 +88,17 @@ const Test4 = ({ prevStep }) => {
     company_assets
   } = useEmployeeState();
 
+
+  // Use filteredData in your component or wherever you need the data
+  const userData = {
+
+    profile,
+
+  };
+
+  console.log("userData", userData);
+
+
   // to define the handleSumbit function
   const handleSubmit = useMutation(
     () => {
@@ -100,7 +111,7 @@ const Test4 = ({ prevStep }) => {
         first_name,
         last_name,
         email,
-        profile,
+        profile: profile?.map((item) => (typeof item === "object" ? item.value : item)) ?? ["Employee"],
         password,
         phone_number,
         address,
@@ -450,15 +461,19 @@ const Test4 = ({ prevStep }) => {
               <h1 className="text-gray-500 text-sm">Employee No</h1>
               <p className="">{empId}</p>
             </div>
-            <div className="p-2 rounded-sm ">
+            <div className="p-2 rounded-sm">
               <h1 className="text-gray-500 text-sm w-full">Profile</h1>
-              {/* <p className="">{profile?.map((item) => item) ?? "-"}</p> */}
+              <p className="">
+                {profile && profile.length > 0
+                  ? profile.map((item, index) => (
+                    <span key={index}>
+                      {item.label}
+                      {index < profile.length - 1 && ", "}
+                    </span>
+                  ))
+                  : "-"}
+              </p>
             </div>
-            <div className="p-2 rounded-sm w-full">
-              <h1 className="text-gray-500 text-sm">Company Email</h1>
-              <p className="">{companyemail}</p>
-            </div>
-
             <div className=" p-2 rounded-sm ">
               <h1 className="text-gray-500 text-sm w-full">
                 Date Of Joining

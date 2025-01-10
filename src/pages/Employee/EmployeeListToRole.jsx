@@ -18,7 +18,7 @@ import {
   TextField,
   Tooltip,
   Typography,
-  FormControl, InputLabel, Select, MenuItem
+  FormControl, InputLabel, Select, MenuItem , Avatar
 } from "@mui/material";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
@@ -64,7 +64,10 @@ const EmployeeListToRole = () => {
 
   useEffect(() => {
     fetchAvailableEmployee(currentPage);
-  }, [currentPage, nameSearch , department]);
+  }, [currentPage, nameSearch, department]);
+
+  console.log("available emp", availableEmployee);
+
 
   const prePage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
@@ -273,8 +276,7 @@ const EmployeeListToRole = () => {
             <TableHead>
               <TableRow sx={{ backgroundColor: "#f3f4f6" }}>
                 <TableCell sx={{ fontWeight: "bold" }}>Sr. No</TableCell>
-                <TableCell sx={{ fontWeight: "bold" }}>First Name</TableCell>
-                <TableCell sx={{ fontWeight: "bold" }}>Last Name</TableCell>
+                <TableCell sx={{ fontWeight: "bold" }}>Name</TableCell>
                 <TableCell sx={{ fontWeight: "bold" }}>Email</TableCell>
                 <TableCell sx={{ fontWeight: "bold" }}>Employee Id</TableCell>
                 <TableCell sx={{ fontWeight: "bold" }}>Location</TableCell>
@@ -302,8 +304,17 @@ const EmployeeListToRole = () => {
                       }}
                     >
                       <TableCell>{id + 1}</TableCell>
-                      <TableCell>{item?.first_name}</TableCell>
-                      <TableCell>{item?.last_name}</TableCell>
+                      <TableCell>
+                        <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                          <Avatar
+                            src={item?.photoUrl || "/default-avatar.png"}
+                            alt={item?.first_name || "Employee"}
+                            sx={{ width: 40, height: 40 }}
+                          />
+                          {`${item?.first_name ?? ""} ${item?.last_name ?? ""}`.trim() || "-"}
+                        </Box>
+                      </TableCell>
+
                       <TableCell>{item?.email}</TableCell>
                       <TableCell>{item?.empId}</TableCell>
                       <TableCell>

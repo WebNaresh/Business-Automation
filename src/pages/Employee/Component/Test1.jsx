@@ -270,6 +270,8 @@ const Test1 = ({ nextStep, isLastStep , prevStep }) => {
   );
 
   const { errors } = formState;
+  console.log("errors" , errors);
+  
   // to define the onSumbit funciton
   const onSubmit = async (data) => {
     setStep1Data(data);

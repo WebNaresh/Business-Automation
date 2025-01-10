@@ -15,7 +15,8 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Button
+  Button , 
+  
 } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import axios from "axios";
@@ -40,17 +41,20 @@ const Form16Hr = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [numbers, setNumbers] = useState([]);
   const [department, setDepartment] = useState("");
+   const [salarystructure, setSalarystructure] = useState("");
   const { organisationId } = useParams();
 
   const {
     Departmentoptions,
+    salaryTemplateoption
   } = useEmpOption({ organisationId });
 
-  //employee fetch
+  // get query for fetch the employee
   const fetchAvailableEmployee = async (page) => {
     try {
-      const apiUrl = `${import.meta.env.VITE_API}/route/employee/get-paginated-emloyee/${organisationId}?page=${page}&department=${department}`;
+      const apiUrl = `${import.meta.env.VITE_API}/route/employee/get-paginated-emloyee/${organisationId}?page=${page}&department=${department}&salarystructure=${salarystructure}`;
       console.log("apiUrl", apiUrl);
+
       const response = await axios.get(apiUrl, {
         headers: {
           Authorization: authToken,
@@ -67,12 +71,14 @@ const Form16Hr = () => {
       setNumbers(numbersArray);
     } catch (error) {
       console.log(error);
+      handleAlert(true, "error", "Failed to Fetch Employee");
     }
   };
 
   useEffect(() => {
     fetchAvailableEmployee(currentPage);
-  }, [currentPage, nameSearch, department]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage, department, salarystructure]);
 
   //   pagination
   const prePage = () => {
@@ -131,6 +137,11 @@ const Form16Hr = () => {
   // Define the handler function
   const handleDepartmentChange = (e) => {
     setDepartment(e.target.value);
+  };
+
+   // Define the handler function
+   const handleSalaryTemplateChange = (e) => {
+    setSalarystructure(e.target.value);
   };
 
 
@@ -226,6 +237,22 @@ const Form16Hr = () => {
                   {Departmentoptions?.map((dept) => (
                     <MenuItem key={dept.value} value={dept.value}>
                       {dept.label}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              {/* Salary Template Dropdown */}
+              <FormControl variant="outlined" size="small" fullWidth>
+                <InputLabel>Salary Template</InputLabel>
+                <Select
+                  value={salarystructure}
+                  onChange={handleSalaryTemplateChange}
+                  label="Salary Template"
+                >
+                  <MenuItem value="">All Templates</MenuItem>
+                  {salaryTemplateoption?.map((template) => (
+                    <MenuItem key={template.value} value={template.value}>
+                      {template.label}
                     </MenuItem>
                   ))}
                 </Select>
