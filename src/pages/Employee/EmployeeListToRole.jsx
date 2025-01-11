@@ -18,7 +18,7 @@ import {
   TextField,
   Tooltip,
   Typography,
-  FormControl, InputLabel, Select, MenuItem , Avatar
+  FormControl, InputLabel, Select, MenuItem, Avatar
 } from "@mui/material";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
@@ -235,6 +235,9 @@ const EmployeeListToRole = () => {
               </Select>
             </FormControl>
 
+            {/* View Toggle */}
+
+          
             {/* Export PDF Button */}
             <Button
               variant="contained"
@@ -266,6 +269,9 @@ const EmployeeListToRole = () => {
             >
               Export Excel
             </Button>
+
+
+
           </div>
         </div>
 

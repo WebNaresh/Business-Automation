@@ -180,7 +180,7 @@ const TestNavItems = ({ toggleDrawer }) => {
                     ? `/organisation/${orgId}/dashboard/super-admin`
                     : "/organizationList",
         },
-        Attendence: {
+        "Leave Management": {
           open: true,
           icon: <HiOutlineIdentification className="!text-[1.5rem]" />,
           isVisible: true,
@@ -190,7 +190,7 @@ const TestNavItems = ({ toggleDrawer }) => {
               isVisible: true,
               link: `/organisation/${orgId}/leave`,
               icon: <AccessTimeOutlinedIcon className=" !text-[1.2rem]" />,
-              text: "Attendance & Leave Management",
+              text: "Leave Management",
             },
             {
               key: "view emp attendance",
@@ -274,7 +274,7 @@ const TestNavItems = ({ toggleDrawer }) => {
             },
           ],
         },
-        "Machine Punching": {
+        "Attendance": {
           open: false,
           icon: <PeopleAlt className=" !text-[1.2em]" />,
           isVisible:

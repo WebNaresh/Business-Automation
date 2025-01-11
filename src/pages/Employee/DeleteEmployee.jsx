@@ -22,6 +22,8 @@ import {
   TableHead,
   TableRow,
   Paper,
+  Avatar,
+  Box,
 } from "@mui/material";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
@@ -425,13 +427,13 @@ const DeleteEmployee = () => {
             </div>
 
             {/* Department Dropdown */}
-            <FormControl variant="outlined" size="small" fullWidth     sx={{ width: { xs: "100%", sm: "auto" }, minWidth: 500 }}>
+            <FormControl variant="outlined" size="small" fullWidth sx={{ width: { xs: "100%", sm: "auto" }, minWidth: 500 }}>
               <InputLabel>Department</InputLabel>
               <Select
                 value={department}
                 onChange={handleDepartmentChange}
                 label="Department"
-            
+
               >
                 <MenuItem value="">All Departments</MenuItem>
                 {Departmentoptions?.map((dept) => (
@@ -533,8 +535,7 @@ const DeleteEmployee = () => {
                 <TableRow sx={{ backgroundColor: "#f3f4f6" }}>
                   <TableCell sx={{ fontWeight: "bold" }}>Selection</TableCell>
                   <TableCell sx={{ fontWeight: "bold" }}>Sr. No</TableCell>
-                  <TableCell sx={{ fontWeight: "bold" }}>First Name</TableCell>
-                  <TableCell sx={{ fontWeight: "bold" }}>Last Name</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Name</TableCell>
                   <TableCell sx={{ fontWeight: "bold" }}>Email</TableCell>
                   <TableCell sx={{ fontWeight: "bold" }}>Employee Id</TableCell>
                   <TableCell sx={{ fontWeight: "bold" }}>Department</TableCell>
@@ -565,8 +566,16 @@ const DeleteEmployee = () => {
                           onChange={() => handleEmployeeSelection(item?._id)}
                         /></TableCell>
                         <TableCell>{id + 1}</TableCell>
-                        <TableCell>{item?.first_name}</TableCell>
-                        <TableCell>{item?.last_name}</TableCell>
+                        <TableCell>
+                          <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                            <Avatar
+                              src={item?.photoUrl || "/default-avatar.png"}
+                              alt={item?.first_name || "Employee"}
+                              sx={{ width: 40, height: 40 }}
+                            />
+                            {`${item?.first_name ?? ""} ${item?.last_name ?? ""}`.trim() || "-"}
+                          </Box>
+                        </TableCell>
                         <TableCell>{item?.email}</TableCell>
                         <TableCell>{item?.empId}</TableCell>
                         <TableCell>
@@ -588,128 +597,25 @@ const DeleteEmployee = () => {
               </TableBody>
             </Table>
           </TableContainer>
-
-          {/* <div className="overflow-auto !p-0 border-[.5px] border-gray-200">
-            <table className="min-w-full bg-white text-left !text-sm font-light">
-              <thead className="border-b bg-gray-200 font-medium dark:border-neutral-500">
-                <tr className="!font-semibold">
-                  <th scope="col" className="!text-left pl-8 py-3">
-                    Employee Selection
-                  </th>
-                  <th scope="col" className="!text-left pl-8 py-3">
-                    Sr. No
-                  </th>
-                  <th scope="col" className="!text-left pl-8 py-3">
-                    First Name
-                  </th>
-                  <th scope="col" className="!text-left pl-8 py-3">
-                    Last Name
-                  </th>
-                  <th scope="col" className="!text-left pl-8 py-3">
-                    Email
-                  </th>
-                  <th scope="col" className="!text-left pl-8 py-3">
-                    Employee Id
-                  </th>
-                  <th scope="col" className="!text-left pl-8 py-3">
-                    Location
-                  </th>
-                  <th scope="col" className="!text-left pl-8 py-3">
-                    Department
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Actions
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {availableEmployee
-                  .filter((item) => {
-                    return (
-                      (!nameSearch.toLowerCase() ||
-                        (item.first_name !== null &&
-                          item.first_name !== undefined &&
-                          item.first_name
-                            .toLowerCase()
-                            .includes(nameSearch))) &&
-                      (!deptSearch ||
-                        (item.deptname !== null &&
-                          item.deptname !== undefined &&
-                          item.deptname.some(
-                            (dept) =>
-                              dept.departmentName !== null &&
-                              dept.departmentName
-                                .toLowerCase()
-                                .includes(deptSearch.toLowerCase())
-                          ))) &&
-                      (!locationSearch.toLowerCase() ||
-                        item.worklocation.some(
-                          (location) =>
-                            location &&
-                            location.city !== null &&
-                            location.city !== undefined &&
-                            location.city.toLowerCase().includes(locationSearch)
-                        ))
-                    );
-                  })
-                  .map((item, id) => (
-                    <tr className="!font-medium border-b" key={id}>
-                      <td className="!text-left pl-8 py-3">
-                        <Checkbox
-                          checked={selectedEmployees.indexOf(item?._id) !== -1}
-                          onChange={() => handleEmployeeSelection(item?._id)}
-                        />
-                      </td>
-                      <td className="!text-left pl-8 py-3">{id + 1}</td>
-                      <td className="py-3 pl-8">{item?.first_name}</td>
-                      <td className="py-3 pl-8">{item?.last_name}</td>
-                      <td className="py-3 pl-8">{item?.email}</td>
-                      <td className="py-3 pl-8">{item?.empId}</td>
-                      <td className="py-3 pl-8">
-                        {item?.worklocation?.map((location, index) => (
-                          <span key={index}>{location?.city}</span>
-                        ))}
-                      </td>
-                      <td className="py-3 pl-8">
-                        {item?.deptname?.map((dept, index) => {
-                          return (
-                            <span key={index}>{dept?.departmentName}</span>
-                          );
-                        })}
-                      </td>
-                      <td className="whitespace-nowrap px-6 py-2">
-                        <IconButton
-                          color="error"
-                          aria-label="delete"
-                          onClick={() => handleDeleteConfirmation(item?._id)}
-                        >
-                          <DeleteOutlineIcon />
-                        </IconButton>
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
-            <div className="flex items-center justify-center gap-2 py-3">
-              <Button
-                variant="outlined"
-                onClick={prePage}
-                disabled={currentPage === 1}
-              >
-                PREVIOUS
-              </Button>
-              {renderPagination()}
-              <Button
-                variant="outlined"
-                onClick={nextPage}
-                disabled={currentPage === totalPages}
-              >
-                NEXT
-              </Button>
-            </div>
-          </div> */}
-
-
+          <div className="flex items-center justify-center gap-3 p-4 bg-gray-50 border-t border-gray-200">
+            <Button
+              variant="contained"
+              onClick={prePage}
+              disabled={currentPage === 1}
+              className="text-sm"
+            >
+              Previous
+            </Button>
+            {renderPagination()}
+            <Button
+              variant="contained"
+              onClick={nextPage}
+              disabled={currentPage === totalPages}
+              className="text-sm"
+            >
+              Next
+            </Button>
+          </div>
         </article>
       </Container>
 

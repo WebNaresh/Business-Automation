@@ -6,6 +6,9 @@ import { Avatar, CircularProgress } from "@mui/material";
 import { useQuery } from "react-query";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import PayslipModel from "./PayslipModel"; // Import PayslipModel component
+import Button from "@mui/material/Button";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 const ViewPaySlip = () => {
   const { organisationId } = useParams();
@@ -41,6 +44,34 @@ const ViewPaySlip = () => {
       .toLowerCase()
       .includes(searchTerm.toLowerCase())
   );
+
+  // download the pdf 
+  const exportPDF = async () => {
+    const input = document.getElementById("App");
+    html2canvas(input, {
+      logging: true,
+      letterRendering: 1,
+      useCORS: true,
+    }).then(async (canvas) => {
+      let img = new Image();
+      img.src = canvas.toDataURL("image/png");
+      img.onload = function () {
+        const pdf = new jsPDF("landscape", "mm", "a4");
+        pdf.addImage(
+          img,
+          0,
+          0,
+          pdf.internal.pageSize.width,
+          pdf.internal.pageSize.height
+        );
+        pdf.save("payslip.pdf");
+      };
+    });
+  };
+  const handleDownloadClick = () => {
+    setActiveButton("download");
+    exportPDF();
+  };
 
   return (
     <div className="flex flex-col">
@@ -125,7 +156,7 @@ const ViewPaySlip = () => {
                 <div className="flex flex-col items-center  mt-10">
                   <img
                     src="/payslip.jpg"
-                    style={{ height: "80%" , width : "80%" }}
+                    style={{ height: "80%", width: "80%" }}
                     alt="No payslip available"
                   />
                 </div>
@@ -141,7 +172,19 @@ const ViewPaySlip = () => {
             </div>
           )}
         </article>
+
       </section>
+
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%"  , marginTop : "20px" , marginLeft : "30%"}}>
+        <Button
+          variant="contained"
+          onClick={handleDownloadClick}
+          color="primary"
+        >
+          Download PDF
+        </Button>
+      </div>
+
     </div>
   );
 };

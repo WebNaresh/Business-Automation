@@ -1,4 +1,14 @@
-import { Container, TextField, Tooltip, Typography, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import {
+  Container, TextField, Tooltip, Typography, FormControl, InputLabel, Select, MenuItem, Avatar,
+  Box, Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Button
+} from "@mui/material";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -66,21 +76,58 @@ const SalaryManagement = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage, department, salarystructure]);
 
-  // pagination
+  // pagination 
+
   const prePage = () => {
-    if (currentPage !== 1) {
-      fetchAvailableEmployee(currentPage - 1);
-    }
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
   };
 
   const nextPage = () => {
-    if (currentPage !== totalPages) {
-      fetchAvailableEmployee(currentPage + 1);
-    }
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
   };
 
-  const changePage = (id) => {
-    fetchAvailableEmployee(id);
+  const changePage = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const renderPagination = () => {
+    const pageNumbers = [];
+
+    if (totalPages <= 5) {
+      for (let i = 1; i <= totalPages; i++) {
+        pageNumbers.push(i);
+      }
+    } else {
+      if (currentPage > 3) {
+        pageNumbers.push(1);
+        pageNumbers.push("...");
+      }
+
+      const startPage = Math.max(2, currentPage - 1);
+      const endPage = Math.min(totalPages - 1, currentPage + 1);
+
+      for (let i = startPage; i <= endPage; i++) {
+        pageNumbers.push(i);
+      }
+
+      if (currentPage < totalPages - 2) {
+        pageNumbers.push("...");
+      }
+
+      pageNumbers.push(totalPages);
+    }
+
+    return pageNumbers.map((number, index) => (
+      <Button
+        key={index}
+        variant={number === currentPage ? "contained" : "outlined"}
+        color="primary"
+        onClick={() => typeof number === "number" && changePage(number)}
+        disabled={number === "..."}
+      >
+        {number}
+      </Button>
+    ));
   };
 
   // Define the handler function
@@ -184,178 +231,102 @@ const SalaryManagement = () => {
           </div>
 
 
-          <div className="overflow-auto !p-0  border-[.5px] border-gray-200">
-            <table className="min-w-full bg-white  text-left !text-sm font-light">
-              <thead className="border-b bg-gray-200  font-medium dark:border-neutral-500">
-                <tr className="!font-semibold">
-                  <th scope="col" className="!text-left pl-8 py-3">
-                    Sr. No
-                  </th>
-                  <th scope="col" className="!text-left pl-8 py-3">
-                    First Name
-                  </th>
-                  <th scope="col" className="!text-left pl-8 py-3">
-                    Last Name
-                  </th>
-                  <th scope="col" className="!text-left pl-8 py-3">
-                    Email
-                  </th>
-                  <th scope="col" className="!text-left pl-8 py-3">
-                    Employee Id
-                  </th>
-                  <th scope="col" className="!text-left pl-8 py-3">
-                    Department
-                  </th>
-                  <th scope="col" className="!text-left pl-8 py-3">
-                    Salary Template
-                  </th>
-                  <th scope="col" className="px-6 py-3 ">
-                    Manage Salary
-                  </th>
-                  <th scope="col" className="px-6 py-3 ">
-                    Calculate Salary
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {availableEmployee.length > 0 ? (
+          <TableContainer component={Paper} sx={{ boxShadow: "none" }}>
+            <Table sx={{ minWidth: 650 }} aria-label="employee table">
+              <TableHead>
+                <TableRow sx={{ backgroundColor: "#f3f4f6" }}>
+                  <TableCell sx={{ fontWeight: "bold" }}>Sr. No</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Name</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Email</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Employee Id</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Department</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Salary Template</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Manage Salary</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Calculate Salary</TableCell>
+                </TableRow>
+              </TableHead>
+
+              <TableBody>
+                {availableEmployee.length > 0 &&
                   availableEmployee
                     .filter((item) => {
                       return (
-                        (!nameSearch.toLowerCase() ||
-                          (item.first_name !== null &&
-                            item.first_name !== undefined &&
-                            item.first_name
-                              .toLowerCase()
-                              .includes(nameSearch.toLowerCase())))
+                        !nameSearch.toLowerCase() ||
+                        (item.first_name &&
+                          item.first_name.toLowerCase().includes(nameSearch))
                       );
                     })
                     .map((item, id) => (
-                      <tr className="!font-medium border-b" key={id}>
-                        <td className="!text-left pl-8 py-3">{id + 1}</td>
-                        <td className="py-3 pl-8">{item?.first_name}</td>
-                        <td className="py-3 pl-8 ">{item?.last_name}</td>
-                        <td className="py-3 pl-8">{item?.email}</td>
-                        <td className="py-3 pl-8">{item?.empId}</td>
-                        <td className="py-3 pl-9">
+                      <TableRow
+                        key={id}
+                        sx={{
+                          backgroundColor: id % 2 === 0 ? "#ffffff" : "#f9fafb",
+                          "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.04)" },
+                        }}
+                      >
+                        <TableCell>{id + 1}</TableCell>
+                        <TableCell>
+                          <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                            <Avatar
+                              src={item?.photoUrl || "/default-avatar.png"}
+                              alt={item?.first_name || "Employee"}
+                              sx={{ width: 40, height: 40 }}
+                            />
+                            {`${item?.first_name ?? ""} ${item?.last_name ?? ""}`.trim() || "-"}
+                          </Box>
+                        </TableCell>
+                        <TableCell>{item?.email}</TableCell>
+                        <TableCell>{item?.empId}</TableCell>
+                        <TableCell>
                           {item?.deptname?.map((dept, index) => (
                             <span key={index}>{dept?.departmentName}</span>
                           ))}
-                        </td>
-                        <td className="py-3 pl-9">
+                        </TableCell>
+                        <TableCell>
                           {item?.salarystructure?.name}
-                        </td>
-                        <td className="py-3 pl-12">
+                        </TableCell>
+                        <TableCell>
                           <button
                             type="submit"
                             onClick={() => handleCreateModalOpen(item._id)}
                           >
                             <AttachMoney sx={{ color: 'blue' }} />
                           </button>
-                        </td>
-                        <td className="py-3 pl-12">
+                        </TableCell>
+                        <TableCell>
                           <button
                             type="submit"
                             onClick={() =>
-                              navigate(`/organisation/${id}/salary-calculate/${item._id}`)
+                              navigate(`/organisation/${organisationId}/salary-calculate/${item._id}`)
                             }
                           >
                             <Calculate sx={{ color: 'green' }} />
                           </button>
-                        </td>
-                      </tr>
-                    ))
-                ) : (
-                  <tr>
-                    <td colSpan="9" className="text-center py-4 text-red-500 text-lg font-bold">
-                      No Employee Found
-                    </td>
-                  </tr>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
 
-                )}
-              </tbody>
-
-            </table>
-            <nav
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                marginTop: "30px",
-                marginBottom: "20px",
-              }}
+          <div className="flex items-center justify-center gap-3 p-4 bg-gray-50 border-t border-gray-200">
+            <Button
+              variant="contained"
+              onClick={prePage}
+              disabled={currentPage === 1}
+              className="text-sm"
             >
-              <ul
-                style={{ display: "inline-block", marginRight: "5px" }}
-                className="pagination"
-              >
-                <li
-                  style={{ display: "inline-block", marginRight: "5px" }}
-                  className="page-item"
-                >
-                  <button
-                    style={{
-                      color: "#007bff",
-                      padding: "8px 12px",
-                      border: "1px solid #007bff",
-                      textDecoration: "none",
-                      borderRadius: "4px",
-                      transition: "all 0.3s ease",
-                      cursor: "pointer",
-                    }}
-                    className="page-link"
-                    onClick={prePage}
-                  >
-                    Prev
-                  </button>
-                </li>
-                {/* Map through page numbers and generate pagination */}
-                {numbers.map((n, i) => (
-                  <li
-                    key={i}
-                    className={`page-item ${currentPage === n ? "active" : ""}`}
-                    style={{
-                      display: "inline-block",
-                      marginRight: "5px",
-                    }}
-                  >
-                    <a
-                      href={`#${n}`}
-                      style={{
-                        color: currentPage === n ? "#fff" : "#007bff",
-                        backgroundColor:
-                          currentPage === n ? "#007bff" : "transparent",
-                        padding: "8px 12px",
-                        border: "1px solid #007bff",
-                        textDecoration: "none",
-                        borderRadius: "4px",
-                        transition: "all 0.3s ease",
-                      }}
-                      className="page-link"
-                      onClick={() => changePage(n)}
-                    >
-                      {n}
-                    </a>
-                  </li>
-                ))}
-                <li style={{ display: "inline-block" }} className="page-item">
-                  <button
-                    style={{
-                      color: "#007bff",
-                      padding: "8px 12px",
-                      border: "1px solid #007bff",
-                      textDecoration: "none",
-                      borderRadius: "4px",
-                      transition: "all 0.3s ease",
-                      cursor: "pointer",
-                    }}
-                    className="page-link"
-                    onClick={nextPage}
-                  >
-                    Next
-                  </button>
-                </li>
-              </ul>
-            </nav>
+              Previous
+            </Button>
+            {renderPagination()}
+            <Button
+              variant="contained"
+              onClick={nextPage}
+              disabled={currentPage === totalPages}
+              className="text-sm"
+            >
+              Next
+            </Button>
           </div>
         </article>
       </Container>

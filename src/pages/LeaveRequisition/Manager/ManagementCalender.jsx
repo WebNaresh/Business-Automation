@@ -376,7 +376,7 @@ const ManagementCalender = () => {
           <SkeletonLeave />
         ) : !EmployeeLeaves ? (
           <div className="flex items-center flex-col gap-2 justify-center">
-            <img src="/calender.svg" className="h-[200px]" alt="none" />
+            <img src="/calendar1.png" className="h-[250px]" alt="none" />
             <div>
               <h1 className="text-4xl text-gray-700   font-semibold  tracking-tight">
                 {employeeLoading ? "Loading..." : "Select Employee!"}

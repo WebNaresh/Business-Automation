@@ -668,7 +668,7 @@ function CalculateSalary() {
                 <thead class="border">
                   <tr class="bg-blue-200 border">
                     <th class="py-2 border">Total Gross Salary :</th>
-                    <th class=" py-2 border"> {salary?.totalIncome || ""}</th>
+                    <th class="border"> {salary?.totalIncome || ""}</th>
                     <th class="py-2 border">Total Deduction :</th>
                     <th class="py-2 border"> {salary?.totalDeduction || ""}</th>
                   </tr>
