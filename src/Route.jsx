@@ -146,6 +146,8 @@ import ShiftNotification from "./pages/shift-notification/page";
 import SingleDepartment from "./pages/single-department/single-department";
 import SingleOrganisation from "./pages/single-orgnisation/single-organisation";
 import NotFound from "./utils/Forbidden/NotFound";
+import DisplayEmpCard from "./pages/Employee/DisplayEmpCard";
+import DisplayCardDept from "./pages/Departments/DisplayCardDept";
 
 const App = () => {
   return (
@@ -266,6 +268,48 @@ const App = () => {
                 ]}
               >
                 <RemoteEmployee />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/organisation/:organisationId/display-emp-card"
+            element={
+              <RequireAuth
+                permission={[
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "Department-Head",
+                  "Delegate-Department-Head",
+                  "HR",
+                  "Manager",
+                  "Department-Admin",
+                  "Delegate-Department-Admin",
+                  "Employee",
+                  "Accountant",
+                ]}
+              >
+                <DisplayEmpCard />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/organisation/:organisationId/display-card-dept"
+            element={
+              <RequireAuth
+                permission={[
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "Department-Head",
+                  "Delegate-Department-Head",
+                  "HR",
+                  "Manager",
+                  "Department-Admin",
+                  "Delegate-Department-Admin",
+                  "Employee",
+                  "Accountant",
+                ]}
+              >
+                <DisplayCardDept />
               </RequireAuth>
             }
           />
@@ -760,7 +804,7 @@ const App = () => {
               </RequireAuth>
             }
           />
-         
+
           <Route
             path="/organisation/:organisationId/create-communication"
             element={
@@ -1064,7 +1108,7 @@ const App = () => {
                   "Delegate-Accountant",
                   "HR",
                   "Manager",
-                 
+
                 ]}
               >
                 <ViewPayslip />

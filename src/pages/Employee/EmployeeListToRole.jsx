@@ -18,7 +18,7 @@ import {
   TextField,
   Tooltip,
   Typography,
-  FormControl, InputLabel, Select, MenuItem , Avatar
+  FormControl, InputLabel, Select, MenuItem, Avatar
 } from "@mui/material";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
@@ -40,6 +40,11 @@ const EmployeeListToRole = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [department, setDepartment] = useState("");
   const { organisationId } = useParams();
+  const [showEmpCard, setShowEmpCard] = useState(false);
+
+  const handleIconClick = () => {
+    setShowEmpCard(true); // Set to true when the icon is clicked
+  };
 
   const {
     Departmentoptions,
@@ -143,6 +148,14 @@ const EmployeeListToRole = () => {
     navigate(`/organisation/${organisationId}/employee-view/${empId}`);
   };
 
+  const handleGridViewClick = () => {
+    navigate(`/organisation/${organisationId}/display-emp-card`);
+  };
+
+  const handleTableViewClick = () => {
+    navigate(`/organisation/${organisationId}/employee-list`);
+  };
+
   // 📊 Handle Export to Excel
   const handleExportToExcel = () => {
     const worksheet = XLSX.utils.json_to_sheet(
@@ -199,7 +212,7 @@ const EmployeeListToRole = () => {
         </div>
 
         <div className="p-6 border-b border-gray-200">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
             {/* Search Bar */}
             <Tooltip
               title="No employees found"
@@ -235,6 +248,49 @@ const EmployeeListToRole = () => {
               </Select>
             </FormControl>
 
+            {/* Grid/List Toggle Button */}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                width: "100%",
+                border: "1px solid #e5e7eb",
+                borderRadius: "6px",
+                overflow: "hidden",
+              }}
+            >
+              <IconButton
+                sx={{
+                  backgroundColor: "transparent",
+                  "&:hover": { backgroundColor: "#e2e8f0" },
+                  width: "50%",
+                  borderRadius: 0,
+                  padding: "8px",
+                }}
+                onClick={handleTableViewClick}
+              >
+                <PrintIcon sx={{
+                  color: "#64748b",
+                  fontSize: "20px"
+                }} />
+              </IconButton>
+              <IconButton
+                sx={{
+                  backgroundColor: "transparent",
+                  "&:hover": { backgroundColor: "#e2e8f0" },
+                  width: "50%",
+                  borderRadius: 0,
+                  padding: "8px",
+                }}
+                onClick={handleGridViewClick}
+              >
+                <PrintIcon sx={{
+                  color: "#64748b",
+                  fontSize: "20px"
+                }} />
+              </IconButton>
+            </Box>
+
             {/* Export PDF Button */}
             <Button
               variant="contained"
@@ -268,6 +324,8 @@ const EmployeeListToRole = () => {
             </Button>
           </div>
         </div>
+
+
 
         <TableContainer component={Paper} sx={{ boxShadow: "none" }}>
           <Table sx={{ minWidth: 650 }} aria-label="employee table">
@@ -307,8 +365,15 @@ const EmployeeListToRole = () => {
                           <Avatar
                             src={item?.photoUrl || "/default-avatar.png"}
                             alt={item?.first_name || "Employee"}
-                            sx={{ width: 40, height: 40 }}
-                          />
+                            sx={{
+                              width: 50,
+                              height: 50,
+                              bgcolor: item?.photoUrl ? 'transparent' : '#9ca3af', // Fallback color when the image is missing
+                              backgroundColor: item?.photoUrl ? 'transparent' : `#${Math.floor(Math.random() * 16777215).toString(16)}`, // Random color fallback
+                            }}
+                          >
+                            {!item?.photoUrl && item?.first_name?.charAt(0).toUpperCase()}  {/* Show the first letter of the name when no image */}
+                          </Avatar>
                           {`${item?.first_name ?? ""} ${item?.last_name ?? ""}`.trim() || "-"}
                         </Box>
                       </TableCell>

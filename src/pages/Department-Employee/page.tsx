@@ -11,6 +11,7 @@ import {
   TableHead,
   TableRow,
   Typography,
+  Avatar
 } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
@@ -34,8 +35,7 @@ const DepartmentEmployee = (props: Props) => {
     ],
     queryFn: async () => {
       const response = await axios.get(
-        `${import.meta.env.VITE_API}/route/get-employee/from-department/${
-          params.organisationId
+        `${import.meta.env.VITE_API}/route/get-employee/from-department/${params.organisationId
         }/${params.departmentId}`
       );
 
@@ -82,24 +82,11 @@ const DepartmentEmployee = (props: Props) => {
       <div className="flex flex-col gap-4 p-6 items-start">
         <div className="w-full flex justify-between items-center">
           <div>
-            <Typography
-              variant="h4"
-              sx={{
-                textAlign: "center",
-                marginBottom: "8px",
-                fontWeight: 600,
-                color: "#1F2937",
-              }}
-            >
-              Manage Department Employees
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{
-                color: "#6B7280",
-              }}
-            >
-              Manage your department employees here.
+            <h4 className="text-2xl font-bold text-gray-800 mb-2">
+              Manage Department Employee
+            </h4>
+            <Typography variant="body2" className="text-center text-gray-600">
+              Manage and edit employee information in the department.
             </Typography>
           </div>
         </div>
@@ -156,15 +143,16 @@ const DepartmentEmployee = (props: Props) => {
                   onMouseEnter={(e) => handleMouseEnter(e, employee)}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <TableCell
-                    sx={{
-                      padding: "16px 24px",
-                      color: "#64748b",
-                      fontSize: "0.875rem",
-                    }}
-                  >
-                    {employee._id}
-                  </TableCell>
+                  <TableCell>
+                        <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                          <Avatar
+                            src={"/default-avatar.png"}
+                            alt={employee?.first_name || "Employee"}
+                            sx={{ width: 40, height: 40 }}
+                          />
+                          
+                        </Box>
+                      </TableCell>
                   <TableCell
                     sx={{
                       padding: "16px 24px",
