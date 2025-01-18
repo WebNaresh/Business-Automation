@@ -63,9 +63,9 @@ const PFSetup = require("./routes/PFSetupRoute");
 const extraDay = require("./routes/extradayRoute");
 const compOffLeave = require("./routes/compOffLeaveRoute")
 const salaryComponent = require("./routes/SalaryComponentRoute/SalaryComponentRoute")
-
 const notificationroute = require("./routes/Notificationroute/notificationroute");
-// Create an instance of the RedisClient class
+const employeeProject = require('./routes/EmployeeProjectRoute');
+const employeeNote = require('./routes/EmployeeNoteRoute')
 
 // Socket.IO setup
 const server = http.createServer(app);
@@ -91,6 +91,8 @@ app.use((req, res, next) => {
   next();
 });
 app.use("/route", employee);
+app.use("/route", employeeProject);
+app.use("/route", employeeNote);
 app.use("/route", salaryComponent);
 app.use("/route", vendor)
 app.use("/route", extraDay);
