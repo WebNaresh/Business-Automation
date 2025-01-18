@@ -2,13 +2,11 @@ import {
   Business,
   Dashboard,
   Description,
-  Fingerprint,
   Groups,
   ListAlt,
   LocationOn,
   MonetizationOn,
   NotificationsActive,
-  PanToolAlt,
   Payment,
   PeopleAlt,
   PersonAdd,
@@ -43,7 +41,6 @@ import UserProfile from "../../../hooks/UserData/useUser";
 import useGetCommunicationPermission from "../../../pages/EmployeeSurvey/useContext/Permission";
 import useOrgGeo from "../../../pages/Geo-Fence/useOrgGeo";
 import NavAccordion from "./NavAccordian";
-import HomeRepairServiceOutlinedIcon from "@mui/icons-material/HomeRepairServiceOutlined";
 
 const TestNavItems = ({ toggleDrawer }) => {
   // to define the route and pass the dynamic organization id
@@ -512,6 +509,49 @@ const TestNavItems = ({ toggleDrawer }) => {
               text: "Reporting MIS",
             },
           ],
+        }, 
+        "Project": {
+          open: false,
+          icon: <PeopleAlt className=" !text-[1.2em]" />,
+          isVisible:
+            window.location.pathname?.includes("organisation") &&
+            [
+              "Super-Admin",
+              "Delegate-Super-Admin",
+              "Delegate-Super-Admin",
+              "Department-Head",
+              "Delegate-Department-Head",
+              "Department-Admin",
+              "Delegate-Department-Admin",
+              "Accountant",
+              "Delegate-Accountant",
+              "HR",
+              "Manager",
+              "Employee"
+
+            ]?.includes(role),
+          routes: [
+            {
+              key: "faqs",
+              isVisible: [
+                "Super-Admin",
+                "Delegate-Super-Admin",
+                "Delegate-Super-Admin",
+                "Department-Head",
+                "Delegate-Department-Head",
+                "Department-Admin",
+                "Delegate-Department-Admin",
+                "Accountant",
+                "Delegate-Accountant",
+                "HR",
+                "Manager",
+                "Employee"
+              ].includes(role),
+              link: `/organisation/${orgId}/projecte-of-employee`,
+              icon: <PersonAdd className=" !text-[1.2em]" />,
+              text: "Project",
+            },
+          ],
         },
         Department: {
           open: false,
@@ -564,39 +604,71 @@ const TestNavItems = ({ toggleDrawer }) => {
             },
           ],
         },
-        // Remote: {
-        //   open: false,
-        //   isVisible:
-        //     // (["Employee"].includes(role) && !isUserMatchInEmployeeList) ||
-        //     ["Super-Admin", "Manager", "Delegate-Super-Admin", "HR"].includes(role),
-        //   icon: <MonetizationOn className="!text-[1.2em]" />,
-        //   routes: [
-        //     {
-        //       key: "addRemoteVisitTask",
-        //       isVisible:
-        //         ["Super-Admin", "Manager", "HR", "Delegate-Super-Admin"].includes(role) &&
-        //         data?.organisation?.packageInfo === "Enterprise Plan" &&
-        //         data?.organisation?.packages?.includes("Remote Task"),
-        //       link: `/organisation/${orgId}/remote-punching-tasks`,
-        //       icon: <AssignmentIcon className="!text-[1.2em]" />,
-        //       text: "Remote Visit tasks",
-        //     },
-        //     {
-        //       key: "addPunch",
-        //       isVisible: ["Employee"].includes(role) && !isUserMatchInEmployeeList,
-        //       link: `/organisation/${orgId}/employee-remote-punching`,
-        //       icon: <Fingerprint className="!text-[1.2em]" />,
-        //       text: "Remote Punch-in-out",
-        //     },
-        //     {
-        //       key: "missPunch",
-        //       isVisible: ["Employee"].includes(role) && !isUserMatchInEmployeeList,
-        //       link: `/organisation/${orgId}/remotePunching`,
-        //       icon: <PanToolAlt className="!text-[1.2em]" />,
-        //       text: "Apply Miss For Punch",
-        //     },
-        //   ],
-        // },
+       
+        "Help Desk": {
+          open: false,
+          icon: <PeopleAlt className=" !text-[1.2em]" />,
+          isVisible:
+            window.location.pathname?.includes("organisation") &&
+            [
+              "Super-Admin",
+              "Delegate-Super-Admin",
+              "Delegate-Super-Admin",
+              "Department-Head",
+              "Delegate-Department-Head",
+              "Department-Admin",
+              "Delegate-Department-Admin",
+              "Accountant",
+              "Delegate-Accountant",
+              "HR",
+              "Manager",
+              "Employee"
+
+            ]?.includes(role),
+          routes: [
+            {
+              key: "faqs",
+              isVisible: [
+                "Super-Admin",
+                "Delegate-Super-Admin",
+                "Delegate-Super-Admin",
+                "Department-Head",
+                "Delegate-Department-Head",
+                "Department-Admin",
+                "Delegate-Department-Admin",
+                "Accountant",
+                "Delegate-Accountant",
+                "HR",
+                "Manager",
+                "Employee"
+              ].includes(role),
+              link: `/organisation/${orgId}/help-desk`,
+              icon: <PersonAdd className=" !text-[1.2em]" />,
+              text: "Help Desk",
+            },
+            {
+              key: "ticket",
+              isVisible: [
+                "Super-Admin",
+                "Delegate-Super-Admin",
+                "Delegate-Super-Admin",
+                "Department-Head",
+                "Delegate-Department-Head",
+                "Department-Admin",
+                "Delegate-Department-Admin",
+                "Accountant",
+                "Delegate-Accountant",
+                "HR",
+                "Manager",
+                "Employee"
+              ].includes(role),
+              link: `/organisation/${orgId}/tickets`,
+              icon: <Groups className=" !text-[1.2em]" />,
+              text: "Tickets",
+            },
+          ],
+        }, 
+
 
         Branches: {
           open: false,

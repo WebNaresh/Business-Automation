@@ -26,6 +26,8 @@ const PerformanceSetup = () => {
     appraisalStartDate: z.object({
       startDate: z.string(),
       endDate: z.string(),
+    }).refine((data) => new Date(data.startDate) <= new Date(data.endDate), {
+      message: "Appraisal start date must be before the end date.",
     }),
     appraisalEndDate: z.object({
       startDate: z.string(),
@@ -57,14 +59,11 @@ const PerformanceSetup = () => {
     ),
     isDownCast: z.boolean().optional(),
     isFeedback: z.boolean().optional(),
-    // isNonMeasurableAllowed: z.boolean().optional(),
     isManagerApproval: z.boolean().optional(),
     isMidGoal: z.boolean().optional(),
-    // isSendFormInMid: z.boolean().optional(),
-    // deleteFormEmployeeOnBoarding: z.boolean().optional(),
-    // isKRA: z.boolean().optional(),
     isSelfGoal: z.boolean().optional(),
   });
+
 
   const { data: performance, isFetching } = useQuery(
     "performancePeriod",
@@ -77,7 +76,6 @@ const PerformanceSetup = () => {
           },
         }
       );
-
       return data;
     }
   );
@@ -97,34 +95,27 @@ const PerformanceSetup = () => {
       isNonMeasurableAllowed: false,
       isManagerApproval: false,
       isMidGoal: false,
-      // // isSendFormInMid: false,
-      // deleteFormEmployeeOnBoarding: false,
-      // isKRA: false,
       isSelfGoal: false,
     },
   });
 
   useEffect(() => {
     if (performance) {
-      // setValue(
-      //   "deleteFormEmployeeOnBoarding",
-      //   performance.deleteFormEmployeeOnBoarding
-      // );
       setValue("enddate", {
-        startDate: performance.enddate,
-        endDate: performance.enddate,
+        startDate: new Date(performance.enddate).toISOString(),
+        endDate: new Date(performance.enddate).toISOString(),
       });
       setValue("startdate", {
-        startDate: performance.startdate,
-        endDate: performance.startdate,
+        startDate: new Date(performance.startdate).toISOString(),
+        endDate: new Date(performance.startdate).toISOString(),
       });
       setValue("appraisalStartDate", {
-        startDate: performance.appraisalStartDate,
-        endDate: performance.appraisalStartDate,
+        startDate: new Date(performance.appraisalStartDate).toISOString(),
+        endDate: new Date(performance.appraisalStartDate).toISOString(),
       });
       setValue("appraisalEndDate", {
-        startDate: performance.appraisalEndDate,
-        endDate: performance.appraisalEndDate,
+        startDate: new Date(performance.appraisalEndDate).toISOString(),
+        endDate: new Date(performance.appraisalEndDate).toISOString(),
       });
       setValue(
         "goals",
@@ -135,12 +126,10 @@ const PerformanceSetup = () => {
       );
       setValue("isDownCast", performance.isDownCast);
       setValue("isFeedback", performance.isFeedback);
-      // setValue("isKRA", performance.isKRA);
       setValue("isManagerApproval", performance.isManagerApproval);
       setValue("isMidGoal", performance.isMidGoal);
       setValue("isNonMeasurableAllowed", performance.isNonMeasurableAllowed);
       setValue("isSelfGoal", performance.isSelfGoal);
-      // setValue("isSendFormInMid", performance.isSendFormInMid);
       setValue("organizationId", performance.organizationId);
       setValue("stages", {
         label: performance.stages,
@@ -158,6 +147,7 @@ const PerformanceSetup = () => {
     // eslint-disable-next-line
   }, [isFetching]);
 
+
   let stagesOptions = [
     {
       value: "Goal setting",
@@ -171,14 +161,6 @@ const PerformanceSetup = () => {
       value: "KRA stage/Ratings Feedback/Manager review stage",
       label: "KRA stage/Ratings Feedback/Manager review stage",
     },
-    // {
-    //   value: "Feedback collection stage",
-    //   label: "Feedback collection stage",
-    // },
-    // {
-    //   value: "Ratings Feedback/Manager review stage",
-    //   label: "Ratings Feedback/Manager review stage",
-    // },
     {
       value: "Employee acceptance/acknowledgement stage",
       label: "Employee acceptance/acknowledgement stage",
@@ -221,7 +203,7 @@ const PerformanceSetup = () => {
 
   const performanceSetup = useMutation(
     async (data) => {
-      console.log(data.goalType);
+      console.log("data", data);
       const performanceSetting = {
         ...data,
         startdate: data.startdate.startDate,
@@ -252,6 +234,9 @@ const PerformanceSetup = () => {
   const onSubmit = async (data) => {
     performanceSetup.mutate(data);
   };
+
+  console.log("error", errors);
+
 
   return (
     <div>
@@ -379,16 +364,6 @@ const PerformanceSetup = () => {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  {/* <AuthInputFiled
-                    name="isNonMeasurableAllowed"
-                    icon={TrendingUp}
-                    control={control}
-                    type="checkbox"
-                    placeholder="Goals"
-                    label="Non-mesurable target can be added *"
-                    errors={errors}
-                    error={errors.isNonMeasurableAllowed}
-                  /> */}
                   <AuthInputFiled
                     name="isManagerApproval"
                     icon={TrendingUp}
@@ -411,42 +386,7 @@ const PerformanceSetup = () => {
                     error={errors.isMidGoal}
                   />
                 </div>
-                {/* 
-                <div className="grid grid-cols-2 gap-4">
-                  {" "}
-                  <AuthInputFiled
-                    name="isSendFormInMid"
-                    icon={TrendingUp}
-                    control={control}
-                    type="checkbox"
-                    placeholder="Goals"
-                    label="Send the form to employee middle of cycle stage"
-                    errors={errors}
-                    error={errors.isSendFormInMid}
-                  />
-                </div> */}
-                <div className="grid grid-cols-2 gap-4">
-                  {/* <AuthInputFiled
-                    name="deleteFormEmployeeOnBoarding"
-                    icon={TrendingUp}
-                    control={control}
-                    type="checkbox"
-                    placeholder="Goals"
-                    label="Delete the form when employee offboarded"
-                    errors={errors}
-                    error={errors.deleteFormEmployeeOnBoarding}
-                  /> */}
-                  {/* <AuthInputFiled
-                    name="isKRA"
-                    icon={TrendingUp}
-                    control={control}
-                    type="checkbox"
-                    placeholder="Goals"
-                    label="Employee can add KRA"
-                    errors={errors}
-                    error={errors.isKRA}
-                  /> */}
-                </div>
+
                 <AuthInputFiled
                   name="isSelfGoal"
                   icon={TrendingUp}
@@ -462,7 +402,7 @@ const PerformanceSetup = () => {
                   type="submit"
                   variant="contained"
                   color="primary"
-                  // disabled={performanceSetup.isLoading}
+
                 >
                   {performanceSetup.isLoading ? (
                     <CircularProgress size={20} />

@@ -148,6 +148,8 @@ import SingleOrganisation from "./pages/single-orgnisation/single-organisation";
 import NotFound from "./utils/Forbidden/NotFound";
 import DisplayEmpCard from "./pages/Employee/DisplayEmpCard";
 import DisplayCardDept from "./pages/Departments/DisplayCardDept";
+import HelpDesk from "./pages/HelpDesk/Helpdesk";
+import ProjectEmployee from "./pages/ProjectOfEmployee.jsx/ProjectEmployee";
 
 const App = () => {
   return (
@@ -289,6 +291,27 @@ const App = () => {
                 ]}
               >
                 <DisplayEmpCard />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/organisation/:organisationId/projecte-of-employee"
+            element={
+              <RequireAuth
+                permission={[
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "Department-Head",
+                  "Delegate-Department-Head",
+                  "HR",
+                  "Manager",
+                  "Department-Admin",
+                  "Delegate-Department-Admin",
+                  "Employee",
+                  "Accountant",
+                ]}
+              >
+                <ProjectEmployee />
               </RequireAuth>
             }
           />
@@ -589,6 +612,28 @@ const App = () => {
                 ]}
               >
                 <WaitMain />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/organisation/:organisationId/help-desk"
+            element={
+              <RequireAuth
+                permission={[
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "Department-Head",
+                  "Delegate-Department-Head",
+                  "Department-Admin",
+                  "Delegate-Department-Admin",
+                  "Accountant",
+                  "Delegate-Accountant",
+                  "HR",
+                  "Manager",
+                  "Employee",
+                ]}
+              >
+                <HelpDesk />
               </RequireAuth>
             }
           />

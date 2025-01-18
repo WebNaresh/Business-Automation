@@ -130,7 +130,7 @@ const ResetNewPassword = ({ open, handleClose }) => {
                     </IconButton>
                   </div>
                   <p className="text-gray-500 tracking-tight ">
-                    Reset password for your AEGIS account{" "}
+                    Reset password for your SMarTea account{" "}
                   </p>
                 </div>
                 <form className="w-full" onSubmit={handleSubmit(OnSubmit)}>
@@ -139,7 +139,6 @@ const ResetNewPassword = ({ open, handleClose }) => {
                     visible={password}
                     setVisible={setPassword}
                     control={control}
-                    // icon={Work}
                     type={"password"}
                     placeholder="Ex: Test@123"
                     label="Enter Previous Password *"
@@ -153,7 +152,6 @@ const ResetNewPassword = ({ open, handleClose }) => {
                     visible={cpassword}
                     setVisible={setCPassword}
                     control={control}
-                    // icon={Work}
                     type={"password"}
                     placeholder="Ex: Test@123"
                     label="Enter New Password *"
@@ -168,7 +166,6 @@ const ResetNewPassword = ({ open, handleClose }) => {
                     visible={prevPassword}
                     setVisible={setPrevPassword}
                     control={control}
-                    // icon={Work}
                     placeholder="Ex: Test@123"
                     label="Confirm New Password *"
                     readOnly={false}

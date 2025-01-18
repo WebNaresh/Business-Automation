@@ -30,25 +30,22 @@ export function FamilyInfo({ empId }) {
 
     // Emergency Contact Data
     const emergencyContact = {
-        emergency_contact_no: profile?.emergency_contact_no || '-',
         emergency_contact_name: profile?.emergency_contact_name || '-',
-        relationship_with_emergency_contact: profile?.relationship_with_emergency_contact || '-',
-        alternate_contact_no: profile?.alternate_contact_no || '-',
+        ["Relation with emergency contact"]: profile?.relationship_with_emergency_contact || '-',
+        ["Emergency Contact Number"]: profile?.emergency_contact_no || '-',
+        ["Alternate Contact Number"]: profile?.alternate_contact_no || '-',
         emergency_medical_condition: profile?.emergency_medical_condition || '-',
     };
 
     // Family Members Data
-    const familyMembers = {
-        parent_name: profile?.parent_name || '-',
-        spouse_name: profile?.spouse_name || '-',
-        father_first_name: profile?.father_first_name || '-',
-        father_middal_name: profile?.father_middal_name || '-',
-        father_last_name: profile?.father_last_name || '-',
+    const familyDetails = {
+        father_full_name: `${profile?.father_first_name || '-'} ${profile?.father_middal_name || ''} ${profile?.father_last_name || '-'}`,
         father_occupation: profile?.father_occupation || '-',
-        mother_first_name: profile?.mother_first_name || '-',
-        mother_middal_name: profile?.mother_middal_name || '-',
-        mother_last_name: profile?.mother_last_name || '-',
+        father_age: profile?.father_birthdate ||  '-',
+        mother_full_name: `${profile?.mother_first_name || '-'} ${profile?.mother_middal_name || ''} ${profile?.mother_last_name || '-'}`,
         mother_occupation: profile?.mother_occupation || '-',
+        mother_age: profile?.mother_birthdate ||  '-',
+        total_siblings: profile?.total_siblings || '0',
     };
 
     if (isLoading) {
@@ -63,7 +60,7 @@ export function FamilyInfo({ empId }) {
         <div className="p-4 space-y-6">
             {/* Emergency Contact Section */}
             <div className="border border-gray-300 rounded-md p-4 bg-white shadow-md">
-                <h2 className="text-lg font-semibold mb-4 border-b pb-2">Emergency Contact</h2>
+                <h2 className="text-lg font-semibold mb-4 border-b pb-2">Emergency Contact Details</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {Object.entries(emergencyContact).map(([key, value]) => (
                         <div key={key} className="flex flex-col">
@@ -78,9 +75,9 @@ export function FamilyInfo({ empId }) {
 
             {/* Family Members Section */}
             <div className="border border-gray-300 rounded-md p-4 bg-white shadow-md">
-                <h2 className="text-lg font-semibold mb-4 border-b pb-2">Family Members</h2>
+                <h2 className="text-lg font-semibold mb-4 border-b pb-2">Family Details</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                    {Object.entries(familyMembers).map(([key, value]) => (
+                    {Object.entries(familyDetails).map(([key, value]) => (
                         <div key={key} className="flex flex-col">
                             <span className="text-gray-600 font-medium capitalize">
                                 {key.replace(/_/g, ' ')}
@@ -89,8 +86,32 @@ export function FamilyInfo({ empId }) {
                         </div>
                     ))}
                 </div>
+
+                {/* Sibling Table */}
+                <div className="mt-6">
+                    <h3 className="text-md font-semibold mb-4">Siblings Details</h3>
+                    <table className="table-auto border-collapse border border-gray-300 w-full text-left">
+                        <thead className="bg-gray-100">
+                            <tr>
+                                <th className="border border-gray-300 px-4 py-2">Sr. No</th>
+                                <th className="border border-gray-300 px-4 py-2">Name</th>
+                                <th className="border border-gray-300 px-4 py-2">Occupation</th>
+                                <th className="border border-gray-300 px-4 py-2">Age</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {Array.from({ length: 5 }, (_, index) => (
+                                <tr key={index}>
+                                    <td className="border border-gray-300 px-4 py-2">{index + 1}</td>
+                                    <td className="border border-gray-300 px-4 py-2">-</td>
+                                    <td className="border border-gray-300 px-4 py-2">-</td>
+                                    <td className="border border-gray-300 px-4 py-2">-</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );
 }
-

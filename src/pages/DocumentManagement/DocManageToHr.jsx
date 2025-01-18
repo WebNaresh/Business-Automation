@@ -13,17 +13,17 @@ const DocManageToHr = () => {
   console.log("getRecordOfEmployee", getRecordOfEmployee);
 
   // to filter the employee based on first nanae , last name
-  const filteredEmployeesRecord = 
+  const filteredEmployeesRecord =
     getRecordOfEmployee && Array.isArray(getRecordOfEmployee)
       ? getRecordOfEmployee.filter(
-          (employee) =>
-            employee.employeeId?.first_name
-              .toLowerCase()
-              .includes(searchQuery.toLowerCase()) ||
-            employee.employeeId?.last_name
-              .toLowerCase()
-              .includes(searchQuery.toLowerCase())
-        )
+        (employee) =>
+          employee.employeeId?.first_name
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase()) ||
+          employee.employeeId?.last_name
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase())
+      )
       : [];
   console.log("filter", filteredEmployeesRecord);
 

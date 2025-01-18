@@ -64,6 +64,7 @@ export function PersonalInfo({ empId }) {
     weakness: profile?.weakness || '-',
     bank_name: profile?.bank_name || '-',
     ifsc_code: profile?.ifsc_code || '-',
+    spouse_name: profile?.spouse_name || '-',
   };
 
 
@@ -81,29 +82,39 @@ export function PersonalInfo({ empId }) {
       <Section title="Personal Details">
         <InfoItem label="Full Name" value={`${personalData.first_name} ${personalData.last_name}`} />
         <InfoItem label="Email" value={personalData.email} />
-        <InfoItem label="Phone Number" value={personalData.phone_number} />
-        <InfoItem label="WhatsApp Number" value={personalData.whatsapp_number} />
         <InfoItem label="Date of Birth" value={personalData.date_of_birth} />
+        <InfoItem label="Phone Number" value={personalData.phone_number} />
+        <InfoItem label="What's App Number" value={personalData.whatsapp_number} />
+      
         <InfoItem label="Gender" value={personalData.gender} />
+        <InfoItem label="Citizenship" value={personalData.citizenship} />
+        <InfoItem label="Spouse Name" value={profile?.spouse_name} />
       </Section>
 
       {/* Residential Details */}
       <Section title="Residential Details">
-        <InfoItem label=" Current Address" value={personalData.address} />
-        <InfoItem label="Citizenship" value={personalData.citizenship} />
-        <InfoItem label="Permanent Address" value={personalData.permanent_address} />
+        <div className="flex flex-col gap-4">
+          {/* Current Address */}
+          <InfoItem label="Current Address" value={personalData.address} />
+
+          {/* Permanent Address */}
+          <InfoItem label="Permanent Address" value={personalData.permanent_address} />
+        </div>
       </Section>
+
 
       {/* ID Proof Details */}
       <Section title="ID Proof Details">
         <InfoItem label="Aadhar Card Number" value={personalData.adhar_card_number} />
         <InfoItem label="PAN Card Number" value={personalData.pan_card_number} />
-        <InfoItem label="Bank Account Number" value={personalData.bank_account_no} />
-        <InfoItem label="UAN Number" value={personalData.uanNo} />
-        <InfoItem label="ESIC Number" value={personalData.esicNo} />
         <InfoItem label="Voting Card Number" value={personalData.voting_card_no} />
         <InfoItem label="Bank Name" value={personalData.bank_name} />
+        <InfoItem label="Bank Account Number" value={personalData.bank_account_no} />
         <InfoItem label="IFSC Code" value={personalData.ifsc_code} />
+        <InfoItem label="UAN Number" value={personalData.uanNo} />
+        <InfoItem label="ESIC Number" value={personalData.esicNo} />
+
+
       </Section>
 
       {/* Medical Details */}
@@ -118,15 +129,28 @@ export function PersonalInfo({ empId }) {
       </Section>
 
       {/* Additional Details */}
-      <Section title="Additional Details">
-        <InfoItem label="Short Term Goal" value={personalData.short_term_goal} />
-        <InfoItem label="Long Term Goal" value={personalData.long_term_goal} />
-        <InfoItem label="Strength" value={personalData.strength} />
-        <InfoItem label="Weakness" value={personalData.weakness} />
-        <InfoItem label="Favourite Book" value={personalData.favourite_book} />
-        <InfoItem label="Favourite Travel Destination" value={personalData.favourite_travel_destination} />
-      
-      </Section>
+      <div className="p-4 rounded-lg shadow-md bg-white">
+        {/* Section Title */}
+        <h2 className="text-lg font-semibold mb-4 border-b pb-2">Additional Details</h2>
+
+        <div className="space-y-4">
+          {/* Short Term and Long Term Goals */}
+          <InfoItem label="Short Term Goal" value={personalData.short_term_goal} />
+          <InfoItem label="Long Term Goal" value={personalData.long_term_goal} />
+
+          {/* Strength, Weakness, and Favourite Travel Destination */}
+          <div className="grid grid-cols-3 gap-4">
+            <InfoItem label="Strength" value={personalData.strength} />
+            <InfoItem label="Weakness" value={personalData.weakness} />
+            <InfoItem
+              label="Favourite Travel Destination"
+              value={personalData.favourite_travel_destination}
+            />
+          </div>
+        </div>
+      </div>
+
+
     </div>
   );
 }

@@ -30,23 +30,22 @@ export function OfficialInfo({ empId }) {
 
     // Segregate Basic Info
     const basicInfo = {
-        profile: profile?.profile || '-',
-        empId: profile?.empId || '-',
-        employmentType: profile?.employmentType?.title || '-',
-        joining_date: profile?.joining_date
+        ["Profile Name"]: profile?.profile || '-',
+        ["Employee ID"]: profile?.empId || '-',
+        ["Employment Type"]: profile?.employmentType?.title || '-',
+        Joining_Date: profile?.joining_date
             ? new Date(profile?.joining_date).toLocaleDateString()
             : '-',
-        companyemail: profile?.companyemail || '-',
-        id_card_no: profile?.id_card_no || '-',
+        ["Official Mail Id"]: profile?.companyemail || '-',
+        ["Work Location"]: profile?.worklocation?.[0]?.city || '-',
+        Department: profile?.deptname?.[0]?.departmentName || '-',
+        ["Shift Allocation"]: profile?.shift_allocation || '-',
     };
 
-    // Segregate Work Info
+    // Segregate Work Info (Confidential Details)
     const workInfo = {
-        worklocation: profile?.worklocation?.[0]?.city || '-',
-        deptname: profile?.deptname?.[0]?.departmentName || '-',
-        shift_allocation: profile?.shift_allocation || '-',
-        current_ctc: profile?.current_ctc || '-',
-        company_assets: profile?.company_assets || '-',
+        ["Full Name"]: `${profile?.firstname || ''} ${profile?.lastname || ''}` || '-',
+        ["Current CTC"]: profile?.current_ctc || '-',
     };
 
     if (isLoading) {
@@ -61,7 +60,7 @@ export function OfficialInfo({ empId }) {
         <div className="p-4 space-y-6">
             {/* BASIC INFO Section */}
             <div className="border border-gray-300 rounded-md p-4 bg-white shadow-md">
-                <h2 className="text-lg font-semibold mb-4 border-b pb-2">Basic Info</h2>
+                <h2 className="text-lg font-semibold mb-4 border-b pb-2">Basic Details</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     {Object.entries(basicInfo).map(([key, value]) => (
                         <div key={key} className="flex flex-col">
@@ -74,16 +73,29 @@ export function OfficialInfo({ empId }) {
                 </div>
             </div>
 
-            {/* WORK INFO Section */}
+            {/* CONFIDENTIAL DETAILS Section */}
             <div className="border border-gray-300 rounded-md p-4 bg-white shadow-md">
-                <h2 className="text-lg font-semibold mb-4 border-b pb-2">Work Info</h2>
+                <h2 className="text-lg font-semibold mb-4 border-b pb-2">Confidential Details</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     {Object.entries(workInfo).map(([key, value]) => (
                         <div key={key} className="flex flex-col">
                             <span className="text-gray-600 font-medium capitalize">
                                 {key.replace(/_/g, ' ')}
                             </span>
-                            <span className="text-gray-800">{value}</span>
+                            {typeof value === 'object' ? (
+                                <div className="flex flex-col space-y-2">
+                                    {Object.entries(value).map(([subKey, subValue]) => (
+                                        <div key={subKey} className="flex flex-col">
+                                            <span className="text-gray-600 font-medium capitalize">
+                                                {subKey}
+                                            </span>
+                                            <span className="text-gray-800">{subValue}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : (
+                                <span className="text-gray-800">{value}</span>
+                            )}
                         </div>
                     ))}
                 </div>
@@ -91,5 +103,3 @@ export function OfficialInfo({ empId }) {
         </div>
     );
 }
-
-

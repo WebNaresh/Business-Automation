@@ -180,7 +180,6 @@ const EmpProfile = () => {
       },
     }
   );
-
   // Function to trigger deletion
   const handleDeleteProfilePhoto = () => {
     deleteProfilePhotoMutation.mutate(); // Call the mutation
