@@ -4,6 +4,8 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import AddNote from "./AddNote";
 import UpdateNotes from "./UpdateNotes";
+import { Add, Edit, Delete } from "@mui/icons-material"; // Import icons from Material-UI
+import IconButton from "@mui/material/IconButton"; // Import IconButton from Material-UI
 
 export function Note({ empId, organisationId }) {
     const { cookies } = useContext(UseContext);
@@ -32,6 +34,8 @@ export function Note({ empId, organisationId }) {
 
     const notes = data || [];
 
+    console.log("notes", notes);
+
     if (isLoading) {
         return <div>Loading notes...</div>;
     }
@@ -58,34 +62,34 @@ export function Note({ empId, organisationId }) {
     return (
         <div className="p-6 bg-white rounded-lg shadow-xl space-y-6">
             <div className="flex justify-between items-center">
-                <h2 className="text-2xl font-semibold text-gray-700">Notes</h2>
-                <button
+                <h2 className="text-2xl font-semibold text-gray-700"></h2>
+                <IconButton
                     onClick={handleAddNote}
-                    className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition duration-200"
+                    color="primary"
+                    aria-label="Add Note"
                 >
-                    Add Note
-                </button>
+                    <Add />
+                </IconButton>
             </div>
             <div className="space-y-4">
-                {notes && notes.map((note, id) => (
+                {notes && notes.map((note) => (
                     <div key={note._id} className="bg-gray-50 p-4 rounded-lg shadow-lg hover:shadow-2xl transition duration-300">
                         <div className="flex justify-between items-center mb-4">
-                            <span className="text-lg font-medium text-gray-800">Note</span>
+                            <span className="text-lg font-medium text-gray-800"></span>
                             <div className="flex space-x-2">
-                                <button
-                                    className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition duration-200"
-                                >
-                                    Delete
-                                </button>
-                                <button
+                                <IconButton
                                     onClick={() => handleEditNote(note)}
-                                    className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition duration-200"
+                                    color="primary"
+                                    aria-label="Update"
                                 >
-                                    Update
-                                </button>
+                                    <Edit />
+                                </IconButton>
                             </div>
                         </div>
-                        <p className="text-gray-700">{note.notes}</p>
+                        <p
+                            className="text-gray-700"
+                            dangerouslySetInnerHTML={{ __html: note.notes }}
+                        ></p>
                     </div>
                 ))}
             </div>
@@ -102,7 +106,5 @@ export function Note({ empId, organisationId }) {
                 handleClose={handleEditClose}
             />
         </div>
-
     );
 }
-

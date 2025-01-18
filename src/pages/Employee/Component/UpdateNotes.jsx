@@ -17,6 +17,7 @@ const UpdateNotes = ({ open, handleClose, note }) => {
     const authToken = cookies["aegis"];
     const { handleAlert } = useContext(TestContext);
 
+    console.log("note", note);
 
     const NoteSchema = z.object({
         notes: z.string(),
@@ -131,9 +132,10 @@ const UpdateNotes = ({ open, handleClose, note }) => {
                             </div>
                             <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
                                 <AuthInputFiled
+                                    label="Note*"
                                     name="notes"
                                     control={control}
-                                    type="text"
+                                    type="texteditor"
                                     placeholder="Note"
                                     errors={errors}
                                     error={errors.notes}
