@@ -553,6 +553,49 @@ const TestNavItems = ({ toggleDrawer }) => {
             },
           ],
         },
+        "Assets": {
+          open: false,
+          icon: <PeopleAlt className=" !text-[1.2em]" />,
+          isVisible:
+            window.location.pathname?.includes("organisation") &&
+            [
+              "Super-Admin",
+              "Delegate-Super-Admin",
+              "Delegate-Super-Admin",
+              "Department-Head",
+              "Delegate-Department-Head",
+              "Department-Admin",
+              "Delegate-Department-Admin",
+              "Accountant",
+              "Delegate-Accountant",
+              "HR",
+              "Manager",
+              "Employee"
+
+            ]?.includes(role),
+          routes: [
+            {
+              key: "faqs",
+              isVisible: [
+                "Super-Admin",
+                "Delegate-Super-Admin",
+                "Delegate-Super-Admin",
+                "Department-Head",
+                "Delegate-Department-Head",
+                "Department-Admin",
+                "Delegate-Department-Admin",
+                "Accountant",
+                "Delegate-Accountant",
+                "HR",
+                "Manager",
+                "Employee"
+              ].includes(role),
+              link: `/organisation/${orgId}/assets-of-employee`,
+              icon: <PersonAdd className=" !text-[1.2em]" />,
+              text: "Assets",
+            },
+          ],
+        },
         Department: {
           open: false,
           isVisible:
@@ -665,6 +708,50 @@ const TestNavItems = ({ toggleDrawer }) => {
               link: `/organisation/${orgId}/tickets`,
               icon: <Groups className=" !text-[1.2em]" />,
               text: "Tickets",
+            },
+          ],
+        }, 
+
+        "Policy": {
+          open: false,
+          icon: <PeopleAlt className=" !text-[1.2em]" />,
+          isVisible:
+            window.location.pathname?.includes("organisation") &&
+            [
+              "Super-Admin",
+              "Delegate-Super-Admin",
+              "Delegate-Super-Admin",
+              "Department-Head",
+              "Delegate-Department-Head",
+              "Department-Admin",
+              "Delegate-Department-Admin",
+              "Accountant",
+              "Delegate-Accountant",
+              "HR",
+              "Manager",
+              "Employee"
+
+            ]?.includes(role),
+          routes: [
+            {
+              key: "policy",
+              isVisible: [
+                "Super-Admin",
+                "Delegate-Super-Admin",
+                "Delegate-Super-Admin",
+                "Department-Head",
+                "Delegate-Department-Head",
+                "Department-Admin",
+                "Delegate-Department-Admin",
+                "Accountant",
+                "Delegate-Accountant",
+                "HR",
+                "Manager",
+                "Employee"
+              ].includes(role),
+              link: `/organisation/${orgId}/company-policy`,
+              icon: <PersonAdd className=" !text-[1.2em]" />,
+              text: "Policy",
             },
           ],
         }, 

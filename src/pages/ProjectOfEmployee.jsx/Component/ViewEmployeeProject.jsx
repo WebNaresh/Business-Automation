@@ -9,7 +9,7 @@ import { IoAddOutline } from "react-icons/io5";
 import AddProductModel from "../Component/AddProductModel";
 import EditProject from "./EditProjectModel";
 import EditIcon from "@mui/icons-material/Edit";
-import UpdateNotes from "../../Employee/Component/UpdateNotes";
+
 
 
 const ViewEmployeeProject = ({ employeeId }) => {
@@ -170,7 +170,7 @@ const ViewEmployeeProject = ({ employeeId }) => {
 
 
                 <AddProductModel empId={empId} organisationId={organisationId} open={open} handleClose={() => setOpen(false)} />
-                <UpdateNotes projectId={selectedProject} organisationId={organisationId} open={editMode} handleClose={handleEditClose} />
+                <EditProject projectId={selectedProject} organisationId={organisationId} open={editMode} handleClose={handleEditClose} />
 
             </Container>
         </>

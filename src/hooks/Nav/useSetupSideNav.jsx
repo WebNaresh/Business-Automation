@@ -13,6 +13,7 @@ import { useLocation } from "react-router-dom";
 import useSubscriptionGet from "../QueryHook/Subscription/hook";
 import UserProfile from "../UserData/useUser";
 
+
 const useSetupSideNav = ({ organisationId }) => {
   const location = useLocation();
   const { getCurrentUser } = UserProfile();
@@ -163,14 +164,25 @@ const useSetupSideNav = ({ organisationId }) => {
       isVisible: true,
     },
     {
-      label: "Letter Types Setup",
-      icon: FolderOutlinedIcon,
-      href: `/organisation/${organisationId}/setup/letter-types`,
+      label: "Assets",
+      icon: HolidayVillageOutlinedIcon,
+      href: `/organisation/${organisationId}/setup/company-assets`,
       active:
         location.pathname ===
-        `/organisation/${organisationId}/setup/letter-types`,
-      isVisible: true,
+        `/organisation/${organisationId}/setup/company-assets`,
+      isVisible: user?.profile?.some((role) =>
+        ["Super-Admin", "Delegate-Super-Admin"].includes(role)
+      ),
     },
+    // {
+    //   label: "Letter Types Setup",
+    //   icon: FolderOutlinedIcon,
+    //   href: `/organisation/${organisationId}/setup/letter-types`,
+    //   active:
+    //     location.pathname ===
+    //     `/organisation/${organisationId}/setup/letter-types`,
+    //   isVisible: true,
+    // },
   ];
 
   return { linkData };

@@ -9,7 +9,6 @@ import AnimationComponent from "./components/emailverify/verification-animation"
 import ForgotPassword from "./components/forgotpassword/forgotpassword";
 import ResetPassword from "./components/resetpassword/resetpassword";
 import Vendortest from "./pages/CateringAndFood/VendorSignUp/Vendortest";
-// import ResetNewUserId from "./pages/ResetNewUserId/ResetNewUserId";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import OrgChart from "./Test/OrgChart";
 import GeoFencingAcceptModal from "./components/Modal/RemotePunchingModal/GeoFencingAcceptModal";
@@ -150,6 +149,9 @@ import DisplayEmpCard from "./pages/Employee/DisplayEmpCard";
 import DisplayCardDept from "./pages/Departments/DisplayCardDept";
 import HelpDesk from "./pages/HelpDesk/Helpdesk";
 import ProjectEmployee from "./pages/ProjectOfEmployee.jsx/ProjectEmployee";
+import CompanyAssets from "./pages/SetUpOrganization/CompanyAssest/CompanyAssets";
+import AssetsOfEmployee from "./pages/AssetOfEmployee/AssetsOfEmployee";
+import CompanyPolicy from "./pages/Policy";
 
 const App = () => {
   return (
@@ -312,6 +314,48 @@ const App = () => {
                 ]}
               >
                 <ProjectEmployee />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/organisation/:organisationId/assets-of-employee"
+            element={
+              <RequireAuth
+                permission={[
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "Department-Head",
+                  "Delegate-Department-Head",
+                  "HR",
+                  "Manager",
+                  "Department-Admin",
+                  "Delegate-Department-Admin",
+                  "Employee",
+                  "Accountant",
+                ]}
+              >
+                <AssetsOfEmployee />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/organisation/:organisationId/company-policy"
+            element={
+              <RequireAuth
+                permission={[
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "Department-Head",
+                  "Delegate-Department-Head",
+                  "HR",
+                  "Manager",
+                  "Department-Admin",
+                  "Delegate-Department-Admin",
+                  "Employee",
+                  "Accountant",
+                ]}
+              >
+                <CompanyPolicy />
               </RequireAuth>
             }
           />
@@ -1352,6 +1396,14 @@ const App = () => {
             element={
               <RequireAuth permission={["Super-Admin", "Delegate-Super-Admin"]}>
                 <EmpCommunication />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/organisation/:organisationId/setup/company-assets"
+            element={
+              <RequireAuth permission={["Super-Admin", "Delegate-Super-Admin"]}>
+                <CompanyAssets />
               </RequireAuth>
             }
           />
