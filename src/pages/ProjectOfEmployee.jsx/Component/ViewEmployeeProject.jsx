@@ -64,15 +64,20 @@ const ViewEmployeeProject = ({ employeeId }) => {
     return (
         <>
             <Container maxWidth="xl" className="bg-gray-50 min-h-screen py-8 px-4">
-                <div className="space-y-1 flex items-center gap-3 mb-4">
-                    <Avatar className="text-white !bg-blue-500">
-                        <RequestQuote />
-                    </Avatar>
+                <div className="space-y-1 flex justify-between gap-3 mb-4">
                     <div>
                         <h1 className="md:text-xl text-lg">Project Allocation</h1>
                         <p className="text-sm">
                             Here you will be able to view the project of the employee.
                         </p>
+                    </div>
+                    <div className="flex justify-center mt-4">
+                        <button
+                            onClick={() => handleAddProduct(employeeId)}
+                            className="bg-blue-500 text-white px-6 py-2 rounded-md shadow-md hover:bg-blue-600 transition duration-200"
+                        >
+                            Add Project
+                        </button>
                     </div>
                 </div>
 
@@ -135,10 +140,7 @@ const ViewEmployeeProject = ({ employeeId }) => {
                                                     "No Team Members"
                                                 )}
                                             </td>
-                                            <IconButton onClick={() => handleAddProduct(data.empId)} sx={{ backgroundColor: "#f1f5f9", "&:hover": { backgroundColor: "#d1fae5" }, mt: "15px" }} size="small">
-                                                <IoAddOutline sx={{ fontSize: "1.25rem", color: "#10b981" }} />
-                                            </IconButton>
-                                            <IconButton onClick={() => handleEditProduct(data._id)} sx={{ backgroundColor: "#f1f5f9", "&:hover": { backgroundColor: "#e2e8f0" }, mt: "15px" }} size="small">
+                                            <IconButton onClick={() => handleEditProduct(data._id)} sx={{ backgroundColor: "#f1f5f9", "&:hover": { backgroundColor: "#e2e8f0" }, mt: "15px", marginLeft: "30px" }} size="small">
                                                 <EditIcon sx={{ fontSize: "1.25rem", color: "#6366f1" }} />
                                             </IconButton>
                                         </tr>
@@ -153,17 +155,9 @@ const ViewEmployeeProject = ({ employeeId }) => {
                         <article className="flex items-center mb-4 text-red-500 gap-2">
                             <Info className="!text-2xl" />
                             <h1 className="text-lg font-semibold">
-                                No Project Found For Employee.
+                                No Project Found For Employee.Please allocate the project
                             </h1>
                         </article>
-                        <div className="flex justify-center mt-4">
-                            <button
-                                onClick={() => handleAddProduct(employeeId)}
-                                className="bg-blue-500 text-white px-6 py-2 rounded-md shadow-md hover:bg-blue-600 transition duration-200"
-                            >
-                                Add Project
-                            </button>
-                        </div>
                     </section>
 
                 )}

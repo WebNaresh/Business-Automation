@@ -68,7 +68,7 @@ const ProjectEmployee = () => {
             <div className="w-full">
                 <header className="text-xl w-full pt-6 border bg-white shadow-md p-4">
                     <West className="mx-4 !text-xl" />
-                    Uploaded Record of Employee
+                    Allocation Project of Employee
                 </header>
                 <section className="min-h-[90vh] flex">
                     <article className="w-[30%] overflow-auto max-h-[80vh] h-full bg-white border-gray-200">

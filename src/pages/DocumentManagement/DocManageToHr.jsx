@@ -1,26 +1,54 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Search, West, RequestQuote } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
 import useRecordHook from "../../hooks/record-hook/record-hook";
 import ViewEmployeeRecord from "./components/ViewEmployeeRecord";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { UseContext } from "../../State/UseState/UseContext";
 
 const DocManageToHr = () => {
   // to define the state, hook ,import other function if needed
-  const { getRecordOfEmployee } = useRecordHook();
+  const { organisationId } = useParams();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const [availableEmployee, setAvailableEmployee] = useState([]);
+  const { cookies } = useContext(UseContext);
+  const authToken = cookies["aegis"];
 
-  console.log("getRecordOfEmployee", getRecordOfEmployee);
+
+  const fetchAvailableEmployee = async () => {
+    try {
+      const apiUrl = `${import.meta.env.VITE_API}/route/employee/get-paginated-emloyee/${organisationId}`;
+      console.log("apiUrl", apiUrl);
+      const response = await axios.get(apiUrl, {
+        headers: {
+          Authorization: authToken,
+        },
+      });
+      setAvailableEmployee(response.data.employees);
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchAvailableEmployee();
+  }, []);
+
+  console.log("available emp", availableEmployee);
+
 
   // to filter the employee based on first nanae , last name
   const filteredEmployeesRecord =
-    getRecordOfEmployee && Array.isArray(getRecordOfEmployee)
-      ? getRecordOfEmployee.filter(
+    availableEmployee && Array.isArray(availableEmployee)
+      ? availableEmployee.filter(
         (employee) =>
-          employee.employeeId?.first_name
+          employee?.first_name
             .toLowerCase()
             .includes(searchQuery.toLowerCase()) ||
-          employee.employeeId?.last_name
+          employee?.last_name
             .toLowerCase()
             .includes(searchQuery.toLowerCase())
       )
@@ -32,7 +60,7 @@ const DocManageToHr = () => {
     setSelectedEmployee(employee);
   };
 
-  const employeeId = selectedEmployee && selectedEmployee?.employeeId?._id;
+  const employeeId = selectedEmployee && selectedEmployee?._id;
   console.log("empId", employeeId);
 
   return (
@@ -70,11 +98,11 @@ const DocManageToHr = () => {
                   <Avatar src={employee?.avatarSrc} />
                   <div>
                     <h1 className="text-[1.2rem]">
-                      {employee?.employeeId?.first_name}{" "}
+                      {employee?.first_name}{" "}
                       {employee?.employeeId?.last_name}
                     </h1>
                     <h1 className={`text-sm text-gray-500`}>
-                      {employee.employeeId?.email}
+                      {employee?.email}
                     </h1>
                   </div>
                 </div>
