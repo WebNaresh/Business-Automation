@@ -39,7 +39,6 @@ function replaceInFile(filePath) {
 
   if (content !== updatedContent) {
     fs.writeFileSync(filePath, updatedContent, "utf8");
-    console.log(`Updated: ${filePath}`);
     return true;
   }
   return false;
