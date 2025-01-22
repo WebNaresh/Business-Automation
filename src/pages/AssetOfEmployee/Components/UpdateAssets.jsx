@@ -31,6 +31,7 @@ const UpdateAssets = ({ open, handleClose, assetId }) => {
         assetName: z.string().min(1, "Asset name is required"),
         assetType: z.string().min(1, "Asset type is required"),
         allocationDate: z.string().optional(),
+        handOverDate: z.string().optional(),
     });
 
     const {
@@ -43,6 +44,7 @@ const UpdateAssets = ({ open, handleClose, assetId }) => {
             assetName: "",
             assetType: "",
             allocationDate: new Date(),
+            handOverDate: ""
         },
         resolver: zodResolver(AllocateAssetSchema),
     });
@@ -70,6 +72,9 @@ const UpdateAssets = ({ open, handleClose, assetId }) => {
                     assetType: data?.assetType || "",
                     allocationDate: data?.allocationDate
                         ? new Date(data.allocationDate).toISOString().split('T')[0]
+                        : "",
+                    handOverDate: data?.handOverDate
+                        ? new Date(data.handOverDate).toISOString().split('T')[0]
                         : "",
                 });
             },
@@ -163,6 +168,14 @@ const UpdateAssets = ({ open, handleClose, assetId }) => {
                                     label="Allocation Date"
                                     errors={errors}
                                     error={errors.allocationDate}
+                                />
+                                <AuthInputFiled
+                                    name="handOverDate"
+                                    control={control}
+                                    type="date"
+                                    label="HandOver Date"
+                                    errors={errors}
+                                    error={errors.handOverDate}
                                 />
                                 <button
                                     type="submit"

@@ -17,7 +17,6 @@ import AddAssets from "./AddAssetModel";
 import UpdateAssets from "./UpdateAssets";
 
 
-
 const ViewAssetsOfEmployee = ({ employeeId }) => {
     const { organisationId } = useParams();
     const { cookies } = useContext(UseContext);
@@ -142,6 +141,9 @@ const ViewAssetsOfEmployee = ({ employeeId }) => {
                                         Allocation Date
                                     </th>
                                     <th scope="col" className="px-6 py-3">
+                                        HandOver Date
+                                    </th>
+                                    <th scope="col" className="px-6 py-3">
                                         Status
                                     </th>
                                     <th scope="col" className="px-6 py-3">
@@ -160,9 +162,13 @@ const ViewAssetsOfEmployee = ({ employeeId }) => {
                                             <td className="!text-left  pl-6 py-2 ">
                                                 {data?.assetType}
                                             </td>
-                                            <td className="!text-left  pl-6 py-2 ">
-                                                {data?.allocationDate}
+                                            <td className="!text-left pl-6 py-2">
+                                                {new Date(data?.allocationDate).toLocaleDateString('en-GB')}
                                             </td>
+                                            <td className="!text-left pl-6 py-2">
+                                                {data?.handOverDate ? new Date(data.handOverDate).toLocaleDateString('en-GB') : '-'}
+                                            </td>
+
                                             <td className="!text-left  pl-6 py-2 ">
                                                 {data?.status}
                                             </td>

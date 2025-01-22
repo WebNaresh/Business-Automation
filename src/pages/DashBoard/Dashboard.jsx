@@ -62,7 +62,7 @@ const Dashboard = () => {
               {/* Employee Attandance */}
               <HRgraph />
               {/* Salary Overview */}
-              hi
+              
               <LineGraph
                 salarydata={EmployeSalaryData?.employeeSalaryViaYear}
                 selectedyear={selectedyear}

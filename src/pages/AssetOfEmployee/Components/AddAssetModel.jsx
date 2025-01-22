@@ -35,6 +35,7 @@ const AddAssets = ({ open, handleClose, empId, organisationId }) => {
         assetName: z.string().min(1, "Asset name is required"),
         assetType: z.string().min(1, "Asset type is required"),
         allocationDate: z.string().optional(),
+        handOverDate: z.string().optional(),
     });
 
     const {
@@ -47,6 +48,7 @@ const AddAssets = ({ open, handleClose, empId, organisationId }) => {
             assetName: "",
             assetType: "",
             allocationDate: new Date().toISOString().split("T")[0], // Default to today's date
+            handOverDate: ""
         },
         resolver: zodResolver(AllocateAssetSchema),
     });
@@ -135,6 +137,14 @@ const AddAssets = ({ open, handleClose, empId, organisationId }) => {
                                     label="Allocation Date"
                                     errors={errors}
                                     error={errors.allocationDate}
+                                />
+                                <AuthInputFiled
+                                    name="handOverDate"
+                                    control={control}
+                                    type="date"
+                                    label="HandOver Date"
+                                    errors={errors}
+                                    error={errors.handOverDate}
                                 />
                                 <button
                                     type="submit"

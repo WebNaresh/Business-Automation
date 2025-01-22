@@ -152,6 +152,7 @@ import ProjectEmployee from "./pages/ProjectOfEmployee.jsx/ProjectEmployee";
 import CompanyAssets from "./pages/SetUpOrganization/CompanyAssest/CompanyAssets";
 import AssetsOfEmployee from "./pages/AssetOfEmployee/AssetsOfEmployee";
 import CompanyPolicy from "./pages/Policy";
+import Expense from "./pages/Expenses/Expense";
 
 const App = () => {
   return (
@@ -272,6 +273,19 @@ const App = () => {
                 ]}
               >
                 <RemoteEmployee />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/organisation/:organisationId/expenses"
+            element={
+              <RequireAuth
+                permission={[
+                  "Super-Admin",
+                  "HR",
+                ]}
+              >
+                <Expense />
               </RequireAuth>
             }
           />
