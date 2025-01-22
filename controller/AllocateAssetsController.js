@@ -133,6 +133,46 @@ exports.updateAllocateAssets = catchAssyncError(async (req, res, next) => {
     }
 });
 
+// Get employees based on asset name
+
+exports.getEmployeesByAssetName = catchAssyncError(async (req, res, next) => {
+    try {
+        // Extract assetName from query parameters
+        const { assetName } = req.query;
+
+        // Check if assetName is provided
+        if (!assetName) {
+            return res.status(400).json({
+                message: "Please provide an assetName to filter employees.",
+            });
+        }
+
+        // Fetch employees with the specified assetName
+        const employeesWithAsset = await AllocateAssetsModel.find({ assetName })
+            .populate("empId", "first_name last_name email") // Populate employee details
+            .populate("organizationId", "name") // Populate organization details
+            .sort({ allocationDate: -1 }); // Sort by allocation date
+
+        // Check if any employees are found
+        if (employeesWithAsset.length === 0) {
+            return res.status(404).json({
+                message: `No employees found with assetName "${assetName}".`,
+            });
+        }
+
+        // Respond with the filtered employees
+        res.status(200).json({
+            message: `Employees with assetName "${assetName}" retrieved successfully.`,
+            data: employeesWithAsset,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: "An error occurred while fetching employees by asset name.",
+            error: error.message,
+        });
+    }
+});
 
 
 

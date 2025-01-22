@@ -67,7 +67,8 @@ const notificationroute = require("./routes/Notificationroute/notificationroute"
 const employeeProject = require('./routes/EmployeeProjectRoute');
 const employeeNote = require('./routes/EmployeeNoteRoute');
 const assets = require('./routes/AssetsRoute');
-const allocateAssets = require('./routes/AllocateAssetRoute')
+const allocateAssets = require('./routes/AllocateAssetRoute');
+const expense = require('./routes/ExpenseRoute')
 
 // Socket.IO setup
 const server = http.createServer(app);
@@ -94,6 +95,7 @@ app.use((req, res, next) => {
 });
 app.use("/route", employee);
 app.use("/route", employeeProject);
+app.use("/route", expense);
 app.use("/route", employeeNote);
 app.use("/route", assets);
 app.use("/route", allocateAssets);

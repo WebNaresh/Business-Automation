@@ -25,13 +25,14 @@ const AllocateAssetsEmpSchema = new mongoose.Schema(
             type: Date,
             default: Date.now,
         },
+        handOverDate: {
+            type: Date,
+        },
         status: {
             type: String,
             default: "Allocated",
         },
     },
-
-
     {
         timestamps: true,
     }
