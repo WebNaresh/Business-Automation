@@ -15,6 +15,10 @@ const ExpenseSchema = new mongoose.Schema(
             type: Number,
             default: 0,
         },
+        balance: {
+            type: Number,
+            default: 0,
+        },
         transactionType: {
             type: String,
             enum: ["cashIn", "cashOut"],
@@ -36,10 +40,6 @@ const ExpenseSchema = new mongoose.Schema(
         transactionTime: {
             type: Date,
             default: () => new Date(), 
-        },
-        file: {
-            type: String,
-            default: "",  
         },
     },
     {

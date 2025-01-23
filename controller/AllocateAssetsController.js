@@ -75,7 +75,7 @@ exports.getMultipleAssetAllocations = catchAssyncError(async (req, res, next) =>
         const { empId } = req.params; // Employee ID
 
         // Find all allocations for the employee
-        const allocations = await AllocateAssetsModel.find({ empId });
+        const allocations = await AllocateAssetsModel.find({ empId }).populate('empId');
 
         if (!allocations || allocations.length === 0) {
             return res.status(404).json({ success: false, message: "No allocations found" });

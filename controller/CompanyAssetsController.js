@@ -5,17 +5,12 @@ const { AssetModel } = require("../models/CompanyAssets");
 // Add an asset
 exports.addAssets = catchAssyncError(async (req, res, next) => {
     try {
-        const { organizationId } = req.params;
-        const { assetName, assetType, description, purchaseDate, status } = req.body;
+
+        const { assetName } = req.body;
 
         // Create a new asset
         const newAsset = await AssetModel.create({
-            organizationId,
             assetName,
-            assetType,
-            description,
-            purchaseDate,
-            status,
         });
 
         res.status(200).json({
@@ -77,14 +72,10 @@ exports.getSingleAsset = catchAssyncError(async (req, res, next) => {
 // Get all assets or assets by employee/organization
 exports.getAssets = catchAssyncError(async (req, res, next) => {
     try {
-        const { organizationId } = req.query;
-
-        // Build query filter
-        const filter = {};
-        if (organizationId) filter.organizationId = organizationId;
+        
 
         // Fetch assets based on the filter
-        const assets = await AssetModel.find(filter);
+        const assets = await AssetModel.find({});
 
         res.status(200).json({
             success: true,
