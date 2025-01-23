@@ -156,8 +156,8 @@ const UpdateAssets = ({ open, handleClose, assetId }) => {
                                     name="assetType"
                                     control={control}
                                     type="text"
-                                    placeholder="Asset Type"
-                                    label="Asset Type *"
+                                    placeholder="Asset Detail"
+                                    label="Asset Detail *"
                                     errors={errors}
                                     error={errors.assetType}
                                 />

@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import { West } from "@mui/icons-material";
-import { useQuery, useQueryClient } from "react-query";
+import { useQuery, } from "react-query";
 import { UseContext } from "../../../State/UseState/UseContext";
-import { useParams } from "react-router-dom";
 import axios from "axios";
-import { Info, RequestQuote } from "@mui/icons-material";
+import { Info, } from "@mui/icons-material";
 
 const ViewAssetsToMultiEmployee = ({ asset, onBack }) => {
 
@@ -16,6 +15,8 @@ const ViewAssetsToMultiEmployee = ({ asset, onBack }) => {
 
     console.log("asset", asset);
 
+
+
     // Fetch uploaded document data of the employee
     const { data: Assets } = useQuery(
         ["allocateAssets", asset], // Include asset as part of the query key
@@ -24,7 +25,7 @@ const ViewAssetsToMultiEmployee = ({ asset, onBack }) => {
                 `${import.meta.env.VITE_API}/route/get/employees-by-asset`,
                 {
                     params: {
-                        assetName: asset.name, // Send asset name as query parameter
+                        assetName: asset, // Send asset name as query parameter
                     },
                     headers: {
                         Authorization: authToken,
@@ -58,7 +59,7 @@ const ViewAssetsToMultiEmployee = ({ asset, onBack }) => {
                         <West className="mr-2" />
                         Back
                     </button>
-                    <h1 className="text-xl font-bold">View Assets for {asset?.name}</h1>
+                    <h1 className="text-xl font-bold">View Assets for {asset}</h1>
                 </header>
                 {Assets?.length > 0 ? (
                     <div className="overflow-auto !p-0 border-[.5px] border-gray-200">
@@ -69,10 +70,10 @@ const ViewAssetsToMultiEmployee = ({ asset, onBack }) => {
                                         Sr. No
                                     </th>
                                     <th scope="col" className="px-3 py-3">
-                                        Asset Name
+                                        Employee Name
                                     </th>
                                     <th scope="col" className="px-6 py-3">
-                                        Asset Type
+                                        Asset Detail
                                     </th>
                                     <th scope="col" className="px-6 py-3">
                                         Allocation Date
@@ -91,7 +92,7 @@ const ViewAssetsToMultiEmployee = ({ asset, onBack }) => {
                                         <tr className="!font-medium border-b" key={id}>
                                             <td className="!text-left pl-8 py-3">{id + 1}</td>
                                             <td className="!text-left  pl-6 py-2 ">
-                                                {data?.assetName}
+                                                {data?.empId ? `${data.empId.first_name} ${data.empId.last_name}` : '-'}
                                             </td>
                                             <td className="!text-left  pl-6 py-2 ">
                                                 {data?.assetType}

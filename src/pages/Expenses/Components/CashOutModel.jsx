@@ -33,7 +33,7 @@ const CashOutModel = ({ handleClose, open, organisationId }) => {
     const CashOUtSchema = z.object({
         cashOut: z.string().min(1, "Cash is required."),
         note: z.string().optional(),
-        status: z.string().optional(),
+        transactionCategory: z.string().optional(),
     });
 
     const {
@@ -49,7 +49,7 @@ const CashOutModel = ({ handleClose, open, organisationId }) => {
     const AddCashOut = useMutation(
         (data) =>
             axios.post(
-                `${import.meta.env.VITE_API}/route/add/assets/${organisationId}`,
+                `${import.meta.env.VITE_API}/route/add/cash-out/${organisationId}`,
                 data,
                 { headers: { Authorization: authToken } }
             ),
@@ -114,14 +114,15 @@ const CashOutModel = ({ handleClose, open, organisationId }) => {
                         />
 
                         <AuthInputFiled
-                            name="status"
+                            name="transactionCategory"
                             control={control}
                             type="text"
-                            placeholder="Status"
-                            label="Status"
+                            placeholder="Transaction Categorory"
+                            label="Transaction Categorory"
                             errors={errors}
-                            error={errors.status}
+                            error={errors.transactionCategory}
                         />
+
 
                         <div className="flex gap-4 mt-4 justify-end">
                             <Button onClick={handleClose} color="error" variant="outlined">

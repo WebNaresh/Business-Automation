@@ -21,21 +21,15 @@ const style = {
     p: 4,
 };
 
-const AddAssets = ({ open, handleClose, empId, organisationId }) => {
+const DefineAsset = ({ open, handleClose }) => {
     const { cookies } = useContext(UseContext);
     const authToken = cookies?.["aegis"];
     const { handleAlert } = useContext(TestContext);
     const queryClient = useQueryClient();
 
-    if (!authToken) {
-        console.error("Authorization token is missing");
-    }
-
     const AllocateAssetSchema = z.object({
-        assetName: z.string().min(1, "Asset name is required"),
-        assetType: z.string().min(1, "Asset type is required"),
-        allocationDate: z.string().optional(),
-        handOverDate: z.string().optional(),
+        assetName: z.string().optional(),
+
     });
 
     const {
@@ -46,9 +40,7 @@ const AddAssets = ({ open, handleClose, empId, organisationId }) => {
     } = useForm({
         defaultValues: {
             assetName: "",
-            assetType: "",
-            allocationDate: new Date().toISOString().split("T")[0], // Default to today's date
-            handOverDate: ""
+          
         },
         resolver: zodResolver(AllocateAssetSchema),
     });
@@ -56,17 +48,12 @@ const AddAssets = ({ open, handleClose, empId, organisationId }) => {
     const addAssetToEmp = useMutation(
         (data) =>
             axios.post(
-                `${import.meta.env.VITE_API}/route/add/allocate-assets/${organisationId}/${empId}`,
+                `${import.meta.env.VITE_API}/route/add/assets`,
                 data,
-                {
-                    headers: {
-                        Authorization: authToken,
-                    },
-                }
             ),
         {
             onSuccess: () => {
-                queryClient.invalidateQueries({ queryKey: ["allocateAssets"] });
+                queryClient.invalidateQueries({ queryKey: ["defineAsset"] });
                 handleAlert(true, "success", "Asset added successfully.");
                 handleClose();
                 reset();
@@ -104,7 +91,7 @@ const AddAssets = ({ open, handleClose, empId, organisationId }) => {
                             <div className="w-full">
                                 <div className="flex items-center justify-between">
                                     <h1 className="text-3xl text-gray-700 font-semibold tracking-tight">
-                                        Allocate Asset
+                                        Add Asset
                                     </h1>
                                     <IconButton onClick={handleClose}>
                                         <Close className="!text-lg" />
@@ -121,36 +108,12 @@ const AddAssets = ({ open, handleClose, empId, organisationId }) => {
                                     errors={errors}
                                     error={errors.assetName}
                                 />
-                                <AuthInputFiled
-                                    name="assetType"
-                                    control={control}
-                                    type="text"
-                                    placeholder="Asset Detail"
-                                    label="Asset Details *"
-                                    errors={errors}
-                                    error={errors.assetType}
-                                />
-                                <AuthInputFiled
-                                    name="allocationDate"
-                                    control={control}
-                                    type="date"
-                                    label="Allocation Date"
-                                    errors={errors}
-                                    error={errors.allocationDate}
-                                />
-                                <AuthInputFiled
-                                    name="handOverDate"
-                                    control={control}
-                                    type="date"
-                                    label="HandOver Date"
-                                    errors={errors}
-                                    error={errors.handOverDate}
-                                />
+                               
                                 <button
                                     type="submit"
                                     className="py-2 rounded-md border font-bold w-full bg-blue-500 text-white mt-4"
                                 >
-                                    Allocate
+                                    Submit
                                 </button>
                             </form>
                         </div>
@@ -161,4 +124,4 @@ const AddAssets = ({ open, handleClose, empId, organisationId }) => {
     );
 };
 
-export default AddAssets;
+export default DefineAsset;

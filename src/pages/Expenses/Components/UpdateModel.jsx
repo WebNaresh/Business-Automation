@@ -3,7 +3,7 @@ import { Box, Button, Modal } from "@mui/material";
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useMutation, useQueryClient } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { z } from "zod";
 import { TestContext } from "../../../State/Function/Main";
 import { UseContext } from "../../../State/UseState/UseContext";
@@ -22,17 +22,21 @@ const style = {
     overflow: "auto",
 };
 
-const CashInModel = ({ handleClose, open, organisationId }) => {
+const UpdateModel = ({ handleClose, open, organisationId, id }) => {
 
     const { handleAlert } = useContext(TestContext);
     const { cookies } = useContext(UseContext);
     const authToken = cookies["aegis"];
     const queryClient = useQueryClient();
-    const [error, setError] = useState();
+    const [error, setError] = useState(); 
+
+    console.log("id" , id);
+    
 
     // Validation schema for the form
     const CashInSchema = z.object({
         cashIn: z.string().min(1, "Cash is required."),
+        cashOut: z.string().min(1, "Cash is required."),
         transactionCategory: z.string().optional(),
         note: z.string().optional(),
     });
@@ -41,16 +45,49 @@ const CashInModel = ({ handleClose, open, organisationId }) => {
         control,
         formState: { errors },
         handleSubmit,
-        reset,
+        reset, 
     } = useForm({
         defaultValues: {},
         resolver: zodResolver(CashInSchema),
     });
 
-    const AddCashIn = useMutation(
+
+    // Fetch existing asset details
+    const { isLoading } = useQuery(
+        ["expense", id],
+        async () => {
+            const response = await axios.get(
+                `${import.meta.env.VITE_API}/route/get/get-one/${id}`,
+                {
+                    headers: {
+                        Authorization: authToken,
+                    },
+                }
+            );
+            return response.data.data;
+        },
+        {
+            enabled: !!id, // Only fetch if assetId exists
+            onSuccess: (data) => {
+                console.log("Fetched data:", data);
+                reset({
+                    cashIn: data?.cashIn !== undefined ? String(data.cashIn) : "",
+                    cashOut: data?.cashOut !== undefined ? String(data.cashOut) : "",
+                    transactionCategory: data?.transactionCategory || "",
+                    note: data?.note || ""
+
+                });
+            },
+            onError: () => {
+                handleAlert(true, "error", "Failed to fetch asset details.");
+            },
+        }
+    );
+
+    const update = useMutation(
         (data) =>
-            axios.post(
-                `${import.meta.env.VITE_API}/route/add/cash-in/${organisationId}`,
+            axios.patch(
+                `${import.meta.env.VITE_API}/route/update/${id}`,
                 data,
                 { headers: { Authorization: authToken } }
             ),
@@ -58,11 +95,11 @@ const CashInModel = ({ handleClose, open, organisationId }) => {
             onSuccess: () => {
                 queryClient.invalidateQueries({ queryKey: ["expense"] });
                 handleClose();
-                handleAlert(true, "success", "Cash In added successfully.");
+                handleAlert(true, "success", "Data updated successfully.");
                 reset();
             },
             onError: () => {
-                setError("An error occurred while adding the cash.");
+                setError("An error occurred while update the data.");
             },
         }
     );
@@ -70,11 +107,11 @@ const CashInModel = ({ handleClose, open, organisationId }) => {
     const onSubmit = async (data) => {
         try {
             console.log("Form Data:", data);
-            await AddCashIn.mutateAsync(data);
+            await update.mutateAsync(data);
         } catch (error) {
             console.error(error);
-            handleAlert(true, "error", "Failed to add the cash.");
-            setError("Failed to add the cash.");
+            handleAlert(true, "error", "Failed to update the data.");
+            setError("Failed to update the data.");
         }
     };
 
@@ -90,7 +127,7 @@ const CashInModel = ({ handleClose, open, organisationId }) => {
                 className="border-none !z-10 !pt-0 !px-0 !w-[90%] lg:!w-[50%] md:!w-[60%] shadow-md outline-none rounded-md"
             >
                 <div className="flex justify-between py-4 items-center px-4">
-                    <h1 className="text-xl pl-2 font-semibold font-sans">Add Cash</h1>
+                    <h1 className="text-xl pl-2 font-semibold font-sans">Update Cash</h1>
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="px-5 space-y-4 mt-4">
@@ -102,6 +139,16 @@ const CashInModel = ({ handleClose, open, organisationId }) => {
                             label="Cash In*"
                             errors={errors}
                             error={errors.cashIn}
+                        />
+                         <AuthInputFiled
+                            name="cashOut"
+                            control={control}
+                            type="number"
+                            placeholder="Cash Out"
+                            label="Cash Out*"
+                            errors={errors}
+                            error={errors.cashOut}
+
                         />
                         <AuthInputFiled
                             name="note"
@@ -137,4 +184,4 @@ const CashInModel = ({ handleClose, open, organisationId }) => {
     );
 };
 
-export default CashInModel;
+export default UpdateModel;

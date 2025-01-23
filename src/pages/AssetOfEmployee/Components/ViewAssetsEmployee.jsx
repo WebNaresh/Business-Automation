@@ -15,9 +15,9 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import AddAssets from "./AddAssetModel";
 import UpdateAssets from "./UpdateAssets";
+import { West } from "@mui/icons-material";
 
-
-const ViewAssetsOfEmployee = ({ employeeId }) => {
+const ViewAssetsOfEmployee = ({ employeeId, onBack }) => {
     const { organisationId } = useParams();
     const { cookies } = useContext(UseContext);
     const authToken = cookies["aegis"];
@@ -107,10 +107,23 @@ const ViewAssetsOfEmployee = ({ employeeId }) => {
         }
     );
 
+    const handleBackClick = () => {
+        if (onBack) {
+            onBack();
+        }
+    };
+
 
     return (
         <>
             <Container maxWidth="xl" className="bg-gray-50 min-h-screen py-8 px-4">
+                <button
+                    onClick={handleBackClick}
+                    className="flex items-center px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-100"
+                >
+                    <West className="mr-2" />
+                    Back
+                </button>
                 <div className="space-y-1 flex items-center gap-3 mb-4">
                     <Avatar className="text-white !bg-blue-500">
                         <RequestQuote />
@@ -132,10 +145,10 @@ const ViewAssetsOfEmployee = ({ employeeId }) => {
                                         Sr. No
                                     </th>
                                     <th scope="col" className="px-3 py-3">
-                                        Asset Name
+                                        Employee Name
                                     </th>
                                     <th scope="col" className="px-6 py-3">
-                                        Asset Type
+                                        Asset Details
                                     </th>
                                     <th scope="col" className="px-6 py-3">
                                         Allocation Date
@@ -156,8 +169,9 @@ const ViewAssetsOfEmployee = ({ employeeId }) => {
                                     Assets.map((data, id) => (
                                         <tr className="!font-medium border-b" key={id}>
                                             <td className="!text-left pl-8 py-3">{id + 1}</td>
-                                            <td className="!text-left  pl-6 py-2 ">
-                                                {data?.assetName}
+                                            <td className="!text-left pl-6 py-2 ">
+                                                {/* Extract first name and last name from empId */}
+                                                {data?.empId ? `${data.empId.first_name} ${data.empId.last_name}` : '-'}
                                             </td>
                                             <td className="!text-left  pl-6 py-2 ">
                                                 {data?.assetType}

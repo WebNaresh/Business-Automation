@@ -6,6 +6,8 @@ import { Avatar } from "@mui/material";
 import { UseContext } from "../../State/UseState/UseContext";
 import ViewAssetsOfEmployee from "./Components/ViewAssetsEmployee";
 import ViewAssetsToMultiEmployee from "./Components/ViewAssetsToMultiEmployee";
+import DefineAsset from "./Components/DefineAsset";
+import { useQuery } from "react-query";
 
 const AssetsOfEmployee = () => {
     const { organisationId } = useParams();
@@ -53,9 +55,7 @@ const AssetsOfEmployee = () => {
         setSelectedEmployee(employee);
     };
 
-    const handleAssetClick = (asset) => {
-        setSelectedAsset(asset); // Set the clicked asset
-    };
+
 
     const handleBackToAssets = () => {
         setSelectedAsset(null); // Reset asset selection to go back
@@ -67,20 +67,33 @@ const AssetsOfEmployee = () => {
 
     const employeeId = selectedEmployee?._id;
 
-    const assets = [
-        { id: 1, name: "Laptops" },
-        { id: 2, name: "Headphones" },
-        { id: 3, name: "Phones" },
-        { id: 4, name: "Bags" },
-        { id: 5, name: "Camera" },
-        { id: 6, name: "Mouse" },
-        { id: 7, name: "Car" },
-    ];
 
-    const handleBackClick = () => {
-        if (onBack) {
-            onBack();
+    // Fetch uploaded document data of the employee
+    const { data: defineAsset } = useQuery(
+        ["defineAssset"],
+        async () => {
+            const response = await axios.get(
+                `${import.meta.env.VITE_API}/route/get/assets`,
+
+            );
+            return response.data.assets;
         }
+    );
+
+    console.log("defineAsset", defineAsset);
+
+    const handleAssetClick = (asset) => {
+        setSelectedAsset(asset); // Set the clicked asset
+    };
+
+    console.log("selectedAsset", selectedAsset);
+
+
+    const [open, setOpen] = React.useState(false);
+    // for add
+    const handleDefineAsset = (empId) => {
+        setOpen(true);
+        setEmpId(empId);
     };
 
     return (
@@ -136,6 +149,7 @@ const AssetsOfEmployee = () => {
                         <ViewAssetsToMultiEmployee
                             asset={selectedAsset}
                             onBack={handleBackToAssets}
+
                         />
                     ) : selectedEmployee ? (
                         <ViewAssetsOfEmployee
@@ -145,28 +159,53 @@ const AssetsOfEmployee = () => {
                             onBack={handleBackToEmployees}
                         />
                     ) : (
-                        <div className="bg-white shadow-md rounded-lg p-4">
-                            <ul>
-                                {assets.map((asset) => (
-                                    <li
-                                        key={asset.id}
-                                        className="flex items-center justify-between py-3 my-2 border-b last:border-none cursor-pointer"
-                                        onClick={() => handleAssetClick(asset)}
+                        <>
+                            <div className="space-y-1 flex justify-between gap-3 mb-4 p-4">
+                                <div>
+                                    <h1 className="md:text-xl text-lg">Add Asset</h1>
+                                    <p className="text-sm">
+                                        Here you will be able to manage the asset of the organization.
+                                    </p>
+                                </div>
+                                <div className="flex justify-center mt-4">
+                                    {/* Add Asset button */}
+                                    <button
+                                        className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none"
+                                        onClick={handleDefineAsset}
                                     >
-                                        <div className="flex items-center gap-2">
-                                            <button
-                                                className="flex items-center justify-center w-6 h-6 rounded-full bg-red-500 text-white text-sm"
-                                            >
-                                                +
-                                            </button>
-                                            <span className="text-gray-800 font-medium">{asset.name}</span>
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                                        Add Asset
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div className="bg-white shadow-md rounded-lg p-4 flex items-center justify-between">
+                                <ul className="flex-1">
+                                    {defineAsset && defineAsset?.map((asset) => (
+                                        <li
+                                            key={asset.id}
+                                            className="flex items-center justify-between py-3 my-2 border-b last:border-none cursor-pointer"
+                                            onClick={() => handleAssetClick(asset.assetName)}
+                                        >
+                                            <div className="flex items-center gap-2 justify-center w-full">
+                                                {/* Icon */}
+
+                                                <span className="text-gray-800 font-medium text-center flex-1">{asset.assetName}</span>
+                                                <span className="text-gray-800 font-medium text-center flex-1">  {asset?.createdAt ? new Date(asset.createdAt).toLocaleDateString('en-GB') : '-'}</span>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+
+                            </div>
+                        </>
+
+
                     )}
                 </div>
+
+                <DefineAsset open={open} handleClose={() => setOpen(false)} />
+
+
             </section>
         </div>
     );
