@@ -51,7 +51,7 @@ const Expense = () => {
 
     // Fetch existing asset details
     const { isLoading, data, isError } = useQuery(
-        ["expense"],
+        ["expense", category, timePeriod],
         async () => {
             const response = await axios.get(
                 `${import.meta.env.VITE_API}/route/get/get-all-data/${organisationId}?category=${category}&timePeriod=${timePeriod}`,
@@ -209,8 +209,15 @@ const Expense = () => {
                 </div>
                 <Box p={3}>
                     {/* Header Section */}
-                    <Box display="flex" alignItems="center" justifyContent="space-between" mb={3}>
-                        <FormControl sx={{ width: 200 }}>
+                    <Box
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="space-around"
+                        mb={4}
+                        flexWrap="wrap"
+                        gap={3}
+                    >
+                        <FormControl sx={{ minWidth: 250 }}>
                             <InputLabel id="time-period-label">Select Period</InputLabel>
                             <Select
                                 labelId="time-period-label"
@@ -225,7 +232,7 @@ const Expense = () => {
                             </Select>
                         </FormControl>
 
-                        <FormControl sx={{ width: 200 }}>
+                        <FormControl sx={{ minWidth: 250 }}>
                             <InputLabel id="category-label">Type</InputLabel>
                             <Select
                                 labelId="category-label"
@@ -238,12 +245,10 @@ const Expense = () => {
                             </Select>
                         </FormControl>
 
-                        {/* Buttons */}
-                        <Box>
+                        <Box display="flex" gap={2}>
                             <Button
                                 variant="contained"
                                 color="success"
-                                sx={{ mr: 2 }}
                                 onClick={handleOpenCashInModel}
                             >
                                 Cash In
@@ -257,8 +262,8 @@ const Expense = () => {
                             </Button>
                         </Box>
 
-                        <Box>
-                            <Button variant="contained" color="info" sx={{ mr: 2 }}>
+                        <Box display="flex" gap={2}>
+                            <Button variant="contained" color="info">
                                 Import
                             </Button>
                             <Button variant="contained" color="warning">
@@ -266,87 +271,94 @@ const Expense = () => {
                             </Button>
                         </Box>
                     </Box>
-
                     {/* Table Section */}
-                    <TableContainer component={Paper} sx={{ mb: 3 }}>
-                        <Table>
-                            <TableHead>
-                                <TableRow sx={{ backgroundColor: '#f3f4f6' }}>
-                                    <TableCell sx={{ fontWeight: 'bold' }}>Sr No</TableCell>
-                                    <TableCell sx={{ fontWeight: 'bold' }}>Date</TableCell>
-                                    <TableCell sx={{ fontWeight: 'bold' }}>Time</TableCell>
-                                    <TableCell sx={{ fontWeight: 'bold' }}>Note</TableCell>
-                                    <TableCell sx={{ fontWeight: 'bold' }}>Type</TableCell>
-                                    <TableCell sx={{ fontWeight: 'bold' }}>Cash In</TableCell>
-                                    <TableCell sx={{ fontWeight: 'bold' }}>Cash Out</TableCell>
-                                    <TableCell sx={{ fontWeight: 'bold' }}>Balance</TableCell>
-                                    <TableCell sx={{ fontWeight: 'bold' }}>Action</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {isLoading ? (
-                                    <TableRow>
-                                        <TableCell colSpan={5} align="center">
-                                            Loading...
-                                        </TableCell>
+                    <div
+                        style={{
+                            maxHeight: "50vh",
+                            overflowY: "auto",
+                            paddingRight: "10px",
+                        }}
+                    >
+                        <TableContainer component={Paper} sx={{ mb: 3 }}>
+                            <Table>
+                                <TableHead>
+                                    <TableRow sx={{ backgroundColor: '#f3f4f6' }}>
+                                        <TableCell sx={{ fontWeight: 'bold' }}>Sr No</TableCell>
+                                        <TableCell sx={{ fontWeight: 'bold' }}>Date</TableCell>
+                                        <TableCell sx={{ fontWeight: 'bold' }}>Time</TableCell>
+                                        <TableCell sx={{ fontWeight: 'bold' }}>Note</TableCell>
+                                        <TableCell sx={{ fontWeight: 'bold' }}>Type</TableCell>
+                                        <TableCell sx={{ fontWeight: 'bold' }}>Cash In</TableCell>
+                                        <TableCell sx={{ fontWeight: 'bold' }}>Cash Out</TableCell>
+                                        <TableCell sx={{ fontWeight: 'bold' }}>Balance</TableCell>
+                                        <TableCell sx={{ fontWeight: 'bold' }}>Action</TableCell>
                                     </TableRow>
-                                ) : isError ? (
-                                    <TableRow>
-                                        <TableCell colSpan={5} align="center" color="error">
-                                            Error fetching data.
-                                        </TableCell>
-                                    </TableRow>
-                                ) : (
-                                    data && data.map((item, id) => (
-                                        <TableRow
-                                            key={item.id}
-                                            sx={{
-                                                backgroundColor: item.id % 2 === 0 ? '#ffffff' : '#f9fafb',
-                                                '&:hover': { backgroundColor: 'rgba(0, 0, 0, 0.04)' },
-                                            }}
-                                        >
-                                            <TableCell>{id + 1}</TableCell>
-                                            <TableCell>
-                                                {new Date(item?.transactionDate).toLocaleDateString(undefined, {
-                                                    year: 'numeric',
-                                                    month: 'long',
-                                                    day: 'numeric',
-                                                })}
-                                            </TableCell>
-                                            <TableCell>
-                                                {new Date(item?.transactionTime).toLocaleTimeString(undefined, {
-                                                    hour: '2-digit',
-                                                    minute: '2-digit',
-                                                    second: '2-digit',
-                                                })}
-                                            </TableCell>
-                                            <TableCell>{item?.note}</TableCell>
-                                            <TableCell>{item.transactionCategory}</TableCell>
-                                            <TableCell>{item.cashIn}</TableCell>
-                                            <TableCell>{item.cashOut}</TableCell>
-                                            <TableCell>{item.balance}</TableCell>
-                                            <TableCell>
-                                                <IconButton
-                                                    color="primary"
-                                                    aria-label="edit"
-                                                    onClick={() => handleUpdateOpen(item?._id)}
-                                                >
-                                                    <EditOutlinedIcon />
-                                                </IconButton>
-                                                <IconButton
-                                                    color="error"
-                                                    aria-label="delete"
-                                                    onClick={() => handleDeleteConfirmation(item?._id)}
-                                                >
-                                                    <DeleteOutlineIcon />
-                                                </IconButton>
+                                </TableHead>
+                                <TableBody>
+                                    {isLoading ? (
+                                        <TableRow>
+                                            <TableCell colSpan={5} align="center">
+                                                Loading...
                                             </TableCell>
                                         </TableRow>
-                                    ))
-                                )}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
+                                    ) : isError ? (
+                                        <TableRow>
+                                            <TableCell colSpan={5} align="center" color="error">
+                                                Error fetching data.
+                                            </TableCell>
+                                        </TableRow>
+                                    ) : (
+                                        data && data.map((item, id) => (
+                                            <TableRow
+                                                key={item.id}
+                                                sx={{
+                                                    backgroundColor: item.id % 2 === 0 ? '#ffffff' : '#f9fafb',
+                                                    '&:hover': { backgroundColor: 'rgba(0, 0, 0, 0.04)' },
+                                                }}
+                                            >
+                                                <TableCell>{id + 1}</TableCell>
+                                                <TableCell>
+                                                    {new Date(item?.transactionDate).toLocaleDateString(undefined, {
+                                                        year: 'numeric',
+                                                        month: 'long',
+                                                        day: 'numeric',
+                                                    })}
+                                                </TableCell>
+                                                <TableCell>
+                                                    {new Date(item?.transactionTime).toLocaleTimeString(undefined, {
+                                                        hour: '2-digit',
+                                                        minute: '2-digit',
+                                                        second: '2-digit',
+                                                    })}
+                                                </TableCell>
+                                                <TableCell>{item?.note}</TableCell>
+                                                <TableCell>{item.transactionCategory}</TableCell>
+                                                <TableCell>{item.cashIn}</TableCell>
+                                                <TableCell>{item.cashOut}</TableCell>
+                                                <TableCell>{item.balance}</TableCell>
+                                                <TableCell>
+                                                    <IconButton
+                                                        color="primary"
+                                                        aria-label="edit"
+                                                        onClick={() => handleUpdateOpen(item?._id)}
+                                                    >
+                                                        <EditOutlinedIcon />
+                                                    </IconButton>
+                                                    <IconButton
+                                                        color="error"
+                                                        aria-label="delete"
+                                                        onClick={() => handleDeleteConfirmation(item?._id)}
+                                                    >
+                                                        <DeleteOutlineIcon />
+                                                    </IconButton>
+                                                </TableCell>
+                                            </TableRow>
+                                        ))
+                                    )}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                    </div>
 
                     <div className="flex items-center justify-center gap-3 p-4 bg-gray-50 border-t border-gray-200">
                         <Button
@@ -367,25 +379,32 @@ const Expense = () => {
                             Next
                         </Button>
                     </div>
-
                     {/* Summary Section */}
-                    <Grid container spacing={2}>
-                        <Grid item xs={4}>
+                    <Grid
+                        container
+                        spacing={4}
+                        sx={{
+                            position: 'static', // Keeps the position static
+                            zIndex: 1, // Ensures it stays above any other content if needed
+                        }}
+                    >
+                        <Grid item xs={12} sm={6} md={4}>
                             <Paper
                                 elevation={3}
                                 sx={{
                                     p: 2,
                                     textAlign: 'center',
-                                    borderRadius: 2,
-                                    bgcolor: 'success.light',
+                                    borderRadius: 3,
+                                    backgroundColor: '#d1fae5', // Light green
                                 }}
                             >
-                                <Typography variant="h6" gutterBottom>
+                                <Typography variant="h6" color="textPrimary" gutterBottom>
                                     Total Cash In
                                 </Typography>
                                 <Typography
-                                    variant="h5"
+                                    variant="h4"
                                     fontWeight="bold"
+                                    color="success.main"
                                 >
                                     {totalCashIn?.toLocaleString('en-IN', {
                                         style: 'currency',
@@ -394,22 +413,24 @@ const Expense = () => {
                                 </Typography>
                             </Paper>
                         </Grid>
-                        <Grid item xs={4}>
+
+                        <Grid item xs={12} sm={6} md={4}>
                             <Paper
                                 elevation={3}
                                 sx={{
                                     p: 2,
                                     textAlign: 'center',
-                                    borderRadius: 2,
-                                    bgcolor: 'error.light',
+                                    borderRadius: 3,
+                                    backgroundColor: '#ffe4e6', // Light red
                                 }}
                             >
-                                <Typography variant="h6" gutterBottom>
+                                <Typography variant="h6" color="textPrimary" gutterBottom>
                                     Total Cash Out
                                 </Typography>
                                 <Typography
-                                    variant="h5"
+                                    variant="h4"
                                     fontWeight="bold"
+                                    color="error.main"
                                 >
                                     {totalCashOut?.toLocaleString('en-IN', {
                                         style: 'currency',
@@ -418,22 +439,24 @@ const Expense = () => {
                                 </Typography>
                             </Paper>
                         </Grid>
-                        <Grid item xs={4}>
+
+                        <Grid item xs={12} sm={6} md={4}>
                             <Paper
                                 elevation={3}
                                 sx={{
                                     p: 2,
                                     textAlign: 'center',
-                                    borderRadius: 2,
-                                    bgcolor: 'orange',
+                                    borderRadius: 3,
+                                    backgroundColor: '#fef3c7', // Light yellow
                                 }}
                             >
-                                <Typography variant="h6" gutterBottom>
+                                <Typography variant="h6" color="textPrimary" gutterBottom>
                                     Balance
                                 </Typography>
                                 <Typography
-                                    variant="h5"
+                                    variant="h4"
                                     fontWeight="bold"
+                                    color="warning.main"
                                 >
                                     {balance?.toLocaleString('en-IN', {
                                         style: 'currency',
@@ -443,6 +466,7 @@ const Expense = () => {
                             </Paper>
                         </Grid>
                     </Grid>
+
 
                     <Dialog
                         open={deleteConfirmation !== null}

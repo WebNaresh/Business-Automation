@@ -154,6 +154,8 @@ import AssetsOfEmployee from "./pages/AssetOfEmployee/AssetsOfEmployee";
 import CompanyPolicy from "./pages/Policy";
 import Expense from "./pages/Expenses/Expense";
 import OfferLetter from "./pages/LetterTemplate/LetterTemplate";
+import ExperienceLetter from "./pages/LetterTemplate/ExperienceLetter";
+
 
 const App = () => {
   return (
@@ -209,6 +211,22 @@ const App = () => {
                 ]}
               >
                 <OfferLetter />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/organisation/:organisationId/experience-letter"
+            element={
+              <RequireAuth
+                permission={[
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "Employee",
+                  "Manager",
+                  "HR",
+                ]}
+              >
+                <ExperienceLetter />
               </RequireAuth>
             }
           />
