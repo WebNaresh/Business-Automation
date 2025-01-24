@@ -153,6 +153,7 @@ import CompanyAssets from "./pages/SetUpOrganization/CompanyAssest/CompanyAssets
 import AssetsOfEmployee from "./pages/AssetOfEmployee/AssetsOfEmployee";
 import CompanyPolicy from "./pages/Policy";
 import Expense from "./pages/Expenses/Expense";
+import OfferLetter from "./pages/LetterTemplate/LetterTemplate";
 
 const App = () => {
   return (
@@ -192,6 +193,22 @@ const App = () => {
                 ]}
               >
                 <Performance />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/organisation/:organisationId/offer-letter"
+            element={
+              <RequireAuth
+                permission={[
+                  "Super-Admin",
+                  "Delegate-Super-Admin",
+                  "Employee",
+                  "Manager",
+                  "HR",
+                ]}
+              >
+                <OfferLetter />
               </RequireAuth>
             }
           />

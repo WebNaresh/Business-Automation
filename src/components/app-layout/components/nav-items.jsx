@@ -41,6 +41,7 @@ import UserProfile from "../../../hooks/UserData/useUser";
 import useGetCommunicationPermission from "../../../pages/EmployeeSurvey/useContext/Permission";
 import useOrgGeo from "../../../pages/Geo-Fence/useOrgGeo";
 import NavAccordion from "./NavAccordian";
+import OfferLetter from "../../../pages/LetterTemplate/LetterTemplate";
 
 const TestNavItems = ({ toggleDrawer }) => {
   // to define the route and pass the dynamic organization id
@@ -581,7 +582,25 @@ const TestNavItems = ({ toggleDrawer }) => {
             },
           ],
         },
-
+        "Letter Template": {
+          open: false,
+          isVisible:
+            window.location.pathname?.includes("organisation") &&
+            [
+              "Super-Admin",
+              "HR",
+            ]?.includes(role),
+          icon: <Payment className=" !text-[1.2em]" />,
+          routes: [
+            {
+              key: "letter-template",
+              isVisible: true,
+              link: `/organisation/${orgId}/offer-letter`,
+              icon: <ListAlt className=" !text-[1.2em]" />,
+              text: "Letter Template",
+            },
+          ],
+        },
         "Document Record": {
           open: false,
           isVisible: true,
