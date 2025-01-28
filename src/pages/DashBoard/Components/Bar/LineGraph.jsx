@@ -278,10 +278,12 @@ const LineGraph = ({
               disabled={mutation.isLoading}
               aria-label="Generate Excel Report"
               variant="contained"
+              className="bg-[#174E63] hover:bg-[#123e50]" // Adding the background color and hover effect
             >
               <FaFileExcel className="text-xs" />
               {mutation.isLoading ? "Generating..." : "Generate Report"}
             </Button>
+
             <Select
               placeholder={"Select year"}
               onChange={(year) => setSelectedYear(year)}

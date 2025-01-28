@@ -11,6 +11,7 @@ import UserProfile from "../../hooks/UserData/useUser";
 import ProfileIcon from "../profieicon/profileIcon";
 import NotificationIcon from "./components/NotificationIcon";
 import TestNavItems from "./components/nav-items";
+import { background } from "@chakra-ui/react";
 
 export default function SwipeableTemporaryDrawer() {
   const [open, setOpen] = React.useState(false);
@@ -54,7 +55,7 @@ export default function SwipeableTemporaryDrawer() {
 
   const list = (
     <Box
-      sx={{ width: 250, height: 100 }}
+      sx={{ width: 250, height: 100, color: 'white' }}
       role="presentation"
       onKeyDown={toggleDrawer}
     >
@@ -75,17 +76,16 @@ export default function SwipeableTemporaryDrawer() {
 
   return (
     <div
-      className={`${
-        location.pathname.includes("/sign-in") ||
+      className={`${location.pathname.includes("/sign-in") ||
         location.pathname.includes("/sign-up") ||
         location.pathname.includes("/terms-and-conditions") ||
         location.pathname.includes("/choose-role")
-          ? "hidden"
-          : "block"
-      }`}
+        ? "hidden"
+        : "block"
+        }`}
     >
-      <AppBar position="fixed" className="!shadow-none border-b">
-        <Toolbar className="flex justify-between items-center bg-white border-none !shadow-none">
+      <AppBar position="fixed" className="!shadow-none border-b" >
+        <Toolbar className="flex justify-between items-center bg-white border-none !shadow-none" style={{ background: '#174E63' }}>
           <div className="flex items-center">
             <IconButton
               color="inherit"
@@ -94,28 +94,27 @@ export default function SwipeableTemporaryDrawer() {
               edge="start"
               sx={{ marginRight: 2 }}
             >
-              <Menu className="text-black" />
+              <Menu className="text-white" />
             </IconButton>
             <img
-              src="/smartea.jpeg"
+              src="/new_smartea.jpeg"
               className="h-[45px] rounded-md"
               alt="logo"
             />
           </div>
-
           <div className="flex gap-2 items-center">
             {data?.organisation?.orgName &&
               !isLocation &&
               !pathsToHideOrgName.includes(location.pathname) &&
               data?.organisation?.orgName}
-            {role && <NotificationIcon />}
-            <ProfileIcon />
+            {role && <NotificationIcon style={{ background: '#FFFFFF' }} />}
+            <ProfileIcon sx={{ color: '#FFFFFF' }} />
           </div>
         </Toolbar>
       </AppBar>
 
       <SwipeableDrawer
-        PaperProps={{ style: { background: "white" } }}
+        PaperProps={{ style: { background: "#3E3E3E" } }}
         color="white"
         anchor="left"
         open={open}
@@ -123,8 +122,8 @@ export default function SwipeableTemporaryDrawer() {
         className="border-none !shadow-none"
         onOpen={toggleDrawer}
       >
-        <div className="py-2 px-10 border-b-[.5px] flex items-center gap-2 border-gray-300">
-          <img src="/smartea.jpeg" className="h-[45px] rounded-lg" alt="logo" />
+        <div className="py-2 px-10 border-b-[.5px] flex items-center gap-2 border-gray-300 ml-6">
+          <img src="/new_smartea.jpeg" className="h-[45px] rounded-lg" alt="logo" />
         </div>
         {list}
       </SwipeableDrawer>

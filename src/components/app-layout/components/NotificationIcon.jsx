@@ -48,7 +48,7 @@ const NotificationIcon = () => {
         color={"error"}
         badgeContent={totalCount ?? 0}
       >
-        <IoIosNotificationsOutline className="text-black text-2xl" />
+        <IoIosNotificationsOutline className="text-white text-2xl" />
       </Badge>
     </Link>
   );

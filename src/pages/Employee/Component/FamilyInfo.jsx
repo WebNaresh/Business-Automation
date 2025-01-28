@@ -41,10 +41,10 @@ export function FamilyInfo({ empId }) {
     const familyDetails = {
         father_full_name: `${profile?.father_first_name || '-'} ${profile?.father_middal_name || ''} ${profile?.father_last_name || '-'}`,
         father_occupation: profile?.father_occupation || '-',
-        father_age: profile?.father_birthdate ||  '-',
+        father_age: profile?.father_birthdate || '-',
         mother_full_name: `${profile?.mother_first_name || '-'} ${profile?.mother_middal_name || ''} ${profile?.mother_last_name || '-'}`,
         mother_occupation: profile?.mother_occupation || '-',
-        mother_age: profile?.mother_birthdate ||  '-',
+        mother_age: profile?.mother_birthdate || '-',
         total_siblings: profile?.total_siblings || '0',
     };
 
@@ -60,7 +60,9 @@ export function FamilyInfo({ empId }) {
         <div className="p-4 space-y-6">
             {/* Emergency Contact Section */}
             <div className="border border-gray-300 rounded-md p-4 bg-white shadow-md">
-                <h2 className="text-lg font-semibold mb-4 border-b pb-2">Emergency Contact Details</h2>
+                <h2 className="text-lg font-semibold mb-4 border-b pb-2 bg-[#174E63] text-white p-2 rounded-t-md">
+                    Emergency Contact Details
+                </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {Object.entries(emergencyContact).map(([key, value]) => (
                         <div key={key} className="flex flex-col">
@@ -75,7 +77,7 @@ export function FamilyInfo({ empId }) {
 
             {/* Family Members Section */}
             <div className="border border-gray-300 rounded-md p-4 bg-white shadow-md">
-                <h2 className="text-lg font-semibold mb-4 border-b pb-2">Family Details</h2>
+                <h2 className="text-lg font-semibold mb-4 border-b pb-2 bg-[#174E63] text-white p-2 rounded-t-md">Family Details</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     {Object.entries(familyDetails).map(([key, value]) => (
                         <div key={key} className="flex flex-col">

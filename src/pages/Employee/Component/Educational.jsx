@@ -71,7 +71,7 @@ export function Educational({ empId }) {
   return (
     <div className="p-4">
       <div className="border border-gray-300 rounded-md p-4 bg-white shadow-md">
-        <h2 className="text-lg font-semibold mb-4 border-b pb-2">Educational Details</h2>
+        <h2 className="text-lg font-semibold mb-4 border-b pb-2 bg-[#174E63] text-white p-2 rounded-t-md">Educational Details</h2>
         <div className="overflow-x-auto">
           <table className="w-full border-collapse border border-gray-300">
             <thead>

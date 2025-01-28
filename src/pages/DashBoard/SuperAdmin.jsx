@@ -117,16 +117,6 @@ const SuperAdmin = () => {
   }, []);
 
   return (
-    // OLD
-    // <section className="bg-gray-50 min-h-screen w-full">
-    //   <header className="text-lg w-full pt-4 bg-white border-b p-4">
-    //     <Link to={"/organizationList"}>
-    //       <West className="mx-4 !text-xl" />
-    //     </Link>
-    //     Organisation Dashboard
-    //   </header>
-
-    //TEMP UPDATE
     <section className="p-2 mt-10 shadow-lg ">
       <TempHeader
         heading={"Organization Dashboard"}
@@ -138,7 +128,6 @@ const SuperAdmin = () => {
 
       <div className="md:px-8 px-2 w-full mt-2">
         <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 mt-6 w-full gap-2 md:gap-5">
-          {/* <div className="grid xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 gap-4"> */}
           <SuperAdminCard
             icon={Groups}
             color={"!bg-blue-500"}
@@ -208,7 +197,6 @@ const SuperAdmin = () => {
             <div className="items-center justify-between flex gap-2 py-2 px-4">
               <div className="flex items-center gap-2">
                 <Dashboard className="!text-[#67748E]" />
-                {/* <h1 className="text-md font-bold text-[#67748E]">Dashboard</h1> */}
               </div>
               <div className="w-[70%] md:hidden flex gap-6 items-center justify-end">
                 <div>
@@ -237,13 +225,16 @@ const SuperAdmin = () => {
                       queryClient.invalidateQueries("organization-attenedence");
                       queryClient.invalidateQueries("Org-Salary-overview");
                     }}
+                    className="bg-[#174E63] hover:bg-[#123e50]" // Adding the background color and hover effect
                   >
                     <FilterAltOff className="!text-[1.4em] text-white" />
                     Remove Filter
                   </Button>
 
+
                   <Select
                     placeholder={"Departments"}
+
                     onChange={(dept) => {
                       setDepartment(dept.value);
                       setLocations("");
@@ -254,8 +245,8 @@ const SuperAdmin = () => {
                     value={
                       department
                         ? Departmentoptions?.find(
-                            (option) => option.value === department
-                          )
+                          (option) => option.value === department
+                        )
                         : ""
                     }
                     options={Departmentoptions}
@@ -291,8 +282,8 @@ const SuperAdmin = () => {
                     value={
                       locations
                         ? locationOptions.find(
-                            (item) => item.name === locations
-                          )
+                          (item) => item.name === locations
+                        )
                         : ""
                     }
                     styles={customSelectStyles} // Updated custom styles
@@ -311,6 +302,7 @@ const SuperAdmin = () => {
                       queryClient.invalidateQueries("organization-attenedence");
                     }}
                     variant="contained"
+                    className="bg-[#174E63] hover:bg-[#123e50]"
                   >
                     <FilterAltOff className="!text-[1.4em] text-white" />
                     Remove Filter One
@@ -328,8 +320,8 @@ const SuperAdmin = () => {
                     value={
                       department
                         ? Departmentoptions?.find(
-                            (option) => option.value === department
-                          )
+                          (option) => option.value === department
+                        )
                         : ""
                     }
                     options={Departmentoptions}
@@ -365,8 +357,8 @@ const SuperAdmin = () => {
                     value={
                       locations
                         ? locationOptions.find(
-                            (item) => item.name === locations
-                          )
+                          (item) => item.name === locations
+                        )
                         : ""
                     }
                     styles={customSelectStyles} // Updated custom styles

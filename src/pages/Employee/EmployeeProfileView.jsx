@@ -37,7 +37,7 @@ const EmployeeProfileView = () => {
     { value: 'documents', label: 'Documents', icon: <FaFileAlt />, content: <Document empId={empId} organisationId={organisationId} /> },
     { value: 'attendance', label: 'Attendance', icon: <FaClipboardList />, content: <div>Attendance</div> },
     { value: 'project', label: 'Project', icon: <FaClipboardList />, content: <Project empId={empId} organisationId={organisationId} /> },
-    { value: 'note', label: 'Notes', icon: <FaClipboardList />, content:  <Note empId={empId} organisationId={organisationId} /> },
+    { value: 'note', label: 'Notes', icon: <FaClipboardList />, content: <Note empId={empId} organisationId={organisationId} /> },
     { value: 'activity', label: 'Activity', icon: <FaClipboardList />, content: <Activity empId={empId} organisationId={organisationId} /> },
 
   ];
@@ -90,37 +90,40 @@ const EmployeeProfileView = () => {
     <div className="min-h-screen bg-slate-50">
       <div className="max-w-7xl mx-auto py-6 px-4 grid grid-cols-1 md:grid-cols-[300px,1fr] gap-6">
         {/* Profile Info */}
-        <div className="space-y-4 bg-white p-4 rounded-md shadow-md mt-4">
-          <div className="relative w-32 h-32 rounded-full border-2 border-dashed border-gray-300 flex items-center justify-center bg-white mx-auto">
+        <div className="space-y-4 bg-[#3E3E3E] p-4 rounded-md shadow-md mt-4">
+          <div className="relative w-40 h-40 mt-12 rounded-full border-2 border-dashed border-gray-300 flex items-center justify-center bg-white mx-auto">
             <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-500">
               <span className="text-xs text-center px-2">Your Profile Photo comes here</span>
             </div>
           </div>
 
-          <div className="text-center">
+
+          <div className="text-center text-white"> {/* Set text color to white */}
             <div className="font-bold">
               {profile?.first_name} {profile?.last_name}
             </div>
-            <div className="text-sm text-gray-500 mt-2 font-bold">
+            <div className="text-sm font-bold mt-1 mb-1">
               {profile?.designation?.[0]?.title || '-'}
             </div>
-            <div className="text-sm text-gray-500 mt-2 font-bold">
+            <div className="text-sm font-bold mt-1 mb-1">
               ID_: {profile?.empId}
             </div>
-            <div className="text-sm text-gray-500 mt-2 font-bold">
+            <div className="text-sm font-bold mt-1 mb-1">
               DOJ: {profile?.joining_date ? new Date(profile?.joining_date).toLocaleDateString() : '-'}
             </div>
-
-
           </div>
+
+
         </div>
+
 
         {/* Tabs and Content */}
         <div className="bg-white p-4 rounded-md shadow-md">
-          <header className="bg-blue-500 text-white p-2 flex items-center sticky top-0 z-10">
+
+          <header className="bg-[#3E3E3E] text-white p-2 flex items-center sticky top-0 z-10">
             <button
               onClick={handlePrev}
-              className="text-white px-2 py-1 hover:bg-blue-600"
+              className="text-white px-2 py-1 hover:bg-[#4a4a4a]"
               disabled={visibleStartIndex === 0}
             >
               <FaChevronLeft />
@@ -132,7 +135,7 @@ const EmployeeProfileView = () => {
                   onClick={() => handleTabChange(tab.value)}
                   className={`flex items-center gap-2 px-4 py-1 text-sm font-medium ${activeTab === tab.value
                     ? 'text-white border-b-2 border-white'
-                    : 'text-gray-300 hover:text-white'
+                    : 'text-white-300 hover:text-white'
                     }`}
                 >
                   {tab.icon}
@@ -142,18 +145,17 @@ const EmployeeProfileView = () => {
             </div>
             <button
               onClick={handleNext}
-              className="text-white px-2 py-1 hover:bg-blue-600"
+              className="text-white px-2 py-1 hover:bg-[#4a4a4a]"
               disabled={visibleStartIndex + 6 >= tabs.length}
             >
               <FaChevronRight />
             </button>
           </header>
 
-
-
           {/* Tab Content */}
           <div className="space-y-4 mt-4">{tabs.find((tab) => tab.value === activeTab)?.content}</div>
         </div>
+
       </div>
     </div>
   );

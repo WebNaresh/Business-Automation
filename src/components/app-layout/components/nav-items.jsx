@@ -449,23 +449,8 @@ const TestNavItems = ({ toggleDrawer }) => {
         },
         Performance: {
           open: false,
-          isVisible:
-            window.location.pathname?.includes("organisation") &&
-            [
-              "Super-Admin",
-              "Delegate-Super-Admin",
-              "Delegate-Super-Admin",
-              "Department-Head",
-              "Delegate-Department-Head",
-              "Department-Admin",
-              "Delegate-Department-Admin",
-              "Accountant",
-              "Delegate-Accountant",
-              "HR",
-              "Manager",
-              "Employee",
-            ]?.includes(role),
-          icon: <Payment className=" !text-[1.2em]" />,
+          icon: <RxDashboard className=" !text-[1.2em]" />,
+          isVisible: true,
           routes: [
             {
               key: "performance",

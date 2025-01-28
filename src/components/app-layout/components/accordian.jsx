@@ -28,7 +28,6 @@ const NavAccordian = ({
         <ListItem
           style={{
             padding: "2px",
-
             borderRadius: "8px",
             width: "100%",
           }}
@@ -45,8 +44,8 @@ const NavAccordian = ({
         >
           <Accordion
             expanded={open}
-            className="w-full !bg-white !shadow-none  border-none !m-0"
-            style={{ background: "rgb(14, 165, 233)" }}
+            className="w-full"
+
           >
             <AccordionSummary
               expandIcon={<ExpandMore className="text-black" />}
@@ -75,7 +74,7 @@ const NavAccordian = ({
                 <Link
                   onClick={() => toggleDrawer()}
                   to={route.link}
-                  className="w-full"
+                  className="w-full "
                 >
                   <ListItemButton
                     style={{

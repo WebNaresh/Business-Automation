@@ -51,12 +51,12 @@ export function Project({ empId, organisationId }) {
 
     return (
         <div className="p-4 bg-white rounded-md shadow-md">
-            <h2 className="text-lg font-bold mb-4">Projects</h2>
+            <h2 className="text-lg font-semibold mb-4 border-b pb-2 bg-[#174E63] text-white p-2 rounded-t-md">Projects</h2>
             <div className="space-y-4">
                 {filteredProjects.map((project) => (
                     <div key={project._id} className="border p-4 rounded-md shadow-sm">
                         {/* Dynamically set title based on project status */}
-                        <h3 className="font-bold text-blue-500">
+                        <h3 className="font-bold text-#174E63">
                             {project.status === 'Completed' ? 'Previous Project' : 'Current Project'}
                         </h3>
                         <p className="text-gray-700"><strong>Description:</strong> {project.project_description}</p>

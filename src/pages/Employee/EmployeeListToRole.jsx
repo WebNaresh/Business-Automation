@@ -126,9 +126,23 @@ const EmployeeListToRole = () => {
         color="primary"
         onClick={() => typeof number === "number" && changePage(number)}
         disabled={number === "..."}
+
+        sx={{
+          backgroundColor: number === currentPage ? "#174E63" : "transparent", // Apply color when selected
+          color: number === currentPage ? "#ffffff" : "#174E63", // Text color for selected and unselected states
+          "&:hover": {
+            backgroundColor: "#133e47", // Darker shade on hover
+            borderColor: "#174E63", // Border color on hover
+          },
+          height: "32px", // Decrease the height of the button
+          minWidth: "40px", // Optional: Ensure minimum width for consistency
+          padding: "4px 8px", // Optional: Adjust padding for better size control
+        }}
       >
         {number}
       </Button>
+
+
     ));
   };
 
@@ -203,15 +217,23 @@ const EmployeeListToRole = () => {
           </div>
           <Button
             variant="contained"
-            color="primary"
+            style={{
+              backgroundColor: "#174E63",
+              color: "#fff",
+            }}
+            size="small"
             startIcon={<AddIcon />}
             onClick={handleAddEmployee}
           >
             Add Employee
           </Button>
+
         </div>
 
-        <div className="p-6 border-b border-gray-200">
+        <div
+          className="p-6 border-b border-gray-200"
+          style={{ backgroundColor: "#3E3E3E" }}
+        >
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
             {/* Search Bar */}
             <Tooltip
@@ -226,34 +248,73 @@ const EmployeeListToRole = () => {
                 size="small"
                 fullWidth
                 InputProps={{
-                  startAdornment: <SearchIcon className="text-gray-400 mr-2" />,
+                  startAdornment: <SearchIcon sx={{ color: "#64748b", marginRight: "8px" }} />,
+                  sx: {
+                    backgroundColor: "#ffffff",
+                    borderRadius: "6px",
+                  },
+                }}
+                sx={{
+                  backgroundColor: "#ffffff", // White background for TextField
+                  borderRadius: "6px", // Rounded corners
+                  width: "300px", // Increased width
+                  height: "30px", // Decreased height
                 }}
               />
             </Tooltip>
 
             {/* Department Dropdown */}
-            <FormControl variant="outlined" size="small" fullWidth>
+            <FormControl
+              variant="outlined"
+              size="small"
+              fullWidth
+              sx={{
+                backgroundColor: "#ffffff", // White background for the box
+                borderRadius: "12px", // Optional: Slightly rounded corners
+                marginLeft: "100px",
+                marginTop: "10px"
+              }}
+            >
               <InputLabel>Department</InputLabel>
               <Select
                 value={department}
                 onChange={handleDepartmentChange}
                 label="Department"
+                MenuProps={{
+                  PaperProps: {
+                    sx: {
+                      backgroundColor: "#ffffff", // White background for dropdown
+                      color: "#000000", // Black text for readability
+                    },
+                  },
+                }}
+                sx={{
+                  backgroundColor: "#ffffff", // Ensure white background for Select field
+                }}
               >
-                <MenuItem value="">All Departments</MenuItem>
+                <MenuItem value="">
+                  <em>All Departments</em>
+                </MenuItem>
                 {Departmentoptions?.map((dept) => (
-                  <MenuItem key={dept.value} value={dept.value}>
+                  <MenuItem
+                    key={dept.value}
+                    value={dept.value}
+                    sx={{ color: "#000000" }} // Black text for dropdown items
+                  >
                     {dept.label}
                   </MenuItem>
                 ))}
               </Select>
             </FormControl>
 
+
             {/* Grid/List Toggle Button */}
             <Box
               sx={{
+                marginLeft: "120px",
                 display: "flex",
                 justifyContent: "space-between",
-                width: "100%",
+                width: "50%",
                 border: "1px solid #e5e7eb",
                 borderRadius: "6px",
                 overflow: "hidden",
@@ -269,10 +330,12 @@ const EmployeeListToRole = () => {
                 }}
                 onClick={handleTableViewClick}
               >
-                <PrintIcon sx={{
-                  color: "#64748b",
-                  fontSize: "20px"
-                }} />
+                <PrintIcon
+                  sx={{
+                    color: "#ffffff", // Changed color to white
+                    fontSize: "20px",
+                  }}
+                />
               </IconButton>
               <IconButton
                 sx={{
@@ -284,10 +347,12 @@ const EmployeeListToRole = () => {
                 }}
                 onClick={handleGridViewClick}
               >
-                <PrintIcon sx={{
-                  color: "#64748b",
-                  fontSize: "20px"
-                }} />
+                <PrintIcon
+                  sx={{
+                    color: "#ffffff", // Changed color to white
+                    fontSize: "20px",
+                  }}
+                />
               </IconButton>
             </Box>
 
@@ -300,11 +365,13 @@ const EmployeeListToRole = () => {
                 backgroundColor: "#d32f2f",
                 "&:hover": { backgroundColor: "#b71c1c" },
                 textTransform: "none",
-                width: "100%",
+                padding: "8px 12px", // Adjust padding for height
+                width: "150px", // Set a fixed smaller width
+                marginLeft: "50px"
               }}
               onClick={handleExportToPDF}
             >
-              Export PDF
+              Print PDF
             </Button>
 
             {/* Export Excel Button */}
@@ -316,21 +383,22 @@ const EmployeeListToRole = () => {
                 backgroundColor: "#388e3c",
                 "&:hover": { backgroundColor: "#2e7d32" },
                 textTransform: "none",
-                width: "100%",
+                padding: "8px 12px", // Adjust padding for height
+                width: "150px", // Set a fixed smaller width
               }}
               onClick={handleExportToExcel}
             >
-              Export Excel
+              Print Excel
             </Button>
+
           </div>
         </div>
-
 
 
         <TableContainer component={Paper} sx={{ boxShadow: "none" }}>
           <Table sx={{ minWidth: 650 }} aria-label="employee table">
             <TableHead>
-              <TableRow sx={{ backgroundColor: "#f3f4f6" }}>
+              <TableRow sx={{ backgroundColor: "#f3f4f6", height: "30px" }}> {/* Adjusted header row height */}
                 <TableCell sx={{ fontWeight: "bold" }}>Sr. No</TableCell>
                 <TableCell sx={{ fontWeight: "bold" }}>Name</TableCell>
                 <TableCell sx={{ fontWeight: "bold" }}>Email</TableCell>
@@ -357,50 +425,51 @@ const EmployeeListToRole = () => {
                       sx={{
                         backgroundColor: id % 2 === 0 ? "#ffffff" : "#f9fafb",
                         "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.04)" },
+                        height: "48px", // Reduced row height
                       }}
                     >
-                      <TableCell>{id + 1}</TableCell>
-                      <TableCell>
+                      <TableCell sx={{ padding: "4px" }}>{id + 1}</TableCell>
+                      <TableCell sx={{ padding: "4px" }}>
                         <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
                           <Avatar
                             src={item?.photoUrl || "/default-avatar.png"}
                             alt={item?.first_name || "Employee"}
                             sx={{
-                              width: 50,
-                              height: 50,
-                              bgcolor: item?.photoUrl ? 'transparent' : '#9ca3af', // Fallback color when the image is missing
-                              backgroundColor: item?.photoUrl ? 'transparent' : `#${Math.floor(Math.random() * 16777215).toString(16)}`, // Random color fallback
+                              width: 25, // Reduced avatar size
+                              height: 25,
+                              bgcolor: item?.photoUrl ? "transparent" : "#9ca3af",
+                              backgroundColor: item?.photoUrl
+                                ? "transparent"
+                                : `#${Math.floor(Math.random() * 16777215).toString(16)}`, // Random fallback color
                             }}
                           >
-                            {!item?.photoUrl && item?.first_name?.charAt(0).toUpperCase()}  {/* Show the first letter of the name when no image */}
+                            {!item?.photoUrl &&
+                              item?.first_name?.charAt(0).toUpperCase()}
                           </Avatar>
-                          {`${item?.first_name ?? ""} ${item?.last_name ?? ""}`.trim() || "-"}
+                          {`${item?.first_name ?? ""} ${item?.last_name ?? ""}`.trim() ||
+                            "-"}
                         </Box>
                       </TableCell>
 
-                      <TableCell>{item?.email}</TableCell>
-                      <TableCell>{item?.empId}</TableCell>
-                      <TableCell>
+                      <TableCell sx={{ padding: "4px" }}>{item?.email}</TableCell>
+                      <TableCell sx={{ padding: "4px" }}>{item?.empId}</TableCell>
+                      <TableCell sx={{ padding: "4px" }}>
                         {item?.worklocation?.map((location, index) => (
                           <span key={index}>{location?.city}</span>
                         ))}
                       </TableCell>
-                      <TableCell>
+                      <TableCell sx={{ padding: "4px" }}>
                         {item?.deptname?.map((dept, index) => (
                           <span key={index}>{dept?.departmentName}</span>
                         ))}
                       </TableCell>
-                      <TableCell
-                        sx={{
-                          padding: "16px 24px",
-                        }}
-                      >
+                      <TableCell sx={{ padding: "4px" }}>
                         <Box
                           className="action-buttons"
                           sx={{
                             display: "flex",
                             gap: "8px",
-                            opacity: 0.7,
+                            opacity: 0.9, // Slightly increased opacity
                             transition: "opacity 0.2s ease",
                           }}
                         >
@@ -413,7 +482,7 @@ const EmployeeListToRole = () => {
                             size="small"
                           >
                             <VisibilityIcon
-                              sx={{ fontSize: "1.25rem", color: "#0ea5e9" }}
+                              sx={{ fontSize: "1.25rem", color: "#174E63" }} // Dark blue color
                             />
                           </IconButton>
                           <IconButton
@@ -425,8 +494,9 @@ const EmployeeListToRole = () => {
                             size="small"
                           >
                             <EditIcon
-                              sx={{ fontSize: "1.25rem", color: "#6366f1" }}
+                              sx={{ fontSize: "1.25rem", color: "#15803d" }} // Standard green color
                             />
+
                           </IconButton>
                           <IconButton
                             onClick={() => handleDeleteClick(item._id)}
@@ -437,10 +507,11 @@ const EmployeeListToRole = () => {
                             size="small"
                           >
                             <DeleteIcon
-                              sx={{ fontSize: "1.25rem", color: "#ef4444" }}
+                              sx={{ fontSize: "1.25rem", color: "#991b1b" }} // Dark red color
                             />
                           </IconButton>
                         </Box>
+
                       </TableCell>
                     </TableRow>
                   ))}
@@ -454,6 +525,13 @@ const EmployeeListToRole = () => {
             onClick={prePage}
             disabled={currentPage === 1}
             className="text-sm"
+            sx={{
+              backgroundColor: "#174E63", // Set the background color to #174E63
+              "&:hover": {
+                backgroundColor: "#133e47", // Slightly darker shade on hover
+              },
+              height: "32px", // Decrease height of the button
+            }}
           >
             Previous
           </Button>
@@ -463,10 +541,19 @@ const EmployeeListToRole = () => {
             onClick={nextPage}
             disabled={currentPage === totalPages}
             className="text-sm"
+            sx={{
+              backgroundColor: "#174E63", // Set the background color to #174E63
+              "&:hover": {
+                backgroundColor: "#133e47", // Slightly darker shade on hover
+              },
+              height: "32px", // Decrease height of the button
+            }}
           >
             Next
           </Button>
         </div>
+
+
       </article>
     </div>
   );

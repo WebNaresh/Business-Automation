@@ -60,7 +60,7 @@ export function OfficialInfo({ empId }) {
         <div className="p-4 space-y-6">
             {/* BASIC INFO Section */}
             <div className="border border-gray-300 rounded-md p-4 bg-white shadow-md">
-                <h2 className="text-lg font-semibold mb-4 border-b pb-2">Basic Details</h2>
+                <h2 className="text-lg font-semibold mb-4 border-b pb-2 bg-[#174E63] text-white p-2 rounded-t-md">Basic Details</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     {Object.entries(basicInfo).map(([key, value]) => (
                         <div key={key} className="flex flex-col">
@@ -75,7 +75,7 @@ export function OfficialInfo({ empId }) {
 
             {/* CONFIDENTIAL DETAILS Section */}
             <div className="border border-gray-300 rounded-md p-4 bg-white shadow-md">
-                <h2 className="text-lg font-semibold mb-4 border-b pb-2">Confidential Details</h2>
+                <h2 className="text-lg font-semibold mb-4 border-b pb-2 bg-[#174E63] text-white p-2 rounded-t-md">Confidential Details</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     {Object.entries(workInfo).map(([key, value]) => (
                         <div key={key} className="flex flex-col">

@@ -88,7 +88,7 @@ export default function TopNav() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar color="transparent" position="sticky" enableColorOnDark>
+      <AppBar  position="sticky" enableColorOnDark>
         <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
           <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
             <IconButton

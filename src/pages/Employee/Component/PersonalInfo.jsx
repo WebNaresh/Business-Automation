@@ -159,7 +159,9 @@ export function PersonalInfo({ empId }) {
 function Section({ title, children }) {
   return (
     <div className="border p-4 rounded-lg shadow-md bg-white">
-      <h2 className="text-lg font-semibold mb-2 border-b pb-1">{title}</h2>
+      <h2 className="text-lg font-semibold mb-2 border-b pb-1 bg-[#174E63] text-white p-2 rounded-t-md">
+        {title}
+      </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {children}
       </div>
@@ -167,12 +169,14 @@ function Section({ title, children }) {
   );
 }
 
+
 // Individual Info Item Component
 function InfoItem({ label, value }) {
   return (
     <div className="flex flex-col">
-      <span className="text-gray-600 font-medium capitalize">{label}</span>
+      <span className="text-[#3E3E3E] font-medium capitalize">{label}</span>
       <span className="text-gray-800">{value}</span>
     </div>
   );
 }
+
