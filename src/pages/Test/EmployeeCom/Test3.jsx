@@ -16,7 +16,7 @@ const Test3 = ({ isLastStep, nextStep, prevStep, isFirstStep }) => {
   const { addtionalFields, addtionalLoading } = AdditionalListCall();
   const { setStep3Data, data } = useEmpState();
   const EmployeeSchema = z.object({}).catchall(z.any().optional());
-  
+
   // define the useForm
   const { control, formState, handleSubmit } = useForm({
     defaultValues: {
@@ -24,7 +24,7 @@ const Test3 = ({ isLastStep, nextStep, prevStep, isFirstStep }) => {
     },
     resolver: zodResolver(EmployeeSchema),
   });
-  
+
 
   // to define the onSubmit function
   const onSubmit = (testData) => {
@@ -52,7 +52,7 @@ const Test3 = ({ isLastStep, nextStep, prevStep, isFirstStep }) => {
         <div className="grid grid-cols-1  md:grid-cols-3 w-full gap-4">
           {addtionalFields?.inputField?.inputDetail?.map((input, id) => (
             <>
-            
+
               {input.isActive && (
                 <AuthInputFiled
                   name={input.label}
@@ -63,7 +63,7 @@ const Test3 = ({ isLastStep, nextStep, prevStep, isFirstStep }) => {
                   type={input.inputType}
                   errors={errors}
                   error={errors.label}
-                  className="text-sm" 
+                  className="text-sm"
                 />
               )}
             </>
@@ -76,14 +76,14 @@ const Test3 = ({ isLastStep, nextStep, prevStep, isFirstStep }) => {
             onClick={() => {
               prevStep();
             }}
-            className="!w-max flex group justify-center px-6  gap-2 items-center rounded-md py-1 text-md font-semibold text-white bg-blue-500 hover:bg-blue-500 focus-visible:outline-blue-500"
+            className="flex justify-center px-4 py-1 text-md font-semibold text-white bg-[#174E63] rounded-md hover:bg-[#123B4A]"
           >
             Prev
           </button>
           <button
             type="submit"
             disabled={isLastStep}
-            className="!w-max flex group justify-center px-6  gap-2 items-center rounded-md py-1 text-md font-semibold text-white bg-blue-500 hover:bg-blue-500 focus-visible:outline-blue-500"
+            className="flex justify-center px-4 py-1 text-md font-semibold text-white bg-[#174E63] rounded-md hover:bg-[#123B4A]"
           >
             Next
           </button>

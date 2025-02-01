@@ -28,28 +28,23 @@ const SideBalenceTable = ({ leaveTableData }) => {
         </header>
 
         {leaveTableData?.leaveTypes?.map((item, id) => (
-          <div key={id} className="border-b p-4  ">
+          <div key={id} className="border-b p-4 bg-[#174E63] text-white rounded-md">
             <div className="flex items-center gap-2">
-              {/* <div
-                style={{ background: item.color }}
-                className={`h-3 w-3 rounded-full `}
-              /> */}
               <div>
-                <h1 className="text-lg text-gray-700   tracking-tight">
-                  {item?.leaveName}
-                </h1>
-                <h1 className="text-xl">{item?.count}</h1>
+                <h1 className="text-lg tracking-tight">{item?.leaveName}</h1>
+                <h1 className="text-xl font-semibold">{item?.count}</h1>
               </div>
             </div>
           </div>
         ))}
 
-        <div className="border-b p-4  ">
+
+        <div className="border-b p-4  bg-[#174E63] text-white">
           <div className="flex items-center gap-2">
-            <h1 className="text-xl text-gray-700 font-semibold  tracking-tight">
+            <h1 className="text-xl font-semibold  tracking-tight">
               Total
             </h1>
-            <h1 className="text-xl text-gray-700 font-semibold   tracking-tight">
+            <h1 className="text-xl font-semibold   tracking-tight">
               {leaveTableData?.totalCoutn}
             </h1>
           </div>

@@ -54,17 +54,18 @@ const EmployeeSurvey = () => {
             </header>
             <section className="xs:px-8 xs:py-2">
                 {employeeId === undefined && isAdminOrHR && role !== 'Employee' && (
-                    <div className="py-4 border-b-[.5px] flex justify-between gap-3 w-full border-gray-300">
-                        <div className="flex justify-end w-full">
+                    <div className="py-4 border-b-[.5px] flex justify-between gap-3 w-full bg-[#3E3E3E]">
+                        <div className="flex justify-end w-full  p-4 rounded-md">
                             <Button
-                                className="!font-semibold !bg-sky-500 flex gap-2"
+                                className="!font-semibold flex gap-2 bg-[#174E63] text-white hover:bg-[#125050]"
                                 variant="contained"
                                 onClick={handleCreateNewSurvey}
                                 sx={{ textTransform: "none" }}
                             >
-                                Create New Survey
+                                Create  Survey
                             </Button>
                         </div>
+
                     </div>
                 )}
                 <div className="px-4 py-2 bg-white w-full h-max shadow-md rounded-2m border my-8">

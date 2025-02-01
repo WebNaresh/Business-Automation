@@ -13,7 +13,7 @@ import useEmpQuery from "../../../hooks/Employee-OnBoarding/useEmpQuery";
 import useEmployeeState from "../../../hooks/Employee-OnBoarding/useEmployeeState";
 
 const Test3 = ({ isLastStep, nextStep, prevStep, isFirstStep }) => {
-   // to define the state, import funciton and hook
+  // to define the state, import funciton and hook
   const organisationId = useParams("");
   const { employeeId } = useParams("");
   const { cookies } = useContext(UseContext);
@@ -30,7 +30,7 @@ const Test3 = ({ isLastStep, nextStep, prevStep, isFirstStep }) => {
     },
     resolver: zodResolver(EmployeeSchema),
   });
-  
+
 
   // // for getting the data existing employee and set the value
   const { isLoading } = useQuery(
@@ -110,14 +110,14 @@ const Test3 = ({ isLastStep, nextStep, prevStep, isFirstStep }) => {
                 onClick={() => {
                   prevStep();
                 }}
-                className="!w-max flex group justify-center px-6  gap-2 items-center rounded-md py-1 text-md font-semibold text-white bg-blue-500 hover:bg-blue-500 focus-visible:outline-blue-500"
+                className="flex justify-center px-4 py-1 text-md font-semibold text-white bg-[#174E63] rounded-md hover:bg-[#123B4A]"
               >
                 Prev
               </button>
               <button
                 type="submit"
                 disabled={isLastStep}
-                className="!w-max flex group justify-center px-6  gap-2 items-center rounded-md py-1 text-md font-semibold text-white bg-blue-500 hover:bg-blue-500 focus-visible:outline-blue-500"
+                className="flex justify-center px-4 py-1 text-md font-semibold text-white bg-[#174E63] rounded-md hover:bg-[#123B4A]"
               >
                 Next
               </button>

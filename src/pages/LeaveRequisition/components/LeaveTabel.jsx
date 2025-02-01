@@ -186,8 +186,8 @@ const LeaveTable = () => {
 
   if (isLoading) {
     return (
-      <article className="w-full  px-6 h-max py-6 bg-white   ">
-        <h1 className="text-lg  font-semibold flex items-center gap-2 text-gray-700   ">
+      <article className="w-full  px-6 h-max py-6 bg-white">
+        <h1 className="text-lg  font-semibold flex items-center gap-2 text-black   ">
           <AccountBalanceIcon />
           <span>Balance Leaves</span>
           <Tooltip title="Click to get Summary for current month">
@@ -233,11 +233,11 @@ const LeaveTable = () => {
         </Tooltip>
       </h1>
 
-      <div className="mt-2 px-8">
+      <div className="mt-2 px-8 bg-[#174E63] text-white p-4 rounded-lg">
         {data?.leaveTypes?.map((item, index) => (
           <div
             key={index}
-            className="flex justify-between items-center  py-2 px-0 rounded-lg mb-2 transition-shadow hover:shadow-lg"
+            className="flex justify-between items-center py-2 px-0 rounded-lg mb-2 transition-shadow hover:shadow-lg"
           >
             <span
               style={{ backgroundColor: item.color }}
@@ -245,43 +245,18 @@ const LeaveTable = () => {
             ></span>
 
             <div style={{ width: "100px" }}>
-              <h2 className="text-md font-medium text-gray-800">
-                {item.leaveName}
-              </h2>
+              <h2 className="text-md font-medium">{item.leaveName}</h2>
             </div>
-            <h2 className="text-md font-semibold text-gray-900">
-              {item.count}
-            </h2>
+            <h2 className="text-md font-semibold">{item.count}</h2>
           </div>
         ))}
-        <div className="flex justify-between items-center py-2 px-0 border-t border-gray-300">
-          <h2 className="text-md font-medium text-gray-800">
-            Total Leave Balance
-          </h2>
-          <h2 className="text-md font-semibold text-gray-900">
-            {data.totalCoutn}
-          </h2>
+
+        <div className="flex justify-between items-center py-2 px-0 border-t border-gray-400 mt-2">
+          <h2 className="text-md font-medium">Total Leave Balance</h2>
+          <h2 className="text-md font-semibold">{data.totalCoutn}</h2>
         </div>
       </div>
-      {/* <div className="mt-2 px-8">
-  {data?.leaveTypes?.map((item, index) => (
-    <div
-      key={index}
-      className="flex items-center py-2 px-4 rounded-lg mb-2 transition-shadow hover:shadow-lg"
-     
-    >
-      <span className="h-8 w-8 rounded-full mr-4" style={{ backgroundColor: item.color }}></span>
-      <div className="flex-1">
-        <h2 className="text-md font-medium text-gray-800">{item.leaveName}</h2>
-      </div>
-      <h2 className="text-md font-semibold text-gray-900">{item.count}</h2>
-    </div>
-  ))}
-  <div className="flex justify-between items-center py-2 px-4 border-t border-gray-300">
-    <h2 className="text-md font-medium text-gray-800">Total Leave Balance</h2>
-    <h2 className="text-md font-semibold text-gray-900">{data.totalCoutn}</h2>
-  </div>
-</div> */}
+
 
       <Popover
         open={Boolean(anchorEl)}

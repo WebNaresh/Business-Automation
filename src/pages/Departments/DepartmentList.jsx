@@ -100,9 +100,9 @@ const DepartmentList = () => {
     navigate(`/organisation/${organisationId}/department-list`);
   };
 
-  const handleGridViewClick  = () => {
+  const handleGridViewClick = () => {
     navigate(`/organisation/${organisationId}/display-card-dept`);
-}; 
+  };
 
 
   // Add this handler function
@@ -344,11 +344,11 @@ const DepartmentList = () => {
                   </Button>
                 </div>
 
-                <div className="p-6 border-b border-gray-200">
+                <div className="p-6 border-b border-gray-200" style={{ backgroundColor: "#3E3E3E" }}>
                   <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
                     {/* Search Bar */}
                     <Tooltip
-                      title="No Department  found"
+                      title="No Department found"
                       placement="top"
                       open={deptList.length < 1 && nameSearch !== ""}
                     >
@@ -359,18 +359,36 @@ const DepartmentList = () => {
                         size="small"
                         fullWidth
                         InputProps={{
-                          startAdornment: <SearchIcon className="text-gray-400 mr-2" />,
+                          startAdornment: <SearchIcon className="text-white mr-2" />,
+                        }}
+                        sx={{
+                          backgroundColor: "#ffffff",
+                          "& .MuiInputBase-root": {
+                            color: "#3E3E3E",
+                          },
+                          "& .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "#ffffff",
+                          },
                         }}
                       />
                     </Tooltip>
 
                     {/* Department Dropdown */}
                     <FormControl variant="outlined" size="small" fullWidth>
-                      <InputLabel>Department</InputLabel>
+                      <InputLabel sx={{ color: "#ffffff" }}>Department</InputLabel>
                       <Select
                         value={department}
                         onChange={handleDepartmentChange}
                         label="Department"
+                        sx={{
+                          backgroundColor: "#ffffff",
+                          "& .MuiInputBase-root": {
+                            color: "#3E3E3E",
+                          },
+                          "& .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "#ffffff",
+                          },
+                        }}
                       >
                         <MenuItem value="">All Departments</MenuItem>
                         {Departmentoptions?.map((dept) => (
@@ -403,7 +421,7 @@ const DepartmentList = () => {
                         onClick={handleTableViewClick}
                       >
                         <PrintIcon sx={{
-                          color: "#64748b",
+                          color: "#ffffff",
                           fontSize: "20px"
                         }} />
                       </IconButton>
@@ -418,7 +436,7 @@ const DepartmentList = () => {
                         onClick={handleGridViewClick}
                       >
                         <PrintIcon sx={{
-                          color: "#64748b",
+                          color: "#ffffff",
                           fontSize: "20px"
                         }} />
                       </IconButton>
@@ -457,6 +475,7 @@ const DepartmentList = () => {
                     </Button>
                   </div>
                 </div>
+
                 {/* Table Section */}
                 <TableContainer
                   component={Paper}

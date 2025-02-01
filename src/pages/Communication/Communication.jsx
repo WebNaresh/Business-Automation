@@ -118,23 +118,31 @@ const Communication = () => {
   );
   return (
     <>
-      <Container maxWidth="xl" className="bg-gray-50 min-h-screen">
+      <Container maxWidth="xl" className="bg-gray-50 min-h-screen mt-12">
         <article className=" bg-white w-full h-max shadow-md rounded-sm border items-center">
-          <Typography variant="h4" className=" text-center pl-10  mb-6 mt-6">
-            Communication
-          </Typography>
-          <p className="text-xs text-gray-600 pl-10 text-center mb-2">
-            Here you can send email to employee.
-          </p>
-          <div className="p-4 border-b-[.5px] flex justify-center gap-3 w-full border-gray-300">
-            <Button
-              className="!font-semibold !bg-sky-500 flex items-center gap-2"
-              variant="contained"
-              onClick={handleOpenCommunicationModal}
-            >
-              <Add />
-              Compose
-            </Button>
+          <div className="flex justify-between items-center w-full border-b-[.5px] border-gray-300 p-4">
+            {/* Left-Aligned Communication Text */}
+            <div className="text-left">
+              <Typography variant="h4" className="pl-10 mb-2 mt-12">
+                Communication
+              </Typography>
+              <p className="text-xs text-gray-600 pl-10 mb-2">
+                Here you can send email to employees.
+              </p>
+            </div>
+
+            {/* Right-Aligned Compose Button */}
+            <div className="flex justify-end">
+              <Button
+                className="!font-semibold flex items-center gap-2 bg-[#174E63] text-white hover:bg-[#125050]"
+                variant="contained"
+                onClick={handleOpenCommunicationModal}
+              >
+                <Add />
+                Compose
+              </Button>
+
+            </div>
           </div>
 
           {isLoading ? (
@@ -148,7 +156,7 @@ const Communication = () => {
                       Sr. No
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Communication Type
+                      Type
                     </th>
                     <th scope="col" className="px-6 py-3 ">
                       From

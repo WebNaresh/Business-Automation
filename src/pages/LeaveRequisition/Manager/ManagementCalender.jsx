@@ -222,12 +222,11 @@ const ManagementCalender = () => {
       {/* Top Bar */}
 
       <section className="p-4 md:px-8 px-2 bg-gray-50 md:min-h-[80vh] h-full  ">
-        <div class=" gap-1  ">
-          <h2 class=" text-2xl tracking-tight">View Employee Attendence</h2>
-          <p class="text-sm text-muted-foreground">
-            Here you can view your employee attendance
-          </p>
+        <div class="bg-[#3E3E3E] p-4 rounded-md text-white">
+          <h2 class="text-2xl tracking-tight font-semibold">View Employee Attendance</h2>
+          <p class="text-sm text-gray-300">Here you can view your employee attendance</p>
         </div>
+
 
         <div className="my-4 flex md:flex-row flex-col justify-between gap-4 items-end">
           <div className="md:w-[30%] w-full">
@@ -272,7 +271,7 @@ const ManagementCalender = () => {
           </div>
 
           {selectedLeave?.title !== "Selected Leave" &&
-          Object.keys(selectedLeave).length > 0 ? (
+            Object.keys(selectedLeave).length > 0 ? (
             <div className="flex  md:flex-row flex-col gap-2 p-1 px-4 w-full md:w-[70%] bg-blue-50 justify-between border rounded-md items-center">
               <h1 className="text-lg font-bold leading-none text-gray-700">
                 Modify {selectedLeave?.title} request from{" "}
@@ -385,8 +384,8 @@ const ManagementCalender = () => {
                 {employeeLoading
                   ? ""
                   : !employee
-                  ? "Please Select Employee to view the data"
-                  : "No data found for this selected employee about attendance"}
+                    ? "Please Select Employee to view the data"
+                    : "No data found for this selected employee about attendance"}
               </h1>
             </div>
           </div>

@@ -269,7 +269,7 @@ const EditProject = ({ open, handleClose, projectId, organisationId }) => {
                                 </div>
                                 <button
                                     type="submit"
-                                    className="py-2 rounded-md border font-bold w-full bg-blue-500 text-white mt-4"
+                                    className="py-2 rounded-md border font-bold w-full bg-[#174E63] text-white mt-4"
                                 >
                                     Update
                                 </button>

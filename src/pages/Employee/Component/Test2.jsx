@@ -324,7 +324,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
                 value: ev,
               }));
             setValue("profile", profileLabel);
-          } 
+          }
           setValue("current_ctc", data.employee.current_ctc || "");
         }
       },
@@ -580,14 +580,14 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
                 onClick={() => {
                   prevStep();
                 }}
-                className="!w-max flex group justify-center px-6  gap-2 items-center rounded-md py-1 text-md font-semibold text-white bg-blue-500 hover:bg-blue-500 focus-visible:outline-blue-500"
+                className="flex justify-center px-4 py-1 text-md font-semibold text-white bg-[#174E63] rounded-md hover:bg-[#123B4A]"
               >
                 Prev
               </button>
               <button
                 type="submit"
                 disabled={isLastStep}
-                className="!w-max flex group justify-center px-6  gap-2 items-center rounded-md py-1 text-md font-semibold text-white bg-blue-500 hover:bg-blue-500 focus-visible:outline-blue-500"
+                className="flex justify-center px-4 py-1 text-md font-semibold text-white bg-[#174E63] rounded-md hover:bg-[#123B4A]"
               >
                 Next
               </button>

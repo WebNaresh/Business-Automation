@@ -15,8 +15,8 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Button , 
-  
+  Button,
+
 } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import axios from "axios";
@@ -41,7 +41,7 @@ const Form16Hr = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [numbers, setNumbers] = useState([]);
   const [department, setDepartment] = useState("");
-   const [salarystructure, setSalarystructure] = useState("");
+  const [salarystructure, setSalarystructure] = useState("");
   const { organisationId } = useParams();
 
   const {
@@ -139,8 +139,8 @@ const Form16Hr = () => {
     setDepartment(e.target.value);
   };
 
-   // Define the handler function
-   const handleSalaryTemplateChange = (e) => {
+  // Define the handler function
+  const handleSalaryTemplateChange = (e) => {
     setSalarystructure(e.target.value);
   };
 
@@ -205,7 +205,7 @@ const Form16Hr = () => {
             </div>
           </div>
 
-          <div className="p-6 border-b border-gray-200">
+          <div className="p-6 border-b border-gray-200 bg-[#3E3E3E]">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
               {/* Search Bar */}
               <Tooltip
@@ -222,11 +222,12 @@ const Form16Hr = () => {
                   InputProps={{
                     startAdornment: <SearchIcon className="text-gray-400 mr-2" />,
                   }}
+                  className="bg-white" // White background for the search box
                 />
               </Tooltip>
 
               {/* Department Dropdown */}
-              <FormControl variant="outlined" size="small" fullWidth>
+              <FormControl variant="outlined" size="small" fullWidth className="bg-white">
                 <InputLabel>Department</InputLabel>
                 <Select
                   value={department}
@@ -241,8 +242,9 @@ const Form16Hr = () => {
                   ))}
                 </Select>
               </FormControl>
+
               {/* Salary Template Dropdown */}
-              <FormControl variant="outlined" size="small" fullWidth>
+              <FormControl variant="outlined" size="small" fullWidth className="bg-white">
                 <InputLabel>Salary Template</InputLabel>
                 <Select
                   value={salarystructure}
@@ -259,6 +261,8 @@ const Form16Hr = () => {
               </FormControl>
             </div>
           </div>
+
+
 
           <TableContainer component={Paper} sx={{ boxShadow: "none" }}>
             <Table sx={{ minWidth: 650 }} aria-label="employee table">

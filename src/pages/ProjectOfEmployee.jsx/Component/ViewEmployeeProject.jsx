@@ -74,11 +74,12 @@ const ViewEmployeeProject = ({ employeeId }) => {
                     <div className="flex justify-center mt-4">
                         <button
                             onClick={() => handleAddProduct(employeeId)}
-                            className="bg-blue-500 text-white px-6 py-2 rounded-md shadow-md hover:bg-blue-600 transition duration-200"
+                            className="bg-[#174E63] text-white px-6 py-2 rounded-md shadow-md hover:bg-[#174E63] transition duration-200"
                         >
                             Add Project
                         </button>
                     </div>
+
                 </div>
 
                 {getProjectOfEmployee?.length > 0 ? (

@@ -28,12 +28,11 @@ const InvestmentTable = ({ setOpen, investments, isFetching, empId }) => {
               setFocusedInput("search");
             }}
             onBlur={() => setFocusedInput(null)}
-            className={` ${
-              focusedInput === "search"
+            className={` ${focusedInput === "search"
                 ? "outline-blue-500 outline-3 border-blue-500 border-[2px] "
                 : "outline-none border-gray-200 border-[.5px]"
-            } flex  rounded-md items-center px-2   bg-white py-3 md:py-[6px]`}
-            // className="flex  rounded-md items-center px-2   bg-white py-3 md:py-[6px] outline-none border-gray-200 border-[.5px]"
+              } flex  rounded-md items-center px-2   bg-white py-3 md:py-[6px]`}
+          // className="flex  rounded-md items-center px-2   bg-white py-3 md:py-[6px] outline-none border-gray-200 border-[.5px]"
           >
             <Search className="text-gray-700 md:text-lg !text-[1em]" />
             <input
@@ -58,10 +57,11 @@ const InvestmentTable = ({ setOpen, investments, isFetching, empId }) => {
             <button
               type="button"
               onClick={() => setOpen(true)}
-              className="w-max flex group justify-center  gap-2 items-center rounded-md h-max px-4 py-2 mr-4 !text-sm font-semibold text-white bg-blue-500 hover:bg-blue-500 focus-visible:outline-blue-500"
+              className="w-max flex group justify-center gap-2 items-center rounded-md h-max px-4 py-2 mr-4 !text-sm font-semibold text-white bg-[#174E63] hover:bg-[#125050] focus-visible:outline-[#174E63]"
             >
               Create Declaration
             </button>
+
           </div>
         )}
       </div>

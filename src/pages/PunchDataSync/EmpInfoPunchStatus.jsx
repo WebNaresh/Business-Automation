@@ -240,14 +240,8 @@ const EmpInfoPunchStatus = ({ organisationId }) => {
     <>
       <Container maxWidth="xl" className="bg-gray-50 min-h-screen">
         <article className=" bg-white w-full h-max shadow-md rounded-sm border items-center">
-          {/* <div className=" mt-3">
-            <IconButton onClick={() => navigate(-1)}>
-              <West className="text-xl" />
-            </IconButton>
-          </div> */}
-
           <Typography variant="h4" className="text-center pl-10 mb-6 mt-2">
-            Employee’s Punch Sync
+             Punch Sync
           </Typography>
           <p className="text-xs text-gray-600 pl-10 text-center">
             Track the attendance of employees here by using the sync button.

@@ -116,7 +116,7 @@ const LeaveRequisition = () => {
                 </div>
               </div>
             ) : (
-              <div className="flex items-center justify-center">
+              <div className="flex items-center justify-center bg-[#174E63] text-white p-4 rounded-lg">
                 <Badge badgeContent={"Click"} color="warning">
                   <Button
                     disabled={isLoading}
@@ -132,22 +132,24 @@ const LeaveRequisition = () => {
                     />
                   </Button>
                 </Badge>
-                <p className="ml-6 pl-5 text-gray-600 font-semibold mb-2 text-lg">
-                  Select Date
-                  <div className="h-max grid gap-4 space-y-2 py-3">
+
+                <div className="ml-6 pl-5">
+                  <p className="font-semibold mb-2 text-lg">Select Date</p>
+                  {/* <div className="h-max grid gap-4 py-3">
                     <Button
-                      //  disabled={isLoading && isCAppDatePickerVisible }
                       disabled={isLoading || isCAppDatePickerVisible}
                       onClick={() => setCalendarOpen(true)}
                       variant="contained"
                       size="small"
-                      className="text-center w-fit"
+                      className="text-center w-fit bg-white text-black hover:bg-gray-200"
                     >
-                      {!isLoading ? "Apply" : "Wait Calendar is Loading"}
+                      {!isLoading ? "Apply" : "Wait, Calendar is Loading"}
                     </Button>
-                  </div>
-                </p>
+                  </div> */}
+
+                </div>
               </div>
+
             )}
           </div>
 

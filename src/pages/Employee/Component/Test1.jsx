@@ -716,7 +716,7 @@ const Test1 = ({ nextStep, isLastStep , prevStep }) => {
               <button
                 type="submit"
                 disabled={isLastStep}
-                className="!w-max flex group justify-center px-6 gap-2 items-center rounded-md py-1 text-md font-semibold text-white bg-blue-500 hover:bg-blue-500 focus-visible:outline-blue-500"
+                   className="flex justify-center px-4 py-1 text-md font-semibold text-white bg-[#174E63] rounded-md hover:bg-[#123B4A]"
               >
                 Next
               </button>

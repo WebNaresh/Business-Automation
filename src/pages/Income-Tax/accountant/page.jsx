@@ -14,15 +14,14 @@ const EmployeeInvestmentPage = () => {
       </header>
 
       <section className="px-8 py-4  justify-between  min-h-[85vh] bg-gray-50">
-        <headers className="flex items-center justify-between ">
-          <div class="flex items-center justify-between ">
-            <div class="space-y-1">
-              <h2 class=" md:text-2xl  tracking-tight">
+        <headers className="flex items-center justify-between bg-[#3E3E3E] text-white p-4 rounded-md">
+          <div className="flex items-center justify-between">
+            <div className="space-y-1">
+              <h2 className="md:text-2xl tracking-tight">
                 TDS Declarations done by individuals
               </h2>
-              <p class="text-sm text-muted-foreground">
-                Accountant can view and download the declaration document from
-                here
+              <p className="text-sm text-white">
+                Accountant can view and download the declaration document from here
               </p>
             </div>
           </div>

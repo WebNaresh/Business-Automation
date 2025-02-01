@@ -157,15 +157,15 @@ const Mapped = ({
           <p className="text-md truncate">
             {differenceInDays(parseISO(item.end), parseISO(item.start)) !== 1
               ? `Selected dates from ${format(
-                  new Date(item.start),
-                  "do 'of' MMMM"
-                )} to  ${moment(item.end)
-                  .subtract(1, "days")
-                  .format("Do of MMMM")}`
+                new Date(item.start),
+                "do 'of' MMMM"
+              )} to  ${moment(item.end)
+                .subtract(1, "days")
+                .format("Do of MMMM")}`
               : `Your selected date is ${format(
-                  new Date(item.start),
-                  "do 'of' MMMM"
-                )}`}
+                new Date(item.start),
+                "do 'of' MMMM"
+              )}`}
           </p>
         </div>
       </div>
@@ -192,14 +192,6 @@ const Mapped = ({
                   >
                     <div className="flex justify-between w-full">
                       <div>{item.leaveName}</div>
-                      {item.leaveName === "Comp Off" && (
-                        <Tooltip
-                          title="Compensatory leave is a leave granted as compensation for hours of overtime or for working on holidays or weekends"
-                          arrow
-                        >
-                          <InfoOutlined className="text-gray-500 ml-2" />
-                        </Tooltip>
-                      )}
                     </div>
                   </MenuItem>
                 )
@@ -223,55 +215,6 @@ const Mapped = ({
           <Delete className="text-red-500" />
         </Button>
       </div>
-
-      {/* Modal for selecting Comp Off date */}
-      <Modal
-        open={showCalendarModal}
-        onClose={() => setShowCalendarModal(false)}
-      >
-        <Box
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: 500,
-            bgcolor: "background.paper",
-            borderRadius: 2,
-            boxShadow: 24,
-            p: 4,
-          }}
-        >
-          <h2>Select Comp Off Date</h2>
-          <Calendar
-            localizer={localizer}
-            selectable
-            defaultView="month"
-            views={["month"]}
-            style={{ height: 400, width: "100%" }}
-            dayPropGetter={dayPropGetter} // Function to style weekends and holidays
-            events={newAppliedLeaveEvents} // Pass the events here
-            onSelectSlot={handleSelectSlot} // Use the handleSelectSlot function
-          />
-          <Button
-            variant="outlined"
-            onClick={() => setShowCalendarModal(false)}
-            style={{ marginTop: "10px" }}
-          >
-            Close
-          </Button>
-        </Box>
-      </Modal>
-      {/* Snackbar to show error messages */}
-      <Snackbar
-        open={errorOpen}
-        autoHideDuration={6000}
-        onClose={() => setErrorOpen(false)}
-      >
-        <Alert onClose={() => setErrorOpen(false)} severity="error">
-          {errorMessage}
-        </Alert>
-      </Snackbar>
     </div>
   );
 };

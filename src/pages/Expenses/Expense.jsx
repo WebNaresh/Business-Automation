@@ -195,9 +195,9 @@ const Expense = () => {
 
 
     return (
-        <div className="py-6 bg-gray-50 min-h-screen mt-4 mb-6 ml-10 mr-10">
+        <div className="py-6 bg-gray-50 min-h-screen  mb-6 ml-10 mr-10">
             <article className="bg-white w-full h-max shadow-lg rounded-lg border">
-                <div className="p-6 border-b border-gray-200 flex justify-between items-center">
+                <div className="p-2 border-b border-gray-200 flex justify-between items-center">
                     <div>
                         <h4 className="text-2xl font-bold text-gray-800 mb-2">
                             Manage Expenses
@@ -216,14 +216,27 @@ const Expense = () => {
                         mb={4}
                         flexWrap="wrap"
                         gap={3}
+                        sx={{ backgroundColor: '#3E3E3E', p: 2 }} // Background color applied here
                     >
                         <FormControl sx={{ minWidth: 250 }}>
-                            <InputLabel id="time-period-label">Select Period</InputLabel>
+                            <InputLabel id="time-period-label" sx={{ color: 'white' }}>Select Period</InputLabel> {/* White text for label */}
                             <Select
                                 labelId="time-period-label"
                                 value={timePeriod}
                                 onChange={handleTimePeriodChange}
                                 label="Select Period"
+                                sx={{
+                                    color: 'white', // White text color for select options
+                                    backgroundColor: '#555', // Dark background for select
+                                    '& .MuiOutlinedInput-root': {
+                                        '& fieldset': {
+                                            borderColor: '#777', // Darker border
+                                        },
+                                        '&:hover fieldset': {
+                                            borderColor: '#aaa', // Lighter border on hover
+                                        },
+                                    },
+                                }}
                             >
                                 <MenuItem value="weekly">Weekly</MenuItem>
                                 <MenuItem value="monthly">Monthly</MenuItem>
@@ -233,12 +246,24 @@ const Expense = () => {
                         </FormControl>
 
                         <FormControl sx={{ minWidth: 250 }}>
-                            <InputLabel id="category-label">Type</InputLabel>
+                            <InputLabel id="category-label" sx={{ color: 'white' }}>Type</InputLabel> {/* White text for label */}
                             <Select
                                 labelId="category-label"
                                 value={category}
                                 onChange={handleCategoryChange}
                                 label="Type"
+                                sx={{
+                                    color: 'white', // White text color for select options
+                                    backgroundColor: '#555', // Dark background for select
+                                    '& .MuiOutlinedInput-root': {
+                                        '& fieldset': {
+                                            borderColor: '#777', // Darker border
+                                        },
+                                        '&:hover fieldset': {
+                                            borderColor: '#aaa', // Lighter border on hover
+                                        },
+                                    },
+                                }}
                             >
                                 <MenuItem value="personal">Personal</MenuItem>
                                 <MenuItem value="official">Official</MenuItem>
@@ -271,6 +296,7 @@ const Expense = () => {
                             </Button>
                         </Box>
                     </Box>
+
                     {/* Table Section */}
                     <div
                         style={{

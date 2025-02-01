@@ -270,10 +270,10 @@ const Test1 = ({ nextStep, isLastStep }) => {
             error={errors.phone_number}
             className="text-sm"
           />
-        </div> 
+        </div>
 
         <div className="grid md:grid-cols-2 grid-cols-1 w-full gap-4">
-        <AuthInputFiled
+          <AuthInputFiled
             name="address"
             icon={Person}
             control={control}
@@ -673,15 +673,16 @@ const Test1 = ({ nextStep, isLastStep }) => {
         </div>
 
 
-        <div className="flex justify-end  ">
+        <div className="flex justify-end">
           <button
             type="submit"
             disabled={isLastStep}
-            className="flex justify-center px-4 py-1 text-md font-semibold text-white bg-blue-500 rounded-md hover:bg-blue-600"
+            className="flex justify-center px-4 py-1 text-md font-semibold text-white bg-[#174E63] rounded-md hover:bg-[#123B4A]"
           >
             Next
           </button>
         </div>
+
       </form>
     </div>
   );

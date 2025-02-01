@@ -170,11 +170,12 @@ const AssetsOfEmployee = () => {
                                 <div className="flex justify-center mt-4">
                                     {/* Add Asset button */}
                                     <button
-                                        className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none"
+                                        className="bg-[#174E63] text-white px-4 py-2 rounded-lg hover:bg-[#0F3A46] focus:outline-none"
                                         onClick={handleDefineAsset}
                                     >
                                         Add Asset
                                     </button>
+
                                 </div>
                             </div>
 

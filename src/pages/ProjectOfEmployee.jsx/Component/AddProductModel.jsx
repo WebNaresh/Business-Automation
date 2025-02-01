@@ -237,10 +237,11 @@ const AddProductModel = ({ open, handleClose, empId, organisationId }) => {
                                 </div>
                                 <button
                                     type="submit"
-                                    className="py-2 rounded-md border font-bold w-full bg-blue-500 text-white mt-4"
+                                    className="py-2 rounded-md border font-bold w-full bg-[#174E63] text-white mt-4"
                                 >
                                     Add
                                 </button>
+
                             </form>
                         </div>
                     </article>
