@@ -10,7 +10,7 @@ const router = express.Router();
 
 router
   .route("/leave-types-details/:leaveTypeDetails")
-  .post(auth, getAllLeaveTypesByOrganizationId)
+  .post(getAllLeaveTypesByOrganizationId)
   .delete(auth, removeLeaveTypeDetails)
   .patch(auth, updateLeaveTypeDetails);
 router.route("/leave-types/:organisationId").post(auth, addLeaveTypeDetails);

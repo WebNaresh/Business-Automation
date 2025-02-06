@@ -10,7 +10,7 @@ exports.getAllLeaveTypesByOrganizationId = catchAssyncError(
     try {
       const { organisationId } = req.body;
       console.log(`🚀 ~ organisationId:`, organisationId);
-      console.log(`🚀 ~ user.user:`, req.user.user);
+
 
       const leaveTypeDocument = await LeaveTypeDetailModel.find({
         organisationId: organisationId,
