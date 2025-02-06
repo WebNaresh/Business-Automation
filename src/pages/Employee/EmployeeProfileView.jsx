@@ -90,7 +90,7 @@ const EmployeeProfileView = () => {
     <div className="min-h-screen bg-slate-50">
       <div className="max-w-7xl mx-auto py-6 px-4 grid grid-cols-1 md:grid-cols-[300px,1fr] gap-6">
         {/* Profile Info */}
-        <div className="space-y-4 bg-[#3E3E3E] p-4 rounded-md shadow-md mt-4">
+        <div className="space-y-4 bg-[#174E63] p-4 rounded-md shadow-md mt-4">
           <div className="relative w-40 h-40 mt-12 rounded-full border-2 border-dashed border-gray-300 flex items-center justify-center bg-white mx-auto">
             <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-500">
               <span className="text-xs text-center px-2">Your Profile Photo comes here</span>
@@ -99,10 +99,10 @@ const EmployeeProfileView = () => {
 
 
           <div className="text-center text-white"> {/* Set text color to white */}
-            <div className="font-bold">
+            <div className="font-bold text-lg">
               {profile?.first_name} {profile?.last_name}
             </div>
-            <div className="text-sm font-bold mt-1 mb-1">
+            <div className="text-base font-bold mt-1 mb-1">
               {profile?.designation?.[0]?.title || '-'}
             </div>
             <div className="text-sm font-bold mt-1 mb-1">
@@ -112,8 +112,6 @@ const EmployeeProfileView = () => {
               DOJ: {profile?.joining_date ? new Date(profile?.joining_date).toLocaleDateString() : '-'}
             </div>
           </div>
-
-
         </div>
 
 

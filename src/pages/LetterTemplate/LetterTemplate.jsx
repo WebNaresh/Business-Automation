@@ -187,7 +187,7 @@ const OfferLetter = () => {
                   onClick={downloadPDF}
                   style={{ marginTop: "10px" }}
                 >
-                  Download Offer Letter PDF
+                  Download
                 </Button>
                 <Button
                   variant="outlined"
@@ -195,7 +195,7 @@ const OfferLetter = () => {
                   onClick={() => setOpenPreview(true)}
                   style={{ marginTop: "10px", marginLeft: "10px" }}
                 >
-                  Preview Offer Letter
+                  Preview
                 </Button>
               </Grid>
             </Grid>

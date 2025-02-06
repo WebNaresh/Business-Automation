@@ -208,7 +208,8 @@ const DisplayEmpCard = () => {
                     </Button>
                 </div>
 
-                <div className="p-6 border-b border-gray-200">
+                <div className="p-6 border-b border-gray-200"
+                    style={{ backgroundColor: "#3E3E3E" }}>
                     <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
                         {/* Search Bar */}
                         <Tooltip
@@ -223,22 +224,58 @@ const DisplayEmpCard = () => {
                                 size="small"
                                 fullWidth
                                 InputProps={{
-                                    startAdornment: <SearchIcon className="text-gray-400 mr-2" />,
+                                    startAdornment: <SearchIcon sx={{ color: "#64748b", marginRight: "8px" }} />,
+                                    sx: {
+                                        backgroundColor: "#ffffff",
+                                        borderRadius: "6px",
+                                    },
+                                }}
+                                sx={{
+                                    backgroundColor: "#ffffff", // White background for TextField
+                                    borderRadius: "6px", // Rounded corners
+                                    width: "300px", // Increased width
+                                    height: "30px", // Decreased height
                                 }}
                             />
                         </Tooltip>
-
                         {/* Department Dropdown */}
-                        <FormControl variant="outlined" size="small" fullWidth>
+                        <FormControl
+                            variant="outlined"
+                            size="small"
+                            fullWidth
+                            sx={{
+                                backgroundColor: "#ffffff", // White background for the box
+                                borderRadius: "12px", // Optional: Slightly rounded corners
+                                marginLeft: "100px",
+                                marginTop: "10px"
+                            }}
+                        >
                             <InputLabel>Department</InputLabel>
                             <Select
                                 value={department}
                                 onChange={handleDepartmentChange}
                                 label="Department"
+                                MenuProps={{
+                                    PaperProps: {
+                                        sx: {
+                                            backgroundColor: "#ffffff", // White background for dropdown
+                                            color: "#000000", // Black text for readability
+                                        },
+                                    },
+                                }}
+                                sx={{
+                                    backgroundColor: "#ffffff", // Ensure white background for Select field
+                                }}
                             >
-                                <MenuItem value="">All Departments</MenuItem>
+                                <MenuItem value="">
+                                    <em>All Departments</em>
+                                </MenuItem>
                                 {Departmentoptions?.map((dept) => (
-                                    <MenuItem key={dept.value} value={dept.value}>
+                                    <MenuItem
+                                        key={dept.value}
+                                        value={dept.value}
+                                        sx={{ color: "#000000" }} // Black text for dropdown items
+                                    >
                                         {dept.label}
                                     </MenuItem>
                                 ))}
@@ -248,9 +285,10 @@ const DisplayEmpCard = () => {
                         {/* Grid/List Toggle Button */}
                         <Box
                             sx={{
+                                marginLeft: "120px",
                                 display: "flex",
                                 justifyContent: "space-between",
-                                width: "100%",
+                                width: "50%",
                                 border: "1px solid #e5e7eb",
                                 borderRadius: "6px",
                                 overflow: "hidden",
@@ -266,10 +304,12 @@ const DisplayEmpCard = () => {
                                 }}
                                 onClick={handleTableViewClick}
                             >
-                                <PrintIcon sx={{
-                                    color: "#64748b",
-                                    fontSize: "20px"
-                                }} />
+                                <PrintIcon
+                                    sx={{
+                                        color: "#ffffff", // Changed color to white
+                                        fontSize: "20px",
+                                    }}
+                                />
                             </IconButton>
                             <IconButton
                                 sx={{
@@ -281,13 +321,14 @@ const DisplayEmpCard = () => {
                                 }}
                                 onClick={handleGridViewClick}
                             >
-                                <PrintIcon sx={{
-                                    color: "#64748b",
-                                    fontSize: "20px"
-                                }} />
+                                <PrintIcon
+                                    sx={{
+                                        color: "#ffffff", // Changed color to white
+                                        fontSize: "20px",
+                                    }}
+                                />
                             </IconButton>
                         </Box>
-
                         {/* Export PDF Button */}
                         <Button
                             variant="contained"
@@ -297,11 +338,13 @@ const DisplayEmpCard = () => {
                                 backgroundColor: "#d32f2f",
                                 "&:hover": { backgroundColor: "#b71c1c" },
                                 textTransform: "none",
-                                width: "100%",
+                                padding: "8px 12px", // Adjust padding for height
+                                width: "150px", // Set a fixed smaller width
+                                marginLeft: "50px"
                             }}
                             onClick={handleExportToPDF}
                         >
-                            Export PDF
+                            Print PDF
                         </Button>
 
                         {/* Export Excel Button */}
@@ -313,16 +356,16 @@ const DisplayEmpCard = () => {
                                 backgroundColor: "#388e3c",
                                 "&:hover": { backgroundColor: "#2e7d32" },
                                 textTransform: "none",
-                                width: "100%",
+                                padding: "8px 12px", // Adjust padding for height
+                                width: "150px", // Set a fixed smaller width
                             }}
                             onClick={handleExportToExcel}
                         >
-                            Export Excel
+                            Print Excel
                         </Button>
-
-
                     </div>
                 </div>
+
                 <Grid container spacing={2} >
                     {availableEmployee.length > 0 &&
                         availableEmployee

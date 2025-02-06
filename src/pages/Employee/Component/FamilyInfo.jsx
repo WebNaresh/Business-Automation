@@ -93,12 +93,12 @@ export function FamilyInfo({ empId }) {
                 <div className="mt-6">
                     <h3 className="text-md font-semibold mb-4">Siblings Details</h3>
                     <table className="table-auto border-collapse border border-gray-300 w-full text-left">
-                        <thead className="bg-gray-100">
+                        <thead className="bg-[#3E3E3E]">
                             <tr>
-                                <th className="border border-gray-300 px-4 py-2">Sr. No</th>
-                                <th className="border border-gray-300 px-4 py-2">Name</th>
-                                <th className="border border-gray-300 px-4 py-2">Occupation</th>
-                                <th className="border border-gray-300 px-4 py-2">Age</th>
+                                <th className="border border-gray-300 px-4 py-2 text-white">Sr. No</th>
+                                <th className="border border-gray-300 px-4 py-2  text-white">Name</th>
+                                <th className="border border-gray-300 px-4 py-2  text-white">Occupation</th>
+                                <th className="border border-gray-300 px-4 py-2  text-white">Age</th>
                             </tr>
                         </thead>
                         <tbody>

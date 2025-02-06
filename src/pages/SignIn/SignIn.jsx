@@ -232,7 +232,7 @@ const SignIn = () => {
           >
             <div className="flex flex-col space-x-4 lg:items-start items-center">
               <div className="flex flex-col gap-1  w-full items-center justify-center space-y-1">
-                <img src="/smartea.jpeg" className="h-[45px]" alt="logo" />
+                <img src="/new_smartea.jpeg" className="h-[45px]" alt="logo" />
                 <h1 className="font-[600] text-center w-full text-3xl">
                   Sign In
                 </h1>

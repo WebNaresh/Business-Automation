@@ -134,6 +134,13 @@ const ViewAssetsOfEmployee = ({ employeeId, onBack }) => {
                             Here you will be able to view the assets of the employee.
                         </p>
                     </div>
+
+                    <button
+                        className="bg-[#174E63] text-white px-4 py-2 rounded-lg hover:bg-[#0F3A46] focus:outline-none"
+                    // onClick={handleDefineAsset}
+                    >
+                        Add Asset
+                    </button>
                 </div>
 
                 {Assets?.length > 0 ? (

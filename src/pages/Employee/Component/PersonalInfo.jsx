@@ -131,8 +131,7 @@ export function PersonalInfo({ empId }) {
       {/* Additional Details */}
       <div className="p-4 rounded-lg shadow-md bg-white">
         {/* Section Title */}
-        <h2 className="text-lg font-semibold mb-4 border-b pb-2">Additional Details</h2>
-
+        <h2 className="text-lg font-semibold mb-6 border-b p-2 bg-[#174E63] text-white">Additional Details</h2>
         <div className="space-y-4">
           {/* Short Term and Long Term Goals */}
           <InfoItem label="Short Term Goal" value={personalData.short_term_goal} />

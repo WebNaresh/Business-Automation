@@ -9,11 +9,12 @@ import {
   Person,
   TodayOutlined,
 } from "@mui/icons-material";
-import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
-import { Controller, useForm } from "react-hook-form";
+import { FormControlLabel, Radio, RadioGroup, Button, IconButton } from "@mui/material";
+import { Controller, useForm, useFieldArray } from "react-hook-form";
 import { z } from "zod";
 import AuthInputFiled from "../../../components/InputFileds/AuthInputFiled";
 import useEmpState from "../../../hooks/Employee-OnBoarding/useEmpState";
+import { Close } from "@mui/icons-material";
 
 export const isAtLeastNineteenYearsOld = (value) => {
   const currentDate = new Date();
@@ -49,25 +50,6 @@ const Test1 = ({ nextStep, isLastStep }) => {
     pwd,
     uanNo,
     esicNo,
-    height,
-    weight,
-    blood_group,
-    voting_card_no,
-    permanent_address,
-    religion,
-    smoking_habits,
-    drinking_habits,
-    sports_interest,
-    favourite_book,
-    favourite_travel_destination,
-    disability_status,
-    emergency_medical_condition,
-    short_term_goal,
-    long_term_goal,
-    strength,
-    weakness,
-    bank_name,
-    ifsc_code
   } = useEmpState();
 
   console.log("test");
@@ -159,6 +141,25 @@ const Test1 = ({ nextStep, isLastStep }) => {
     weakness: z.string().optional(),
     bank_name: z.string().optional(),
     ifsc_code: z.string().regex(/^[A-Z]{4}0[A-Z0-9]{6}$/, { message: "Invalid IFSC code" }).optional(),
+    sibling_details: z
+      .array(
+        z.object({
+          name: z.string(),
+          occupation: z.string(),
+          age: z.string(),
+        })
+      )
+      .optional(),
+    education_details: z
+      .array(
+        z.object({
+          institute_name: z.string(),
+          institute_location: z.string(),
+          degree: z.string(),
+          duration: z.string(),
+        })
+      )
+      .optional(),
 
   });
 
@@ -186,6 +187,12 @@ const Test1 = ({ nextStep, isLastStep }) => {
   const { errors } = formState;
 
   console.log("errors", errors);
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "sibling_details",
+    name: "education_details",
+  });
 
   const onSubmit = async (data) => {
     // Convert the email to lowercase
@@ -671,6 +678,121 @@ const Test1 = ({ nextStep, isLastStep }) => {
             className="text-sm"
           />
         </div>
+
+        <div className="w-full mt-4">
+          <h2 className="text-lg font-semibold">Sibling Details</h2>
+          {fields.map((item, index) => (
+            <div
+              key={item.id}
+              className="flex items-center gap-2 mt-2"
+            >
+              <AuthInputFiled
+                name={`sibling_details.${index}.name`}
+                control={control}
+                type="text"
+                placeholder="Name"
+                errors={errors}
+                error={errors.sibling_details?.[index]?.name}
+                className="text-sm"
+              />
+              <AuthInputFiled
+                name={`sibling_details.${index}.occupation`}
+                control={control}
+                type="text"
+                placeholder="Occupation"
+                errors={errors}
+                error={errors.sibling_details?.[index]?.occupation}
+                className="text-sm"
+              />
+              <AuthInputFiled
+                name={`sibling_details.${index}.age`}
+                control={control}
+                type="text"
+                placeholder="Age"
+                errors={errors}
+                error={errors.sibling_details?.[index]?.age}
+                className="text-sm"
+              />
+              <IconButton
+                onClick={() => remove(index)}
+                size="small"
+                color="error"
+              >
+                <Close />
+              </IconButton>
+            </div>
+          ))}
+          <Button
+            variant="outlined"
+            onClick={() => append({ name: "", role: "" })}
+            className="mt-2"
+          >
+            Add Sibling
+          </Button>
+        </div>
+
+
+        <div className="w-full mt-4">
+          <h2 className="text-lg font-semibold">Educational Details</h2>
+          {fields.map((item, index) => (
+            <div
+              key={item.id}
+              className="flex items-center gap-2 mt-2"
+            >
+              <AuthInputFiled
+                name={`education_details.${index}.institute_name`}
+                control={control}
+                type="text"
+                placeholder="Institute Name"
+                errors={errors}
+                error={errors.education_details?.[index]?.institute_name}
+                className="text-sm"
+              />
+              <AuthInputFiled
+                name={`education_details.${index}.institute_location`}
+                control={control}
+                type="text"
+                placeholder="Institure Location"
+                errors={errors}
+                error={errors.education_details?.[index]?.institute_location}
+                className="text-sm"
+              />
+              <AuthInputFiled
+                name={`education_details.${index}.degree`}
+                control={control}
+                type="text"
+                placeholder="Degree"
+                errors={errors}
+                error={errors.education_details?.[index]?.degree}
+                className="text-sm"
+              />
+              <AuthInputFiled
+                name={`education_details.${index}.duration`}
+                control={control}
+                type="text"
+                placeholder="Duration"
+                errors={errors}
+                error={errors.education_details?.[index]?.duration}
+                className="text-sm"
+              />
+              <IconButton
+                onClick={() => remove(index)}
+                size="small"
+                color="error"
+              >
+                <Close />
+              </IconButton>
+            </div>
+          ))}
+          <Button
+            variant="outlined"
+            onClick={() => append({ name: "", role: "" })}
+            className="mt-2"
+          >
+            Add Education
+          </Button>
+        </div>
+
 
 
         <div className="flex justify-end">

@@ -89,7 +89,7 @@ const HelpDesk = () => {
                 <div className="flex items-center space-x-4">
                     <input
                         type="text"
-                        value={searchQuery} 
+                        value={searchQuery}
                         onChange={handleSearch}
                         placeholder="Search in FAQs..."
                         className="p-2 border border-gray-300 rounded-md w-64 focus:outline-none focus:ring-2 "
@@ -162,7 +162,7 @@ const HelpDesk = () => {
                             <p className="text-gray-600 mb-4">{category.description}</p>
                             <button
                                 onClick={() => setSelectedCategory(category)}
-                                className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+                                className=" text-white px-4 py-2 bg-[#174E63] rounded-md hover:bg-[#123B4A]"
                             >
                                 View FAQs
                             </button>

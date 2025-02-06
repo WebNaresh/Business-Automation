@@ -375,7 +375,7 @@ const DepartmentList = () => {
 
                     {/* Department Dropdown */}
                     <FormControl variant="outlined" size="small" fullWidth>
-                      <InputLabel sx={{ color: "#ffffff" }}>Department</InputLabel>
+                      <InputLabel>Department</InputLabel>
                       <Select
                         value={department}
                         onChange={handleDepartmentChange}

@@ -635,6 +635,7 @@ const App = () => {
                   "Delegate-Super-Admin",
                   "Manager",
                   "Accountant",
+
                   "Delegate-Accountant",
                 ]}
               >

@@ -773,26 +773,6 @@ const TestNavItems = ({ toggleDrawer }) => {
               icon: <PersonAdd className=" !text-[1.2em]" />,
               text: "FAQ",
             },
-            {
-              key: "ticket",
-              isVisible: [
-                "Super-Admin",
-                "Delegate-Super-Admin",
-                "Delegate-Super-Admin",
-                "Department-Head",
-                "Delegate-Department-Head",
-                "Department-Admin",
-                "Delegate-Department-Admin",
-                "Accountant",
-                "Delegate-Accountant",
-                "HR",
-                "Manager",
-                "Employee"
-              ].includes(role),
-              link: `/organisation/${orgId}/tickets`,
-              icon: <Groups className=" !text-[1.2em]" />,
-              text: "Tickets",
-            },
           ],
         },
       };

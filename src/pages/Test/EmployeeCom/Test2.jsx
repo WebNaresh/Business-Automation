@@ -166,7 +166,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
       }).optional().nullable(),
 
       current_ctc: z
-        .string() 
+        .string()
         .regex(/^\d+(\.\d{1,2})?$/, { message: "Incentive must be a valid number" })
         .optional(),
 
@@ -239,8 +239,8 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
   // to define the onSubmit 
   const onsubmit = (data) => {
     setStep2Data(data);
-    console.log("data" , data);
-    
+    console.log("data", data);
+
     nextStep();
   };
 
@@ -463,7 +463,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             pattern="[A-Za-z\s]+"
             className="text-sm"
           />
-            <AuthInputFiled
+          <AuthInputFiled
             name="exit_date"
             icon={Work}
             control={control}
@@ -474,8 +474,8 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             error={errors.exit_date}
             pattern="[A-Za-z\s]+"
             className="text-sm"
-          /> 
-            <AuthInputFiled
+          />
+          <AuthInputFiled
             name="travel_requirement"
             icon={AccountBalance}
             control={control}
@@ -523,7 +523,7 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
             onClick={() => {
               prevStep();
             }}
-              className="flex justify-center px-4 py-1 text-md font-semibold text-white bg-[#174E63] rounded-md hover:bg-[#123B4A]"
+            className="flex justify-center px-4 py-1 text-md font-semibold text-white bg-[#174E63] rounded-md hover:bg-[#123B4A]"
           >
             Prev
           </button>

@@ -46,14 +46,6 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
     shift_allocation,
     date_of_birth,
     status,
-    current_ctc,
-    incentive,
-    health_insurance,
-    exit_date,
-    travel_expenses_allowance,
-    travel_requirement,
-    id_card_no,
-    company_assets
   } = useEmployeeState();
 
   // to get the data from organization like department , location data
@@ -172,6 +164,15 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
         .optional(),
 
       company_assets: z.string().optional(),
+      sibling_details: z
+        .array(
+          z.object({
+            name: z.string(),
+            occupation: z.string(),
+            age: z.string(),
+          })
+        )
+        .optional(),
 
     })
     .refine((data) => data.password === data.confirmPassword, {
@@ -569,6 +570,49 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
                 pattern="[A-Za-z\s]+"
                 className=" text-sm"
               />
+            </div>
+
+            <div className="w-full mt-4">
+              <h2 className="text-lg font-semibold">Sibling Details</h2>
+              {fields.map((item, index) => (
+                <div
+                  key={item.id}
+                  className="flex items-center gap-2 mt-2"
+                >
+                  <AuthInputFiled
+                    name={`team_members.${index}.name`}
+                    control={control}
+                    type="text"
+                    placeholder="Name"
+                    errors={errors}
+                    error={errors.team_members?.[index]?.name}
+                    className="text-sm"
+                  />
+                  <AuthInputFiled
+                    name={`team_members.${index}.role`}
+                    control={control}
+                    type="text"
+                    placeholder="Role"
+                    errors={errors}
+                    error={errors.team_members?.[index]?.role}
+                    className="text-sm"
+                  />
+                  <IconButton
+                    onClick={() => remove(index)}
+                    size="small"
+                    color="error"
+                  >
+                    <Close />
+                  </IconButton>
+                </div>
+              ))}
+              <Button
+                variant="outlined"
+                onClick={() => append({ name: "", role: "" })}
+                className="mt-2"
+              >
+                Add Team Member
+              </Button>
             </div>
 
 

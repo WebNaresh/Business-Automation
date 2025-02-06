@@ -7,6 +7,28 @@ export function OfficialInfo({ empId }) {
     const { cookies } = useContext(UseContext);
     const authToken = cookies["aegis"];
 
+    console.log("sdsd", empId);
+
+
+
+    // to get employee salary component data of employee
+    const { data: salaryComponent, isFetching } = useQuery(
+        ["official", empId],
+        async () => {
+            const response = await axios.get(
+                `${import.meta.env.VITE_API}/route/get-salary-component/${empId}`,
+                {
+                    headers: {
+                        Authorization: token,
+                    },
+                }
+            );
+            return response.data;
+        }
+    );
+    console.log("salaryComponent", salaryComponent);
+
+
     // Query to fetch employee profile
     const { isLoading, data: profile, error } = useQuery(
         ["empId", empId],

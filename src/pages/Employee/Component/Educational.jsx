@@ -75,7 +75,7 @@ export function Educational({ empId }) {
         <div className="overflow-x-auto">
           <table className="w-full border-collapse border border-gray-300">
             <thead>
-              <tr className="bg-gray-200 text-gray-600">
+              <tr className="bg-[#3E3E3E] text-white">
                 <th className="border border-gray-300 px-4 py-2 text-left">Sr No</th>
                 <th className="border border-gray-300 px-4 py-2 text-left">Institute Name</th>
                 <th className="border border-gray-300 px-4 py-2 text-left">Institute Location</th>

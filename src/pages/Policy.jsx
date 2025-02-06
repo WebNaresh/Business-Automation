@@ -32,9 +32,10 @@ const CompanyPolicy = () => {
 
     return (
         <div style={{ padding: '30px', margin: "50px" }}>
-            <Typography variant="h4" gutterBottom>
+            <Typography variant="h4" gutterBottom sx={{ mb: 2 }}>
                 Company Policies
             </Typography>
+
 
             {/* First Row */}
             <Grid container spacing={3}>
