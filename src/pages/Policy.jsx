@@ -32,7 +32,7 @@ const CompanyPolicy = () => {
 
     return (
         <div style={{ padding: '30px', margin: "50px" }}>
-            <Typography variant="h4" gutterBottom sx={{ mb: 2 }}>
+            <Typography variant="h4" gutterBottom sx={{ mb: 2, textAlign: "center" }}>
                 Company Policies
             </Typography>
 

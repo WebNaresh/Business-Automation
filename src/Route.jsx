@@ -155,6 +155,7 @@ import CompanyPolicy from "./pages/Policy";
 import Expense from "./pages/Expenses/Expense";
 import OfferLetter from "./pages/LetterTemplate/LetterTemplate";
 import ExperienceLetter from "./pages/LetterTemplate/ExperienceLetter";
+import DocNotification from "./pages/DocumentManagement/DocNotification";
 
 
 const App = () => {
@@ -508,9 +509,9 @@ const App = () => {
             path="/doc-notification"
             element={
               <RequireAuth
-                permission={["Super-Admin", "Delegate-Super-Admin", "Manager"]}
+                permission={["Super-Admin", "Delegate-Super-Admin", "Manager", "HR"]}
               >
-                <ShowCompletetaskInMap />
+                <DocNotification />
               </RequireAuth>
             }
           />

@@ -345,17 +345,20 @@ const useNotification = () => {
             visible: true,
           },
       ]),
-      {
-        name: "Document Approval Notification",
-        count: data4?.data?.doc?.length ?? 0,
-        color: "#FF7373",
-        url: "/doc-notification",
-        visible:
-          orgData?.organisation?.packageInfo ===
-            ("Essential Plan" || "Basic Plan")
-            ? false
-            : true,
-      },
+    {
+      name: "Document Approval Notification",
+      count: data4?.length ?? 0,
+      color: "#FF7373",
+      url: "/doc-notification",
+      visible: true,
+    },
+    {
+      name: "Notes Notification",
+      count: data4?.length ?? 0,
+      color: "#FF7373",
+      url: "/doc-notification",
+      visible: true,
+    },
     {
       name: "Missed Punch Notification",
       count: MissPunchCount,

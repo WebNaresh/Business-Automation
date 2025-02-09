@@ -22,6 +22,7 @@ const Card = ({ card = false }) => {
     RemoteIcon,
     TrendingUp,
     FolderIcon,
+    FolderIcon,
     AttachMoneyIcon,
     AccessTimeIcon,
     AttachMoneyIcon,

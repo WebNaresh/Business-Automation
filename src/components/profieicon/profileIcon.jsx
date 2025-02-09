@@ -14,7 +14,7 @@ import useGetUser from "../../hooks/Token/useUser";
 import UserProfile from "../../hooks/UserData/useUser";
 import ResetNewPassword from "../../pages/ResetNewPassword/ResetNewPassword";
 import { LockReset } from "@mui/icons-material";
-
+import ChangeRole from "../InputFileds/ChangeRole";
 
 export default function ProfileIcon() {
   const navigate = useNavigate();
@@ -85,18 +85,27 @@ export default function ProfileIcon() {
       </IconButton>
       <Menu
         id="basic-menu"
-        className="!pt-0 !p-0 !shadow-lg "
+        className="!pt-0 !p-0 !shadow-lg !h-[300px]" 
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
         MenuListProps={{
           "aria-labelledby": "basic-button",
+          className: "!h-full",
+        }}
+        PaperProps={{
+          style: {
+            maxHeight: 500,
+            minHeight: 300,
+            overflowY: "auto",
+          },
         }}
       >
+
         {user?._id ? (
           <div>
             <h1 className="!px-4 pt-4 text-lg font-bold">Account</h1>
-            <div className="flex !pl-0 !pr-2 !w-[230px] flex-col !z-10  mx-4 !py-0 bg-white   !items-start !justify-start">
+            <div className="flex !pl-0 !pr-2 !w-[250px] flex-col !z-10  mx-4 !py-0 bg-white   !items-start !justify-start">
               <div className="w-max flex gap-3 pt-4 pb-6  items-center  h-max rounded-full ">
                 <Avatar
                   variant="circular"
@@ -135,6 +144,12 @@ export default function ProfileIcon() {
                 <ExitToAppIcon className="!text-[19px]" /> Log out
               </div>
             </MenuItem>
+            <Divider variant="fullWidth" orientation="horizontal" />
+            <MenuItem className="!p-0">
+              <div className="flex  w-full h-full items-center">
+                <ChangeRole />
+              </div>
+            </MenuItem>
           </div>
         ) : (
           <>
@@ -147,8 +162,8 @@ export default function ProfileIcon() {
           </>
         )}
       </Menu>
-
       <ResetNewPassword open={open1} handleClose={handleClose1} />
+
     </>
   );
 }

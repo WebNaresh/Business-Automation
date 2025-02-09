@@ -505,25 +505,35 @@ const TestNavItems = ({ toggleDrawer }) => {
             },
           ],
         },
+        // Expense: {
+        //   open: false,
+        //   isVisible:
+        //     window.location.pathname?.includes("organisation") &&
+        //     [
+        //       "Super-Admin",
+        //       "HR",
+        //     ]?.includes(role),
+        //   icon: <Payment className=" !text-[1.2em]" />,
+        //   routes: [
+        //     {
+        //       key: "expense",
+        //       isVisible: true,
+        //       link: `/organisation/${orgId}/expenses`,
+        //       icon: <ListAlt className=" !text-[1.2em]" />,
+        //       text: "Expenses",
+        //     },
+        //   ],
+        // },
         Expense: {
-          open: false,
+          open: false, // This may not be needed anymore
           isVisible:
             window.location.pathname?.includes("organisation") &&
-            [
-              "Super-Admin",
-              "HR",
-            ]?.includes(role),
+            ["Super-Admin", "HR"]?.includes(role),
           icon: <Payment className=" !text-[1.2em]" />,
-          routes: [
-            {
-              key: "expense",
-              isVisible: true,
-              link: `/organisation/${orgId}/expenses`,
-              icon: <ListAlt className=" !text-[1.2em]" />,
-              text: "Expenses",
-            },
-          ],
+          link: `/organisation/${orgId}/expenses`, // Directly set the navigation link
+          text: "Expenses",
         },
+
         "Assets": {
           open: false,
           icon: <PeopleAlt className=" !text-[1.2em]" />,
