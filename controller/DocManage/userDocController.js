@@ -94,6 +94,8 @@ exports.getDocuments = catchAssyncError(async (req, res, next) => {
     const documentData = await UserDocuments.findOne({
       employeeId: employeeId,
       organizationId: organizationId,
+      status: "Accepted"
+
     })
       .populate("employeeId")
       .populate("approvalId");
@@ -187,6 +189,7 @@ exports.getDocumentsToApprovalId = catchAssyncError(async (req, res, next) => {
     const documentData = await UserDocuments.find({
       approvalId: approvalId,
       organizationId: organizationId,
+      status: "Pending"
     }).populate("employeeId");
 
     // Check if document data exists
@@ -249,14 +252,90 @@ exports.deleteDocument = catchAssyncError(async (req, res, next) => {
   }
 });
 
-// exports.uploadDocs = catchAssyncError(async (req, res, next) => {
-//   try {
-//     const { documentName } = req.body;
+exports.getPendingDocumentOrg = catchAssyncError(async (req, res, next) => {
+  try {
+    const { organizationId } = req.params;
 
-//     let url = await generateSignedUrlToUploadDocs(req.user.user, documentName);
 
-//     res.status(200).json({ url });
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// });
+    const documentData = await UserDocuments.find({
+      organizationId: organizationId,
+      status: "Pending"
+    })
+      .populate("employeeId")
+      .populate("approvalId");
+
+    // Send the document data as a response
+    return res.status(200).json({
+      success: true,
+      message: "Document data retrieved successfully",
+      data: documentData,
+    });
+  } catch (error) {
+    // Handle any errors and send a 500 response
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+});
+
+exports.getPendingDocumentUser = catchAssyncError(async (req, res, next) => {
+  try {
+    const { employeeId, organizationId } = req.params;
+    console.log({ employeeId, organizationId });
+
+    const documentData = await UserDocuments.findOne({
+      employeeId: employeeId,
+      organizationId: organizationId,
+      status: "Pending"
+    })
+      .populate("employeeId")
+      .populate("approvalId");
+
+    // Send the document data as a response
+    return res.status(200).json({
+      success: true,
+      message: "Document data retrieved successfully",
+      data: documentData,
+    });
+  } catch (error) {
+    // Handle any errors and send a 500 response
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+});
+
+exports.AcceptOrRejectUserDocument = catchAssyncError(
+  async (req, res, next) => {
+    try {
+      const { docuementId } = req.params;
+      const { action } = req.body;
+      console.log("document", req.params);
+      console.log("action", req.body);
+
+      if (action !== "accept" && action !== "reject") {
+        return res
+          .status(400)
+          .json({ success: false, message: "Invalid action" });
+      }
+      const updateDocument = await UserDocuments.findByIdAndUpdate(
+        docuementId,
+        { status: action === "accept" ? "Accepted" : "Rejected" },
+        { new: true }
+      );
+      if (!updateDocument) {
+        return res
+          .status(404)
+          .json({ success: false, message: "data not found" });
+      }
+      updateDocument.acceptRejectNotificationCount = 1;
+      await updateDocument.save();
+      res.status(200).json({ success: true, data: updateDocument });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: error.message });
+    }
+  }
+);

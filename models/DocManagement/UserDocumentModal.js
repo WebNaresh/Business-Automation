@@ -44,6 +44,16 @@ const userDocuments = new mongoose.Schema({
     ref: "Organization",
     required: true,
   },
+  status: {
+    type: String,
+    enum: ["Pending", "Accepted", "Rejected"],
+    default: "Pending",
+  },
+  acceptRejectNotificationCount: {
+    type: Number,
+    default: 0
+  }
+
 });
 
 const UserDocuments = mongoose.model("userdocuments", userDocuments);

@@ -23,7 +23,7 @@ router.route("/org/adddocuments").post(auth, addDocument);
 router.route("/org/getmanagers").get(auth, getManagersForDowncast);
 router.route("/org/updatedocuments/:id").patch(auth, updateDocs);
 router.route("/org/getdocs").get(auth, getDocuments);
-router.route("/org/getdocsmanager").get(auth, getNotificationManager);
+router.route("/").get(auth, getNotificationManager);
 router.route("/org/acceptNotification/:id").post(auth, acceptNotification);
 router.route("/org/rejectNotification/:id").post(auth, rejectNotification);
 router.route("/org/getdocsforemp").get(auth, getDocsForEmp);

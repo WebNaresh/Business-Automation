@@ -6,6 +6,9 @@ const {
   deleteDocument,
   UpdateDocuments,
   getDocumentsToApprovalId,
+  getPendingDocumentOrg,
+  getPendingDocumentUser,
+  AcceptOrRejectUserDocument
 } = require("../../controller/DocManage/userDocController");
 const router = express.Router();
 
@@ -18,6 +21,14 @@ router.route("/update-document/:fileId").put(auth, UpdateDocuments);
 router
   .route("/emp/get-document/:employeeId/:organizationId")
   .get(auth, getDocuments);
-//router.route("/employee/uploaddocs").post(auth, uploadDocs);
+router
+  .route("/org/get-pending-document/:organizationId")
+  .get(auth, getPendingDocumentOrg);
+router
+  .route("/emp/get-pending-document/:employeeId/:organizationId")
+  .get(auth, getPendingDocumentUser);
+router
+  .route("/organization/user-document-accept/reject/:docuementId")
+  .put(auth, AcceptOrRejectUserDocument);
 
 module.exports = router;
