@@ -8,7 +8,7 @@ import { z } from "zod";
 import AuthInputFiled from "../../../components/InputFileds/AuthInputFiled";
 import useEmpState from "../../../hooks/Employee-OnBoarding/useEmpState";
 import { Close } from "@mui/icons-material";
-import { FormControlLabel, Radio, RadioGroup, Button, IconButton } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 
 export const isAtLeastNineteenYearsOld = (value) => {
   const currentDate = new Date();

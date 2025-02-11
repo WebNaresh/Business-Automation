@@ -9,7 +9,6 @@ import { z } from "zod";
 import AuthInputFiled from "../../../components/InputFileds/AuthInputFiled";
 import useAuthToken from "../../../hooks/Token/useAuth";
 import { getTDSYearsOptions, reportTypeOptions } from "./data";
-
 import * as XLSX from "xlsx";
 import { TestContext } from "../../../State/Function/Main";
 import useGetAllManager from "../../../hooks/Employee/useGetAllManager";
@@ -57,7 +56,6 @@ const ReportForm = () => {
           });
         }
       }
-
       // If reportType is 'Salary', then start and end are required
       if (data.reportType.value === "Salary") {
         if (!data.start) {
@@ -98,11 +96,17 @@ const ReportForm = () => {
     }
     //eslint-disabled-next-line
   }, [startValue, setValue, watch]);
+
   const { organisationId } = useParams();
   const authToken = useAuthToken();
 
   const GenerateAttendence = (data) => {
+
+    console.log("data", data);
+
     const dateRange = data[0]?.attendance?.map((date) => date.date) || [];
+
+    console.log("dateRange", dateRange);
 
     const headers = [
       "Employee Id",
@@ -318,7 +322,6 @@ const ReportForm = () => {
   return (
     <form
       onSubmit={handleSubmit((data, event) => {
-        console.log("before condition runs ", data);
         if (watch("reportType").value === "Attendence") {
           console.log("this runs ", data);
           if (
@@ -417,12 +420,10 @@ const ReportForm = () => {
             name="start"
             control={control}
             type="month"
-            // icon={Work}
             placeholder="Ex : January-2022"
             label="Select Start Month *"
             readOnly={false}
             maxLimit={15}
-            // options={ReportYearsOptions}
             errors={errors}
             error={errors.start}
           />
@@ -433,36 +434,21 @@ const ReportForm = () => {
             min={startValue}
             disabled={!startValue}
             readOnly={!startValue}
-            // icon={Work}
             placeholder="Ex : March-2022"
             label="Select End Month *"
             maxLimit={15}
-            // options={ReportYearsOptions}
             errors={errors}
             error={errors.end}
           />
         </div>
       )}
       <div className="grid gap-2 grid-cols-2">
-        {/* <AuthInputFiled
-          name="department"
-          control={control}
-          type="select"
-          icon={Work}
-          placeholder="ex: Department1"
-          label="Select Department "
-          readOnly={false}
-          maxLimit={15}
-          options={reportTypeOptions}
-          errors={errors}
-          error={errors.department}
-        /> */}
+
         {watch("reportType")?.value !== "tds" && (
           <AuthInputFiled
             name="manager"
             control={control}
             type="select"
-            // icon={Work}
             placeholder="ex: Manager1"
             label="Select Manager "
             readOnly={false}

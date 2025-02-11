@@ -3,7 +3,7 @@ import {
     AccountBalance,
     LocationOn,
 } from "@mui/icons-material";
-import { useForm } from "react-hook-form";
+import { useForm ,useFieldArray , Controller } from "react-hook-form";
 import { z } from "zod";
 import AuthInputFiled from "../../../components/InputFileds/AuthInputFiled";
 import useEmployeeState from "../../../hooks/Employee-OnBoarding/useEmployeeState";
@@ -12,6 +12,8 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router";
 import { useContext } from "react";
 import { UseContext } from "../../../State/UseState/UseContext";
+import { Close } from "@mui/icons-material";
+import { Button, IconButton } from "@mui/material";
 
 export const isAtLeastNineteenYearsOld = (value) => {
     const currentDate = new Date();
@@ -30,7 +32,7 @@ export const isAtLeastNineteenYearsOld = (value) => {
     return differenceInYears >= 19;
 };
 
-const TestFirst = ({ nextStep, isLastStep , prevStep }) => {
+const TestFirst = ({ nextStep, isLastStep, prevStep }) => {
     const { employeeId } = useParams();
     const { cookies } = useContext(UseContext);
     const authToken = cookies["aegis"];
@@ -70,14 +72,30 @@ const TestFirst = ({ nextStep, isLastStep , prevStep }) => {
         mother_middal_name: z.string().optional(),
         mother_last_name: z.string().optional(),
         mother_occupation: z.string().optional(),
+        sibling_details: z
+            .array(
+                z.object({
+                    name: z.string().optional(),
+                    occupation: z.string().optional(),
+                    age: z.string().optional(),
+                })
+            )
+            .optional(),
 
     });
 
 
-    const { control, formState, handleSubmit  , setValue} = useForm({
+    const { control, formState, handleSubmit, setValue } = useForm({
         defaultValues: {},
         resolver: zodResolver(EmployeeSchema),
     });
+
+    const { fields, append, remove } = useFieldArray({
+        control,
+        name: "sibling_details",
+
+    });
+
 
     // for getting the data existing employee and set the value
     const { isLoading } = useQuery(
@@ -114,6 +132,7 @@ const TestFirst = ({ nextStep, isLastStep , prevStep }) => {
                     setValue("mother_last_name", data.employee.mother_last_name || "");
                     setValue("mother_occupation", data.employee.mother_occupation || "");
                     setValue("father_occupation", data.employee.father_occupation || "");
+                    setValue("sibling_details", data?.employee?.sibling_details || "");
                 }
             },
         }
@@ -306,6 +325,57 @@ const TestFirst = ({ nextStep, isLastStep , prevStep }) => {
                         error={errors.mother_occupation}
                         className="text-sm"
                     />
+                </div>
+                <div className="w-full mt-4">
+                    <h2 className="text-lg font-semibold">Sibling Details</h2>
+                    {fields.map((item, index) => (
+                        <div
+                            key={item.id}
+                            className="flex items-center gap-2 mt-2"
+                        >
+                            <AuthInputFiled
+                                name={`sibling_details.${index}.name`}
+                                control={control}
+                                type="text"
+                                placeholder="Name"
+                                errors={errors}
+                                error={errors.sibling_details?.[index]?.name}
+                                className="text-sm"
+                            />
+                            <AuthInputFiled
+                                name={`sibling_details.${index}.occupation`}
+                                control={control}
+                                type="text"
+                                placeholder="Occupation"
+                                errors={errors}
+                                error={errors.sibling_details?.[index]?.occupation}
+                                className="text-sm"
+                            />
+                            <AuthInputFiled
+                                name={`sibling_details.${index}.age`}
+                                control={control}
+                                type="text"
+                                placeholder="Age"
+                                errors={errors}
+                                error={errors.sibling_details?.[index]?.age}
+                                className="text-sm"
+                            />
+                            <IconButton
+                                onClick={() => remove(index)}
+                                size="small"
+                                color="error"
+                            >
+                                <Close />
+                            </IconButton>
+                        </div>
+                    ))}
+                    <Button
+                        variant="outlined"
+                        onClick={() => append({ name: "", role: "" })}
+                        className="mt-2"
+                    >
+                        Add Sibling
+                    </Button>
                 </div>
                 <div className="flex items-end w-full justify-between">
                     <button
