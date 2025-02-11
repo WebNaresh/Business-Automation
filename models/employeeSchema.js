@@ -277,6 +277,37 @@ const Employee = new mongoose.Schema({
     type: String,
   },
 
+  education_details: [
+    {
+      institute_name: {
+        type: String,
+      },
+      institute_location: {
+        type: String,
+      },
+      degree: {
+        type: String,
+      },
+      duration: {
+        type: String,
+      },
+    },
+  ],
+  sibling_details: [
+    {
+      name: {
+        type: String,
+      },
+      occupation: {
+        type: String,
+      },
+      age: {
+        type: String,
+
+      },
+    },
+  ],
+
   verified: {
     type: Boolean,
     default: false,
