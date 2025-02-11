@@ -90,7 +90,6 @@ const EditProject = ({ open, handleClose, projectId, organisationId }) => {
             reset({
                 project_name: getProject.project_name || "",
                 project_description: getProject.project_description || "",
-
                 start_date: getProject.start_date ? getProject.start_date.split("T")[0] : "",
                 end_date: getProject.end_date ? getProject.end_date.split("T")[0] : "",
                 status: getProject.status || "",

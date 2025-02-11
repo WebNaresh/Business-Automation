@@ -3,10 +3,12 @@ import {
   AccountBalance,
   LocationOn,
 } from "@mui/icons-material";
-import {  useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import { z } from "zod";
 import AuthInputFiled from "../../../components/InputFileds/AuthInputFiled";
 import useEmpState from "../../../hooks/Employee-OnBoarding/useEmpState";
+import { Close } from "@mui/icons-material";
+import { FormControlLabel, Radio, RadioGroup, Button, IconButton } from "@mui/material";
 
 export const isAtLeastNineteenYearsOld = (value) => {
   const currentDate = new Date();
@@ -25,27 +27,13 @@ export const isAtLeastNineteenYearsOld = (value) => {
   return differenceInYears >= 19;
 };
 
-const TestFirst = ({ nextStep,  isLastStep , prevStep }) => {
+const TestFirst = ({ nextStep, isLastStep, prevStep }) => {
   const {
     setStep1Data,
-    emergency_contact_no,
-    emergency_contact_name,
-    relationship_with_emergency_contact,
-    alternate_contact_no,
-    parent_name,
-    spouse_name,
-    father_first_name,
-    father_middal_name,
-    father_last_name,
-    father_occupation,
-    mother_first_name,
-    mother_middal_name,
-    mother_last_name,
-    mother_occupation,
-    emergency_medical_condition,
+
   } = useEmpState();
 
-  
+
   const EmployeeSchema = z.object({
     // Additional Fields
     emergency_contact_no: z.string().regex(/^\d{10}$/, { message: "Emergency contact must be 10 digits" }).optional(),
@@ -62,20 +50,32 @@ const TestFirst = ({ nextStep,  isLastStep , prevStep }) => {
     mother_middal_name: z.string().optional(),
     mother_last_name: z.string().optional(),
     mother_occupation: z.string().optional(),
+    sibling_details: z
+      .array(
+        z.object({
+          name: z.string(),
+          occupation: z.string(),
+          age: z.string(),
+        })
+      )
+      .optional(),
 
   });
 
-
   const { control, formState, handleSubmit } = useForm({
-    defaultValues: {
-     
-    },
+    defaultValues: {},
     resolver: zodResolver(EmployeeSchema),
   });
 
   const { errors } = formState;
 
   console.log("errors", errors);
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "sibling_details",
+
+  });
 
 
   const onSubmit = async (data) => {
@@ -261,6 +261,57 @@ const TestFirst = ({ nextStep,  isLastStep , prevStep }) => {
             error={errors.mother_occupation}
             className="text-sm"
           />
+        </div>
+        <div className="w-full mt-4">
+          <h2 className="text-lg font-semibold">Sibling Details</h2>
+          {fields.map((item, index) => (
+            <div
+              key={item.id}
+              className="flex items-center gap-2 mt-2"
+            >
+              <AuthInputFiled
+                name={`sibling_details.${index}.name`}
+                control={control}
+                type="text"
+                placeholder="Name"
+                errors={errors}
+                error={errors.sibling_details?.[index]?.name}
+                className="text-sm"
+              />
+              <AuthInputFiled
+                name={`sibling_details.${index}.occupation`}
+                control={control}
+                type="text"
+                placeholder="Occupation"
+                errors={errors}
+                error={errors.sibling_details?.[index]?.occupation}
+                className="text-sm"
+              />
+              <AuthInputFiled
+                name={`sibling_details.${index}.age`}
+                control={control}
+                type="text"
+                placeholder="Age"
+                errors={errors}
+                error={errors.sibling_details?.[index]?.age}
+                className="text-sm"
+              />
+              <IconButton
+                onClick={() => remove(index)}
+                size="small"
+                color="error"
+              >
+                <Close />
+              </IconButton>
+            </div>
+          ))}
+          <Button
+            variant="outlined"
+            onClick={() => append({ name: "", role: "" })}
+            className="mt-2"
+          >
+            Add Sibling
+          </Button>
         </div>
         <div className="flex items-end w-full justify-between">
           <button

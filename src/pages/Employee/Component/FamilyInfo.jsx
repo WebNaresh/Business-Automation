@@ -56,6 +56,7 @@ export function FamilyInfo({ empId }) {
         return <div>Error loading profile data</div>; // Error handling
     }
 
+
     return (
         <div className="p-4 space-y-6">
             {/* Emergency Contact Section */}
@@ -102,15 +103,24 @@ export function FamilyInfo({ empId }) {
                             </tr>
                         </thead>
                         <tbody>
-                            {Array.from({ length: 5 }, (_, index) => (
-                                <tr key={index}>
-                                    <td className="border border-gray-300 px-4 py-2">{index + 1}</td>
-                                    <td className="border border-gray-300 px-4 py-2">-</td>
-                                    <td className="border border-gray-300 px-4 py-2">-</td>
-                                    <td className="border border-gray-300 px-4 py-2">-</td>
+                            {profile?.sibling_details && profile.sibling_details.length > 0 ? (
+                                profile.sibling_details.map((sibling, index) => (
+                                    <tr key={index}>
+                                        <td className="border border-gray-300 px-4 py-2">{index + 1}</td>
+                                        <td className="border border-gray-300 px-4 py-2">{sibling.name || '-'}</td>
+                                        <td className="border border-gray-300 px-4 py-2">{sibling.occupation || '-'}</td>
+                                        <td className="border border-gray-300 px-4 py-2">{sibling.age || '-'}</td>
+                                    </tr>
+                                ))
+                            ) : (
+                                <tr>
+                                    <td colSpan="4" className="border border-gray-300 px-4 py-2 text-center">
+                                        No sibling details available
+                                    </td>
                                 </tr>
-                            ))}
+                            )}
                         </tbody>
+
                     </table>
                 </div>
             </div>

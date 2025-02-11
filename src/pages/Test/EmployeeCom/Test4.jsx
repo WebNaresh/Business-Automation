@@ -85,8 +85,10 @@ const Test4 = ({ prevStep }) => {
     exit_date,
     travel_requirement,
     id_card_no,
-    company_assets
+    company_assets,
   } = useEmpState();
+
+
 
   // define the handleSubmit function
   const handleSubmit = useMutation(

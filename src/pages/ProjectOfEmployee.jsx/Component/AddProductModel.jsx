@@ -48,7 +48,6 @@ const AddProductModel = ({ open, handleClose, empId, organisationId }) => {
         defaultValues: {
             project_name: "",
             project_description: "",
-
             start_date: "",
             end_date: "",
             status: "",

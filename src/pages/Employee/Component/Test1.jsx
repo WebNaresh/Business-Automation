@@ -17,13 +17,16 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { useContext } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useForm  ,useFieldArray} from "react-hook-form";
 import { useQuery } from "react-query";
 import { useParams } from "react-router";
 import { z } from "zod";
 import { UseContext } from "../../../State/UseState/UseContext";
 import AuthInputFiled from "../../../components/InputFileds/AuthInputFiled";
 import useEmployeeState from "../../../hooks/Employee-OnBoarding/useEmployeeState";
+import { Close } from "@mui/icons-material";
+import {Button, IconButton } from "@mui/material";
+
 
 const isAtLeastNineteenYearsOld = (value) => {
   const currentDate = new Date();
@@ -41,7 +44,7 @@ const isAtLeastNineteenYearsOld = (value) => {
   return differenceInYears >= 19;
 };
 
-const Test1 = ({ nextStep, isLastStep , prevStep }) => {
+const Test1 = ({ nextStep, isLastStep, prevStep }) => {
   // to define the state, import funciton and hook
   const {
     setStep1Data,
@@ -59,25 +62,6 @@ const Test1 = ({ nextStep, isLastStep , prevStep }) => {
     pwd,
     uanNo,
     esicNo,
-    height,
-    weight,
-    blood_group,
-    voting_card_no,
-    permanent_address,
-    religion,
-    smoking_habits,
-    drinking_habits,
-    sports_interest,
-    favourite_book,
-    favourite_travel_destination,
-    disability_status,
-    emergency_medical_condition,
-    short_term_goal,
-    long_term_goal,
-    strength,
-    weakness,
-    bank_name,
-    ifsc_code
   } = useEmployeeState();
   const { employeeId } = useParams();
   const { cookies } = useContext(UseContext);
@@ -164,6 +148,16 @@ const Test1 = ({ nextStep, isLastStep , prevStep }) => {
     weakness: z.string().optional(),
     bank_name: z.string().optional(),
     ifsc_code: z.string().optional(),
+    education_details: z
+    .array(
+      z.object({
+        institute_name: z.string().optional(),
+        institute_location: z.string().optional(),
+        degree: z.string().optional(),
+        duration: z.string().optional(),
+      })
+    )
+    .optional(),
   });
 
   // use useForm
@@ -263,15 +257,20 @@ const Test1 = ({ nextStep, isLastStep , prevStep }) => {
           setValue("long_term_goal", data.employee.long_term_goal || "");
           setValue("strength", data.employee.strength || "");
           setValue("weakness", data.employee.weakness || "");
-         
+          setValue("education_details", data?.employee?.education_details || "");
+
         }
       },
     }
   );
 
   const { errors } = formState;
-  console.log("errors" , errors);
-  
+  console.log("errors", errors);
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "education_details",
+  });
+
   // to define the onSumbit funciton
   const onSubmit = async (data) => {
     setStep1Data(data);
@@ -711,12 +710,74 @@ const Test1 = ({ nextStep, isLastStep , prevStep }) => {
               />
             </div>
 
+            <div className="w-full mt-4">
+              <h2 className="text-lg font-semibold">Educational Details</h2>
+              {fields.map((item, index) => (
+                <div
+                  key={item.id}
+                  className="flex items-center gap-2 mt-2"
+                >
+                  <AuthInputFiled
+                    name={`education_details.${index}.institute_name`}
+                    control={control}
+                    type="text"
+                    placeholder="Institute Name"
+                    errors={errors}
+                    error={errors.education_details?.[index]?.institute_name}
+                    className="text-sm"
+                  />
+                  <AuthInputFiled
+                    name={`education_details.${index}.institute_location`}
+                    control={control}
+                    type="text"
+                    placeholder="Institure Location"
+                    errors={errors}
+                    error={errors.education_details?.[index]?.institute_location}
+                    className="text-sm"
+                  />
+                  <AuthInputFiled
+                    name={`education_details.${index}.degree`}
+                    control={control}
+                    type="text"
+                    placeholder="Degree"
+                    errors={errors}
+                    error={errors.education_details?.[index]?.degree}
+                    className="text-sm"
+                  />
+                  <AuthInputFiled
+                    name={`education_details.${index}.duration`}
+                    control={control}
+                    type="text"
+                    placeholder="Duration"
+                    errors={errors}
+                    error={errors.education_details?.[index]?.duration}
+                    className="text-sm"
+                  />
+                  <IconButton
+                    onClick={() => remove(index)}
+                    size="small"
+                    color="error"
+                  >
+                    <Close />
+                  </IconButton>
+                </div>
+              ))}
+              <Button
+                variant="outlined"
+                onClick={() => append({ name: "", role: "" })}
+                className="mt-2"
+              >
+                Add Education
+              </Button>
+            </div>
+
+
 
             <div className="flex justify-end">
               <button
                 type="submit"
                 disabled={isLastStep}
-                   className="flex justify-center px-4 py-1 text-md font-semibold text-white bg-[#174E63] rounded-md hover:bg-[#123B4A]"
+                className="flex justify-center px-4 py-1 text-md font-semibold text-white bg-[#174E63] rounded-md hover:bg-[#123B4A]"
               >
                 Next
               </button>

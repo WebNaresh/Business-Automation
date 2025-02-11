@@ -84,7 +84,10 @@ const EmployeeProfileView = () => {
       }
     },
     { enabled: Boolean(empId) }
-  );
+  ); 
+
+  console.log("profile" , profile);
+  
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -103,7 +106,7 @@ const EmployeeProfileView = () => {
               {profile?.first_name} {profile?.last_name}
             </div>
             <div className="text-base font-bold mt-1 mb-1">
-              {profile?.designation?.[0]?.title || '-'}
+              {profile?.designation?.[0]?.designationName || '-'}
             </div>
             <div className="text-sm font-bold mt-1 mb-1">
               ID_: {profile?.empId}

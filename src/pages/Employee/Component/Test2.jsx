@@ -571,53 +571,6 @@ const Test2 = ({ isLastStep, nextStep, prevStep }) => {
                 className=" text-sm"
               />
             </div>
-
-            <div className="w-full mt-4">
-              <h2 className="text-lg font-semibold">Sibling Details</h2>
-              {fields.map((item, index) => (
-                <div
-                  key={item.id}
-                  className="flex items-center gap-2 mt-2"
-                >
-                  <AuthInputFiled
-                    name={`team_members.${index}.name`}
-                    control={control}
-                    type="text"
-                    placeholder="Name"
-                    errors={errors}
-                    error={errors.team_members?.[index]?.name}
-                    className="text-sm"
-                  />
-                  <AuthInputFiled
-                    name={`team_members.${index}.role`}
-                    control={control}
-                    type="text"
-                    placeholder="Role"
-                    errors={errors}
-                    error={errors.team_members?.[index]?.role}
-                    className="text-sm"
-                  />
-                  <IconButton
-                    onClick={() => remove(index)}
-                    size="small"
-                    color="error"
-                  >
-                    <Close />
-                  </IconButton>
-                </div>
-              ))}
-              <Button
-                variant="outlined"
-                onClick={() => append({ name: "", role: "" })}
-                className="mt-2"
-              >
-                Add Team Member
-              </Button>
-            </div>
-
-
-
-
             <div className="flex items-end w-full justify-between">
               <button
                 type="button"

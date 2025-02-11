@@ -141,15 +141,6 @@ const Test1 = ({ nextStep, isLastStep }) => {
     weakness: z.string().optional(),
     bank_name: z.string().optional(),
     ifsc_code: z.string().regex(/^[A-Z]{4}0[A-Z0-9]{6}$/, { message: "Invalid IFSC code" }).optional(),
-    sibling_details: z
-      .array(
-        z.object({
-          name: z.string(),
-          occupation: z.string(),
-          age: z.string(),
-        })
-      )
-      .optional(),
     education_details: z
       .array(
         z.object({
@@ -190,7 +181,6 @@ const Test1 = ({ nextStep, isLastStep }) => {
 
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "sibling_details",
     name: "education_details",
   });
 
@@ -678,59 +668,6 @@ const Test1 = ({ nextStep, isLastStep }) => {
             className="text-sm"
           />
         </div>
-
-        <div className="w-full mt-4">
-          <h2 className="text-lg font-semibold">Sibling Details</h2>
-          {fields.map((item, index) => (
-            <div
-              key={item.id}
-              className="flex items-center gap-2 mt-2"
-            >
-              <AuthInputFiled
-                name={`sibling_details.${index}.name`}
-                control={control}
-                type="text"
-                placeholder="Name"
-                errors={errors}
-                error={errors.sibling_details?.[index]?.name}
-                className="text-sm"
-              />
-              <AuthInputFiled
-                name={`sibling_details.${index}.occupation`}
-                control={control}
-                type="text"
-                placeholder="Occupation"
-                errors={errors}
-                error={errors.sibling_details?.[index]?.occupation}
-                className="text-sm"
-              />
-              <AuthInputFiled
-                name={`sibling_details.${index}.age`}
-                control={control}
-                type="text"
-                placeholder="Age"
-                errors={errors}
-                error={errors.sibling_details?.[index]?.age}
-                className="text-sm"
-              />
-              <IconButton
-                onClick={() => remove(index)}
-                size="small"
-                color="error"
-              >
-                <Close />
-              </IconButton>
-            </div>
-          ))}
-          <Button
-            variant="outlined"
-            onClick={() => append({ name: "", role: "" })}
-            className="mt-2"
-          >
-            Add Sibling
-          </Button>
-        </div>
-
 
         <div className="w-full mt-4">
           <h2 className="text-lg font-semibold">Educational Details</h2>

@@ -36,37 +36,6 @@ export function Educational({ empId }) {
     return <div>Error loading profile data</div>; // Error handling
   }
 
-  // Default Educational Data
-  const educationalDetails = [
-    {
-      srNo: 1,
-      instituteName: "ABC High School",
-      instituteLocation: "City A",
-      degree: "SSC",
-      duration: "2010 - 2012",
-    },
-    {
-      srNo: 2,
-      instituteName: "XYZ Junior College",
-      instituteLocation: "City B",
-      degree: "HSC",
-      duration: "2012 - 2014",
-    },
-    {
-      srNo: 3,
-      instituteName: "LMN University",
-      instituteLocation: "City C",
-      degree: "Bachelor of Science",
-      duration: "2014 - 2018",
-    },
-    {
-      srNo: 4,
-      instituteName: "PQR University",
-      instituteLocation: "City D",
-      degree: "Master of Science",
-      duration: "2018 - 2020",
-    },
-  ];
 
   return (
     <div className="p-4">
@@ -84,16 +53,25 @@ export function Educational({ empId }) {
               </tr>
             </thead>
             <tbody>
-              {educationalDetails.map((edu, index) => (
-                <tr key={index} className="text-gray-800">
-                  <td className="border border-gray-300 px-4 py-2">{edu.srNo}</td>
-                  <td className="border border-gray-300 px-4 py-2">{edu.instituteName}</td>
-                  <td className="border border-gray-300 px-4 py-2">{edu.instituteLocation}</td>
-                  <td className="border border-gray-300 px-4 py-2">{edu.degree}</td>
-                  <td className="border border-gray-300 px-4 py-2">{edu.duration}</td>
+              {profile?.education_details && profile.education_details.length > 0 ? (
+                profile.education_details.map((education, index) => (
+                  <tr key={index}>
+                    <td className="border border-gray-300 px-4 py-2">{index + 1}</td>
+                    <td className="border border-gray-300 px-4 py-2">{education.institute_name || '-'}</td>
+                    <td className="border border-gray-300 px-4 py-2">{education.institute_location || '-'}</td>
+                    <td className="border border-gray-300 px-4 py-2">{education.degree || '-'}</td>
+                    <td className="border border-gray-300 px-4 py-2">{education.duration || '-'}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="5" className="border border-gray-300 px-4 py-2 text-center">
+                    No education details available
+                  </td>
                 </tr>
-              ))}
+              )}
             </tbody>
+
           </table>
         </div>
       </div>
