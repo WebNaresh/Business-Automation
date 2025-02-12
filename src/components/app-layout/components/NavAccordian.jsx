@@ -67,7 +67,7 @@ const NavAccordion = ({
                     className="rounded-md flex items-center gap-2 p-2 m-2 px-6"
                   >
                     {route.icon}
-                    <h1 className="font-bold text-[.9em] text-[#59504c]">
+                    <h1 className="font-bold text-[.9em] text-[#FFFFFF]">
                       {route.text}
                     </h1>
                   </Link>

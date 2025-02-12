@@ -196,7 +196,6 @@ const TestNavItems = ({ toggleDrawer }) => {
               "Delegate-Accountant",
               "HR",
               "Manager",
-
             ]?.includes(role),
           routes: [
             {
@@ -446,6 +445,8 @@ const TestNavItems = ({ toggleDrawer }) => {
               text: "Add Geo Fencing",
             },
           ],
+          isClickable: true,
+          link: `/organisation/${orgId}/remotePunching/geo-fencing`,
         },
         Performance: {
           open: false,
@@ -460,8 +461,9 @@ const TestNavItems = ({ toggleDrawer }) => {
               text: "Performance",
             },
           ],
+          isClickable: true,
+          link: `/organisation/${orgId}/performance`,
         },
-
         "Project Allocation": {
           open: false,
           icon: <PeopleAlt className=" !text-[1.2em]" />,
@@ -504,36 +506,27 @@ const TestNavItems = ({ toggleDrawer }) => {
               text: "Project",
             },
           ],
+          isClickable: true,
+          link: `/organisation/${orgId}/projecte-of-employee`,
         },
-        // Expense: {
-        //   open: false,
-        //   isVisible:
-        //     window.location.pathname?.includes("organisation") &&
-        //     [
-        //       "Super-Admin",
-        //       "HR",
-        //     ]?.includes(role),
-        //   icon: <Payment className=" !text-[1.2em]" />,
-        //   routes: [
-        //     {
-        //       key: "expense",
-        //       isVisible: true,
-        //       link: `/organisation/${orgId}/expenses`,
-        //       icon: <ListAlt className=" !text-[1.2em]" />,
-        //       text: "Expenses",
-        //     },
-        //   ],
-        // },
         Expense: {
-          open: false, // This may not be needed anymore
+          open: false,
+          icon: <Payment className=" !text-[1.2em]" />,
           isVisible:
             window.location.pathname?.includes("organisation") &&
             ["Super-Admin", "HR"]?.includes(role),
-          icon: <Payment className=" !text-[1.2em]" />,
-          link: `/organisation/${orgId}/expenses`, // Directly set the navigation link
-          text: "Expenses",
+          routes: [
+            {
+              key: "expense",
+              isVisible: true,
+              link: `/organisation/${orgId}/expenses`,
+              icon: <ListAlt className=" !text-[1.2em]" />,
+              text: "Expenses",
+            },
+          ],
+          isClickable: true,
+          link: `/organisation/${orgId}/expenses`,
         },
-
         "Assets": {
           open: false,
           icon: <PeopleAlt className=" !text-[1.2em]" />,
@@ -576,6 +569,8 @@ const TestNavItems = ({ toggleDrawer }) => {
               text: "Assets",
             },
           ],
+          isClickable: true,
+          link: `/organisation/${orgId}/assets-of-employee`,
         },
         "Letter Template": {
           open: false,
@@ -616,6 +611,8 @@ const TestNavItems = ({ toggleDrawer }) => {
               text: "Records",
             },
           ],
+          isClickable: true,
+          link: `/organisation/${orgId}/records`,
         },
 
         "MIS Report": {
@@ -638,6 +635,8 @@ const TestNavItems = ({ toggleDrawer }) => {
               text: "Reporting MIS",
             },
           ],
+          isClickable: true,
+          link: `/organisation/${orgId}/mis-report`,
         },
 
         "Policy": {
@@ -784,6 +783,8 @@ const TestNavItems = ({ toggleDrawer }) => {
               text: "FAQ",
             },
           ],
+          isClickable: true,
+          link: `/organisation/${orgId}/help-desk`,
         },
       };
     },
