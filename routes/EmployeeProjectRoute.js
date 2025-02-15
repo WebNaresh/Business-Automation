@@ -1,12 +1,16 @@
 const express = require("express");
 const {
-    addProject, updateProject, getProjectsByEmpId, getOneProjectOfEmployee
+    addProjectInOrg, updateProjectInOrg, getProjectInOrg, getProject, allocateProjectToEmp, updateProjectToEmp, getProjectsByEmpId, getOneProjectOfEmployee
 } = require("../controller/EmployeeProduct");
 const router = express.Router();
 const auth = require("../middleware/Auth");
 
-router.route("/project/add-project/:empId/:organizationId").post(auth, addProject);
-router.route("/project/update/:projectId").patch(auth, updateProject);
+router.route("/project/add-project/:organizationId").post(auth, addProjectInOrg);
+router.route("/project/update-project/:organizationId/:projectId").patch(auth, updateProjectInOrg);
+router.route("/project/get-project-in-org/:id").get(getProjectInOrg);
+router.route("/project/get-project/:organizationId").get(getProject);
+router.route("/project/allocate-project-to-emp/:organizationId").post(auth, allocateProjectToEmp);
+router.route("/project/update-project-to-emp/:projectId").patch(auth, updateProjectToEmp);
 router.route("/project/get/:empId").get(getProjectsByEmpId);
 router.route("/project/getone/:id").get(getOneProjectOfEmployee);
 

@@ -59,7 +59,7 @@ const EmailCommunicationSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    default : "UnSend" , 
+    default: "UnSend",
   },
   creatorId: {
     type: mongoose.Schema.Types.ObjectId,

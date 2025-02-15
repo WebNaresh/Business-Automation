@@ -3,17 +3,21 @@ const mongoose = require("mongoose");
 const EmployeeProductSchema = new mongoose.Schema(
     {
         empId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Employee",
+            type: [
+                {
+                    label: String,
+                    value: String,
+                },
+            ],
             required: true,
         },
-        organizationId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Organization",
-            default: null,
-        },
         project_name: {
-            type: String,
+            type: [
+                {
+                    label: String,
+                    value: String,
+                },
+            ],
             required: true,
         },
         project_description: {
@@ -27,31 +31,17 @@ const EmployeeProductSchema = new mongoose.Schema(
         },
         end_date: {
             type: Date,
-
         },
         status: {
             type: String,
             enum: ["OnGoing", "Completed"],
             default: "OnGoing",
         },
-        team_size: {
-            type: String,
-            required: true,
+        organizationId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Organization",
+            default: null,
         },
-        team_members: [
-            {
-                name: {
-                    type: String,
-                    required: [true, "Team member name is required"],
-
-                },
-                role: {
-                    type: String,
-                    required: [true, "Role is required"],
-
-                },
-            },
-        ],
         createdAt: {
             type: Date,
             default: Date.now,

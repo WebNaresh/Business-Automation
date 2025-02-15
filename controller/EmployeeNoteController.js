@@ -7,12 +7,17 @@ const { EmployeeNoteModel } = require("../models/EmployeeNoteSchema");
 exports.addEmployeeNote = catchAssyncError(async (req, res, next) => {
     try {
         const { empId, organizationId } = req.params;
-        const { notes } = req.body;
+        const { notes, date, time, } = req.body;
+        const userId = req.user.user._id;
+
 
         const newNote = new EmployeeNoteModel({
+            notes,
+            date,
+            time,
             empId,
             organizationId,
-            notes
+            creatorId: userId
         });
 
         const savedNote = await newNote.save();
@@ -81,3 +86,17 @@ exports.getOneNoteOFEmployee = catchAssyncError(async (req, res, next) => {
     }
 });
 
+
+exports.getNote = catchAssyncError(async (req, res, next) => {
+    try {
+        const notes = await EmployeeNoteModel.find();
+
+        return res.status(200).json({
+            success: true,
+            message: "Notes retrieved successfully.",
+            notes,
+        });
+    } catch (error) {
+        return next(error);
+    }
+});

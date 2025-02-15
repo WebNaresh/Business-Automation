@@ -6,12 +6,12 @@ const EmployeeNoteSchema = new mongoose.Schema(
         empId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Employee",
-            required: true,
         },
-        organizationId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Organization",
-            default: null,
+        date: {
+            type: Date,
+        },
+        time: {
+            type: String,
         },
         notes:
         {
@@ -19,6 +19,16 @@ const EmployeeNoteSchema = new mongoose.Schema(
             required: true,
         },
 
+        creatorId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Employee",
+            default: null,
+        },
+        organizationId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Organization",
+            default: null,
+        },
 
     },
     {
