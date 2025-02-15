@@ -9,16 +9,23 @@ import { z } from "zod";
 import { TestContext } from "../../../State/Function/Main";
 import { UseContext } from "../../../State/UseState/UseContext";
 import AuthInputFiled from "../../../components/InputFileds/AuthInputFiled";
-
+import { Abc, AccessTime, Work } from "@mui/icons-material";
+import { TodayOutlined, } from "@mui/icons-material";
 
 const AddNote = ({ open, handleClose, empId, organisationId }) => {
     const { cookies } = useContext(UseContext);
     const authToken = cookies["aegis"];
     const { handleAlert } = useContext(TestContext);
 
+
+
     // Define schema using Zod for form validation
     const NoteSchema = z.object({
         notes: z.string().min(1, "Note is required"),
+        date: z.string(),
+        time: z
+            .string()
+            .min(1, "time is required"),
     });
 
     const {
@@ -102,16 +109,38 @@ const AddNote = ({ open, handleClose, empId, organisationId }) => {
                                     label="Note*"
                                     name="notes"
                                     control={control}
-                                    type="texteditor"
+                                    type="text"
                                     placeholder="Note"
                                     errors={errors}
                                     error={errors.notes}
                                     className="text-sm"
                                 />
+                                <AuthInputFiled
+                                    name="date"
+                                    icon={TodayOutlined}
+                                    control={control}
+                                    type="date"
+                                    placeholder="dd-mm-yyyy"
+                                    label="Date*"
+                                    errors={errors}
+                                    error={errors.date}
+                                />
+                                <AuthInputFiled
+                                    name="time"
+                                    icon={AccessTime}
+                                    control={control}
+                                    type="time"
+                                    placeholder="Enter Time"
+                                    label="Enter time *"
+                                    readOnly={false}
+                                    maxLimit={15}
+                                    errors={errors}
+                                    error={errors.time}
+                                />
                                 <div className="flex space-x-4 mt-4">
                                     <button
-                                        type="button"
-                                        className="py-2 rounded-md border font-bold w-full bg-yellow-500 text-white"
+                                        type="submit"
+                                        className="py-2 rounded-md border font-bold w-full bg-blue-500 text-white"
                                     >
                                         Reminder
                                     </button>

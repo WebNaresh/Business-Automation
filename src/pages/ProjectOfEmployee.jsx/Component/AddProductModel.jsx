@@ -1,15 +1,15 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Close } from "@mui/icons-material";
-import { Box, IconButton, Modal, Button } from "@mui/material";
+import { Box, IconButton, Modal, } from "@mui/material";
 import axios from "axios";
-import React, { useContext, useState } from "react";
-import { useForm, useFieldArray } from "react-hook-form";
-import { useMutation } from "react-query";
+import React, { useContext, } from "react";
+import { useForm, } from "react-hook-form";
+import { useMutation, useQuery } from "react-query";
 import { z } from "zod";
 import { TestContext } from "../../../State/Function/Main";
 import AuthInputFiled from "../../../components/InputFileds/AuthInputFiled";
 import { UseContext } from "../../../State/UseState/UseContext";
-
+import { Email } from "@mui/icons-material";
 
 const AddProductModel = ({ open, handleClose, empId, organisationId }) => {
 
@@ -17,27 +17,71 @@ const AddProductModel = ({ open, handleClose, empId, organisationId }) => {
     const authToken = cookies["aegis"];
     const { handleAlert } = useContext(TestContext);
 
-    console.log("empId", empId);
-    console.log("organisationId", organisationId);
+    //for  Get Query to get employee email of organization
+    const { data: employee } = useQuery(
+        ["employee", organisationId],
+        async () => {
+            const response = await axios.get(
+                `${import.meta.env.VITE_API}/route/employee/${organisationId}/get-emloyee`,
+                {
+                    headers: {
+                        Authorization: authToken,
+                    },
+                }
+            );
+            return response.data.employees;
+        }
+    );
+    const employeeId = employee
+        ? employee.map((emp) => ({
+            label: emp.first_name,
+            value: emp._id,
+        }))
+        : [];
 
+    // Fetch uploaded document data of the employee
+    const { data: getProjectOrg } = useQuery(
+        ["getorgproject"],
+        async () => {
+            const response = await axios.get(
+                `${import.meta.env.VITE_API}/route/project/get-project/${organisationId}`,
+                {
+                    headers: {
+                        Authorization: authToken,
+                    },
+                }
+            );
+            return response.data.projects;
+        }
+    );
 
-    // Define schema using Zod for form validation
+    const project = getProjectOrg
+        ? getProjectOrg.map((project) => ({
+            label: project.project_name,
+            value: project._id,
+        }))
+        : [];
+
     const ProjectSchema = z.object({
-        project_name: z.string().min(1, "Project name is required"),
+        project_name: z.array(
+            z.object({
+                label: z.string(),
+                value: z.string(),
+            })
+        ),
         project_description: z.string().optional(),
         start_date: z.string().min(1, "Start date is required"),
         end_date: z.string().optional(),
         status: z.string().min(1, "Status is required"),
         team_size: z.string().min(1, "Team size must be at least 1"),
-        team_members: z
-            .array(
-                z.object({
-                    name: z.string().min(1, "Team member name is required"),
-                    role: z.string().min(1, "Role is required"),
-                })
-            )
-            .optional(),
+        empId: z.array(
+            z.object({
+                label: z.string(),
+                value: z.string(),
+            })
+        ),
     });
+
 
     const {
         handleSubmit,
@@ -46,26 +90,24 @@ const AddProductModel = ({ open, handleClose, empId, organisationId }) => {
         formState: { errors },
     } = useForm({
         defaultValues: {
-            project_name: "",
+            project_name: [],  // Ensure this is an array
             project_description: "",
             start_date: "",
             end_date: "",
             status: "",
-            team_size: 1,
-            team_members: [{ name: "", role: "" }],
+            team_size: "1",
+            empId: [],  // Ensure this is an array
         },
         resolver: zodResolver(ProjectSchema),
     });
 
-    const { fields, append, remove } = useFieldArray({
-        control,
-        name: "team_members",
-    });
+    console.log("error", errors);
+
 
     const addProduct = useMutation(
         (data) => {
             return axios.post(
-                `${import.meta.env.VITE_API}/route/project/add-project/${empId}/${organisationId}`,
+                `${import.meta.env.VITE_API}/route/project/allocate-project-to-emp/${organisationId}`,
                 data,
                 {
                     headers: {
@@ -92,9 +134,9 @@ const AddProductModel = ({ open, handleClose, empId, organisationId }) => {
     );
 
     const onSubmit = (data) => {
+        console.log("Raw Data:", data);
         addProduct.mutate(data);
     };
-
     const style = {
         position: "absolute",
         top: "50%",
@@ -132,15 +174,19 @@ const AddProductModel = ({ open, handleClose, empId, organisationId }) => {
                             </div>
                             <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
                                 <AuthInputFiled
-                                    label="Project Name *"
                                     name="project_name"
+                                    icon={Email}
                                     control={control}
-                                    type="text"
+                                    type="autocomplete"
                                     placeholder="Project Name"
+                                    label="Project Name"
+                                    readOnly={false}
+                                    maxLimit={15}
                                     errors={errors}
                                     error={errors.project_name}
-                                    className="text-sm"
+                                    optionlist={project ? project : []}
                                 />
+
                                 <AuthInputFiled
                                     label="Project Description *"
                                     name="project_description"
@@ -150,6 +196,20 @@ const AddProductModel = ({ open, handleClose, empId, organisationId }) => {
                                     errors={errors}
                                     error={errors.project_description}
                                     className="text-sm"
+                                />
+
+                                <AuthInputFiled
+                                    name="empId"
+                                    icon={Email}
+                                    control={control}
+                                    type="autocomplete"
+                                    placeholder="Employee"
+                                    label="Employee"
+                                    readOnly={false}
+                                    maxLimit={15}
+                                    errors={errors}
+                                    error={errors.empId}
+                                    optionlist={employeeId ? employeeId : []}
                                 />
 
                                 <AuthInputFiled
@@ -192,48 +252,6 @@ const AddProductModel = ({ open, handleClose, empId, organisationId }) => {
                                     error={errors.team_size}
                                     className="text-sm"
                                 />
-                                <div className="w-full mt-4">
-                                    <h2 className="text-lg font-semibold">Team Members</h2>
-                                    {fields.map((item, index) => (
-                                        <div
-                                            key={item.id}
-                                            className="flex items-center gap-2 mt-2"
-                                        >
-                                            <AuthInputFiled
-                                                name={`team_members.${index}.name`}
-                                                control={control}
-                                                type="text"
-                                                placeholder="Team Member Name"
-                                                errors={errors}
-                                                error={errors.team_members?.[index]?.name}
-                                                className="text-sm"
-                                            />
-                                            <AuthInputFiled
-                                                name={`team_members.${index}.role`}
-                                                control={control}
-                                                type="text"
-                                                placeholder="Role"
-                                                errors={errors}
-                                                error={errors.team_members?.[index]?.role}
-                                                className="text-sm"
-                                            />
-                                            <IconButton
-                                                onClick={() => remove(index)}
-                                                size="small"
-                                                color="error"
-                                            >
-                                                <Close />
-                                            </IconButton>
-                                        </div>
-                                    ))}
-                                    <Button
-                                        variant="outlined"
-                                        onClick={() => append({ name: "", role: "" })}
-                                        className="mt-2"
-                                    >
-                                        Add Team Member
-                                    </Button>
-                                </div>
                                 <button
                                     type="submit"
                                     className="py-2 rounded-md border font-bold w-full bg-[#174E63] text-white mt-4"

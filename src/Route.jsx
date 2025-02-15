@@ -156,6 +156,7 @@ import Expense from "./pages/Expenses/Expense";
 import OfferLetter from "./pages/LetterTemplate/LetterTemplate";
 import ExperienceLetter from "./pages/LetterTemplate/ExperienceLetter";
 import DocNotification from "./pages/DocumentManagement/DocNotification";
+import NotesNotification from "./pages/NotesNotiication/NotesNotification";
 
 
 const App = () => {
@@ -2007,6 +2008,18 @@ const App = () => {
             element={
               <RequireAuth permission={["Employee"]}>
                 <Form16NotificationToEmp />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/notes-notification"
+            element={
+              <RequireAuth
+                permission={[
+                  "Super-Admin",
+                  "HR",
+                ]}>
+                <NotesNotification />
               </RequireAuth>
             }
           />

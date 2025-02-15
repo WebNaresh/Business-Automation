@@ -17,16 +17,10 @@ const ViewEmployeeProject = ({ employeeId }) => {
     const { cookies } = useContext(UseContext);
     const authToken = cookies["aegis"];
 
-    // Modal states and function
-    const [open, setOpen] = React.useState(false);
-    const [empId, setEmpId] = useState(null);
-    const [editMode, setEditMode] = useState(false);
-    const [selectedProject, setSelectedProject] = useState(null);
-
 
     // Fetch uploaded document data of the employee
     const { data: getProjectOfEmployee } = useQuery(
-        ["getProjectOfEmployee"],
+        ["get-projectss"],
         async () => {
             const response = await axios.get(
                 `${import.meta.env.VITE_API}/route/project/get/${employeeId}`,
@@ -43,24 +37,7 @@ const ViewEmployeeProject = ({ employeeId }) => {
     console.log("getProjectOfEmployee", getProjectOfEmployee);
 
 
-    // for add
-    const handleAddProduct = (empId) => {
-        setOpen(true);
-        setEmpId(empId);
-    };
-
-    // for eidt
-    const handleEditProduct = (projectId) => {
-        setEditMode(true);
-        setSelectedProject(projectId);
-    };
-
-    // for edit close 
-    const handleEditClose = () => {
-        setEditMode(false);
-        setSelectedProject(null);
-    };
-
+    
     return (
         <>
             <Container maxWidth="xl" className="bg-gray-50 min-h-screen py-8 px-4">
@@ -71,15 +48,6 @@ const ViewEmployeeProject = ({ employeeId }) => {
                             Here you will be able to view the project of the employee.
                         </p>
                     </div>
-                    <div className="flex justify-center mt-4">
-                        <button
-                            onClick={() => handleAddProduct(employeeId)}
-                            className="bg-[#174E63] text-white px-6 py-2 rounded-md shadow-md hover:bg-[#174E63] transition duration-200"
-                        >
-                            Add Project
-                        </button>
-                    </div>
-
                 </div>
 
                 {getProjectOfEmployee?.length > 0 ? (
@@ -102,15 +70,6 @@ const ViewEmployeeProject = ({ employeeId }) => {
                                     <th scope="col" className="px-6 py-3">
                                         Status
                                     </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Team Size
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Team Member
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Action
-                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -118,7 +77,7 @@ const ViewEmployeeProject = ({ employeeId }) => {
                                     getProjectOfEmployee.map((data, id) => (
                                         <tr className="!font-medium border-b" key={id}>
                                             <td className="!text-left pl-8 py-3">{id + 1}</td>
-                                            <td className="px-6 py-3">{data.project_name || "N/A"}</td>
+                                            <td className="px-6 py-3">{data.project_name.label || "N/A"}</td>
 
                                             <td className="px-6 py-3">
                                                 {new Date(data.start_date).toLocaleDateString("en-US") || "N/A"}
@@ -127,23 +86,6 @@ const ViewEmployeeProject = ({ employeeId }) => {
                                                 {new Date(data.end_date).toLocaleDateString("en-US") || "N/A"}
                                             </td>
                                             <td className="px-6 py-3">{data.status || "N/A"}</td>
-                                            <td className="px-6 py-3">{data.team_size || "N/A"}</td>
-                                            <td className="px-6 py-3">
-                                                {data.team_members?.length > 0 ? (
-                                                    <ul className="list-disc pl-5">
-                                                        {data.team_members.map((member, index) => (
-                                                            <li key={index}>
-                                                                {member.name} ({member.role})
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-                                                ) : (
-                                                    "No Team Members"
-                                                )}
-                                            </td>
-                                            <IconButton onClick={() => handleEditProduct(data._id)} sx={{ backgroundColor: "#f1f5f9", "&:hover": { backgroundColor: "#e2e8f0" }, mt: "15px", marginLeft: "30px" }} size="small">
-                                                <EditIcon sx={{ fontSize: "1.25rem", color: "#6366f1" }} />
-                                            </IconButton>
                                         </tr>
                                     ))}
                             </tbody>
@@ -162,11 +104,6 @@ const ViewEmployeeProject = ({ employeeId }) => {
                     </section>
 
                 )}
-
-
-                <AddProductModel empId={empId} organisationId={organisationId} open={open} handleClose={() => setOpen(false)} />
-                <EditProject projectId={selectedProject} organisationId={organisationId} open={editMode} handleClose={handleEditClose} />
-
             </Container>
         </>
     );

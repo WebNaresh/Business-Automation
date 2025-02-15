@@ -3,10 +3,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import 'jspdf-autotable';
-import { Search, West, RequestQuote } from "@mui/icons-material";
+import { Search, West, } from "@mui/icons-material";
 import { Avatar, } from "@mui/material";
 import { UseContext } from "../../State/UseState/UseContext";
 import ViewEmployeeProject from "./Component/ViewEmployeeProject";
+import ViewOrg from "./Component/ViewOrg";
 
 
 const ProjectEmployee = () => {
@@ -113,13 +114,11 @@ const ProjectEmployee = () => {
                     </article>
 
                     <div className="w-[80%]">
-                        {selectedEmployee && (
-                            <ViewEmployeeProject
-                                employee={selectedEmployee}
-                                employeeId={employeeId}
-                            />
+                        {selectedEmployee ? (
+                            <ViewEmployeeProject employee={selectedEmployee} employeeId={employeeId} />
+                        ) : (
+                            <ViewOrg />
                         )}
-
                     </div>
                 </section>
             </div>

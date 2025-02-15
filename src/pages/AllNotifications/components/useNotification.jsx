@@ -16,6 +16,7 @@ import UserProfile from "../../../hooks/UserData/useUser";
 import useOrgGeo from "../../Geo-Fence/useOrgGeo";
 import useLeaveNotification from "../../SelfLeaveNotification/useLeaveNotification";
 import useDocNotification from "../../../hooks/QueryHook/notification/document-notification/hook";
+import useNotesNotification from "../../../hooks/QueryHook/notification/notes-notidication/hook";
 
 const useNotification = () => {
   const { cookies } = useContext(UseContext);
@@ -26,6 +27,7 @@ const useNotification = () => {
   const role = useGetCurrentRole();
   const { data } = useLeaveNotificationHook();
   const { data: data4 } = useDocNotification();
+  const { data: datas } = useNotesNotification();
 
   const { data: selfLeaveNotification } = useLeaveNotification();
   const { data: data3 } = usePunchNotification();
@@ -354,9 +356,9 @@ const useNotification = () => {
     },
     {
       name: "Notes Notification",
-      count: data4?.length ?? 0,
+      count: datas?.length ?? 0,
       color: "#FF7373",
-      url: "/doc-notification",
+      url: "/notes-notification",
       visible: true,
     },
     {
@@ -382,7 +384,6 @@ const useNotification = () => {
       url2: "/form16-notification-to-emp",
       visible: true,
     },
-
     {
       name: "TDS Notification",
       // count: Number(tds) ?? 0,

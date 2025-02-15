@@ -1,36 +1,49 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Close } from "@mui/icons-material";
-import { Box, IconButton, Modal } from "@mui/material";
+import { Box, IconButton, Modal, Button } from "@mui/material";
 import axios from "axios";
-import React, { useContext } from "react";
-import { useForm } from "react-hook-form";
+import React, { useContext, useState } from "react";
+import { useForm, useFieldArray } from "react-hook-form";
 import { useMutation, useQuery } from "react-query";
 import { z } from "zod";
 import { TestContext } from "../../../State/Function/Main";
 import AuthInputFiled from "../../../components/InputFileds/AuthInputFiled";
 import { UseContext } from "../../../State/UseState/UseContext";
 import { useEffect } from "react";
-import { TodayOutlined, } from "@mui/icons-material";
-import { Abc, AccessTime, Work } from "@mui/icons-material";
 
-const UpdateNotes = ({ open, handleClose, note }) => {
+const EditProjectInOrg = ({ open, handleClose, projectId, organisationId }) => {
 
     const { cookies } = useContext(UseContext);
     const authToken = cookies["aegis"];
     const { handleAlert } = useContext(TestContext);
 
-    console.log("note", note);
+    console.log("projectId", projectId);
+    console.log("organisationId", organisationId);
 
-    const noteId = note?._id;
 
 
-    const NoteSchema = z.object({
-        notes: z.string(),
-        date: z.string(),
-        time: z
-            .string()
-            .min(1, "time is required"),
+    // Define schema using Zod for form validation
+    const ProjectSchema = z.object({
+        project_name: z.string().min(1, "Project name is required"),
     });
+
+
+    const { data: getProject } = useQuery(
+        ["getProject"],
+        async () => {
+            const response = await axios.get(
+                `${import.meta.env.VITE_API}/route/project/get-project-in-org/${projectId}`,
+                {
+                    headers: {
+                        Authorization: authToken,
+                    },
+                }
+            );
+            return response.data.projects;
+        }
+    );
+
+    console.log("dd", getProject);
 
     const {
         handleSubmit,
@@ -39,29 +52,28 @@ const UpdateNotes = ({ open, handleClose, note }) => {
         formState: { errors },
     } = useForm({
         defaultValues: {
-            notes: "",
-            date: "", // Add date here
-            time: "", // Add time here
+            project_name: "",
         },
-        resolver: zodResolver(NoteSchema),
+        resolver: zodResolver(ProjectSchema),
     });
 
 
+    // Inside your component
     useEffect(() => {
-        if (note) {
+        if (getProject) {
+            // Map fetched data to form fields if necessary
             reset({
-                notes: note.notes || "",
-                date: note.date ? new Date(note.date).toISOString().split("T")[0] : "",
-                time: note.time || "",
+                project_name: getProject.project_name || "",
             });
         }
-    }, [note, reset]);
+    }, [getProject, reset]);
 
 
-    const updateNote = useMutation(
+
+    const updateProject = useMutation(
         (data) => {
             return axios.patch(
-                `${import.meta.env.VITE_API}/route/note/update/${noteId}`,
+                `${import.meta.env.VITE_API}/route/project/update-project/${organisationId}/${projectId}`,
                 data,
                 {
                     headers: {
@@ -72,10 +84,9 @@ const UpdateNotes = ({ open, handleClose, note }) => {
         },
         {
             onSuccess: (response) => {
-                handleAlert(true, "success", "Note update successfully");
+                handleAlert(true, "success", "Project update successfully");
                 handleClose();
                 reset();
-                window.location.reload();
             },
             onError: (error) => {
                 handleAlert(
@@ -88,7 +99,7 @@ const UpdateNotes = ({ open, handleClose, note }) => {
     );
 
     const onSubmit = (data) => {
-        updateNote.mutate(data);
+        updateProject.mutate(data);
     };
 
     const style = {
@@ -119,7 +130,7 @@ const UpdateNotes = ({ open, handleClose, note }) => {
                             <div className="w-full">
                                 <div className="flex items-center justify-between">
                                     <h1 className="text-3xl text-gray-700 font-semibold tracking-tight">
-                                        Edit Note
+                                        Edit Project
                                     </h1>
                                     <IconButton onClick={handleClose}>
                                         <Close className="!text-lg" />
@@ -128,40 +139,17 @@ const UpdateNotes = ({ open, handleClose, note }) => {
                             </div>
                             <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
                                 <AuthInputFiled
-                                    label="Note*"
-                                    name="notes"
+                                    name="project_name"
                                     control={control}
                                     type="text"
-                                    placeholder="Note"
+                                    placeholder="Project Name"
                                     errors={errors}
-                                    error={errors.notes}
+                                    error={errors.project_name}
                                     className="text-sm"
-                                />
-                                <AuthInputFiled
-                                    name="date"
-                                    icon={TodayOutlined}
-                                    control={control}
-                                    type="date"
-                                    placeholder="dd-mm-yyyy"
-                                    label="Date*"
-                                    errors={errors}
-                                    error={errors.date}
-                                />
-                                <AuthInputFiled
-                                    name="time"
-                                    icon={AccessTime}
-                                    control={control}
-                                    type="time"
-                                    placeholder="Enter Time"
-                                    label="Enter time *"
-                                    readOnly={false}
-                                    maxLimit={15}
-                                    errors={errors}
-                                    error={errors.time}
                                 />
                                 <button
                                     type="submit"
-                                    className="py-2 rounded-md border font-bold w-full bg-blue-500 text-white mt-4"
+                                    className="py-2 rounded-md border font-bold w-full bg-[#174E63] text-white mt-4"
                                 >
                                     Update
                                 </button>
@@ -174,4 +162,4 @@ const UpdateNotes = ({ open, handleClose, note }) => {
     );
 };
 
-export default UpdateNotes;
+export default EditProjectInOrg;
