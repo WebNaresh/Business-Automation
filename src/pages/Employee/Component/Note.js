@@ -6,6 +6,7 @@ import AddNote from "./AddNote";
 import UpdateNotes from "./UpdateNotes";
 import { Add, Edit, Delete } from "@mui/icons-material"; // Import icons from Material-UI
 import IconButton from "@mui/material/IconButton"; // Import IconButton from Material-UI
+import Button from '@mui/material/Button';
 
 export function Note({ empId, organisationId }) {
     const { cookies } = useContext(UseContext);
@@ -62,15 +63,18 @@ export function Note({ empId, organisationId }) {
     return (
         <div className="p-6 bg-white rounded-lg shadow-xl space-y-6">
             <div className="flex justify-between items-center">
-                <h2 className="text-2xl font-semibold text-gray-700"></h2>
-                <IconButton
-                    onClick={handleAddNote}
-                    color="primary"
-                    aria-label="Add Note"
-                >
-                    <Add />
-                </IconButton>
+                <div className="ml-auto">
+                    <Button
+                        onClick={handleAddNote}
+                        variant="contained"
+                        color="primary"
+                    >
+                        Add Note
+                    </Button>
+                </div>
             </div>
+
+
             <div className="space-y-4">
                 {notes && notes.map((note) => (
                     <div key={note._id} className="bg-gray-50 p-4 rounded-lg shadow-lg hover:shadow-2xl transition duration-300">

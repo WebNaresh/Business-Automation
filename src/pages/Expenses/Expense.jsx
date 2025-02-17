@@ -40,8 +40,7 @@ const Expense = () => {
     const [timePeriod, setTimePeriod] = useState('all');
     const [openCashIn, setOpenCashInModel] = useState(false);
     const [openCashOut, setOpenCashOutModel] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
+
 
     const handleCategoryChange = (event) => setCategory(event.target.value);
     const handleTimePeriodChange = (event) => setTimePeriod(event.target.value);
@@ -137,63 +136,6 @@ const Expense = () => {
     );
 
 
-    //  pagination
-    const prePage = () => {
-        setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
-    };
-
-    const nextPage = () => {
-        setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
-    };
-
-    const changePage = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    };
-
-
-    const renderPagination = () => {
-        const pageNumbers = [];
-
-        if (totalPages <= 5) {
-            for (let i = 1; i <= totalPages; i++) {
-                pageNumbers.push(i);
-            }
-        } else {
-            if (currentPage > 3) {
-                pageNumbers.push(1);
-                pageNumbers.push("...");
-            }
-
-            const startPage = Math.max(2, currentPage - 1);
-            const endPage = Math.min(totalPages - 1, currentPage + 1);
-
-            for (let i = startPage; i <= endPage; i++) {
-                pageNumbers.push(i);
-            }
-
-            if (currentPage < totalPages - 2) {
-                pageNumbers.push("...");
-            }
-
-            pageNumbers.push(totalPages);
-        }
-
-        return pageNumbers.map((number, index) => (
-            <Button
-                key={index}
-                variant={number === currentPage ? "contained" : "outlined"}
-                color="primary"
-                onClick={() => typeof number === "number" && changePage(number)}
-                disabled={number === "..."}
-            >
-                {number}
-            </Button>
-        ));
-    };
-
-
-
-
     return (
         <div className="py-6 bg-gray-50 min-h-screen  mb-6 ml-10 mr-10">
             <article className="bg-white w-full h-max shadow-lg rounded-lg border">
@@ -218,63 +160,86 @@ const Expense = () => {
                         gap={3}
                         sx={{ backgroundColor: '#3E3E3E', p: 2 }} // Background color applied here
                     >
-                        <FormControl sx={{ minWidth: 250 }}>
-                            <InputLabel id="time-period-label" sx={{ color: 'white' }}>Select Period</InputLabel> {/* White text for label */}
-                            <Select
-                                labelId="time-period-label"
-                                value={timePeriod}
-                                onChange={handleTimePeriodChange}
-                                label="Select Period"
-                                sx={{
-                                    color: 'white', // White text color for select options
-                                    backgroundColor: '#555', // Dark background for select
-                                    '& .MuiOutlinedInput-root': {
-                                        '& fieldset': {
-                                            borderColor: '#777', // Darker border
-                                        },
-                                        '&:hover fieldset': {
-                                            borderColor: '#aaa', // Lighter border on hover
-                                        },
-                                    },
-                                }}
-                            >
-                                <MenuItem value="weekly">Weekly</MenuItem>
-                                <MenuItem value="monthly">Monthly</MenuItem>
-                                <MenuItem value="yearly">Yearly</MenuItem>
-                                <MenuItem value="all">All</MenuItem>
-                            </Select>
-                        </FormControl>
 
-                        <FormControl sx={{ minWidth: 250 }}>
-                            <InputLabel id="category-label" sx={{ color: 'white' }}>Type</InputLabel> {/* White text for label */}
+                        <Box display="flex" alignItems="center" gap={1}>
+                            <Typography sx={{ color: "white", fontSize: "14px", minWidth: "100px" }}>
+                                Select Period:
+                            </Typography>
+                            <FormControl sx={{ minWidth: 200, height: "36px" }}>
+                                <Select
+                                    value={timePeriod}
+                                    onChange={handleTimePeriodChange}
+                                    sx={{
+                                        color: 'white',
+                                        backgroundColor: '#555',
+                                        height: "36px",
+                                        fontSize: "14px",
+                                        '& .MuiOutlinedInput-root': {
+                                            height: "36px",
+                                            minHeight: "36px",
+                                            padding: "4px 10px",
+                                            '& fieldset': {
+                                                borderColor: '#777',
+                                            },
+                                            '&:hover fieldset': {
+                                                borderColor: '#aaa',
+                                            },
+                                            '& .MuiSelect-select': {
+                                                padding: "4px 10px",
+                                            },
+                                        },
+                                    }}
+                                >
+                                    <MenuItem value="weekly" sx={{ fontSize: "14px", padding: "4px 10px", minHeight: "32px" }}>Weekly</MenuItem>
+                                    <MenuItem value="monthly" sx={{ fontSize: "14px", padding: "4px 10px", minHeight: "32px" }}>Monthly</MenuItem>
+                                    <MenuItem value="yearly" sx={{ fontSize: "14px", padding: "4px 10px", minHeight: "32px" }}>Yearly</MenuItem>
+                                    <MenuItem value="all" sx={{ fontSize: "14px", padding: "4px 10px", minHeight: "32px" }}>All</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Box>
+
+
+
+                        <FormControl sx={{ minWidth: 250, height: "36px" }}>
+                            <InputLabel id="category-label" sx={{ color: 'white', fontSize: "14px", top: "-6px" }}>Type</InputLabel>
                             <Select
                                 labelId="category-label"
                                 value={category}
                                 onChange={handleCategoryChange}
                                 label="Type"
                                 sx={{
-                                    color: 'white', // White text color for select options
-                                    backgroundColor: '#555', // Dark background for select
+                                    color: 'white',
+                                    backgroundColor: '#555',
+                                    height: "36px", // Reduced height
+                                    fontSize: "14px", // Smaller text
                                     '& .MuiOutlinedInput-root': {
+                                        height: "36px", // Ensure consistent height
+                                        minHeight: "36px",
+                                        padding: "4px 10px", // Adjust padding for a compact look
                                         '& fieldset': {
-                                            borderColor: '#777', // Darker border
+                                            borderColor: '#777',
                                         },
                                         '&:hover fieldset': {
-                                            borderColor: '#aaa', // Lighter border on hover
+                                            borderColor: '#aaa',
+                                        },
+                                        '& .MuiSelect-select': {
+                                            padding: "4px 10px", // Reduce padding inside select
                                         },
                                     },
                                 }}
                             >
-                                <MenuItem value="personal">Personal</MenuItem>
-                                <MenuItem value="official">Official</MenuItem>
+                                <MenuItem value="personal" sx={{ fontSize: "14px", padding: "4px 10px", minHeight: "32px" }}>Personal</MenuItem>
+                                <MenuItem value="official" sx={{ fontSize: "14px", padding: "4px 10px", minHeight: "32px" }}>Official</MenuItem>
                             </Select>
                         </FormControl>
+
 
                         <Box display="flex" gap={2}>
                             <Button
                                 variant="contained"
                                 color="success"
                                 onClick={handleOpenCashInModel}
+                                sx={{ height: "35px", minHeight: "35px", padding: "4px 12px", fontSize: "14px" }}
                             >
                                 Cash In
                             </Button>
@@ -282,16 +247,17 @@ const Expense = () => {
                                 variant="contained"
                                 color="error"
                                 onClick={handleOpenCashOutModel}
+                                sx={{ height: "35px", minHeight: "35px", padding: "4px 12px", fontSize: "14px" }}
                             >
                                 Cash Out
                             </Button>
                         </Box>
 
                         <Box display="flex" gap={2}>
-                            <Button variant="contained" color="info">
+                            <Button variant="contained" color="info" sx={{ height: "35px", minHeight: "35px", padding: "4px 12px", fontSize: "14px" }}>
                                 Import
                             </Button>
-                            <Button variant="contained" color="warning">
+                            <Button variant="contained" color="warning" sx={{ height: "35px", minHeight: "35px", padding: "4px 12px", fontSize: "14px" }}>
                                 Export
                             </Button>
                         </Box>
@@ -305,106 +271,88 @@ const Expense = () => {
                             paddingRight: "10px",
                         }}
                     >
-                        <TableContainer component={Paper} sx={{ mb: 3 }}>
-                            <Table>
-                                <TableHead>
-                                    <TableRow sx={{ backgroundColor: '#f3f4f6' }}>
-                                        <TableCell sx={{ fontWeight: 'bold' }}>Sr No</TableCell>
-                                        <TableCell sx={{ fontWeight: 'bold' }}>Date</TableCell>
-                                        <TableCell sx={{ fontWeight: 'bold' }}>Time</TableCell>
-                                        <TableCell sx={{ fontWeight: 'bold' }}>Note</TableCell>
-                                        <TableCell sx={{ fontWeight: 'bold' }}>Type</TableCell>
-                                        <TableCell sx={{ fontWeight: 'bold' }}>Cash In</TableCell>
-                                        <TableCell sx={{ fontWeight: 'bold' }}>Cash Out</TableCell>
-                                        <TableCell sx={{ fontWeight: 'bold' }}>Balance</TableCell>
-                                        <TableCell sx={{ fontWeight: 'bold' }}>Action</TableCell>
+                        <TableContainer component={Paper} sx={{ mb: 3, maxHeight: "500px", overflow: "auto" }}>
+                            <Table stickyHeader>
+                                <TableHead sx={{ position: "sticky", top: 0, backgroundColor: "#f3f4f6", zIndex: 1000 }}>
+                                    <TableRow>
+                                        <TableCell sx={{ fontWeight: 'bold', backgroundColor: "#f3f4f6" }}>Sr No</TableCell>
+                                        <TableCell sx={{ fontWeight: 'bold', backgroundColor: "#f3f4f6" }}>Date</TableCell>
+                                        <TableCell sx={{ fontWeight: 'bold', backgroundColor: "#f3f4f6" }}>Time</TableCell>
+                                        <TableCell sx={{ fontWeight: 'bold', backgroundColor: "#f3f4f6" }}>Note</TableCell>
+                                        <TableCell sx={{ fontWeight: 'bold', backgroundColor: "#f3f4f6" }}>Type</TableCell>
+                                        <TableCell sx={{ fontWeight: 'bold', backgroundColor: "#f3f4f6" }}>Cash In</TableCell>
+                                        <TableCell sx={{ fontWeight: 'bold', backgroundColor: "#f3f4f6" }}>Cash Out</TableCell>
+                                        <TableCell sx={{ fontWeight: 'bold', backgroundColor: "#f3f4f6" }}>Balance</TableCell>
+                                        <TableCell sx={{ fontWeight: 'bold', backgroundColor: "#f3f4f6" }}>Action</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
                                     {isLoading ? (
                                         <TableRow>
-                                            <TableCell colSpan={5} align="center">
-                                                Loading...
-                                            </TableCell>
+                                            <TableCell colSpan={9} align="center">Loading...</TableCell>
                                         </TableRow>
                                     ) : isError ? (
                                         <TableRow>
-                                            <TableCell colSpan={5} align="center" color="error">
-                                                Error fetching data.
-                                            </TableCell>
+                                            <TableCell colSpan={9} align="center" color="error">Error fetching data.</TableCell>
                                         </TableRow>
                                     ) : (
                                         data && data.map((item, id) => (
                                             <TableRow
                                                 key={item.id}
                                                 sx={{
+                                                    height: "40px", // Set the row height
                                                     backgroundColor: item.id % 2 === 0 ? '#ffffff' : '#f9fafb',
                                                     '&:hover': { backgroundColor: 'rgba(0, 0, 0, 0.04)' },
                                                 }}
                                             >
-                                                <TableCell>{id + 1}</TableCell>
-                                                <TableCell>
+                                                <TableCell sx={{ padding: "4px 8px" }}>{id + 1}</TableCell>
+                                                <TableCell sx={{ padding: "4px 8px" }}>
                                                     {new Date(item?.transactionDate).toLocaleDateString(undefined, {
                                                         year: 'numeric',
                                                         month: 'long',
                                                         day: 'numeric',
                                                     })}
                                                 </TableCell>
-                                                <TableCell>
+                                                <TableCell sx={{ padding: "4px 8px" }}>
                                                     {new Date(item?.transactionTime).toLocaleTimeString(undefined, {
                                                         hour: '2-digit',
                                                         minute: '2-digit',
                                                         second: '2-digit',
                                                     })}
                                                 </TableCell>
-                                                <TableCell>{item?.note}</TableCell>
-                                                <TableCell>{item.transactionCategory}</TableCell>
-                                                <TableCell>{item.cashIn}</TableCell>
-                                                <TableCell>{item.cashOut}</TableCell>
-                                                <TableCell>{item.balance}</TableCell>
-                                                <TableCell>
+                                                <TableCell sx={{ padding: "4px 8px" }}>{item?.note}</TableCell>
+                                                <TableCell sx={{ padding: "4px 8px" }}>{item.transactionCategory}</TableCell>
+                                                <TableCell sx={{ padding: "4px 8px" }}>{item.cashIn}</TableCell>
+                                                <TableCell sx={{ padding: "4px 8px" }}>{item.cashOut}</TableCell>
+                                                <TableCell sx={{ padding: "4px 8px" }}>{item.balance}</TableCell>
+                                                <TableCell sx={{ padding: "4px 8px" }}>
                                                     <IconButton
                                                         color="primary"
                                                         aria-label="edit"
                                                         onClick={() => handleUpdateOpen(item?._id)}
+                                                        sx={{ padding: "2px" }} // Reduce padding for a smaller button
                                                     >
-                                                        <EditOutlinedIcon />
+                                                        <EditOutlinedIcon fontSize="small" />
                                                     </IconButton>
                                                     <IconButton
                                                         color="error"
                                                         aria-label="delete"
                                                         onClick={() => handleDeleteConfirmation(item?._id)}
+                                                        sx={{ padding: "2px" }}
                                                     >
-                                                        <DeleteOutlineIcon />
+                                                        <DeleteOutlineIcon fontSize="small" />
                                                     </IconButton>
                                                 </TableCell>
                                             </TableRow>
                                         ))
                                     )}
                                 </TableBody>
+
                             </Table>
                         </TableContainer>
                     </div>
 
-                    <div className="flex items-center justify-center gap-3 p-4 bg-gray-50 border-t border-gray-200">
-                        <Button
-                            variant="contained"
-                            onClick={prePage}
-                            disabled={currentPage === 1}
-                            className="text-sm"
-                        >
-                            Previous
-                        </Button>
-                        {renderPagination()}
-                        <Button
-                            variant="contained"
-                            onClick={nextPage}
-                            disabled={currentPage === totalPages}
-                            className="text-sm"
-                        >
-                            Next
-                        </Button>
-                    </div>
+
                     {/* Summary Section */}
                     <Grid
                         container

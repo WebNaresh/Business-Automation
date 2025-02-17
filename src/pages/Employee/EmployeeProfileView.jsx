@@ -84,16 +84,16 @@ const EmployeeProfileView = () => {
       }
     },
     { enabled: Boolean(empId) }
-  ); 
+  );
 
-  console.log("profile" , profile);
-  
+  console.log("profile", profile);
+
 
   return (
     <div className="min-h-screen bg-slate-50">
       <div className="max-w-7xl mx-auto py-6 px-4 grid grid-cols-1 md:grid-cols-[300px,1fr] gap-6">
         {/* Profile Info */}
-        <div className="space-y-4 bg-[#174E63] p-4 rounded-md shadow-md mt-4">
+        {/* <div className="space-y-4 bg-[#174E63] p-4 rounded-md shadow-md mt-4">
           <div className="relative w-40 h-40 mt-12 rounded-full border-2 border-dashed border-gray-300 flex items-center justify-center bg-white mx-auto">
             <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-500">
               <span className="text-xs text-center px-2">Your Profile Photo comes here</span>
@@ -101,7 +101,30 @@ const EmployeeProfileView = () => {
           </div>
 
 
-          <div className="text-center text-white"> {/* Set text color to white */}
+          <div className="text-center text-white"> 
+            <div className="font-bold text-lg">
+              {profile?.first_name} {profile?.last_name}
+            </div>
+            <div className="text-base font-bold mt-1 mb-1">
+              {profile?.designation?.[0]?.designationName || '-'}
+            </div>
+            <div className="text-sm font-bold mt-1 mb-1">
+              ID_: {profile?.empId}
+            </div>
+            <div className="text-sm font-bold mt-1 mb-1">
+              DOJ: {profile?.joining_date ? new Date(profile?.joining_date).toLocaleDateString() : '-'}
+            </div>
+          </div>
+        </div> */}
+
+        <div className="space-y-4 bg-[#2D2D2D] p-4 rounded-md shadow-md mt-4"> {/* Updated background to dark grey */}
+          <div className="relative w-40 h-40 mt-12 rounded-full border-2 border-dashed border-gray-300 flex items-center justify-center bg-white mx-auto">
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-500">
+              <span className="text-xs text-center px-2">Your Profile Photo comes here</span>
+            </div>
+          </div>
+
+          <div className="text-center text-white"> {/* Text color is white */}
             <div className="font-bold text-lg">
               {profile?.first_name} {profile?.last_name}
             </div>
@@ -116,7 +139,6 @@ const EmployeeProfileView = () => {
             </div>
           </div>
         </div>
-
 
         {/* Tabs and Content */}
         <div className="bg-white p-4 rounded-md shadow-md">
