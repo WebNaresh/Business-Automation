@@ -1,6 +1,6 @@
 const express = require("express");
 const {
-    addProjectInOrg, updateProjectInOrg, getProjectInOrg, getProject, allocateProjectToEmp, updateProjectToEmp, getProjectsByEmpId, getOneProjectOfEmployee , getEmployeeInProject
+    addProjectInOrg, updateProjectInOrg, getProjectInOrg, getProject, allocateProjectToEmp, updateProjectToEmp, getProjectsByEmpId, getOneProjectOfEmployee, getEmployeeInProject
 } = require("../controller/EmployeeProduct");
 const router = express.Router();
 const auth = require("../middleware/Auth");

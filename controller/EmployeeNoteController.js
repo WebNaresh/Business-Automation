@@ -7,13 +7,14 @@ const { EmployeeNoteModel } = require("../models/EmployeeNoteSchema");
 exports.addEmployeeNote = catchAssyncError(async (req, res, next) => {
     try {
         const { empId, organizationId } = req.params;
-        const { notes, date, time, } = req.body;
+        const { notes, description, date, time, } = req.body;
         const userId = req.user.user._id;
 
 
         const newNote = new EmployeeNoteModel({
             notes,
             date,
+            description,
             time,
             empId,
             organizationId,

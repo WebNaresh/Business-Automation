@@ -16,7 +16,12 @@ const EmployeeNoteSchema = new mongoose.Schema(
         notes:
         {
             type: String,
-            required: true,
+           
+        },
+        description:
+        {
+            type: String,
+           
         },
 
         creatorId: {
