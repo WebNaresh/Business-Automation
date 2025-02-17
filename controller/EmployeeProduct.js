@@ -7,12 +7,13 @@ const { OrgProjectModel } = require("../models/OrgProject");
 exports.addProjectInOrg = catchAssyncError(async (req, res, next) => {
     try {
         const { organizationId } = req.params;
-        const { project_name } = req.body;
+        const { project_name, company_name, team_size } = req.body;
 
         const newProjectInOrg = new OrgProjectModel({
             organizationId,
             project_name,
-
+            company_name,
+            team_size
         });
 
         await newProjectInOrg.save();
@@ -52,7 +53,6 @@ exports.getProjectInOrg = catchAssyncError(async (req, res, next) => {
         const { id } = req.params;
 
         console.log("id", id);
-
 
         const project = await OrgProjectModel.findById({ _id: id });
 
@@ -160,5 +160,28 @@ exports.getOneProjectOfEmployee = catchAssyncError(async (req, res, next) => {
     } catch (error) {
         logger.error(error.message);
         res.status(500).json({ message: error.message });
+    }
+});
+
+exports.getEmployeeInProject = catchAssyncError(async (req, res, next) => {
+    try {
+        const { projectId } = req.params;
+
+        // Find employees where project_name array contains an object with the matching projectId
+        const employees = await EmployeeProductModel.find({
+            project_name: { $elemMatch: { value: projectId } }
+        });
+
+        if (!employees.length) {
+            return res.status(404).json({ message: "No employees found for this project." });
+        }
+
+        res.status(200).json({
+            message: "Project employees retrieved successfully",
+            employees,
+        });
+    } catch (error) {
+        logger.error(error.message);
+        res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
 });

@@ -11,7 +11,13 @@ const OrgProjectSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-
+        company_name: {
+            type: String,
+            required: true,
+        },
+        team_size: {
+            type: String,
+        },
         createdAt: {
             type: Date,
             default: Date.now,

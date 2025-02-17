@@ -1,6 +1,6 @@
 const express = require("express");
 const {
-    addProjectInOrg, updateProjectInOrg, getProjectInOrg, getProject, allocateProjectToEmp, updateProjectToEmp, getProjectsByEmpId, getOneProjectOfEmployee
+    addProjectInOrg, updateProjectInOrg, getProjectInOrg, getProject, allocateProjectToEmp, updateProjectToEmp, getProjectsByEmpId, getOneProjectOfEmployee , getEmployeeInProject
 } = require("../controller/EmployeeProduct");
 const router = express.Router();
 const auth = require("../middleware/Auth");
@@ -13,5 +13,6 @@ router.route("/project/allocate-project-to-emp/:organizationId").post(auth, allo
 router.route("/project/update-project-to-emp/:projectId").patch(auth, updateProjectToEmp);
 router.route("/project/get/:empId").get(getProjectsByEmpId);
 router.route("/project/getone/:id").get(getOneProjectOfEmployee);
+router.route("/project/:projectId").get(getEmployeeInProject);
 
 module.exports = router;
