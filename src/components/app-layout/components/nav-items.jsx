@@ -464,7 +464,7 @@ const TestNavItems = ({ toggleDrawer }) => {
           isClickable: true,
           link: `/organisation/${orgId}/performance`,
         },
-        
+
         "Project Allocation": {
           open: false,
           icon: <PeopleAlt className=" !text-[1.2em]" />,
@@ -734,13 +734,45 @@ const TestNavItems = ({ toggleDrawer }) => {
             },
           ],
         },
-        Branches: {
+        Setup: {
           open: false,
           isVisible: ["Super-Admin", "Delegate-Super-Admin"].includes(role),
           icon: <MonetizationOn className=" !text-[1.2em]" />,
           isClickable: true,
           routes: [],
           link: "/organizationList",
+        },
+        "Add Organiation": {
+          open: false,
+          isVisible: true,
+          icon: <MonetizationOn className=" !text-[1.2em]" />,
+          routes: [
+            {
+              key: "addOrg",
+              isVisible: true,
+              link: `/add-organisation`,
+              icon: <ArticleIcon className=" !text-[1.2em]" />,
+              text: "Records",
+            },
+          ],
+          isClickable: true,
+          link: `/add-organisation`,
+        },
+        "Branch Hierarchy": {
+          open: false,
+          isVisible: true,
+          icon: <MonetizationOn className=" !text-[1.2em]" />,
+          routes: [
+            {
+              key: "viewHierchy",
+              isVisible: true,
+              link: `/organisation/${orgId}/organisation-hierarchy`,
+              icon: <ArticleIcon className=" !text-[1.2em]" />,
+              text: "Hierarchy",
+            },
+          ],
+          isClickable: true,
+          link: `/organisation/${orgId}/organisation-hierarchy`,
         },
         "Help Desk": {
           open: false,

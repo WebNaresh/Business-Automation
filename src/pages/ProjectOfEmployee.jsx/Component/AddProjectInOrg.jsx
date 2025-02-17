@@ -23,7 +23,8 @@ const AddProjectInOrg = ({ open, handleClose, organisationId }) => {
     // Define schema using Zod for form validation
     const ProjectSchema = z.object({
         project_name: z.string().min(1, "Project name is required"),
-
+        company_name: z.string().optional(),
+        team_size: z.string().optional(),
     });
 
     const {
@@ -54,6 +55,7 @@ const AddProjectInOrg = ({ open, handleClose, organisationId }) => {
         },
         {
             onSuccess: (response) => {
+                queryClient.invalidateQueries({ queryKey: ["getProjectOrg"] });
                 handleAlert(true, "success", "Project added successfully");
                 handleClose();
                 reset();
@@ -117,6 +119,26 @@ const AddProjectInOrg = ({ open, handleClose, organisationId }) => {
                                     placeholder="Project Name"
                                     errors={errors}
                                     error={errors.project_name}
+                                    className="text-sm"
+                                />
+                                <AuthInputFiled
+                                    label="Company Name *"
+                                    name="company_name"
+                                    control={control}
+                                    type="text"
+                                    placeholder="Company Name"
+                                    errors={errors}
+                                    error={errors.company_name}
+                                    className="text-sm"
+                                />
+                                <AuthInputFiled
+                                    label="Team Size *"
+                                    name="team_size"
+                                    control={control}
+                                    type="text"
+                                    placeholder="Team Size"
+                                    errors={errors}
+                                    error={errors.team_size}
                                     className="text-sm"
                                 />
 

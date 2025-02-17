@@ -37,7 +37,7 @@ const ViewEmployeeProject = ({ employeeId }) => {
     console.log("getProjectOfEmployee", getProjectOfEmployee);
 
 
-    
+
     return (
         <>
             <Container maxWidth="xl" className="bg-gray-50 min-h-screen py-8 px-4">
@@ -77,8 +77,16 @@ const ViewEmployeeProject = ({ employeeId }) => {
                                     getProjectOfEmployee.map((data, id) => (
                                         <tr className="!font-medium border-b" key={id}>
                                             <td className="!text-left pl-8 py-3">{id + 1}</td>
-                                            <td className="px-6 py-3">{data.project_name.label || "N/A"}</td>
-
+                                            <td className="px-6 py-3">
+                                                {data.project_name.length > 0
+                                                    ? data.project_name.map((project, index) => (
+                                                        <span key={index}>
+                                                            {project.label}
+                                                            {index !== data.project_name.length - 1 && ", "}
+                                                        </span>
+                                                    ))
+                                                    : "N/A"}
+                                            </td>
                                             <td className="px-6 py-3">
                                                 {new Date(data.start_date).toLocaleDateString("en-US") || "N/A"}
                                             </td>

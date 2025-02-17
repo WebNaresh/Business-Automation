@@ -11,39 +11,25 @@ import AuthInputFiled from "../../../components/InputFileds/AuthInputFiled";
 import { UseContext } from "../../../State/UseState/UseContext";
 import { useEffect } from "react";
 
-const EditProjectInOrg = ({ open, handleClose, projectId, organisationId }) => {
+const EditProjectInOrg = ({ open, handleClose, project, organisationId }) => {
 
     const { cookies } = useContext(UseContext);
     const authToken = cookies["aegis"];
     const { handleAlert } = useContext(TestContext);
 
-    console.log("projectId", projectId);
+    console.log("project", project);
     console.log("organisationId", organisationId);
 
+
+    const projectId = project?._id;
 
 
     // Define schema using Zod for form validation
     const ProjectSchema = z.object({
         project_name: z.string().min(1, "Project name is required"),
+        company_name: z.string().optional(),
+        team_size: z.string().optional(),
     });
-
-
-    const { data: getProject } = useQuery(
-        ["getProject"],
-        async () => {
-            const response = await axios.get(
-                `${import.meta.env.VITE_API}/route/project/get-project-in-org/${projectId}`,
-                {
-                    headers: {
-                        Authorization: authToken,
-                    },
-                }
-            );
-            return response.data.projects;
-        }
-    );
-
-    console.log("dd", getProject);
 
     const {
         handleSubmit,
@@ -60,13 +46,15 @@ const EditProjectInOrg = ({ open, handleClose, projectId, organisationId }) => {
 
     // Inside your component
     useEffect(() => {
-        if (getProject) {
+        if (project) {
             // Map fetched data to form fields if necessary
             reset({
-                project_name: getProject.project_name || "",
+                project_name: project.project_name || "",
+                company_name: project.company_name || "",
+                team_size: project.team_size || "",
             });
         }
-    }, [getProject, reset]);
+    }, [project, reset]);
 
 
 
@@ -84,6 +72,7 @@ const EditProjectInOrg = ({ open, handleClose, projectId, organisationId }) => {
         },
         {
             onSuccess: (response) => {
+                queryClient.invalidateQueries({ queryKey: ["getProjectOrg"] });
                 handleAlert(true, "success", "Project update successfully");
                 handleClose();
                 reset();
@@ -147,6 +136,28 @@ const EditProjectInOrg = ({ open, handleClose, projectId, organisationId }) => {
                                     error={errors.project_name}
                                     className="text-sm"
                                 />
+                                <AuthInputFiled
+                                    label="Company Name *"
+                                    name="company_name"
+                                    control={control}
+                                    type="text"
+                                    placeholder="Company Name"
+                                    errors={errors}
+                                    error={errors.company_name}
+                                    className="text-sm"
+                                />
+                                <AuthInputFiled
+                                    label="Team Size *"
+                                    name="team_size"
+                                    control={control}
+                                    type="text"
+                                    placeholder="Team Size"
+                                    errors={errors}
+                                    error={errors.team_size}
+                                    className="text-sm"
+                                />
+
+
                                 <button
                                     type="submit"
                                     className="py-2 rounded-md border font-bold w-full bg-[#174E63] text-white mt-4"

@@ -76,18 +76,6 @@ const OrgList = () => {
                 Select and Manage Your Organisation
               </p>
             </div>
-            <div className="flex gap-4">
-              <Link to="/add-organisation">
-                <Button variant="contained">Add Organisation</Button>
-              </Link>
-              {filteredOrganizations && (
-                <Link
-                  to={`/organisation/${filteredOrganizations[0]._id}/organisation-hierarchy`}
-                >
-                  <Button variant="contained">View Branch Hierarchy</Button>
-                </Link>
-              )}
-            </div>
           </div>
         </div>
         {/* Content Section */}

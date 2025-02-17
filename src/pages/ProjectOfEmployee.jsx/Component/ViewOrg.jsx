@@ -10,7 +10,9 @@ import EditProjectInOrg from "./EditProjectInOrg";
 import EditIcon from "@mui/icons-material/Edit";
 import AddIcon from "@mui/icons-material/Add"; // Import Add icon 
 import AddProductModel from "./AddProductModel";
-
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import { Tooltip } from "@mui/material";
+import ViewEmployeeInProject from "./ViewEmployeeInProject";
 
 const ViewOrg = () => {
     const { organisationId } = useParams();
@@ -19,7 +21,9 @@ const ViewOrg = () => {
 
     // Modal states and function
     const [open, setOpen] = React.useState(false);
-    const [empId, setEmpId] = useState(null);
+    const [opens, setOpens] = React.useState(false);
+    const [view, setView] = React.useState(false);
+    const [projectId, setProjectId] = useState(null);
     const [editMode, setEditMode] = useState(false);
     const [selectedProject, setSelectedProject] = useState(null);
 
@@ -43,25 +47,30 @@ const ViewOrg = () => {
     console.log("getProjectOrg", getProjectOrg);
 
 
-    // for add
+
     const handleAddProduct = () => {
         setOpen(true);
     };
 
-    // for eidt
-    const handleEditProduct = (projectId) => {
+
+    const handleEditProduct = (project) => {
         setEditMode(true);
-        setSelectedProject(projectId);
+        setSelectedProject(project);
     };
 
-    // for edit close 
+
     const handleEditClose = () => {
         setEditMode(false);
         setSelectedProject(null);
     };
 
     const handleAddProjectToEmp = () => {
-        setOpen(true);
+        setOpens(true);
+    };
+
+    const handleViewProject = (projectId) => {
+        setView(true);
+        setProjectId(projectId)
     };
 
     return (
@@ -95,9 +104,15 @@ const ViewOrg = () => {
                                         Sr. No
                                     </th>
                                     <th scope="col" className="px-3 py-3">
+                                        Company Name
+                                    </th>
+                                    <th scope="col" className="px-3 py-3">
                                         Project Name
                                     </th>
 
+                                    <th scope="col" className="px-3 py-3">
+                                        Team Size
+                                    </th>
                                     <th scope="col" className="px-6 py-3">
                                         Action
                                     </th>
@@ -109,21 +124,50 @@ const ViewOrg = () => {
                                         <tr className="!font-medium border-b" key={id}>
                                             <td className="!text-left pl-8 py-3">{id + 1}</td>
                                             <td className="px-6 py-3">{data.project_name || "N/A"}</td>
-                                            <IconButton onClick={() => handleEditProduct(data._id)} sx={{ backgroundColor: "#f1f5f9", "&:hover": { backgroundColor: "#e2e8f0" }, mt: "15px", marginLeft: "30px" }} size="small">
-                                                <EditIcon sx={{ fontSize: "1.25rem", color: "#6366f1" }} />
-                                            </IconButton>
-                                            <IconButton
-                                                onClick={handleAddProjectToEmp}
-                                                sx={{
-                                                    backgroundColor: "#f1f5f9",
-                                                    "&:hover": { backgroundColor: "#e2e8f0" },
-                                                    mt: "15px",
-                                                    marginLeft: "30px"
-                                                }}
-                                                size="small"
-                                            >
-                                                <AddIcon sx={{ fontSize: "1.25rem", color: "#6366f1" }} />
-                                            </IconButton>
+                                            <td className="px-6 py-3">{data.company_name || "N/A"}</td>
+                                            <td className="px-6 py-3">{data.team_size || "N/A"}</td>
+                                            <Tooltip title="Edit Project" arrow>
+                                                <IconButton
+                                                    onClick={() => handleEditProduct(data)}
+                                                    sx={{
+                                                        backgroundColor: "#f1f5f9",
+                                                        "&:hover": { backgroundColor: "#e2e8f0" },
+                                                        mt: "15px",
+                                                        marginLeft: "30px"
+                                                    }}
+                                                    size="small"
+                                                >
+                                                    <EditIcon sx={{ fontSize: "1.25rem", color: "#6366f1" }} />
+                                                </IconButton>
+                                            </Tooltip>
+                                            <Tooltip title="Assing project to employee" arrow>
+                                                <IconButton
+                                                    onClick={handleAddProjectToEmp}
+                                                    sx={{
+                                                        backgroundColor: "#f1f5f9",
+                                                        "&:hover": { backgroundColor: "#e2e8f0" },
+                                                        mt: "15px",
+                                                        marginLeft: "30px"
+                                                    }}
+                                                    size="small"
+                                                >
+                                                    <AddIcon sx={{ fontSize: "1.25rem", color: "#6366f1" }} />
+                                                </IconButton>
+                                            </Tooltip>
+                                            <Tooltip title="View employee in a project" arrow>
+                                                <IconButton
+                                                    onClick={() => handleViewProject(data._id)}
+                                                    sx={{
+                                                        backgroundColor: "#f1f5f9",
+                                                        "&:hover": { backgroundColor: "#e2e8f0" },
+                                                        mt: "15px",
+                                                        marginLeft: "30px"
+                                                    }}
+                                                    size="small"
+                                                >
+                                                    <VisibilityIcon sx={{ fontSize: "1.25rem", color: "#6366f1" }} />
+                                                </IconButton>
+                                            </Tooltip>
                                         </tr>
                                     ))}
                             </tbody>
@@ -145,10 +189,12 @@ const ViewOrg = () => {
 
 
                 <AddProjectInOrg organisationId={organisationId} open={open} handleClose={() => setOpen(false)} />
-                <EditProjectInOrg projectId={selectedProject} organisationId={organisationId} open={editMode} handleClose={handleEditClose} />
+                <EditProjectInOrg project={selectedProject} organisationId={organisationId} open={editMode} handleClose={handleEditClose} />
 
 
-                 <AddProductModel organisationId={organisationId} open={open} handleClose={() => setOpen(false)} /> 
+                <AddProductModel organisationId={organisationId} open={opens} handleClose={() => setOpens(false)} />
+                <ViewEmployeeInProject projectId={projectId} organisationId={organisationId} open={view} handleClose={() => setView(false)}/>
+
 
             </Container>
         </>
