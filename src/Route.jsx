@@ -157,7 +157,7 @@ import OfferLetter from "./pages/LetterTemplate/LetterTemplate";
 import ExperienceLetter from "./pages/LetterTemplate/ExperienceLetter";
 import DocNotification from "./pages/DocumentManagement/DocNotification";
 import NotesNotification from "./pages/NotesNotiication/NotesNotification";
-
+import ContractualEmployee from "./pages/Employee/ContractualEmployee";
 
 const App = () => {
   return (
@@ -1158,6 +1158,20 @@ const App = () => {
                 ]}
               >
                 <Employee />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/organisation/:organisationId/contractual-employee"
+            element={
+              <RequireAuth
+                permission={[
+                  "Super-Admin",
+                  "HR",
+
+                ]}
+              >
+                <ContractualEmployee />
               </RequireAuth>
             }
           />
