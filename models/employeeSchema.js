@@ -32,6 +32,7 @@ const Employee = new mongoose.Schema({
   },
   isActive: {
     type: String,
+    default: null,
   },
 
   email: {
@@ -39,25 +40,31 @@ const Employee = new mongoose.Schema({
     unique: [true, "Email is already exists"],
     required: [true, "Please Enter E-mail"],
     validate: [validator.isEmail, "Please fill a valid email address"],
+    default: null,
   },
   password: {
     type: String,
     required: [true, "Please Enter Password"],
+    default: null,
   },
   phone_number: {
-    type: String,
-  },
-
-  employeeStatus: {
-    type: String,
-  },
-  user_id: {
     type: String,
     default: null,
   },
 
+  employeeStatus: {
+    type: String,
+    default: null,
+  },
+  user_id: {
+    type: String,
+    default: null,
+
+  },
+
   emergency_contact: {
     type: String,
+    default: null,
   },
   joining_date: {
     type: Date,
@@ -307,6 +314,10 @@ const Employee = new mongoose.Schema({
       },
     },
   ],
+  isContract: {
+    type: Boolean,
+    default: false,
+  },
 
   verified: {
     type: Boolean,

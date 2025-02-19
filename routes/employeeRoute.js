@@ -47,6 +47,7 @@ const {
   getTotalSalary,
   deleteProfilePhoto,
   getEmployeeInDepartment,
+  getContactEmployee
 } = require("../controller/employeeController");
 const auth = require("../middleware/Auth");
 const router = express.Router();
@@ -100,6 +101,9 @@ router
 router
   .route("/employee/get-paginated-emloyee/:organizationId")
   .get(auth, getPaginatedEmployees);
+router
+  .route("/employee/get-contract-emloyee/:organizationId")
+  .get(auth, getContactEmployee);
 router.route("/employee/:organizationId/get-emloyee").get(auth, getEmployee);
 router
   .route("/employee/get-department-head/:organizationId")

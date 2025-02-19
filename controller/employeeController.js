@@ -1105,6 +1105,7 @@ exports.addEmployee = catchAssyncError(async (req, res, next) => {
       exit_date,
       travel_requirement,
       id_card_no,
+      isContract,
       company_assets,
       ...dynamicFields
     } = req.body;
@@ -1132,15 +1133,15 @@ exports.addEmployee = catchAssyncError(async (req, res, next) => {
     if (existingEmployee) {
       return res.status(400).json({ message: "Email already registered." });
     }
-    const isEmpCodeExist = await EmployeeModel.findOne({
-      empId,
-      organizationId,
-    });
-    if (isEmpCodeExist) {
-      return res.status(400).json({
-        message: "Employee code already exists for this organization.",
-      });
-    }
+    // const isEmpCodeExist = await EmployeeModel.findOne({
+    //   empId,
+    //   organizationId,
+    // });
+    // if (isEmpCodeExist) {
+    //   return res.status(400).json({
+    //     message: "Employee code already exists for this organization.",
+    //   });
+    // }
 
     const filteredFields = Object.fromEntries(
       Object.entries(dynamicFields).filter(([_, value]) => value !== "")
@@ -1198,6 +1199,7 @@ exports.addEmployee = catchAssyncError(async (req, res, next) => {
       favourite_book,
       favourite_travel_destination,
       disability_status,
+      isContract,
       emergency_medical_condition,
       short_term_goal,
       long_term_goal,
@@ -2083,6 +2085,64 @@ exports.getPaginatedEmployees = catchAssyncError(async (req, res, next) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
+
+exports.getContactEmployee = catchAssyncError(async (req, res, next) => {
+  const page = parseInt(req.query.page) || 1; // Default to page 1
+  const perPage = 10;
+  const skip = (page - 1) * perPage;
+  const organizationId = req.params.organizationId;
+  const { nameSearch, salarystructure } = req.query;
+
+  console.log("Name Search:", nameSearch);
+  console.log("Salary Structure:", salarystructure);
+
+  try {
+    // Create a base filter object for querying
+    let filter = {
+      organizationId,
+      isContract: true, // Only get employees where isContract is true
+      profile: { $nin: ["Super-Admin"] }, // Exclude Super Admins
+    };
+
+    // Apply name search filter if provided
+    if (nameSearch && nameSearch.trim()) {
+      filter.first_name = { $regex: nameSearch.trim(), $options: "i" };
+    }
+
+    // Apply salarystructure filter if provided
+    if (salarystructure && salarystructure.trim()) {
+      filter.salarystructure = salarystructure.trim();
+    }
+
+    console.log("Filter:", filter);
+
+    // Count total employees after applying filters
+    const totalEmployees = await EmployeeModel.countDocuments(filter);
+
+    // Fetch paginated employee data
+    const employeesData = await EmployeeModel.find(filter)
+      .populate("worklocation")
+      .populate("deptname")
+      .populate("designation")
+      .populate("salarystructure")
+      .skip(skip)
+      .limit(perPage);
+
+    console.log("employeesData:", employeesData);
+
+    // Send the response with employees data and pagination details
+    res.status(200).json({
+      employees: employeesData,
+      totalEmployees,
+      currentPage: page,
+      totalPages: Math.ceil(totalEmployees / perPage),
+    });
+  } catch (error) {
+    console.error("Error fetching employees:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 
 
 exports.getUserProfileData = catchAssyncError(async (req, res, next) => {
