@@ -56,10 +56,13 @@ const EditEmp = ({ handleClose, open, organisationId, employeeId }) => {
     const queryClient = useQueryClient();
     const [error, setError] = useState();
 
+    console.log("employeeId", employeeId);
+
+
     const {
         phone_number,
     } = useEmpState();
-    
+
     // to define the scema using zod
     const EmployeeSchema = z.object({
         first_name: z
@@ -124,6 +127,7 @@ const EditEmp = ({ handleClose, open, organisationId, employeeId }) => {
         formState: { errors },
         handleSubmit,
         reset,
+        setValue
     } = useForm({
         defaultValues: {},
         resolver: zodResolver(EmployeeSchema),
@@ -142,51 +146,50 @@ const EditEmp = ({ handleClose, open, organisationId, employeeId }) => {
                         },
                     }
                 );
-
-                return response.data;
+                return response.data.employee;
             }
         },
         {
             onSuccess: (data) => {
+                console.log("data", data);
                 if (data) {
                     console.log("data", data);
-                    setValue("first_name", data.employee.first_name || "");
-                    setValue("last_name", data.employee.last_name || "");
+                    setValue("first_name", data.first_name || "");
+                    setValue("last_name", data.last_name || "");
+                    setValue("email", data.email || "");
+                    setValue("address", data.address || "");
                     setValue(
                         "date_of_birth",
-                        data.employee.date_of_birth
-                            ? new Date(data.employee.date_of_birth)
+                        data.date_of_birth
+                            ? new Date(data.date_of_birth)
                                 .toISOString()
                                 .split("T")[0]
                             : ""
                     );
-                    setValue("email", data.employee.email || "");
-                    setValue("gender", data.employee.gender || "");
-                    setValue("phone_number", data.employee.phone_number || "");
-                    setValue("address", data.employee.address || "");
+                    setValue("phone_number", data.phone_number || "");
                     setValue(
                         "adhar_card_number",
-                        data.employee.adhar_card_number !== null &&
-                            data.employee.adhar_card_number !== undefined
-                            ? data.employee.adhar_card_number.toString()
+                        data.adhar_card_number !== null &&
+                            data.adhar_card_number !== undefined
+                            ? data.adhar_card_number.toString()
                             : ""
                     );
                     setValue(
                         "pan_card_number",
-                        data.employee.pan_card_number !== null &&
-                            data.employee.pan_card_number !== undefined
-                            ? data.employee.pan_card_number
+                        data.pan_card_number !== null &&
+                            data.pan_card_number !== undefined
+                            ? data.pan_card_number
                             : ""
                     );
                     setValue(
                         "bank_account_no",
-                        data.employee.bank_account_no !== null &&
-                            data.employee.bank_account_no !== undefined
-                            ? data.employee.bank_account_no.toString()
+                        data.bank_account_no !== null &&
+                            data.bank_account_no !== undefined
+                            ? data.bank_account_no.toString()
                             : ""
                     );
-                    setValue("bank_name", data.employee.bank_name || "");
-                    setValue("ifsc_code", data.employee.ifsc_code || "");
+                    setValue("bank_name", data.bank_name || "");
+                    setValue("ifsc_code", data.ifsc_code || "");
                 }
             },
         }
@@ -218,11 +221,12 @@ const EditEmp = ({ handleClose, open, organisationId, employeeId }) => {
             console.log("Form Data:", data);
             await update.mutateAsync(data);
         } catch (error) {
-            console.error(error);
+            console.error("Error in onSubmit:", error);
             handleAlert(true, "error", "Failed to update the data.");
             setError("Failed to update the data.");
         }
     };
+
 
     return (
         <Modal
@@ -236,7 +240,7 @@ const EditEmp = ({ handleClose, open, organisationId, employeeId }) => {
                 className="border-none !z-10 !pt-0 !px-0 !w-[90%] lg:!w-[50%] md:!w-[60%] shadow-md outline-none rounded-md"
             >
                 <div className="flex justify-between py-4 items-center px-4">
-                    <h1 className="text-xl pl-2 font-semibold font-sans">Update Cash</h1>
+                    <h1 className="text-xl pl-2 font-semibold font-sans">Update Employee</h1>
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="px-5 space-y-4 mt-4">
@@ -249,8 +253,8 @@ const EditEmp = ({ handleClose, open, organisationId, employeeId }) => {
                             label="First Name *"
                             errors={errors}
                             error={errors.first_name}
-                            className="text-sm"
                         />
+
 
                         <AuthInputFiled
                             name="last_name"
@@ -274,54 +278,6 @@ const EditEmp = ({ handleClose, open, organisationId, employeeId }) => {
                             error={errors.email}
                             className="text-sm"
                         />
-
-                        <div className=" ">
-                            <label
-                                htmlFor={"gender"}
-                                className={`${errors.gender && "text-red-500"
-                                    }  text-gray-500  font-bold  text-sm `}
-                            >
-                                Gender *
-                            </label>
-                            <Controller
-                                control={control}
-                                name={"gender"}
-                                id={"gender"}
-                                render={({ field }) => (
-                                    <>
-                                        <div
-                                            className={`flex items-center gap-5 rounded-md  px-2   bg-white py-1 md:py-[4px]`}
-                                        >
-                                            <RadioGroup
-                                                row
-                                                aria-labelledby="demo-row-radio-buttons-group-label"
-                                                {...field}
-                                            >
-                                                <FormControlLabel
-                                                    value="female"
-                                                    // control={<Radio />}
-                                                    control={<Radio size="small" />}
-                                                    label="Female"
-                                                />
-                                                <FormControlLabel
-                                                    value="male"
-                                                    // control={<Radio />}
-                                                    control={<Radio size="small" />}
-                                                    label="Male"
-                                                />
-                                                <FormControlLabel
-                                                    value="transgender"
-                                                    // control={<Radio />}
-                                                    control={<Radio size="small" />}
-                                                    label="Transgender"
-                                                />
-                                            </RadioGroup>
-                                        </div>
-                                    </>
-                                )}
-                            />
-                        </div>
-
                         <AuthInputFiled
                             name="address"
                             icon={Person}
@@ -345,6 +301,18 @@ const EditEmp = ({ handleClose, open, organisationId, employeeId }) => {
                             errors={errors}
                             error={errors.date_of_birth}
                             className="text-sm"
+                        />
+
+                        <AuthInputFiled
+                            name="phone_number"
+                            icon={ContactEmergency}
+                            control={control}
+                            value={phone_number}
+                            type="text"
+                            placeholder="1234567890"
+                            label="Contact *"
+                            errors={errors}
+                            error={errors.phone_number}
                         />
 
                         <AuthInputFiled
@@ -416,16 +384,6 @@ const EditEmp = ({ handleClose, open, organisationId, employeeId }) => {
                             error={errors.ifsc_code}
                             pattern="[A-Za-z\s]+"
                             className=" text-sm"
-                        />
-                        <AuthInputFiled
-                            name={"isContract"}
-                            placeholder={"Is Contract"}
-                            label={"Is Contract"}
-                            control={control}
-                            type="checkbox"
-                            errors={errors}
-                            error={errors.isContract}
-                            className="mt-2 pt-2 text-sm"
                         />
                         <div className="flex gap-4 mt-4 justify-end">
                             <Button onClick={handleClose} color="error" variant="outlined">

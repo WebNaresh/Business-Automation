@@ -41,6 +41,7 @@ import UserProfile from "../../../hooks/UserData/useUser";
 import useGetCommunicationPermission from "../../../pages/EmployeeSurvey/useContext/Permission";
 import useOrgGeo from "../../../pages/Geo-Fence/useOrgGeo";
 import NavAccordion from "./NavAccordian";
+import RecruitmentCandidate from "../../../pages/Employee/RecruitmentCandidate";
 
 const TestNavItems = ({ toggleDrawer }) => {
   // to define the route and pass the dynamic organization id
@@ -237,6 +238,16 @@ const TestNavItems = ({ toggleDrawer }) => {
               link: `/organisation/${orgId}/contractual-employee`,
               icon: <Groups className=" !text-[1.2em]" />,
               text: "Contractual Employee",
+            },
+            {
+              key: "recruitmentCandidate",
+              isVisible: [
+                "Super-Admin",
+                "HR",
+              ].includes(role),
+              link: `/organisation/${orgId}/recruitment-candidate`,
+              icon: <Groups className=" !text-[1.2em]" />,
+              text: "Recruitment Candidate",
             },
           ],
         },

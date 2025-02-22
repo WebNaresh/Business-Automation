@@ -226,47 +226,7 @@ const EmployeeTest = () => {
         });
       }
 
-      // for (const employee of finalData) {
-      //   // Validation for PAN and Aadhar card
-      //   if (!isValidPanCard(employee.pan_card_number)) {
-      //     setAppAlert({
-      //       alert: true,
-      //       type: "error",
-      //       msg: `Invalid PAN card format for employee no ${employee.empId}`,
-      //     });
-      //     continue;
-      //   }
-
-      //   if (!isValidAadharCard(employee.adhar_card_number)) {
-      //     setAppAlert({
-      //       alert: true,
-      //       type: "error",
-      //       msg: `Invalid Aadhar card format for employee no ${employee.empId}`,
-      //     });
-      //     continue;
-      //   }
-
-      //   try {
-      //     await axios.post(
-      //       `${import.meta.env.VITE_API}/route/employee/add-employee`,
-      //       employee,
-      //       {
-      //         headers: {
-      //           Authorization: authToken,
-      //         },
-      //       }
-      //     );
-      //     console.log(`Employee ${employee.empId} posted successfully`);
-      //   } catch (error) {
-      //     console.error(`Error posting employee ${employee.empId}:`, error);
-      //     setAppAlert({
-      //       alert: true,
-      //       type: "error",
-      //       msg: error.response.data.message,
-      //     });
-      //   }
-      // }
-
+    
       // Clear file input value to allow re-uploading the same file
       fileInputRef.current.value = null;
 
@@ -404,19 +364,7 @@ const EmployeeTest = () => {
               }
               label="Excel Onboarding"
             />
-
-            <div className="w-full md:w-auto">
-              <button className="text-base text-blue-500 text-pretty font-bold"
-                onClick={handleSelfOnboardingClick}
-              >
-                Self-Onboarding Employee
-              </button>
-            </div>
-            {/* Self-Onboarding Modal */}
-            <SelfOnboardingFromModal
-              open={openModal}
-              handleClose={() => setOpenModal(false)}
-            />
+           
           </div>
         </div>
       </header>

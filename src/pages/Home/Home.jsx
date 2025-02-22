@@ -31,13 +31,17 @@ const Home = () => {
             <div className="w-full lg:w-max md:px-0 px-2">
               <h1 className="md:text-4xl xs:text-2xl font-light">
                 Welcome to{" "}
-                <span className="md:text-4xl xl:text-left text-center xs:text-2xl gradient font-semibold text-primary">
+                <span
+                  className="md:text-4xl xl:text-left text-center xs:text-2xl gradient font-semibold"
+                  style={{ color: '#e25822' }}
+                >
                   SMarTea
-                </span>{" "}
+                </span>
+
               </h1>
               <h2 className="md:text-5xl xs:text-3xl sm:text-4xl leading-tight font-bold mb-4">
                 Transforming
-                <span className="text-primary font-bold">
+                <span className="text-primary font-bold"  style={{ color: '#e25822' }}>
                   {" "}
                   Ideas into Reality
                 </span>
@@ -45,7 +49,7 @@ const Home = () => {
 
               <p className="md:text-xl w-[80%] xs:text-base mb-8 text-gray-600 md:leading-relaxed xs:leading-normal">
                 Embark on a journey of innovation with us. Experience the power
-                of <span className="font-bold text-primary">SMarTea</span>,
+                of <span className="font-bold text-primary" style={{ color: '#e25822' }}>SMarTea</span>,
                 where cutting-edge solutions meet your business needs.
               </p>
 

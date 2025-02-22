@@ -11,6 +11,7 @@ import {
   DialogActions,
 } from "@mui/material";
 import { jsPDF } from "jspdf";
+import goannyLogo from "../../../public/goanny.png"
 
 const OfferLetter = () => {
   const [candidateName, setCandidateName] = useState("");
@@ -18,7 +19,6 @@ const OfferLetter = () => {
   const [salary, setSalary] = useState("");
   const [joiningDate, setJoiningDate] = useState("");
   const [address, setAddress] = useState("");
-  const [logo, setLogo] = useState(null);
   const [signature, setSignature] = useState(null);
   const [openPreview, setOpenPreview] = useState(false);
 
@@ -59,10 +59,12 @@ const OfferLetter = () => {
     const doc = new jsPDF();
     const letterContent = generateLetter();
 
-    // Add logo
-    if (logo) {
-      doc.addImage(logo, "PNG", 15, 10, 40, 20); // Adjust dimensions as needed
-    }
+    // // Add logo
+    // if (logo) {
+    //   doc.addImage(logo, "PNG", 15, 10, 40, 20); // Adjust dimensions as needed
+    // }
+    <img src={goannyLogo} alt="Company Logo" style={{ width: "100px", marginBottom: "20px" }} />
+
 
     // Add content to the PDF
     doc.setFont("Helvetica", "normal");
@@ -162,16 +164,6 @@ const OfferLetter = () => {
               </Grid>
               <Grid item xs={12}>
                 <Typography variant="body1" style={{ marginBottom: "8px" }}>
-                  Upload Company Logo
-                </Typography>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => handleImageUpload(e, setLogo)}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Typography variant="body1" style={{ marginBottom: "8px" }}>
                   Upload Signature
                 </Typography>
                 <input
@@ -207,7 +199,7 @@ const OfferLetter = () => {
       <Dialog open={openPreview} onClose={() => setOpenPreview(false)} fullWidth maxWidth="md">
         <DialogTitle>Offer Letter Preview</DialogTitle>
         <DialogContent>
-          {logo && <img src={logo} alt="Company Logo" style={{ width: "100px", marginBottom: "20px" }} />}
+          {goannyLogo && <img src={goannyLogo} alt="Company Logo" style={{ width: "100px", marginBottom: "20px" }} />}
           <Typography variant="body1" style={{ whiteSpace: "pre-line" }}>
             {generateLetter()}
           </Typography>

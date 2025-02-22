@@ -31,7 +31,7 @@ import useEmpOption from "../../hooks/Employee-OnBoarding/useEmpOption";
 import AddEmp from "./Component/AddEmp";
 import EditEmp from "./Component/EditEmp";
 
-const ContractualEmployee = () => {
+const RecruitmentCandidate = () => {
     const navigate = useNavigate();
     const { cookies } = useContext(UseContext);
     const authToken = cookies["aegis"];
@@ -510,4 +510,4 @@ const ContractualEmployee = () => {
     );
 };
 
-export default ContractualEmployee;
+export default RecruitmentCandidate;
