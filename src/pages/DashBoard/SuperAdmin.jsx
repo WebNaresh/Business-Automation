@@ -125,7 +125,6 @@ const SuperAdmin = () => {
         }
       />
       <br />
-
       <div className="md:px-8 px-2 w-full mt-2">
         <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 mt-6 w-full gap-2 md:gap-5">
           <SuperAdminCard

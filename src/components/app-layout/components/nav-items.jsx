@@ -839,6 +839,30 @@ const TestNavItems = ({ toggleDrawer }) => {
           isClickable: true,
           link: `/organisation/${orgId}/help-desk`,
         },
+        "CRM Dashboard": {
+          open: false,
+          icon: <RxDashboard className=" !text-[1.2em]" />,
+          isVisible: true,
+          routes: [
+            {
+              key: "crmDashboard",
+              isVisible: true,
+              link:
+                role === "HR"
+                  ? `/organisation/${orgId}/dashboard/HR-dashboard`
+                  : "/organizationList",
+              icon: <Dashboard className=" !text-[1.2em]" />,
+              text: "Dashboard",
+            },
+          ],
+          isClickable: true,
+          link:
+            role === "HR"
+              ? `/organisation/${orgId}/dashboard/HR-dashboard`
+              : role === "Super-Admin"
+                ? `/organisation/${orgId}/crm/dashboard/super-admin`
+                : "/organizationList",
+        },
       };
     },
     // eslint-disable-next-line

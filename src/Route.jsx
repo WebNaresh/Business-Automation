@@ -159,6 +159,7 @@ import DocNotification from "./pages/DocumentManagement/DocNotification";
 import NotesNotification from "./pages/NotesNotiication/NotesNotification";
 import ContractualEmployee from "./pages/Employee/ContractualEmployee";
 import RecruitmentCandidate from "./pages/Employee/RecruitmentCandidate";
+import SuperAdminDashboard from "./pages/CrmDashBoard/superadminDashboard";
 
 const App = () => {
   return (
@@ -793,6 +794,14 @@ const App = () => {
             element={
               <RequireAuth permission={["Super-Admin", "Delegate-Super-Admin"]}>
                 <SuperAdmin />
+              </RequireAuth>
+            }
+          />
+             <Route
+            path="/organisation/:organisationId/crm/dashboard/super-admin"
+            element={
+              <RequireAuth permission={["Super-Admin", "Delegate-Super-Admin"]}>
+                <SuperAdminDashboard />
               </RequireAuth>
             }
           />
